@@ -1,0 +1,92 @@
+{
+  "study": "separator_factorization_v1",
+  "status": "PREREGISTRATION_PLAN_ONLY",
+  "date_jst": "2026-11-01",
+  "frozen_base_commit": "6b054baf2571c3fa0e4f19d5d841ea760d3eaba2",
+  "panels": ["original", "prospective"],
+  "topics_per_panel": 6,
+  "models": {
+    "mistral": {
+      "profile": "mistral7b",
+      "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71",
+      "checkpoint_sha256": "5d141a13ea9f5fce9c142bc26bdef64ea905fd9d27c64aff472f6875dd4296e9",
+      "cut": 16,
+      "period_id": 29491,
+      "question_mark_id": 29572
+    },
+    "gemma": {
+      "profile": "gemma2b",
+      "revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8",
+      "checkpoint_sha256": "f3503907cc4d2ace62abccf30393a05919827c1c8969b2f2755f15627b9756ad",
+      "cut": 13,
+      "period_id": 235265,
+      "question_mark_id": 235336
+    }
+  },
+  "factors": {
+    "punctuation": ["period", "question_mark"],
+    "display_order": ["AB", "BA"],
+    "plus_label": ["A", "B"],
+    "front_padding": [0, 16],
+    "post_padding": [0, 16],
+    "access_contexts": ["release_early", "release_late", "never", "sham_early", "sham_late", "sham_never"]
+  },
+  "geometry": {
+    "source_slots": 8,
+    "word_cell_width": 8,
+    "shadow_bank_width": 16,
+    "pre_receiver_padding": 4,
+    "between_receivers_padding": 15,
+    "compensation_tokens": 32,
+    "max_forward_length": 384,
+    "rendering": "archived_native_token_id_segments_without_retokenization",
+    "score_index": "explicit_last_native_closing_token_followed_by_dummy_and_compensation"
+  },
+  "analysis": {
+    "primary_scale": "paired_pole_gap_nats_and_common_reference_fraction",
+    "effect_margin_fraction": 0.05,
+    "minimum_complete_topics": 6,
+    "inference": "fixed_panel_effects_and_leave_one_topic_out_stability_no_population_null_test",
+    "primary_route": "delta_for_cross_context_raw_for_matched_only",
+    "primary_contrasts": [
+      "source_punctuation_at_fixed_period_recipient",
+      "recipient_punctuation_at_fixed_period_source",
+      "mapping_reversal_odd_component",
+      "display_by_anchor_interaction",
+      "late_vs_never_access_minus_matched_sham",
+      "early_vs_late_history_minus_matched_sham",
+      "long_vs_short_distance_at_each_fixed_anchor"
+    ]
+  },
+  "execution": {
+    "seed": 20261101,
+    "deterministic_algorithms": true,
+    "runtime_reference": "provenance/downstream_span_20261101/trials/clauses-original-mistral/environment.before.json",
+    "runtime_policy": "match_python_torch_cuda_and_recorded_packages_before_native_execution",
+    "dtype": "bfloat16",
+    "attention": "eager",
+    "batch_size": 1,
+    "use_cache": false,
+    "generation_tokens": 0,
+    "quantization": null,
+    "intervention_cut": "input_to_fixed_decoder_layer",
+    "source_mask_layers": "0_through_cut_minus_1_only",
+    "null_and_reconstruction_tolerance": 0,
+    "automatic_retries": 0,
+    "max_wall_seconds_per_model": 7200
+  },
+  "budget": {
+    "bridge_forwards_per_topic_model": 30,
+    "surface_forwards_per_layout": 37,
+    "surface_sites": ["first_punct", "second_punct", "receiver_early", "receiver_late"],
+    "swap_contexts": ["mapping_flip", "display_flip", "mapping_and_display_flip"],
+    "access_forwards_per_context_layout": 20,
+    "distance_forwards_per_new_layout": 23,
+    "distance_sites": ["second_punct", "receiver_late"],
+    "preflight_forward_allowance_per_model": 256,
+    "max_forwards_per_model": 18232,
+    "max_forwards_total": 36464,
+    "max_processed_tokens_per_model": 7001088,
+    "max_processed_tokens_total": 14002176
+  }
+}

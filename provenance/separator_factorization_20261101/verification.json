@@ -1,0 +1,172 @@
+{
+  "attention_graph": {
+    "gemma": {
+      "direct_only_blocker_leaks_both_cells": true,
+      "scope": "dense_causal_supergraph; numerical_checkpoint_mask_adapter_unvalidated",
+      "sites": [
+        "first_punct",
+        "second_punct",
+        "receiver_early",
+        "receiver_late"
+      ],
+      "source_flags_by_context": {
+        "never": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "open": [
+          1,
+          3,
+          3,
+          3
+        ],
+        "release_early": [
+          0,
+          0,
+          3,
+          3
+        ],
+        "release_late": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "sham_early": [
+          1,
+          3,
+          3,
+          3
+        ],
+        "sham_late": [
+          1,
+          3,
+          3,
+          3
+        ],
+        "sham_never": [
+          1,
+          3,
+          3,
+          3
+        ]
+      }
+    },
+    "mistral": {
+      "direct_only_blocker_leaks_both_cells": true,
+      "scope": "dense_causal_supergraph; numerical_checkpoint_mask_adapter_unvalidated",
+      "sites": [
+        "first_punct",
+        "second_punct",
+        "receiver_early",
+        "receiver_late"
+      ],
+      "source_flags_by_context": {
+        "never": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "open": [
+          1,
+          3,
+          3,
+          3
+        ],
+        "release_early": [
+          0,
+          0,
+          3,
+          3
+        ],
+        "release_late": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "sham_early": [
+          1,
+          3,
+          3,
+          3
+        ],
+        "sham_late": [
+          1,
+          3,
+          3,
+          3
+        ],
+        "sham_never": [
+          1,
+          3,
+          3,
+          3
+        ]
+      }
+    }
+  },
+  "compute_budget": {
+    "forwards_per_topic_model": {
+      "access": 480,
+      "bridge": 30,
+      "distance": 276,
+      "mapping_display_swaps": 384,
+      "punctuation_cross": 32,
+      "surface": 296
+    },
+    "max_gpu_wall_seconds_total": 14400,
+    "maximum_processed_tokens": 14002176,
+    "maximum_with_canaries": 36464,
+    "outcome_bridge_total": 35952,
+    "sum_per_topic_model": 1498
+  },
+  "frozen_baseline": {
+    "base_commit": "6b054baf2571c3fa0e4f19d5d841ea760d3eaba2",
+    "changed_baseline_files": [],
+    "checked_baseline_files": 1097
+  },
+  "geometry": {
+    "context_position_id_comparisons": 2496,
+    "donor_order_rows_per_display_panel_cell": 24,
+    "layout_digest_sha256": "8a421050452771ef98220d608b67e254eb3241c7d6e0d68bc32df476ca2b0dbd",
+    "layouts": 528,
+    "max_forward_length": 159,
+    "topics_per_cell": 6
+  },
+  "gpu_ready": false,
+  "identifiability": {
+    "intercept_anchor_distance": {
+      "columns": 3,
+      "rank": 3
+    },
+    "intercept_anchor_distance_score": {
+      "alias": "score - anchor - distance = 0",
+      "columns": 4,
+      "rank": 3
+    },
+    "source_punctuation_recipient_punctuation_display_mapping": {
+      "columns": 16,
+      "rank": 16
+    }
+  },
+  "new_model_forwards": 0,
+  "plan_files_sha256": {
+    "PLAN.md": "79c5902d33c071468d9e77b0263a22db79eb02c7e865a9731945454c0c747868",
+    "cell_reducer.py": "782561e300a6d9b0977ed7f36151510446cda5252372fd776c666bee8549fcca",
+    "design.json": "dfd1a3d8dfea7042fcfd7c1c863993fd6a743a35d5edfc030565f56adfabae3d",
+    "verify.py": "0da6667f3c3eb75dba515408280ff4dd6df3d5794b4344f64fa60c68c195e218"
+  },
+  "remaining_execution_gates": [
+    "explicit_score_index_adapter_and_tests",
+    "per_checkpoint_numeric_mask_adapter_and_tests",
+    "clean_implementation_and_plan_execution_seal",
+    "offline_native_canaries_and_exact_archived_bridge"
+  ],
+  "runtime_tokenizer_or_checkpoint_loaded": false,
+  "status": "PLAN_VALIDATED_NO_GPU_RUN",
+  "tests_sha256": "a6d6c973bea9c889973837cefbd6fba1329df73e21d546c2e4d89d8d6390312c"
+}
