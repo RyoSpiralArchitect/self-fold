@@ -11,6 +11,7 @@ from selffold.cli import ROOT, make_host
 from selffold.records import RunStore, State, code_manifest, digest, file_sha, load_state
 from selffold.resources import inventory
 from selffold.replay_probe import run_replay_probe
+from selffold.span_probe import run_span_probe
 from selffold.rng import isolated_rng
 
 
@@ -150,7 +151,8 @@ def lexical_alignment(host, store, groups):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("study", choices=["archive", "contrasts", "alignment", "replay"])
+    parser.add_argument("study", choices=["archive", "contrasts", "alignment", "replay", "localize"])
+    parser.add_argument("--panel", choices=["original", "prospective"], help="Required for the localization study")
     parser.add_argument("--model", choices=MODELS, required=True)
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
@@ -160,6 +162,9 @@ def main():
     args = parser.parse_args()
     if args.study == "archive" and args.model != "mistral7b":
         parser.error("Archived donors are from Mistral")
+    if (args.study == "localize") != (args.panel is not None):
+        parser.error("--panel is required for localize and applies only to that study")
+    fixture = ROOT / "data/span_topics.prospective.json" if args.panel == "prospective" else DATA
     args.profile = ROOT / "configs/models" / f"{args.model}.yaml"
     store = RunStore(args.out)
     start = time.monotonic()
@@ -167,9 +172,13 @@ def main():
     store.write("source.json", source)
     store.write("environment.before.json", inventory(ROOT))
     revision, expected_digest = MODELS[args.model]
-    store.write("request.json", {"study": args.study, "model": args.model, "snapshot_revision": revision,
-                                 "checkpoint_sha256": expected_digest, "fixture_sha256": file_sha(DATA),
-                                 "split": "development", "operator": "plain", "sham_seed": 4711})
+    request = {"study": args.study, "model": args.model, "snapshot_revision": revision,
+               "checkpoint_sha256": expected_digest, "fixture_sha256": file_sha(fixture)}
+    if args.study == "localize":
+        request.update(panel=args.panel, split="prospective_diagnostic" if args.panel == "prospective" else "development")
+    else:
+        request.update(split="development", operator="plain", sham_seed=4711)
+    store.write("request.json", request)
     try:
         if source["git_status"] != "" or not source["git_commit"]:
             raise ValueError("Run the frozen study from a clean source commit")
@@ -182,7 +191,7 @@ def main():
         store.write("native_parity.json", parity)
         if not parity["exact"]:
             raise ValueError("Native parity failed")
-        data = json.loads(DATA.read_text())
+        data = json.loads(fixture.read_text())
         zero = State(slots=torch.zeros((host.slots, host.width), device=host.device, dtype=host.dtype))
         if args.study == "archive":
             archived(host, store, data["archive"], zero)
@@ -190,6 +199,8 @@ def main():
             lexical_alignment(host, store, data["groups"])
         elif args.study == "replay":
             run_replay_probe(host, store, data["groups"])
+        elif args.study == "localize":
+            run_span_probe(host, store, data["groups"])
         else:
             contrasts(host, store, data["groups"], zero)
         store.write("environment.after.json", inventory(ROOT))
