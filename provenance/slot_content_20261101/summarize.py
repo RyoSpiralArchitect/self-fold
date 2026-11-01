@@ -98,6 +98,10 @@ def replay_stats(trial, groups):
     return {"neutral_geometries": checks, "prior_native_label_score_max_abs": max(old_diffs),
             "native_vs_opaque_slot_max_abs": max(r["native_vs_opaque_slot_max_abs"] for r in interventions),
             "full_span_exact_vocab_replays": sum(r["max_abs_logit_difference_from_native"]["slots_and_suffix"] == 0 for r in interventions),
+            "same_sign_as_native_out_of_12": {
+                r: sum((margins[g, p, 0, r] > 0, margins[g, p, 0, r] < 0) ==
+                       (margins[g, p, 0, "native_words"] > 0, margins[g, p, 0, "native_words"] < 0)
+                       for g in groups for p in ("plus", "minus")) for r in routes},
             "max_abs_vocab_logit_from_native": {route: max(r["max_abs_logit_difference_from_native"][route] for r in interventions)
                                                 for route in routes},
             "donor_orders": len(interventions), "neutral_orders": len(neutral),
@@ -147,6 +151,8 @@ def summarize(name):
     missing_b = sum(not c["roundtrip_available"] for c in cases)
     assert len(scores) == 156 - missing_b
     result["missing_roundtrips"] = missing_b
+    result["distinct_stored_states"] = {route: len({r["state_sha256"] for r in scores if r["route"] == route})
+                                        for route in ("E", "G", "B")}
     result["max_relative_norm_error"] = max(c["max_relative_slot_norm_error"] for c in cases)
     result["routes"] = {route: route_stats(margins, route, groups) for route in ROUTES}
     generations = rows(trial / "generations.jsonl")

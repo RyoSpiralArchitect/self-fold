@@ -1,6 +1,6 @@
 # Self Without a Transcript
 
-The [working paper](main.md) and [LaTeX manuscript](main.tex) describe the T/L/B comparison and its development experiments. Experiment directories link the analyses to frozen source, checkpoint identities and raw observations. The proposed confirmation study has separate qualification and data requirements. [Protocol](../docs/PROTOCOL.md) · [Qualification](../docs/QUALIFICATION.md)
+The working paper covers T/L/B recurrence, the native-EOS comparison, paired donor readouts and position-controlled interventions on Mistral and Gemma. The proposed confirmation study has separate qualification and data requirements. [PDF](self-fold.pdf) · [Read online](main.md) · [LaTeX source](main.tex) · [Data and analyses](../provenance/slot_content_20261101/RESULTS.md)
 
 The bibliography has 13 entries. The [reference audit](REFERENCE_AUDIT.md) documents the scope of the literature discussion and the status of contested results.
 

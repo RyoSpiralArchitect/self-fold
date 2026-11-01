@@ -1,6 +1,8 @@
 from pathlib import Path
 import json
 import runpy
+import subprocess
+import sys
 
 import torch
 import pytest
@@ -87,3 +89,9 @@ def test_full_span_reconstructs_native_lexical_readout(host, tmp_path):
     assert all(r["native_vs_opaque_slot_max_abs"] == 0 for r in rows)
     assert all(r["max_abs_logit_difference_from_native"]["slots_and_suffix"] == 0 for r in rows)
     assert not host.layers[host.cut]._forward_pre_hooks
+
+
+def test_published_probe_summary_recomputes_from_the_scored_trials():
+    study = ROOT / "provenance/slot_content_20261101"
+    regenerated = subprocess.check_output([sys.executable, str(study / "summarize.py")])
+    assert regenerated == (study / "summary.json").read_bytes()

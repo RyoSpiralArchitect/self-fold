@@ -24,3 +24,4 @@ paper/*.bbl
 paper/*.blg
 paper/*.out
 paper/*.pdf
+!paper/self-fold.pdf
