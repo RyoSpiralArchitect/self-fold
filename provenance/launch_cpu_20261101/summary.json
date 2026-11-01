@@ -1,0 +1,141 @@
+{
+  "source_commit": "9ae08f45a02d5ef38d1bc7f4560d627985b261ee",
+  "source_sha256": "3df74e394201b4a5445bd7e87f7dd18cd8dfc5d768f4416548da60d34c5cb37c",
+  "trials": {
+    "caution_minus_p0_self-expand": {
+      "initial_L_and_B_sha256": "4230ba29565bcf113e4c2734f9308fe9b4e98752d6aaa5a9aee345858c2850a8",
+      "first_G_in_L_and_B_sha256": "07fba4332d15c0ac57ba74302aa3a4aff887f1d4743ec25bd7fedad5b1822c2d",
+      "first_B_stored_sha256": "6ec2c0bf5d434ebe1a2ce517d3b6a7e8dc83fb1795d432e122c7a86ec6d546a0",
+      "first_stored_L_B_differ": true,
+      "main_forwards": {
+        "T": 24,
+        "L": 3,
+        "B": 30
+      },
+      "task_correct_out_of_two_at_steps_0_and_3": {
+        "T": [
+          1,
+          1
+        ],
+        "L": [
+          1,
+          1
+        ],
+        "B": [
+          1,
+          1
+        ]
+      },
+      "task_rows": 12,
+      "transition_rows": 9,
+      "native_parity_max_abs": 0.0,
+      "terminal_status": "ENGINEERING_PASS_NOT_SEMANTICS"
+    },
+    "caution_minus_p0_self-plain": {
+      "initial_L_and_B_sha256": "4230ba29565bcf113e4c2734f9308fe9b4e98752d6aaa5a9aee345858c2850a8",
+      "first_G_in_L_and_B_sha256": "cd8d7b907e7a3311a7edb3ef774fd449823de867da400cf46eb238f25fe475a9",
+      "first_B_stored_sha256": "6ec2c0bf5d434ebe1a2ce517d3b6a7e8dc83fb1795d432e122c7a86ec6d546a0",
+      "first_stored_L_B_differ": true,
+      "main_forwards": {
+        "T": 24,
+        "L": 3,
+        "B": 30
+      },
+      "task_correct_out_of_two_at_steps_0_and_3": {
+        "T": [
+          1,
+          1
+        ],
+        "L": [
+          1,
+          1
+        ],
+        "B": [
+          1,
+          1
+        ]
+      },
+      "task_rows": 12,
+      "transition_rows": 9,
+      "native_parity_max_abs": 0.0,
+      "terminal_status": "ENGINEERING_PASS_NOT_SEMANTICS"
+    },
+    "caution_plus_p0_self-expand": {
+      "initial_L_and_B_sha256": "42359878b82e5c2da055bee4b1f7f752a47485a86107c65d39090000d7eb1869",
+      "first_G_in_L_and_B_sha256": "1e838a057d6d3b5dcb6c3872f4cbb6496325cea7750a2aec7eb4ada606b4cf7f",
+      "first_B_stored_sha256": "6ec2c0bf5d434ebe1a2ce517d3b6a7e8dc83fb1795d432e122c7a86ec6d546a0",
+      "first_stored_L_B_differ": true,
+      "main_forwards": {
+        "T": 24,
+        "L": 3,
+        "B": 30
+      },
+      "task_correct_out_of_two_at_steps_0_and_3": {
+        "T": [
+          1,
+          1
+        ],
+        "L": [
+          1,
+          1
+        ],
+        "B": [
+          1,
+          1
+        ]
+      },
+      "task_rows": 12,
+      "transition_rows": 9,
+      "native_parity_max_abs": 0.0,
+      "terminal_status": "ENGINEERING_PASS_NOT_SEMANTICS"
+    },
+    "caution_plus_p0_self-plain": {
+      "initial_L_and_B_sha256": "42359878b82e5c2da055bee4b1f7f752a47485a86107c65d39090000d7eb1869",
+      "first_G_in_L_and_B_sha256": "ef9d2c4433e53c083b40f57062f2c82ab84e3291d88c8ecbcfbb3b95b896ef8e",
+      "first_B_stored_sha256": "6ec2c0bf5d434ebe1a2ce517d3b6a7e8dc83fb1795d432e122c7a86ec6d546a0",
+      "first_stored_L_B_differ": true,
+      "main_forwards": {
+        "T": 24,
+        "L": 3,
+        "B": 30
+      },
+      "task_correct_out_of_two_at_steps_0_and_3": {
+        "T": [
+          1,
+          1
+        ],
+        "L": [
+          1,
+          1
+        ],
+        "B": [
+          1,
+          1
+        ]
+      },
+      "task_rows": 12,
+      "transition_rows": 9,
+      "native_parity_max_abs": 0.0,
+      "terminal_status": "ENGINEERING_PASS_NOT_SEMANTICS"
+    }
+  },
+  "distinct_post_update_state_hashes": {
+    "T": 2,
+    "L": 12,
+    "B": 1
+  },
+  "post_update_states_per_arm": {
+    "T": 12,
+    "L": 12,
+    "B": 12
+  },
+  "main_and_clone_observer_stop_counts": {
+    "B_main_length": 12,
+    "B_observer_length": 12,
+    "L_observer_length": 12,
+    "T_main_length": 12
+  },
+  "pretrained_checkpoints": [],
+  "semantic_qualification": null,
+  "reasoning_gain": null
+}

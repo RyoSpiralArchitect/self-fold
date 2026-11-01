@@ -1,6 +1,6 @@
 # Implementation status
 
-This table records the state of the supplied starter on 2026-11-01. Its original results are in [the starter receipts](../provenance/RECEIPTS.md). The [public launch experiment](../provenance/launch_cpu_20261101/PLAN.md) has a separate source commit and evidence directory.
+This table records the state of the supplied starter on 2026-11-01. Its original results are in [the starter receipts](../provenance/RECEIPTS.md). The subsequent public launch ran all 85 local tests, including four random-configuration HF architecture tests, and four CPU recurrence trials. See the [launch results](../provenance/launch_cpu_20261101/RESULTS.md).
 
 | Component | Status | Claim ceiling |
 |---|---|---|
