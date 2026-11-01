@@ -116,7 +116,7 @@ def code_manifest(root: Path) -> dict:
         for p in sorted((root / folder).rglob("*")):
             if p.is_file() and "__pycache__" not in p.parts and p.suffix in {".py", ".yaml", ".json", ".jsonl", ".sh", ".md", ".tex", ".bib"}:
                 items[str(p.relative_to(root))] = file_sha(p)
-    for name in ("pyproject.toml", "AGENTS.md", "README.md"):
+    for name in ("pyproject.toml", "README.md", "README.ja.md"):
         if (root / name).is_file():
             items[name] = file_sha(root / name)
     def git(*args):

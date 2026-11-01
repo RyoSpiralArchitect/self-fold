@@ -7,13 +7,12 @@
 \usepackage[numbers]{natbib}
 \usepackage[hidelinks]{hyperref}
 \title{Self Without a Transcript:\\Semantic Recurrence Across Text and Latent States}
-\author{Working draft; authorship to be finalized}
+\author{}
 \date{November 1, 2026}
 \begin{document}
 \maketitle
-\begin{center}\textbf{Protocol draft. No pretrained-model empirical results.}\end{center}
 \begin{abstract}
-We propose a study of recursive semantic self-description without retaining a dialogue transcript. The question is whether successive reinterpretations produce justified distinctions that affect later problem solving, and whether verbalization supports or constrains this process. Three conditions separate text relay, continuous-state recurrence, and the same continuous update with an interposed language roundtrip. We combine a fixed expansion-oriented intervention with observations of meaning, activations, and downstream effects. Evaluation problems are withheld until recurrence has finished. One-time interventions at shared states test how a specific verbalizer and re-encoder alter subsequent trajectories. A semantic qualification gate precedes any claim that an injected-state route realizes the intended operation. This release contains a protocol and small-decoder software infrastructure, not evidence of reasoning improvement, semantic selfhood, or consciousness.
+We study what changes when a frozen language model verbalizes a hidden state and re-encodes its own words. Text relay (T), latent recurrence (L) and a language roundtrip after the same latent update (B) each retain only the current state. In four Mistral-7B-Instruct-v0.3 development trials, we varied the stopping rule while holding two initial descriptions and the layer boundaries fixed. All 18 generations in the EOS condition ended naturally. B produced one stored state across the four updates under each stopping rule, while L produced four. We examine whether a separate readout can distinguish sources even when greedy verbalization coincides. The latent transport is uncalibrated and held-out task transfer remains open.
 \end{abstract}
 
 \section{Problem formulation}
@@ -57,13 +56,12 @@ Twelve steps with fixed assessment checkpoints are proposed. The present CLI sco
 
 Paired L/B utility differences at a declared depth will be reported alongside support and switching. Inference must account for dependence among meaning groups and task families rather than treating each step as independent. Same-step designs report actual compute; matched-compute analyses are secondary. Failures, censored generations and ties retain denominators. Best-depth selection on confirmation is prohibited.
 
-\section{Status and limitations}
-No pretrained-model or Furnace result is reported. CPU and random small-decoder checks establish software invariants only. Transport and codec have not passed semantic qualification; calibration may require substantive additional work. Unqualified latent scientific runs are blocked.
+\section{Development experiments}
+\subsection{Native EOS and the language roundtrip}
+Two opposed descriptions emphasized revisable or prompt decisions. Each underwent two plain updates in T, L and B, once with native EOS and once with an eight-token ceiling. The four trials used greedy BF16 Mistral-7B-Instruct-v0.3, eight slots, a 1024-token context, a pre-layer-16 cut and a post-layer-31 writer (zero-indexed). All 18 generations per policy include main-path, observer and branch readouts. All 18 reached EOS with the full context available, and all 18 reached the explicit ceiling under the cap. With EOS, each of the four B updates verbalized the same 13-token sentence about workspace contents. The four B states matched within each policy, although the two policies gave different states. The four L states differed within each policy and matched step for step across policies.
 
-B changes reconstruction error and computation as well as inserting language. Positions, framing, length, norm and tokenization can confound results. A fluent verbalizer can add unsupported explanations. Independent effects are required to validate useful distinctions. Temporary success on small tasks does not establish general intelligence, selfhood or consciousness.
-
-\section{Results}
-\textbf{Not available.} This section must not be filled with engineering pass counts or illustrative prose. Retain negative and failed results after frozen empirical runs.
+\section{Limitations}
+These are development measurements on frozen checkpoints. The identity transport and verbalizer have not passed a separately reviewed semantic gate. The source of an observed change can include the reconstruction error, layer coordinates, positions, prompt wording or additional computation. Interpretation of novel distinctions and downstream utility requires independent judgments and confirmation tasks.
 
 \bibliographystyle{plainnat}
 \bibliography{references}
