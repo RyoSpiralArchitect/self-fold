@@ -5,7 +5,7 @@
 
 ### Abstract
 
-What can a frozen language model recover after a description is encoded into eight hidden-state slots? We compare text relay, latent recurrence and a language roundtrip inserted after the same latent update. In Mistral-7B-Instruct-v0.3, allowing generation to reach native EOS still produced one roundtripped state across two opposed initial descriptions. Across six further development contrasts, Mistral and Gemma-2-2B-IT each identified 24/24 literal descriptions. Each checkpoint produced 24 distinct updated tensors but one greedy readout string. In a lexical positive control with matched sequence lengths, supplying only eight middle-layer donor slots to a neutral recipient gave 6/12 correct preferences on Mistral and 7/12 on Gemma. Supplying downstream donor positions that had already processed the question reproduced all 12 native preference signs on both checkpoints. These interventions measure access to explicit content at a particular boundary. Semantic qualification of the recurrent state and transfer to new tasks remain open.
+What can a frozen language model recover after a description passes through eight hidden-state slots? We compare text relay, latent recurrence and a language roundtrip after the same latent update. Mistral-7B-Instruct-v0.3 and Gemma-2-2B-IT each identified 24/24 literal descriptions across six preference contrasts. Each had 24 distinct updated tensors but one greedy verbalization. In native lexical controls, transplanting downstream middle-layer residuals that had already processed the question reproduced all 12 native preference signs on each checkpoint. We partitioned this span and retested it on six additional topics. On the new topics, a single residual at the period after the second displayed alternative carried 21.8% of the full-span paired margin contrast on Mistral and 27.3% on Gemma. Reversing the donor's option mapping reversed this contrast, while omitting just that position retained 87.9% and 88.8%. These measurements localize an order-sensitive lexical readout at the tested cuts. Question-independent semantic updating and transfer to new tasks remain open.
 
 ## 1. Problem formulation
 
@@ -101,11 +101,45 @@ We appended one neutral dummy token to every scoring prompt and read the logit v
 
 We next transplanted the natural lexical donor's middle-layer residuals from the positions after the slots through the scoring position. These downstream residuals had already processed the question and alternatives. Transplanting only this region into a neutral recipient reproduced the native preference sign in all 12 cases per checkpoint, including Mistral's error on the author-shelving donor. Its full logit vectors could still differ. Transplanting the slots and downstream region together recovered the entire native scoring-position logit vector exactly in 24/24 donor/orders per checkpoint. [Plans, raw scores, state files and all control results](../provenance/slot_content_20261101/RESULTS.md)
 
+### Localizing the downstream span
+
+We split the interval from the end of the slots through the scoring position into the generic task instruction, topic question, labeled alternatives, closing text before scoring, and the scoring position. Native tokenizer offsets were checked against the exact recipient IDs. We transplanted each block alone into a neutral recipient, left it out of an otherwise complete downstream transplant, and replaced it with neutral residuals in a native donor. We also tested windows of equal width. The six original topics and six prospectively fixed new topics used the same lexical task, both label orders and both donor poles. Each checkpoint and panel provided 24 donor/order measurements per study. The two panels are reported separately.
+
+For each topic, let the pole gap be the plus donor's order-averaged margin minus the minus donor's margin. The reported percentage is 100 times the sum of those six gaps under a given intervention divided by their sum under whole-downstream transfer. A negative value indicates a reversed aggregate direction. Only-window and leave-window-out values need not add to 100%.
+
+Transplanting the labeled alternatives alone yielded 49.5% to 84.8% of the full-span contrast across the four checkpoint/panel combinations. Omitting them left 4.8% to 22.9%. On the new panel the last eight positions retained 90.8% on Mistral and 8.7% on Gemma. In the Mistral template the closing span is six tokens long, so the last eight include two option positions. In Gemma the closing span is ten tokens long, so the last eight contain no option token.
+
+Percentage of the full downstream pole gap. Each window is transplanted alone except in the omission column.
+
+| Panel | Model | Options | Omit options | Score | First 8 | Last 8 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Original | Mistral | 70.4 | 20.4 | 20.7 | 0.0 | 90.6 |
+| Original | Gemma | 84.8 | 4.8 | 1.6 | -0.1 | 5.7 |
+| New | Mistral | 49.5 | 22.9 | 26.6 | 0.0 | 90.8 |
+| New | Gemma | 79.3 | 8.4 | 0.6 | 0.2 | 8.7 |
+
+### What reaches the period after the second alternative?
+
+The original Mistral last-eight result motivated the option-clause follow-up, fixed before inspecting prospective-panel outcomes. Both clause-ending periods were separate from the phrases and had the same token ID within each model. On new topics the first period alone carried 9.2% and 11.9% of the full contrast on Mistral and Gemma, respectively. The second period carried 21.8% and 27.3%. Omitting this period retained 87.9% and 88.8%. Leaving one topic out gave ranges of 18.5% to 23.9% and 25.6% to 28.4% for the second-period-only measurement.
+
+Percentage of the whole downstream pole gap at the second displayed option's period. Context columns transplant the single period into the real recipient. The omission column keeps all other downstream positions from the matched donor.
+
+| Panel | Model | Matched | Hide stem | Hide phrases | Reverse | Omit period |
+| --- | --- | --- | --- | --- | --- | --- |
+| Original | Mistral | 37.8 | 44.5 | 0.7 | -32.9 | 76.6 |
+| Original | Gemma | 38.8 | 31.5 | 0.2 | -33.3 | 82.2 |
+| New | Mistral | 21.8 | 16.4 | 0.0 | -22.3 | 87.9 |
+| New | Gemma | 27.3 | 20.7 | 0.0 | -26.4 | 88.8 |
+
+We held the target's true wording and option order fixed. Masking only the donor's question stem with neutral tokens of the same length preserved a positive contrast at the second period. Masking the two option phrases while retaining their printed labels and separators reduced the absolute raw contrast below 0.7% of the full reference in all four cells. Reversing the donor's natural option assignment changed the aggregate sign in every cell, including after subtracting the source neutral background and adding the lexical difference to the target background. On the new panel, among individual orders where the donor-native and target-native preferred letters differed, the raw second-period transplant followed the donor letter in 19/22 Mistral and 19/24 Gemma cases. The first period sometimes shifted under order reversal and was excluded whenever its absolute position or token ID differed. The second period was compatible in all 24 donor/orders per cell.
+
+All 192 donor/order records across the eight jobs passed exact neutral and combined slot-plus-suffix vocabulary-logit replay. Original-panel native and whole-suffix label scores reproduced the earlier experiment exactly. The computations used no free generation. [Frozen plans, raw likelihoods, all windows and integrity checks](../provenance/downstream_span_20261101/RESULTS.md)
+
 ## 7. Interpretation and limitations
 
-In these development fixtures, relaxing the token ceiling changed the text and the re-encoded state while the roundtrip still mapped opposing donors to one state. The fixed question could read explicit lexical content. The standard encoded state and the matched eight-slot transplant usually failed to recover opposite preference signs. At the measured cut, the downstream-span intervention sufficed to reproduce the native choices. That span contains more positions and comes from a donor that saw the actual question. Its success does not identify a unique storage location or establish a reusable semantic representation.
+In these fixtures the complete downstream region reproduced the native lexical choices. The partition and masking experiments narrow this observation to an option-order-sensitive contribution at the second displayed alternative's terminal period. Its counterbalanced contrast persisted with the question stem hidden, weakened when the option words were hidden, and reversed under a natural option-order swap. The large contrast retained on omission leaves room for other positions and their interactions.
 
-The study has two frozen checkpoints, six hand-authored topics, one selected cut per model, greedy decoding, BF16 arithmetic and an uncalibrated transport. The replay experiment isolated an input-length effect under these settings. It did not identify the responsible numerical kernel. Small direction rankings should be read with the raw margins and controls. Independent evaluation of one-step meaning updates, blind judgments of new distinctions and held-out transfer remain open. No semantic gate has been approved.
+The second period is later in the causal sequence and has access to both alternatives. These interventions have not separated separator identity from order, position or preceding lexical context. Neutral-token masks alter the donor distribution. The two panels share the same explicit lexical schema, and each checkpoint was tested at one middle-layer cut in BF16. The short-prefix replay discrepancy was removed by matching forward length, but its numerical kernel has not been identified. Question-independent state portability, independent evaluation of one-step meaning updates, blind judgments of new distinctions and held-out transfer remain open. No semantic gate has been approved.
 
 ## 8. Proposed pilot and analysis
 

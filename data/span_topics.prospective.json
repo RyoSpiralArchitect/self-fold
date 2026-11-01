@@ -1,0 +1,53 @@
+{
+  "purpose": "Prospectively fixed lexical choices for the downstream-span study",
+  "groups": [
+    {
+      "id": "calendar",
+      "question": "Which view does the speaker choose for a calendar?",
+      "options": [
+        "one week at a time",
+        "one month at a time"
+      ]
+    },
+    {
+      "id": "paint",
+      "question": "Which finish does the speaker choose for paint?",
+      "options": [
+        "a matte finish",
+        "a glossy finish"
+      ]
+    },
+    {
+      "id": "photo",
+      "question": "Which style does the speaker prefer for photographs?",
+      "options": [
+        "black and white",
+        "full color"
+      ]
+    },
+    {
+      "id": "packing",
+      "question": "How does the speaker pack clothes for a trip?",
+      "options": [
+        "roll the clothes",
+        "fold the clothes"
+      ]
+    },
+    {
+      "id": "recipes",
+      "question": "How does the speaker measure ingredients for a recipe?",
+      "options": [
+        "weigh the ingredients",
+        "measure by volume"
+      ]
+    },
+    {
+      "id": "music",
+      "question": "How does the speaker prefer to learn a tune?",
+      "options": [
+        "play by ear",
+        "read sheet music"
+      ]
+    }
+  ]
+}

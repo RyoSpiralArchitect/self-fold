@@ -1,0 +1,27 @@
+{
+  "sources": {
+    "d47dd4667127839e7372ea34ed644da37aa97244": "abcb3d1f878a6ace8a88ccb7f7841359b448d344c5d77129d5c23bc669be616f",
+    "8e8cb072ab4f288f764b2264b449f44aaabcc93e": "89922b4bf1b4f6a49cc71dfa6f5a308047221c63e550cec6430c3425a4ec0427"
+  },
+  "furnace_preflight": {
+    "span": {
+      "tests": 105,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    "clauses": {
+      "tests": 107,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    }
+  },
+  "raw_files": 88,
+  "trial_prompt_layouts": 96,
+  "trial_donor_orders": 192,
+  "metered_forwards": 13848,
+  "generated_tokens": 0,
+  "exact_neutral_and_combined_replays": 192,
+  "independent_fraction_check_absolute_tolerance": 1e-12
+}

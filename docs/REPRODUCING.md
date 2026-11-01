@@ -26,6 +26,8 @@ The [profiles](../configs/models/) describe admission floors and model layouts. 
 
 For the archived-state and two-checkpoint probes, start from the commit recorded for each study. The probe commands use the same frozen fixtures and local snapshots across the label, position and replay controls. [Content probe commands](../provenance/slot_content_20261101/PLAN.md) · [Lexical donor commands](../provenance/slot_content_20261101/ALIGNMENT_PLAN.md) · [Replay commands](../provenance/slot_content_20261101/REPLAY_PLAN.md)
 
+The downstream localization study uses two more source revisions. Select the original or prospective six-topic panel with `--panel`. The `localize` runs partition the full span and the `clauses` runs isolate the displayed option words and periods. Their supplement regenerates the reported fractions directly from raw A/B likelihoods. [Localization commands](../provenance/downstream_span_20261101/PLAN.md) · [Clause and masking commands](../provenance/downstream_span_20261101/CLAUSE_PLAN.md)
+
 Read `request.json`, `host_identity.json` and `terminal.json` together. Each transition separates main-path generation from readout on a clone. Tasks are scored after recurrence. JSON metadata and NPZ arrays retain state dtype and fingerprints. The original trial directories are immutable. Run a reproduction in a fresh directory and record any failure there.
 
 ~~~bash
