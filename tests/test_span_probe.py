@@ -1,5 +1,7 @@
 import json
 from pathlib import Path
+import subprocess
+import sys
 
 from selffold.host import SlotHost
 from selffold.records import RunStore
@@ -86,3 +88,9 @@ def test_clause_probe_keeps_masked_label_scaffolding_and_refuses_misaligned_A(tm
     assert swaps["A_punct"]["status"] == "different_positions_or_token_ids"
     assert swaps["B_punct"]["status"] == "measured"
     assert all(w["status"] == "measured" for w in row["contexts"]["stem_and_phrases_masked"]["windows"].values())
+
+
+def test_published_localization_summary_matches_raw_scores():
+    study = Path(__file__).resolve().parents[1] / "provenance/downstream_span_20261101"
+    output = subprocess.check_output([sys.executable, str(study / "summarize.py")])
+    assert output == (study / "summary.json").read_bytes()
