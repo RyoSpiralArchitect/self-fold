@@ -34,4 +34,6 @@ bash scripts/run_smoke.sh runs/tiny-001
 
 Each new trial requires a fresh output directory. The experimental records include the tested source commit, model identity, raw scores and stopping reasons. [Pretrained runs and integrity checks](docs/REPRODUCING.md) · [Model and state interfaces](docs/ARCHITECTURE.md) · [Semantic qualification criteria](docs/QUALIFICATION.md)
 
+The [semantic qualification plan](docs/SEMANTIC_GATE_PLAN.md) defines six bounded work packages from question-independent states through interface learning and an independent gate challenge. Each has a positive endpoint and a condition for advancing with an explicit negative diagnosis. It is a proposed plan, with no new training or gate approval.
+
 The original code, documentation and synthetic fixtures use the Apache License 2.0. Model weights and tokenizers remain subject to their upstream terms. [License](LICENSE) · [Provenance](docs/LICENSING.md)

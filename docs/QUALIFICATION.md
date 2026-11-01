@@ -6,6 +6,8 @@ The paired-donor probes measured content discrimination, free-readout fidelity, 
 
 Follow-up experiments partitioned those downstream positions. At the period after the second alternative, the donor's option order affected the sign of the transferred contrast on both panels and checkpoints. The other positions retained most of the contrast when that period was excluded. These controls concern a lexical readout after the alternatives are presented. A question-independent latent update still requires its own qualification. [Localized interventions](../provenance/downstream_span_20261101/RESULTS.md)
 
+The [bounded qualification plan](SEMANTIC_GATE_PLAN.md) proposes six work packages, with positive completion and permitted negative closure for each. It separates readiness to learn, a completed qualification challenge and a reviewed gate pass. Its numerical screens are proposals to fix before evaluation, and do not change the current gate status. [日本語](SEMANTIC_GATE_PLAN.ja.md)
+
 ## Required checks
 
 | Check | Evidence to collect on calibration-only data |
