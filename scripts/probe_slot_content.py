@@ -10,6 +10,7 @@ from selffold import prompts
 from selffold.cli import ROOT, make_host
 from selffold.records import RunStore, State, code_manifest, digest, file_sha, load_state
 from selffold.resources import inventory
+from selffold.replay_probe import run_replay_probe
 from selffold.rng import isolated_rng
 
 
@@ -149,7 +150,7 @@ def lexical_alignment(host, store, groups):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("study", choices=["archive", "contrasts", "alignment"])
+    parser.add_argument("study", choices=["archive", "contrasts", "alignment", "replay"])
     parser.add_argument("--model", choices=MODELS, required=True)
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
@@ -187,6 +188,8 @@ def main():
             archived(host, store, data["archive"], zero)
         elif args.study == "alignment":
             lexical_alignment(host, store, data["groups"])
+        elif args.study == "replay":
+            run_replay_probe(host, store, data["groups"])
         else:
             contrasts(host, store, data["groups"], zero)
         store.write("environment.after.json", inventory(ROOT))

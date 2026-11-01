@@ -66,6 +66,44 @@ def route_stats(margins, route, groups, phrasings=2):
             "median_signed_pole_gap": median(all_gaps) if all_gaps else None, "groups": per_group}
 
 
+def replay_stats(trial, groups):
+    neutral = rows(trial / "neutral.jsonl")
+    interventions = rows(trial / "interventions.jsonl")
+    earlier = rows((trial.parent / trial.name.replace("replay-", "alignment-")) / "scores.jsonl")
+    reference = {(r["group"], r["pole"], r["route"], o["plus_label"]): o["scores"] for r in earlier for o in r["orders"]}
+    assert len(neutral) == 12 and len(interventions) == 24
+    routes = ("native_words", "slots_only", "suffix_only", "slots_and_suffix")
+    orders = {}
+    old_diffs = []
+    for row in interventions:
+        assert row["max_abs_logit_difference_from_native"]["native_words"] == 0
+        for route in routes:
+            scores = row["scores"][route]
+            margin = (scores["A"] - scores["B"]) * (1 if row["plus_label"] == "A" else -1)
+            orders.setdefault((row["group"], row["pole"], 0, route), {})[row["plus_label"]] = margin
+        old = reference[row["group"], row["pole"], "native_words", row["plus_label"]]
+        old_diffs.extend(abs(row["scores"]["native_words"][k] - old[k]["logprob"]) for k in ("A", "B"))
+    for row in neutral:
+        old = reference[row["group"], None, "uninjected", row["plus_label"]]
+        old_diffs.extend(abs(row["native_scores"][k] - old[k]["logprob"]) for k in ("A", "B"))
+    assert len(orders) == 48 and all(set(o) == {"A", "B"} for o in orders.values())
+    margins = {k: mean(o.values()) for k, o in orders.items()}
+    checks = {}
+    for geo in ("short", "same_length"):
+        checks[geo] = {
+            "max_abs_label_logprob": max(abs(r[geo]["scores"][k] - r["native_scores"][k]) for r in neutral for k in ("A","B")),
+            "max_abs_slot_difference": max(r[geo]["max_abs_slot_difference"] for r in neutral),
+            "max_abs_vocab_logit": max(r[geo]["max_abs_logit_difference"] for r in neutral),
+        }
+    return {"neutral_geometries": checks, "prior_native_label_score_max_abs": max(old_diffs),
+            "native_vs_opaque_slot_max_abs": max(r["native_vs_opaque_slot_max_abs"] for r in interventions),
+            "full_span_exact_vocab_replays": sum(r["max_abs_logit_difference_from_native"]["slots_and_suffix"] == 0 for r in interventions),
+            "max_abs_vocab_logit_from_native": {route: max(r["max_abs_logit_difference_from_native"][route] for r in interventions)
+                                                for route in routes},
+            "donor_orders": len(interventions), "neutral_orders": len(neutral),
+            "routes": {r: route_stats(margins, r, groups, 1) for r in routes}}
+
+
 def summarize(name):
     trial = HERE / "trials" / name
     terminal = json.loads((trial / "terminal.json").read_text())
@@ -78,6 +116,9 @@ def summarize(name):
     is_archive = request["study"] == "archive"
     aligned = request["study"] == "alignment"
     groups = {g["id"]: g for g in ([DATA["archive"]] if is_archive else DATA["groups"])}
+    if request["study"] == "replay":
+        result.update(replay_stats(trial, groups))
+        return result
     scores = rows(trial / "scores.jsonl")
     margins = {(r["group"], r["pole"], r["phrasing"], r["route"]): recompute(r, groups) for r in scores}
     assert len(margins) == len(scores)
@@ -126,5 +167,6 @@ def summarize(name):
 
 
 if __name__ == "__main__":
-    studies = ("archive-mistral", "contrasts-mistral", "contrasts-gemma", "alignment-mistral", "alignment-gemma")
+    studies = ("archive-mistral", "contrasts-mistral", "contrasts-gemma", "alignment-mistral", "alignment-gemma",
+               "replay-mistral", "replay-gemma")
     print(json.dumps({name: summarize(name) for name in studies}, indent=2, ensure_ascii=False))

@@ -73,3 +73,17 @@ def test_aligned_control_uses_same_positions_and_native_token_path(host, tmp_pat
     cases = [json.loads(s) for s in (store.path / "cases.jsonl").read_text().splitlines()]
     assert all(len(c["padded_ids"]) == host.slots for c in cases)
     assert all(c["padded_ids"][:1] == c["token_ids"] for c in cases)
+
+
+def test_full_span_reconstructs_native_lexical_readout(host, tmp_path):
+    from selffold.replay_probe import run_replay_probe
+
+    store = RunStore(tmp_path / "replay")
+    run_replay_probe(host, store, [{"id": "unit", "question": "Which?", "options": ["a", "b"]}])
+    controls = [json.loads(s) for s in (store.path / "neutral.jsonl").read_text().splitlines()]
+    assert len(controls) == 2 and all(r["same_length"]["max_abs_logit_difference"] == 0 for r in controls)
+    rows = [json.loads(s) for s in (store.path / "interventions.jsonl").read_text().splitlines()]
+    assert len(rows) == 4
+    assert all(r["native_vs_opaque_slot_max_abs"] == 0 for r in rows)
+    assert all(r["max_abs_logit_difference_from_native"]["slots_and_suffix"] == 0 for r in rows)
+    assert not host.layers[host.cut]._forward_pre_hooks
