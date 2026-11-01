@@ -2,6 +2,8 @@
 
 A finite tensor and a plausible D output do not establish semantic recurrence. The gate distinguishes the experiment's construct from an arbitrary dynamical system with a fluent decoder.
 
+The paired-donor probes measured content discrimination, free-readout fidelity, magnitude and slot-order controls, and single-forward position interventions on Mistral and Gemma. Literal descriptions were identifiable, while a full roundtrip gave equal scores for opposing donors in all 12 paired comparisons per model. The downstream-span control had access to the question during its donor forward. A reviewed semantic gate for a reusable latent update is still open. [Development evidence](../provenance/slot_content_20261101/RESULTS.md)
+
 ## Required checks
 
 | Check | Evidence to collect on calibration-only data |
@@ -13,7 +15,7 @@ A finite tensor and a plausible D output do not establish semantic recurrence. T
 | Readout fidelity | D/E roundtrip preserves specified distinctions and is not merely inventing plausible self-descriptions; compare functional tests, not D's words alone |
 | Positional controls | Slot position, prefix length, norm and relocation effects are measured separately; aligned and perturbed controls do not erase the intended contrast |
 
-Predeclare tasks, denominators, thresholds and review procedure before the qualification evaluation. This starter intentionally supplies no arbitrary universal quality threshold. Choose thresholds on a separate development subset, then evaluate the calibration holdout. Never use downstream confirmation answers to fit the transport, choose a cut, or select a verbalizer.
+Predeclare tasks, denominators, thresholds and the review procedure before qualification. Set thresholds on a separate development subset, then evaluate the calibration holdout. Keep downstream confirmation answers separate from transport fitting, cut selection and verbalizer development.
 
 ## Suggested small calibration progression
 

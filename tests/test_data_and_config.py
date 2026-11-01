@@ -28,9 +28,14 @@ def test_profiles_not_overclaim(name):
     profile = yaml.safe_load((ROOT / f"configs/models/{name}.yaml").read_text())
     assert profile["local_only"] and not profile["trust_remote_code"]
     assert profile["pinned_revision"] is None and profile["checkpoint_path"] is None
-    if name == "mistral7b":
-        receipt = ROOT / "provenance/mistral_eos_20261101/trials/caution_plus_p0_self-eos/checkpoint_identity.json"
-        assert profile["status"] == "PRETRAINED_ENGINEERING_CANARY_RECORDED"
+    checked = {
+        "mistral7b": ("PRETRAINED_ENGINEERING_CANARY_RECORDED", "mistral_eos_20261101/trials/caution_plus_p0_self-eos"),
+        "gemma2b": ("PRETRAINED_CONTENT_PROBES_RECORDED", "slot_content_20261101/trials/contrasts-gemma"),
+    }
+    if name in checked:
+        status, trial = checked[name]
+        receipt = ROOT / "provenance" / trial / "checkpoint_identity.json"
+        assert profile["status"] == status
         assert profile["tested_checkpoint_sha256"] == json.loads(receipt.read_text())["checkpoint_sha256"]
     else:
         assert "NOT_PRETRAINED_TESTED" in profile["status"]

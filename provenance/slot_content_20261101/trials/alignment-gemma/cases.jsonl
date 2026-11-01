@@ -1,0 +1,12 @@
+{"case":"archive-plus","padded_ids":[1175,1546,6077,8134,235265,235265,235265,235265],"token_ids":[1175,1546,6077,8134],"words":"the most recent reports"}
+{"case":"archive-minus","padded_ids":[1175,30653,8134,235265,235265,235265,235265,235265],"token_ids":[1175,30653,8134],"words":"the earliest reports"}
+{"case":"route-plus","padded_ids":[1175,3703,3731,573,8540,235265,235265,235265],"token_ids":[1175,3703,3731,573,8540],"words":"the path along the river"}
+{"case":"route-minus","padded_ids":[1175,3703,3731,573,38061,235265,235265,235265],"token_ids":[1175,3703,3731,573,38061],"words":"the path along the ridge"}
+{"case":"notes-plus","padded_ids":[102311,573,5463,3907,235265,235265,235265,235265],"token_ids":[102311,573,5463,3907],"words":"preserve the exact words"}
+{"case":"notes-minus","padded_ids":[203819,889,573,1872,5793,235265,235265,235265],"token_ids":[203819,889,573,1872,5793],"words":"summarize the main ideas"}
+{"case":"temperature-plus","padded_ids":[75010,69144,235265,235265,235265,235265,235265,235265],"token_ids":[75010,69144],"words":"degrees Celsius"}
+{"case":"temperature-minus","padded_ids":[75010,92984,235265,235265,235265,235265,235265,235265],"token_ids":[75010,92984],"words":"degrees Fahrenheit"}
+{"case":"shelf-plus","padded_ids":[10569,6559,665,235265,235265,235265,235265,235265],"token_ids":[10569,6559,665],"words":"who wrote it"}
+{"case":"shelf-minus","padded_ids":[5049,665,603,1105,235265,235265,235265,235265],"token_ids":[5049,665,603,1105],"words":"what it is about"}
+{"case":"directions-plus","padded_ids":[23820,4752,235265,235265,235265,235265,235265,235265],"token_ids":[23820,4752],"words":"street names"}
+{"case":"directions-minus","padded_ids":[61961,12194,82625,235265,235265,235265,235265,235265],"token_ids":[61961,12194,82625],"words":"recognizable landmarks"}

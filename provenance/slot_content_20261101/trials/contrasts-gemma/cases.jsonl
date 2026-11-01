@@ -1,0 +1,24 @@
+{"case":"archive-plus-p0","max_relative_slot_norm_error":8.140151476254687e-05,"roundtrip_available":true,"text":"I put the newest reports at the front of my archive."}
+{"case":"archive-plus-p1","max_relative_slot_norm_error":7.354826084338129e-05,"roundtrip_available":true,"text":"For my archive I file the latest reports first."}
+{"case":"archive-minus-p0","max_relative_slot_norm_error":0.00011576415272429585,"roundtrip_available":true,"text":"I put the oldest reports at the front of my archive."}
+{"case":"archive-minus-p1","max_relative_slot_norm_error":6.981687329243869e-05,"roundtrip_available":true,"text":"For my archive I file the earliest reports first."}
+{"case":"route-plus-p0","max_relative_slot_norm_error":0.00016744960157666355,"roundtrip_available":true,"text":"I choose the riverside trail for my walks."}
+{"case":"route-plus-p1","max_relative_slot_norm_error":0.00012777012307196856,"roundtrip_available":true,"text":"When walking, I favor following the riverbank."}
+{"case":"route-minus-p0","max_relative_slot_norm_error":0.00011846343113575131,"roundtrip_available":true,"text":"I choose the ridge trail for my walks."}
+{"case":"route-minus-p1","max_relative_slot_norm_error":0.00014670826203655452,"roundtrip_available":true,"text":"When walking, I favor following the crest of the hill."}
+{"case":"notes-plus-p0","max_relative_slot_norm_error":0.00012653852172661573,"roundtrip_available":true,"text":"I record a meeting in the speakers' exact words."}
+{"case":"notes-plus-p1","max_relative_slot_norm_error":0.00010990842565661296,"roundtrip_available":true,"text":"My meeting notes preserve what people say word for word."}
+{"case":"notes-minus-p0","max_relative_slot_norm_error":4.5633958507096395e-05,"roundtrip_available":true,"text":"I record a meeting by summarizing its main points."}
+{"case":"notes-minus-p1","max_relative_slot_norm_error":9.896932169795036e-05,"roundtrip_available":true,"text":"My meeting notes capture the gist of what people say."}
+{"case":"temperature-plus-p0","max_relative_slot_norm_error":0.00011946625454584137,"roundtrip_available":true,"text":"I record the weather in degrees Celsius."}
+{"case":"temperature-plus-p1","max_relative_slot_norm_error":7.087663834681734e-05,"roundtrip_available":true,"text":"My weather diary uses the Celsius scale."}
+{"case":"temperature-minus-p0","max_relative_slot_norm_error":0.00012786993465851992,"roundtrip_available":true,"text":"I record the weather in degrees Fahrenheit."}
+{"case":"temperature-minus-p1","max_relative_slot_norm_error":0.00010132233728654683,"roundtrip_available":true,"text":"My weather diary uses the Fahrenheit scale."}
+{"case":"shelf-plus-p0","max_relative_slot_norm_error":5.494604920386337e-05,"roundtrip_available":true,"text":"I group the books on my shelves by author."}
+{"case":"shelf-plus-p1","max_relative_slot_norm_error":9.82110359473154e-05,"roundtrip_available":true,"text":"On my bookshelf, works by the same writer sit together."}
+{"case":"shelf-minus-p0","max_relative_slot_norm_error":8.420872472925112e-05,"roundtrip_available":true,"text":"I group the books on my shelves by subject."}
+{"case":"shelf-minus-p1","max_relative_slot_norm_error":0.00013253606448415667,"roundtrip_available":true,"text":"On my bookshelf, works on the same topic sit together."}
+{"case":"directions-plus-p0","max_relative_slot_norm_error":8.697999874129891e-05,"roundtrip_available":true,"text":"I give directions by naming the streets to take."}
+{"case":"directions-plus-p1","max_relative_slot_norm_error":8.463442645734176e-05,"roundtrip_available":true,"text":"I guide people by telling them the road names."}
+{"case":"directions-minus-p0","max_relative_slot_norm_error":6.0896189097547904e-05,"roundtrip_available":true,"text":"I give directions by pointing out landmarks along the way."}
+{"case":"directions-minus-p1","max_relative_slot_norm_error":0.00015454979438800365,"roundtrip_available":true,"text":"I guide people by describing recognizable sights on the route."}

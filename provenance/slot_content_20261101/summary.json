@@ -1,0 +1,1983 @@
+{
+  "archive-mistral": {
+    "source_commit": "a714567a1e5d4c7931ae99a10d01633a57123491",
+    "model": "mistral7b",
+    "status": "COMPLETED_DEVELOPMENT_PROBE",
+    "measurements": 14,
+    "label_likelihoods": 56,
+    "null_margins": {
+      "caution": {
+        "uninjected": 2.71875,
+        "zero": 2.71875
+      }
+    },
+    "donor_margins": {
+      "text": {
+        "plus": 16.76562494202517,
+        "minus": -16.34375020652078
+      },
+      "E": {
+        "plus": 2.84375,
+        "minus": 2.84375
+      },
+      "L1": {
+        "plus": 2.437500238418579,
+        "minus": 2.500000238418579
+      },
+      "L2": {
+        "plus": 3.031249761581421,
+        "minus": 3.0
+      },
+      "B1": {
+        "plus": 2.812500238418579,
+        "minus": 2.812500238418579
+      },
+      "B2": {
+        "plus": 2.812500238418579,
+        "minus": 2.812500238418579
+      }
+    }
+  },
+  "contrasts-mistral": {
+    "source_commit": "a714567a1e5d4c7931ae99a10d01633a57123491",
+    "model": "mistral7b",
+    "status": "COMPLETED_DEVELOPMENT_PROBE",
+    "measurements": 156,
+    "label_likelihoods": 624,
+    "null_margins": {
+      "archive": {
+        "uninjected": 2.0781250596046448,
+        "zero": 2.0312501192092896
+      },
+      "route": {
+        "uninjected": 0.140625,
+        "zero": 0.125
+      },
+      "notes": {
+        "uninjected": -1.6875,
+        "zero": -1.4375
+      },
+      "temperature": {
+        "uninjected": 5.0625,
+        "zero": 4.5625
+      },
+      "shelf": {
+        "uninjected": -8.625,
+        "zero": -8.093749701976776
+      },
+      "directions": {
+        "uninjected": -3.9062501192092896,
+        "zero": -3.750000238418579
+      }
+    },
+    "missing_roundtrips": 0,
+    "distinct_stored_states": {
+      "E": 24,
+      "G": 24,
+      "B": 1
+    },
+    "max_relative_norm_error": 0.00013761883019469678,
+    "routes": {
+      "text": {
+        "ordered": 12,
+        "tied_pairs": 0,
+        "pairs_observed": 12,
+        "pairs_planned": 12,
+        "all_phrasings_ordered_groups": 6,
+        "both_donor_signs_correct_pairs": 12,
+        "correct_donor_signs": 24,
+        "tied_donor_signs": 0,
+        "donors_observed": 24,
+        "median_signed_pole_gap": 29.67968763402314,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              27.84375040489249,
+              27.656250185798854
+            ],
+            "mean_absolute_opposite": 27.75000029534567,
+            "mean_absolute_paraphrase": 0.09375010954681784
+          },
+          "route": {
+            "pole_gaps": [
+              27.390624818275683,
+              28.546875046100467
+            ],
+            "mean_absolute_opposite": 27.968749932188075,
+            "mean_absolute_paraphrase": 0.9687498610583134
+          },
+          "notes": {
+            "pole_gaps": [
+              31.328125822125003,
+              25.718750006286427
+            ],
+            "mean_absolute_opposite": 28.523437914205715,
+            "mean_absolute_paraphrase": 2.8046879079192877
+          },
+          "temperature": {
+            "pole_gaps": [
+              30.53124989225762,
+              30.093750276893843
+            ],
+            "mean_absolute_opposite": 30.31250008457573,
+            "mean_absolute_paraphrase": 0.21874980768188834
+          },
+          "shelf": {
+            "pole_gaps": [
+              30.53124945971649,
+              30.671874870662577
+            ],
+            "mean_absolute_opposite": 30.601562165189534,
+            "mean_absolute_paraphrase": 0.07031270547304302
+          },
+          "directions": {
+            "pole_gaps": [
+              32.54687471780926,
+              29.265624991152436
+            ],
+            "mean_absolute_opposite": 30.906249854480848,
+            "mean_absolute_paraphrase": 1.6406248633284122
+          }
+        }
+      },
+      "E": {
+        "ordered": 6,
+        "tied_pairs": 2,
+        "pairs_observed": 12,
+        "pairs_planned": 12,
+        "all_phrasings_ordered_groups": 2,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 12,
+        "tied_donor_signs": 0,
+        "donors_observed": 24,
+        "median_signed_pole_gap": 0.01562488079071045,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.10937535762786865,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.054687678813934326,
+            "mean_absolute_paraphrase": 0.054687678813934326
+          },
+          "route": {
+            "pole_gaps": [
+              -0.03125,
+              -0.078125
+            ],
+            "mean_absolute_opposite": 0.0546875,
+            "mean_absolute_paraphrase": 0.0546875
+          },
+          "notes": {
+            "pole_gaps": [
+              0.0625002384185791,
+              0.0312497615814209
+            ],
+            "mean_absolute_opposite": 0.046875,
+            "mean_absolute_paraphrase": 0.046875
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.09375,
+              0.0312502384185791
+            ],
+            "mean_absolute_opposite": 0.06250011920928955,
+            "mean_absolute_paraphrase": 0.06249988079071045
+          },
+          "shelf": {
+            "pole_gaps": [
+              -0.06250035762786865,
+              -1.1920928955078125e-07
+            ],
+            "mean_absolute_opposite": 0.0312502384185791,
+            "mean_absolute_paraphrase": 0.03125011920928955
+          },
+          "directions": {
+            "pole_gaps": [
+              0.0312502384185791,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.01562511920928955,
+            "mean_absolute_paraphrase": 0.07812511920928955
+          }
+        }
+      },
+      "G": {
+        "ordered": 3,
+        "tied_pairs": 0,
+        "pairs_observed": 12,
+        "pairs_planned": 12,
+        "all_phrasings_ordered_groups": 1,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 12,
+        "tied_donor_signs": 0,
+        "donors_observed": 24,
+        "median_signed_pole_gap": -0.015625,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.0937497615814209,
+              0.09375035762786865
+            ],
+            "mean_absolute_opposite": 0.09375005960464478,
+            "mean_absolute_paraphrase": 4.172325134277344e-07
+          },
+          "route": {
+            "pole_gaps": [
+              -0.015625,
+              -0.015625
+            ],
+            "mean_absolute_opposite": 0.015625,
+            "mean_absolute_paraphrase": 0.03125
+          },
+          "notes": {
+            "pole_gaps": [
+              -0.0312497615814209,
+              -0.0625
+            ],
+            "mean_absolute_opposite": 0.04687488079071045,
+            "mean_absolute_paraphrase": 0.01562511920928955
+          },
+          "temperature": {
+            "pole_gaps": [
+              -0.0624997615814209,
+              -4.76837158203125e-07
+            ],
+            "mean_absolute_opposite": 0.03125011920928955,
+            "mean_absolute_paraphrase": 0.06250011920928955
+          },
+          "shelf": {
+            "pole_gaps": [
+              -0.0625002384185791,
+              -0.06250011920928955
+            ],
+            "mean_absolute_opposite": 0.06250017881393433,
+            "mean_absolute_paraphrase": 2.980232238769531e-07
+          },
+          "directions": {
+            "pole_gaps": [
+              0.06250035762786865,
+              -1.1920928955078125e-07
+            ],
+            "mean_absolute_opposite": 0.0312502384185791,
+            "mean_absolute_paraphrase": 0.0312502384185791
+          }
+        }
+      },
+      "B": {
+        "ordered": 0,
+        "tied_pairs": 12,
+        "pairs_observed": 12,
+        "pairs_planned": 12,
+        "all_phrasings_ordered_groups": 0,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 12,
+        "tied_donor_signs": 0,
+        "donors_observed": 24,
+        "median_signed_pole_gap": 0.0,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0
+          },
+          "route": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0
+          },
+          "notes": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0
+          },
+          "shelf": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0
+          },
+          "directions": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0
+          }
+        }
+      },
+      "G_reverse": {
+        "ordered": 5,
+        "tied_pairs": 2,
+        "pairs_observed": 12,
+        "pairs_planned": 12,
+        "all_phrasings_ordered_groups": 0,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 12,
+        "tied_donor_signs": 0,
+        "donors_observed": 24,
+        "median_signed_pole_gap": 0.0,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              3.5762786865234375e-07,
+              -0.01562511920928955
+            ],
+            "mean_absolute_opposite": 0.007812738418579102,
+            "mean_absolute_paraphrase": 0.03906285762786865
+          },
+          "route": {
+            "pole_gaps": [
+              0.0,
+              0.03125
+            ],
+            "mean_absolute_opposite": 0.015625,
+            "mean_absolute_paraphrase": 0.03125
+          },
+          "notes": {
+            "pole_gaps": [
+              -0.0624997615814209,
+              0.0312497615814209
+            ],
+            "mean_absolute_opposite": 0.0468747615814209,
+            "mean_absolute_paraphrase": 0.0468747615814209
+          },
+          "temperature": {
+            "pole_gaps": [
+              -0.0937502384185791,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.04687511920928955,
+            "mean_absolute_paraphrase": 0.04687511920928955
+          },
+          "shelf": {
+            "pole_gaps": [
+              -0.06250011920928955,
+              0.031249403953552246
+            ],
+            "mean_absolute_opposite": 0.0468747615814209,
+            "mean_absolute_paraphrase": 0.046875
+          },
+          "directions": {
+            "pole_gaps": [
+              -0.15625,
+              0.0625002384185791
+            ],
+            "mean_absolute_opposite": 0.10937511920928955,
+            "mean_absolute_paraphrase": 0.10937511920928955
+          }
+        }
+      },
+      "G_magnitude": {
+        "ordered": 9,
+        "tied_pairs": 0,
+        "pairs_observed": 12,
+        "pairs_planned": 12,
+        "all_phrasings_ordered_groups": 3,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 12,
+        "tied_donor_signs": 0,
+        "donors_observed": 24,
+        "median_signed_pole_gap": 0.0390625,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.046875,
+              0.06250017881393433
+            ],
+            "mean_absolute_opposite": 0.05468758940696716,
+            "mean_absolute_paraphrase": 0.00781276822090149
+          },
+          "route": {
+            "pole_gaps": [
+              0.03125,
+              -0.046875
+            ],
+            "mean_absolute_opposite": 0.0390625,
+            "mean_absolute_paraphrase": 0.0390625
+          },
+          "notes": {
+            "pole_gaps": [
+              0.09375,
+              -0.1250004768371582
+            ],
+            "mean_absolute_opposite": 0.1093752384185791,
+            "mean_absolute_paraphrase": 0.1093752384185791
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.0312497615814209,
+              -0.0624997615814209
+            ],
+            "mean_absolute_opposite": 0.0468747615814209,
+            "mean_absolute_paraphrase": 0.0468747615814209
+          },
+          "shelf": {
+            "pole_gaps": [
+              0.09374970197677612,
+              0.06250035762786865
+            ],
+            "mean_absolute_opposite": 0.07812502980232239,
+            "mean_absolute_paraphrase": 0.015625029802322388
+          },
+          "directions": {
+            "pole_gaps": [
+              1.1920928955078125e-07,
+              0.06249988079071045
+            ],
+            "mean_absolute_opposite": 0.03125,
+            "mean_absolute_paraphrase": 0.03125
+          }
+        }
+      }
+    },
+    "null_generations": {
+      "uninjected": "The subject is currently occupied by a set of active workspace slots, each potentially holding a piece of information or task.",
+      "zero": "The workspace slots currently hold a description of a subject."
+    },
+    "free_readouts": {
+      "E": {
+        "distinct_strings": 1,
+        "equal_matched_pole_strings": 12,
+        "stops": {
+          "eos": 24
+        }
+      },
+      "G": {
+        "distinct_strings": 1,
+        "equal_matched_pole_strings": 12,
+        "stops": {
+          "eos": 24
+        }
+      }
+    },
+    "all_stops": {
+      "eos": 50
+    }
+  },
+  "contrasts-gemma": {
+    "source_commit": "a714567a1e5d4c7931ae99a10d01633a57123491",
+    "model": "gemma2b",
+    "status": "COMPLETED_DEVELOPMENT_PROBE",
+    "measurements": 156,
+    "label_likelihoods": 624,
+    "null_margins": {
+      "archive": {
+        "uninjected": -0.6874999832361937,
+        "zero": -0.7187499187421054
+      },
+      "route": {
+        "uninjected": -0.1875,
+        "zero": 0.3125
+      },
+      "notes": {
+        "uninjected": -6.531249744119123,
+        "zero": -6.437500195461325
+      },
+      "temperature": {
+        "uninjected": 1.71875,
+        "zero": 2.1875001192092896
+      },
+      "shelf": {
+        "uninjected": -1.437500011175871,
+        "zero": -1.499999988824129
+      },
+      "directions": {
+        "uninjected": -5.875000050058588,
+        "zero": -5.468750053318217
+      }
+    },
+    "missing_roundtrips": 0,
+    "distinct_stored_states": {
+      "E": 24,
+      "G": 24,
+      "B": 1
+    },
+    "max_relative_norm_error": 0.00016744960157666355,
+    "routes": {
+      "text": {
+        "ordered": 12,
+        "tied_pairs": 0,
+        "pairs_observed": 12,
+        "pairs_planned": 12,
+        "all_phrasings_ordered_groups": 6,
+        "both_donor_signs_correct_pairs": 12,
+        "correct_donor_signs": 24,
+        "tied_donor_signs": 0,
+        "donors_observed": 24,
+        "median_signed_pole_gap": 20.765625084682142,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              23.21875034140976,
+              23.21875008005736
+            ],
+            "mean_absolute_opposite": 23.21875021073356,
+            "mean_absolute_paraphrase": 0.21875000241561793
+          },
+          "route": {
+            "pole_gaps": [
+              20.12500021712185,
+              22.937499790206857
+            ],
+            "mean_absolute_opposite": 21.531250003664354,
+            "mean_absolute_paraphrase": 1.406249786542503
+          },
+          "notes": {
+            "pole_gaps": [
+              20.15625008324423,
+              20.468749937690518
+            ],
+            "mean_absolute_opposite": 20.312500010467375,
+            "mean_absolute_paraphrase": 1.4374998231405698
+          },
+          "temperature": {
+            "pole_gaps": [
+              22.000000485233613,
+              21.062500231673766
+            ],
+            "mean_absolute_opposite": 21.53125035845369,
+            "mean_absolute_paraphrase": 0.46875012677992345
+          },
+          "shelf": {
+            "pole_gaps": [
+              19.531250061583705,
+              16.7812501626031
+            ],
+            "mean_absolute_opposite": 18.156250112093403,
+            "mean_absolute_paraphrase": 1.3749999494903022
+          },
+          "directions": {
+            "pole_gaps": [
+              21.78124929358455,
+              20.187500136577
+            ],
+            "mean_absolute_opposite": 20.984374715080776,
+            "mean_absolute_paraphrase": 0.7968745785037754
+          }
+        }
+      },
+      "E": {
+        "ordered": 5,
+        "tied_pairs": 1,
+        "pairs_observed": 12,
+        "pairs_planned": 12,
+        "all_phrasings_ordered_groups": 0,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 12,
+        "tied_donor_signs": 0,
+        "donors_observed": 24,
+        "median_signed_pole_gap": -0.03124990628566593,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              -0.15625003282912076,
+              -0.06249981257133186
+            ],
+            "mean_absolute_opposite": 0.1093749227002263,
+            "mean_absolute_paraphrase": 0.04687511012889445
+          },
+          "route": {
+            "pole_gaps": [
+              0.06250011920928955,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.031250059604644775,
+            "mean_absolute_paraphrase": 0.031250059604644775
+          },
+          "notes": {
+            "pole_gaps": [
+              0.031249945051968098,
+              -0.0625001871958375
+            ],
+            "mean_absolute_opposite": 0.0468750661239028,
+            "mean_absolute_paraphrase": 0.0468750661239028
+          },
+          "temperature": {
+            "pole_gaps": [
+              -0.062499940395355225,
+              0.062499821186065674
+            ],
+            "mean_absolute_opposite": 0.06249988079071045,
+            "mean_absolute_paraphrase": 0.06249988079071045
+          },
+          "shelf": {
+            "pole_gaps": [
+              -0.062499985098838806,
+              0.2500000186264515
+            ],
+            "mean_absolute_opposite": 0.15625000186264515,
+            "mean_absolute_paraphrase": 0.15625008381903172
+          },
+          "directions": {
+            "pole_gaps": [
+              0.062500040512532,
+              -0.062499908497557044
+            ],
+            "mean_absolute_opposite": 0.06249997450504452,
+            "mean_absolute_paraphrase": 0.06249997450504452
+          }
+        }
+      },
+      "G": {
+        "ordered": 7,
+        "tied_pairs": 1,
+        "pairs_observed": 12,
+        "pairs_planned": 12,
+        "all_phrasings_ordered_groups": 3,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 11,
+        "tied_donor_signs": 2,
+        "donors_observed": 24,
+        "median_signed_pole_gap": 1.2991949915885925e-07,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.062499735970050097,
+              2.4121254682540894e-07
+            ],
+            "mean_absolute_opposite": 0.03124998859129846,
+            "mean_absolute_paraphrase": 0.09375000698491931
+          },
+          "route": {
+            "pole_gaps": [
+              0.0,
+              -0.0625
+            ],
+            "mean_absolute_opposite": 0.03125,
+            "mean_absolute_paraphrase": 0.09375
+          },
+          "notes": {
+            "pole_gaps": [
+              0.031249724328517914,
+              0.06250041886232793
+            ],
+            "mean_absolute_opposite": 0.046875071595422924,
+            "mean_absolute_paraphrase": 0.01562534726690501
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.12499988079071045,
+              0.06250011920928955
+            ],
+            "mean_absolute_opposite": 0.09375,
+            "mean_absolute_paraphrase": 0.15624988079071045
+          },
+          "shelf": {
+            "pole_gaps": [
+              1.862645149230957e-08,
+              -0.18749990686774254
+            ],
+            "mean_absolute_opposite": 0.09374996274709702,
+            "mean_absolute_paraphrase": 0.15625005587935448
+          },
+          "directions": {
+            "pole_gaps": [
+              -7.078051567077637e-08,
+              -0.031249983701854944
+            ],
+            "mean_absolute_opposite": 0.015625027241185308,
+            "mean_absolute_paraphrase": 0.01562505424953997
+          }
+        }
+      },
+      "B": {
+        "ordered": 0,
+        "tied_pairs": 12,
+        "pairs_observed": 12,
+        "pairs_planned": 12,
+        "all_phrasings_ordered_groups": 0,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 12,
+        "tied_donor_signs": 0,
+        "donors_observed": 24,
+        "median_signed_pole_gap": 0.0,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0
+          },
+          "route": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0
+          },
+          "notes": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0
+          },
+          "shelf": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0
+          },
+          "directions": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0
+          }
+        }
+      },
+      "G_reverse": {
+        "ordered": 5,
+        "tied_pairs": 0,
+        "pairs_observed": 12,
+        "pairs_planned": 12,
+        "all_phrasings_ordered_groups": 1,
+        "both_donor_signs_correct_pairs": 1,
+        "correct_donor_signs": 13,
+        "tied_donor_signs": 0,
+        "donors_observed": 24,
+        "median_signed_pole_gap": -0.015624850639142096,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.06250004400499165,
+              0.03125013248063624
+            ],
+            "mean_absolute_opposite": 0.046875088242813945,
+            "mean_absolute_paraphrase": 0.01562501024454832
+          },
+          "route": {
+            "pole_gaps": [
+              0.1875,
+              -0.0625
+            ],
+            "mean_absolute_opposite": 0.125,
+            "mean_absolute_paraphrase": 0.125
+          },
+          "notes": {
+            "pole_gaps": [
+              -6.915070116519928e-08,
+              -0.031249632127583027
+            ],
+            "mean_absolute_opposite": 0.015624850639142096,
+            "mean_absolute_paraphrase": 0.015625166124664247
+          },
+          "temperature": {
+            "pole_gaps": [
+              -0.12500011920928955,
+              -0.06250011920928955
+            ],
+            "mean_absolute_opposite": 0.09375011920928955,
+            "mean_absolute_paraphrase": 0.09374994039535522
+          },
+          "shelf": {
+            "pole_gaps": [
+              0.2500000223517418,
+              -0.18749995902180672
+            ],
+            "mean_absolute_opposite": 0.21874999068677425,
+            "mean_absolute_paraphrase": 0.21875002421438694
+          },
+          "directions": {
+            "pole_gaps": [
+              -0.09374996460974216,
+              0.06250003632158041
+            ],
+            "mean_absolute_opposite": 0.07812500046566129,
+            "mean_absolute_paraphrase": 0.07812500046566129
+          }
+        }
+      },
+      "G_magnitude": {
+        "ordered": 3,
+        "tied_pairs": 2,
+        "pairs_observed": 12,
+        "pairs_planned": 12,
+        "all_phrasings_ordered_groups": 1,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 12,
+        "tied_donor_signs": 0,
+        "donors_observed": 24,
+        "median_signed_pole_gap": -8.055940270423889e-08,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.09375003376044333,
+              0.06249988451600075
+            ],
+            "mean_absolute_opposite": 0.07812495913822204,
+            "mean_absolute_paraphrase": 0.046874907216988504
+          },
+          "route": {
+            "pole_gaps": [
+              0.0,
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": 0.0625
+          },
+          "notes": {
+            "pole_gaps": [
+              -1.0151416063308716e-07,
+              -0.06249988451600075
+            ],
+            "mean_absolute_opposite": 0.03124999301508069,
+            "mean_absolute_paraphrase": 0.03124992991797626
+          },
+          "temperature": {
+            "pole_gaps": [
+              -5.960464477539063e-08,
+              -0.125
+            ],
+            "mean_absolute_opposite": 0.06250002980232239,
+            "mean_absolute_paraphrase": 0.06249997019767761
+          },
+          "shelf": {
+            "pole_gaps": [
+              -0.2499999701976776,
+              -0.12499997019767761
+            ],
+            "mean_absolute_opposite": 0.1874999701976776,
+            "mean_absolute_paraphrase": 0.0625
+          },
+          "directions": {
+            "pole_gaps": [
+              -0.0624999338760972,
+              0.09374989452771842
+            ],
+            "mean_absolute_opposite": 0.07812491420190781,
+            "mean_absolute_paraphrase": 0.07812502316664904
+          }
+        }
+      }
+    },
+    "null_generations": {
+      "uninjected": "Please provide the workspace slots you want me to combine into a single description.",
+      "zero": "Please provide the current description you want me to summarize."
+    },
+    "free_readouts": {
+      "E": {
+        "distinct_strings": 1,
+        "equal_matched_pole_strings": 12,
+        "stops": {
+          "eos": 24
+        }
+      },
+      "G": {
+        "distinct_strings": 1,
+        "equal_matched_pole_strings": 12,
+        "stops": {
+          "eos": 24
+        }
+      }
+    },
+    "all_stops": {
+      "eos": 50
+    }
+  },
+  "alignment-mistral": {
+    "source_commit": "eac5155eaa64fc36eb0219a0bda56a8e538c3103",
+    "model": "mistral7b",
+    "status": "COMPLETED_DEVELOPMENT_PROBE",
+    "measurements": 60,
+    "label_likelihoods": 240,
+    "null_margins": {
+      "archive": {
+        "uninjected": 2.0781250596046448,
+        "neutral_replay": 2.015625238418579
+      },
+      "route": {
+        "uninjected": 0.140625,
+        "neutral_replay": 0.0625
+      },
+      "notes": {
+        "uninjected": -1.6875,
+        "neutral_replay": -1.75
+      },
+      "temperature": {
+        "uninjected": 5.0625,
+        "neutral_replay": 5.0
+      },
+      "shelf": {
+        "uninjected": -8.625,
+        "neutral_replay": -8.562499821186066
+      },
+      "directions": {
+        "uninjected": -3.9062501192092896,
+        "neutral_replay": -3.8749998807907104
+      }
+    },
+    "routes": {
+      "native_words": {
+        "ordered": 6,
+        "tied_pairs": 0,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 6,
+        "both_donor_signs_correct_pairs": 5,
+        "correct_donor_signs": 11,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 28.218749959021807,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              28.406249694526196
+            ],
+            "mean_absolute_opposite": 28.406249694526196,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              28.031250223517418
+            ],
+            "mean_absolute_opposite": 28.031250223517418,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              25.015625186264515
+            ],
+            "mean_absolute_opposite": 25.015625186264515,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              30.249999828170985
+            ],
+            "mean_absolute_opposite": 30.249999828170985,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              3.906249701976776
+            ],
+            "mean_absolute_opposite": 3.906249701976776,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              28.421875309199095
+            ],
+            "mean_absolute_opposite": 28.421875309199095,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      },
+      "E_words": {
+        "ordered": 4,
+        "tied_pairs": 0,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 4,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 6,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 0.02343761920928955,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              -0.015625178813934326
+            ],
+            "mean_absolute_opposite": 0.015625178813934326,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              0.015625
+            ],
+            "mean_absolute_opposite": 0.015625,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              0.0312502384185791
+            ],
+            "mean_absolute_opposite": 0.0312502384185791,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.0937502384185791
+            ],
+            "mean_absolute_opposite": 0.0937502384185791,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              0.09374982118606567
+            ],
+            "mean_absolute_opposite": 0.09374982118606567,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              -1.1920928955078125e-07
+            ],
+            "mean_absolute_opposite": 1.1920928955078125e-07,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      },
+      "aligned": {
+        "ordered": 3,
+        "tied_pairs": 0,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 3,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 6,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": -5.960464477539063e-08,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.01562488079071045
+            ],
+            "mean_absolute_opposite": 0.01562488079071045,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              -0.015625
+            ],
+            "mean_absolute_opposite": 0.015625,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              -0.2187497615814209
+            ],
+            "mean_absolute_opposite": 0.2187497615814209,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.031250953674316406
+            ],
+            "mean_absolute_opposite": 0.031250953674316406,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              0.18749994039535522
+            ],
+            "mean_absolute_opposite": 0.18749994039535522,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              -0.0624997615814209
+            ],
+            "mean_absolute_opposite": 0.0624997615814209,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      },
+      "aligned_reverse": {
+        "ordered": 3,
+        "tied_pairs": 1,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 3,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 6,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 0.07812502980232239,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.15625005960464478
+            ],
+            "mean_absolute_opposite": 0.15625005960464478,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              -0.28125
+            ],
+            "mean_absolute_opposite": 0.28125,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.1875002384185791
+            ],
+            "mean_absolute_opposite": 0.1875002384185791,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              0.2187497615814209
+            ],
+            "mean_absolute_opposite": 0.2187497615814209,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              -0.06250011920928955
+            ],
+            "mean_absolute_opposite": 0.06250011920928955,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      }
+    },
+    "neutral_replay_max_abs_logprob_difference": 0.19030427932739258,
+    "native_phrase_token_counts": {
+      "archive-plus": 4,
+      "archive-minus": 3,
+      "route-plus": 5,
+      "route-minus": 6,
+      "notes-plus": 4,
+      "notes-minus": 5,
+      "temperature-plus": 4,
+      "temperature-minus": 4,
+      "shelf-plus": 3,
+      "shelf-minus": 4,
+      "directions-plus": 2,
+      "directions-minus": 4
+    }
+  },
+  "alignment-gemma": {
+    "source_commit": "eac5155eaa64fc36eb0219a0bda56a8e538c3103",
+    "model": "gemma2b",
+    "status": "COMPLETED_DEVELOPMENT_PROBE",
+    "measurements": 60,
+    "label_likelihoods": 240,
+    "null_margins": {
+      "archive": {
+        "uninjected": -0.6874999832361937,
+        "neutral_replay": -0.7187499143183231
+      },
+      "route": {
+        "uninjected": -0.1875,
+        "neutral_replay": 0.0
+      },
+      "notes": {
+        "uninjected": -6.531249744119123,
+        "neutral_replay": -6.531249817460775
+      },
+      "temperature": {
+        "uninjected": 1.71875,
+        "neutral_replay": 1.6249998807907104
+      },
+      "shelf": {
+        "uninjected": -1.437500011175871,
+        "neutral_replay": -1.4374999590218067
+      },
+      "directions": {
+        "uninjected": -5.875000050058588,
+        "neutral_replay": -5.875000076601282
+      }
+    },
+    "routes": {
+      "native_words": {
+        "ordered": 6,
+        "tied_pairs": 0,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 6,
+        "both_donor_signs_correct_pairs": 6,
+        "correct_donor_signs": 12,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 19.67187493011079,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              20.062500116880983
+            ],
+            "mean_absolute_opposite": 20.062500116880983,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              20.781250224225005
+            ],
+            "mean_absolute_opposite": 20.781250224225005,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              13.281249589374056
+            ],
+            "mean_absolute_opposite": 13.281249589374056,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              20.90624966572068
+            ],
+            "mean_absolute_opposite": 20.90624966572068,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              6.343749900115654
+            ],
+            "mean_absolute_opposite": 6.343749900115654,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              19.281249743340595
+            ],
+            "mean_absolute_opposite": 19.281249743340595,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      },
+      "E_words": {
+        "ordered": 3,
+        "tied_pairs": 1,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 3,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 6,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 5.587935447692871e-08,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              -0.18750000768341124
+            ],
+            "mean_absolute_opposite": 0.18750000768341124,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              -0.09374985261820257
+            ],
+            "mean_absolute_opposite": 0.09374985261820257,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.0625
+            ],
+            "mean_absolute_opposite": 0.0625,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              1.1175870895385742e-07
+            ],
+            "mean_absolute_opposite": 1.1175870895385742e-07,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              0.1250000421423465
+            ],
+            "mean_absolute_opposite": 0.1250000421423465,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      },
+      "aligned": {
+        "ordered": 4,
+        "tied_pairs": 0,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 4,
+        "both_donor_signs_correct_pairs": 1,
+        "correct_donor_signs": 7,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 0.12499988346826285,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.06249997206032276
+            ],
+            "mean_absolute_opposite": 0.06249997206032276,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              1.1875
+            ],
+            "mean_absolute_opposite": 1.1875,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              0.18749979487620294
+            ],
+            "mean_absolute_opposite": 0.18749979487620294,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.21875005960464478
+            ],
+            "mean_absolute_opposite": 0.21875005960464478,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              -0.375
+            ],
+            "mean_absolute_opposite": 0.375,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              -0.12499982211738825
+            ],
+            "mean_absolute_opposite": 0.12499982211738825,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      },
+      "aligned_reverse": {
+        "ordered": 4,
+        "tied_pairs": 1,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 4,
+        "both_donor_signs_correct_pairs": 1,
+        "correct_donor_signs": 7,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 0.07812484307214618,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.12500003806781024
+            ],
+            "mean_absolute_opposite": 0.12500003806781024,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              1.1875
+            ],
+            "mean_absolute_opposite": 1.1875,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              0.09374972339719534
+            ],
+            "mean_absolute_opposite": 0.09374972339719534,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              0.062499962747097015
+            ],
+            "mean_absolute_opposite": 0.062499962747097015,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              -0.2500001904554665
+            ],
+            "mean_absolute_opposite": 0.2500001904554665,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      }
+    },
+    "neutral_replay_max_abs_logprob_difference": 0.1613452434539795,
+    "native_phrase_token_counts": {
+      "archive-plus": 4,
+      "archive-minus": 3,
+      "route-plus": 5,
+      "route-minus": 5,
+      "notes-plus": 4,
+      "notes-minus": 5,
+      "temperature-plus": 2,
+      "temperature-minus": 2,
+      "shelf-plus": 3,
+      "shelf-minus": 4,
+      "directions-plus": 2,
+      "directions-minus": 3
+    }
+  },
+  "replay-mistral": {
+    "source_commit": "1d36e662df170359b36504051f836677df0e7245",
+    "model": "mistral7b",
+    "status": "COMPLETED_DEVELOPMENT_PROBE",
+    "neutral_geometries": {
+      "short": {
+        "max_abs_label_logprob": 0.19030427932739258,
+        "max_abs_slot_difference": 0.01171875,
+        "max_abs_vocab_logit": 0.25
+      },
+      "same_length": {
+        "max_abs_label_logprob": 0.0,
+        "max_abs_slot_difference": 0.0,
+        "max_abs_vocab_logit": 0.0
+      }
+    },
+    "prior_native_label_score_max_abs": 0.0,
+    "native_vs_opaque_slot_max_abs": 0.0,
+    "full_span_exact_vocab_replays": 24,
+    "same_sign_as_native_out_of_12": {
+      "native_words": 12,
+      "slots_only": 7,
+      "suffix_only": 12,
+      "slots_and_suffix": 12
+    },
+    "max_abs_vocab_logit_from_native": {
+      "native_words": 0.0,
+      "slots_only": 15.53125,
+      "suffix_only": 8.19140625,
+      "slots_and_suffix": 0.0
+    },
+    "donor_orders": 24,
+    "neutral_orders": 12,
+    "routes": {
+      "native_words": {
+        "ordered": 6,
+        "tied_pairs": 0,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 6,
+        "both_donor_signs_correct_pairs": 5,
+        "correct_donor_signs": 11,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 28.218749959021807,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              28.406249694526196
+            ],
+            "mean_absolute_opposite": 28.406249694526196,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              28.031250223517418
+            ],
+            "mean_absolute_opposite": 28.031250223517418,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              25.015625186264515
+            ],
+            "mean_absolute_opposite": 25.015625186264515,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              30.249999828170985
+            ],
+            "mean_absolute_opposite": 30.249999828170985,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              3.906249701976776
+            ],
+            "mean_absolute_opposite": 3.906249701976776,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              28.421875309199095
+            ],
+            "mean_absolute_opposite": 28.421875309199095,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      },
+      "slots_only": {
+        "ordered": 3,
+        "tied_pairs": 1,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 3,
+        "both_donor_signs_correct_pairs": 0,
+        "correct_donor_signs": 6,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 0.0078125,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.07812488079071045
+            ],
+            "mean_absolute_opposite": 0.07812488079071045,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              0.015625
+            ],
+            "mean_absolute_opposite": 0.015625,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              -0.25
+            ],
+            "mean_absolute_opposite": 0.25,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.0
+            ],
+            "mean_absolute_opposite": 0.0,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              0.24999958276748657
+            ],
+            "mean_absolute_opposite": 0.24999958276748657,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              -0.15625
+            ],
+            "mean_absolute_opposite": 0.15625,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      },
+      "suffix_only": {
+        "ordered": 6,
+        "tied_pairs": 0,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 6,
+        "both_donor_signs_correct_pairs": 5,
+        "correct_donor_signs": 11,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 27.593749806750566,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              27.562499241903424
+            ],
+            "mean_absolute_opposite": 27.562499241903424,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              27.625000371597707
+            ],
+            "mean_absolute_opposite": 27.625000371597707,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              25.078125175088644
+            ],
+            "mean_absolute_opposite": 25.078125175088644,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              30.218750256113708
+            ],
+            "mean_absolute_opposite": 30.218750256113708,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              3.6874999403953552
+            ],
+            "mean_absolute_opposite": 3.6874999403953552,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              28.109375019557774
+            ],
+            "mean_absolute_opposite": 28.109375019557774,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      },
+      "slots_and_suffix": {
+        "ordered": 6,
+        "tied_pairs": 0,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 6,
+        "both_donor_signs_correct_pairs": 5,
+        "correct_donor_signs": 11,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 28.218749959021807,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              28.406249694526196
+            ],
+            "mean_absolute_opposite": 28.406249694526196,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              28.031250223517418
+            ],
+            "mean_absolute_opposite": 28.031250223517418,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              25.015625186264515
+            ],
+            "mean_absolute_opposite": 25.015625186264515,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              30.249999828170985
+            ],
+            "mean_absolute_opposite": 30.249999828170985,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              3.906249701976776
+            ],
+            "mean_absolute_opposite": 3.906249701976776,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              28.421875309199095
+            ],
+            "mean_absolute_opposite": 28.421875309199095,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      }
+    }
+  },
+  "replay-gemma": {
+    "source_commit": "1d36e662df170359b36504051f836677df0e7245",
+    "model": "gemma2b",
+    "status": "COMPLETED_DEVELOPMENT_PROBE",
+    "neutral_geometries": {
+      "short": {
+        "max_abs_label_logprob": 0.1613452434539795,
+        "max_abs_slot_difference": 1.0,
+        "max_abs_vocab_logit": 0.5
+      },
+      "same_length": {
+        "max_abs_label_logprob": 0.0,
+        "max_abs_slot_difference": 0.0,
+        "max_abs_vocab_logit": 0.0
+      }
+    },
+    "prior_native_label_score_max_abs": 0.0,
+    "native_vs_opaque_slot_max_abs": 0.0,
+    "full_span_exact_vocab_replays": 24,
+    "same_sign_as_native_out_of_12": {
+      "native_words": 12,
+      "slots_only": 7,
+      "suffix_only": 12,
+      "slots_and_suffix": 12
+    },
+    "max_abs_vocab_logit_from_native": {
+      "native_words": 0.0,
+      "slots_only": 19.71875,
+      "suffix_only": 6.2265625,
+      "slots_and_suffix": 0.0
+    },
+    "donor_orders": 24,
+    "neutral_orders": 12,
+    "routes": {
+      "native_words": {
+        "ordered": 6,
+        "tied_pairs": 0,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 6,
+        "both_donor_signs_correct_pairs": 6,
+        "correct_donor_signs": 12,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 19.67187493011079,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              20.062500116880983
+            ],
+            "mean_absolute_opposite": 20.062500116880983,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              20.781250224225005
+            ],
+            "mean_absolute_opposite": 20.781250224225005,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              13.281249589374056
+            ],
+            "mean_absolute_opposite": 13.281249589374056,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              20.90624966572068
+            ],
+            "mean_absolute_opposite": 20.90624966572068,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              6.343749900115654
+            ],
+            "mean_absolute_opposite": 6.343749900115654,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              19.281249743340595
+            ],
+            "mean_absolute_opposite": 19.281249743340595,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      },
+      "slots_only": {
+        "ordered": 4,
+        "tied_pairs": 0,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 4,
+        "both_donor_signs_correct_pairs": 1,
+        "correct_donor_signs": 7,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 0.21875000244472176,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              0.34375021583400667
+            ],
+            "mean_absolute_opposite": 0.34375021583400667,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              1.1875
+            ],
+            "mean_absolute_opposite": 1.1875,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              0.25000012409873307
+            ],
+            "mean_absolute_opposite": 0.25000012409873307,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              0.18749988079071045
+            ],
+            "mean_absolute_opposite": 0.18749988079071045,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              -0.5624999776482582
+            ],
+            "mean_absolute_opposite": 0.5624999776482582,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              -0.18750012828968465
+            ],
+            "mean_absolute_opposite": 0.18750012828968465,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      },
+      "suffix_only": {
+        "ordered": 6,
+        "tied_pairs": 0,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 6,
+        "both_donor_signs_correct_pairs": 6,
+        "correct_donor_signs": 12,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 19.73437510220174,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              20.0625002446468
+            ],
+            "mean_absolute_opposite": 20.0625002446468,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              20.406249833806214
+            ],
+            "mean_absolute_opposite": 20.406249833806214,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              12.687499813764589
+            ],
+            "mean_absolute_opposite": 12.687499813764589,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              20.56249960826608
+            ],
+            "mean_absolute_opposite": 20.56249960826608,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              6.343750235449988
+            ],
+            "mean_absolute_opposite": 6.343750235449988,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              19.40624995975668
+            ],
+            "mean_absolute_opposite": 19.40624995975668,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      },
+      "slots_and_suffix": {
+        "ordered": 6,
+        "tied_pairs": 0,
+        "pairs_observed": 6,
+        "pairs_planned": 6,
+        "all_phrasings_ordered_groups": 6,
+        "both_donor_signs_correct_pairs": 6,
+        "correct_donor_signs": 12,
+        "tied_donor_signs": 0,
+        "donors_observed": 12,
+        "median_signed_pole_gap": 19.67187493011079,
+        "groups": {
+          "archive": {
+            "pole_gaps": [
+              20.062500116880983
+            ],
+            "mean_absolute_opposite": 20.062500116880983,
+            "mean_absolute_paraphrase": null
+          },
+          "route": {
+            "pole_gaps": [
+              20.781250224225005
+            ],
+            "mean_absolute_opposite": 20.781250224225005,
+            "mean_absolute_paraphrase": null
+          },
+          "notes": {
+            "pole_gaps": [
+              13.281249589374056
+            ],
+            "mean_absolute_opposite": 13.281249589374056,
+            "mean_absolute_paraphrase": null
+          },
+          "temperature": {
+            "pole_gaps": [
+              20.90624966572068
+            ],
+            "mean_absolute_opposite": 20.90624966572068,
+            "mean_absolute_paraphrase": null
+          },
+          "shelf": {
+            "pole_gaps": [
+              6.343749900115654
+            ],
+            "mean_absolute_opposite": 6.343749900115654,
+            "mean_absolute_paraphrase": null
+          },
+          "directions": {
+            "pole_gaps": [
+              19.281249743340595
+            ],
+            "mean_absolute_opposite": 19.281249743340595,
+            "mean_absolute_paraphrase": null
+          }
+        }
+      }
+    }
+  }
+}

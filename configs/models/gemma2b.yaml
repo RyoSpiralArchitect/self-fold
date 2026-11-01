@@ -1,7 +1,9 @@
 id: gemma2b
 model_id: google/gemma-2-2b-it
 model_type: gemma2
-status: PROPOSED_NOT_PRETRAINED_TESTED
+status: PRETRAINED_CONTENT_PROBES_RECORDED
+tested_snapshot_revision: 299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8
+tested_checkpoint_sha256: f3503907cc4d2ace62abccf30393a05919827c1c8969b2f2755f15627b9756ad
 checkpoint_path: null
 pinned_revision: null
 local_only: true

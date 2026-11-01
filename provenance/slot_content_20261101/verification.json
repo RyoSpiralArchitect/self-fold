@@ -1,0 +1,30 @@
+{
+  "furnace_preflights": {
+    "content": {
+      "tests": 99,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0
+    },
+    "alignment": {
+      "tests": 100,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0
+    },
+    "replay": {
+      "tests": 101,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0
+    }
+  },
+  "verified_sources": {
+    "eac5155eaa64fc36eb0219a0bda56a8e538c3103": "2769c4e960865c2954f2212821ed780bcff0eee01f540f0b97643b1b17e4cf96",
+    "a714567a1e5d4c7931ae99a10d01633a57123491": "6c5b7d19b65a2dac40fa3435d6571ded2dc772e46312c7365f14f7acf381cc27",
+    "1d36e662df170359b36504051f836677df0e7245": "8c9fdf718ff59159f4b66a8b0d39c960a63ddc37cfaae14d352248462e37ed5d"
+  },
+  "trial_files": 460,
+  "states_restored": 192,
+  "native_hook_parity_all_trials": true
+}
