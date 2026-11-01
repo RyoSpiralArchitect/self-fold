@@ -1,0 +1,23 @@
+{
+  "source_commit": "fd56a200c3e9f96570a09df4cd5f119c34736c0b",
+  "suite": {
+    "tests": 94,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "passed": 94
+  },
+  "hf": {
+    "tests": 4,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "passed": 4
+  },
+  "hf_random_configuration_cases": [
+    "test_real_hf_architecture_without_download[mistral]",
+    "test_real_hf_architecture_without_download[llama]",
+    "test_real_hf_architecture_without_download[gemma2]",
+    "test_real_hf_architecture_without_download[phimoe]"
+  ]
+}

@@ -25,11 +25,16 @@ def test_data_rebuild_identical():
 
 @pytest.mark.parametrize("name",["mistral7b","llama3b","gemma2b","phi_mini_moe","phi_tiny_moe"])
 def test_profiles_not_overclaim(name):
- p=yaml.safe_load((ROOT/f"configs/models/{name}.yaml").read_text())
- assert p["local_only"] and not p["trust_remote_code"]
- assert p["pinned_revision"] is None and p["checkpoint_path"] is None
- assert "NOT_PRETRAINED_TESTED" in p["status"]
- assert p["approx_active_parameters_billions"]<=p["approx_total_parameters_billions"]
+    profile = yaml.safe_load((ROOT / f"configs/models/{name}.yaml").read_text())
+    assert profile["local_only"] and not profile["trust_remote_code"]
+    assert profile["pinned_revision"] is None and profile["checkpoint_path"] is None
+    if name == "mistral7b":
+        receipt = ROOT / "provenance/mistral_eos_20261101/trials/caution_plus_p0_self-eos/checkpoint_identity.json"
+        assert profile["status"] == "PRETRAINED_ENGINEERING_CANARY_RECORDED"
+        assert profile["tested_checkpoint_sha256"] == json.loads(receipt.read_text())["checkpoint_sha256"]
+    else:
+        assert "NOT_PRETRAINED_TESTED" in profile["status"]
+    assert profile["approx_active_parameters_billions"] <= profile["approx_total_parameters_billions"]
 
 def test_example_gate_not_passing():
  g=json.loads((ROOT/"configs/qualification.example.json").read_text())

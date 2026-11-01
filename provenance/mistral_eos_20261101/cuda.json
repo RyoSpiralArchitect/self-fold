@@ -1,0 +1,40 @@
+{
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "capability": [
+    12,
+    0
+  ],
+  "compiled_arches": [
+    "sm_75",
+    "sm_80",
+    "sm_86",
+    "sm_90",
+    "sm_100",
+    "sm_120"
+  ],
+  "runtime_cuda": "13.2",
+  "bfloat16_matmul": [
+    [
+      7.0,
+      10.0
+    ],
+    [
+      15.0,
+      22.0
+    ]
+  ],
+  "python": "3.14.4",
+  "packages": {
+    "torch": "2.13.0+cu132",
+    "transformers": "4.57.1",
+    "tokenizers": "0.22.2",
+    "sentencepiece": "0.2.2",
+    "numpy": "2.5.4",
+    "PyYAML": "6.0.3",
+    "pytest": "9.1.1",
+    "accelerate": "1.14.0",
+    "safetensors": "0.8.0",
+    "huggingface-hub": "0.36.2",
+    "protobuf": "7.35.1"
+  }
+}

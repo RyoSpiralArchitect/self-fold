@@ -1,7 +1,9 @@
 id: mistral7b
 model_id: mistralai/Mistral-7B-Instruct-v0.3
 model_type: mistral
-status: PROPOSED_NOT_PRETRAINED_TESTED
+status: PRETRAINED_ENGINEERING_CANARY_RECORDED
+tested_snapshot_revision: c170c708c41dac9275d15a8fff4eca08d52bab71
+tested_checkpoint_sha256: 5d141a13ea9f5fce9c142bc26bdef64ea905fd9d27c64aff472f6875dd4296e9
 checkpoint_path: null
 pinned_revision: null
 local_only: true

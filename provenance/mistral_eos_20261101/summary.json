@@ -1,0 +1,414 @@
+{
+  "trials": {
+    "caution_plus_p0_self-eos": {
+      "source": "fd56a200c3e9f96570a09df4cd5f119c34736c0b",
+      "checkpoint": "5d141a13ea9f5fce9c142bc26bdef64ea905fd9d27c64aff472f6875dd4296e9",
+      "native_parity_max_abs": 0.0,
+      "L_B_same_start": true,
+      "L_B_same_first_G": true,
+      "state_sha256": {
+        "T": [
+          "1ceb5d03494b7428648615a1183ebf225d5e69844e7125e89b294a3a64cbc4d2",
+          "3694845b0a43b205f1749f029390555885b8883ee57c2772789c11f54c6ceb21",
+          "ab94a3834f973a5be6f85d81c0c4d9649bcff178f96f0a318c5b1f00568e7665"
+        ],
+        "L": [
+          "0677b99ffe0a74cdec1e40bde37868dfb20ae711f2b30280acd21177b7d82db0",
+          "399ab6f795a39e5be0f1cfa74f791f0b75fd1fa8addf2c3b854810e26631f182",
+          "28f97dcb24e7886aa60da4ff1d13a99c88f6d715998f7dca8115de2a210373d4"
+        ],
+        "B": [
+          "0677b99ffe0a74cdec1e40bde37868dfb20ae711f2b30280acd21177b7d82db0",
+          "f6fc05c6b8e996d6c28ca9a0bf4e5bd1490a02cebeee7dc528f3c0ae289f59df",
+          "f6fc05c6b8e996d6c28ca9a0bf4e5bd1490a02cebeee7dc528f3c0ae289f59df"
+        ]
+      },
+      "generations": {
+        "T_main": [
+          {
+            "stop": "eos",
+            "tokens": 27
+          },
+          {
+            "stop": "eos",
+            "tokens": 35
+          }
+        ],
+        "B_main": [
+          {
+            "stop": "eos",
+            "tokens": 13
+          },
+          {
+            "stop": "eos",
+            "tokens": 13
+          }
+        ],
+        "L_observer": [
+          {
+            "stop": "eos",
+            "tokens": 13
+          },
+          {
+            "stop": "eos",
+            "tokens": 14
+          }
+        ],
+        "B_observer": [
+          {
+            "stop": "eos",
+            "tokens": 23
+          },
+          {
+            "stop": "eos",
+            "tokens": 23
+          }
+        ],
+        "L_final_branch": [
+          {
+            "stop": "eos",
+            "tokens": 14
+          }
+        ]
+      },
+      "main_forwards": {
+        "T": 64,
+        "L": 2,
+        "B": 32
+      },
+      "task_correct_out_of_two_at_0_and_2": {
+        "T": [
+          1,
+          1
+        ],
+        "L": [
+          1,
+          1
+        ],
+        "B": [
+          1,
+          1
+        ]
+      },
+      "compute_including_observers_tasks_and_branch": {
+        "forwards": 219,
+        "generated_tokens": 184,
+        "processed_tokens": 19322
+      }
+    },
+    "caution_plus_p0_self-cap8": {
+      "source": "fd56a200c3e9f96570a09df4cd5f119c34736c0b",
+      "checkpoint": "5d141a13ea9f5fce9c142bc26bdef64ea905fd9d27c64aff472f6875dd4296e9",
+      "native_parity_max_abs": 0.0,
+      "L_B_same_start": true,
+      "L_B_same_first_G": true,
+      "state_sha256": {
+        "T": [
+          "1ceb5d03494b7428648615a1183ebf225d5e69844e7125e89b294a3a64cbc4d2",
+          "a4af95659b193739ce9ec5100a03d24f58a0196910535c9501b948b0921a87b7",
+          "dbe2924e465626e9decad3d06885c3c02c56dbfa1b4371192c71fecbf98927a6"
+        ],
+        "L": [
+          "0677b99ffe0a74cdec1e40bde37868dfb20ae711f2b30280acd21177b7d82db0",
+          "399ab6f795a39e5be0f1cfa74f791f0b75fd1fa8addf2c3b854810e26631f182",
+          "28f97dcb24e7886aa60da4ff1d13a99c88f6d715998f7dca8115de2a210373d4"
+        ],
+        "B": [
+          "0677b99ffe0a74cdec1e40bde37868dfb20ae711f2b30280acd21177b7d82db0",
+          "74f30e697b313495f78d2ce493cc43925d89c08d01de008c7a19588b2cf94f1a",
+          "74f30e697b313495f78d2ce493cc43925d89c08d01de008c7a19588b2cf94f1a"
+        ]
+      },
+      "generations": {
+        "T_main": [
+          {
+            "stop": "length",
+            "tokens": 8
+          },
+          {
+            "stop": "length",
+            "tokens": 8
+          }
+        ],
+        "B_main": [
+          {
+            "stop": "length",
+            "tokens": 8
+          },
+          {
+            "stop": "length",
+            "tokens": 8
+          }
+        ],
+        "L_observer": [
+          {
+            "stop": "length",
+            "tokens": 8
+          },
+          {
+            "stop": "length",
+            "tokens": 8
+          }
+        ],
+        "B_observer": [
+          {
+            "stop": "length",
+            "tokens": 8
+          },
+          {
+            "stop": "length",
+            "tokens": 8
+          }
+        ],
+        "L_final_branch": [
+          {
+            "stop": "length",
+            "tokens": 8
+          }
+        ]
+      },
+      "main_forwards": {
+        "T": 16,
+        "L": 2,
+        "B": 20
+      },
+      "task_correct_out_of_two_at_0_and_2": {
+        "T": [
+          1,
+          1
+        ],
+        "L": [
+          1,
+          1
+        ],
+        "B": [
+          1,
+          1
+        ]
+      },
+      "compute_including_observers_tasks_and_branch": {
+        "forwards": 107,
+        "generated_tokens": 72,
+        "processed_tokens": 8287
+      }
+    },
+    "caution_minus_p0_self-eos": {
+      "source": "fd56a200c3e9f96570a09df4cd5f119c34736c0b",
+      "checkpoint": "5d141a13ea9f5fce9c142bc26bdef64ea905fd9d27c64aff472f6875dd4296e9",
+      "native_parity_max_abs": 0.0,
+      "L_B_same_start": true,
+      "L_B_same_first_G": true,
+      "state_sha256": {
+        "T": [
+          "57d7f8653bfae215b06e7072b0a549670ca613f2e104504a6256b3cb7472b8d7",
+          "7b8e68820a1de471f863ccdabd1cd992c7639c6a86a6332491bb858c7812b1ba",
+          "2b004b2dc42941cb69cb225c32f378f39dc851137a7785d0cf5cfae14b8a689d"
+        ],
+        "L": [
+          "c6d75f3f26c6a5b8aeb24afaaff2dc967cd1c2ddb7d9856c782d34b2634b7c00",
+          "ded9fb969fe512050b764bfd473cfaaf2af6005fbaf0407faf2faa790e2ccdd8",
+          "14de0b8dc53bffd4d79cd702b9ca58c5f85a5128fac075dbb7db5457cec2eed7"
+        ],
+        "B": [
+          "c6d75f3f26c6a5b8aeb24afaaff2dc967cd1c2ddb7d9856c782d34b2634b7c00",
+          "f6fc05c6b8e996d6c28ca9a0bf4e5bd1490a02cebeee7dc528f3c0ae289f59df",
+          "f6fc05c6b8e996d6c28ca9a0bf4e5bd1490a02cebeee7dc528f3c0ae289f59df"
+        ]
+      },
+      "generations": {
+        "T_main": [
+          {
+            "stop": "eos",
+            "tokens": 23
+          },
+          {
+            "stop": "eos",
+            "tokens": 31
+          }
+        ],
+        "B_main": [
+          {
+            "stop": "eos",
+            "tokens": 13
+          },
+          {
+            "stop": "eos",
+            "tokens": 13
+          }
+        ],
+        "L_observer": [
+          {
+            "stop": "eos",
+            "tokens": 13
+          },
+          {
+            "stop": "eos",
+            "tokens": 14
+          }
+        ],
+        "B_observer": [
+          {
+            "stop": "eos",
+            "tokens": 23
+          },
+          {
+            "stop": "eos",
+            "tokens": 23
+          }
+        ],
+        "L_final_branch": [
+          {
+            "stop": "eos",
+            "tokens": 14
+          }
+        ]
+      },
+      "main_forwards": {
+        "T": 56,
+        "L": 2,
+        "B": 32
+      },
+      "task_correct_out_of_two_at_0_and_2": {
+        "T": [
+          1,
+          1
+        ],
+        "L": [
+          1,
+          1
+        ],
+        "B": [
+          1,
+          1
+        ]
+      },
+      "compute_including_observers_tasks_and_branch": {
+        "forwards": 211,
+        "generated_tokens": 176,
+        "processed_tokens": 17985
+      }
+    },
+    "caution_minus_p0_self-cap8": {
+      "source": "fd56a200c3e9f96570a09df4cd5f119c34736c0b",
+      "checkpoint": "5d141a13ea9f5fce9c142bc26bdef64ea905fd9d27c64aff472f6875dd4296e9",
+      "native_parity_max_abs": 0.0,
+      "L_B_same_start": true,
+      "L_B_same_first_G": true,
+      "state_sha256": {
+        "T": [
+          "57d7f8653bfae215b06e7072b0a549670ca613f2e104504a6256b3cb7472b8d7",
+          "45b9df68bbcfad0701010256c1f27234f8fba4ff39502ae8843619b1b749e7f3",
+          "d2f7a443b357d778240f8f41beb73b3e34936ef9e87adc7aa138d3db525b2271"
+        ],
+        "L": [
+          "c6d75f3f26c6a5b8aeb24afaaff2dc967cd1c2ddb7d9856c782d34b2634b7c00",
+          "ded9fb969fe512050b764bfd473cfaaf2af6005fbaf0407faf2faa790e2ccdd8",
+          "14de0b8dc53bffd4d79cd702b9ca58c5f85a5128fac075dbb7db5457cec2eed7"
+        ],
+        "B": [
+          "c6d75f3f26c6a5b8aeb24afaaff2dc967cd1c2ddb7d9856c782d34b2634b7c00",
+          "74f30e697b313495f78d2ce493cc43925d89c08d01de008c7a19588b2cf94f1a",
+          "74f30e697b313495f78d2ce493cc43925d89c08d01de008c7a19588b2cf94f1a"
+        ]
+      },
+      "generations": {
+        "T_main": [
+          {
+            "stop": "length",
+            "tokens": 8
+          },
+          {
+            "stop": "length",
+            "tokens": 8
+          }
+        ],
+        "B_main": [
+          {
+            "stop": "length",
+            "tokens": 8
+          },
+          {
+            "stop": "length",
+            "tokens": 8
+          }
+        ],
+        "L_observer": [
+          {
+            "stop": "length",
+            "tokens": 8
+          },
+          {
+            "stop": "length",
+            "tokens": 8
+          }
+        ],
+        "B_observer": [
+          {
+            "stop": "length",
+            "tokens": 8
+          },
+          {
+            "stop": "length",
+            "tokens": 8
+          }
+        ],
+        "L_final_branch": [
+          {
+            "stop": "length",
+            "tokens": 8
+          }
+        ]
+      },
+      "main_forwards": {
+        "T": 16,
+        "L": 2,
+        "B": 20
+      },
+      "task_correct_out_of_two_at_0_and_2": {
+        "T": [
+          1,
+          0
+        ],
+        "L": [
+          1,
+          1
+        ],
+        "B": [
+          1,
+          1
+        ]
+      },
+      "compute_including_observers_tasks_and_branch": {
+        "forwards": 107,
+        "generated_tokens": 72,
+        "processed_tokens": 8274
+      }
+    }
+  },
+  "by_policy": {
+    "eos": {
+      "generation_stops_all_roles": {
+        "eos": 18
+      },
+      "distinct_post_update_states": {
+        "T": 4,
+        "L": 4,
+        "B": 1
+      }
+    },
+    "cap8": {
+      "generation_stops_all_roles": {
+        "length": 18
+      },
+      "distinct_post_update_states": {
+        "T": 4,
+        "L": 4,
+        "B": 1
+      }
+    }
+  },
+  "L_state_hashes_equal_across_policies": {
+    "caution_plus_p0_self": true,
+    "caution_minus_p0_self": true
+  }
+}
