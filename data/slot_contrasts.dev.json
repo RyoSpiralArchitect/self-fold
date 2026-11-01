@@ -1,0 +1,108 @@
+{
+  "archive": {
+    "id": "caution",
+    "question": "Which priority does the speaker give to decisions?",
+    "options": [
+      "keeping a decision open to revision",
+      "reaching a decision promptly"
+    ]
+  },
+  "groups": [
+    {
+      "id": "archive",
+      "question": "Which reports does the speaker put at the front of an archive?",
+      "options": [
+        "the most recent reports",
+        "the earliest reports"
+      ],
+      "plus": [
+        "I put the newest reports at the front of my archive.",
+        "For my archive I file the latest reports first."
+      ],
+      "minus": [
+        "I put the oldest reports at the front of my archive.",
+        "For my archive I file the earliest reports first."
+      ]
+    },
+    {
+      "id": "route",
+      "question": "Which path does the speaker prefer on a walk?",
+      "options": [
+        "the path along the river",
+        "the path along the ridge"
+      ],
+      "plus": [
+        "I choose the riverside trail for my walks.",
+        "When walking, I favor following the riverbank."
+      ],
+      "minus": [
+        "I choose the ridge trail for my walks.",
+        "When walking, I favor following the crest of the hill."
+      ]
+    },
+    {
+      "id": "notes",
+      "question": "How does the speaker prefer to take meeting notes?",
+      "options": [
+        "preserve the exact words",
+        "summarize the main ideas"
+      ],
+      "plus": [
+        "I record a meeting in the speakers' exact words.",
+        "My meeting notes preserve what people say word for word."
+      ],
+      "minus": [
+        "I record a meeting by summarizing its main points.",
+        "My meeting notes capture the gist of what people say."
+      ]
+    },
+    {
+      "id": "temperature",
+      "question": "Which temperature scale does the speaker use in a weather log?",
+      "options": [
+        "degrees Celsius",
+        "degrees Fahrenheit"
+      ],
+      "plus": [
+        "I record the weather in degrees Celsius.",
+        "My weather diary uses the Celsius scale."
+      ],
+      "minus": [
+        "I record the weather in degrees Fahrenheit.",
+        "My weather diary uses the Fahrenheit scale."
+      ]
+    },
+    {
+      "id": "shelf",
+      "question": "What determines where the speaker shelves a book?",
+      "options": [
+        "who wrote it",
+        "what it is about"
+      ],
+      "plus": [
+        "I group the books on my shelves by author.",
+        "On my bookshelf, works by the same writer sit together."
+      ],
+      "minus": [
+        "I group the books on my shelves by subject.",
+        "On my bookshelf, works on the same topic sit together."
+      ]
+    },
+    {
+      "id": "directions",
+      "question": "What does the speaker use when giving directions?",
+      "options": [
+        "street names",
+        "recognizable landmarks"
+      ],
+      "plus": [
+        "I give directions by naming the streets to take.",
+        "I guide people by telling them the road names."
+      ],
+      "minus": [
+        "I give directions by pointing out landmarks along the way.",
+        "I guide people by describing recognizable sights on the route."
+      ]
+    }
+  ]
+}

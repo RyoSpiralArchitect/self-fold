@@ -238,16 +238,16 @@ class SlotHost:
     def decode(self, state: State) -> TextOutput:
         return self.generate(prompts.read_prompt(), state)
 
-    def score_choices(self, state: State, question: str, labels: list[str]) -> dict:
-        """Teacher-forced full label likelihood. No label-length normalization or task feedback."""
-        prompt = prompts.task_prompt(question, text=state.text)
+    def score_choices(self, state: State | None, question: str, labels: list[str]) -> dict:
+        """Full label likelihood. None leaves the same slot placeholders uninjected."""
+        prompt = prompts.task_prompt(question, text=state.text if state is not None else None)
         ids, pos = self.render(prompt)
         result = {}
         for label in labels:
             answer = self.tokenizer.encode(label, add_special_tokens=False)
             if not answer:
                 raise ValueError("Empty answer tokenization")
-            logits, _ = self.forward(ids+answer, state=state if state.slots is not None else None,
+            logits, _ = self.forward(ids+answer, state=state if state is not None and state.slots is not None else None,
                                       input_positions=pos.get(prompts.INPUT_MARKER, ()))
             lp = logits[0, len(ids)-1:len(ids)+len(answer)-1].float().log_softmax(-1)
             idx = torch.tensor(answer, device=lp.device)
