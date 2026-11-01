@@ -126,7 +126,9 @@
   },
   "frozen_baseline": {
     "base_commit": "6b054baf2571c3fa0e4f19d5d841ea760d3eaba2",
+    "base_tree_sha": "c1045ebdd58d22c2a2413d70a07b1d0aa6cf00b3",
     "changed_baseline_files": [],
+    "check": "reconstructed_git_tree_from_working_bytes_and_index_paths_modes",
     "checked_baseline_files": 1097
   },
   "geometry": {
@@ -155,10 +157,10 @@
   },
   "new_model_forwards": 0,
   "plan_files_sha256": {
-    "PLAN.md": "79c5902d33c071468d9e77b0263a22db79eb02c7e865a9731945454c0c747868",
+    "PLAN.md": "64d113578f689e7db3dbdea10f1f9f0ccb2a217da63318a8006b351981eaefe6",
     "cell_reducer.py": "782561e300a6d9b0977ed7f36151510446cda5252372fd776c666bee8549fcca",
-    "design.json": "dfd1a3d8dfea7042fcfd7c1c863993fd6a743a35d5edfc030565f56adfabae3d",
-    "verify.py": "0da6667f3c3eb75dba515408280ff4dd6df3d5794b4344f64fa60c68c195e218"
+    "design.json": "0b5beb8f8e578fbe23cbfcacd9abb71ba6da508636c792098ed95665ef9fcebd",
+    "verify.py": "f74e82a6a9f696d91482c9470c3dc2de223a012906e9d862a8efd08f274283ef"
   },
   "remaining_execution_gates": [
     "explicit_score_index_adapter_and_tests",
@@ -168,5 +170,5 @@
   ],
   "runtime_tokenizer_or_checkpoint_loaded": false,
   "status": "PLAN_VALIDATED_NO_GPU_RUN",
-  "tests_sha256": "a6d6c973bea9c889973837cefbd6fba1329df73e21d546c2e4d89d8d6390312c"
+  "tests_sha256": "0b5b12d7f820024c8697211d7d50af651596a147c455b41f5fa64334978c4f4d"
 }

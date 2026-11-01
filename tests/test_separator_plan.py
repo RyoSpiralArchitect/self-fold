@@ -3,6 +3,7 @@ from copy import deepcopy
 import importlib.util
 import json
 from pathlib import Path
+import subprocess
 
 import pytest
 
@@ -125,6 +126,26 @@ def test_checkpoint_cut_and_source_identity_are_checked_against_the_archive(conf
     broken["models"]["mistral"]["checkpoint_sha256"] = "0" * 64
     with pytest.raises(ValueError, match="Checkpoint fingerprint"):
         plan.archive_identity("mistral", "original", broken)
+
+
+def test_baseline_tree_check_needs_no_historical_commit_and_detects_changed_bytes(tmp_path, monkeypatch, config):
+    repo = tmp_path / "shallow_like_repo"
+    repo.mkdir()
+    subprocess.run(["git", "init", "-q", str(repo)], check=True)
+    (repo / "a").mkdir()
+    (repo / "a/file").write_text("nested frozen content\n")
+    (repo / "a.txt").write_text("sibling tests Git directory sorting\n")
+    subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
+    frozen_tree = subprocess.check_output(["git", "-C", str(repo), "write-tree"], text=True).strip()
+    # This repository has no commits at all, which is stronger than missing the
+    # base object in a shallow checkout. Its frozen materialized tree is enough.
+    cfg = deepcopy(config)
+    cfg.update(frozen_base_tree_sha=frozen_tree, frozen_base_file_count=2)
+    monkeypatch.setattr(plan, "ROOT", repo)
+    assert plan.frozen_files(cfg)["base_tree_sha"] == frozen_tree
+    (repo / "a/file").write_text("modified\n")
+    with pytest.raises(ValueError, match="Frozen baseline tree changed"):
+        plan.frozen_files(cfg)
 
 
 def test_missing_cell_or_shifted_distance_cannot_silently_enter_analysis(config):

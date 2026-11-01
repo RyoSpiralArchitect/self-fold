@@ -443,5 +443,10 @@ HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 python -m pytest -q
 the estimable design ranks, the unavoidable coordinate alias, mask graph closure,
 planned denominators and the compute arithmetic. Its deterministic JSON receipt
 and layout digest can be checked before implementing or loading any GPU model.
+The baseline check reconstructs the exact frozen Git tree from working bytes and
+indexed paths/modes, excluding only this new study directory and its new test.
+It compares the root tree ID and file count sealed in `design.json`, so a shallow
+CI checkout needs neither the historical commit object nor a network fetch.
+Changes, deletions and additions outside that additive scope fail the check.
 The runtime mask and score adapters remain separately required, explicitly
 unvalidated implementation work. No new scientific result is asserted here.

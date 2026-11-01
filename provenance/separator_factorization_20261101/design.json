@@ -3,6 +3,8 @@
   "status": "PREREGISTRATION_PLAN_ONLY",
   "date_jst": "2026-11-01",
   "frozen_base_commit": "6b054baf2571c3fa0e4f19d5d841ea760d3eaba2",
+  "frozen_base_tree_sha": "c1045ebdd58d22c2a2413d70a07b1d0aa6cf00b3",
+  "frozen_base_file_count": 1097,
   "panels": ["original", "prospective"],
   "topics_per_panel": 6,
   "models": {

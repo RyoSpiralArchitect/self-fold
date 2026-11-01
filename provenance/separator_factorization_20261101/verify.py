@@ -417,24 +417,45 @@ def finite_panel_decision(contrasts, references, *, delta=0.05, required_topics=
 
 
 def frozen_files(config):
-    raw = subprocess.check_output(["git", "-C", str(ROOT), "ls-tree", "-r", "-z", config["frozen_base_commit"]])
-    changed, count = [], 0
+    # actions/checkout uses shallow history by default. Reconstruct the old tree
+    # from actual working bytes and indexed names/modes, excluding ONLY this
+    # additive study and its new test. No fetch or old commit object is needed.
+    raw = subprocess.check_output(["git", "-C", str(ROOT), "ls-files", "--stage", "-z"])
+    tree, count = {}, 0
+
+    def git_sha(kind, content):
+        return hashlib.sha1(f"{kind} {len(content)}\0".encode() + content).hexdigest()
+
+    def tree_sha(node):
+        entries = []
+        for name, child in sorted(node.items(), key=lambda item: item[0] + ("/" if isinstance(item[1], dict) else "")):
+            mode, sha = ("40000", tree_sha(child)) if isinstance(child, dict) else child
+            entries.append(f"{mode} {name}\0".encode() + bytes.fromhex(sha))
+        return git_sha("tree", b"".join(entries))
+
     for entry in raw.split(b"\0"):
         if not entry:
             continue
         metadata, name = entry.split(b"\t", 1)
-        _, kind, expected = metadata.decode().split()
-        require(kind == "blob", "Unexpected non-blob baseline entry")
-        path = ROOT / name.decode()
-        if not path.is_file():
-            changed.append(name.decode())
+        mode, _, stage = metadata.decode().split()
+        name = name.decode()
+        if name.startswith("provenance/separator_factorization_20261101/") or name == "tests/test_separator_plan.py":
             continue
-        content = path.read_bytes()
-        if hashlib.sha1(f"blob {len(content)}\0".encode() + content).hexdigest() != expected:
-            changed.append(name.decode())
+        require(stage == "0" and mode in ("100644", "100755"), "Unexpected/conflicted baseline index entry")
+        path = ROOT / name
+        require(path.is_file() and not path.is_symlink(), "Missing/changed frozen baseline file: " + name)
+        node = tree
+        parts = Path(name).parts
+        for part in parts[:-1]:
+            node = node.setdefault(part, {})
+        node[parts[-1]] = (mode, git_sha("blob", path.read_bytes()))
         count += 1
-    require(not changed, "Frozen baseline files changed: " + ", ".join(changed))
-    return {"base_commit": config["frozen_base_commit"], "checked_baseline_files": count, "changed_baseline_files": changed}
+    require(count == config["frozen_base_file_count"], "Frozen baseline file count changed")
+    actual = tree_sha(tree)
+    require(actual == config["frozen_base_tree_sha"], "Frozen baseline tree changed")
+    return {"base_commit": config["frozen_base_commit"], "base_tree_sha": actual,
+            "checked_baseline_files": count, "changed_baseline_files": [],
+            "check": "reconstructed_git_tree_from_working_bytes_and_index_paths_modes"}
 
 
 def verify():
