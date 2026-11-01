@@ -1,0 +1,1 @@
+{"checkpoint_sha256":"5d141a13ea9f5fce9c142bc26bdef64ea905fd9d27c64aff472f6875dd4296e9","fixture_sha256":"7702cd817780713eb4f8345ee05e5e4e2176141f472a4b937b8242f0af30166b","model":"mistral7b","operator":"plain","sham_seed":4711,"snapshot_revision":"c170c708c41dac9275d15a8fff4eca08d52bab71","split":"development","study":"alignment"}
