@@ -1,6 +1,5 @@
 """T/L/B matched recurrence with cloned readouts, frozen operator schedules and receipts."""
 from __future__ import annotations
-from dataclasses import asdict
 from copy import deepcopy
 from typing import Callable
 from .records import State
@@ -15,9 +14,9 @@ def observe(host, state: State) -> dict:
         output = None if state.text is not None else host.decode(state.clone())
     if state.sha() != before:
         raise RuntimeError("Observer mutated main state")
-    return {"text": state.text if output is None else output.text,
-            "stop": "state_text" if output is None else output.stop,
-            "censored": False if output is None else output.stop == "length"}
+    if output is None:
+        return {"text": state.text, "stop": "state_text", "censored": False}
+    return output.receipt()
 
 
 def step(host, state: State, arm: str, op: str):
@@ -27,7 +26,7 @@ def step(host, state: State, arm: str, op: str):
             raise TypeError("T requires text")
         out = host.update_text(state.text, op)
         new = out.as_state()
-        action = {"text_update": asdict(out)}
+        action = {"text_update": out.receipt()}
         trace = deepcopy(host.last_trace)
         activations = {k: v.clone() for k, v in host.last_activations.items()}
     elif arm in {"L", "B"}:
@@ -39,7 +38,7 @@ def step(host, state: State, arm: str, op: str):
         action = {"updated_sha256_before_roundtrip": updated.sha()}
         if arm == "B":
             readout = host.decode(updated.clone())
-            action["roundtrip_text"] = asdict(readout)
+            action["roundtrip_text"] = readout.receipt()
             new = host.encode(readout.as_state().text)
         else:
             new = updated
@@ -69,7 +68,8 @@ def run_trajectory(host, seed_text: str, *, arm: str, regime="plain", steps=2,
                "exact_return_to_step": seen.get(state.sha()), "action": action,
                "activations": trace, "main_compute": {k: after_main[k]-before[k] for k in before}}
         if observer:
-            row["observation"] = observe(host, state)
+            # T already holds the generated text. Carry its original stop reason into review.
+            row["observation"] = action["text_update"].copy() if arm == "T" else observe(host, state)
         after = host.meter.snapshot()
         row["observer_compute"] = {k: after[k]-after_main[k] for k in after}
         seen.setdefault(state.sha(), n+1)
@@ -92,7 +92,7 @@ def branch_once(host, state: State, *, continuation_steps=2, start_step=0, regim
             intervention = None
             if kind == "language_roundtrip":
                 output = host.decode(s.clone())
-                intervention = asdict(output)
+                intervention = output.receipt()
                 s = host.encode(output.as_state().text)
             states = [s.clone()]
             for i in range(continuation_steps):

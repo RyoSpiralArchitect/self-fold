@@ -48,7 +48,7 @@ bash scripts/furnace_smoke.sh configs/models/mistral7b.yaml \
   "$MISTRAL_LOCAL_CHECKPOINT" runs/mistral-canary-001
 ```
 
-The script performs two recurrence steps in each arm, 32-token maximum readouts, bounded context, baseline/final development task scoring and a one-time branch. It is **not** a semantic pilot. Use fresh output directories for Llama, Gemma and Phi in separate processes. If an unqualified D emits empty text or cannot form a usable state, failure is expected evidence; do not replace it with a fabricated description to keep the run green.
+The script performs two recurrence steps in each arm with greedy native EOS stopping, a shared 1024-token context limit, baseline/final development task scoring and a one-time branch. It is an engineering canary. Each generation receipt records the prompt size, available output budget, emitted text-token count, stop reason and observed EOS id. EOS is excluded from the text-token count and included in compute. A nonempty output stopped by the context limit or an explicit token ceiling continues in the experiment as a censored observation. An empty generation cannot initialize the next text state. Use fresh output directories for other checkpoints.
 
 Admission checks inspect available host RAM, CUDA free memory and disk. Forward-boundary guards cap time/compute and stop when less than 2 GiB CUDA memory remains. Those checks are not a hard process supervisor and cannot interrupt a stalled GPU kernel. Batch size is one, eager attention, no quantization, no compilation, no parallel loading. Model identity hashing occurs before loading and may be I/O-heavy.
 

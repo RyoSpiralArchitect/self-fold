@@ -14,7 +14,7 @@ def local_identity(path: Path) -> dict:
     # Strong identity streams model weights once; no bytes are published.
     allowed = {".json", ".safetensors", ".model", ".txt", ".jinja", ".py"}
     files = {str(p.relative_to(path)): file_sha(p) for p in sorted(path.rglob("*"))
-             if p.is_file() and p.suffix in allowed and ".cache" not in p.parts}
+             if p.is_file() and p.suffix in allowed and ".cache" not in p.relative_to(path).parts}
     if "config.json" not in files or not any(x.endswith(".safetensors") for x in files):
         raise ValueError("Require config.json and safetensors weights; pickle/bin loads are disabled")
     return {"files": files, "checkpoint_sha256": digest(files)}
@@ -31,7 +31,7 @@ def require_native_geometry(config: dict):
 def reviewed_local_code(path: Path, receipt: Path, checkpoint_sha256: str) -> dict:
     record = json.loads(receipt.read_text())
     actual = {str(p.relative_to(path)): file_sha(p) for p in sorted(path.rglob("*.py"))
-              if p.is_file() and ".cache" not in p.parts}
+              if p.is_file() and ".cache" not in p.relative_to(path).parts}
     if not actual:
         raise ValueError("No local custom Python to review")
     if record.get("status") != "LOCAL_CODE_REVIEWED" or not record.get("reviewer"):

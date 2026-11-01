@@ -25,6 +25,38 @@ def test_generation_budget_context(host):
  host.max_context=40
  with pytest.raises(ValueError):host.generate("x"*30)
 
+@pytest.mark.parametrize("cap,room,tokens,stop,text,stop_id", [
+    (None, 5, [68, 2], "eos", "A", 2),
+    (2, 2, [68, 1], "eos", "A", 1),
+    (2, 5, [68, 69], "length", "AB", None),
+    (None, 2, [68, 69], "context_limit", "AB", None),
+    (8, 2, [68, 69], "context_limit", "AB", None),
+    (None, 2, [2], "eos", "", 2),
+    (None, 0, [], "context_limit", "", None),
+])
+def test_generation_stop_receipt(host, monkeypatch, cap, room, tokens, stop, text, stop_id):
+    prompt_ids, _ = host.render("A")
+    host.max_context = len(prompt_ids) + room
+    host.max_new_tokens = cap
+    host.eos_ids = {1, 2}
+    next_tokens = iter(tokens)
+
+    def forward(*args, **kwargs):
+        logits = torch.zeros(1, 1, 259)
+        logits[0, 0, next(next_tokens)] = 1
+        return logits, {}
+
+    monkeypatch.setattr(host, "forward", forward)
+    output = host.generate("A")
+    assert output.receipt() == {
+        "text": text, "stop": stop, "token_count": len(text), "prompt_tokens": len(prompt_ids),
+        "effective_max_new_tokens": min(cap, room) if cap is not None else room,
+        "stop_token_id": stop_id, "censored": stop != "eos",
+    }
+    assert host.meter.generated_tokens == len(tokens)
+    if text:
+        assert output.as_state().text == text
+
 def test_encode_and_real_latent_change(host):
  s=host.encode("I value reversible choices.");old=s.sha()
  assert s.slots.shape==(3,24)

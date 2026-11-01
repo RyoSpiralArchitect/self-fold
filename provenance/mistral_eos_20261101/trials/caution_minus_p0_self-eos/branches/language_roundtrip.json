@@ -1,0 +1,1 @@
+{"readout":{"censored":false,"effective_max_new_tokens":972,"prompt_tokens":52,"stop":"eos","stop_token_id":2,"text":"The current state of the subject is represented by the given workspace slots.","token_count":14},"state_sha256":["dec74e8f6274ef00d8f810aae1d8db32e4bd2f15bb6f1aa8013c5964c4e6fb95","d2ffa2f6b00e3097b4d7adc1d1a7e34490845c53cb349afa34a58057fa2fa9cf"]}

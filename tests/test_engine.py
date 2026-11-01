@@ -21,6 +21,12 @@ def test_observer_does_not_change_trajectory(host):
  b,_=run_trajectory(host,"unused",arm="L",steps=2,initial=s,observer=True)
  assert [x.sha() for x in a]==[x.sha() for x in b]
 
+def test_t_review_keeps_length_censoring(host):
+    _, rows = run_trajectory(host, "I value evidence.", arm="T", steps=1)
+    action = rows[0]["action"]["text_update"]
+    assert rows[0]["observation"] == action
+    assert action["stop"] == "length" and action["censored"]
+
 def test_L_never_decodes_without_observer(host,monkeypatch):
  def bad(*a):raise AssertionError("decode was called")
  monkeypatch.setattr(host,"decode",bad)

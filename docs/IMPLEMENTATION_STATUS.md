@@ -2,6 +2,8 @@
 
 This table records the state of the supplied starter on 2026-11-01. Its original results are in [the starter receipts](../provenance/RECEIPTS.md). The subsequent public launch ran all 85 local tests, including four random-configuration HF architecture tests, and four CPU recurrence trials. See the [launch results](../provenance/launch_cpu_20261101/RESULTS.md).
 
+The first pretrained experiment used one Mistral-7B-Instruct-v0.3 snapshot on Furnace. All four planned trials completed. EOS stopping and an eight-token ceiling were compared with the same seeds, weights and operators. See the [pretrained results](../provenance/mistral_eos_20261101/RESULTS.md) for native parity, the 94-test preflight and separate main-path and observer readouts.
+
 | Component | Status | Claim ceiling |
 |---|---|---|
 | T fresh text relay | Implemented; CPU decoder smoke tested | No pretrained quality result |
