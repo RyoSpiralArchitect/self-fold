@@ -51,6 +51,8 @@ bash scripts/furnace_smoke.sh configs/models/mistral7b.yaml \
 
 各候補を一プロセスずつ検証します。モデルの自動取得、remote codeの自動許可、量子化の自動切替、環境の自動アップグレードはありません。
 
+学習済みモデルの生成は、既定で各モデルのEOSまで続きます。`--until-eos` では全条件に同じコンテキスト上限を適用し、入力を除いた残りの枠を使います。固定長との比較には `--max-new-tokens N` を使えます。上限に達した出力も、空でなければ打ち切りの印を付けて次の更新に使います。小型CPUデコーダーは従来の8トークン設定を保ち、実装上EOSを抑制しています。
+
 | 候補profile | 学習済みcheckpoint候補 | 位置づけ |
 |---|---|---|
 | `mistral7b` | `mistralai/Mistral-7B-Instruct-v0.3` | 既存研究との接点 |

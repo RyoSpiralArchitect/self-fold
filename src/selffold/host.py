@@ -38,7 +38,7 @@ class SlotHost:
         self.writer = self.depth - 1 if writer is None else writer
         if not 1 <= self.cut <= self.writer < self.depth:
             raise ValueError("require 1 <= pre-cut <= post-writer < depth; cut=0 cannot encode context")
-        if not 1 <= slots <= 64 or not 1 <= max_new_tokens <= 512:
+        if not 1 <= slots <= 64 or (max_new_tokens is not None and not 1 <= max_new_tokens <= 512):
             raise ValueError("invalid slot or generation budget")
         self.slots = slots
         self.max_context = max_context
@@ -60,6 +60,8 @@ class SlotHost:
         eos = getattr(getattr(model, "generation_config", None), "eos_token_id", None)
         eos = eos if eos is not None else getattr(tokenizer, "eos_token_id", None)
         self.eos_ids = set(eos if isinstance(eos, (list, tuple)) else [eos]) - {None}
+        if max_new_tokens is None and not self.eos_ids:
+            raise ValueError("EOS-first generation requires a model or tokenizer EOS id")
         self.last_trace = {}
         self.last_activations = {}
         self.last_action = {}
@@ -69,6 +71,7 @@ class SlotHost:
                          "transport_sha256": self.transport.artifact_sha256,
                          "chat_template_sha256": digest(str(getattr(tokenizer, "chat_template", None))),
                          "max_context": max_context, "max_new_tokens": max_new_tokens,
+                         "generation_policy": "until_eos_or_context" if max_new_tokens is None else "capped",
                          "placeholder_id": self.placeholder_id, "eos_ids": sorted(self.eos_ids),
                          "route": "pre_cut_slots_to_post_writer_v0", "cache_policy": "none"}
 
@@ -202,12 +205,15 @@ class SlotHost:
 
     def generate(self, prompt: str, state: State | None = None) -> TextOutput:
         ids, pos = self.render(prompt)
-        if len(ids) + self.max_new_tokens > self.max_context:
-            raise ValueError("Generation budget would exceed context; never truncate implicitly")
+        budget = self.max_context - len(ids)
+        stop = "context_limit"
+        if self.max_new_tokens is not None and self.max_new_tokens <= budget:
+            budget = self.max_new_tokens
+            stop = "length"
         emitted = []
         trace, activations = {}, {}
-        stop = "length"
-        for n in range(self.max_new_tokens):
+        stop_token_id = None
+        for n in range(budget):
             logits, _ = self.forward(ids + emitted, state=state,
                                       input_positions=pos.get(prompts.INPUT_MARKER, ()),
                                       capture_positions=pos.get(prompts.INPUT_MARKER, ()), instrument=n == 0)
@@ -217,13 +223,13 @@ class SlotHost:
             self.meter.generated_tokens += 1
             if token in self.eos_ids:
                 stop = "eos"
+                stop_token_id = token
                 break
             emitted.append(token)
         self.last_trace, self.last_activations = trace, activations
         text = self.tokenizer.decode(emitted, skip_special_tokens=True).strip()
-        result = TextOutput(text, stop, len(emitted))
-        self.last_action = {"operation": "generate", "text": text, "stop": stop,
-                            "tokens": len(emitted), "censored": stop == "length"}
+        result = TextOutput(text, stop, len(emitted), len(ids), budget, stop_token_id)
+        self.last_action = {"operation": "generate", "tokens": result.token_count, **result.receipt()}
         return result
 
     def update_text(self, text: str, op: str) -> TextOutput:

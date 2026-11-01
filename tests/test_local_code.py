@@ -1,7 +1,7 @@
 import json
 from types import SimpleNamespace
 import pytest
-from selffold.loading import require_native_geometry, reviewed_local_code
+from selffold.loading import local_identity, require_native_geometry, reviewed_local_code
 from selffold.records import file_sha
 
 def test_slim_geometry_fails_before_loading():
@@ -15,7 +15,7 @@ def test_non_phi_untouched():
     require_native_geometry(dict(model_type="gemma2",hidden_size=2304,num_attention_heads=8,head_dim=256))
 
 def test_local_code_requires_exact_review(tmp_path):
-    model=tmp_path/"model";model.mkdir();code=model/"custom.py";code.write_text("# never executed\n")
+    model=tmp_path/".cache"/"hub"/"snapshot";model.mkdir(parents=True);code=model/"custom.py";code.write_text("# never executed\n")
     receipt=tmp_path/"approval.json"
     record={"status":"PENDING","reviewer":None,"checkpoint_sha256":"x","python_files":{"custom.py":file_sha(code)}}
     receipt.write_text(json.dumps(record))
@@ -24,3 +24,11 @@ def test_local_code_requires_exact_review(tmp_path):
     receipt.write_text(json.dumps(record));assert reviewed_local_code(model,receipt,"x")["reviewer"]
     code.write_text("# changed\n")
     with pytest.raises(ValueError,match="match"):reviewed_local_code(model,receipt,"x")
+
+def test_checkpoint_in_cache_fingerprints_payload_and_ignores_inner_cache(tmp_path):
+    snapshot = tmp_path / ".cache" / "hub" / "snapshots" / "revision"
+    (snapshot / ".cache").mkdir(parents=True)
+    (snapshot / "config.json").write_text("{}")
+    (snapshot / "model.safetensors").write_bytes(b"hash-only fixture")
+    (snapshot / ".cache" / "local.json").write_text("{}")
+    assert set(local_identity(snapshot)["files"]) == {"config.json", "model.safetensors"}

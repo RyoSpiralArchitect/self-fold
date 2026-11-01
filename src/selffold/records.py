@@ -1,6 +1,6 @@
 """Explicit state ownership, safe fingerprints, and immutable output directories."""
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 import hashlib
@@ -61,6 +61,12 @@ class TextOutput:
     text: str
     stop: str
     token_count: int
+    prompt_tokens: int | None = None
+    effective_max_new_tokens: int | None = None
+    stop_token_id: int | None = None
+
+    def receipt(self) -> dict:
+        return {**asdict(self), "censored": self.stop in {"length", "context_limit"}}
 
     def as_state(self) -> State:
         if not self.text.strip():

@@ -24,8 +24,11 @@ def make_host(args):
     torch.set_num_threads(args.cpu_threads)
     if args.backend == "tiny":
         model = TinyCausalLM(seed=47).to(args.device)
+        budget = args.max_new_tokens
+        if budget is None and not args.until_eos:
+            budget = 8
         host = SlotHost(model, ByteTokenizer(), slots=args.slots, max_context=args.max_context,
-                        max_new_tokens=args.max_new_tokens, wall_seconds=args.wall_seconds)
+                        max_new_tokens=budget, wall_seconds=args.wall_seconds)
         host.identity["checkpoint_sha256"] = "random_tiny_seed47_not_pretrained"
         return host, {"status": "random_weight_tiny_only"}
     if not args.profile or not args.checkpoint:
@@ -59,6 +62,7 @@ def execute(args):
     store.write("source.json", source)
     store.write("environment.before.json", inventory(ROOT))
     started = time.monotonic()
+    host = None
     try:
         host, identity = make_host(args)
         store.write("checkpoint_identity.json", identity)
@@ -122,6 +126,8 @@ def execute(args):
         print(canonical({"output": str(store.path), "status": "complete", "scientific_success": None}))
         return 0
     except Exception as exc:
+        if host is not None and host.last_action.get("operation") == "generate":
+            store.write("last_generation.json", host.last_action)
         store.write("terminal.json", {"status": "FAILED_NO_RETRY", "error_type": type(exc).__name__,
                                       "message": str(exc), "elapsed_seconds": time.monotonic()-started})
         print(f"{type(exc).__name__}: {exc}. Trial preserved at {store.path}", file=sys.stderr)
@@ -149,7 +155,11 @@ def main(argv=None):
         a.add_argument("--writer", type=int)
         a.add_argument("--slots", type=int, default=8)
         a.add_argument("--steps", type=int, default=2)
-        a.add_argument("--max-new-tokens", type=int, default=8 if name == "smoke" else 64)
+        budget = a.add_mutually_exclusive_group()
+        budget.add_argument("--until-eos", action="store_true",
+                            help="Wait for a native EOS within the context limit (HF default)")
+        budget.add_argument("--max-new-tokens", type=int,
+                            help="Shared output-token ceiling; EOS still stops early (tiny default: 8)")
         a.add_argument("--max-context", type=int, default=1536)
         a.add_argument("--wall-seconds", type=int, default=600)
         a.add_argument("--cpu-threads", type=int, default=1)
