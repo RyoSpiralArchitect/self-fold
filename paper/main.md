@@ -1,11 +1,11 @@
 # Self Without a Transcript
 ## Semantic Recurrence Across Text and Latent States
 
-**Working protocol draft, 2026-11-01.** Authorship and venue are not finalized. This is not a report of completed pretrained-model experiments.
+**Research working paper · November 1, 2026**
 
 ### Abstract
 
-We propose a study of recursive semantic self-description without retaining a dialogue transcript. The question is whether successive reinterpretations produce justified new distinctions that affect later problem solving, and whether verbalization supports or constrains this process. Three conditions separate text relay (T), continuous-state recurrence (L), and the same continuous update with an interposed language roundtrip (B). We combine a fixed expansion-oriented intervention with observations of meaning, activations, and downstream effects. Evaluation problems are withheld until recurrence has finished. One-time interventions at shared states are intended to test how a particular verbalizer/re-encoder changes subsequent trajectories. A semantic qualification gate precedes any claim that an injected-state route realizes the intended operation. The present release contains a protocol and tested small-decoder software infrastructure, not evidence of reasoning improvement, semantic selfhood, or consciousness.
+We study what changes when a frozen language model verbalizes a hidden state and re-encodes its own words. Text relay (T), latent recurrence (L) and a language roundtrip after the same latent update (B) each retain only the current state. In four Mistral-7B-Instruct-v0.3 development trials, we varied the stopping rule while holding two initial descriptions and the layer boundaries fixed. All 18 generations in the EOS condition ended naturally. B produced one stored state across the four updates under each stopping rule, while L produced four. We examine whether a separate readout can distinguish sources even when greedy verbalization coincides. The latent transport is uncalibrated and held-out task transfer remains open.
 
 ## 1. Problem formulation
 
@@ -61,15 +61,15 @@ Twelve steps and fixed assessment checkpoints are proposed, not retrospectively 
 
 Primary analysis will use paired L/B utility differences at a declared depth, while reporting semantic support and switching separately. Meaning groups and task families, rather than individual steps, determine dependence-aware inference. Same-step comparisons also report actual compute; matched-compute analyses are secondary. Failures, censored generations, exact ties and excluded cases retain explicit denominators. No winner is selected using the confirmation set's best trajectory depth.
 
-## 6. Current status and limitations
+## 6. Development experiments
 
-No pretrained-model or Furnace result is reported. CPU tests and a randomly initialized small causal decoder establish selected software invariants only. The latent transport and codec have not passed semantic qualification. Their learning and calibration may require substantive additional work. The repository intentionally blocks unqualified L/B scientific runs.
+### Native EOS and the language roundtrip
 
-The proposed effect of B conflates verbalization with its particular reconstruction error and additional computation. Positional encoding, prompt framing, length, norm and tokenization are potential confounds. A fluent decoder can generate an explanation not faithfully encoded in its input. New distinctions need independent functional validation. A temporary improvement on a small task does not establish general intelligence, selfhood or consciousness.
+Two opposed descriptions emphasized revisable or prompt decisions. Each underwent two plain updates in T, L and B, once with native EOS and once with an eight-token ceiling. The four trials used greedy BF16 Mistral-7B-Instruct-v0.3, eight slots, a 1024-token context, a pre-layer-16 cut and a post-layer-31 writer (zero-indexed). All 18 generations per policy include main-path, observer and branch readouts. All 18 reached EOS with the full context available, and all 18 reached the explicit ceiling under the cap. With EOS, each of the four B updates verbalized the same 13-token sentence about workspace contents. The four B states matched within each policy, although the two policies gave different states. The four L states differed within each policy and matched step for step across policies. [Plan, raw states and output text](../provenance/mistral_eos_20261101/RESULTS.md)
 
-## 7. Results
+## 7. Limitations
 
-**Not available.** Do not replace this section with engineering pass counts or illustrative model prose. Populate it only after frozen, reviewed empirical runs; retain negative and failed results.
+These are development measurements on frozen checkpoints. The identity transport and verbalizer have not passed a separately reviewed semantic gate. The source of an observed change can include the reconstruction error, layer coordinates, positions, prompt wording or additional computation. Interpretation of novel distinctions and downstream utility requires independent judgments and confirmation tasks.
 
 ## References
 

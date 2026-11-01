@@ -1,5 +1,6 @@
 from pathlib import Path
 import json,re
+import pytest
 ROOT=Path(__file__).resolve().parents[1]
 
 def test_bibliography_resolves_and_has_audit():
@@ -14,8 +15,9 @@ def test_bibliography_resolves_and_has_audit():
     assert all(x['source'].startswith('https://') for x in audit)
     assert bib.count('{')==bib.count('}')
 
-def test_readme_local_links_exist():
-    text=(ROOT/'README.md').read_text()
+@pytest.mark.parametrize("filename", ["README.md", "README.ja.md"])
+def test_readme_local_links_exist(filename):
+    text=(ROOT/filename).read_text()
     for link in re.findall(r'\]\(([^)]+)\)',text):
         if not link.startswith(('https://','http://','#')):
             assert (ROOT/link.split('#')[0]).exists(),link
@@ -27,8 +29,8 @@ def test_other_frame_not_an_utterance_report():
             assert row['text'].startswith('Agent A ')
             assert 'I ' not in row['text'] and 'stated' not in row['text'] and 'focuss' not in row['text']
 
-def test_explicit_no_empirical_claim():
-    status=(ROOT/'docs/IMPLEMENTATION_STATUS.md').read_text()
-    assert 'NOT RUN' in status and 'NOT ESTABLISHED' in status
-    paper=(ROOT/'paper/main.md').read_text()
-    assert '**Not available.**' in paper
+def test_paper_distinguishes_development_from_confirmation():
+    for name in ("main.md", "main.tex"):
+        paper = (ROOT / "paper" / name).read_text().lower()
+        assert "mistral" in paper and "confirmation" in paper and "uncalibrated" in paper
+        assert "no pretrained-model or furnace result is reported" not in paper
