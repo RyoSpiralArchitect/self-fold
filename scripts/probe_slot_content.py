@@ -23,14 +23,17 @@ MODELS = {
 }
 
 
-def score(host, store, group, route, state, *, pole=None, phrasing=None):
+def score(host, store, group, route, state, *, pole=None, phrasing=None, slot_token_ids=None):
     fingerprint = state.sha() if state is not None else None
     plus, minus = group["options"]
     orders = []
     with isolated_rng():
         for plus_label, first, second in (("A", plus, minus), ("B", minus, plus)):
             question = f"{group['question']}\nA = {first}. B = {second}. Use the supplied description."
-            scores = host.score_choices(state.clone() if state is not None else None, question, ["A", "B"])
+            if slot_token_ids is None:
+                scores = host.score_choices(state.clone() if state is not None else None, question, ["A", "B"])
+            else:
+                scores = host.score_choices(None, question, ["A", "B"], slot_token_ids=slot_token_ids)
             delta = scores["A"]["logprob"] - scores["B"]["logprob"]
             orders.append({"question": question, "plus_label": plus_label, "scores": scores,
                            "plus_margin": delta if plus_label == "A" else -delta})
@@ -104,9 +107,49 @@ def contrasts(host, store, groups, zero):
                     score(host, store, group, route, state, pole=pole, phrasing=phrasing)
 
 
+def lexical_alignment(host, store, groups):
+    # The donor forward ends at the last slot, before any question or answer alternatives.
+    template, positions = host.render(prompts.task_prompt(""))
+    slots = positions[prompts.INPUT_MARKER]
+    prefix = template[:slots[-1] + 1]
+    assert slots == list(range(len(prefix) - host.slots, len(prefix)))
+
+    def capture(slot_tokens):
+        donor_prefix = prefix[:slots[0]] + slot_tokens
+        _, captures = host.forward(donor_prefix, capture_positions=slots)
+        return State(slots=captures["pre_cut"][0])
+
+    neutral = capture([host.placeholder_id] * host.slots)
+    store.write("prefix.json", {"native_prefix_ids": prefix, "slot_positions": slots,
+                                "neutral_state_sha256": neutral.sha()})
+    for group in groups:
+        for first, second in (group["options"], group["options"][::-1]):
+            q = f"{group['question']}\nA = {first}. B = {second}. Use the supplied description."
+            ids, pos = host.render(prompts.task_prompt(q))
+            if pos[prompts.INPUT_MARKER] != slots or ids[:len(prefix)] != prefix:
+                raise ValueError("Donor and recipient prefix positions differ")
+        score(host, store, group, "uninjected", None)
+        score(host, store, group, "neutral_replay", neutral)
+        for pole, words in zip(("plus", "minus"), group["options"], strict=True):
+            tokens = host.tokenizer.encode(words, add_special_tokens=False)
+            if not 1 <= len(tokens) <= host.slots:
+                raise ValueError(f"Option does not fit the fixed slots: {group['id']} {pole}")
+            padded = tokens + [host.placeholder_id] * (host.slots - len(tokens))
+            encoded = host.encode(words)
+            aligned = capture(padded)
+            case = f"{group['id']}-{pole}"
+            store.append("cases.jsonl", {"case": case, "words": words, "token_ids": tokens, "padded_ids": padded})
+            store.save_state(f"states/{case}/E", encoded)
+            store.save_state(f"states/{case}/aligned", aligned)
+            score(host, store, group, "native_words", None, pole=pole, phrasing=0, slot_token_ids=padded)
+            for route, donor in (("E_words", encoded), ("aligned", aligned),
+                                 ("aligned_reverse", State(slots=aligned.slots.flip(0)))):
+                score(host, store, group, route, donor, pole=pole, phrasing=0)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("study", choices=["archive", "contrasts"])
+    parser.add_argument("study", choices=["archive", "contrasts", "alignment"])
     parser.add_argument("--model", choices=MODELS, required=True)
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
@@ -142,6 +185,8 @@ def main():
         zero = State(slots=torch.zeros((host.slots, host.width), device=host.device, dtype=host.dtype))
         if args.study == "archive":
             archived(host, store, data["archive"], zero)
+        elif args.study == "alignment":
+            lexical_alignment(host, store, data["groups"])
         else:
             contrasts(host, store, data["groups"], zero)
         store.write("environment.after.json", inventory(ROOT))

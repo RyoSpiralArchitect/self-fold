@@ -3,6 +3,7 @@ import json
 import runpy
 
 import torch
+import pytest
 
 from selffold.records import RunStore, State
 
@@ -57,3 +58,18 @@ def test_fixture_has_six_balanced_groups():
         assert len(set(group["options"])) == 2
         assert len(group["plus"]) == len(group["minus"]) == 2
         assert len(set(group["plus"] + group["minus"])) == 4
+
+
+def test_aligned_control_uses_same_positions_and_native_token_path(host, tmp_path):
+    group = {"id": "unit", "question": "Which?", "options": ["a", "b"]}
+    store = RunStore(tmp_path / "alignment")
+    PROBE["lexical_alignment"](host, store, [group])
+    rows = [json.loads(s) for s in (store.path / "scores.jsonl").read_text().splitlines()]
+    assert len(rows) == 10
+    neutral = [host.placeholder_id] * host.slots
+    assert host.score_choices(None, "Which?", ["A"], slot_token_ids=neutral) == host.score_choices(None, "Which?", ["A"])
+    with pytest.raises(ValueError):
+        host.score_choices(State(text="a"), "Which?", ["A"], slot_token_ids=neutral)
+    cases = [json.loads(s) for s in (store.path / "cases.jsonl").read_text().splitlines()]
+    assert all(len(c["padded_ids"]) == host.slots for c in cases)
+    assert all(c["padded_ids"][:1] == c["token_ids"] for c in cases)
