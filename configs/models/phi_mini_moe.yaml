@@ -1,0 +1,20 @@
+id: phi_mini_moe
+model_id: microsoft/Phi-mini-MoE-instruct
+model_type: phimoe
+status: PROPOSED_NOT_PRETRAINED_TESTED
+checkpoint_path: null
+pinned_revision: null
+local_only: true
+trust_remote_code: false
+dtype: bfloat16
+attention: eager
+quantization: null
+batch_size: 1
+approx_total_parameters_billions: 7.6
+approx_active_parameters_billions: 2.4
+approx_bf16_weight_gib: 14.16
+admission_free_vram_gib: 24
+admission_available_ram_gib: 32
+source_url: https://huggingface.co/microsoft/Phi-mini-MoE-instruct
+note: Estimates exclude activation/logit/allocator overhead. Local identity must be
+  measured; no automatic download.

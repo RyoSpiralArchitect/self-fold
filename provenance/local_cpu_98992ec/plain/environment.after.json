@@ -1,0 +1,1 @@
+{"cpu_count":5,"cuda_available":false,"disk_free_bytes":32021540864,"gpu":[],"machine":"x86_64","memory":{"MemAvailable_bytes":4773777408,"MemTotal_bytes":6236844032},"os":"Linux","packages":{"PyYAML":"6.0.3","accelerate":null,"numpy":"2.3.5","pytest":"9.0.2","torch":"2.10.0+cpu","transformers":null},"python":"3.13.5","torch_cuda":null}

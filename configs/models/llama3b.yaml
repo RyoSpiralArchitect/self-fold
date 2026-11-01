@@ -1,0 +1,20 @@
+id: llama3b
+model_id: meta-llama/Llama-3.2-3B-Instruct
+model_type: llama
+status: PROPOSED_NOT_PRETRAINED_TESTED
+checkpoint_path: null
+pinned_revision: null
+local_only: true
+trust_remote_code: false
+dtype: bfloat16
+attention: eager
+quantization: null
+batch_size: 1
+approx_total_parameters_billions: 3.2
+approx_active_parameters_billions: 3.2
+approx_bf16_weight_gib: 5.96
+admission_free_vram_gib: 13
+admission_available_ram_gib: 20
+source_url: https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct
+note: Estimates exclude activation/logit/allocator overhead. Local identity must be
+  measured; no automatic download.

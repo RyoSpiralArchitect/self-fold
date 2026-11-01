@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[numbers]{natbib}
+\usepackage[hidelinks]{hyperref}
+\title{Self Without a Transcript:\\Semantic Recurrence Across Text and Latent States}
+\author{Working draft; authorship to be finalized}
+\date{November 1, 2026}
+\begin{document}
+\maketitle
+\begin{center}\textbf{Protocol draft. No pretrained-model empirical results.}\end{center}
+\begin{abstract}
+We propose a study of recursive semantic self-description without retaining a dialogue transcript. The question is whether successive reinterpretations produce justified distinctions that affect later problem solving, and whether verbalization supports or constrains this process. Three conditions separate text relay, continuous-state recurrence, and the same continuous update with an interposed language roundtrip. We combine a fixed expansion-oriented intervention with observations of meaning, activations, and downstream effects. Evaluation problems are withheld until recurrence has finished. One-time interventions at shared states test how a specific verbalizer and re-encoder alter subsequent trajectories. A semantic qualification gate precedes any claim that an injected-state route realizes the intended operation. This release contains a protocol and small-decoder software infrastructure, not evidence of reasoning improvement, semantic selfhood, or consciousness.
+\end{abstract}
+
+\section{Problem formulation}
+A description such as ``I prioritize keeping decisions revisable'' may be reinterpreted as a preference for preserving correction opportunities. The transition may add a useful distinction, remain a paraphrase, or introduce an unsupported claim. Our object is the change in meaning, not the event of uttering the earlier description. We exclude a direct transcript and instructions that infer character from the act of speaking; this does not erase past updates' causal influence on the current state.
+
+We ask whether recurrence yields defensible distinctions, whether a language roundtrip changes their formation or use, and whether changes improve held-out problem solving or appropriate switching under reversed conditions. Convergence is not intrinsically failure, and novelty is not intrinsically success. ``Self'' denotes an attribution frame rather than a claim about subjective experience.
+
+\section{Related work}
+Coconut trains continuous-state reasoning through hidden-state feedback \citep{hao2024coconut}. Recurrent-depth models study repeated internal computation \citep{geiping2025huginn}; STARS motivates distinguishing useful stable dynamics from collapse \citep{yang2026stars}. These do not establish the validity of arbitrary untrained residual feedback.
+
+Persona vectors and the Assistant Axis connect persona-related behavior with activation structure and interventions \citep{chen2025persona,lu2026axis}. Natural Language Autoencoders provide a learned activation/text roundtrip \citep{frasertaliente2026nla}, while latent chain-of-thought analysis distinguishes output and representational commitment \citep{li2026dynamics}. Our estimand concerns a specific codec rather than ``language versus pure thought.''
+
+Semantic diversity differs from surface variation \citep{tao2026divergent}. Contrasting self-correction and condition-verification findings motivate operation-specific hypotheses \citep{huang2024selfcorrect,wu2024verification}. Dadfar's report is considered with McCardle's open replication critique concerning length, mode and cycle confounds \citep{dadfar2026examine,mccardle2026replication}. SlimMoE informs the proposed Phi MoE comparison \citep{li2025slimmoe}. We claim neither priority nor a systematic review.
+
+\section{Three conditions}
+Let $c_n$ be a fixed-schedule operation instruction, $s_n$ a current description, and $Z_n\in\mathbb R^{K\times d}$ a state. With encoder $E$, verbalizer $D$, and state updater $G$:
+\begin{align}
+\text{T:}\quad s_{n+1}&=T_\theta(c_n,s_n),\\
+\text{L:}\quad Z_{n+1}&=G_\theta(c_n,Z_n),\\
+\text{B:}\quad Z_{n+1}&=E_\theta\bigl(D_\theta(G_\theta(c_n,Z_n))\bigr).
+\end{align}
+L and B begin from copies of $E(s_0)$ and share weights, boundaries, transport, generation policy and schedule. Their contrast is primary; T/L is a system-level comparison.
+
+Each outer step uses a fresh context without persistent KV cache. Only current text or slots carry forward. Observation uses clones and restores RNG state; its text is not fed back except as prescribed by B. The initial description is not repeatedly reintroduced. Slots occupy explicit decoder boundaries; post-writer to pre-cut transport is explicit. An identity map is an unqualified engineering diagnostic.
+
+The two schedules are an ordinary meaning update and a fixed sequence of decomposition, boundary examination and reintegration. Unchanged content is allowed when no justified update exists. Adaptive cycle-triggered feedback would be a separate condition.
+
+\section{Qualification and measurement}
+Native parity, content discrimination, contrastive-state swap effects, one-step validity, readout fidelity and positional controls precede any latent pilot. Transport or codec training may be needed; training material must remain disjoint from confirmation. One-step success does not establish long-trajectory validity.
+
+\paragraph{Meaning.} Blind paired judgments assess support, update type, new distinctions and event-recovery violations. Lexical and tensor distances are not semantic scores.
+\paragraph{Activations.} Selected residual, attention, MLP and supported MoE gate outputs are retained. Gate logits are not actual dispatch frequencies. Independent probes and causal patching remain planned.
+\paragraph{Effects.} Problems arrive only after recurrence and operate on isolated copies. Near, structural and less-related transfer are separate tiers. Initial-state, one-shot instruction and non-self controls are planned. Reversals distinguish commitment from rigidity. Frozen-weight state-conditioned gains are not permanent learning.
+
+At a common state, compare $G^r(Z)$ with $G^r(E(D(Z)))$. Continuous bottlenecks, norm/distance-matched perturbations, no-update roundtrips, and meaning-preserving versus contrastive swaps are needed to distinguish codec damage from more specific effects. Only the identity/language branch pair is currently implemented.
+
+\section{Proposed pilot and analysis}
+Six content groups, two poles, two paraphrases and self/other frames yield 48 development seeds. Three arms and two schedules yield 288 proposed trajectories per model. Candidate families are Mistral-7B-Instruct-v0.3, Llama-3.2-3B-Instruct, Gemma-2-2B-IT and Phi-mini-MoE, with Phi-tiny-MoE a separately reported fallback. Family differences are not controlled architectural interventions.
+
+Twelve steps with fixed assessment checkpoints are proposed. The present CLI scores tasks at baseline/final only. Its 20 synthetic tasks are exposed development fixtures, not a broad benchmark. Confirmation data, thresholds, sample size and preregistration are pending.
+
+Paired L/B utility differences at a declared depth will be reported alongside support and switching. Inference must account for dependence among meaning groups and task families rather than treating each step as independent. Same-step designs report actual compute; matched-compute analyses are secondary. Failures, censored generations and ties retain denominators. Best-depth selection on confirmation is prohibited.
+
+\section{Status and limitations}
+No pretrained-model or Furnace result is reported. CPU and random small-decoder checks establish software invariants only. Transport and codec have not passed semantic qualification; calibration may require substantive additional work. Unqualified latent scientific runs are blocked.
+
+B changes reconstruction error and computation as well as inserting language. Positions, framing, length, norm and tokenization can confound results. A fluent verbalizer can add unsupported explanations. Independent effects are required to validate useful distinctions. Temporary success on small tasks does not establish general intelligence, selfhood or consciousness.
+
+\section{Results}
+\textbf{Not available.} This section must not be filled with engineering pass counts or illustrative prose. Retain negative and failed results after frozen empirical runs.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

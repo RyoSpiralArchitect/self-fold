@@ -1,0 +1,25 @@
+protocol: self-fold-v0.2
+status: PROPOSED_NOT_PREREGISTERED_NOT_DISPATCHED
+arms: [T, L, B]
+regimes: [plain, expand]
+steps: 12
+readout_steps: [0, 1, 2, 4, 8, 12]
+branch_steps: [4, 8]
+slots: 8
+subject_frames: [self, agent_a]
+primary_contrast: L_vs_B_within_checkpoint
+secondary_contrast: T_vs_L_system_level
+positive_endpoint: task_utility_delta_from_step_0
+negative_endpoint: context_switch_failure
+semantic_endpoint: human_reviewed_supported_new_distinction
+cycle_endpoint: human_reviewed_unproductive_return
+numerical_recurrence_is_not_semantic_recurrence: true
+language: en
+decode: greedy
+scientific_unit: semantic_seed_group
+confirmation_dataset: NOT_CREATED
+candidate_layers: midpoint_pre_to_final_post
+cut_layer_search: calibration_only_never_test
+qualification_required: true
+cap_censoring_policy: report_all_and_sensitivity_excluding_capped_readouts
+budget_matching: report_main_and_readout_compute_separately

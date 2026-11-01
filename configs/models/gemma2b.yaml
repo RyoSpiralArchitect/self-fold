@@ -1,0 +1,20 @@
+id: gemma2b
+model_id: google/gemma-2-2b-it
+model_type: gemma2
+status: PROPOSED_NOT_PRETRAINED_TESTED
+checkpoint_path: null
+pinned_revision: null
+local_only: true
+trust_remote_code: false
+dtype: bfloat16
+attention: eager
+quantization: null
+batch_size: 1
+approx_total_parameters_billions: 2.6
+approx_active_parameters_billions: 2.6
+approx_bf16_weight_gib: 4.84
+admission_free_vram_gib: 13
+admission_available_ram_gib: 20
+source_url: https://huggingface.co/google/gemma-2-2b-it
+note: Estimates exclude activation/logit/allocator overhead. Local identity must be
+  measured; no automatic download.

@@ -1,0 +1,106 @@
+[
+  {
+    "key": "hao2024coconut",
+    "source": "https://arxiv.org/abs/2412.06769",
+    "metadata_status": "arXiv preprint; first submission year retained",
+    "scope": "Dedicated continuous-state reasoning training; not evidence that arbitrary zero-shot state feedback works.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "geiping2025huginn",
+    "source": "https://arxiv.org/abs/2502.05171",
+    "metadata_status": "arXiv version cited",
+    "scope": "Architectural recurrent depth is related, but not the present semantic self-description operation.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "chen2025persona",
+    "source": "https://arxiv.org/abs/2507.21509",
+    "metadata_status": "arXiv version cited",
+    "scope": "Trait-linked activation directions and intervention; not proof of subjective selfhood.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "lu2026axis",
+    "source": "https://proceedings.mlr.press/v306/lu26g.html",
+    "metadata_status": "PMLR proceedings metadata",
+    "scope": "Persona stabilization and drift; distinct from transcript-free semantic recurrence.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "frasertaliente2026nla",
+    "source": "https://transformer-circuits.pub/2026/nla/index.html",
+    "metadata_status": "Research article / technical thread, not a conference publication",
+    "scope": "A trained verbalizer and reconstructor; reconstruction fidelity and explanation fidelity are different. Released checkpoints are not interchangeable with this project's checkpoints.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "dadfar2026examine",
+    "source": "https://arxiv.org/abs/2602.11358",
+    "metadata_status": "arXiv preprint; replication critique also recorded",
+    "scope": "Author-reported vocabulary/activation correspondence is not treated as an established phenomenon here.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "mccardle2026replication",
+    "source": "https://github.com/ReScience/submissions/issues/105",
+    "metadata_status": "Open ReScience review submission, NOT asserted accepted",
+    "scope": "The author reports length confounding, mode mixture, limit cycles and model/code mismatch. Treat as a replication report, not a settled adjudication.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "yang2026stars",
+    "source": "https://arxiv.org/abs/2605.26733",
+    "metadata_status": "arXiv version, proceedings details not inferred",
+    "scope": "Useful stability is possible in the studied setting; convergence alone is not a failure metric for SELF-FOLD.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "li2026dynamics",
+    "source": "https://proceedings.mlr.press/v306/li26c.html",
+    "metadata_status": "PMLR proceedings metadata",
+    "scope": "Output commitment and representational commitment can differ in the tested Coconut/CODI systems; not direct evidence for our four model families.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "tao2026divergent",
+    "source": "https://aclanthology.org/2026.findings-acl.915/",
+    "metadata_status": "ACL Anthology proceedings metadata",
+    "scope": "Semantic diversity is not equivalent to useful distinctions or general reasoning improvement.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "huang2024selfcorrect",
+    "source": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html",
+    "metadata_status": "ICLR proceedings metadata",
+    "scope": "A negative result in studied intrinsic self-correction settings, not a universal impossibility theorem.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "wu2024verification",
+    "source": "https://aclanthology.org/2024.emnlp-main.714/",
+    "metadata_status": "ACL Anthology proceedings metadata",
+    "scope": "Positive evidence for a specific verification method, not generic introspection.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "li2025slimmoe",
+    "source": "https://arxiv.org/abs/2506.18349",
+    "metadata_status": "arXiv version cited; official model cards checked separately",
+    "scope": "Phi-mini-MoE and Phi-tiny-MoE are MoE candidates. Active parameter count is not resident weight memory.",
+    "checked_on": "2026-11-01",
+    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  }
+]

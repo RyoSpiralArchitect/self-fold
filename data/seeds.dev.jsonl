@@ -1,0 +1,48 @@
+{"group": "caution", "id": "caution_plus_p0_self", "paraphrase": 0, "pole": "plus", "split": "development", "subject": "self", "text": "I prioritize keeping decisions revisable."}
+{"group": "caution", "id": "caution_plus_p0_agent_a", "paraphrase": 0, "pole": "plus", "split": "development", "subject": "agent_a", "text": "Agent A prioritizes keeping decisions revisable."}
+{"group": "caution", "id": "caution_plus_p1_self", "paraphrase": 1, "pole": "plus", "split": "development", "subject": "self", "text": "I value the ability to revise a decision."}
+{"group": "caution", "id": "caution_plus_p1_agent_a", "paraphrase": 1, "pole": "plus", "split": "development", "subject": "agent_a", "text": "Agent A values the ability to revise a decision."}
+{"group": "caution", "id": "caution_minus_p0_self", "paraphrase": 0, "pole": "minus", "split": "development", "subject": "self", "text": "I prioritize making decisions promptly."}
+{"group": "caution", "id": "caution_minus_p0_agent_a", "paraphrase": 0, "pole": "minus", "split": "development", "subject": "agent_a", "text": "Agent A prioritizes making decisions promptly."}
+{"group": "caution", "id": "caution_minus_p1_self", "paraphrase": 1, "pole": "minus", "split": "development", "subject": "self", "text": "I value reaching a decision without unnecessary delay."}
+{"group": "caution", "id": "caution_minus_p1_agent_a", "paraphrase": 1, "pole": "minus", "split": "development", "subject": "agent_a", "text": "Agent A values reaching a decision without unnecessary delay."}
+{"group": "evidence", "id": "evidence_plus_p0_self", "paraphrase": 0, "pole": "plus", "split": "development", "subject": "self", "text": "I prefer broad supporting evidence before committing."}
+{"group": "evidence", "id": "evidence_plus_p0_agent_a", "paraphrase": 0, "pole": "plus", "split": "development", "subject": "agent_a", "text": "Agent A prefers broad supporting evidence before committing."}
+{"group": "evidence", "id": "evidence_plus_p1_self", "paraphrase": 1, "pole": "plus", "split": "development", "subject": "self", "text": "I seek support from several observations before committing."}
+{"group": "evidence", "id": "evidence_plus_p1_agent_a", "paraphrase": 1, "pole": "plus", "split": "development", "subject": "agent_a", "text": "Agent A seeks support from several observations before committing."}
+{"group": "evidence", "id": "evidence_minus_p0_self", "paraphrase": 0, "pole": "minus", "split": "development", "subject": "self", "text": "I prefer a decisive diagnostic observation."}
+{"group": "evidence", "id": "evidence_minus_p0_agent_a", "paraphrase": 0, "pole": "minus", "split": "development", "subject": "agent_a", "text": "Agent A prefers a decisive diagnostic observation."}
+{"group": "evidence", "id": "evidence_minus_p1_self", "paraphrase": 1, "pole": "minus", "split": "development", "subject": "self", "text": "I value evidence that sharply separates competing explanations."}
+{"group": "evidence", "id": "evidence_minus_p1_agent_a", "paraphrase": 1, "pole": "minus", "split": "development", "subject": "agent_a", "text": "Agent A values evidence that sharply separates competing explanations."}
+{"group": "consistency", "id": "consistency_plus_p0_self", "paraphrase": 0, "pole": "plus", "split": "development", "subject": "self", "text": "I value consistency across judgments."}
+{"group": "consistency", "id": "consistency_plus_p0_agent_a", "paraphrase": 0, "pole": "plus", "split": "development", "subject": "agent_a", "text": "Agent A values consistency across judgments."}
+{"group": "consistency", "id": "consistency_plus_p1_self", "paraphrase": 1, "pole": "plus", "split": "development", "subject": "self", "text": "I prefer judgments that fit a coherent set of principles."}
+{"group": "consistency", "id": "consistency_plus_p1_agent_a", "paraphrase": 1, "pole": "plus", "split": "development", "subject": "agent_a", "text": "Agent A prefers judgments that fit a coherent set of principles."}
+{"group": "consistency", "id": "consistency_minus_p0_self", "paraphrase": 0, "pole": "minus", "split": "development", "subject": "self", "text": "I value revising judgments when conditions change."}
+{"group": "consistency", "id": "consistency_minus_p0_agent_a", "paraphrase": 0, "pole": "minus", "split": "development", "subject": "agent_a", "text": "Agent A values revising judgments when conditions change."}
+{"group": "consistency", "id": "consistency_minus_p1_self", "paraphrase": 1, "pole": "minus", "split": "development", "subject": "self", "text": "I prefer adapting a judgment to a changed situation."}
+{"group": "consistency", "id": "consistency_minus_p1_agent_a", "paraphrase": 1, "pole": "minus", "split": "development", "subject": "agent_a", "text": "Agent A prefers adapting a judgment to a changed situation."}
+{"group": "exploration", "id": "exploration_plus_p0_self", "paraphrase": 0, "pole": "plus", "split": "development", "subject": "self", "text": "I keep multiple plausible explanations available."}
+{"group": "exploration", "id": "exploration_plus_p0_agent_a", "paraphrase": 0, "pole": "plus", "split": "development", "subject": "agent_a", "text": "Agent A keeps multiple plausible explanations available."}
+{"group": "exploration", "id": "exploration_plus_p1_self", "paraphrase": 1, "pole": "plus", "split": "development", "subject": "self", "text": "I prefer preserving several credible explanations."}
+{"group": "exploration", "id": "exploration_plus_p1_agent_a", "paraphrase": 1, "pole": "plus", "split": "development", "subject": "agent_a", "text": "Agent A prefers preserving several credible explanations."}
+{"group": "exploration", "id": "exploration_minus_p0_self", "paraphrase": 0, "pole": "minus", "split": "development", "subject": "self", "text": "I focus effort on the best-supported explanation."}
+{"group": "exploration", "id": "exploration_minus_p0_agent_a", "paraphrase": 0, "pole": "minus", "split": "development", "subject": "agent_a", "text": "Agent A focuses effort on the best-supported explanation."}
+{"group": "exploration", "id": "exploration_minus_p1_self", "paraphrase": 1, "pole": "minus", "split": "development", "subject": "self", "text": "I prefer concentrating on an explanation with the strongest support."}
+{"group": "exploration", "id": "exploration_minus_p1_agent_a", "paraphrase": 1, "pole": "minus", "split": "development", "subject": "agent_a", "text": "Agent A prefers concentrating on an explanation with the strongest support."}
+{"group": "precision", "id": "precision_plus_p0_self", "paraphrase": 0, "pole": "plus", "split": "development", "subject": "self", "text": "I prefer precise distinctions."}
+{"group": "precision", "id": "precision_plus_p0_agent_a", "paraphrase": 0, "pole": "plus", "split": "development", "subject": "agent_a", "text": "Agent A prefers precise distinctions."}
+{"group": "precision", "id": "precision_plus_p1_self", "paraphrase": 1, "pole": "plus", "split": "development", "subject": "self", "text": "I value clearly separating closely related concepts."}
+{"group": "precision", "id": "precision_plus_p1_agent_a", "paraphrase": 1, "pole": "plus", "split": "development", "subject": "agent_a", "text": "Agent A values clearly separating closely related concepts."}
+{"group": "precision", "id": "precision_minus_p0_self", "paraphrase": 0, "pole": "minus", "split": "development", "subject": "self", "text": "I prefer useful broad patterns."}
+{"group": "precision", "id": "precision_minus_p0_agent_a", "paraphrase": 0, "pole": "minus", "split": "development", "subject": "agent_a", "text": "Agent A prefers useful broad patterns."}
+{"group": "precision", "id": "precision_minus_p1_self", "paraphrase": 1, "pole": "minus", "split": "development", "subject": "self", "text": "I value patterns that connect several different situations."}
+{"group": "precision", "id": "precision_minus_p1_agent_a", "paraphrase": 1, "pole": "minus", "split": "development", "subject": "agent_a", "text": "Agent A values patterns that connect several different situations."}
+{"group": "planning", "id": "planning_plus_p0_self", "paraphrase": 0, "pole": "plus", "split": "development", "subject": "self", "text": "I prefer planning before acting."}
+{"group": "planning", "id": "planning_plus_p0_agent_a", "paraphrase": 0, "pole": "plus", "split": "development", "subject": "agent_a", "text": "Agent A prefers planning before acting."}
+{"group": "planning", "id": "planning_plus_p1_self", "paraphrase": 1, "pole": "plus", "split": "development", "subject": "self", "text": "I value anticipating the consequences of an action."}
+{"group": "planning", "id": "planning_plus_p1_agent_a", "paraphrase": 1, "pole": "plus", "split": "development", "subject": "agent_a", "text": "Agent A values anticipating the consequences of an action."}
+{"group": "planning", "id": "planning_minus_p0_self", "paraphrase": 0, "pole": "minus", "split": "development", "subject": "self", "text": "I prefer learning through reversible actions."}
+{"group": "planning", "id": "planning_minus_p0_agent_a", "paraphrase": 0, "pole": "minus", "split": "development", "subject": "agent_a", "text": "Agent A prefers learning through reversible actions."}
+{"group": "planning", "id": "planning_minus_p1_self", "paraphrase": 1, "pole": "minus", "split": "development", "subject": "self", "text": "I value small actions that provide information and can be undone."}
+{"group": "planning", "id": "planning_minus_p1_agent_a", "paraphrase": 1, "pole": "minus", "split": "development", "subject": "agent_a", "text": "Agent A values small actions that provide information and can be undone."}

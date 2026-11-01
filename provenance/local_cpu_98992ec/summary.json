@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-01",
+  "source_commit": "98992ec9bedfaf2d96680d508dc7d017ffb3bdec",
+  "source_clean_at_run": true,
+  "tests": {
+    "tests": 85,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 4,
+    "passed": 81,
+    "scope": "CPU and independent random tiny decoder; no Transformers installed"
+  },
+  "smokes": {
+    "plain": {
+      "terminal": {
+        "compute": {
+          "forwards": 107,
+          "generated_tokens": 72,
+          "processed_tokens": 37006
+        },
+        "elapsed_seconds": 1.3603024559999994,
+        "pretrained_family_tested": false,
+        "reasoning_gain": null,
+        "semantic_success": null,
+        "status": "ENGINEERING_PASS_NOT_SEMANTICS"
+      },
+      "transition_count": 6,
+      "task_scoring_rows": 12,
+      "source_sha256": "8fe8ac59d7a47dc24661aed1a9666320186f0ede1647feb80e9ab341ff37c37f",
+      "native_parity": {
+        "exact": true,
+        "max_abs": 0.0,
+        "scope": "unmodified_native_vs_observation_hooks_no_injection"
+      }
+    },
+    "expand": {
+      "terminal": {
+        "compute": {
+          "forwards": 166,
+          "generated_tokens": 104,
+          "processed_tokens": 58593
+        },
+        "elapsed_seconds": 1.9467385670000112,
+        "pretrained_family_tested": false,
+        "reasoning_gain": null,
+        "semantic_success": null,
+        "status": "ENGINEERING_PASS_NOT_SEMANTICS"
+      },
+      "transition_count": 9,
+      "task_scoring_rows": 24,
+      "source_sha256": "8fe8ac59d7a47dc24661aed1a9666320186f0ede1647feb80e9ab341ff37c37f",
+      "native_parity": {
+        "exact": true,
+        "max_abs": 0.0,
+        "scope": "unmodified_native_vs_observation_hooks_no_injection"
+      }
+    }
+  },
+  "furnace_tested": false,
+  "pretrained_models_tested": [],
+  "hf_random_config_tests": "FOUR_SKIPPED_DEPENDENCY_ABSENT",
+  "github_ci": "NOT_EXECUTED",
+  "github_repository_created": false,
+  "semantic_qualification": "NOT_ESTABLISHED",
+  "reasoning_gain": "NOT_ESTABLISHED",
+  "paper_results": "NOT_AVAILABLE",
+  "latex_compiled": false,
+  "claim_ceiling": "ENGINEERING_ONLY"
+}

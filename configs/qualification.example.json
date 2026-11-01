@@ -1,0 +1,39 @@
+{
+  "status": "NOT_QUALIFIED",
+  "reviewer": null,
+  "split": "calibration_only",
+  "host_identity_sha256": null,
+  "source_sha256": null,
+  "checks": {
+    "content_discrimination": {
+      "verdict": "not_run",
+      "evidence_path": null,
+      "evidence_sha256": null
+    },
+    "meaning_swap_effect": {
+      "verdict": "not_run",
+      "evidence_path": null,
+      "evidence_sha256": null
+    },
+    "native_parity": {
+      "verdict": "not_run",
+      "evidence_path": null,
+      "evidence_sha256": null
+    },
+    "one_step_update": {
+      "verdict": "not_run",
+      "evidence_path": null,
+      "evidence_sha256": null
+    },
+    "positional_controls": {
+      "verdict": "not_run",
+      "evidence_path": null,
+      "evidence_sha256": null
+    },
+    "readout_fidelity": {
+      "verdict": "not_run",
+      "evidence_path": null,
+      "evidence_sha256": null
+    }
+  }
+}

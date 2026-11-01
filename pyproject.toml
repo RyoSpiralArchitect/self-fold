@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "self-fold"
+version = "0.1.0"
+description = "Semantic self-description recurrence across text and latent states: a research harness"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+dependencies = ["torch>=2.6,<3", "numpy>=1.26,<3", "PyYAML>=6,<7"]
+
+[project.optional-dependencies]
+hf = ["transformers>=4.57.1,<5", "accelerate>=1.2,<2", "sentencepiece>=0.2", "protobuf>=4", "safetensors>=0.4"]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+self-fold = "selffold.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["hf: optional random-weight Transformers architecture tests, no downloads"]

@@ -1,0 +1,20 @@
+id: mistral7b
+model_id: mistralai/Mistral-7B-Instruct-v0.3
+model_type: mistral
+status: PROPOSED_NOT_PRETRAINED_TESTED
+checkpoint_path: null
+pinned_revision: null
+local_only: true
+trust_remote_code: false
+dtype: bfloat16
+attention: eager
+quantization: null
+batch_size: 1
+approx_total_parameters_billions: 7.3
+approx_active_parameters_billions: 7.3
+approx_bf16_weight_gib: 13.6
+admission_free_vram_gib: 23
+admission_available_ram_gib: 32
+source_url: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3
+note: Estimates exclude activation/logit/allocator overhead. Local identity must be
+  measured; no automatic download.
