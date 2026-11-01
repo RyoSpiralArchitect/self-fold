@@ -151,7 +151,7 @@ def lexical_alignment(host, store, groups):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("study", choices=["archive", "contrasts", "alignment", "replay", "localize"])
+    parser.add_argument("study", choices=["archive", "contrasts", "alignment", "replay", "localize", "clauses"])
     parser.add_argument("--panel", choices=["original", "prospective"], help="Required for the localization study")
     parser.add_argument("--model", choices=MODELS, required=True)
     parser.add_argument("--checkpoint", type=Path, required=True)
@@ -162,8 +162,9 @@ def main():
     args = parser.parse_args()
     if args.study == "archive" and args.model != "mistral7b":
         parser.error("Archived donors are from Mistral")
-    if (args.study == "localize") != (args.panel is not None):
-        parser.error("--panel is required for localize and applies only to that study")
+    span_study = args.study in ("localize", "clauses")
+    if span_study != (args.panel is not None):
+        parser.error("--panel is required for localize and clauses and applies only to those studies")
     fixture = ROOT / "data/span_topics.prospective.json" if args.panel == "prospective" else DATA
     args.profile = ROOT / "configs/models" / f"{args.model}.yaml"
     store = RunStore(args.out)
@@ -174,7 +175,7 @@ def main():
     revision, expected_digest = MODELS[args.model]
     request = {"study": args.study, "model": args.model, "snapshot_revision": revision,
                "checkpoint_sha256": expected_digest, "fixture_sha256": file_sha(fixture)}
-    if args.study == "localize":
+    if span_study:
         request.update(panel=args.panel, split="prospective_diagnostic" if args.panel == "prospective" else "development")
     else:
         request.update(split="development", operator="plain", sham_seed=4711)
@@ -199,8 +200,8 @@ def main():
             lexical_alignment(host, store, data["groups"])
         elif args.study == "replay":
             run_replay_probe(host, store, data["groups"])
-        elif args.study == "localize":
-            run_span_probe(host, store, data["groups"])
+        elif span_study:
+            run_span_probe(host, store, data["groups"], clauses=args.study == "clauses")
         else:
             contrasts(host, store, data["groups"], zero)
         store.write("environment.after.json", inventory(ROOT))

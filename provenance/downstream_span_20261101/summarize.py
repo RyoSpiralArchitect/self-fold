@@ -87,7 +87,7 @@ def summarize(trial):
     req = read(trial/"request.json")
     assert source["git_status"] == "" and source["git_commit"]
     result = {"source_commit": source["git_commit"], "status": terminal["status"],
-              "model": req["model"], "panel": req["panel"]}
+              "model": req["model"], "panel": req["panel"], "study": req["study"]}
     if result["status"] != "COMPLETED_DEVELOPMENT_PROBE":
         return result
     records = rows(trial/"interventions.jsonl")
@@ -113,7 +113,7 @@ def summarize(trial):
                                   **{mode: panel_metrics(records, lambda r: r["regions"][key][mode]["scores"])
                                      for mode in ("only", "omit", "native_knockout")}}
     result["contexts"] = {}
-    for name in ("same", "reversed", "masked"):
+    for name in records[0]["contexts"]:
         result["contexts"][name] = {}
         for win in settings["context_windows"]:
             result["contexts"][name][win] = {}
@@ -124,7 +124,7 @@ def summarize(trial):
                 result["contexts"][name][win][method] = m
     result["max_pre_question_abs"] = {k: max((r["contexts"][k]["pre_question_max_abs"] for r in records
                                              if r["contexts"][k]["status"]=="matched_length"), default=None)
-                                      for k in ("same", "masked", "reversed")}
+                                      for k in records[0]["contexts"]}
     result["matched_raw_delta_max_abs_vocab"] = max(w["raw_delta_max_abs_vocab"] for r in records
                                                     for w in r["contexts"]["same"]["windows"].values())
     if req["panel"] == "original":
@@ -134,9 +134,22 @@ def summarize(trial):
         result["archived_score_max_abs"] = max(
             abs(r["reference"][new]["scores"][label] - old[r["group"],r["pole"],r["plus_label"]]["scores"][prior][label])
             for r in records for label in ("A","B") for new,prior in (("native","native_words"),("suffix","suffix_only")))
+    if req["study"] == "clauses":
+        family = "mistral" if req["model"] == "mistral7b" else "gemma"
+        first_stage = HERE/"trials"/f"{req['panel']}-{family}"
+        old = {(r["group"],r["pole"],r["plus_label"]): r for r in rows(first_stage/"interventions.jsonl")}
+        result["repeated_window_score_max_abs"] = max(
+            abs(r["regions"][win][mode]["scores"][label] -
+                old[r["group"],r["pole"],r["plus_label"]]["regions"][win][mode]["scores"][label])
+            for r in records for win in ("score","closing") for mode in ("only","omit","native_knockout") for label in ("A","B"))
+        result["punctuation_also_in_phrase"] = {
+            k: sum(p["windows"][k+"_words"][1] > p["windows"][k+"_punct"][0] for p in layouts) for k in ("A","B")}
+        result["same_A_B_punctuation_id_orders"] = sum(
+            p["recipient_ids"][p["windows"]["A_punct"][0]] == p["recipient_ids"][p["windows"]["B_punct"][0]] for p in layouts)
     return result
 
 
 if __name__ == "__main__":
     names = [f"{panel}-{model}" for panel in ("original", "prospective") for model in ("mistral", "gemma")]
+    names += ["clauses-"+name for name in names]
     print(json.dumps({name: summarize(HERE/"trials"/name) for name in names}, indent=2, ensure_ascii=False))

@@ -10,6 +10,7 @@ from .replay_probe import _capture, _difference, _logprobs, _replace_span
 
 BLOCKS = ("instruction", "question", "options", "closing_prefix", "score")
 CONTEXT_WINDOWS = ("closing", "last4", "score")
+CLAUSE_CONTEXT_WINDOWS = ("A_punct", "B_punct", "closing", "score")
 
 
 @dataclass
@@ -75,11 +76,9 @@ def _forward(host, ids):
     return Forward(ids, logits, residual)
 
 
-def _context(host, layout, words, *, blind=False):
+def _context(host, layout, words, masks=()):
     ids = layout.ids.copy()
-    if blind:
-        a = layout.windows["question"][0]
-        b = layout.windows["closing"][0]
+    for a, b in masks:
         ids[a:b] = [host.placeholder_id] * (b-a)
     donors = {}
     for pole, token_ids in words.items():
@@ -106,10 +105,11 @@ def _reference(host, target, donor, labels):
     }
 
 
-def _localize(host, target, donor, labels):
+def _localize(host, target, donor, labels, windows):
     regions = {}
     start, end = target.layout.slots[-1]+1, len(target.layout.ids)-1
-    for name, (lo, hi) in target.layout.windows.items():
+    for name in windows:
+        lo, hi = target.layout.windows[name]
         # For leave-out, start with the successful downstream donor and put back just this neutral block.
         omitted = donor.residual.clone()
         omitted[:, lo:hi] = target.neutral.residual[:, lo:hi]
@@ -121,7 +121,7 @@ def _localize(host, target, donor, labels):
     return regions
 
 
-def _context_swap(host, target, source, pole, labels):
+def _context_swap(host, target, source, pole, labels, windows):
     donor = source.lexical[pole]
     output = {"source_lexical_ids_sha256": digest(donor.ids), "source_neutral_ids_sha256": digest(source.neutral.ids),
               "source_native_scores": _logprobs(donor.logits, labels), "windows": {}}
@@ -135,7 +135,7 @@ def _context_swap(host, target, source, pole, labels):
     base = target.neutral.residual
     # Preserve the recipient's prompt background while isolating the source's lexical-minus-null change.
     rebased = (base.float() + (donor.residual.float() - source.neutral.residual.float())).to(base.dtype)
-    for name in CONTEXT_WINDOWS:
+    for name in windows:
         lo, hi = target.layout.windows[name]
         if source.layout.windows[name] != (lo, hi) or donor.ids[lo:hi] != target.neutral.ids[lo:hi]:
             output["windows"][name] = {"status": "different_positions_or_token_ids"}
@@ -148,15 +148,45 @@ def _context_swap(host, target, source, pole, labels):
     return output
 
 
-def run_span_probe(host, store, groups):
+def option_regions(layout, group, order):
+    first, second = group["options"] if order == "A" else group["options"][::-1]
+    text = f"A = {first}. B = {second}. Use the supplied description."
+    a_text = layout.suffix.index(text)
+    b_text = a_text + len(f"A = {first}. ")
+    base = layout.slots[-1] + 1
+
+    def token_at(character):
+        return base + next(i for i, (lo, hi) in enumerate(layout.offsets) if lo <= character < hi)
+
+    closing, end = layout.windows["closing"]
+    b_start = token_at(b_text)
+    regions = {"A_clause": (layout.windows["options"][0], b_start), "B_clause": (b_start, closing)}
+    for key, char, words in (("A", a_text, first), ("B", b_text, second)):
+        start = char + 4  # The literal "A = " or "B = ".
+        final_word = token_at(start + len(words) - 1)
+        punctuation = token_at(start + len(words))
+        clause_start, clause_end = regions[key + "_clause"]
+        if clause_end - clause_start < 2:
+            raise ValueError("A clause is too short for the two-position comparison")
+        regions[key + "_words"] = (token_at(start), final_word + 1)
+        regions[key + "_word_end"] = (final_word, final_word + 1)
+        regions[key + "_punct"] = (punctuation, punctuation + 1)
+        regions[key + "_last2"] = (clause_end - 2, clause_end)
+    regions.update(B_last2_and_closing=(closing - 2, end), closing=layout.windows["closing"],
+                   score=layout.windows["score"])
+    return regions
+
+
+def run_span_probe(host, store, groups, *, clauses=False):
     labels = {}
     for key in ("A", "B"):
         ids = host.tokenizer.encode(key, add_special_tokens=False)
         if len(ids) != 1:
             raise ValueError("Single-token labels required")
         labels[key] = ids[0]
+    context_windows = CLAUSE_CONTEXT_WINDOWS if clauses else CONTEXT_WINDOWS
     store.write("span_settings.json", {"labels": labels, "dummy_id": host.placeholder_id, "partition": BLOCKS,
-                                       "context_windows": CONTEXT_WINDOWS, "indexing": "zero_based_half_open"})
+                                       "context_windows": context_windows, "indexing": "zero_based_half_open"})
     for group in groups:
         words = {}
         for pole, phrase in zip(("plus", "minus"), group["options"], strict=True):
@@ -165,26 +195,39 @@ def run_span_probe(host, store, groups):
                 raise ValueError("Lexical source does not fit eight slots")
             words[pole] = ids + [host.placeholder_id] * (host.slots-len(ids))
         layouts = {k: make_layout(host, group, k) for k in labels}
+        measured = {k: dict(layout.windows) for k, layout in layouts.items()}
+        if clauses:
+            for k, layout in layouts.items():
+                measured[k] = option_regions(layout, group, k)
+                layout.windows.update(measured[k])
         natural = {k: _context(host, layout, words) for k, layout in layouts.items()}
         for order, other in (("A", "B"), ("B", "A")):
             target = natural[order]
             layout = layouts[order]
-            blind = _context(host, layout, words, blind=True)
+            contexts = {"same": target, "reversed": natural[other]}
+            question = layout.windows["question"]
+            if clauses:
+                phrases = (layout.windows["A_words"], layout.windows["B_words"])
+                masks = {"stem_masked": (question,), "phrases_masked": phrases,
+                         "stem_and_phrases_masked": (question, *phrases)}
+            else:
+                masks = {"masked": ((question[0], layout.windows["closing"][0]),)}
+            contexts.update({name: _context(host, layout, words, spans) for name, spans in masks.items()})
+            mask_record = ({"masked_neutral_ids_by_context": {k: contexts[k].neutral.ids for k in masks}}
+                           if clauses else {"masked_neutral_ids": contexts["masked"].neutral.ids})
             store.append("prompts.jsonl", {"group": group["id"], "plus_label": order, "question": group["question"],
                                           "options_plus_minus": group["options"], "padded_lexical_ids": words,
                                           "recipient_ids": layout.ids, "slot_positions": layout.slots,
                                           "windows": layout.windows, "rendered_suffix": layout.suffix,
-                                          "suffix_offsets": layout.offsets,
-                                          "masked_neutral_ids": blind.neutral.ids})
+                                          "suffix_offsets": layout.offsets, **mask_record})
             for pole in words:
                 donor = target.lexical[pole]
                 reference = _reference(host, target, donor, labels)
                 row = {"group": group["id"], "pole": pole, "plus_label": order,
                        "recipient_ids_sha256": digest(layout.ids), "reference": reference,
-                       "regions": _localize(host, target, donor, labels),
-                       "contexts": {name: _context_swap(host, target, source, pole, labels)
-                                    for name, source in (("same", target), ("reversed", natural[other]),
-                                                         ("masked", blind))}}
+                       "regions": _localize(host, target, donor, labels, measured[order]),
+                       "contexts": {name: _context_swap(host, target, source, pole, labels, context_windows)
+                                    for name, source in contexts.items()}}
                 store.append("interventions.jsonl", row)
                 if reference["neutral_replay_max_abs"] != 0 or reference["slots_and_suffix"]["max_abs_vocab_from_native"] != 0:
                     raise ValueError("Full-geometry replay did not reconstruct its reference")

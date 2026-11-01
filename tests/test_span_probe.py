@@ -3,7 +3,7 @@ from pathlib import Path
 
 from selffold.host import SlotHost
 from selffold.records import RunStore
-from selffold.span_probe import BLOCKS, make_layout, run_span_probe
+from selffold.span_probe import BLOCKS, make_layout, option_regions, run_span_probe
 from selffold.tiny import ByteTokenizer, TinyCausalLM
 
 
@@ -57,3 +57,32 @@ def test_prospective_topics_are_separate_from_the_original_panel():
     assert len({g["id"] for g in new}) == len(new) == 6
     assert not {g["id"] for g in old} & {g["id"] for g in new}
     assert not {a for g in old for a in g["options"]} & {a for g in new for a in g["options"]}
+
+
+def test_clause_boundaries_track_option_order_and_separate_the_period():
+    host = SlotHost(TinyCausalLM(), OffsetBytes(), slots=8)
+    group = {"id": "unit", "question": "How?", "options": ["water", "land"]}
+    for order in ("A", "B"):
+        layout = make_layout(host, group, order)
+        regions = option_regions(layout, group, order)
+        chosen = group["options"] if order == "A" else group["options"][::-1]
+        for letter, option in zip(("A","B"), chosen):
+            a, b = regions[letter+"_words"]
+            p, q = regions[letter+"_punct"]
+            assert host.tokenizer.decode(layout.ids[a:b]) == option
+            assert b == p and host.tokenizer.decode(layout.ids[p:q]) == "."
+            assert regions[letter+"_last2"][1]-regions[letter+"_last2"][0] == 2
+
+
+def test_clause_probe_keeps_masked_label_scaffolding_and_refuses_misaligned_A(tmp_path):
+    host = SlotHost(TinyCausalLM(), OffsetBytes(), slots=8)
+    store = RunStore(tmp_path / "clauses")
+    run_span_probe(host, store, [{"id": "unit", "question": "How?", "options": ["water", "land"]}], clauses=True)
+    p = json.loads((store.path/"prompts.jsonl").read_text().splitlines()[0])
+    masked = host.tokenizer.decode(p["masked_neutral_ids_by_context"]["phrases_masked"])
+    assert "How?" in masked and "A = ...... B = ....." in masked
+    row = json.loads((store.path/"interventions.jsonl").read_text().splitlines()[0])
+    swaps = row["contexts"]["reversed"]["windows"]
+    assert swaps["A_punct"]["status"] == "different_positions_or_token_ids"
+    assert swaps["B_punct"]["status"] == "measured"
+    assert all(w["status"] == "measured" for w in row["contexts"]["stem_and_phrases_masked"]["windows"].values())
