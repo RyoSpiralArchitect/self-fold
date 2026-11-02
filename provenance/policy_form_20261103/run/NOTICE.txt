@@ -1,0 +1,7 @@
+Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms
+
+SELF-FOLD initialized and trained case_literal.npz and case_latent.npz
+on the frozen Gemma-2-2B-IT base for 64 updates each. They contain rank-16
+query/value adapter factors for the last four decoder layers. Refer to
+fits.jsonl and the embedded training metadata for the modifications and
+bindings. The accompanying terms, policy and ADAPTER_LICENSE.md apply.

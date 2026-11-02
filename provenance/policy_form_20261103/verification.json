@@ -1,0 +1,25 @@
+{
+  "device": "RTX 5090",
+  "learned_G": "not_run",
+  "logical_decisions": 3456,
+  "model": "Gemma-2-2B-IT",
+  "prefit_suite": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 163
+  },
+  "qualification": "not_evaluated",
+  "returned_archive_sha256": "e3447fa45f7c4fe0704ef531161c32af3a433302c5a64d48a507a2a471f5836c",
+  "screens": {
+    "latent": {
+      "order_robustness": false,
+      "trainability": false
+    },
+    "literal": {
+      "order_robustness": false,
+      "trainability": false
+    }
+  },
+  "source_commit": "c807c638fc412d153a3b9948f5310fff6ac39e0a"
+}
