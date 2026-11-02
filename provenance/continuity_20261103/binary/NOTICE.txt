@@ -1,0 +1,8 @@
+Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms
+
+SELF-FOLD created recipient_raw_binary.npz from a fresh rank-16 task-scoped
+query/value adapter initialization for frozen Gemma-2-2B-IT. This follow-up
+used 256 updates of conditional native A/B loss. preprocessing.npz contains
+the recomputed training-state statistics, and is not used by the raw route.
+Bindings and modifications are recorded in the adjacent request and fit
+receipts. See ADAPTER_LICENSE.md and the enclosed terms and policy.

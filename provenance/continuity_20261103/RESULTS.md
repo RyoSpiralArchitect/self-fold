@@ -45,3 +45,11 @@ A separately fixed audit at source 35c71a1aada6e2503e02e98e64f45ddba9b60706 repl
 No observed opposed-source hidden-state pair was exactly identical. The native stored-tanh derivative was nonzero for all observed label entries. Thus this panel found additional rounding ties, while the stronger zero-derivative saturation hypothesis was not observed. Recomputing two head columns in FP32 removed exact ties but yielded 48.18% and 52.86% strict accuracy for the trained recipients. This computation did not demonstrate a working recipient, and it did not alter the recorded native outputs.
 
 The raw audit's 174/384 post-only ties met the separately declared 10% condition for one fresh conditional-label objective comparison. That next phase uses the same untouched native BF16 softcap and evaluates full-vocabulary native greedy output. It neither resumes the failed weights nor uses the diagnostic head to break ties. [One-candidate follow-up contract](BINARY_PLAN.md)
+
+## One matched conditional-label follow-up
+
+The numerical condition admitted the one-candidate follow-up at source 1dc37cdaee70212bd2f449931e1bfde2adecaf2e. It independently initialized the raw recipient and used conditional A/B cross entropy from the unchanged native capped logits. All 4,320 donor hashes, the initial parameter digest, ordered schedule, training forwards and processed-token count matched the original raw fit.
+
+At the fixed 256-update endpoint, every matched native output was A in all three representation stages. Each stage obtained 2,304/4,608 native answers correct (50.00%), all 4,608 A/B likelihood comparisons tied, and zero of 1,152 compound units were correct. It missed the original screen. The run completed in 196.51 seconds with 6,809 forwards and 3,359,310 processed tokens, including replayed donors and evaluation. No trained weight was resumed. [Full follow-up record](binary) · [Recomputed summary](binary_summary.json)
+
+This closes three configurations of the frozen-E recipient. The separately proposed next construction jointly trains a source-only encoder and task-only recipient, while retaining source/question isolation. That architecture has its own fixed budget and entry criteria. [One joint candidate](JOINT_PLAN.md)

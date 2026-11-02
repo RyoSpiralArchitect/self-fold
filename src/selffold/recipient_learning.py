@@ -25,26 +25,39 @@ class RecipientAdapter(torch.nn.Module):
     The backbone remains outside this module's parameter tree. Creating the
     adapter installs inactive projection hooks. close() removes those hooks.
     """
-    def __init__(self, host, *, rank=16, last_layers=4, seed=47, scale=1.):
+    def __init__(self, host, *, rank=16, last_layers=4, seed=47, scale=1.,
+                 layer_indices=None, scope="task"):
         super().__init__()
-        if getattr(host, "_recipient_adapter", None) is not None:
-            raise ValueError("A recipient adapter is already installed")
+        if scope not in {"task", "source_encoding"}:
+            raise ValueError("Unknown adapter scope")
+        registry = getattr(host, "_scoped_adapters", {})
+        if scope in registry or (scope == "task" and getattr(host, "_recipient_adapter", None) is not None):
+            raise ValueError("An adapter for this scope is already installed")
         if any(p.requires_grad for p in host.model.parameters()):
             raise ValueError("The recipient requires a frozen backbone")
-        if not 1 <= last_layers <= host.depth - host.cut or rank < 1:
+        if not 1 <= last_layers <= host.depth or rank < 1:
+            raise ValueError("Invalid adapter layer count or rank")
+        selected = list(range(host.depth-last_layers, host.depth)) if layer_indices is None else list(layer_indices)
+        if len(selected) != last_layers or selected != sorted(set(selected)) or any(not isinstance(i, int) or i < 0 or i >= host.depth for i in selected):
+            raise ValueError("Invalid explicit adapter layers")
+        if scope == "task" and any(i < host.cut for i in selected):
             raise ValueError("Recipient projections must be at or after the injection cut")
+        if scope == "source_encoding" and any(i >= host.cut for i in selected):
+            raise ValueError("Source encoder projections must precede the injection cut")
         if not np.isfinite(scale) or scale <= 0:
             raise ValueError("Invalid recipient scale")
         self.host = host
         self.base_host_sha256 = digest(host.identity)
         self.rank, self.last_layers, self.seed, self.scale = rank, last_layers, seed, float(scale)
+        self.scope = scope
+        self.layer_indices = None if layer_indices is None else selected
         self.factors = torch.nn.ModuleList()
         self.targets = []
         self._handles = []
         self._active = False
         self._closed = False
         projections = []
-        for layer_index in range(host.depth-last_layers, host.depth):
+        for layer_index in selected:
             attention = host.layers[layer_index].self_attn
             for name in ("q_proj", "v_proj"):
                 projection = getattr(attention, name, None)
@@ -69,18 +82,28 @@ class RecipientAdapter(torch.nn.Module):
         except Exception:
             self.close()
             raise
-        host._recipient_adapter = self
+        host._scoped_adapters = registry
+        registry[scope] = self
+        if scope == "task":
+            host._recipient_adapter = self
 
     @property
     def architecture(self):
-        return {"rank": self.rank, "last_layers": self.last_layers, "seed": self.seed,
-                "scale": self.scale, "targets": self.targets, "parameter_dtype": "float32",
-                "scope": "explicit_task_context_only"}
+        architecture = {"rank": self.rank, "last_layers": self.last_layers, "seed": self.seed,
+                        "scale": self.scale, "targets": self.targets, "parameter_dtype": "float32",
+                        "scope": "explicit_task_context_only"}
+        if self.layer_indices is not None or self.scope != "task":
+            architecture.update(layer_indices=[t["layer"] for t in self.targets[::2]],
+                                adapter_scope=self.scope,
+                                scope="explicit_" + self.scope + "_context_only")
+        return architecture
 
     @contextmanager
     def active(self):
         if self._closed:
             raise ValueError("The recipient adapter is closed")
+        if any(other is not self and other._active for other in getattr(self.host, "_scoped_adapters", {}).values()):
+            raise ValueError("Another adapter scope is active")
         previous = self._active
         self._active = True
         try:
@@ -96,6 +119,9 @@ class RecipientAdapter(torch.nn.Module):
         self._closed = True
         if getattr(self.host, "_recipient_adapter", None) is self:
             self.host._recipient_adapter = None
+        registry = getattr(self.host, "_scoped_adapters", {})
+        if registry.get(self.scope) is self:
+            del registry[self.scope]
 
 
 def batched_recipient_logits(host, adapter, input_ids, attention_mask, slots, input_positions, score_positions):
@@ -105,8 +131,8 @@ def batched_recipient_logits(host, adapter, input_ids, attention_mask, slots, in
     Caller gradients through slots are retained for a later update experiment.
     Padded positions count toward the processed-token meter.
     """
-    if adapter.host is not host or adapter._closed:
-        raise ValueError("Recipient adapter belongs to another or closed host")
+    if adapter.host is not host or adapter._closed or adapter.scope != "task":
+        raise ValueError("Recipient adapter belongs to another host or scope, or is closed")
     if any(p.requires_grad for p in host.model.parameters()):
         raise ValueError("Backbone parameters must remain frozen")
     ids = torch.as_tensor(input_ids, dtype=torch.long, device=host.device)
@@ -183,7 +209,8 @@ def save_recipient(path, adapter, host_identity, *, dataset_sha256, source_sha25
     for value in (dataset_sha256, source_sha256):
         if len(value) != 64 or any(c not in "0123456789abcdef" for c in value):
             raise ValueError("Need exact recipient data/source bindings")
-    metadata = {"kind": "scoped_recipient_qv_lora", "base_host_sha256": adapter.base_host_sha256,
+    kind = "scoped_recipient_qv_lora" if adapter.scope == "task" else "scoped_source_encoder_qv_lora"
+    metadata = {"kind": kind, "base_host_sha256": adapter.base_host_sha256,
                 "architecture": adapter.architecture, "dataset_sha256": dataset_sha256,
                 "source_sha256": source_sha256, "training": training}
     arrays = {name: parameter.detach().float().cpu().numpy() for name, parameter in adapter.named_parameters()}
@@ -196,11 +223,13 @@ def save_recipient(path, adapter, host_identity, *, dataset_sha256, source_sha25
 def load_recipient(path, host, *, trainable=False):
     with np.load(path, allow_pickle=False) as archive:
         metadata = json.loads(archive["metadata_utf8"].tobytes())
-        if metadata["kind"] != "scoped_recipient_qv_lora" or metadata["base_host_sha256"] != digest(host.identity):
+        if metadata["kind"] not in {"scoped_recipient_qv_lora", "scoped_source_encoder_qv_lora"} or metadata["base_host_sha256"] != digest(host.identity):
             raise ValueError("Recipient artifact belongs to another host")
         architecture = metadata["architecture"]
         adapter = RecipientAdapter(host, rank=architecture["rank"], last_layers=architecture["last_layers"],
-                                   seed=architecture["seed"], scale=architecture["scale"])
+                                   seed=architecture["seed"], scale=architecture["scale"],
+                                   layer_indices=architecture.get("layer_indices"),
+                                   scope=architecture.get("adapter_scope", "task"))
         try:
             if adapter.architecture != architecture:
                 raise ValueError("Recipient architecture differs")
@@ -219,3 +248,49 @@ def load_recipient(path, host, *, trainable=False):
         except Exception:
             adapter.close()
             raise
+
+
+class _SourceCaptureComplete(Exception):
+    """Internal signal to finish the source prefix before decoder cut execution."""
+
+
+def differentiable_source_slots(host, encoder_adapter, text, *, forward_length=256):
+    """Encode one current source, stopping at the pre-cut state with gradients intact.
+
+    This interface accepts no task, answer label, trajectory, or target state.
+    Prefix execution costs are counted as one forward and forward_length input
+    tokens, with the number of executed decoder layers recorded in its layout.
+    """
+    from .carrier_probe import description_layout
+    if encoder_adapter.host is not host or encoder_adapter._closed or encoder_adapter.scope != "source_encoding":
+        raise ValueError("Need a source-encoding adapter for this host")
+    if host.model.training or any(p.requires_grad for p in host.model.parameters()):
+        raise ValueError("Need an eval-mode frozen source backbone")
+    if getattr(host.model, "is_gradient_checkpointing", False):
+        raise ValueError("Scoped source encoding requires gradient checkpointing disabled")
+    ids, positions, layout = description_layout(host, text, "workspace", forward_length=forward_length)
+    host._budget(len(ids))
+    captured = None
+    def capture(module, arguments, keywords):
+        nonlocal captured
+        hidden = arguments[0] if arguments else keywords["hidden_states"]
+        captured = hidden[:, positions, :].clone()
+        raise _SourceCaptureComplete()
+    hook = host.layers[host.cut].register_forward_pre_hook(capture, with_kwargs=True)
+    try:
+        with encoder_adapter.active():
+            inputs = torch.tensor([ids], device=host.device)
+            try:
+                host.model(input_ids=inputs, attention_mask=torch.ones_like(inputs), use_cache=False, return_dict=True)
+            except _SourceCaptureComplete:
+                pass
+        if captured is None or captured.shape != (1, host.slots, host.width):
+            raise ValueError("Source prefix did not reach its capture boundary")
+        if not torch.isfinite(captured).all():
+            raise FloatingPointError("Nonfinite source prefix state")
+        host.meter.forwards += 1
+        host.meter.processed_tokens += len(ids)
+        return captured[0], {**layout, "source_prefix_layers_executed": host.cut,
+                             "native_output_head_executed": False}
+    finally:
+        hook.remove()
