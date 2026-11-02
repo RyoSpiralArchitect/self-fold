@@ -1,0 +1,327 @@
+{
+  "schema": "source_lexical_v1",
+  "scope": "prospectively_authored_development",
+  "training_phrasings": [
+    0,
+    1
+  ],
+  "withheld_training_topic_phrasings": [
+    2,
+    3
+  ],
+  "training_question_wording": 0,
+  "groups": [
+    {
+      "id": "archive",
+      "split": "train",
+      "exposure": "previous_lexical_train",
+      "questions": [
+        "Which reports does the speaker put at the front of an archive?",
+        "Which archive placement fits this person's preference?"
+      ],
+      "options": [
+        "the most recent reports",
+        "the earliest reports"
+      ],
+      "plus": [
+        "I prefer placing the newest reports at the front of my archive. I avoid placing the oldest reports at the front of my archive.",
+        "I avoid placing the oldest reports at the front of my archive. I prefer placing the newest reports at the front of my archive.",
+        "My usual choice is putting recent reports first in an archive. I pass over putting early reports first in an archive.",
+        "I pass over putting early reports first in an archive. My usual choice is putting recent reports first in an archive."
+      ],
+      "minus": [
+        "I prefer placing the oldest reports at the front of my archive. I avoid placing the newest reports at the front of my archive.",
+        "I avoid placing the newest reports at the front of my archive. I prefer placing the oldest reports at the front of my archive.",
+        "My usual choice is putting early reports first in an archive. I pass over putting recent reports first in an archive.",
+        "I pass over putting recent reports first in an archive. My usual choice is putting early reports first in an archive."
+      ]
+    },
+    {
+      "id": "route",
+      "split": "train",
+      "exposure": "previous_lexical_train",
+      "questions": [
+        "Which path does the speaker prefer on a walk?",
+        "Which walking route fits this person's preference?"
+      ],
+      "options": [
+        "the path along the river",
+        "the path along the ridge"
+      ],
+      "plus": [
+        "I prefer walking along the riverbank. I avoid walking along the hill's crest.",
+        "I avoid walking along the hill's crest. I prefer walking along the riverbank.",
+        "My usual choice is following a path beside the river. I pass over following a path along the ridgeline.",
+        "I pass over following a path along the ridgeline. My usual choice is following a path beside the river."
+      ],
+      "minus": [
+        "I prefer walking along the hill's crest. I avoid walking along the riverbank.",
+        "I avoid walking along the riverbank. I prefer walking along the hill's crest.",
+        "My usual choice is following a path along the ridgeline. I pass over following a path beside the river.",
+        "I pass over following a path beside the river. My usual choice is following a path along the ridgeline."
+      ]
+    },
+    {
+      "id": "notes",
+      "split": "train",
+      "exposure": "previous_lexical_train",
+      "questions": [
+        "How does the speaker prefer to take meeting notes?",
+        "Which kind of notes fits this person's preference?"
+      ],
+      "options": [
+        "preserve the exact words",
+        "summarize the main ideas"
+      ],
+      "plus": [
+        "I prefer writing down the speakers' exact words in meetings. I avoid writing down a summary of the main points in meetings.",
+        "I avoid writing down a summary of the main points in meetings. I prefer writing down the speakers' exact words in meetings.",
+        "My usual choice is preserving the precise wording when taking meeting notes. I pass over preserving the gist when taking meeting notes.",
+        "I pass over preserving the gist when taking meeting notes. My usual choice is preserving the precise wording when taking meeting notes."
+      ],
+      "minus": [
+        "I prefer writing down a summary of the main points in meetings. I avoid writing down the speakers' exact words in meetings.",
+        "I avoid writing down the speakers' exact words in meetings. I prefer writing down a summary of the main points in meetings.",
+        "My usual choice is preserving the gist when taking meeting notes. I pass over preserving the precise wording when taking meeting notes.",
+        "I pass over preserving the precise wording when taking meeting notes. My usual choice is preserving the gist when taking meeting notes."
+      ]
+    },
+    {
+      "id": "temperature",
+      "split": "train",
+      "exposure": "previous_lexical_train",
+      "questions": [
+        "Which temperature scale does the speaker use in a weather log?",
+        "Which weather-log unit fits this person's preference?"
+      ],
+      "options": [
+        "degrees Celsius",
+        "degrees Fahrenheit"
+      ],
+      "plus": [
+        "I prefer using Celsius for weather temperatures. I avoid using Fahrenheit for weather temperatures.",
+        "I avoid using Fahrenheit for weather temperatures. I prefer using Celsius for weather temperatures.",
+        "My usual choice is recording the day's temperature in Celsius. I pass over recording the day's temperature in Fahrenheit.",
+        "I pass over recording the day's temperature in Fahrenheit. My usual choice is recording the day's temperature in Celsius."
+      ],
+      "minus": [
+        "I prefer using Fahrenheit for weather temperatures. I avoid using Celsius for weather temperatures.",
+        "I avoid using Celsius for weather temperatures. I prefer using Fahrenheit for weather temperatures.",
+        "My usual choice is recording the day's temperature in Fahrenheit. I pass over recording the day's temperature in Celsius.",
+        "I pass over recording the day's temperature in Celsius. My usual choice is recording the day's temperature in Fahrenheit."
+      ]
+    },
+    {
+      "id": "length",
+      "split": "train",
+      "exposure": "new_training_topic",
+      "questions": [
+        "Which unit does the speaker use for short lengths?",
+        "Which length unit fits this person's preference?"
+      ],
+      "options": [
+        "centimeters",
+        "inches"
+      ],
+      "plus": [
+        "I prefer measuring small lengths in centimeters. I avoid measuring small lengths in inches.",
+        "I avoid measuring small lengths in inches. I prefer measuring small lengths in centimeters.",
+        "My usual choice is recording a short distance as centimeters. I pass over recording a short distance as inches.",
+        "I pass over recording a short distance as inches. My usual choice is recording a short distance as centimeters."
+      ],
+      "minus": [
+        "I prefer measuring small lengths in inches. I avoid measuring small lengths in centimeters.",
+        "I avoid measuring small lengths in centimeters. I prefer measuring small lengths in inches.",
+        "My usual choice is recording a short distance as inches. I pass over recording a short distance as centimeters.",
+        "I pass over recording a short distance as centimeters. My usual choice is recording a short distance as inches."
+      ]
+    },
+    {
+      "id": "clock",
+      "split": "train",
+      "exposure": "new_training_topic",
+      "questions": [
+        "Which clock format does the speaker use?",
+        "Which time format fits this person's preference?"
+      ],
+      "options": [
+        "the 24-hour clock",
+        "the 12-hour clock"
+      ],
+      "plus": [
+        "I prefer writing times with the twenty-four-hour clock. I avoid writing times with the twelve-hour clock.",
+        "I avoid writing times with the twelve-hour clock. I prefer writing times with the twenty-four-hour clock.",
+        "My usual choice is showing times from zero through twenty-three hours. I pass over showing times with a.m. or p.m.",
+        "I pass over showing times with a.m. or p.m. My usual choice is showing times from zero through twenty-three hours."
+      ],
+      "minus": [
+        "I prefer writing times with the twelve-hour clock. I avoid writing times with the twenty-four-hour clock.",
+        "I avoid writing times with the twenty-four-hour clock. I prefer writing times with the twelve-hour clock.",
+        "My usual choice is showing times with a.m. or p.m. I pass over showing times from zero through twenty-three hours.",
+        "I pass over showing times from zero through twenty-three hours. My usual choice is showing times with a.m. or p.m."
+      ]
+    },
+    {
+      "id": "mail",
+      "split": "train",
+      "exposure": "new_training_topic",
+      "questions": [
+        "How does the speaker organize saved mail?",
+        "Which mail organization fits this person's preference?"
+      ],
+      "options": [
+        "sorting mail by sender",
+        "sorting mail by date"
+      ],
+      "plus": [
+        "I prefer organizing saved mail by who sent it. I avoid organizing saved mail by when it arrived.",
+        "I avoid organizing saved mail by when it arrived. I prefer organizing saved mail by who sent it.",
+        "My usual choice is keeping messages from the same sender together. I pass over keeping messages from the same date together.",
+        "I pass over keeping messages from the same date together. My usual choice is keeping messages from the same sender together."
+      ],
+      "minus": [
+        "I prefer organizing saved mail by when it arrived. I avoid organizing saved mail by who sent it.",
+        "I avoid organizing saved mail by who sent it. I prefer organizing saved mail by when it arrived.",
+        "My usual choice is keeping messages from the same date together. I pass over keeping messages from the same sender together.",
+        "I pass over keeping messages from the same sender together. My usual choice is keeping messages from the same date together."
+      ]
+    },
+    {
+      "id": "music",
+      "split": "train",
+      "exposure": "new_training_topic",
+      "questions": [
+        "Which kind of music does the speaker prefer?",
+        "Which music fits this person's preference?"
+      ],
+      "options": [
+        "instrumental music",
+        "music with vocals"
+      ],
+      "plus": [
+        "I prefer listening to instrumental music. I avoid listening to music with singing.",
+        "I avoid listening to music with singing. I prefer listening to instrumental music.",
+        "My usual choice is hearing instruments without a singer. I pass over hearing a singer alongside the music.",
+        "I pass over hearing a singer alongside the music. My usual choice is hearing instruments without a singer."
+      ],
+      "minus": [
+        "I prefer listening to music with singing. I avoid listening to instrumental music.",
+        "I avoid listening to instrumental music. I prefer listening to music with singing.",
+        "My usual choice is hearing a singer alongside the music. I pass over hearing instruments without a singer.",
+        "I pass over hearing instruments without a singer. My usual choice is hearing a singer alongside the music."
+      ]
+    },
+    {
+      "id": "shelf",
+      "split": "dev",
+      "exposure": "previous_lexical_transfer",
+      "questions": [
+        "What determines where the speaker shelves a book?",
+        "Which shelving rule fits this person's preference?"
+      ],
+      "options": [
+        "who wrote it",
+        "what it is about"
+      ],
+      "plus": [
+        "I prefer arranging my books according to their authors. I avoid arranging my books according to their subjects.",
+        "I avoid arranging my books according to their subjects. I prefer arranging my books according to their authors.",
+        "My usual choice is grouping books by the writer's identity. I pass over grouping books by their subject matter.",
+        "I pass over grouping books by their subject matter. My usual choice is grouping books by the writer's identity."
+      ],
+      "minus": [
+        "I prefer arranging my books according to their subjects. I avoid arranging my books according to their authors.",
+        "I avoid arranging my books according to their authors. I prefer arranging my books according to their subjects.",
+        "My usual choice is grouping books by their subject matter. I pass over grouping books by the writer's identity.",
+        "I pass over grouping books by the writer's identity. My usual choice is grouping books by their subject matter."
+      ]
+    },
+    {
+      "id": "directions",
+      "split": "dev",
+      "exposure": "previous_lexical_transfer",
+      "questions": [
+        "What does the speaker use when giving directions?",
+        "Which kind of directions fits this person's preference?"
+      ],
+      "options": [
+        "street names",
+        "recognizable landmarks"
+      ],
+      "plus": [
+        "I prefer explaining routes using street names. I avoid explaining routes using recognizable landmarks.",
+        "I avoid explaining routes using recognizable landmarks. I prefer explaining routes using street names.",
+        "My usual choice is giving directions in terms of named streets. I pass over giving directions in terms of familiar landmarks.",
+        "I pass over giving directions in terms of familiar landmarks. My usual choice is giving directions in terms of named streets."
+      ],
+      "minus": [
+        "I prefer explaining routes using recognizable landmarks. I avoid explaining routes using street names.",
+        "I avoid explaining routes using street names. I prefer explaining routes using recognizable landmarks.",
+        "My usual choice is giving directions in terms of familiar landmarks. I pass over giving directions in terms of named streets.",
+        "I pass over giving directions in terms of named streets. My usual choice is giving directions in terms of familiar landmarks."
+      ]
+    },
+    {
+      "id": "photos",
+      "split": "dev",
+      "exposure": "new_transfer_topic",
+      "questions": [
+        "How does the speaker organize a photo collection?",
+        "Which photo organization fits this person's preference?"
+      ],
+      "options": [
+        "grouping photos by place",
+        "grouping photos by date"
+      ],
+      "plus": [
+        "I prefer grouping my photos by where they were taken. I avoid grouping my photos by when they were taken.",
+        "I avoid grouping my photos by when they were taken. I prefer grouping my photos by where they were taken.",
+        "My usual choice is keeping pictures of the same place together. I pass over keeping pictures taken on the same day together.",
+        "I pass over keeping pictures taken on the same day together. My usual choice is keeping pictures of the same place together."
+      ],
+      "minus": [
+        "I prefer grouping my photos by when they were taken. I avoid grouping my photos by where they were taken.",
+        "I avoid grouping my photos by where they were taken. I prefer grouping my photos by when they were taken.",
+        "My usual choice is keeping pictures taken on the same day together. I pass over keeping pictures of the same place together.",
+        "I pass over keeping pictures of the same place together. My usual choice is keeping pictures taken on the same day together."
+      ]
+    },
+    {
+      "id": "recipes",
+      "split": "dev",
+      "exposure": "new_transfer_topic",
+      "questions": [
+        "Which weight unit does the speaker use in recipes?",
+        "Which recipe unit fits this person's preference?"
+      ],
+      "options": [
+        "grams",
+        "ounces"
+      ],
+      "plus": [
+        "I prefer weighing recipe ingredients in grams. I avoid weighing recipe ingredients in ounces.",
+        "I avoid weighing recipe ingredients in ounces. I prefer weighing recipe ingredients in grams.",
+        "My usual choice is writing ingredient weights as grams. I pass over writing ingredient weights as ounces.",
+        "I pass over writing ingredient weights as ounces. My usual choice is writing ingredient weights as grams."
+      ],
+      "minus": [
+        "I prefer weighing recipe ingredients in ounces. I avoid weighing recipe ingredients in grams.",
+        "I avoid weighing recipe ingredients in grams. I prefer weighing recipe ingredients in ounces.",
+        "My usual choice is writing ingredient weights as ounces. I pass over writing ingredient weights as grams.",
+        "I pass over writing ingredient weights as grams. My usual choice is writing ingredient weights as ounces."
+      ]
+    }
+  ],
+  "human_semantic_review": "pending",
+  "source_order_pairs": [
+    [
+      0,
+      1
+    ],
+    [
+      2,
+      3
+    ]
+  ],
+  "source_order_meaning": "identical preference and rejected-alternative clauses in opposite orders"
+}
