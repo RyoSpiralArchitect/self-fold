@@ -1,0 +1,197 @@
+{
+  "status": "exposed_development_only",
+  "groups": [
+    {
+      "id": "archive",
+      "question": "Which reports does the speaker put at the front of an archive?",
+      "options": [
+        "the most recent reports",
+        "the earliest reports"
+      ],
+      "plus": [
+        "I put the newest reports at the front of my archive.",
+        "For my archive I file the latest reports first."
+      ],
+      "minus": [
+        "I put the oldest reports at the front of my archive.",
+        "For my archive I file the earliest reports first."
+      ]
+    },
+    {
+      "id": "route",
+      "question": "Which path does the speaker prefer on a walk?",
+      "options": [
+        "the path along the river",
+        "the path along the ridge"
+      ],
+      "plus": [
+        "I choose the riverside trail for my walks.",
+        "When walking, I favor following the riverbank."
+      ],
+      "minus": [
+        "I choose the ridge trail for my walks.",
+        "When walking, I favor following the crest of the hill."
+      ]
+    },
+    {
+      "id": "notes",
+      "question": "How does the speaker prefer to take meeting notes?",
+      "options": [
+        "preserve the exact words",
+        "summarize the main ideas"
+      ],
+      "plus": [
+        "I record a meeting in the speakers' exact words.",
+        "My meeting notes preserve what people say word for word."
+      ],
+      "minus": [
+        "I record a meeting by summarizing its main points.",
+        "My meeting notes capture the gist of what people say."
+      ]
+    },
+    {
+      "id": "temperature",
+      "question": "Which temperature scale does the speaker use in a weather log?",
+      "options": [
+        "degrees Celsius",
+        "degrees Fahrenheit"
+      ],
+      "plus": [
+        "I record the weather in degrees Celsius.",
+        "My weather diary uses the Celsius scale."
+      ],
+      "minus": [
+        "I record the weather in degrees Fahrenheit.",
+        "My weather diary uses the Fahrenheit scale."
+      ]
+    },
+    {
+      "id": "shelf",
+      "question": "What determines where the speaker shelves a book?",
+      "options": [
+        "who wrote it",
+        "what it is about"
+      ],
+      "plus": [
+        "I group the books on my shelves by author.",
+        "On my bookshelf, works by the same writer sit together."
+      ],
+      "minus": [
+        "I group the books on my shelves by subject.",
+        "On my bookshelf, works on the same topic sit together."
+      ]
+    },
+    {
+      "id": "directions",
+      "question": "What does the speaker use when giving directions?",
+      "options": [
+        "street names",
+        "recognizable landmarks"
+      ],
+      "plus": [
+        "I give directions by naming the streets to take.",
+        "I guide people by telling them the road names."
+      ],
+      "minus": [
+        "I give directions by pointing out landmarks along the way.",
+        "I guide people by describing recognizable sights on the route."
+      ]
+    },
+    {
+      "id": "calendar",
+      "question": "Which view does the speaker choose for a calendar?",
+      "options": [
+        "one week at a time",
+        "one month at a time"
+      ],
+      "plus": [
+        "I view my calendar one week at a time.",
+        "My calendar view shows one week at a time."
+      ],
+      "minus": [
+        "I view my calendar one month at a time.",
+        "My calendar view shows one month at a time."
+      ]
+    },
+    {
+      "id": "paint",
+      "question": "Which finish does the speaker choose for paint?",
+      "options": [
+        "a matte finish",
+        "a glossy finish"
+      ],
+      "plus": [
+        "I choose paint with a matte finish.",
+        "For painted surfaces I prefer a matte finish."
+      ],
+      "minus": [
+        "I choose paint with a glossy finish.",
+        "For painted surfaces I prefer a glossy finish."
+      ]
+    },
+    {
+      "id": "photo",
+      "question": "Which style does the speaker prefer for photographs?",
+      "options": [
+        "black and white",
+        "full color"
+      ],
+      "plus": [
+        "I prefer photographs in black and white.",
+        "For my photographs I choose black and white."
+      ],
+      "minus": [
+        "I prefer photographs in full color.",
+        "For my photographs I choose full color."
+      ]
+    },
+    {
+      "id": "packing",
+      "question": "How does the speaker pack clothes for a trip?",
+      "options": [
+        "roll the clothes",
+        "fold the clothes"
+      ],
+      "plus": [
+        "I roll the clothes when packing for a trip.",
+        "When packing my travel bag I roll the clothes."
+      ],
+      "minus": [
+        "I fold the clothes when packing for a trip.",
+        "When packing my travel bag I fold the clothes."
+      ]
+    },
+    {
+      "id": "recipes",
+      "question": "How does the speaker measure ingredients for a recipe?",
+      "options": [
+        "weigh the ingredients",
+        "measure by volume"
+      ],
+      "plus": [
+        "I weigh the ingredients for a recipe.",
+        "When following a recipe I weigh the ingredients."
+      ],
+      "minus": [
+        "I measure ingredients by volume for a recipe.",
+        "When following a recipe I measure by volume."
+      ]
+    },
+    {
+      "id": "music",
+      "question": "How does the speaker prefer to learn a tune?",
+      "options": [
+        "play by ear",
+        "read sheet music"
+      ],
+      "plus": [
+        "I prefer to play by ear when learning a tune.",
+        "When learning music I choose to play by ear."
+      ],
+      "minus": [
+        "I prefer to read sheet music when learning a tune.",
+        "When learning music I choose to read sheet music."
+      ]
+    }
+  ]
+}
