@@ -1,0 +1,80 @@
+# Native recipient learning for two-stage functional continuity
+
+This study makes the original SELF-FOLD question operational at its first interface. A later two-step reconstruction needs a question-independent state that a recipient can use. The new development bank provides conditional policies, supported explicit-case and reintegrated teachers, and self/other/impersonal frames. Each teacher has the same exhaustive four-world truth table as its source. Human transition support and usefulness review are pending. [Integrated protocol](../../docs/FUNCTIONAL_CONTINUITY.md) · [Public material](../../data/continuity_20261103/manifest.json)
+
+## The frozen recipient comparison
+
+We froze raw Gemma-2-2B-IT workspace E, eight slots at pre-cut layer 13, from a description-only forward of 256 tokens. The source and both teacher stages supply 1,152 train variants and 288 dev variants each, across 96 train and 24 dev groups. Construction grammars, action/flag words and sites are held out, while Boolean truth functions and target rendering grammars overlap. Source questions are constructed only after all 4,320 logical donor records have been captured.
+
+A task-scoped rank 16 q/v adapter in the final four decoder layers minimizes full-vocabulary native A/B cross entropy for 256 AdamW updates. Each effective batch has 32 questions, balanced over both policies, both source orders, four worlds and both label mappings. Only the receiver is active in task forwards. A second candidate uses the same initialization, schedule and budget with fixed train-only coordinate standardization at task injection. Its execution was conditional on the raw candidate's fixed final endpoint missing the screen.
+
+| Matched teacher/state readout | Raw native correct /4,608 | Standardized native correct /4,608 | Literal base native correct /4,608 |
+| --- | ---: | ---: | ---: |
+| Source | 2,307 (50.07%) | 2,299 (49.89%) | 3,269 (70.94%) |
+| Explicit-case teacher | 2,286 (49.61%) | 2,305 (50.02%) | 3,448 (74.83%) |
+| Reintegrated teacher | 2,294 (49.78%) | 2,308 (50.09%) | 2,886 (62.63%) |
+
+The receiver's primary compound unit requires correct native greedy answers under all four polarity/order tags at a fixed group, frame, world, question wording and label mapping. The raw stage2 candidate met 52/1,152 units (4.51%), and standardized met 17/1,152 (1.48%). Stage 2 rendering is canonical and its two order tags are byte-identical. This compound counts two real opposed policies with duplicated order inputs. Clause-order robustness must be examined in source and case-stage panels, and eventually on the actual learned G chain.
+
+Both candidates missed the registered 90% native accuracy, 10-point null advantage and 75% joint screen. Their strongest fixed null scored 50%. All native argmax outputs were A or B, but many A/B likelihoods tied exactly. In stage2 there were 3,872 raw and 3,238 standardized ties out of 4,608, which counted against forced-choice success. Native greedy output uses the model's deterministic argmax, so its score can differ from the tie-as-failure forced-choice score. [Every decision and control](recipient/functional.jsonl) · [Recomputed summary](summary.json)
+
+Both fits are complete at their cap. The backbone parameter digest matched before and after; the run used 512 total optimizer updates, 12,249 batched/donor forwards and 7,674,574 processed tokens. It completed in 397.93 seconds on one RTX 5090. The training loss rapidly approached log2. The model-source contribution targeted by the protocol remains unestablished in these recipients. The actual two-step G fit, middle-state exchange and language-insertion experiment have not entered their next phase.
+
+## Execution and remaining claims
+
+Source 77c4ab6623cd843b730bc2b0635b62f998aef1c5 fixed the corpus, loss, architecture, candidate order, stage-specific scoring and negative closure before the pretrained run.149 engineering tests, a tiny T/L/B smoke and all 4,320 native-tokenizer layouts passed before fitting. The longest rendered donor used 137 tokens inside the fixed 256 geometry. Logical donor rows shared 2,808 unique source forwards.
+
+The old sealed 24-group qualification material stayed outside this experiment. The new material contains no confirmation panel yet. A new source or numerical diagnostic can follow these recorded failures under a separate plan. A successful final-teacher recipient would still be an interface result, preceding the actual learned recurrence and independent qualification. The two adapters and train-state statistics have the [Gemma conditions](recipient/ADAPTER_LICENSE.md).
+
+To regenerate the full study summary from its receipts, run the following from the repository root.
+
+~~~bash
+python3 provenance/continuity_20261103/summarize.py provenance/continuity_20261103/recipient
+~~~
+
+## Zero-update numerical audit
+
+A separately fixed audit at source 35c71a1aada6e2503e02e98e64f45ddba9b60706 replayed 48 source rows and evaluated 384 tasks for each of the initialized, raw and standardized recipients. It observed the native head without replacing its output. All original source-state hashes matched, all backbone/adapter parameter hashes matched before and after, and the audit made zero optimizer updates. It retained 1,152 task records and 576 opposed-source hidden-state pairs. [Audit contract](AUDIT_PLAN.md) · [Per-case numerical observations](numerical-audit/cases.jsonl) · [Summary](numerical-audit/summary.json)
+
+| Audit endpoint /384 tasks | Initial | Raw learned | Standardized learned |
+| --- | ---: | ---: | ---: |
+| Exact ties after native softcap | 0 | 308 | 316 |
+| Ties introduced after unequal BF16 head values | 0 | 174 | 146 |
+| Two-column FP32 projection, strict correct | 192 | 185 | 203 |
+
+No observed opposed-source hidden-state pair was exactly identical. The native stored-tanh derivative was nonzero for all observed label entries. Thus this panel found additional rounding ties, while the stronger zero-derivative saturation hypothesis was not observed. Recomputing two head columns in FP32 removed exact ties but yielded 48.18% and 52.86% strict accuracy for the trained recipients. This computation did not demonstrate a working recipient, and it did not alter the recorded native outputs.
+
+The raw audit's 174/384 post-only ties met the separately declared 10% condition for one fresh conditional-label objective comparison. That next phase uses the same untouched native BF16 softcap and evaluates full-vocabulary native greedy output. It neither resumes the failed weights nor uses the diagnostic head to break ties. [One-candidate follow-up contract](BINARY_PLAN.md)
+
+## One matched conditional-label follow-up
+
+The numerical condition admitted the one-candidate follow-up at source 1dc37cdaee70212bd2f449931e1bfde2adecaf2e. It independently initialized the raw recipient and used conditional A/B cross entropy from the unchanged native capped logits. All 4,320 donor hashes, the initial parameter digest, ordered schedule, training forwards and processed-token count matched the original raw fit.
+
+At the fixed 256-update endpoint, every matched native output was A in all three representation stages. Each stage obtained 2,304/4,608 native answers correct (50.00%), all 4,608 A/B likelihood comparisons tied, and zero of 1,152 compound units were correct. It missed the original screen. The run completed in 196.51 seconds with 6,809 forwards and 3,359,310 processed tokens, including replayed donors and evaluation. No trained weight was resumed. [Full follow-up record](binary) · [Recomputed summary](binary_summary.json)
+
+This closes three configurations of the frozen-E recipient. The separately proposed next construction jointly trains a source-only encoder and task-only recipient, while retaining source/question isolation. That architecture has its own fixed budget and entry criteria. [One joint candidate](JOINT_PLAN.md)
+
+## Jointly learning source E and the native recipient
+
+A separate one-candidate construction was fixed at source 7f284c18ec4f5f330df86f8190c081a60422d497. Source-only q/v adapters in layers 9–12 and task-only adapters in layers 22–25 were jointly trained with the native conditional-label objective, learning rate 0.0003 and 256 updates. The source route retained gradients at pre-cut 13 and did not execute its output head. It used one source forward per eight task questions, then a separate task forward. Both modules had 491,520 learned parameters. This comparison changes architecture and learning rate, so its result cannot isolate one of those changes. [Joint contract](JOINT_PLAN.md)
+
+All six checked zero-source initial activations exactly matched the earlier source hashes. Both modules received positive finite gradients at every update. Source training performed 1,024 prefix forwards through 13 layers and 262,144 tokens, while task training performed 1,024 full 26-layer forwards and 664,384 tokens. Both learned artifacts were saved, reloaded frozen and hash-checked. All 4,320 evaluation source rows were then captured before questions were constructed.
+
+Native correctness was 2,304/4,608 (50.00%) for source states, 2,319/4,608 (50.33%) for case teachers and 2,336/4,608 (50.69%) for reintegrated teachers. The final-teacher compound was 57/1,152 (4.95%), below the 75% screen. Its strongest fixed null was 50%. Full native outputs were all A/B. 3,054 final-teacher A/B scores tied exactly. The candidate did not pass.
+
+The run completed in 200.67 seconds, with 7,840 forwards and 3,623,004 processed tokens including training, captures and evaluation. Backbone and frozen adapter parameter hashes matched. [Per-case record and both artifacts](joint) · [Recomputed joint summary](joint_summary.json)
+
+These four configurations completed 1,024 total optimizer updates. None supplied an admitted native recipient under the fixed screen. The intended positive contribution of actual two-step semantic reconstruction remains open. No learned G chain or language-insertion result has been produced by encoding teacher texts independently. A next development design should first establish a small, train-only native learning control and a directly readable matched literal control before adding a new carrier or a longer trajectory.
+
+## A paired small-set trainability control
+
+Before choosing another carrier, source d316bce3f35d8de3aa025683d022e2b84fe17218 fixed four public training groups and two diagnostic dev groups. Stage 2/self inputs supplied 128 training decisions and 64 dev decisions, including both policy poles and order tags. Both fresh native recipients used the same initialization, question order, 64 updates and conditional-label objective. One received literal source text; the other received frozen raw E slots. All 24 source hashes replayed. The canonical teacher duplicates order tags, so this is a small-set learning control. [Fixed control](TRAINABILITY_PLAN.md) · [Every initial/final decision](trainability/decisions.jsonl) · [Summary](trainability/summary.json)
+
+| Input | Train initial | Train final | Exposed dev initial | Exposed dev final |
+| --- | ---: | ---: | ---: | ---: |
+| Literal text | 86/128 (67.19%) | 112/128 (87.50%) | 38/64 (59.38%) | 48/64 (75.00%) |
+| Eight raw slots | 48/128 (37.50%) | 58/128 (45.31%) | 32/64 (50.00%) | 34/64 (53.13%) |
+
+The final literal condition met 24/32 joint training units and the slot condition 4/32. Neither met the declared 95% training correctness plus 90% compound engineering screen. Literal training improved native correctness by 20.31 points on these exact training cases; the slot condition improved by 7.81. Final forced A/B ties were 0/128 for literal and 74/128 for slots. All final native argmax outputs were labels. The literal and slot input geometries and token costs differ. With four chosen groups, this control supplies descriptive trainability evidence, rather than a general capacity or independent-transfer conclusion.
+
+Both artifacts reproduced their checked logits exactly after serialization, and backbone hashes matched. The paired control completed 128 optimizer updates and 768 initial/final decisions in 44.04 seconds. It does not constitute a positive semantic gate or the intended two-step result. Its outcome directs the next study toward an established trainability control and the source-state/recipient connection before any G learning.

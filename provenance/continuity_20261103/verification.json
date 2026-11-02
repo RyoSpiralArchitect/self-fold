@@ -1,0 +1,41 @@
+{
+  "G_trained": false,
+  "audit_decisions": 1152,
+  "backbone_sha256": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+  "independent_human_transition_review": "pending",
+  "learned_two_step_composition": "not_run",
+  "model_elapsed_seconds": 861.4260162421269,
+  "new_confirmation_panel": "not_created",
+  "old_qualification_commitment_sha256": "b408768d82296c367cc686fdd608b749ce4da911d1dfcdc099f91bf261c19997",
+  "old_qualification_content_loaded": false,
+  "optimizer_updates": 1152,
+  "paired_trainability_conditions": 2,
+  "paired_trainability_decisions": 768,
+  "prefit_engineering_suites": {
+    "audit": 149,
+    "binary": 150,
+    "joint": 160,
+    "recipient": 149,
+    "trainability": 162
+  },
+  "qualification_status": "NOT_QUALIFIED",
+  "question": "state-dependent reconstruction reused by a next update and later judgment",
+  "raw_functional_decisions": 345600,
+  "recipient_configurations": 4,
+  "returned_archives_sha256": {
+    "audit-evidence.tgz": "b69fc37a165008f16bf9808c3812dd45410ea5756027ba3f5608509c7823c295",
+    "binary-evidence.tgz": "06197c81eb3ff64f517a04bc13df9b779513aa8705a991e9e248c26d235724d5",
+    "joint-evidence.tgz": "6e905c8fddbd049901e6cbf646694e0ffd1bed4286984108c49a194243535e5a",
+    "recipient-evidence.tgz": "61b2ad9d22a66f5727994595872e7cf3c0ff4e20516b41a979cb897e9be11591",
+    "trainability-evidence.tgz": "6d9b187d6974bc220dc35b0ec3ac4ec6fbfee5ed616519c053f81d4b22d2efcf"
+  },
+  "schema": "continuity_development_verification",
+  "source_commits": {
+    "binary": "1dc37cdaee70212bd2f449931e1bfde2adecaf2e",
+    "joint": "7f284c18ec4f5f330df86f8190c081a60422d497",
+    "numerical-audit": "35c71a1aada6e2503e02e98e64f45ddba9b60706",
+    "recipient": "77c4ab6623cd843b730bc2b0635b62f998aef1c5",
+    "trainability": "d316bce3f35d8de3aa025683d022e2b84fe17218"
+  },
+  "training_material_sha256": "4d1b2693200b43a6c617473eeb8ef915aa08cd1b121d65bec09494ca71e8a60c"
+}

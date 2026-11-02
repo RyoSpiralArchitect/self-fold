@@ -6,6 +6,10 @@ The six-package plan was proposed on 2026-11-01 at `6b054baf2571c3fa0e4f19d5d841
 
 There are **six work packages**. Packages 1–3 prepare a first learning run, package 4 fits and freezes a candidate, package 5 challenges it on an untouched qualification set, and package 6 reviews the evidence. Work on the data and training implementation can overlap the bounded diagnostic. Completing a package can mean either meeting its positive endpoint or closing a specified negative diagnosis. A scientific gate pass has its own stricter conditions.
 
+## Integrated target and current endpoint
+
+The current target is functional continuity through two actual meaning reconstructions and a single intermediate language insertion. Four bounded native-recipient configurations have completed and missed admission, including one jointly learned source encoder. Their teacher-text states are interface tests. Actual G composition and independent confirmation remain pending. [Integrated protocol](FUNCTIONAL_CONTINUITY.md) · [Recorded endpoints](../provenance/continuity_20261103/RESULTS.md)
+
 ## The remaining route from a readable word to a useful G step
 
 On 2026-11-03 the two matched codec fits closed with zero strict opposed action switches in 288 comparisons each. A two-encode centered probe read mention order on 93/96 crossed descriptions, while it recovered the prescribed action in both orders for only 6/48 policies. We can now separate lexical access at initialization from usable rule binding. The following four decisions remain in the original six-package roadmap. [Evidence and frozen cutoffs](../provenance/policy_binding_20261103/RESULTS.md)

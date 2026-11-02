@@ -8,6 +8,10 @@ Follow-up experiments partitioned those downstream positions. At the period afte
 
 The [bounded qualification plan](SEMANTIC_GATE_PLAN.md) proposes six work packages, with positive completion and permitted negative closure for each. It separates readiness to learn, a completed qualification challenge and a reviewed gate pass. Its numerical screens are proposals to fix before evaluation, and do not change the current gate status. [日本語](SEMANTIC_GATE_PLAN.ja.md)
 
+## Current native-recipient endpoint
+
+The integrated two-stage study completed four configurations with final-teacher native accuracy between 49.78% and 50.69%. All missed their fixed admission screen. Teacher encodings, exact source swaps and numerical audits retain their declared scope. The intended learned G composition and independent challenge remain pending. [Evidence](../provenance/continuity_20261103/RESULTS.md)
+
 ## Required checks
 
 The description-only study closed all four native-interface cells below its development screen. A first Gemma encoder-bridge fit improved source NLL but left functional dev accuracy near 50%, with little aggregate matched-versus-opposed donor advantage. The codec is unqualified, qualification material is still sealed, and independent human transition review is pending. [First learning evidence](../provenance/carriers_20261102/RESULTS.md)

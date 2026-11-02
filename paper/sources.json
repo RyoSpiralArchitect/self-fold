@@ -35,9 +35,9 @@
     "key": "frasertaliente2026nla",
     "source": "https://transformer-circuits.pub/2026/nla/index.html",
     "metadata_status": "Research article / technical thread, not a conference publication",
-    "scope": "A trained verbalizer and reconstructor; reconstruction fidelity and explanation fidelity are different. Released checkpoints are not interchangeable with this project's checkpoints.",
-    "checked_on": "2026-11-01",
-    "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+    "scope": "A trained activation verbalizer and reconstructor, with edits to explanations used to construct steering interventions affecting later output. The SELF-FOLD target additionally tests reuse by another meaning update. Reconstruction fidelity and explanation fidelity remain distinct.",
+    "checked_on": "2026-11-03",
+    "review_depth": "published metadata, method description and causal editing/steering examples; no replication or systematic review"
   },
   {
     "key": "dadfar2026examine",
@@ -102,5 +102,21 @@
     "scope": "Phi-mini-MoE and Phi-tiny-MoE are MoE candidates. Active parameter count is not resident weight memory.",
     "checked_on": "2026-11-01",
     "review_depth": "metadata and relevant abstract/method claims; not a complete replication or systematic review"
+  },
+  {
+    "key": "babu2026quine",
+    "source": "https://arxiv.org/abs/2610.38726v1",
+    "metadata_status": "arXiv version 1 submitted 2026-10-28; preprint",
+    "scope": "Self-description preference reconstruction across receiver models and fresh author instances. Explicit-policy descriptions transfer assigned preferences. This supplies a close antecedent for behavioral effects of self-description, while successive supported meaning updates remain the proposed SELF-FOLD target.",
+    "checked_on": "2026-11-03",
+    "review_depth": "primary metadata and relevant abstract/method claims; no replication or systematic review"
+  },
+  {
+    "key": "feng2024propositional",
+    "source": "https://arxiv.org/abs/2406.19501v2",
+    "metadata_status": "arXiv version 2 revised 2024-12-06; first submission 2024-06-27",
+    "scope": "Lexical information and binding subspaces support recovery of logical world-state propositions, including tested settings with unfaithful model output. This motivates an explicit downstream-use test for SELF-FOLD rather than a claim based on decodability alone.",
+    "checked_on": "2026-11-03",
+    "review_depth": "primary metadata and relevant abstract/method claims; no replication or systematic review"
   }
 ]

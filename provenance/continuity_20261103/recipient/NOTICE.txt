@@ -1,0 +1,8 @@
+Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms
+
+SELF-FOLD created recipient_raw.npz and recipient_standardized.npz.
+Each contains newly initialized and trained rank-16 query/value adapter factors
+for the final four Gemma-2-2B-IT decoder layers. Each fit used 256 AdamW updates
+on synthetic policy questions, with the backbone frozen. preprocessing.npz
+contains training-state statistics from the frozen Gemma host. See the
+adjacent receipts, ADAPTER_LICENSE.md, and enclosed Gemma terms and policy.

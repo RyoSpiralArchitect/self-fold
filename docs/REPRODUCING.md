@@ -72,3 +72,26 @@ PYTHONPATH=src python scripts/probe_policy_geometry.py --checkpoint "$GEMMA_LOCA
 ~~~
 
 The [study record](../provenance/policy_binding_20261103/RESULTS.md) includes both reducers, raw decisions, the generation rule for the crossed panel and the registered endpoints. These runs require no qualification inputs.
+
+## Integrated continuity development phases
+
+The corpus construction and native receiver learning are sealed at separate source commits. All commands use the pinned Gemma checkpoint and existing environment versions. Use a clean checkout at the corresponding source and fresh ignored run directories. The later phases bind their original completed receipts.
+
+~~~bash
+# Source 77c4ab6623cd843b730bc2b0635b62f998aef1c5
+PYTHONPATH=src python scripts/fit_continuity_recipient.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/recipient
+
+# Source 35c71a1aada6e2503e02e98e64f45ddba9b60706
+PYTHONPATH=src python scripts/audit_continuity_recipient.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --fit runs/recipient --out runs/numerical-audit
+
+# Source 1dc37cdaee70212bd2f449931e1bfde2adecaf2e
+PYTHONPATH=src python scripts/fit_continuity_recipient.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --objective native_binary --baseline-fit runs/recipient --audit runs/numerical-audit --out runs/recipient-binary
+
+# Source 7f284c18ec4f5f330df86f8190c081a60422d497
+PYTHONPATH=src python scripts/fit_joint_continuity.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --baseline-fit runs/recipient --out runs/joint
+
+# Source d316bce3f35d8de3aa025683d022e2b84fe17218
+PYTHONPATH=src python scripts/probe_recipient_trainability.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --baseline-fit runs/recipient --out runs/trainability
+~~~
+
+The [integrated study](../provenance/continuity_20261103/RESULTS.md) preserves source hashes, all decisions, intermediate numerical observations, learned arrays and Gemma terms. Each of the four candidate fits ended at its cap without admitting the recipient. The final paired control measures small-set trainability. None trains G or opens the sealed qualification material.
