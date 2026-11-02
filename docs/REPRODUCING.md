@@ -24,7 +24,7 @@ The [profiles](../configs/models/) describe admission floors and model layouts. 
 
 ## Description-only carriers and codec learning
 
-Use the source commit in each record. `scripts/probe_carriers.py` fixes two carrier routes on the twelve exposed topics and verifies every native tokenizer layout before loading weights. `scripts/fit_codec.py` performs the fixed Gemma codec-only fit on public train/dev files. The qualification commitment is public, while qualification content is neither required nor loaded for this fit. G teachers are not loaded.
+Use the source commit in each record. `scripts/probe_carriers.py` fixes two carrier routes on the twelve exposed topics and verifies every native tokenizer layout before loading weights. `scripts/fit_codec.py` performs the fixed Gemma codec-only fit on public train/dev files. The qualification commitment is public, while qualification content is neither required nor opened for this fit. Public group JSON also contains proposed G targets: the parser reads those fields, but the codec iterator supplies only source-copy examples, and G targets do not enter model inputs or the loss.
 
 ~~~bash
 PYTHONPATH=src python scripts/probe_carriers.py --model gemma2b \
@@ -33,7 +33,7 @@ PYTHONPATH=src python scripts/fit_codec.py --capture-route workspace \
   --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/codec-fresh
 ~~~
 
-`provenance/carriers_20261102/audit_codec.py` independently replays the fitted NLLs and the fixed opposed/zero-donor controls. Learned arrays use safe NPZ files and bind their base-host identity, geometry, source and data. A frozen artifact can be installed with `--encoder-bridge`; semantic admission is still required for a latent pilot. [Carrier plan](../provenance/carriers_20261102/PLAN.md) · [Learning contract](../provenance/carriers_20261102/LEARNING_CONTRACT.md) · [Results and integrity](../provenance/carriers_20261102/RESULTS.md)
+`provenance/carriers_20261102/audit_codec.py` independently replays the fitted NLLs and the fixed opposed/zero-donor controls. Learned arrays use safe NPZ files and bind their base-host identity, geometry, source and data. A frozen artifact can be installed with `--encoder-bridge` only under the exact saved host identity, including context length and runtime versions; semantic admission is still required for a latent pilot. [Carrier plan](../provenance/carriers_20261102/PLAN.md) · [Learning contract](../provenance/carriers_20261102/LEARNING_CONTRACT.md) · [Results and integrity](../provenance/carriers_20261102/RESULTS.md)
 
 ## Saved evidence
 

@@ -23,6 +23,7 @@ def test_family_splits_and_formal_truth_are_independent_of_any_decoder(tmp_path)
     out = tmp_path / "data"
     write_public(out)
     assert len(codec_examples(out, "train")) == 192 and len(codec_examples(out, "dev")) == 96
+    assert all(row["source"] == row["target"] for row in codec_examples(out, "train"))
     with pytest.raises(ValueError, match="cannot load"):
         codec_examples(out, "qualification")
     file = out / "train.groups.jsonl"

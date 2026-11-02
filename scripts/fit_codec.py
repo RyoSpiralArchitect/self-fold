@@ -1,4 +1,4 @@
-"""A fixed first codec fit. Qualification material and G teachers are never loaded."""
+"""A fixed source-copy codec fit. Qualification material is not opened; G targets do not enter the loss."""
 import argparse
 import hashlib
 import json
@@ -180,7 +180,7 @@ def main():
             "optimizer_steps": 64, "trainable_parameters": sum(p.numel() for p in bridge.parameters()),
             "backbone_sha256_before": backbone_before, "backbone_sha256_after": backbone_after,
             "compute": host.meter.snapshot(), "qualification_content_loaded": False,
-            "G_teacher_loaded": False, "elapsed_seconds": time.monotonic() - start})
+            "G_teacher_used_by_loss": False, "elapsed_seconds": time.monotonic() - start})
         print(json.dumps(selected))
     except Exception as exc:
         store.write("terminal.json", {"status": "FAILED_NO_RETRY", "error_type": type(exc).__name__,

@@ -8,6 +8,8 @@ The public preparation data contain 48 training groups from four construction fa
 
 For this fit the teacher is an exact copy of the current source description. The target does not rely on a model-generated semantic judgment. Finite truth ledgers and proposed case-expansion texts are retained for later review; the codec loader returns only source/target strings and identifiers. Its interface rejects a qualification split and checks data file hashes. Data separation is a documented loading contract, not an operating-system access-control claim.
 
+The public group parser reads the complete group record, including its proposed G target fields. Those fields are not passed to the model or optimizer loss. The original receipt's `G_teacher_loaded` flag denotes this lack of supervision, not absence of JSON parsing; later receipts use `G_teacher_used_by_loss`. Qualification content is in a separate, unopened file.
+
 ## Candidate and selection
 
 Use Gemma-2-2B-IT, the existing midpoint, eight rows and a 256-position description-only donor. If a Gemma carrier passes package 1, choose the passing route with the highest group accuracy, then the largest margin over null, with workspace breaking exact ties. If neither passes, retain workspace as the existing interface and declare a negative native-interface screen. Native self-replay must be valid before fitting.
