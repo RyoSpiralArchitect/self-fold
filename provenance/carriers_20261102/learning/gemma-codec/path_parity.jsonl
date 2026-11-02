@@ -1,0 +1,2 @@
+{"absolute_difference":0.0,"inference_path_nll":4.57394552230835,"stage":"initial","tolerance":1e-05,"training_path_nll":4.57394552230835}
+{"absolute_difference":0.0,"inference_path_nll":1.8896470069885254,"stage":"selected_serialized","tolerance":1e-05,"training_path_nll":1.8896470069885254}

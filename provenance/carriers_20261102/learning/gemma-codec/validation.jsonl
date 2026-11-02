@@ -1,0 +1,5 @@
+{"artifact":"encoder_step_000.npz","dev_mean_nll":4.309862166643143,"examples":96,"sha256":"e2ead4450bb9a053b3455214aa667287bed152fb347066dc9d7274e906d389b8","step":0}
+{"artifact":"encoder_step_016.npz","dev_mean_nll":3.894007990757624,"examples":96,"sha256":"91762d9c081973a60eb9ab119097c415a88b41a3a0b5d5a76df9f1dfd83d878e","step":16}
+{"artifact":"encoder_step_032.npz","dev_mean_nll":2.7703411281108856,"examples":96,"sha256":"b52bf0c80e0efb7566efa88a8b885d28401e698489b148ce2232d6e2bb4e216b","step":32}
+{"artifact":"encoder_step_048.npz","dev_mean_nll":1.9500955790281296,"examples":96,"sha256":"0ea3cd23d7ec97c36715a6a43d77a3dfbb48eda9c81f99f35b483b1732639620","step":48}
+{"artifact":"encoder_step_064.npz","dev_mean_nll":1.8571807146072388,"examples":96,"sha256":"a3463f5213cd1008cbbd45a2be587c4af83b50dc90f9e50091b25a8090cc7513","step":64}

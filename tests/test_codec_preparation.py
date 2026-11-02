@@ -1,4 +1,9 @@
 import json
+from pathlib import Path
+import subprocess
+import sys
+import hashlib
+import numpy as np
 import torch
 import pytest
 from selffold.calibration import public_groups, write_public, codec_examples
@@ -67,3 +72,25 @@ def test_invalid_training_context_cannot_leave_a_hook(host):
     with torch.inference_mode(), pytest.raises(ValueError, match="gradient"):
         codec_loss(host, EncoderBridge(host.width, 3), state.slots, "target", end_token_id=2)
     assert not host.layers[host.cut]._forward_pre_hooks
+
+
+def test_published_learning_is_replayable_bound_and_keeps_qualification_sealed():
+    root = Path(__file__).resolve().parents[1]
+    evidence = root / "provenance/carriers_20261102"
+    regenerated = subprocess.check_output([sys.executable, str(evidence / "summarize.py")])
+    assert regenerated == (evidence / "summary.json").read_bytes()
+    data = root / "data/codec_preparation_20261102/manifest.json"
+    manifest = json.loads(data.read_text())
+    assert manifest["qualification"]["status"] == "sealed_before_fitting"
+    assert not list((root / "data").rglob("qualification.groups.jsonl"))
+    fit = evidence / "learning/gemma-codec"
+    source = json.loads((fit / "source.json").read_text())
+    with np.load(fit / "encoder_step_064.npz", allow_pickle=False) as selected:
+        metadata = json.loads(selected["metadata_utf8"].tobytes())
+        assert metadata["dataset_sha256"] == hashlib.sha256(data.read_bytes()).hexdigest()
+        assert metadata["source_sha256"] == source["source_sha256"]
+        assert selected["down"].shape == (2304, 16) and selected["up"].shape == (16, 2304)
+        with np.load(fit / "encoder_step_000.npz", allow_pickle=False) as initial:
+            assert not np.array_equal(initial["up"], selected["up"])
+    summary = json.loads(regenerated)["codec_development_fit"]
+    assert summary["backbone_unchanged"] and summary["qualification_outcomes"] == "not_observed"

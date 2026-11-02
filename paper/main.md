@@ -1,11 +1,11 @@
 # Self Without a Transcript
 ## Semantic Recurrence Across Text and Latent States
 
-**Research working paper · November 1, 2026**
+**Research working paper · November 2, 2026**
 
 ### Abstract
 
-What can a frozen language model recover after a description passes through eight hidden-state slots? We compare text relay, latent recurrence and a language roundtrip after the same latent update. Mistral-7B-Instruct-v0.3 and Gemma-2-2B-IT each identified 24/24 literal descriptions across six preference contrasts. Each had 24 distinct updated tensors but one greedy verbalization. In native lexical controls, transplanting downstream middle-layer residuals that had already processed the question reproduced all 12 native preference signs on each checkpoint. We partitioned this span and retested it on six additional topics. On the new topics, a single residual at the period after the second displayed alternative carried 21.8% of the full-span paired margin contrast on Mistral and 27.3% on Gemma. Reversing the donor's option mapping reversed this contrast, while omitting just that position retained 87.9% and 88.8%. These measurements localize an order-sensitive lexical readout at the tested cuts. Question-independent semantic updating and transfer to new tasks remain open.
+What can a frozen language model recover after a description passes through eight hidden-state slots? We compare text relay, latent recurrence and a language roundtrip after the same latent update. Earlier Mistral-7B and Gemma-2-2B probes found distinct tensors but collapsed verbalizations. Question-conditioned interventions localized an option-order-sensitive contrast at the second alternative's terminal period. We next tested question-independent workspace and native-tail carriers on twelve exposed topics. None passed the development content screen. A first Gemma encoder bridge with 73,728 trainable parameters completed 64 updates while the backbone remained unchanged. Dev source-text NLL fell from 4.310 to 1.857, but functional group accuracy stayed near 50%. Opposed donor states retained almost the same NLL reduction. This fit demonstrates executable, hash-bound codec learning without qualifying content preservation. One-step semantic updating and held-out transfer remain open.
 
 ## 1. Problem formulation
 
@@ -59,7 +59,7 @@ The first experiment compared native EOS with an eight-token ceiling on two Mist
 
 For each donor we scored both answer labels and reversed their option assignments. The plus margin is the mean, over the two orders, of the log probability of the label naming the plus option minus that of the label naming the minus option. A positive margin favors the plus option. A pair is ordered if the plus donor has a larger margin than the minus donor. Correct identification of both donors additionally requires the two margins to straddle zero in the expected direction. Ties use the stored scores at their recorded precision. Each checkpoint contributed 12 matched pairs in six topic clusters. All results are descriptive. Alternative orders and phrasings are repeated measures.
 
-We scored literal text, E, G after one update, B after re-encoding, reversed G rows, and G vectors with the donor's per-slot magnitudes on fixed directions. Zero vectors and uninjected native placeholders served as null inputs. For each of 24 descriptions we collected D(E) and D(G), and we generated from both nulls once. Both checkpoints used one RTX 5090, eager BF16, eight slots, uncalibrated identity transport, a common 1024-token context and their native EOS ids. The cut and writer were layers 16 and 31 for Mistral and layers 13 and 25 for Gemma (zero-indexed). There was no training, prompt selection against these scores or human semantic rating.
+We scored literal text, E, G after one update, B after re-encoding, reversed G rows, and G vectors with the donor's per-slot magnitudes on fixed directions. Zero vectors and uninjected native placeholders served as null inputs. For each of 24 descriptions we collected D(E) and D(G), and we generated from both nulls once. Both checkpoints used one RTX 5090, eager BF16, eight slots, uncalibrated identity transport, a common 1024-token context and their native EOS ids. The cut and writer were layers 16 and 31 for Mistral and layers 13 and 25 for Gemma (zero-indexed). These earlier probes used no training, prompt selection against their scores or human semantic rating.
 
 ## 6. Results
 
@@ -135,11 +135,42 @@ We held the target's true wording and option order fixed. Masking only the donor
 
 All 192 donor/order records across the eight jobs passed exact neutral and combined slot-plus-suffix vocabulary-logit replay. Original-panel native and whole-suffix label scores reproduced the earlier experiment exactly. The computations used no free generation. [Frozen plans, raw likelihoods, all windows and integrity checks](../provenance/downstream_span_20261101/RESULTS.md)
 
+### Question-independent carriers before learning
+
+We built all donors before constructing any question and reused each unchanged state for two question wordings and both option orders. The twelve exposed topics had two opposed descriptions and two phrasings each. Each checkpoint supplied 48 donors per route, eight rows and a fixed 256-position donor forward. Workspace captures the original E slots. Native tail captures the last eight source-token positions in a description-only prompt. Both use the earlier midpoint and eager BF16. No layer or row-count search followed the scores.
+
+| Checkpoint | Carrier | Group accuracy | Best fixed null | Literal source |
+| --- | --- | --- | --- | --- |
+| Mistral | Workspace | 50.0% | 50.0% | 100.0% |
+| Mistral | Native tail | 50.5% | 49.5% | 100.0% |
+| Gemma | Workspace | 50.0% | 50.0% | 96.9% |
+| Gemma | Native tail | 59.9% | 50.0% | 96.9% |
+
+Accuracy averages within twelve groups and then over groups, with 192 dependent readouts per cell. None passed the predeclared 80% accuracy plus ten-point null advantage. All 192 free readouts reached EOS. Native-tail D produced 45 strings on Mistral and five on Gemma, while each workspace produced one. Diversity alone did not identify the source. Both native hook checks and all 96 full-vocabulary neutral replays were exact. An initial Gemma attempt captured 82 donors and scored no questions before stopping on a seven-token source. Its failure is retained. Both pole-zero photo phrasings were lengthened, and native shape validation was moved before model construction.
+
+### The first codec-only learning run
+
+Under the plan's bounded negative closure, the next scope was a description encoder bridge, with G teachers deferred. Forty-eight synthetic policy groups in four construction families supplied 192 training descriptions; 24 groups in two other families supplied 96 dev descriptions. Another 24 groups in two further families were committed by hash and kept outside the training checkout. Qualification outcomes and independent human transition review remain pending. The first codec teacher copied the source description exactly. It did not use the proposed G targets or qualification content.
+
+We retained workspace because neither Gemma carrier passed. The bridge z + (z A) B has rank 16 and 73,728 trainable parameters; B began at zero. AdamW made 64 updates with eight accumulated examples, seed 47, learning rate 0.0003 and no weight decay. Teacher forcing used the source text and native turn-ending token 107. The lowest dev NLL among steps 0, 16, 32, 48 and 64 selected step 64. Functional questions were introduced after this choice.
+
+| Dev endpoint | Before | Selected |
+| --- | --- | --- |
+| Mean source NLL, nats/token | 4.309862 | 1.857181 |
+| Functional group-macro accuracy | 49.9% | 50.0% |
+| Distinct D strings / 48 | 1 | 4 |
+
+NLL averages token loss within each description and then across 96 descriptions. Functional macro accuracy weights each of 24 meaning groups equally. Groups have different numbers of context cases. The pooled counts are 287/576 before, 288/576 after and 483/576 for literal text; literal macro accuracy is 87.9%. All 96 pre/post free readouts reached EOS. The four post-fit strings concerned signal policies, while dev references concerned visitor mode or request/override. These outputs have not received blind human semantic review.
+
+Only bridge parameters received gradients, all 64 gradient norms were positive and finite, and full backbone parameter hashes matched before and after fitting. Active differentiable and inference NLLs agreed exactly at the checked initial and selected states. The serialized bridge is bound to its host, capture geometry, source and data.
+
+A separately fixed post-hoc read-only replay reproduced all 480 per-description NLLs at five checkpoints, with a maximum mean discrepancy of 3.48e-8 nats. It performed no optimizer updates or qualification evaluation. At step 64, keeping each target fixed but supplying its opposed donor gave mean NLL 1.858054, versus 1.857181 with the matching donor and 4.327749 with zero rows. The matching donor had lower loss in 49/96 descriptions. The large loss reduction therefore coexisted with very little aggregate opposed-policy sensitivity and no functional accuracy improvement. This identifies a failure of the tested fit, without proving that content is absent from its states. [Contracts, failures, learned artifacts and raw replay](../provenance/carriers_20261102/RESULTS.md)
+
 ## 7. Interpretation and limitations
 
 In these fixtures the complete downstream region reproduced the native lexical choices. The partition and masking experiments narrow this observation to an option-order-sensitive contribution at the second displayed alternative's terminal period. Its counterbalanced contrast persisted with the question stem hidden, weakened when the option words were hidden, and reversed under a natural option-order swap. The large contrast retained on omission leaves room for other positions and their interactions.
 
-The second period is later in the causal sequence and has access to both alternatives. These interventions have not separated separator identity from order, position or preceding lexical context. Neutral-token masks alter the donor distribution. The two panels share the same explicit lexical schema, and each checkpoint was tested at one middle-layer cut in BF16. The short-prefix replay discrepancy was removed by matching forward length, but its numerical kernel has not been identified. Question-independent state portability, independent evaluation of one-step meaning updates, blind judgments of new distinctions and held-out transfer remain open. No semantic gate has been approved.
+The second period is later in the causal sequence and has access to both alternatives. These interventions have not separated separator identity from order, position or preceding lexical context. Neutral-token masks alter the donor distribution. The two panels share the same explicit lexical schema, and each checkpoint was tested at one middle-layer cut in BF16. The short-prefix replay discrepancy was removed by matching forward length, but its numerical kernel has not been identified. Question-independent state portability, independent evaluation of one-step meaning updates, blind judgments of new distinctions and held-out transfer remain open. No semantic gate has been approved. The encoder bridge adds actual parameter learning outside recurrence, with the backbone frozen. Its lower text loss did not establish content preservation or justify G adaptation. Source-dependent codec learning remains the immediate target, with a matched comparison of training signals still to be designed.
 
 ## 8. Proposed pilot and analysis
 
