@@ -1,0 +1,11 @@
+Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms
+
+The encoder_step_*.npz files in this directory are SELF-FOLD research encoder
+artifacts created for use with Gemma-2-2B-IT. The low-rank encoder parameters
+were newly initialized or trained by SELF-FOLD. They are not unmodified Google
+pretrained checkpoint files. Training details and modifications are recorded
+in each artifact's metadata_utf8 field and the adjacent validation receipts.
+
+Use and distribution of these Gemma-derived model artifacts are subject to the
+Gemma Terms of Use and its incorporated Prohibited Use Policy. Copies of both
+documents are provided alongside this notice. See ADAPTER_LICENSE.md.

@@ -1,0 +1,16 @@
+[
+  {
+    "distributed_copy_sha256": "8bfe102689cb2169ff9f0235251d5cb7ef27db32e3cc003314eec636f7518e60",
+    "file": "GEMMA_TERMS.html",
+    "retrieved": "2026-11-02",
+    "source_html_sha256": "ac6117b32ce9c9786dff391369029615b96e68dabf7b1dad3d0b364aa1158d9f",
+    "source_url": "https://ai.google.dev/gemma/terms"
+  },
+  {
+    "distributed_copy_sha256": "a8429bfc38f92f65bd09ada35c33ac83b20488e80c3ca5d1da4b6530a2828815",
+    "file": "GEMMA_PROHIBITED_USE_POLICY.html",
+    "retrieved": "2026-11-02",
+    "source_html_sha256": "6840bc490148199a35a0cc7a3d001ed8966229eeaab888ae5240692aa6b10328",
+    "source_url": "https://ai.google.dev/gemma/prohibited_use_policy"
+  }
+]
