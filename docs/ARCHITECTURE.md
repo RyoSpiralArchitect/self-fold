@@ -10,7 +10,9 @@ L: slots -> injection at pre-cut input positions -> decoder -> post-writer outpu
 
 B: the same L update -> D on the updated slots -> current text -> E -> new slots.
 
-`encode` E captures contextualized native slot residuals before the selected cut. `decode` D injects those slots into a fixed verbalization prompt. Neither E nor D is an independently trained semantic codec in this release. The linear Transport is identity unless a checked local artifact is supplied. `identity_unqualified` names that limitation, not a valid semantic route.
+`encode` E captures contextualized native slot residuals before the selected cut. `decode` D injects those slots into a fixed verbalization prompt. The default E/D route is untrained. An optional hash-bound encoder bridge now supports a learned description-only route; the first fit remains semantically unqualified. The linear Transport is identity unless a checked local artifact is supplied. `identity_unqualified` names that limitation, not a valid semantic route.
+
+`codec_learning.py` provides a separate differentiable bridge path with a frozen backbone. It does not remove inference isolation from `SlotHost.forward` or `State`. A loaded bridge binds its full artifact SHA, base-host identity, capture route and donor length; its parameters are frozen during inference. `--encoder-bridge` installs it for E, shared by L/B. The existing six-check semantic admission remains required for latent pilots.
 
 ## Boundary definition
 

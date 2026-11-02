@@ -1,0 +1,42 @@
+{
+  "frozen_backbone_parameter_hash_match": true,
+  "learned_arrays_changed": {
+    "down": true,
+    "up": true
+  },
+  "native_and_neutral_replay": "exact_in_recorded_checks",
+  "posthoc_dev_donor_control_rows": 384,
+  "qualification_content_present_in_training_checkout": false,
+  "recomputed_summary": true,
+  "replayed_dev_nll_examples": 480,
+  "restored_state_arrays": 274,
+  "semantic_gate": "NOT_QUALIFIED",
+  "source_seals": [
+    {
+      "commit": "1c07475c6f9c8abac4e401f529f4afc669afd629",
+      "source_sha256": "65bf678594c7b8dacd2e0ba48adcba090ee6e374ab2ee543769692907f2d27ab",
+      "verified_files": 66
+    },
+    {
+      "commit": "1c07475c6f9c8abac4e401f529f4afc669afd629",
+      "source_sha256": "65bf678594c7b8dacd2e0ba48adcba090ee6e374ab2ee543769692907f2d27ab",
+      "verified_files": 66
+    },
+    {
+      "commit": "54a9d1649a63aace227df15bc7d5612a435ab9af",
+      "source_sha256": "1119fade2704d22bf7f615f0a0c1b5742a383cf5f039aae63e13d3182c237829",
+      "verified_files": 66
+    },
+    {
+      "commit": "b6ba167fc387521f973f7694c5ee558612272671",
+      "source_sha256": "8dce9c2399d6e30230c4621fbae4561ec2c6d415952d9624717b566c0f048368",
+      "verified_files": 73
+    },
+    {
+      "commit": "b6ba167fc387521f973f7694c5ee558612272671",
+      "source_sha256": "8dce9c2399d6e30230c4621fbae4561ec2c6d415952d9624717b566c0f048368",
+      "verified_files": 73
+    }
+  ],
+  "status": "VERIFIED_RECORDED_EVIDENCE_NOT_SEMANTIC_QUALIFICATION"
+}

@@ -22,7 +22,20 @@ This CUDA command runs two plain updates in T/L/B. Greedy generation stops at na
 
 The [profiles](../configs/models/) describe admission floors and model layouts. MoE memory use depends on resident parameters. Some Phi checkpoints need reviewed local Python because their attention geometry differs from the native Phimoe implementation. A hash-bound review can be prepared with `scripts/review_local_model_code.py`. The default loader uses local files with remote code disabled.
 
-## Inspect a saved run
+## Description-only carriers and codec learning
+
+Use the source commit in each record. `scripts/probe_carriers.py` fixes two carrier routes on the twelve exposed topics and verifies every native tokenizer layout before loading weights. `scripts/fit_codec.py` performs the fixed Gemma codec-only fit on public train/dev files. The qualification commitment is public, while qualification content is neither required nor loaded for this fit. G teachers are not loaded.
+
+~~~bash
+PYTHONPATH=src python scripts/probe_carriers.py --model gemma2b \
+  --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/carriers-fresh
+PYTHONPATH=src python scripts/fit_codec.py --capture-route workspace \
+  --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/codec-fresh
+~~~
+
+`provenance/carriers_20261102/audit_codec.py` independently replays the fitted NLLs and the fixed opposed/zero-donor controls. Learned arrays use safe NPZ files and bind their base-host identity, geometry, source and data. A frozen artifact can be installed with `--encoder-bridge`; semantic admission is still required for a latent pilot. [Carrier plan](../provenance/carriers_20261102/PLAN.md) · [Learning contract](../provenance/carriers_20261102/LEARNING_CONTRACT.md) · [Results and integrity](../provenance/carriers_20261102/RESULTS.md)
+
+## Saved evidence
 
 For the archived-state and two-checkpoint probes, start from the commit recorded for each study. The probe commands use the same frozen fixtures and local snapshots across the label, position and replay controls. [Content probe commands](../provenance/slot_content_20261101/PLAN.md) · [Lexical donor commands](../provenance/slot_content_20261101/ALIGNMENT_PLAN.md) · [Replay commands](../provenance/slot_content_20261101/REPLAY_PLAN.md)
 

@@ -1,0 +1,1 @@
+{"checkpoint_sha256":"f3503907cc4d2ace62abccf30393a05919827c1c8969b2f2755f15627b9756ad","donor_forward_length":256,"fixture_sha256":"8c73ba6971591697cccee588ef475d13bd54ed492c25d992b7a7e935e8d98f15","max_forwards":20000,"max_processed_tokens":20000000,"model":"gemma2b","routes":["workspace","native_tail"],"sham_seeds":[4711,9292],"split":"exposed_development","wall_seconds":1800}

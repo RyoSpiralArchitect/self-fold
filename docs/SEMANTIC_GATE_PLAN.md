@@ -8,6 +8,8 @@ There are **six work packages**. Packages 1–3 prepare a first learning run, pa
 
 ## What the existing evidence settles
 
+**Progress on 2026-11-02.** The four description-only carrier cells closed below their development screen. A first codec-only Gemma fit completed 64 updates with a frozen backbone. Source NLL improved, while functional dev accuracy remained near 50%. The broader G targets and human review remain pending. This realizes the permitted negative-closure route through the first learning milestone, with no gate approval. [Evidence and next comparison](../provenance/carriers_20261102/RESULTS.md)
+
 The [content probes](../provenance/slot_content_20261101/RESULTS.md) found distinct E/G tensors but collapsed free verbalizations and roundtrips. The [downstream interventions](../provenance/downstream_span_20261101/RESULTS.md) localized a partial lexical contrast to a state that had already seen both alternatives. Reversing the donor's option mapping reversed the transferred contrast. That intervention cannot supply a question-independent recurrent state.
 
 The next target is a state built from a current description alone, reused unchanged for several independently authored questions. Training will address E/D, post-writer to pre-cut transport, and, if needed, the one-step G operator. The semantic gate evaluates these interfaces using independently specified truth conditions and a fixed rubric.

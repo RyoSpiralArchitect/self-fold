@@ -10,6 +10,8 @@ The [bounded qualification plan](SEMANTIC_GATE_PLAN.md) proposes six work packag
 
 ## Required checks
 
+The description-only study closed all four native-interface cells below its development screen. A first Gemma encoder-bridge fit improved source NLL but left functional dev accuracy near 50%, with little aggregate matched-versus-opposed donor advantage. The codec is unqualified, qualification material is still sealed, and independent human transition review is pending. [First learning evidence](../provenance/carriers_20261102/RESULTS.md)
+
 | Check | Evidence to collect on calibration-only data |
 |---|---|
 | Native parity | Unmodified host and observational hooks agree; injections disabled |

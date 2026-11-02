@@ -1,0 +1,39 @@
+{
+  "files": {
+    "dev": {
+      "families": [
+        "priority",
+        "scope"
+      ],
+      "groups": 24,
+      "path": "dev.groups.jsonl",
+      "sha256": "49690cb736325aa1de24286e45089a55ae5eef60a7ea7f994bcc749a1dcc5702",
+      "source_variants": 96
+    },
+    "train": {
+      "families": [
+        "conditional",
+        "conjunction",
+        "exception",
+        "exclusion"
+      ],
+      "groups": 48,
+      "path": "train.groups.jsonl",
+      "sha256": "fbc9e2fa80d3965f6fd3e5aba7f6b1f40f6c78715e65c7059e2ee8abc6a1ad1a",
+      "source_variants": 192
+    }
+  },
+  "human_transition_review": "pending",
+  "qualification": {
+    "construction_families": 2,
+    "content_in_training_checkout": false,
+    "groups": 24,
+    "independent_human_reference_review": "pending",
+    "reference_author": "current_study_author",
+    "sha256": "b408768d82296c367cc686fdd608b749ce4da911d1dfcdc099f91bf261c19997",
+    "source_variants": 96,
+    "status": "sealed_before_fitting"
+  },
+  "schema": "finite_policy_groups",
+  "status": "FORMAL_CODEC_PREPARATION_NOT_SEMANTIC_QUALIFICATION"
+}
