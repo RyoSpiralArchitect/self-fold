@@ -1,0 +1,166 @@
+{
+  "audit": {
+    "dev": {
+      "actions": [
+        "the copper tray",
+        "the large box",
+        "the silver tray",
+        "the small box"
+      ],
+      "base_truth_signatures": {
+        "0001": 12,
+        "0010": 12
+      },
+      "construction_families": [
+        "override",
+        "requirement"
+      ],
+      "explicit_case_noop_groups": 6,
+      "flags": [
+        "approval",
+        "override",
+        "request",
+        "visitor_mode"
+      ],
+      "groups": 24,
+      "variants": 288
+    },
+    "overlap": {
+      "base_truth_signatures": [
+        "0001",
+        "0010"
+      ],
+      "claim": "held-out authored conditional grammar and lexical bindings; shared Boolean semantics",
+      "source_grammar_exception": "explicit-case no-op sources share a canonical table grammar across splits",
+      "two_stage_human_usefulness": "pending"
+    },
+    "train": {
+      "actions": [
+        "the blue bin",
+        "the green folder",
+        "the left shelf",
+        "the north gate",
+        "the red bin",
+        "the right shelf",
+        "the south gate",
+        "the yellow folder"
+      ],
+      "base_truth_signatures": {
+        "0001": 12,
+        "0010": 12,
+        "0011": 12,
+        "0101": 12,
+        "0110": 12,
+        "0111": 12,
+        "1000": 12,
+        "1110": 12
+      },
+      "construction_families": [
+        "both_if",
+        "either_if",
+        "exclusive",
+        "first_flag",
+        "neither",
+        "never_both",
+        "second_flag",
+        "unless"
+      ],
+      "explicit_case_noop_groups": 24,
+      "flags": [
+        "alarm",
+        "check",
+        "permit",
+        "review",
+        "rollback",
+        "signal"
+      ],
+      "groups": 96,
+      "variants": 1152
+    }
+  },
+  "files": {
+    "dev": {
+      "actions": [
+        "the copper tray",
+        "the large box",
+        "the silver tray",
+        "the small box"
+      ],
+      "base_truth_signatures": {
+        "0001": 12,
+        "0010": 12
+      },
+      "construction_families": [
+        "override",
+        "requirement"
+      ],
+      "explicit_case_noop_groups": 6,
+      "flags": [
+        "approval",
+        "override",
+        "request",
+        "visitor_mode"
+      ],
+      "groups": 24,
+      "path": "dev.groups.jsonl",
+      "sha256": "76f6e697fc54b5a2d549ff4f6b0011221c7a49ae8718e60993b8a0bb2475247c",
+      "variants": 288
+    },
+    "train": {
+      "actions": [
+        "the blue bin",
+        "the green folder",
+        "the left shelf",
+        "the north gate",
+        "the red bin",
+        "the right shelf",
+        "the south gate",
+        "the yellow folder"
+      ],
+      "base_truth_signatures": {
+        "0001": 12,
+        "0010": 12,
+        "0011": 12,
+        "0101": 12,
+        "0110": 12,
+        "0111": 12,
+        "1000": 12,
+        "1110": 12
+      },
+      "construction_families": [
+        "both_if",
+        "either_if",
+        "exclusive",
+        "first_flag",
+        "neither",
+        "never_both",
+        "second_flag",
+        "unless"
+      ],
+      "explicit_case_noop_groups": 24,
+      "flags": [
+        "alarm",
+        "check",
+        "permit",
+        "review",
+        "rollback",
+        "signal"
+      ],
+      "groups": 96,
+      "path": "train.groups.jsonl",
+      "sha256": "087bc5573f0c3bbaa7ec384b392716565dffea062a286e709474c502da19983a",
+      "variants": 1152
+    }
+  },
+  "human_transition_review": "pending",
+  "operations": {
+    "cases": "Make every condition case explicit, preserving the current policy and its subject.",
+    "reintegrate": "Reintegrate the cases as one current decision rule, preserving every prescribed action."
+  },
+  "qualification": {
+    "content_in_checkout": false,
+    "status": "new_two_stage_panel_not_authored"
+  },
+  "schema": "finite_two_stage_continuity_groups/v1",
+  "status": "PUBLIC_DEVELOPMENT_MATERIAL"
+}
