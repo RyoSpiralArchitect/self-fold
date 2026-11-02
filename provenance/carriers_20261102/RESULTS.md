@@ -65,7 +65,7 @@ The opposed donor preserved almost all aggregate NLL reduction. At step 64 the m
 
 ## Sources and reproduction
 
-The layout failure used `54a9d1649a63aace227df15bc7d5612a435ab9af`, completed carrier cells used `1c07475`, and codec fitting used `b6ba167`. Full source commits/manifests are in the records. All jobs used the earlier pinned snapshots, one RTX 5090, eager BF16 and native EOS. No pretrained checkpoint weights were added. The learned bridge arrays are included.
+The layout failure used `54a9d1649a63aace227df15bc7d5612a435ab9af`, completed carrier cells used `1c07475`, and codec fitting used `b6ba167`. Full source commits/manifests are in the records. All jobs used the earlier pinned snapshots, one RTX 5090, eager BF16 and native EOS. No pretrained checkpoint weights were added. The learned bridge arrays are included with [their Gemma conditions and notice](learning/gemma-codec/ADAPTER_LICENSE.md).
 
 From this directory, check file integrity and rebuild the summary without loading a model.
 

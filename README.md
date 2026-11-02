@@ -37,4 +37,4 @@ Each new trial requires a fresh output directory. The experimental records inclu
 
 The [semantic qualification plan](docs/SEMANTIC_GATE_PLAN.md) defines six bounded work packages from question-independent states through interface learning and an independent gate challenge. Each has a positive endpoint and a condition for advancing with an explicit negative diagnosis. The first codec-only fit is complete. Content qualification and G learning remain pending.
 
-The original code, documentation and synthetic fixtures use the Apache License 2.0. Model weights and tokenizers remain subject to their upstream terms. [License](LICENSE) · [Provenance](docs/LICENSING.md)
+The original code, documentation and synthetic fixtures use the Apache License 2.0. Model weights and tokenizers retain their upstream terms. The learned Gemma bridge arrays include the Gemma agreement and notice. [License](LICENSE) · [Asset conditions and provenance](docs/LICENSING.md)
