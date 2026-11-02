@@ -17,3 +17,5 @@ The paired small-set control also provides its two recipient adapters with the s
 The two recipient arrays in the policy-form study carry their Gemma conditions, modification notice and copied terms alongside the fit records. [Policy-form artifact conditions](../provenance/policy_form_20261103/run/ADAPTER_LICENSE.md)
 
 The bounded readout cycle provides four learned arrays with source-specific Gemma conditions and copied terms. [Decoder, lexical transformation and mixed-order recipient conditions](../provenance/slot_readout_20261103/run/ADAPTER_LICENSE.md)
+
+The E-to-lexical source maps contain training-only activation-derived ridge buffers and learned residual factors with their applicable Gemma conditions. [Source-map artifact conditions](../provenance/source_lexical_20261103/run/ADAPTER_LICENSE.md)
