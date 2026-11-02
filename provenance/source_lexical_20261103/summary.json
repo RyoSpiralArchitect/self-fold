@@ -1,0 +1,3162 @@
+{
+  "metrics": {
+    "controls": {
+      "lexical_teacher": {
+        "all": {
+          "forced": {
+            "correct": 344,
+            "fraction": 0.8958333333333334,
+            "total": 384
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.7187500210711733,
+            "clock": 5.781249981169822,
+            "directions": -4.523437430245394,
+            "length": -2.859375095984433,
+            "mail": 0.29687504034518497,
+            "music": -0.33593742092489265,
+            "notes": 1.2265624445099093,
+            "photos": 0.5937500501095201,
+            "recipes": -2.4296875270083547,
+            "route": 0.7031249275169102,
+            "shelf": 0.9999999843421392,
+            "temperature": -0.2890624584397301
+          },
+          "mean_pole_gap": 9.829427132801962,
+          "native": {
+            "correct": 336,
+            "fraction": 0.875,
+            "total": 384
+          },
+          "native_label_coverage": 376,
+          "order_margin_sign_agreement": {
+            "correct": 192,
+            "fraction": 1.0,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 14,
+            "fraction": 0.5833333333333334,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 116,
+            "fraction": 0.90625,
+            "total": 128
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.7187500210711733,
+            "clock": 5.781249981169822,
+            "length": -2.859375095984433,
+            "mail": 0.29687504034518497,
+            "music": -0.33593742092489265,
+            "notes": 1.2265624445099093,
+            "route": 0.7031249275169102,
+            "temperature": -0.2890624584397301
+          },
+          "mean_pole_gap": 10.791015663368853,
+          "native": {
+            "correct": 116,
+            "fraction": 0.90625,
+            "total": 128
+          },
+          "native_label_coverage": 128,
+          "order_margin_sign_agreement": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 60,
+            "fraction": 0.9375,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "photos": 0.5937500501095201,
+            "recipes": -2.4296875270083547
+          },
+          "mean_pole_gap": 8.851562568212103,
+          "native": {
+            "correct": 56,
+            "fraction": 0.875,
+            "total": 64
+          },
+          "native_label_coverage": 60,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 2,
+            "fraction": 0.5,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 52,
+            "fraction": 0.8125,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -4.523437430245394,
+            "shelf": 0.9999999843421392
+          },
+          "mean_pole_gap": 6.960937575124262,
+          "native": {
+            "correct": 48,
+            "fraction": 0.75,
+            "total": 64
+          },
+          "native_label_coverage": 60,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 58,
+            "fraction": 0.90625,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.43749992019002093,
+            "clock": 5.87500007043127,
+            "length": -4.578125189756975,
+            "mail": -0.8906249438296072,
+            "music": -0.39062495218240656,
+            "notes": 0.39062496239785105,
+            "route": 0.5312500058716978,
+            "temperature": 0.2187500218860805
+          },
+          "mean_pole_gap": 10.69531259633004,
+          "native": {
+            "correct": 58,
+            "fraction": 0.90625,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 58,
+            "fraction": 0.90625,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 1.0000001219523256,
+            "clock": 5.687499891908374,
+            "length": -1.1406250022118911,
+            "mail": 1.4843750245199772,
+            "music": -0.28124988966737874,
+            "notes": 2.0624999266219675,
+            "route": 0.8749998491621227,
+            "temperature": -0.7968749387655407
+          },
+          "mean_pole_gap": 10.886718730407665,
+          "native": {
+            "correct": 58,
+            "fraction": 0.90625,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          }
+        }
+      },
+      "literal": {
+        "all": {
+          "forced": {
+            "correct": 379,
+            "fraction": 0.9869791666666666,
+            "total": 384
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.05468741816673628,
+            "clock": 1.6875000002828529,
+            "directions": -0.3896484672487759,
+            "length": 0.11523432222656993,
+            "mail": 0.16992183142087924,
+            "music": -0.24023437912831014,
+            "notes": -0.3222656513488573,
+            "photos": 0.47265627769877483,
+            "recipes": -0.11132806574960341,
+            "route": -0.7666015999508318,
+            "shelf": -0.13476566937731604,
+            "temperature": 0.6015624766075689
+          },
+          "mean_pole_gap": 18.858723949281057,
+          "native": {
+            "correct": 379,
+            "fraction": 0.9869791666666666,
+            "total": 384
+          },
+          "native_label_coverage": 384,
+          "order_margin_sign_agreement": {
+            "correct": 187,
+            "fraction": 0.9739583333333334,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 21,
+            "fraction": 0.875,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 124,
+            "fraction": 0.96875,
+            "total": 128
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.02734363925787875,
+            "clock": 3.0468749339170245,
+            "length": 0.13671875100226316,
+            "mail": -0.0156250844652277,
+            "music": -0.13671881113032214,
+            "notes": -0.42968748676821633,
+            "route": -0.9960937411724444,
+            "temperature": 0.7656249109018063
+          },
+          "mean_pole_gap": 16.49804686304134,
+          "native": {
+            "correct": 124,
+            "fraction": 0.96875,
+            "total": 128
+          },
+          "native_label_coverage": 128,
+          "order_margin_sign_agreement": {
+            "correct": 60,
+            "fraction": 0.9375,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "photos": 0.47265627769877483,
+            "recipes": -0.11132806574960341
+          },
+          "mean_pole_gap": 19.224609351822096,
+          "native": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 4,
+            "fraction": 1.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 63,
+            "fraction": 0.984375,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -0.3896484672487759,
+            "shelf": -0.13476566937731604
+          },
+          "mean_pole_gap": 19.715820301121653,
+          "native": {
+            "correct": 63,
+            "fraction": 0.984375,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 31,
+            "fraction": 0.96875,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 3,
+            "fraction": 0.75,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.11718742166704033,
+            "clock": 0.3046876138960215,
+            "length": 0.007812427946191747,
+            "mail": 0.4062499705578375,
+            "music": 0.13281260304029274,
+            "notes": -0.12500007200833352,
+            "route": -0.3984374968104021,
+            "temperature": 0.343750181789801
+          },
+          "mean_pole_gap": 20.099609346041007,
+          "native": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 8,
+            "fraction": 1.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.04687497248414729,
+            "clock": 0.351562519401341,
+            "length": 0.17968735895556165,
+            "mail": 0.30468752405613486,
+            "music": -0.820312497292889,
+            "notes": -0.3046875598506631,
+            "route": -0.6757814206480361,
+            "temperature": 0.531249902836862
+          },
+          "mean_pole_gap": 21.11621097061891,
+          "native": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 8,
+            "fraction": 1.0,
+            "total": 8
+          }
+        }
+      },
+      "raw_E": {
+        "all": {
+          "forced": {
+            "correct": 188,
+            "fraction": 0.4895833333333333,
+            "total": 384
+          },
+          "forced_ties": 3,
+          "mean_plus_margin_by_topic": {
+            "archive": -0.1582031441939762,
+            "clock": 3.0156250074505806,
+            "directions": -5.667968761816155,
+            "length": -3.6289062759606168,
+            "mail": 0.8945312332361937,
+            "music": 3.550781276077032,
+            "notes": -4.205078133789357,
+            "photos": -1.574218736961484,
+            "recipes": -2.5878906091675162,
+            "route": 0.125,
+            "shelf": -1.9062499986030161,
+            "temperature": 0.7265625093132257
+          },
+          "mean_pole_gap": 0.0042317800228678,
+          "native": {
+            "correct": 116,
+            "fraction": 0.3020833333333333,
+            "total": 384
+          },
+          "native_label_coverage": 232,
+          "order_margin_sign_agreement": {
+            "correct": 187,
+            "fraction": 0.9739583333333334,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 63,
+            "fraction": 0.4921875,
+            "total": 128
+          },
+          "forced_ties": 1,
+          "mean_plus_margin_by_topic": {
+            "archive": -0.13671874676947482,
+            "clock": 3.015625,
+            "length": -3.6289062986616045,
+            "mail": 0.8906249827705324,
+            "music": 3.5234374925494194,
+            "notes": -4.218749973195372,
+            "route": 0.125,
+            "temperature": 0.7421875214204192
+          },
+          "mean_pole_gap": 0.009765652037458494,
+          "native": {
+            "correct": 36,
+            "fraction": 0.28125,
+            "total": 128
+          },
+          "native_label_coverage": 72,
+          "order_margin_sign_agreement": {
+            "correct": 63,
+            "fraction": 0.984375,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 29,
+            "fraction": 0.453125,
+            "total": 64
+          },
+          "forced_ties": 2,
+          "mean_plus_margin_by_topic": {
+            "photos": -1.574218736961484,
+            "recipes": -2.5878906091675162
+          },
+          "mean_pole_gap": -0.02148438710719347,
+          "native": {
+            "correct": 20,
+            "fraction": 0.3125,
+            "total": 64
+          },
+          "native_label_coverage": 40,
+          "order_margin_sign_agreement": {
+            "correct": 28,
+            "fraction": 0.875,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -5.667968761816155,
+            "shelf": -1.9062499986030161
+          },
+          "mean_pole_gap": 3.314926289021969e-08,
+          "native": {
+            "correct": 24,
+            "fraction": 0.375,
+            "total": 64
+          },
+          "native_label_coverage": 48,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": -0.750000108149834,
+            "clock": 1.6250000298023224,
+            "length": -6.007812420837581,
+            "mail": -0.921875,
+            "music": 3.3437501192092896,
+            "notes": -6.695312589465175,
+            "route": 0.171875,
+            "temperature": 1.6093749850988388
+          },
+          "mean_pole_gap": -0.01171876945591066,
+          "native": {
+            "correct": 14,
+            "fraction": 0.21875,
+            "total": 64
+          },
+          "native_label_coverage": 28,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.39062502491287887,
+            "clock": 4.40625,
+            "length": -1.2500000856816769,
+            "mail": 2.71874996740371,
+            "music": 3.8125,
+            "notes": -1.687499999301508,
+            "route": 0.078125,
+            "temperature": -0.18749999068677425
+          },
+          "mean_pole_gap": 0.03906249947613105,
+          "native": {
+            "correct": 22,
+            "fraction": 0.34375,
+            "total": 64
+          },
+          "native_label_coverage": 44,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        }
+      }
+    },
+    "final": {
+      "matched": {
+        "all": {
+          "forced": {
+            "correct": 257,
+            "fraction": 0.6692708333333334,
+            "total": 384
+          },
+          "forced_ties": 2,
+          "mean_plus_margin_by_topic": {
+            "archive": 1.7421874879555617,
+            "clock": 1.2207030933932401,
+            "directions": -5.26953122264058,
+            "length": -2.378906205012754,
+            "mail": 0.08007811150309863,
+            "music": -1.019531185026608,
+            "notes": -0.7441406315851964,
+            "photos": 0.3808593892454155,
+            "recipes": -3.496093761525117,
+            "route": -2.0859374886667865,
+            "shelf": -2.7382812678988557,
+            "temperature": 0.283203101134859
+          },
+          "mean_pole_gap": 4.577148421022305,
+          "native": {
+            "correct": 242,
+            "fraction": 0.6302083333333334,
+            "total": 384
+          },
+          "native_label_coverage": 356,
+          "order_margin_sign_agreement": {
+            "correct": 163,
+            "fraction": 0.8489583333333334,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 7,
+            "fraction": 0.2916666666666667,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 66,
+            "fraction": 0.515625,
+            "total": 128
+          },
+          "forced_ties": 2,
+          "mean_plus_margin_by_topic": {
+            "archive": 2.8906250507607183,
+            "clock": 2.351562436670065,
+            "length": -4.875000004656613,
+            "mail": -0.5703125493600965,
+            "music": -1.589843757043127,
+            "notes": -2.890624996944098,
+            "route": -4.910156251477019,
+            "temperature": 1.007812499301508
+          },
+          "mean_pole_gap": 0.7910155779263732,
+          "native": {
+            "correct": 57,
+            "fraction": 0.4453125,
+            "total": 128
+          },
+          "native_label_coverage": 108,
+          "order_margin_sign_agreement": {
+            "correct": 50,
+            "fraction": 0.78125,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "photos": 0.3808593892454155,
+            "recipes": -3.496093761525117
+          },
+          "mean_pole_gap": 0.01367193609894457,
+          "native": {
+            "correct": 30,
+            "fraction": 0.46875,
+            "total": 64
+          },
+          "native_label_coverage": 60,
+          "order_margin_sign_agreement": {
+            "correct": 24,
+            "fraction": 0.75,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 31,
+            "fraction": 0.484375,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -5.26953122264058,
+            "shelf": -2.7382812678988557
+          },
+          "mean_pole_gap": 0.0039062072992237518,
+          "native": {
+            "correct": 29,
+            "fraction": 0.453125,
+            "total": 64
+          },
+          "native_label_coverage": 62,
+          "order_margin_sign_agreement": {
+            "correct": 25,
+            "fraction": 0.78125,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.40624984219903126,
+            "clock": -0.5937500358559191,
+            "length": -0.054687423864379525,
+            "mail": -0.30468748131534085,
+            "music": -0.47656242339871824,
+            "notes": 0.4921874316059984,
+            "route": 0.554687493655365,
+            "temperature": 0.11718739627394825
+          },
+          "mean_pole_gap": 13.378906195939635,
+          "native": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 8,
+            "fraction": 1.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.7812500081017788,
+            "clock": 0.7734375360887498,
+            "length": 0.289062613126589,
+            "mail": 1.7656250260479283,
+            "music": -0.4218748026214598,
+            "notes": 2.3125000359414116,
+            "route": 0.9218750546315277,
+            "temperature": -0.9999999903375283
+          },
+          "mean_pole_gap": 12.484375030943283,
+          "native": {
+            "correct": 62,
+            "fraction": 0.96875,
+            "total": 64
+          },
+          "native_label_coverage": 62,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 7,
+            "fraction": 0.875,
+            "total": 8
+          }
+        }
+      },
+      "mean": {
+        "all": {
+          "forced": {
+            "correct": 192,
+            "fraction": 0.5,
+            "total": 384
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.5624999710125849,
+            "clock": 4.765624933352228,
+            "directions": -2.5625000832951628,
+            "length": -3.0156250357977115,
+            "mail": -0.12500004656612873,
+            "music": -2.4999999813735485,
+            "notes": -0.6875000255531631,
+            "photos": -1.5624999792780727,
+            "recipes": -2.1249999520368874,
+            "route": 4.4531249101273715,
+            "shelf": -1.7187499832361937,
+            "temperature": -1.0937500295694917
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 192,
+            "fraction": 0.5,
+            "total": 384
+          },
+          "native_label_coverage": 384,
+          "order_margin_sign_agreement": {
+            "correct": 192,
+            "fraction": 1.0,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 64,
+            "fraction": 0.5,
+            "total": 128
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.5624999710125849,
+            "clock": 4.765624933352228,
+            "length": -3.0156250357977115,
+            "mail": -0.12500004656612873,
+            "music": -2.4999999813735485,
+            "notes": -0.6875000255531631,
+            "route": 4.4531249101273715,
+            "temperature": -1.0937500295694917
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 64,
+            "fraction": 0.5,
+            "total": 128
+          },
+          "native_label_coverage": 128,
+          "order_margin_sign_agreement": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "photos": -1.5624999792780727,
+            "recipes": -2.1249999520368874
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -2.5625000832951628,
+            "shelf": -1.7187499832361937
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": -0.8749999762512743,
+            "clock": 4.406249907799065,
+            "length": -4.843749979860149,
+            "mail": -2.2500000409781933,
+            "music": -3.499999888241291,
+            "notes": -1.9999999877763912,
+            "route": 3.8124999748542905,
+            "temperature": -0.5000000149011612
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 1.999999918276444,
+            "clock": 5.124999958905391,
+            "length": -1.1875000917352736,
+            "mail": 1.9999999478459358,
+            "music": -1.500000074505806,
+            "notes": 0.6249999366700649,
+            "route": 5.093749845400453,
+            "temperature": -1.6875000442378223
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        }
+      },
+      "norm": {
+        "all": {
+          "forced": {
+            "correct": 192,
+            "fraction": 0.5,
+            "total": 384
+          },
+          "forced_ties": 6,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.2070312326104613,
+            "clock": -2.851562480907887,
+            "directions": -3.9062499867286533,
+            "length": -3.6210937775613274,
+            "mail": 2.8515625100699253,
+            "music": -4.855468761990778,
+            "notes": -2.744140639264515,
+            "photos": -2.2148437473224476,
+            "recipes": -3.439453124825377,
+            "route": 3.9843749864958227,
+            "shelf": -3.3632812462747097,
+            "temperature": -0.8476562404539436
+          },
+          "mean_pole_gap": 0.014973952930328474,
+          "native": {
+            "correct": 192,
+            "fraction": 0.5,
+            "total": 384
+          },
+          "native_label_coverage": 376,
+          "order_margin_sign_agreement": {
+            "correct": 185,
+            "fraction": 0.9635416666666666,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 63,
+            "fraction": 0.4921875,
+            "total": 128
+          },
+          "forced_ties": 3,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.20312503751483746,
+            "clock": -2.835937485098839,
+            "length": -3.601562535564881,
+            "mail": 2.8515624928986654,
+            "music": -4.867187533061951,
+            "notes": -2.7070312624491635,
+            "route": 3.984374949708581,
+            "temperature": -0.7968750116415322
+          },
+          "mean_pole_gap": 0.028320322939180187,
+          "native": {
+            "correct": 64,
+            "fraction": 0.5,
+            "total": 128
+          },
+          "native_label_coverage": 128,
+          "order_margin_sign_agreement": {
+            "correct": 60,
+            "fraction": 0.9375,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 34,
+            "fraction": 0.53125,
+            "total": 64
+          },
+          "forced_ties": 2,
+          "mean_plus_margin_by_topic": {
+            "photos": -2.2148437473224476,
+            "recipes": -3.439453124825377
+          },
+          "mean_pole_gap": 0.05273438413860276,
+          "native": {
+            "correct": 36,
+            "fraction": 0.5625,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 30,
+            "fraction": 0.9375,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -3.9062499867286533,
+            "shelf": -3.3632812462747097
+          },
+          "mean_pole_gap": 0.023437479918356985,
+          "native": {
+            "correct": 28,
+            "fraction": 0.4375,
+            "total": 64
+          },
+          "native_label_coverage": 56,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": -0.1875001076841727,
+            "clock": -2.8437499441206455,
+            "length": -5.046875018859282,
+            "mail": 1.359374980442226,
+            "music": -4.359375029802322,
+            "notes": -5.171875015395926,
+            "route": 3.6406250093132257,
+            "temperature": 0.2656250633299351
+          },
+          "mean_pole_gap": 0.003906166173692327,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 31,
+            "fraction": 0.484375,
+            "total": 64
+          },
+          "forced_ties": 1,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.609374963096343,
+            "clock": -2.8906250093132257,
+            "length": -2.234375020256266,
+            "mail": 4.343750074040145,
+            "music": -5.328124952036887,
+            "notes": -0.39062501676380634,
+            "route": 4.328125037252903,
+            "temperature": -2.062500001862645
+          },
+          "mean_pole_gap": -0.0468749585270416,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 31,
+            "fraction": 0.96875,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        }
+      },
+      "opposed": {
+        "all": {
+          "forced": {
+            "correct": 125,
+            "fraction": 0.3255208333333333,
+            "total": 384
+          },
+          "forced_ties": 2,
+          "mean_plus_margin_by_topic": {
+            "archive": 1.7421874879555617,
+            "clock": 1.2207030933932401,
+            "directions": -5.26953122264058,
+            "length": -2.378906205012754,
+            "mail": 0.08007811150309863,
+            "music": -1.019531185026608,
+            "notes": -0.7441406315851964,
+            "photos": 0.3808593892454155,
+            "recipes": -3.496093761525117,
+            "route": -2.0859374886667865,
+            "shelf": -2.7382812678988557,
+            "temperature": 0.283203101134859
+          },
+          "mean_pole_gap": -4.577148421022305,
+          "native": {
+            "correct": 114,
+            "fraction": 0.296875,
+            "total": 384
+          },
+          "native_label_coverage": 356,
+          "order_margin_sign_agreement": {
+            "correct": 163,
+            "fraction": 0.8489583333333334,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 60,
+            "fraction": 0.46875,
+            "total": 128
+          },
+          "forced_ties": 2,
+          "mean_plus_margin_by_topic": {
+            "archive": 2.8906250507607183,
+            "clock": 2.351562436670065,
+            "length": -4.875000004656613,
+            "mail": -0.5703125493600965,
+            "music": -1.589843757043127,
+            "notes": -2.890624996944098,
+            "route": -4.910156251477019,
+            "temperature": 1.007812499301508
+          },
+          "mean_pole_gap": -0.7910155779263732,
+          "native": {
+            "correct": 51,
+            "fraction": 0.3984375,
+            "total": 128
+          },
+          "native_label_coverage": 108,
+          "order_margin_sign_agreement": {
+            "correct": 50,
+            "fraction": 0.78125,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "photos": 0.3808593892454155,
+            "recipes": -3.496093761525117
+          },
+          "mean_pole_gap": -0.01367193609894457,
+          "native": {
+            "correct": 30,
+            "fraction": 0.46875,
+            "total": 64
+          },
+          "native_label_coverage": 60,
+          "order_margin_sign_agreement": {
+            "correct": 24,
+            "fraction": 0.75,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -5.26953122264058,
+            "shelf": -2.7382812678988557
+          },
+          "mean_pole_gap": -0.0039062072992237518,
+          "native": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "native_label_coverage": 62,
+          "order_margin_sign_agreement": {
+            "correct": 25,
+            "fraction": 0.78125,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.40624984219903126,
+            "clock": -0.5937500358559191,
+            "length": -0.054687423864379525,
+            "mail": -0.30468748131534085,
+            "music": -0.47656242339871824,
+            "notes": 0.4921874316059984,
+            "route": 0.554687493655365,
+            "temperature": 0.11718739627394825
+          },
+          "mean_pole_gap": -13.378906195939635,
+          "native": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.7812500081017788,
+            "clock": 0.7734375360887498,
+            "length": 0.289062613126589,
+            "mail": 1.7656250260479283,
+            "music": -0.4218748026214598,
+            "notes": 2.3125000359414116,
+            "route": 0.9218750546315277,
+            "temperature": -0.9999999903375283
+          },
+          "mean_pole_gap": -12.484375030943283,
+          "native": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 64
+          },
+          "native_label_coverage": 62,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        }
+      },
+      "opposed_margin_sign_flip": {
+        "all": {
+          "correct": 164,
+          "fraction": 0.4270833333333333,
+          "total": 384
+        },
+        "new_style": {
+          "correct": 22,
+          "fraction": 0.171875,
+          "total": 128
+        },
+        "new_topics": {
+          "correct": 8,
+          "fraction": 0.125,
+          "total": 64
+        },
+        "previous_topics": {
+          "correct": 6,
+          "fraction": 0.09375,
+          "total": 64
+        },
+        "train_fit": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "train_new_question": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        }
+      },
+      "reverse": {
+        "all": {
+          "forced": {
+            "correct": 188,
+            "fraction": 0.4895833333333333,
+            "total": 384
+          },
+          "forced_ties": 3,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.14648438666336006,
+            "clock": 2.8007812460091372,
+            "directions": -4.242187484698661,
+            "length": -4.048828125589353,
+            "mail": 5.150390642491402,
+            "music": -3.8671875184809323,
+            "notes": -3.5019531442221705,
+            "photos": 0.30468750509317033,
+            "recipes": -3.3925781067155185,
+            "route": 4.330078118371603,
+            "shelf": -3.042968740221113,
+            "temperature": -0.29296872741542757
+          },
+          "mean_pole_gap": 0.14973959532820422,
+          "native": {
+            "correct": 189,
+            "fraction": 0.4921875,
+            "total": 384
+          },
+          "native_label_coverage": 384,
+          "order_margin_sign_agreement": {
+            "correct": 184,
+            "fraction": 0.9583333333333334,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 62,
+            "fraction": 0.484375,
+            "total": 128
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.2421874475257937,
+            "clock": 3.44531251409353,
+            "length": -4.027343745648977,
+            "mail": 5.5781250383588485,
+            "music": -3.6250000162399374,
+            "notes": -3.3906250097461452,
+            "route": 3.8359375162544893,
+            "temperature": 1.0156250121071935
+          },
+          "mean_pole_gap": -0.05761718242956704,
+          "native": {
+            "correct": 62,
+            "fraction": 0.484375,
+            "total": 128
+          },
+          "native_label_coverage": 128,
+          "order_margin_sign_agreement": {
+            "correct": 62,
+            "fraction": 0.96875,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 28,
+            "fraction": 0.4375,
+            "total": 64
+          },
+          "forced_ties": 2,
+          "mean_plus_margin_by_topic": {
+            "photos": 0.30468750509317033,
+            "recipes": -3.3925781067155185
+          },
+          "mean_pole_gap": -0.13476560095296009,
+          "native": {
+            "correct": 29,
+            "fraction": 0.453125,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 27,
+            "fraction": 0.84375,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -4.242187484698661,
+            "shelf": -3.042968740221113
+          },
+          "mean_pole_gap": 0.011718741421645973,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": -0.4218749483989086,
+            "clock": 1.5156249257852323,
+            "length": -6.04687500098953,
+            "mail": 5.164062497904524,
+            "music": -4.062500065105269,
+            "notes": -5.945312494532118,
+            "route": 4.109375004656613,
+            "temperature": -2.890624918974936
+          },
+          "mean_pole_gap": 0.4140624986293915,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 34,
+            "fraction": 0.53125,
+            "total": 64
+          },
+          "forced_ties": 1,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.5234376000007614,
+            "clock": 2.796875030064257,
+            "length": -2.0937500100699253,
+            "mail": 4.281249995343387,
+            "music": -4.156249976338586,
+            "notes": -1.2812500628642738,
+            "route": 5.539062436320819,
+            "temperature": -0.3125000149011612
+          },
+          "mean_pole_gap": 0.722656297730282,
+          "native": {
+            "correct": 34,
+            "fraction": 0.53125,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 31,
+            "fraction": 0.96875,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        }
+      },
+      "screens": {
+        "interface_admission": false,
+        "new_style": false,
+        "new_topics": false,
+        "train_fit": true
+      },
+      "zero": {
+        "all": {
+          "forced": {
+            "correct": 188,
+            "fraction": 0.4895833333333333,
+            "total": 384
+          },
+          "forced_ties": 8,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.46875006100162864,
+            "clock": -1.781249962747097,
+            "directions": -3.312499968917109,
+            "length": -3.609374909894541,
+            "mail": 3.5312499932479113,
+            "music": -5.812500054016709,
+            "notes": 0.9062500427244231,
+            "photos": -0.937500013038516,
+            "recipes": -3.5156249734573066,
+            "route": 4.8281249944120646,
+            "shelf": -1.9687498789280653,
+            "temperature": -2.12500003259629
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 188,
+            "fraction": 0.4895833333333333,
+            "total": 384
+          },
+          "native_label_coverage": 376,
+          "order_margin_sign_agreement": {
+            "correct": 188,
+            "fraction": 0.9791666666666666,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 62,
+            "fraction": 0.484375,
+            "total": 128
+          },
+          "forced_ties": 4,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.46875006100162864,
+            "clock": -1.781249962747097,
+            "length": -3.609374909894541,
+            "mail": 3.5312499932479113,
+            "music": -5.812500054016709,
+            "notes": 0.9062500427244231,
+            "route": 4.8281249944120646,
+            "temperature": -2.12500003259629
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 64,
+            "fraction": 0.5,
+            "total": 128
+          },
+          "native_label_coverage": 128,
+          "order_margin_sign_agreement": {
+            "correct": 62,
+            "fraction": 0.96875,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "photos": -0.937500013038516,
+            "recipes": -3.5156249734573066
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -3.312499968917109,
+            "shelf": -1.9687498789280653
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 28,
+            "fraction": 0.4375,
+            "total": 64
+          },
+          "native_label_coverage": 56,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.06250000465661287,
+            "clock": -2.0624999552965164,
+            "length": -5.093749795574695,
+            "mail": 2.8125000540167093,
+            "music": -5.312500029802322,
+            "notes": -2.3125000174622983,
+            "route": 4.187500029802322,
+            "temperature": -1.5
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 30,
+            "fraction": 0.46875,
+            "total": 64
+          },
+          "forced_ties": 4,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.8750001173466444,
+            "clock": -1.4999999701976776,
+            "length": -2.125000024214387,
+            "mail": 4.249999932479113,
+            "music": -6.312500078231096,
+            "notes": 4.1250001029111445,
+            "route": 5.468749959021807,
+            "temperature": -2.7500000651925802
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 30,
+            "fraction": 0.9375,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        }
+      }
+    },
+    "ridge": {
+      "matched": {
+        "all": {
+          "forced": {
+            "correct": 249,
+            "fraction": 0.6484375,
+            "total": 384
+          },
+          "forced_ties": 1,
+          "mean_plus_margin_by_topic": {
+            "archive": 1.7792968429712346,
+            "clock": 4.111328133638381,
+            "directions": -5.11328126711669,
+            "length": -3.4609375051004463,
+            "mail": -0.15234378297282092,
+            "music": -0.7773437563100742,
+            "notes": -0.8535156187458597,
+            "photos": 0.054687508491042536,
+            "recipes": -3.4433593777939677,
+            "route": -1.9101562650403139,
+            "shelf": -2.646484361408511,
+            "temperature": 0.2988281669677235
+          },
+          "mean_pole_gap": 3.8723958278908412,
+          "native": {
+            "correct": 235,
+            "fraction": 0.6119791666666666,
+            "total": 384
+          },
+          "native_label_coverage": 354,
+          "order_margin_sign_agreement": {
+            "correct": 164,
+            "fraction": 0.8541666666666666,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 6,
+            "fraction": 0.25,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 70,
+            "fraction": 0.546875,
+            "total": 128
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 2.8242187504165486,
+            "clock": 2.390625022351742,
+            "length": -4.105468772351742,
+            "mail": -0.7265625114087015,
+            "music": -1.167968748457497,
+            "notes": -2.9882812458381522,
+            "route": -4.566406303827534,
+            "temperature": 0.8593750398140401
+          },
+          "mean_pole_gap": 0.8603515467207217,
+          "native": {
+            "correct": 60,
+            "fraction": 0.46875,
+            "total": 128
+          },
+          "native_label_coverage": 104,
+          "order_margin_sign_agreement": {
+            "correct": 52,
+            "fraction": 0.8125,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 1,
+          "mean_plus_margin_by_topic": {
+            "photos": 0.054687508491042536,
+            "recipes": -3.4433593777939677
+          },
+          "mean_pole_gap": 0.06835938556469046,
+          "native": {
+            "correct": 30,
+            "fraction": 0.46875,
+            "total": 64
+          },
+          "native_label_coverage": 60,
+          "order_margin_sign_agreement": {
+            "correct": 23,
+            "fraction": 0.71875,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 31,
+            "fraction": 0.484375,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -5.11328126711669,
+            "shelf": -2.646484361408511
+          },
+          "mean_pole_gap": 0.04492183568800101,
+          "native": {
+            "correct": 29,
+            "fraction": 0.453125,
+            "total": 64
+          },
+          "native_label_coverage": 62,
+          "order_margin_sign_agreement": {
+            "correct": 25,
+            "fraction": 0.78125,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 58,
+            "fraction": 0.90625,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.4687500431755325,
+            "clock": 5.898437564319465,
+            "length": -4.4453125469444785,
+            "mail": -0.6406250916188583,
+            "music": -0.44531256378104445,
+            "notes": 0.4999999823921826,
+            "route": 0.5546875120999175,
+            "temperature": 0.203124996565748
+          },
+          "mean_pole_gap": 10.585937493784513,
+          "native": {
+            "correct": 58,
+            "fraction": 0.90625,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 58,
+            "fraction": 0.90625,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.9999998278763087,
+            "clock": 5.765624925530574,
+            "length": -1.187499928753823,
+            "mail": 1.4843749825449777,
+            "music": -0.32812496454425855,
+            "notes": 2.062500034300683,
+            "route": 0.9375000353938958,
+            "temperature": -0.7265624083229341
+          },
+          "mean_pole_gap": 10.8144531588664,
+          "native": {
+            "correct": 58,
+            "fraction": 0.90625,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          }
+        }
+      },
+      "mean": {
+        "all": {
+          "forced": {
+            "correct": 192,
+            "fraction": 0.5,
+            "total": 384
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.7500000165309757,
+            "clock": 4.734374939405825,
+            "directions": -2.5156249628053047,
+            "length": -2.9687500569270924,
+            "mail": -0.18749998696148396,
+            "music": -2.562500028172508,
+            "notes": -0.6718749517458491,
+            "photos": -1.8124999962747097,
+            "recipes": -2.2031250786967576,
+            "route": 4.390624978695996,
+            "shelf": -1.687499986961484,
+            "temperature": -1.4062500400468707
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 192,
+            "fraction": 0.5,
+            "total": 384
+          },
+          "native_label_coverage": 384,
+          "order_margin_sign_agreement": {
+            "correct": 192,
+            "fraction": 1.0,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 64,
+            "fraction": 0.5,
+            "total": 128
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.7500000165309757,
+            "clock": 4.734374939405825,
+            "length": -2.9687500569270924,
+            "mail": -0.18749998696148396,
+            "music": -2.562500028172508,
+            "notes": -0.6718749517458491,
+            "route": 4.390624978695996,
+            "temperature": -1.4062500400468707
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 64,
+            "fraction": 0.5,
+            "total": 128
+          },
+          "native_label_coverage": 128,
+          "order_margin_sign_agreement": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "photos": -1.8124999962747097,
+            "recipes": -2.2031250786967576
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -2.5156249628053047,
+            "shelf": -1.687499986961484
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": -0.7500000381842256,
+            "clock": 4.374999978579581,
+            "length": -4.875000113854185,
+            "mail": -2.3124999962747097,
+            "music": -3.6875000377185643,
+            "notes": -1.9062498736893758,
+            "route": 3.749999881722033,
+            "temperature": -0.6249999850988388
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 2.250000071246177,
+            "clock": 5.093749900232069,
+            "length": -1.0625,
+            "mail": 1.9375000223517418,
+            "music": -1.4375000186264515,
+            "notes": 0.5624999701976776,
+            "route": 5.031250075669959,
+            "temperature": -2.1875000949949026
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        }
+      },
+      "norm": {
+        "all": {
+          "forced": {
+            "correct": 191,
+            "fraction": 0.4973958333333333,
+            "total": 384
+          },
+          "forced_ties": 4,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.2226562705836841,
+            "clock": -2.7890624944120646,
+            "directions": -3.8906250335567165,
+            "length": -3.605468744004611,
+            "mail": 2.8749999888823368,
+            "music": -4.800781293772161,
+            "notes": -2.7480468799258233,
+            "photos": -2.093749981489964,
+            "recipes": -3.3671875062282197,
+            "route": 4.035156251862645,
+            "shelf": -3.3593749969732016,
+            "temperature": -0.8046875013969839
+          },
+          "mean_pole_gap": -0.009440105908045856,
+          "native": {
+            "correct": 189,
+            "fraction": 0.4921875,
+            "total": 384
+          },
+          "native_label_coverage": 376,
+          "order_margin_sign_agreement": {
+            "correct": 183,
+            "fraction": 0.953125,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 62,
+            "fraction": 0.484375,
+            "total": 128
+          },
+          "forced_ties": 2,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.24609373798011802,
+            "clock": -2.7499999590218067,
+            "length": -3.5781249909778126,
+            "mail": 2.851562471129,
+            "music": -4.820312544121407,
+            "notes": -2.7382812480427674,
+            "route": 4.0078125121071935,
+            "temperature": -0.75000000721775
+          },
+          "mean_pole_gap": 0.001953092420080793,
+          "native": {
+            "correct": 63,
+            "fraction": 0.4921875,
+            "total": 128
+          },
+          "native_label_coverage": 128,
+          "order_margin_sign_agreement": {
+            "correct": 59,
+            "fraction": 0.921875,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 2,
+          "mean_plus_margin_by_topic": {
+            "photos": -2.093749981489964,
+            "recipes": -3.3671875062282197
+          },
+          "mean_pole_gap": 1.4959368854761124e-08,
+          "native": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 29,
+            "fraction": 0.90625,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -3.8906250335567165,
+            "shelf": -3.3593749969732016
+          },
+          "mean_pole_gap": -0.0078124670253600925,
+          "native": {
+            "correct": 28,
+            "fraction": 0.4375,
+            "total": 64
+          },
+          "native_label_coverage": 56,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": -0.22656242191442288,
+            "clock": -2.8437500447034836,
+            "length": -5.046874984516762,
+            "mail": 1.3906250311993062,
+            "music": -4.390625015832484,
+            "notes": -5.234375027343049,
+            "route": 3.734375024214387,
+            "temperature": 0.234375
+          },
+          "mean_pole_gap": -0.01757812133655534,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.6250000282889232,
+            "clock": -2.812500014901161,
+            "length": -2.2187500095460564,
+            "mail": 4.40624998207204,
+            "music": -5.171875071013346,
+            "notes": -0.2812499962747097,
+            "route": 4.390624959021807,
+            "temperature": -1.9531249911524355
+          },
+          "mean_pole_gap": -0.03515624688589014,
+          "native": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 31,
+            "fraction": 0.96875,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        }
+      },
+      "opposed": {
+        "all": {
+          "forced": {
+            "correct": 134,
+            "fraction": 0.3489583333333333,
+            "total": 384
+          },
+          "forced_ties": 1,
+          "mean_plus_margin_by_topic": {
+            "archive": 1.7792968429712346,
+            "clock": 4.111328133638381,
+            "directions": -5.11328126711669,
+            "length": -3.4609375051004463,
+            "mail": -0.15234378297282092,
+            "music": -0.7773437563100742,
+            "notes": -0.8535156187458597,
+            "photos": 0.054687508491042536,
+            "recipes": -3.4433593777939677,
+            "route": -1.9101562650403139,
+            "shelf": -2.646484361408511,
+            "temperature": 0.2988281669677235
+          },
+          "mean_pole_gap": -3.8723958278908412,
+          "native": {
+            "correct": 119,
+            "fraction": 0.3098958333333333,
+            "total": 384
+          },
+          "native_label_coverage": 354,
+          "order_margin_sign_agreement": {
+            "correct": 164,
+            "fraction": 0.8541666666666666,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 58,
+            "fraction": 0.453125,
+            "total": 128
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 2.8242187504165486,
+            "clock": 2.390625022351742,
+            "length": -4.105468772351742,
+            "mail": -0.7265625114087015,
+            "music": -1.167968748457497,
+            "notes": -2.9882812458381522,
+            "route": -4.566406303827534,
+            "temperature": 0.8593750398140401
+          },
+          "mean_pole_gap": -0.8603515467207217,
+          "native": {
+            "correct": 44,
+            "fraction": 0.34375,
+            "total": 128
+          },
+          "native_label_coverage": 104,
+          "order_margin_sign_agreement": {
+            "correct": 52,
+            "fraction": 0.8125,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 31,
+            "fraction": 0.484375,
+            "total": 64
+          },
+          "forced_ties": 1,
+          "mean_plus_margin_by_topic": {
+            "photos": 0.054687508491042536,
+            "recipes": -3.4433593777939677
+          },
+          "mean_pole_gap": -0.06835938556469046,
+          "native": {
+            "correct": 30,
+            "fraction": 0.46875,
+            "total": 64
+          },
+          "native_label_coverage": 60,
+          "order_margin_sign_agreement": {
+            "correct": 23,
+            "fraction": 0.71875,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -5.11328126711669,
+            "shelf": -2.646484361408511
+          },
+          "mean_pole_gap": -0.04492183568800101,
+          "native": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "native_label_coverage": 62,
+          "order_margin_sign_agreement": {
+            "correct": 25,
+            "fraction": 0.78125,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 6,
+            "fraction": 0.09375,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.4687500431755325,
+            "clock": 5.898437564319465,
+            "length": -4.4453125469444785,
+            "mail": -0.6406250916188583,
+            "music": -0.44531256378104445,
+            "notes": 0.4999999823921826,
+            "route": 0.5546875120999175,
+            "temperature": 0.203124996565748
+          },
+          "mean_pole_gap": -10.585937493784513,
+          "native": {
+            "correct": 6,
+            "fraction": 0.09375,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 6,
+            "fraction": 0.09375,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.9999998278763087,
+            "clock": 5.765624925530574,
+            "length": -1.187499928753823,
+            "mail": 1.4843749825449777,
+            "music": -0.32812496454425855,
+            "notes": 2.062500034300683,
+            "route": 0.9375000353938958,
+            "temperature": -0.7265624083229341
+          },
+          "mean_pole_gap": -10.8144531588664,
+          "native": {
+            "correct": 6,
+            "fraction": 0.09375,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        }
+      },
+      "opposed_margin_sign_flip": {
+        "all": {
+          "correct": 138,
+          "fraction": 0.359375,
+          "total": 384
+        },
+        "new_style": {
+          "correct": 24,
+          "fraction": 0.1875,
+          "total": 128
+        },
+        "new_topics": {
+          "correct": 4,
+          "fraction": 0.0625,
+          "total": 64
+        },
+        "previous_topics": {
+          "correct": 6,
+          "fraction": 0.09375,
+          "total": 64
+        },
+        "train_fit": {
+          "correct": 52,
+          "fraction": 0.8125,
+          "total": 64
+        },
+        "train_new_question": {
+          "correct": 52,
+          "fraction": 0.8125,
+          "total": 64
+        }
+      },
+      "reverse": {
+        "all": {
+          "forced": {
+            "correct": 189,
+            "fraction": 0.4921875,
+            "total": 384
+          },
+          "forced_ties": 2,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.14453127193337423,
+            "clock": 2.6093749726023816,
+            "directions": -4.22851562260621,
+            "length": -4.013671901055204,
+            "mail": 5.070312481358997,
+            "music": -3.8164062351934263,
+            "notes": -3.4687499945293894,
+            "photos": 0.20312501236912794,
+            "recipes": -3.3769530531644705,
+            "route": 4.5800781098114385,
+            "shelf": -3.1132812598880264,
+            "temperature": -0.199218729743734
+          },
+          "mean_pole_gap": 0.1653645789976205,
+          "native": {
+            "correct": 189,
+            "fraction": 0.4921875,
+            "total": 384
+          },
+          "native_label_coverage": 384,
+          "order_margin_sign_agreement": {
+            "correct": 183,
+            "fraction": 0.953125,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 62,
+            "fraction": 0.484375,
+            "total": 128
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.2617187462747097,
+            "clock": 3.2148437141659088,
+            "length": -3.980468757566996,
+            "mail": 5.488281217578333,
+            "music": -3.679687477706466,
+            "notes": -3.3437499784704414,
+            "route": 4.171874953521183,
+            "temperature": 1.1875000230502337
+          },
+          "mean_pole_gap": -0.03125001707303454,
+          "native": {
+            "correct": 62,
+            "fraction": 0.484375,
+            "total": 128
+          },
+          "native_label_coverage": 128,
+          "order_margin_sign_agreement": {
+            "correct": 62,
+            "fraction": 0.96875,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 29,
+            "fraction": 0.453125,
+            "total": 64
+          },
+          "forced_ties": 1,
+          "mean_plus_margin_by_topic": {
+            "photos": 0.20312501236912794,
+            "recipes": -3.3769530531644705
+          },
+          "mean_pole_gap": -0.11523435544222593,
+          "native": {
+            "correct": 29,
+            "fraction": 0.453125,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 28,
+            "fraction": 0.875,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -4.22851562260621,
+            "shelf": -3.1132812598880264
+          },
+          "mean_pole_gap": 0.08789059153059497,
+          "native": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 31,
+            "fraction": 0.96875,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": -0.4140624305437086,
+            "clock": 1.289062428404577,
+            "length": -5.968750022904715,
+            "mail": 5.08593756594928,
+            "music": -4.01562502613524,
+            "notes": -5.968750049814844,
+            "route": 4.234374999068677,
+            "temperature": -2.749999970663339
+          },
+          "mean_pole_gap": 0.3457031466832632,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "forced_ties": 1,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.4687500257277861,
+            "clock": 2.718750033673132,
+            "length": -2.1250000661821105,
+            "mail": 4.218749924330041,
+            "music": -3.8906249592255335,
+            "notes": -1.2187499713618308,
+            "route": 5.742187533134711,
+            "temperature": -0.42187499441206455
+          },
+          "mean_pole_gap": 0.7363281253601599,
+          "native": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 30,
+            "fraction": 0.9375,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        }
+      },
+      "screens": {
+        "interface_admission": false,
+        "new_style": false,
+        "new_topics": false,
+        "train_fit": false
+      },
+      "zero": {
+        "all": {
+          "forced": {
+            "correct": 192,
+            "fraction": 0.5,
+            "total": 384
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.39062498055864125,
+            "clock": -2.2187499962747097,
+            "directions": -3.359375041676685,
+            "length": -3.5156249911524355,
+            "mail": 3.3437499408610165,
+            "music": -5.796874962281436,
+            "notes": 0.8749999264255166,
+            "photos": -1.0625000055879354,
+            "recipes": -3.421874980907887,
+            "route": 4.765625144354999,
+            "shelf": -2.0937500093132257,
+            "temperature": -1.9999999729916453
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 188,
+            "fraction": 0.4895833333333333,
+            "total": 384
+          },
+          "native_label_coverage": 376,
+          "order_margin_sign_agreement": {
+            "correct": 192,
+            "fraction": 1.0,
+            "total": 192
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 24
+          }
+        },
+        "new_style": {
+          "forced": {
+            "correct": 64,
+            "fraction": 0.5,
+            "total": 128
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.39062498055864125,
+            "clock": -2.2187499962747097,
+            "length": -3.5156249911524355,
+            "mail": 3.3437499408610165,
+            "music": -5.796874962281436,
+            "notes": 0.8749999264255166,
+            "route": 4.765625144354999,
+            "temperature": -1.9999999729916453
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 64,
+            "fraction": 0.5,
+            "total": 128
+          },
+          "native_label_coverage": 128,
+          "order_margin_sign_agreement": {
+            "correct": 64,
+            "fraction": 1.0,
+            "total": 64
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "new_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "photos": -1.0625000055879354,
+            "recipes": -3.421874980907887
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "previous_topics": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "directions": -3.359375041676685,
+            "shelf": -2.0937500093132257
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 28,
+            "fraction": 0.4375,
+            "total": 64
+          },
+          "native_label_coverage": 56,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "train_fit": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": -0.031249981140717864,
+            "clock": -2.437500022351742,
+            "length": -5.0312499310821295,
+            "mail": 2.562499962747097,
+            "music": -5.312499878928065,
+            "notes": -2.3750000186264515,
+            "route": 4.1250001303851604,
+            "temperature": -1.1874999850988388
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        },
+        "train_new_question": {
+          "forced": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "mean_plus_margin_by_topic": {
+            "archive": 0.8124999422580004,
+            "clock": -1.9999999701976776,
+            "length": -2.0000000512227416,
+            "mail": 4.124999918974936,
+            "music": -6.281250045634806,
+            "notes": 4.124999871477485,
+            "route": 5.406250158324838,
+            "temperature": -2.812499960884452
+          },
+          "mean_pole_gap": 0.0,
+          "native": {
+            "correct": 32,
+            "fraction": 0.5,
+            "total": 64
+          },
+          "native_label_coverage": 64,
+          "order_margin_sign_agreement": {
+            "correct": 32,
+            "fraction": 1.0,
+            "total": 32
+          },
+          "strict_pairs_both_source_orders": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 8
+          }
+        }
+      }
+    }
+  },
+  "terminal": {
+    "G_trained": false,
+    "backbone_sha256_after": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+    "backbone_sha256_before": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+    "compute": {
+      "forwards": 1869,
+      "generated_tokens": 0,
+      "processed_tokens": 551434
+    },
+    "elapsed_seconds": 52.43986366095487,
+    "lexical_parameter_sha256_after": "2362ebdf4403647e9bc425e8708b68e0de830d7b01a80c33a2d7b5221f1d8e1f",
+    "lexical_parameter_sha256_before": "2362ebdf4403647e9bc425e8708b68e0de830d7b01a80c33a2d7b5221f1d8e1f",
+    "qualification_content_loaded": false,
+    "status": "COMPLETED_SOURCE_LEXICAL_DEVELOPMENT",
+    "updates": 64
+  }
+}

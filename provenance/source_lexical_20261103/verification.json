@@ -1,0 +1,28 @@
+{
+  "G_trained": false,
+  "decisions": 5760,
+  "final_screens": {
+    "interface_admission": false,
+    "new_style": false,
+    "new_topics": false,
+    "train_fit": true
+  },
+  "frozen_E": true,
+  "frozen_lexical_replay_decisions": 24,
+  "prefit_suite": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 172
+  },
+  "qualification_content_loaded": false,
+  "returned_archive_sha256": "37b37ad51c26bc72d4b15d0405feea73f3063a77dc59cf7d7279f8ed89a4ec8a",
+  "ridge_screens": {
+    "interface_admission": false,
+    "new_style": false,
+    "new_topics": false,
+    "train_fit": false
+  },
+  "source_commit": "9c0c4965e0d555d7ebc20c9f8a3581273c56e0b2",
+  "updates": 64
+}
