@@ -1,0 +1,27 @@
+{
+  "D_reconstruction_screen": false,
+  "G_trained": false,
+  "lexical_pooled_screen": true,
+  "lexical_two_topic_transfer_screen": false,
+  "order_screens": {
+    "latent": {
+      "permutation": false,
+      "trainability": false
+    },
+    "literal": {
+      "permutation": false,
+      "trainability": false
+    }
+  },
+  "prefit_suite": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 167
+  },
+  "qualification_content_loaded": false,
+  "returned_archive_sha256": "f087a5d30ce3bb5db2f2054ea188124544e072ef96a4d5c2fc89981fe44c8b6f",
+  "source_commit": "ad2d1a2e9016fa5fb368549ef1ee20320f1ffb2e",
+  "source_copy_training": "all_24_original_descriptions",
+  "updates": 256
+}

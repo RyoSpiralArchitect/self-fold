@@ -1,0 +1,1 @@
+{"decoder_reference_count": 24, "dev_groups": {"additional_dev": ["requirement-02", "requirement-03"], "previous_dev": ["requirement-00", "requirement-01"], "train": ["both_if-01", "either_if-01", "unless-01", "exclusive-01"]}, "max_copy_context": 70, "max_order_donor_context": 132, "target_end_of_turn": 107}

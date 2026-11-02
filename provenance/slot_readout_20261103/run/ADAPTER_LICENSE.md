@@ -1,0 +1,5 @@
+# Gemma-derived readout artifacts
+
+The four learned files, decoder/decoder.npz, lexical/lexical_bridge.npz, order/mixed_literal.npz and order/mixed_latent.npz, are distributed under the [Gemma Terms of Use](GEMMA_TERMS.html), including its use restrictions and incorporated [Prohibited Use Policy](GEMMA_PROHIBITED_USE_POLICY.html). Use, reproduction, modification and distribution must comply with those conditions. Their [modification notice](NOTICE.txt) and [terms copy provenance](terms-provenance.json) accompany the files. SELF-FOLD original software and synthetic material use [Apache-2.0](../../../LICENSE).
+
+The lexical artifact has kind lexical_slot_low_rank_residual and uses native lexical rows captured at the recipient length. Its metadata records that geometry. The E-description encoder bridge loader accepts other artifact kinds and geometries. Reproduction of this lexical transformation uses the declared capture in the sealed experiment script. All four files carry their source and host bindings.
