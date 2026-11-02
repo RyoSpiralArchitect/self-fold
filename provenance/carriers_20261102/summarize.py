@@ -12,6 +12,11 @@ def read(path):
 
 
 def summarize(trial):
+    terminal = json.loads((trial / "terminal.json").read_text())
+    if terminal["status"] != "COMPLETED_DEVELOPMENT_CARRIER_DIAGNOSTIC":
+        return {"terminal": terminal, "scored_rows": len(read(trial / "scores.jsonl")) if (trial / "scores.jsonl").exists() else 0,
+                "captured_donors": len(read(trial / "donors.jsonl")) if (trial / "donors.jsonl").exists() else 0,
+                "semantic_result": None}
     scores, generations, donors = (read(trial / f) for f in ("scores.jsonl", "generations.jsonl", "donors.jsonl"))
     result = {}
     for route in sorted({r["route"] for r in scores}):

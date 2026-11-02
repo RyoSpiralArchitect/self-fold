@@ -10,8 +10,8 @@ CONTROLS = ("carrier", "reverse", "norm_only", "random", "unrelated", "zero", "u
 QUESTIONS = (None, "Which alternative matches the current description?")
 
 
-def capture_description(host, text, route, *, forward_length=256):
-    """The signature deliberately takes no task, options, label or operator target."""
+def description_layout(host, text, route, *, forward_length=256):
+    """Validate the source geometry without a model forward or a task input."""
     if route == "workspace":
         content = prompts.encode_prompt(text)
         ids, slots = host.render(content)
@@ -48,12 +48,18 @@ def capture_description(host, text, route, *, forward_length=256):
     if len(ids) > forward_length:
         raise ValueError("Description exceeds the fixed donor length; no truncation")
     padded = ids + [host.placeholder_id] * (forward_length - len(ids))
-    _, captured = host.forward(padded, capture_positions=positions)
-    state = State(slots=captured["pre_cut"][0])
-    return state, {"route": route, "source_text": text, "native_ids": ids,
+    return padded, positions, {"route": route, "source_text": text, "native_ids": ids,
                    "forward_length": forward_length, "padding_id": host.placeholder_id,
                    "capture_positions": positions, "capture_token_ids": [ids[p] for p in positions],
-                   "position_method": method, "state_sha256": state.sha()}
+                   "position_method": method}
+
+
+def capture_description(host, text, route, *, forward_length=256):
+    """The signature deliberately takes no task, options, label or operator target."""
+    padded, positions, metadata = description_layout(host, text, route, forward_length=forward_length)
+    _, captured = host.forward(padded, capture_positions=positions)
+    state = State(slots=captured["pre_cut"][0])
+    return state, {**metadata, "state_sha256": state.sha()}
 
 
 def question_orders(group):

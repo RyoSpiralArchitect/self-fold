@@ -19,3 +19,7 @@ Package 1 of the [qualification plan](../../docs/SEMANTIC_GATE_PLAN.md). Develop
 Passing this screen selects a candidate route for further learning and review. Failing all four cells closes this bounded native-interface diagnostic and permits the independently specified learning work to proceed once its data and implementation prerequisites are ready. No gate is issued from these scores. The full punctuation mechanism remains outside this package.
 
 The source commit is recorded in each trial before execution. Checkpoint weights and local operator paths are not copied into the repository. Raw state arrays, donor metadata, label scores, generation stop receipts and terminal failures are retained.
+
+## Input-shape amendment before any scores
+
+The first Gemma attempt at `54a9d1649a63aace227df15bc7d5612a435ab9af` stopped while capturing donors because photo-minus phrasing 0 occupied seven native tokens. No question was scored. That attempt and its captured states remain in the evidence. Both native tokenizers confirmed the same short case. The photo plus/minus first phrasings were lengthened together without changing their preferences. Every source/route geometry is now validated with the actual native tokenizer before model construction. The four semantic cells, positions, controls and thresholds remain fixed. This is a recorded input-shape repair, not an automatic retry of a semantic result.

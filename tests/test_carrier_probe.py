@@ -1,7 +1,7 @@
 import json
 import torch
 import pytest
-from selffold.carrier_probe import capture_description, neutral_replay, run_carrier_probe
+from selffold.carrier_probe import capture_description, description_layout, neutral_replay, run_carrier_probe
 from selffold.records import RunStore
 
 
@@ -14,6 +14,9 @@ def test_description_capture_is_repeatable_and_has_no_question_input(host):
         assert metadata["forward_length"] == 256
         assert metadata["source_text"] == text
         assert len(metadata["capture_positions"]) == host.slots
+    before = host.meter.snapshot()
+    description_layout(host, text, "native_tail")
+    assert host.meter.snapshot() == before
     with pytest.raises(ValueError, match="too short"):
         capture_description(host, "x", "native_tail")
     with pytest.raises(ValueError, match="no truncation"):

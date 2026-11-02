@@ -3,8 +3,10 @@ import argparse
 import json
 from pathlib import Path
 import time
+from types import MethodType, SimpleNamespace
 from selffold.cli import ROOT, make_host
-from selffold.carrier_probe import run_carrier_probe
+from selffold.host import SlotHost
+from selffold.carrier_probe import run_carrier_probe, description_layout, ROUTES
 from selffold.records import RunStore, code_manifest, digest, file_sha
 from selffold.resources import inventory
 
@@ -37,6 +39,20 @@ def main():
     try:
         if source["git_status"] != "" or not source["git_commit"]:
             raise ValueError("A clean source seal is required")
+        from transformers import AutoTokenizer
+        tokenizer = AutoTokenizer.from_pretrained(args.checkpoint, local_files_only=True, trust_remote_code=False)
+        layout_host = SimpleNamespace(tokenizer=tokenizer, slots=8, max_context=1024,
+                                      placeholder_id=tokenizer.encode(".", add_special_tokens=False)[-1])
+        layout_host.render = MethodType(SlotHost.render, layout_host)
+        groups = json.loads(fixture.read_text())["groups"]
+        layouts = []
+        for route in ROUTES:
+            for group in groups:
+                for pole in ("plus", "minus"):
+                    for phrasing, text in enumerate(group[pole]):
+                        _, _, layout = description_layout(layout_host, text, route)
+                        layouts.append({"group": group["id"], "pole": pole, "phrasing": phrasing, **layout})
+        store.write("layout_preflight.json", layouts)
         host, identity = make_host(args)
         store.write("checkpoint_identity.json", identity)
         store.write("host_identity.json", host.identity)
@@ -46,7 +62,7 @@ def main():
         store.write("native_parity.json", parity)
         if not parity["exact"]:
             raise ValueError("Native hook parity failed")
-        run_carrier_probe(host, store, json.loads(fixture.read_text())["groups"])
+        run_carrier_probe(host, store, groups)
         store.write("environment.after.json", inventory(ROOT))
         terminal = {"status": "COMPLETED_DEVELOPMENT_CARRIER_DIAGNOSTIC", "compute": host.meter.snapshot(),
                     "host_sha256": digest(host.identity), "elapsed_seconds": time.monotonic() - start}
