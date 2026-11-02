@@ -23,11 +23,17 @@ class EncoderBridge(torch.nn.Module):
 
 
 def codec_loss(host, bridge, source_slots, target, *, end_token_id):
+    target_ids = host.tokenizer.encode(target, add_special_tokens=False) + [end_token_id]
+    loss, _ = codec_objectives(host, bridge, source_slots, target_ids)
+    return loss
+
+
+def codec_objectives(host, bridge, source_slots, target_ids, *, contrast=None):
+    """Source NLL and optional correct-minus-foil logit at a causal target position."""
     if torch.is_inference_mode_enabled() or any(p.requires_grad for p in host.model.parameters()):
         raise ValueError("Need a frozen backbone and an enabled gradient path")
     ids, locations = host.render(prompts.read_prompt())
-    target_ids = host.tokenizer.encode(target, add_special_tokens=False) + [end_token_id]
-    if end_token_id not in host.eos_ids or len(ids) + len(target_ids) > host.max_context:
+    if not target_ids or target_ids[-1] not in host.eos_ids or len(ids) + len(target_ids) > host.max_context:
         raise ValueError("Invalid target EOS or oversized target")
     if tuple(source_slots.shape) != (host.slots, host.width):
         raise ValueError("Encoder source shape mismatch")
@@ -50,11 +56,17 @@ def codec_loss(host, bridge, source_slots, target, *, end_token_id):
             logits = output.logits[:, len(ids)-1:len(full)-1, :].float()
             labels = torch.tensor([target_ids], device=host.device)
             loss = torch.nn.functional.cross_entropy(logits.reshape(-1, logits.shape[-1]), labels.reshape(-1))
-        if not torch.isfinite(loss):
+            margin = None
+            if contrast is not None:
+                index, foil = contrast
+                if not 0 <= index < len(target_ids) - 1 or target_ids[index] == foil:
+                    raise ValueError("Invalid source contrast")
+                margin = logits[0, index, target_ids[index]] - logits[0, index, foil]
+        if not torch.isfinite(loss) or (margin is not None and not torch.isfinite(margin)):
             raise FloatingPointError("Nonfinite codec loss")
         host.meter.forwards += 1
         host.meter.processed_tokens += len(full)
-        return loss
+        return loss, margin
     finally:
         hook.remove()
 

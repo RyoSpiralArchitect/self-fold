@@ -2,9 +2,22 @@
 
 English · [日本語](SEMANTIC_GATE_PLAN.ja.md)
 
-**Status on 2026-11-01 — proposed research plan.** This document starts from `6b054baf2571c3fa0e4f19d5d841ea760d3eaba2`. It records no new experiments, training or gate approval. Dataset manifests, the training implementation and the executable evaluation specification remain to be created before their respective stages run. Numerical targets below are proposed screening criteria for a small qualification study, not observed results or a preregistration.
+The six-package plan was proposed on 2026-11-01 at `6b054baf2571c3fa0e4f19d5d841ea760d3eaba2`. The dated entries distinguish completed development experiments from proposed qualification thresholds. Qualification and independent human transition review are pending.
 
 There are **six work packages**. Packages 1–3 prepare a first learning run, package 4 fits and freezes a candidate, package 5 challenges it on an untouched qualification set, and package 6 reviews the evidence. Work on the data and training implementation can overlap the bounded diagnostic. Completing a package can mean either meeting its positive endpoint or closing a specified negative diagnosis. A scientific gate pass has its own stricter conditions.
+
+## The remaining route from a readable word to a useful G step
+
+On 2026-11-03 the two matched codec fits closed with zero strict opposed action switches in 288 comparisons each. A two-encode centered probe read mention order on 93/96 crossed descriptions, while it recovered the prescribed action in both orders for only 6/48 policies. We can now separate lexical access at initialization from usable rule binding. The following four decisions remain in the original six-package roadmap. [Evidence and frozen cutoffs](../provenance/policy_binding_20261103/RESULTS.md)
+
+| Decision | Positive endpoint | Limit or negative closure |
+| --- | --- | --- |
+| 1. Can one source guide the recipient in different worlds? | Freeze a question-independent E. Train a recipient on train-only truth tables in both clause orders. On fresh development constructions require ≥80% macro correctness, ≥10 points over the strongest fixed null, ≥80% correct opposed switches and ≥90% joint correctness on meaning-preserving reorderings. | Set the update, parameter and data cap before scoring. If the recipient reads mention order but fails condition–action binding at that cap, close that candidate. Compare errors at fixed world versus fixed wording. Keep G supervision pending. |
+| 2. Does language preserve that usable content? | With the successful source interface fixed, compare E, D(E) as literal text, and E(D(E)) on the same questions. Include row, norm, position and matched-prefix controls. Use the readout and positional limits below. | If E works but D or re-encoding loses the distinction, freeze E and repair only the first failing interface in a new cycle. Verify deployability from the state actually available at that stage. |
+| 3. Can G make a supported distinction useful in one step? | Specify change-required and justified-stability cases before fitting. Obtain two independent, blinded human judgments. On change-required cases use the support, useful-distinction and improvement-over-identity criteria below. | Missing reviewed targets closes preparation as pending. An invalid or harmful addition, unsupported switch, or failure to beat identity at the cap records the corresponding failure. Keep unchanged-but-correct cases in their own denominator. |
+| 4. Does the frozen candidate qualify for a paired L/B pilot? | Freeze bindings and reviewer arrangements before opening qualification. Run and review all six checks on the separate material. Only an accepted complete record admits a bounded pilot. | Preserve each fail, pending or invalid result, including censoring. Close that challenge and use a fresh holdout for the next selection cycle. |
+
+For example, “I adopt a change only when its evidence and rollback plan have both been checked” supports the distinction that checking the evidence alone is insufficient. It leaves adoption optional when both checks are complete. A version that already states both implications supplies a justified no-change case. A proposed update that makes adoption compulsory adds an unsupported claim. This is an illustrative rubric case. An independent later decision and an identity baseline are needed to test whether making the distinction explicit helps. The eventual L/B comparison starts both arms from the same state and updates them with the same G. Only B verbalizes and re-encodes between steps.
 
 ## What the existing evidence settles
 
@@ -112,4 +125,4 @@ If the candidate fails, preserve `NOT_QUALIFIED` and a check-by-check record of 
 - **Challenge-complete** means all attempted units and their outcomes are recorded under the frozen specification. A valid failure remains a valid challenge result. Missing review or invalid execution remains visible as incomplete scientific evidence.
 - **Gate-passed** means all six scientific checks and the exact binding have actually been reviewed and accepted. Budget exhaustion or a completed negative challenge never grants pilot admission.
 
-The immediate next work is the four-cell question-independent carrier diagnostic, alongside authoring the independent support ledgers and split manifests. Further punctuation localization stays outside this critical path.
+The current next learning cycle is decision 1 above. It requires training-side clause-order counterbalancing and new development constructions. The four native carrier cells and the two source-binding fits are closed.

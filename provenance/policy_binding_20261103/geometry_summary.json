@@ -1,0 +1,578 @@
+{
+  "crossed_screens": {
+    "first_mention": {
+      "centered": true,
+      "raw": false
+    },
+    "trigger_action": {
+      "centered": false,
+      "raw": false
+    }
+  },
+  "panels": {
+    "crossed": {
+      "first_mention": {
+        "centered": {
+          "all": {
+            "both_orders": 45,
+            "correct": 93,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 22,
+            "correct": 46,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 23,
+            "correct": 47,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "centered_sham": {
+          "all": {
+            "both_orders": 1,
+            "correct": 21,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 1,
+            "correct": 15,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 0,
+            "correct": 6,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "raw": {
+          "all": {
+            "both_orders": 0,
+            "correct": 48,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 0,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 0,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "raw_sham": {
+          "all": {
+            "both_orders": 1,
+            "correct": 44,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 1,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 0,
+            "correct": 20,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "reference": {
+          "all": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 96,
+            "pairs": 48,
+            "ties": 96
+          },
+          "priority": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          },
+          "scope": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          }
+        },
+        "reference_sham": {
+          "all": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 96,
+            "pairs": 48,
+            "ties": 96
+          },
+          "priority": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          },
+          "scope": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          }
+        }
+      },
+      "trigger_action": {
+        "centered": {
+          "all": {
+            "both_orders": 6,
+            "correct": 51,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 1,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 5,
+            "correct": 27,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "centered_sham": {
+          "all": {
+            "both_orders": 2,
+            "correct": 49,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 1,
+            "correct": 25,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 1,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "raw": {
+          "all": {
+            "both_orders": 24,
+            "correct": 48,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 12,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 12,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "raw_sham": {
+          "all": {
+            "both_orders": 15,
+            "correct": 47,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 5,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 10,
+            "correct": 23,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "reference": {
+          "all": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 96,
+            "pairs": 48,
+            "ties": 96
+          },
+          "priority": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          },
+          "scope": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          }
+        },
+        "reference_sham": {
+          "all": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 96,
+            "pairs": 48,
+            "ties": 96
+          },
+          "priority": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          },
+          "scope": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          }
+        }
+      }
+    },
+    "original": {
+      "first_mention": {
+        "centered": {
+          "all": {
+            "both_orders": 39,
+            "correct": 85,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 17,
+            "correct": 40,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 22,
+            "correct": 45,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "centered_sham": {
+          "all": {
+            "both_orders": 17,
+            "correct": 43,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 10,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 7,
+            "correct": 19,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "raw": {
+          "all": {
+            "both_orders": 24,
+            "correct": 48,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 12,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 12,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "raw_sham": {
+          "all": {
+            "both_orders": 6,
+            "correct": 48,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 5,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 1,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "reference": {
+          "all": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 96,
+            "pairs": 48,
+            "ties": 96
+          },
+          "priority": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          },
+          "scope": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          }
+        },
+        "reference_sham": {
+          "all": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 96,
+            "pairs": 48,
+            "ties": 96
+          },
+          "priority": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          },
+          "scope": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          }
+        }
+      },
+      "trigger_action": {
+        "centered": {
+          "all": {
+            "both_orders": 28,
+            "correct": 74,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 12,
+            "correct": 34,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 16,
+            "correct": 40,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "centered_sham": {
+          "all": {
+            "both_orders": 7,
+            "correct": 22,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 5,
+            "correct": 16,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 2,
+            "correct": 6,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "raw": {
+          "all": {
+            "both_orders": 24,
+            "correct": 48,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 12,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 12,
+            "correct": 24,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "raw_sham": {
+          "all": {
+            "both_orders": 14,
+            "correct": 34,
+            "n": 96,
+            "pairs": 48,
+            "ties": 0
+          },
+          "priority": {
+            "both_orders": 6,
+            "correct": 15,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          },
+          "scope": {
+            "both_orders": 8,
+            "correct": 19,
+            "n": 48,
+            "pairs": 24,
+            "ties": 0
+          }
+        },
+        "reference": {
+          "all": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 96,
+            "pairs": 48,
+            "ties": 96
+          },
+          "priority": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          },
+          "scope": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          }
+        },
+        "reference_sham": {
+          "all": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 96,
+            "pairs": 48,
+            "ties": 96
+          },
+          "priority": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          },
+          "scope": {
+            "both_orders": 0,
+            "correct": 0,
+            "n": 48,
+            "pairs": 24,
+            "ties": 48
+          }
+        }
+      }
+    }
+  }
+}

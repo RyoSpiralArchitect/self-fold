@@ -1,11 +1,11 @@
 # Self Without a Transcript
 ## Semantic Recurrence Across Text and Latent States
 
-**Research working paper · November 2, 2026**
+**Research working paper · November 3, 2026**
 
 ### Abstract
 
-What can a frozen language model recover after a description passes through eight hidden-state slots? We compare text relay, latent recurrence and a language roundtrip after the same latent update. Earlier Mistral-7B and Gemma-2-2B probes found distinct tensors but collapsed verbalizations. Question-conditioned interventions localized an option-order-sensitive contrast at the second alternative's terminal period. We next tested question-independent workspace and native-tail carriers on twelve exposed topics. None passed the development content screen. A first Gemma encoder bridge with 73,728 trainable parameters completed 64 updates while the backbone remained unchanged. Dev source-text NLL fell from 4.310 to 1.857, but functional group accuracy stayed near 50%. Opposed donor states retained almost the same NLL reduction. This fit demonstrates executable, hash-bound codec learning without qualifying content preservation. One-step semantic updating and held-out transfer remain open.
+Does a distinction survive when a model verbalizes its state, and can it guide a later decision? We compare text relay, latent recurrence and a language roundtrip after the same latent update. Untrained, question-independent carriers on Mistral-7B and Gemma-2-2B missed a development content screen. A Gemma encoder bridge reduced source-text loss while opposed donors retained almost the same improvement. Two fresh, compute-matched fits then gave 49.35% and 50.00% functional accuracy. Neither correctly switched actions for both opposed policies in any of 288 comparisons. In a separate train-only linear readout, subtracting the encoding of a neutral rendering made the first-mentioned tray decodable in 93/96 clause-reordered descriptions. The prescribed action was readable in 51/96, with both orders correct for 6/48 policies. These development results separate access to word order from reliable use of a rule. One-step semantic updating and transfer remain open.
 
 ## 1. Problem formulation
 
@@ -166,11 +166,27 @@ Only bridge parameters received gradients, all 64 gradient norms were positive a
 
 A separately fixed post-hoc read-only replay reproduced all 480 per-description NLLs at five checkpoints, with a maximum mean discrepancy of 3.48e-8 nats. It performed no optimizer updates or qualification evaluation. At step 64, keeping each target fixed but supplying its opposed donor gave mean NLL 1.858054, versus 1.857181 with the matching donor and 4.327749 with zero rows. The matching donor had lower loss in 49/96 descriptions. The large loss reduction therefore coexisted with very little aggregate opposed-policy sensitivity and no functional accuracy improvement. This identifies a failure of the tested fit, without proving that content is absent from its states. [Contracts, failures, learned artifacts and raw replay](../provenance/carriers_20261102/RESULTS.md)
 
+### Source-specific learning and the order of a policy
+
+We started two new rank-16 Gemma encoder bridges at identical weights. Each saw both opposed donors per pair, 64 AdamW updates, 512 description forwards and 44,804 training tokens. Both computed whole-source NLL and a two-token cross entropy at the first divergence (copper versus silver) following an identical prefix. The latter term was weighted zero for copy and one for copy plus opposition. Step 64 was fixed in advance. Replacing the divergent token and its entire suffix with placeholders at identical length reproduced all 192 dev decision margins exactly.
+
+Copy and copy plus opposition obtained 49.35% and 50.00% group-macro functional accuracy, respectively. Each recorded zero correct opposed switches in 288 world, wording and label-order comparisons, and zero in 48 shared-prefix lexical pairs. Literal text reached 87.89%. The functional difference was +0.65 percentage points (scope +0.00, priority +1.30). The paired 95% site-resampling interval was +0.26 to +1.04 points, conditional on these two templates. The prespecified practical gain was ten points.
+
+In the unadapted slots, a train-only centroid direction correctly ordered 48/48 original dev donor pairs by first-mentioned tray. Its fixed threshold classified 48/96 single descriptions. This prompted a separately sealed geometry test. We reversed the order of the two policy clauses while preserving each truth table. A shortcut that knows the construction's trigger and treats the first-mentioned action as its answer went from 288/288 correct description-world cases to 144/288. Each new description was encoded alone and again with both tray adjectives replaced by the same single token, metal. Source-minus-neutral features and raw features used separate train-only centroids.
+
+| Fixed readout, reordered clauses | Raw slots | Source minus neutral | Centered, shuffled labels |
+| --- | ---: | ---: | ---: |
+| First-mentioned tray | 48/96 | 93/96 | 21/96 |
+| Tray prescribed at the trigger | 48/96 | 51/96 | 49/96 |
+| Prescribed tray correct in both orders | 24/48 | 6/48 | 2/48 |
+
+On crossed wording the raw threshold predicted copper for every source. Centering supplied single-source access to mention order. The centered trigger readout was correct on 45/48 descriptions with the trigger clause first and 6/48 with it second. The registered joint endpoint counted the policies for which both orders were correct. These two encodings require the original input text. Availability of such a reference during later latent updates remains open. [Comparison, follow-up and raw scores](../provenance/policy_binding_20261103/RESULTS.md)
+
 ## 7. Interpretation and limitations
 
 In these fixtures the complete downstream region reproduced the native lexical choices. The partition and masking experiments narrow this observation to an option-order-sensitive contribution at the second displayed alternative's terminal period. Its counterbalanced contrast persisted with the question stem hidden, weakened when the option words were hidden, and reversed under a natural option-order swap. The large contrast retained on omission leaves room for other positions and their interactions.
 
-The second period is later in the causal sequence and has access to both alternatives. These interventions have not separated separator identity from order, position or preceding lexical context. Neutral-token masks alter the donor distribution. The two panels share the same explicit lexical schema, and each checkpoint was tested at one middle-layer cut in BF16. The short-prefix replay discrepancy was removed by matching forward length, but its numerical kernel has not been identified. Question-independent state portability, independent evaluation of one-step meaning updates, blind judgments of new distinctions and held-out transfer remain open. No semantic gate has been approved. The encoder bridge adds actual parameter learning outside recurrence, with the backbone frozen. Its lower text loss did not establish content preservation or justify G adaptation. Source-dependent codec learning remains the immediate target, with a matched comparison of training signals still to be designed.
+The second period is later in the causal sequence and has access to both alternatives. These interventions have not separated separator identity from order, position or preceding lexical context. Neutral-token masks alter the donor distribution. The two panels share the same explicit lexical schema, and each checkpoint was tested at one middle-layer cut in BF16. The short-prefix replay discrepancy was removed by matching forward length, but its numerical kernel has not been identified. Question-independent state portability, independent evaluation of one-step meaning updates, blind judgments of new distinctions and held-out transfer remain open. No semantic gate has been approved. The source-specific training signal and centered encoder were tested on one Gemma checkpoint, two construction families and two action words. A change in clause order preserved the truth conditions but exposed strong sensitivity to first mention. Training a recipient on crossed condition–action assignments and testing new constructions is the next functional comparison. The one-step G rubric still requires independent assessment of useful distinctions, warranted stability and unsupported additions.
 
 ## 8. Proposed pilot and analysis
 

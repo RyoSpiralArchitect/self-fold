@@ -1,0 +1,991 @@
+{
+  "comparison": {
+    "difference": 0.006510416666666667,
+    "families": {
+      "priority": 0.013020833333333334,
+      "scope": 0.0
+    },
+    "paired_site_interval_95": [
+      0.0026041666666666665,
+      0.010416666666666666
+    ]
+  },
+  "functional": {
+    "copy": {
+      "empty": {
+        "all": {
+          "accuracy": {
+            "correct": 288,
+            "macro": 0.5,
+            "n": 576
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 384
+          },
+          "wrappers": {
+            "correct": 144,
+            "macro": 0.5,
+            "n": 288
+          }
+        },
+        "priority": {
+          "accuracy": {
+            "correct": 192,
+            "macro": 0.5,
+            "n": 384
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 192
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "wrappers": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          }
+        },
+        "scope": {
+          "accuracy": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "wrappers": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          }
+        }
+      },
+      "literal": {
+        "all": {
+          "accuracy": {
+            "correct": 483,
+            "macro": 0.87890625,
+            "n": 576
+          },
+          "opposed": {
+            "correct": 195,
+            "macro": 0.7578125,
+            "n": 288
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 195,
+            "macro": 0.671875,
+            "n": 384
+          },
+          "wrappers": {
+            "correct": 239,
+            "macro": 0.8723958333333334,
+            "n": 288
+          }
+        },
+        "priority": {
+          "accuracy": {
+            "correct": 291,
+            "macro": 0.7578125,
+            "n": 384
+          },
+          "opposed": {
+            "correct": 99,
+            "macro": 0.515625,
+            "n": 192
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 99,
+            "macro": 0.34375,
+            "n": 288
+          },
+          "wrappers": {
+            "correct": 143,
+            "macro": 0.7447916666666666,
+            "n": 192
+          }
+        },
+        "scope": {
+          "accuracy": {
+            "correct": 192,
+            "macro": 1.0,
+            "n": 192
+          },
+          "opposed": {
+            "correct": 96,
+            "macro": 1.0,
+            "n": 96
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 96,
+            "macro": 1.0,
+            "n": 96
+          },
+          "wrappers": {
+            "correct": 96,
+            "macro": 1.0,
+            "n": 96
+          }
+        }
+      },
+      "matched": {
+        "all": {
+          "accuracy": {
+            "correct": 283,
+            "macro": 0.4934895833333333,
+            "n": 576
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "ties": 13,
+          "world_switch": {
+            "correct": 82,
+            "macro": 0.3090277777777778,
+            "n": 384
+          },
+          "wrappers": {
+            "correct": 130,
+            "macro": 0.4635416666666667,
+            "n": 288
+          }
+        },
+        "priority": {
+          "accuracy": {
+            "correct": 187,
+            "macro": 0.4869791666666667,
+            "n": 384
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 192
+          },
+          "ties": 12,
+          "world_switch": {
+            "correct": 34,
+            "macro": 0.11805555555555557,
+            "n": 288
+          },
+          "wrappers": {
+            "correct": 82,
+            "macro": 0.4270833333333333,
+            "n": 192
+          }
+        },
+        "scope": {
+          "accuracy": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "ties": 1,
+          "world_switch": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          },
+          "wrappers": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          }
+        }
+      },
+      "random": {
+        "all": {
+          "accuracy": {
+            "correct": 288,
+            "macro": 0.5,
+            "n": 576
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 384
+          },
+          "wrappers": {
+            "correct": 144,
+            "macro": 0.5,
+            "n": 288
+          }
+        },
+        "priority": {
+          "accuracy": {
+            "correct": 192,
+            "macro": 0.5,
+            "n": 384
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 192
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "wrappers": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          }
+        },
+        "scope": {
+          "accuracy": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "wrappers": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          }
+        }
+      },
+      "unrelated": {
+        "all": {
+          "accuracy": {
+            "correct": 264,
+            "macro": 0.46875,
+            "n": 576
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "ties": 48,
+          "world_switch": {
+            "correct": 48,
+            "macro": 0.25,
+            "n": 384
+          },
+          "wrappers": {
+            "correct": 132,
+            "macro": 0.46875,
+            "n": 288
+          }
+        },
+        "priority": {
+          "accuracy": {
+            "correct": 168,
+            "macro": 0.4375,
+            "n": 384
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 192
+          },
+          "ties": 48,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "wrappers": {
+            "correct": 84,
+            "macro": 0.4375,
+            "n": 192
+          }
+        },
+        "scope": {
+          "accuracy": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          },
+          "wrappers": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          }
+        }
+      },
+      "zero": {
+        "all": {
+          "accuracy": {
+            "correct": 288,
+            "macro": 0.5,
+            "n": 576
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 384
+          },
+          "wrappers": {
+            "correct": 144,
+            "macro": 0.5,
+            "n": 288
+          }
+        },
+        "priority": {
+          "accuracy": {
+            "correct": 192,
+            "macro": 0.5,
+            "n": 384
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 192
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "wrappers": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          }
+        },
+        "scope": {
+          "accuracy": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "wrappers": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          }
+        }
+      }
+    },
+    "opposition": {
+      "empty": {
+        "all": {
+          "accuracy": {
+            "correct": 288,
+            "macro": 0.5,
+            "n": 576
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 384
+          },
+          "wrappers": {
+            "correct": 144,
+            "macro": 0.5,
+            "n": 288
+          }
+        },
+        "priority": {
+          "accuracy": {
+            "correct": 192,
+            "macro": 0.5,
+            "n": 384
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 192
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "wrappers": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          }
+        },
+        "scope": {
+          "accuracy": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "wrappers": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          }
+        }
+      },
+      "literal": {
+        "all": {
+          "accuracy": {
+            "correct": 483,
+            "macro": 0.87890625,
+            "n": 576
+          },
+          "opposed": {
+            "correct": 195,
+            "macro": 0.7578125,
+            "n": 288
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 195,
+            "macro": 0.671875,
+            "n": 384
+          },
+          "wrappers": {
+            "correct": 239,
+            "macro": 0.8723958333333334,
+            "n": 288
+          }
+        },
+        "priority": {
+          "accuracy": {
+            "correct": 291,
+            "macro": 0.7578125,
+            "n": 384
+          },
+          "opposed": {
+            "correct": 99,
+            "macro": 0.515625,
+            "n": 192
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 99,
+            "macro": 0.34375,
+            "n": 288
+          },
+          "wrappers": {
+            "correct": 143,
+            "macro": 0.7447916666666666,
+            "n": 192
+          }
+        },
+        "scope": {
+          "accuracy": {
+            "correct": 192,
+            "macro": 1.0,
+            "n": 192
+          },
+          "opposed": {
+            "correct": 96,
+            "macro": 1.0,
+            "n": 96
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 96,
+            "macro": 1.0,
+            "n": 96
+          },
+          "wrappers": {
+            "correct": 96,
+            "macro": 1.0,
+            "n": 96
+          }
+        }
+      },
+      "matched": {
+        "all": {
+          "accuracy": {
+            "correct": 288,
+            "macro": 0.5,
+            "n": 576
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 96,
+            "macro": 0.3333333333333333,
+            "n": 384
+          },
+          "wrappers": {
+            "correct": 144,
+            "macro": 0.5,
+            "n": 288
+          }
+        },
+        "priority": {
+          "accuracy": {
+            "correct": 192,
+            "macro": 0.5,
+            "n": 384
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 192
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 48,
+            "macro": 0.16666666666666666,
+            "n": 288
+          },
+          "wrappers": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          }
+        },
+        "scope": {
+          "accuracy": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          },
+          "wrappers": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          }
+        }
+      },
+      "random": {
+        "all": {
+          "accuracy": {
+            "correct": 264,
+            "macro": 0.46875,
+            "n": 576
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "ties": 48,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 384
+          },
+          "wrappers": {
+            "correct": 132,
+            "macro": 0.46875,
+            "n": 288
+          }
+        },
+        "priority": {
+          "accuracy": {
+            "correct": 168,
+            "macro": 0.4375,
+            "n": 384
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 192
+          },
+          "ties": 48,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "wrappers": {
+            "correct": 84,
+            "macro": 0.4375,
+            "n": 192
+          }
+        },
+        "scope": {
+          "accuracy": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "wrappers": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          }
+        }
+      },
+      "unrelated": {
+        "all": {
+          "accuracy": {
+            "correct": 288,
+            "macro": 0.5,
+            "n": 576
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 96,
+            "macro": 0.3333333333333333,
+            "n": 384
+          },
+          "wrappers": {
+            "correct": 144,
+            "macro": 0.5,
+            "n": 288
+          }
+        },
+        "priority": {
+          "accuracy": {
+            "correct": 192,
+            "macro": 0.5,
+            "n": 384
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 192
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 48,
+            "macro": 0.16666666666666666,
+            "n": 288
+          },
+          "wrappers": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          }
+        },
+        "scope": {
+          "accuracy": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          },
+          "wrappers": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          }
+        }
+      },
+      "zero": {
+        "all": {
+          "accuracy": {
+            "correct": 288,
+            "macro": 0.5,
+            "n": 576
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 384
+          },
+          "wrappers": {
+            "correct": 144,
+            "macro": 0.5,
+            "n": 288
+          }
+        },
+        "priority": {
+          "accuracy": {
+            "correct": 192,
+            "macro": 0.5,
+            "n": 384
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 192
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 288
+          },
+          "wrappers": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          }
+        },
+        "scope": {
+          "accuracy": {
+            "correct": 96,
+            "macro": 0.5,
+            "n": 192
+          },
+          "opposed": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "ties": 0,
+          "world_switch": {
+            "correct": 0,
+            "macro": 0.0,
+            "n": 96
+          },
+          "wrappers": {
+            "correct": 48,
+            "macro": 0.5,
+            "n": 96
+          }
+        }
+      }
+    }
+  },
+  "lexical": {
+    "copy": {
+      "all": {
+        "correct": 44,
+        "max_replay_error": 0.0,
+        "mean_nll": 1.820690826823314,
+        "mean_signed_margin": -0.013020833333333334,
+        "n": 96,
+        "pairs": 48,
+        "strict_pairs": 0,
+        "ties": 10
+      },
+      "priority": {
+        "correct": 24,
+        "max_replay_error": 0.0,
+        "mean_nll": 1.7025619894266129,
+        "mean_signed_margin": -0.015625,
+        "n": 48,
+        "pairs": 24,
+        "strict_pairs": 0,
+        "ties": 0
+      },
+      "scope": {
+        "correct": 20,
+        "max_replay_error": 0.0,
+        "mean_nll": 1.9388196642200153,
+        "mean_signed_margin": -0.010416666666666666,
+        "n": 48,
+        "pairs": 24,
+        "strict_pairs": 0,
+        "ties": 10
+      }
+    },
+    "opposition": {
+      "all": {
+        "correct": 44,
+        "max_replay_error": 0.0,
+        "mean_nll": 1.8289477936923504,
+        "mean_signed_margin": 0.005208333333333333,
+        "n": 96,
+        "pairs": 48,
+        "strict_pairs": 0,
+        "ties": 7
+      },
+      "priority": {
+        "correct": 24,
+        "max_replay_error": 0.0,
+        "mean_nll": 1.6426845242579777,
+        "mean_signed_margin": 0.010416666666666666,
+        "n": 48,
+        "pairs": 24,
+        "strict_pairs": 0,
+        "ties": 0
+      },
+      "scope": {
+        "correct": 20,
+        "max_replay_error": 0.0,
+        "mean_nll": 2.015211063126723,
+        "mean_signed_margin": 0.0,
+        "n": 48,
+        "pairs": 24,
+        "strict_pairs": 0,
+        "ties": 7
+      }
+    }
+  },
+  "raw_probe": {
+    "sham": {
+      "all": {
+        "correct": 48,
+        "n": 96,
+        "ordered_pairs": 14,
+        "pairs": 48
+      },
+      "priority": {
+        "correct": 24,
+        "n": 48,
+        "ordered_pairs": 8,
+        "pairs": 24
+      },
+      "scope": {
+        "correct": 24,
+        "n": 48,
+        "ordered_pairs": 6,
+        "pairs": 24
+      }
+    },
+    "train_labels": {
+      "all": {
+        "correct": 48,
+        "n": 96,
+        "ordered_pairs": 48,
+        "pairs": 48
+      },
+      "priority": {
+        "correct": 24,
+        "n": 48,
+        "ordered_pairs": 24,
+        "pairs": 24
+      },
+      "scope": {
+        "correct": 24,
+        "n": 48,
+        "ordered_pairs": 24,
+        "pairs": 24
+      }
+    }
+  },
+  "screens": {
+    "copy": {
+      "functional": false,
+      "lexical": false,
+      "strongest_null": 0.5
+    },
+    "opposition": {
+      "functional": false,
+      "lexical": false,
+      "strongest_null": 0.5
+    }
+  }
+}

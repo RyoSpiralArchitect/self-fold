@@ -1,0 +1,27 @@
+{
+  "descriptions": 96,
+  "groups": 24,
+  "model_scores": 0,
+  "priority": {
+    "crossed": {
+      "correct": 96,
+      "total": 192
+    },
+    "original": {
+      "correct": 192,
+      "total": 192
+    }
+  },
+  "scope": {
+    "crossed": {
+      "correct": 48,
+      "total": 96
+    },
+    "original": {
+      "correct": 96,
+      "total": 96
+    }
+  },
+  "source_dev_sha256": "49690cb736325aa1de24286e45089a55ae5eef60a7ea7f994bcc749a1dcc5702",
+  "unit": "one description and world, no duplicated label orders"
+}

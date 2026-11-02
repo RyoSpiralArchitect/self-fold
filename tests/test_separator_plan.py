@@ -4,6 +4,7 @@ import importlib.util
 import json
 from pathlib import Path
 import subprocess
+import sys
 
 import pytest
 
@@ -171,8 +172,19 @@ def test_fixed_panel_rule_keeps_missing_nonpositive_and_unstable_results_unresol
         decide([float("nan")] * 6, [10] * 6)
 
 
-def test_preflight_receipt_is_reproducible_and_never_claims_gpu_readiness():
-    receipt, _ = plan.verify()
+def test_preflight_receipt_is_reproducible_and_never_claims_gpu_readiness(tmp_path):
+    # The receipt binds every baseline path and the original test file itself.
+    # Replay the sealed snapshot while also guarding the study files in today's tree.
+    seal = "66e499f30317b97b98527078f1a435ddbe36067c"
+    root = HERE.parents[1]
+    checkout = tmp_path / "sealed"
+    subprocess.run(["git", "clone", "-q", "--shared", "--no-checkout", str(root), str(checkout)], check=True)
+    subprocess.run(["git", "-C", str(checkout), "checkout", "-q", "--detach", seal], check=True)
+    relative = HERE.relative_to(root)
+    for name in ("PLAN.md", "design.json", "verify.py", "cell_reducer.py", "verification.json"):
+        assert (HERE / name).read_bytes() == (checkout / relative / name).read_bytes()
+    receipt = json.loads(subprocess.check_output(
+        [sys.executable, str(checkout / relative / "verify.py"), "--check"], cwd=checkout))
     assert receipt == json.loads((HERE / "verification.json").read_text())
     assert receipt["gpu_ready"] is False
     assert receipt["new_model_forwards"] == 0

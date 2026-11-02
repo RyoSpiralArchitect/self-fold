@@ -7,3 +7,5 @@ The five `encoder_step_*.npz` arrays in `provenance/carriers_20261102/learning/g
 SELF-FOLD is an independent implementation. LTWS documents informed the architecture and recording of experiments. External model implementations retain their upstream notices.
 
 The synthetic descriptions and questions were written for these experiments. Bibliographic metadata and source links accompany the paper.
+
+The paired policy-binding study also distributes two Gemma-derived encoder arrays, `copy.npz` and `opposition.npz`. Their directory includes the terms, policy, modification notice and training provenance. [Conditions for these two arrays](../provenance/policy_binding_20261103/run/ADAPTER_LICENSE.md)
