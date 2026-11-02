@@ -1,0 +1,3 @@
+# Gemma recipient artifacts
+
+The two learned files, case_literal.npz and case_latent.npz, are distributed under the [Gemma Terms of Use](GEMMA_TERMS.html), including their use restrictions and the incorporated [Gemma Prohibited Use Policy](GEMMA_PROHIBITED_USE_POLICY.html). Use, reproduction, modification and distribution must comply with those conditions. Both are newly trained adapter factors. See the [modification notice](NOTICE.txt), [fit records](fits.jsonl) and [terms copy provenance](terms-provenance.json). SELF-FOLD's original software and synthetic material use the [Apache License 2.0](../../../LICENSE).
