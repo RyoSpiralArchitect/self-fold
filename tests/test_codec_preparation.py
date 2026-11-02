@@ -78,6 +78,12 @@ def test_invalid_training_context_cannot_leave_a_hook(host):
 def test_published_learning_is_replayable_bound_and_keeps_qualification_sealed():
     root = Path(__file__).resolve().parents[1]
     evidence = root / "provenance/carriers_20261102"
+    tracked = set(subprocess.check_output(["git", "ls-files", "-z"], cwd=root).decode().split("\0"))
+    for line in (evidence / "SHA256SUMS").read_text().splitlines():
+        expected, relative = line.split("  ", 1)
+        file = evidence / relative
+        assert str(file.relative_to(root)) in tracked
+        assert hashlib.sha256(file.read_bytes()).hexdigest() == expected
     regenerated = subprocess.check_output([sys.executable, str(evidence / "summarize.py")])
     assert regenerated == (evidence / "summary.json").read_bytes()
     data = root / "data/codec_preparation_20261102/manifest.json"
