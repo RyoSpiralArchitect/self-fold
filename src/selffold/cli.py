@@ -30,6 +30,9 @@ def make_host(args):
         host = SlotHost(model, ByteTokenizer(), slots=args.slots, max_context=args.max_context,
                         max_new_tokens=budget, wall_seconds=args.wall_seconds)
         host.identity["checkpoint_sha256"] = "random_tiny_seed47_not_pretrained"
+        if getattr(args, "encoder_bridge", None):
+            from .codec_learning import install_bridge
+            install_bridge(host, Path(args.encoder_bridge))
         return host, {"status": "random_weight_tiny_only"}
     if not args.profile or not args.checkpoint:
         raise ValueError("HF requires --profile and an existing --checkpoint path")
@@ -46,6 +49,9 @@ def make_host(args):
                           "torch_version": torch.__version__})
     import transformers
     host.identity["transformers_version"] = transformers.__version__
+    if getattr(args, "encoder_bridge", None):
+        from .codec_learning import install_bridge
+        install_bridge(host, Path(args.encoder_bridge))
     return host, ident
 
 def execute(args):
@@ -150,6 +156,7 @@ def main(argv=None):
         a.add_argument("--profile")
         a.add_argument("--checkpoint")
         a.add_argument("--transport")
+        a.add_argument("--encoder-bridge", help="Frozen, hash-bound description encoder bridge; semantic admission still required")
         a.add_argument("--reviewed-local-code", help="Explicit hash-bound approval for local custom model Python; never automatic")
         a.add_argument("--cut", type=int)
         a.add_argument("--writer", type=int)
