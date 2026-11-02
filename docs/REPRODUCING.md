@@ -49,3 +49,12 @@ Read `request.json`, `host_identity.json` and `terminal.json` together. Each tra
 ~~~
 
 The exposed development tasks, numeric state differences and random-weight checks have separate roles. Interpreting a latent trajectory as a semantic update requires the [qualification checks](QUALIFICATION.md).
+
+## Replaying the prospective separator design
+
+The separator preflight binds the complete historical baseline tree and the test bytes at its study seal. To replay it from a later checkout, use a clone with full Git history.
+
+~~~bash
+git worktree add --detach ../self-fold-separator-seal 66e499f30317b97b98527078f1a435ddbe36067c
+(cd ../self-fold-separator-seal && python3 provenance/separator_factorization_20261101/verify.py --check)
+~~~
