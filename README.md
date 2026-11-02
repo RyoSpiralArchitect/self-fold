@@ -2,7 +2,7 @@
 
 English · [日本語](README.ja.md)
 
-**What survives when a model puts an internal state into words and reads those words back?** SELF-FOLD follows short self-descriptions through a frozen language model. Each update receives only the current description or a fixed set of hidden-state slots. The experimenter keeps the transcript outside the model.
+**Can a distinction formed by reinterpreting a current self-description support the next update and a later judgment?** SELF-FOLD studies that continuity and the effect of verbalizing an intermediate state. Each update receives only the current description or fixed hidden-state slots. The experimenter keeps the transcript outside the model. Learned interfaces are trained separately and frozen for evaluation.
 
 | Arm | Input to the next step |
 | --- | --- |
@@ -13,6 +13,8 @@ English · [日本語](README.ja.md)
 L and B start with identical slots and share the update, layer boundaries and decoding policy. Their difference measures what this particular language roundtrip changes. The open research question is whether any change matters for a later task. [Paper (PDF)](paper/self-fold.pdf) · [Read online](paper/main.md) · [Protocol](docs/PROTOCOL.md)
 
 ## Experiments
+
+- **A native reader for the two-stage route.** Four bounded Gemma configurations completed 1,024 optimizer updates. Final-teacher native accuracy was 49.78%, 50.09%, 50.00% and 50.69%, against a 50% strongest null. The joint source/recipient candidate received finite gradients in both modules but missed its admission screen. A zero-update audit identified additional BF16 output ties, while FP32 diagnostic projection did not recover reliable policy use. Actual learned G composition and the intended positive continuity result remain open. [All configurations, failures, audit and artifacts](provenance/continuity_20261103/RESULTS.md) · [Integrated two-stage protocol](docs/FUNCTIONAL_CONTINUITY.md)
 
 - **Can a stored policy switch actions?** Two fresh 64-update Gemma fits scored 49.35% and 50.00% on functional questions. Neither correctly switched both opposed donors in any of 288 comparisons. In a separate test, subtracting a neutral encoding let a train-only linear readout identify the first-mentioned tray in 93/96 clause-reordered descriptions. It identified the prescribed action in only 51/96, with both word orders correct for 6/48 policies. [Controlled fits, raw scores and next decision](provenance/policy_binding_20261103/RESULTS.md)
 
@@ -37,6 +39,6 @@ bash scripts/run_smoke.sh runs/tiny-001
 
 Each new trial requires a fresh output directory. The experimental records include the tested source commit, model identity, raw scores and stopping reasons. [Pretrained runs and integrity checks](docs/REPRODUCING.md) · [Model and state interfaces](docs/ARCHITECTURE.md) · [Semantic qualification criteria](docs/QUALIFICATION.md)
 
-The [semantic qualification plan](docs/SEMANTIC_GATE_PLAN.md) defines six bounded work packages from question-independent states through interface learning and an independent gate challenge. Each has a positive endpoint and a condition for advancing with an explicit negative diagnosis. The source-binding comparison and the clause-order diagnostic are complete. The next learning target is which condition selects each action. A supported one-step G update and the independent six-check challenge remain open.
+The [integrated continuity protocol](docs/FUNCTIONAL_CONTINUITY.md) makes two-step reconstruction, operator omission and a single common-state language insertion the prospective target. The [semantic qualification plan](docs/SEMANTIC_GATE_PLAN.md) defines six bounded work packages from question-independent states through interface learning and an independent gate challenge. Each has a positive endpoint and a condition for advancing with an explicit negative diagnosis. The source-binding comparison and the clause-order diagnostic are complete. The next learning target is which condition selects each action. A supported one-step G update and the independent six-check challenge remain open.
 
 The original code, documentation and synthetic fixtures use the Apache License 2.0. Model weights and tokenizers retain their upstream terms. The learned Gemma bridge arrays include the Gemma agreement and notice. [License](LICENSE) · [Asset conditions and provenance](docs/LICENSING.md)

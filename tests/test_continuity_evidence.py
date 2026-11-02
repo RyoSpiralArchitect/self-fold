@@ -1,4 +1,5 @@
 """Public provenance bindings for the native-recipient and numerical-audit runs."""
+import hashlib
 import json
 from pathlib import Path
 import subprocess
@@ -125,3 +126,90 @@ def test_binary_phase_replays_raw_sources_and_binds_the_read_only_audit():
         assert read(folder / "native_parity.json")["exact"]
     assert len(backbones) == 1
     assert not read(original / "terminal.json")["G_trained"] and not read(binary / "terminal.json")["G_trained"]
+
+
+def test_joint_summary_and_source_recipient_training_have_the_declared_budget():
+    folder = STUDY / "joint"
+    regenerated = subprocess.check_output([sys.executable, str(STUDY / "summarize.py"), str(folder)])
+    assert regenerated == (STUDY / "joint_summary.json").read_bytes()
+    request, fit, terminal = read(folder / "request.json"), read(folder / "fits.json"), read(folder / "terminal.json")
+    schedule = read(folder / "schedule.json")
+    assert schedule == read(STUDY / "recipient/schedule.json")
+    history = rows(folder / "training.jsonl")
+    assert [r["step"] for r in history] == list(range(1, 257))
+    assert all({key: row[key] for key in entry} == entry for row, entry in zip(history, schedule, strict=True))
+    for row in history:
+        assert len(row["losses"]) == len(row["source_keys"]) == 4
+        assert len(set(row["source_keys"])) == 4
+        assert all(np.isfinite(row[k]) and row[k] > 0 for k in
+                   ("encoder_gradient_norm", "recipient_gradient_norm", "gradient_norm"))
+    original = [r for r in rows(STUDY / "recipient/training.jsonl") if r["candidate"] == "raw"]
+    assert [r["tasks_sha256"] for r in history] == [r["tasks_sha256"] for r in original]
+    assert fit["source_forwards"] == fit["task_forwards"] == 1024
+    assert fit["source_prefix_layers"] == 13 and fit["task_decoder_layers"] == 26
+    assert fit["source_processed_tokens"] == 1024 * request["source_forward_length"]
+    assert fit["training_forwards"] == fit["source_forwards"] + fit["task_forwards"]
+    assert fit["training_processed_tokens"] == fit["source_processed_tokens"] + fit["task_processed_tokens"]
+    assert request["plan_sha256"] == file_sha(STUDY / "JOINT_PLAN.md")
+    assert request["data_sha256"] == file_sha(DATA) and terminal["optimizer_updates"] == 256
+    assert not terminal["G_trained"] and not terminal["qualification_content_loaded"]
+    assert terminal["backbone_sha256_before"] == terminal["backbone_sha256_after"]
+    assert terminal["backbone_sha256_before"] == read(STUDY / "recipient/terminal.json")["backbone_sha256_before"]
+    assert read(folder / "native_parity.before.json")["exact"] and read(folder / "native_parity.after.json")["exact"]
+
+
+def test_joint_artifacts_bind_both_roles_and_the_frozen_source_captures():
+    folder = STUDY / "joint"
+    source, host, fit, terminal = (read(folder / name) for name in ("source.json", "host.json", "fits.json", "terminal.json"))
+    assert source["git_status"] == "" and digest(source["files"]) == source["source_sha256"]
+    schedule_sha = digest(read(folder / "schedule.json"))
+    binding = digest({"encoder_parameters_sha256": fit["final_encoder_sha256"],
+                      "recipient_parameters_sha256": fit["final_recipient_sha256"],
+                      "data_sha256": file_sha(DATA), "schedule_sha256": schedule_sha})
+    assert binding == fit["joint_parameter_binding_sha256"] == terminal["joint_parameter_binding_sha256"]
+    artifacts = (("encoder", "encoder_source.npz", "source_encoding", "scoped_source_encoder_qv_lora", range(host["cut"]-4, host["cut"])),
+                 ("recipient", "recipient_joint_source.npz", "task_readout", "scoped_recipient_qv_lora", range(host["depth"]-4, host["depth"])))
+    for role, name, scope, kind, layers in artifacts:
+        assert file_sha(folder / name) == fit[role + "_artifact_sha256"] == terminal[role + "_artifact_sha256"]
+        with np.load(folder / name, allow_pickle=False) as archive:
+            meta = json.loads(archive["metadata_utf8"].tobytes())
+            architecture = meta["architecture"]
+            assert meta["kind"] == kind and meta["base_host_sha256"] == digest(host)
+            assert meta["source_sha256"] == source["source_sha256"] and meta["dataset_sha256"] == file_sha(DATA)
+            assert meta["training"]["role"] == scope and meta["training"]["joint_parameter_binding_sha256"] == binding
+            assert meta["training"]["schedule_sha256"] == schedule_sha and architecture["rank"] == 16
+            assert {(t["layer"], t["name"]) for t in architecture["targets"]} == {(layer, p) for layer in layers for p in ("q_proj", "v_proj")}
+            expected, count, parameter_hash = {"metadata_utf8"}, 0, hashlib.sha256()
+            for i, target in enumerate(architecture["targets"]):
+                for part, shape in (("down", (target["inputs"], 16)), ("up", (16, target["outputs"]))):
+                    key = f"factors.{i}.{part}"
+                    value = archive[key]
+                    assert value.shape == shape and value.dtype == np.float32 and np.isfinite(value).all()
+                    expected.add(key)
+                    count += value.size
+                    parameter_hash.update((key + str(shape) + "torch.float32").encode())
+                    parameter_hash.update(value.tobytes(order="C"))
+            assert set(archive.files) == expected and parameter_hash.hexdigest() == fit["final_" + role + "_sha256"]
+            assert count == fit["source_trainable_parameters" if role == "encoder" else "recipient_trainable_parameters"]
+    old = {r["key"]: r for r in rows(STUDY / "recipient/donors.jsonl")}
+    parity = rows(folder / "initial_source_parity.jsonl")
+    assert len(parity) == 6
+    assert {(old[r["key"]]["split"], old[r["key"]]["stage"]) for r in parity} == {(s, t) for s in ("train", "dev") for t in ("source", "stage1", "stage2")}
+    assert all(r["state_sha256"] == r["baseline_state_sha256"] == old[r["key"]]["state_sha256"]
+               and r["positions"] == old[r["key"]]["positions"] for r in parity)
+    captured = rows(folder / "donors.jsonl")
+    assert len(captured) == len({r["key"] for r in captured}) == terminal["logical_donor_rows"] == 4320
+    for row in captured:
+        assert row["source_sha256"] == old[row["key"]]["source_sha256"]
+        assert row["encoder_artifact_sha256"] == fit["encoder_artifact_sha256"]
+    states = {r["key"]: r["state_sha256"] for r in captured}
+    for row in rows(folder / "functional.jsonl"):
+        key = row["stage"] + "/" + row["case"]
+        if row["route"] == "matched":
+            assert row["state_sha256"] == states[key]
+        elif row["route"] == "opposed":
+            other_pole = "minus" if row["pole"] == "plus" else "plus"
+            other = key.replace("-" + row["pole"] + "-", "-" + other_pole + "-")
+            assert row["state_sha256"] == states[other]
+    for name in ("NOTICE.txt", "ADAPTER_LICENSE.md", "GEMMA_TERMS.html", "GEMMA_PROHIBITED_USE_POLICY.html"):
+        assert (folder / name).is_file()

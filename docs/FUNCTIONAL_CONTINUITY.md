@@ -1,6 +1,21 @@
 # Functional continuity under semantic recurrence
 
-**Prospective development protocol, 2026-11-03.** This document integrates the next experiment around the original SELF-FOLD question. Execution is sealed by phase. The recipient phase below has fixed architecture, budgets and decision rules that must be committed with its data manifest and executable source before fitting. G learning and the subsequent language intervention receive separate seals after the recipient decision. This document records a target contribution and supplies no new experimental result or qualification verdict.
+**Development protocol and status, 2026-11-03.** This document integrates the experiment around the original SELF-FOLD question. Execution is sealed by phase. The original recipient contracts below retain their fixed architectures, budgets and decision rules. All four tested configurations are now closed with negative development outcomes. G learning and the subsequent language intervention require separate phase seals. The intended two-stage contribution remains prospective, and no semantic qualification pass has been issued.
+
+## Dated development status
+
+On 2026-11-03, four configurations completed their fixed 256-update endpoints. The first two trained only the native recipient with full-vocabulary cross entropy, using raw or standardized frozen E states. A separately sealed conditional-label fit used raw frozen E. The last configuration jointly trained a source-only E adapter and a task-only recipient under its own contract. The zero-update numerical audit remained diagnostic. [Contracts, exact counts and raw evidence](../provenance/continuity_20261103/RESULTS.md)
+
+| Configuration | Stage2 native correct / 4,608 | Stage2 compound correct / 1,152 |
+| --- | ---: | ---: |
+| Raw frozen E, full-vocabulary recipient | 2,294 (49.78%) | 52 (4.51%) |
+| Standardized frozen E, full-vocabulary recipient | 2,308 (50.09%) | 17 (1.48%) |
+| Raw frozen E, conditional-label recipient | 2,304 (50.00%) | 0 (0.00%) |
+| Joint source E and task recipient | 2,336 (50.69%) | 57 (4.95%) |
+
+Every row missed the same recipient screen of 90% native accuracy, a ten-point advantage over the strongest fixed null and 75% compound correctness. All three representation stages in these tests were encoded independently from the source text or its formally equivalent teacher text. The stage2 text is canonical, so its two source-order tags have identical bytes. Its compound count crosses two genuine policy polarities with duplicated order inputs. Source and explicit-case panels retain their own wording/order results.
+
+No learned G was trained or evaluated. These outcomes therefore close the tested input/readout configurations and leave actual two-stage state reconstruction, operation omissions, intermediate-state exchange and language insertion pending. The earlier sealed qualification groups retain their original commitment. New two-stage confirmation content and independent human review remain pending.
 
 ## The question
 
@@ -96,7 +111,13 @@ The previous 24-group sealed qualification commitment remains associated with it
 
 The recipient screen is evaluated on stage-2 source descriptions through the native LLM output path. It requires at least 90% group-macro label accuracy, at least ten percentage points above the strongest fixed null, and at least 75% group-macro joint correctness across both policy poles and both clause orders for a world. The executable scorer fixes the additional frame, question and label-order nesting before scoring. Literal-source performance is a benchmark. A group on which literal text fails remains in all registered denominators.
 
-The later primary continuity target requires at least 70% success on the joint source/stage-1/stage-2 unit across both poles and both clause orders, together with at least 90% stage-2 accuracy. The scorer will bind the remaining world, frame and question nesting at the G phase seal. Each required source-dependent judgment and formal transition-support check is retained. Opposed and same-meaning exchanges have their own specified joint units. Report the component outcomes as well as the joint count.
+The future primary continuity target requires at least 70% joint correctness after actual G1 and actual G2 across both policy poles and both clause orders, together with at least 90% actual post-G2 accuracy. Each compound unit holds group, world, attribution frame, question wording and displayed answer mapping fixed. The G phase seal binds all further scorer and uncertainty details before execution. Each required source-dependent judgment and formal transition-support check is retained. Opposed and same-meaning exchanges have their own specified joint units. Report the component outcomes as well as the joint count.
+
+### Prospective G endpoint clarification, 2026-11-03
+
+Before any G training or G evaluation, the planned primary conjunction was clarified to require correctness after G1 and G2. The earlier proposal also required the initial Z0 answer to be correct. That requirement could reject the intended outcome in which reconstruction makes an initially inaccessible distinction usable. Z0 accuracy, the paired gain over Z0 and the original strict Z0/G1/G2 conjunction are retained as secondary diagnostics. The original recipient screen and all closed recipient results keep their definitions.
+
+Every original group remains in the G evaluation regardless of its Z0 answer. Report change-required and justified-no-change strata. A pass on the post-G1/post-G2 conjunction establishes the tested continued use after updating. Attribution of a useful distinction to G additionally requires the independently specified intermediate support checks, operation omissions and intermediate-state swaps. Any claim of improved task utility uses the preregistered comparison on the same questions and truth conditions. G architecture and its training budget remain unsealed.
 
 G omission controls use independently specified intermediate format and truth-support checks. They assess which requested reconstructions are realized and used. Each G need not improve accuracy. If an omission preserves the same evaluated distinction and utility, the corresponding incremental contribution remains unresolved.
 
@@ -105,7 +126,7 @@ The old carrier screen of 80% accuracy and a ten-point null advantage applied to
 | Stage | Positive closure | Bounded negative closure |
 | --- | --- | --- |
 | Recipient | Stage-2 native-label accuracy reaches 90%, the strongest fixed null is exceeded by ten points, and joint pole/order correctness reaches 75% | At 256 updates retain candidate 1. If it fails, run only the declared standardized-input candidate under the same cap. If both fail, close recipient learning for this cycle |
-| Two-stage reconstruction | Joint source/stage-1/stage-2 correctness reaches 70% and stage-2 accuracy reaches 90%, with formal support, omissions and swaps supporting the stated contribution | G learning begins only after the recipient screen and its own architecture/budget seal. At that fixed cap record failed support, failed reuse or unresolved stage contribution |
+| Two-stage reconstruction | Joint correctness after actual G1 and G2 reaches 70% and post-G2 accuracy reaches 90%, with formal support, omissions and swaps supporting the stated contribution | G learning begins only after the recipient screen and its own architecture/budget seal. At that fixed cap record failed support, failed reuse or unresolved stage contribution |
 | Language insertion | The admitted route supports the frozen L/B comparison with usable codec controls and declared uncertainty | Record codec failure or an inconclusive L/B contrast, including the first failing connection |
 | Independent challenge | Candidate, data and scorer bindings are frozen and every required scientific check has been reviewed | Retain failed, pending or invalid checks and close this challenge. Further selection uses a fresh holdout |
 
@@ -126,7 +147,7 @@ The recipient source commit, exact manifest hashes and artifact identity complet
 | Current public data | 96 train / 24 dev groups, 1,152 / 288 source variants and three stages per variant. Exact bytes and hashes are in the committed data manifest and run request |
 | Recipient screen | Stage-2 accuracy at least 90%, ten-point advantage over strongest fixed null, joint both-poles/both-orders correctness at least 75% per world, with group-macro aggregation |
 | G1/G2 architecture and budgets | Deferred to a separate G learning seal after a recipient passes |
-| Primary continuity target | At least 70% joint source/stage-1/stage-2 correctness across poles and clause orders, plus at least 90% stage-2 accuracy. Full scorer nesting is bound at the G seal |
+| Primary continuity target | At least 70% joint actual post-G1/post-G2 correctness across poles and clause orders at fixed world, frame, wording and answer mapping, plus at least 90% post-G2 accuracy. Z0 and the original all-three-stage conjunction are secondary diagnostics. Full scorer details are bound at the G seal |
 | Language comparison | One insertion at Z1, common G2 and answer budget. Equivalence margin five points, full 95% paired interval inside the margin |
 | Independent confirmation and human review | New two-step confirmation panel and independent reviewers pending. The earlier sealed 24-group commitment retains its own contract |
 
@@ -149,6 +170,6 @@ For standardized inputs, fit coordinate means `mu[K,d]` and population standard 
 
 The fixed nulls are empty input, zero slots, a donor-independent seeded random state at the train mean row norm, and the first training policy's plus/self/order-zero donor. The unrelated donor is selected separately for each representation stage. A source swap uses the opposite policy in the same group, frame, stage and clause order. A fresh zero-initialized recipient gives a literal-text base control before fitting.
 
-Every candidate is scored on all three teacher-encoded representation stages. The recipient entry screen uses stage2, whose texts are independently authored equivalent rules encoded directly by E. This is an interface admission test. Actual learned `G2(G1(Z0))` receives a separate source seal and evidence. The compound recipient unit holds group, frame, world, question wording and displayed label order fixed and requires all four combinations of policy polarity and source clause order to answer correctly through native greedy A/B output. Average within group and then across 24 groups. A tie or a native output outside A/B is unsuccessful. Publish forced-choice accuracy and native output coverage alongside this endpoint.
+Every candidate is scored on all three teacher-encoded representation stages. The recipient entry screen uses stage2, whose texts are independently authored equivalent rules encoded directly by E. This is an interface admission test. Actual learned `G2(G1(Z0))` receives a separate source seal and evidence. The compound recipient unit holds group, frame, world, question wording and displayed label order fixed and requires all four combinations of policy polarity and source clause order to answer correctly through native greedy A/B output. Average within group and then across 24 groups. A native output outside A/B is unsuccessful. Forced-choice ties are unsuccessful in the forced-choice score, while native deterministic argmax is retained as its own outcome. Publish forced-choice accuracy and native output coverage alongside this endpoint.
 
-There are 4,608 logical decisions per stage per route, with six routes per candidate. Shared exact question/state computations may be reused while keeping every logical decision in the record. The fixed formal source/teacher corpus contains 96 training groups and 24 development groups, with 1,152 and 288 variants at each of three stages. The source and targets share Boolean truth functions across splits, with authored construction grammars, flag/action bindings and sites held out. New confirmation content and independent human transition review remain pending.
+There are 4,608 logical decisions per stage per route, with six routes per candidate. Shared exact question/state computations may be reused while keeping every logical decision in the record. The fixed formal source/teacher corpus contains 96 training groups and 24 development groups, with 1,152 and 288 variants at each of three stages. The source and targets share Boolean truth functions across splits. Conditional source grammars, flag/action bindings and sites are held out. Canonical teacher renderers are shared, and explicit-case no-op sources also share a canonical grammar across splits. New confirmation content and independent human transition review remain pending.

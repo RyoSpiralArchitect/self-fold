@@ -1,4 +1,4 @@
-"""A scoped native-output recipient for frozen description carriers."""
+"""Scoped source encoders and native recipients for description carriers."""
 from __future__ import annotations
 from contextlib import contextmanager
 import json
@@ -20,7 +20,7 @@ class _LowRankProjection(torch.nn.Module):
 
 
 class RecipientAdapter(torch.nn.Module):
-    """FP32 q/v factors enabled only inside an explicit task context.
+    """FP32 q/v factors enabled inside the declared source or task context.
 
     The backbone remains outside this module's parameter tree. Creating the
     adapter installs inactive projection hooks. close() removes those hooks.

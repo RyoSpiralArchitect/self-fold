@@ -5,7 +5,7 @@
 
 ### Abstract
 
-Can a distinction formed by reinterpreting a current self-description support another meaning update and a later judgment without access to the original description or a transcript? We compare text relay, latent recurrence and a language roundtrip after the same latent update. Untrained, question-independent carriers on Mistral-7B and Gemma-2-2B missed a development content screen. A Gemma encoder bridge reduced source-text loss while opposed donors retained almost the same improvement. Two fresh, compute-matched fits then gave 49.35% and 50.00% functional accuracy. Neither correctly switched actions for both opposed policies in any of 288 comparisons. In a separate train-only linear readout, subtracting the encoding of a neutral rendering made the first-mentioned tray decodable in 93/96 clause-reordered descriptions. The prescribed action was readable in 51/96, with both orders correct for 6/48 policies. These development results separate access to word order from reliable use of a rule. The planned constructive endpoint requires two supported updates, intermediate-state interventions and later use of their result. That endpoint and independent human transition review remain open.
+Can a distinction formed by reinterpreting a current self-description support another update and a later judgment without a transcript? We study that intended continuity and the effect of verbalizing an intermediate state. Earlier Mistral and Gemma development probes found question-conditioned lexical transfer but weak question-independent carriers. On Gemma, source-copy learning reduced text loss without reliable policy switching. A neutral-reference readout exposed mention order in 93/96 reordered descriptions, while the prescribed action was correct in both orders for 6/48 policies. We next trained four native-recipient configurations on a new formal policy bank, including a source encoder learned jointly with its recipient. Their independently encoded final-teacher accuracy ranged from 49.78% to 50.69%, below the fixed admission screen. A zero-update audit found additional BF16 output ties, while FP32 diagnostics remained near chance. These results identify unsuccessful tested interfaces within a unified two-stage research design. Actual learned G composition, its causal use of intermediate distinctions and the intended positive continuity result remain open.
 
 ## 1. Problem formulation
 
@@ -195,6 +195,26 @@ In the unadapted slots, a train-only centroid direction correctly ordered 48/48 
 | Prescribed tray correct in both orders | 24/48 | 6/48 | 2/48 |
 
 On crossed wording the raw threshold predicted copper for every source. Centering supplied single-source access to mention order. The centered trigger readout was correct on 45/48 descriptions with the trigger clause first and 6/48 with it second. The registered joint endpoint counted the policies for which both orders were correct. These two encodings require the original input text. Availability of such a reference during later latent updates remains open. [Comparison, follow-up and raw scores](../provenance/policy_binding_20261103/RESULTS.md)
+
+### Native recipient learning before the two-stage reconstruction
+
+The integrated question next required a native recipient of a question-independent state. A new bank has 96 train and 24 development policy groups, crossing polarity, clause order and self/other/impersonal frames. Flag/action bindings and source construction grammars differ across splits. Boolean truth functions and teacher rendering grammars overlap. Three representations per variant supply a source, exhaustive cases and an equivalent reintegrated rule. Each is encoded independently. These teacher states are interface controls before learning G.
+
+Four bounded Gemma configurations each completed 256 updates. The first two trained task-only rank-16 q/v factors in the final four layers, with raw or train-standardized workspace inputs and full-vocabulary label loss. A separately sealed conditional-label follow-up matched the raw source hashes, initialization, schedule and training compute. A final one-candidate construction jointly trained source-only factors in layers 9--12 and task factors in layers 22--25 at learning rate 0.0003. Its source forward retained eight gradient-carrying rows at pre-cut 13 and received no question.
+
+| Native final-teacher readout | Correct / 4,608 | Joint correct / 1,152 |
+| --- | ---: | ---: |
+| Frozen E, raw recipient | 2,294 (49.78%) | 52 (4.51%) |
+| Frozen E, standardized recipient | 2,308 (50.09%) | 17 (1.48%) |
+| Frozen E, conditional-label loss | 2,304 (50.00%) | 0 (0.00%) |
+| Joint source E and recipient | 2,336 (50.69%) | 57 (4.95%) |
+| Literal base-model control | 2,886 (62.63%) | 335 (29.08%) |
+
+The fixed entry screen used full-vocabulary native greedy answers, requiring 90% final-teacher accuracy, a ten-point advantage over the strongest empty/zero/random/unrelated null and 75% joint polarity/order correctness. Each configuration supplied 4,608 decisions per stage per route. Final-teacher order tags share a canonical text, so this conjunction duplicates that axis. Source- and case-stage panels retain actual order differences. No candidate passed.
+
+A post-hoc zero-update audit observed the native hidden state and pre-/post-softcap head values on a fixed train/dev subset. Among 384 raw-recipient tasks, 174 acquired an A/B tie after distinct BF16 head values. Recomputing two head columns in FP32 removed ties but yielded 48.18% strict correctness for raw and 52.86% for standardized. No observed label had a zero stored-tanh derivative. The audit found output quantization without recovering a successful policy readout. These diagnostic computations left the native output path intact.
+
+The joint construction received positive finite gradients in both modules at all updates, replayed its zero-encoder native captures, and preserved full backbone hashes. Its source/state readout remained at 50.00%, and its final-teacher result was 50.69%. Across these four configurations, 1,024 optimizer updates did not admit a native recipient under the fixed criterion. Actual G composition, operator omission and intermediate language insertion therefore remain prospective. The intended positive continuity contribution is unestablished. [Phase seals, all outcomes and numerical audit](../provenance/continuity_20261103/RESULTS.md)
 
 ## 7. Interpretation and limitations
 

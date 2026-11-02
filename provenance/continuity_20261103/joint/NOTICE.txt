@@ -1,0 +1,8 @@
+Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms
+
+SELF-FOLD created encoder_source.npz and recipient_joint_source.npz as new
+rank-16 source/task-scoped query/value factors for frozen Gemma-2-2B-IT.
+They were jointly trained for 256 updates with a conditional native-label
+objective. The source factors apply before the cut, the task factors in the
+final four layers. Both roles and their common binding are recorded in the
+artifact metadata and fits.json. See ADAPTER_LICENSE.md and enclosed terms.

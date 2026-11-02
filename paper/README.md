@@ -19,3 +19,5 @@ tectonic main.tex
 # or
 latexmk -pdf main.tex
 ~~~
+
+The integrated study now reports four native-recipient configurations and a numerical audit. All four missed the fixed development screen. The intended two-step positive result remains a prospective contribution. [Complete native-recipient evidence](../provenance/continuity_20261103/RESULTS.md)
