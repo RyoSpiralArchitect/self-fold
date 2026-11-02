@@ -2,7 +2,7 @@
 
 English · [日本語](README.ja.md)
 
-**Can a distinction formed by reinterpreting a current self-description support the next update and a later judgment?** SELF-FOLD studies that continuity and the effect of verbalizing an intermediate state. Each update receives only the current description or fixed hidden-state slots. The experimenter keeps the transcript outside the model. Learned interfaces are trained separately and frozen for evaluation.
+**Can a distinction formed by reinterpreting a current self-description support the next update and a later judgment?** SELF-FOLD studies that continuity and the effect of verbalizing an intermediate state. Each update receives only the current description or fixed hidden-state slots. The experimenter keeps the transcript outside the model. Interfaces are fitted during development and frozen for evaluation.
 
 | Arm | Input to the next step |
 | --- | --- |
@@ -14,7 +14,7 @@ L and B start with identical slots and share the update, layer boundaries and de
 
 ## Experiments
 
-- **A native reader for the two-stage route.** Four bounded Gemma configurations completed 1,024 optimizer updates. Final-teacher native accuracy was 49.78%, 50.09%, 50.00% and 50.69%, against a 50% strongest null. The joint source/recipient candidate received finite gradients in both modules but missed its admission screen. A zero-update audit identified additional BF16 output ties, while FP32 diagnostic projection did not recover reliable policy use. Actual learned G composition and the intended positive continuity result remain open. [All configurations, failures, audit and artifacts](provenance/continuity_20261103/RESULTS.md) · [Integrated two-stage protocol](docs/FUNCTIONAL_CONTINUITY.md)
+- **A native reader for the two-stage route.** Four bounded Gemma configurations completed 1,024 optimizer updates. Final-teacher native accuracy was 49.78%, 50.09%, 50.00% and 50.69%, against a 50% strongest null. The joint source/recipient candidate received finite gradients in both modules but missed its admission screen. A zero-update audit identified additional BF16 output ties, while FP32 diagnostic projection did not recover reliable policy use. A separate small-set control improved literal training correctness from 67.19% to 87.50%, while raw slots reached 45.31%. Actual learned G composition and the intended positive continuity result remain open. [All configurations, failures, audit and artifacts](provenance/continuity_20261103/RESULTS.md) · [Integrated two-stage protocol](docs/FUNCTIONAL_CONTINUITY.md)
 
 - **Can a stored policy switch actions?** Two fresh 64-update Gemma fits scored 49.35% and 50.00% on functional questions. Neither correctly switched both opposed donors in any of 288 comparisons. In a separate test, subtracting a neutral encoding let a train-only linear readout identify the first-mentioned tray in 93/96 clause-reordered descriptions. It identified the prescribed action in only 51/96, with both word orders correct for 6/48 policies. [Controlled fits, raw scores and next decision](provenance/policy_binding_20261103/RESULTS.md)
 

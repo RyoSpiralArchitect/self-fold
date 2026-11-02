@@ -14,7 +14,7 @@ A task-scoped rank 16 q/v adapter in the final four decoder layers minimizes ful
 | Explicit-case teacher | 2,286 (49.61%) | 2,305 (50.02%) | 3,448 (74.83%) |
 | Reintegrated teacher | 2,294 (49.78%) | 2,308 (50.09%) | 2,886 (62.63%) |
 
-The receiver's primary compound unit requires correct native greedy answers under all four polarity/order tags at a fixed group, frame, world, question wording and label mapping. The raw stage2 candidate met 52/1,152 units (4.51%), and standardized met 17/1,152 (1.48%). Stage2 rendering is canonical and its two order tags are byte-identical. This compound counts two real opposed policies with duplicated order inputs. Clause-order robustness must be examined in source and case-stage panels, and eventually on the actual learned G chain.
+The receiver's primary compound unit requires correct native greedy answers under all four polarity/order tags at a fixed group, frame, world, question wording and label mapping. The raw stage2 candidate met 52/1,152 units (4.51%), and standardized met 17/1,152 (1.48%). Stage 2 rendering is canonical and its two order tags are byte-identical. This compound counts two real opposed policies with duplicated order inputs. Clause-order robustness must be examined in source and case-stage panels, and eventually on the actual learned G chain.
 
 Both candidates missed the registered 90% native accuracy, 10-point null advantage and 75% joint screen. Their strongest fixed null scored 50%. All native argmax outputs were A or B, but many A/B likelihoods tied exactly. In stage2 there were 3,872 raw and 3,238 standardized ties out of 4,608, which counted against forced-choice success. Native greedy output uses the model's deterministic argmax, so its score can differ from the tie-as-failure forced-choice score. [Every decision and control](recipient/functional.jsonl) · [Recomputed summary](summary.json)
 
@@ -65,3 +65,16 @@ Native correctness was 2,304/4,608 (50.00%) for source states, 2,319/4,608 (50.3
 The run completed in 200.67 seconds, with 7,840 forwards and 3,623,004 processed tokens including training, captures and evaluation. Backbone and frozen adapter parameter hashes matched. [Per-case record and both artifacts](joint) · [Recomputed joint summary](joint_summary.json)
 
 These four configurations completed 1,024 total optimizer updates. None supplied an admitted native recipient under the fixed screen. The intended positive contribution of actual two-step semantic reconstruction remains open. No learned G chain or language-insertion result has been produced by encoding teacher texts independently. A next development design should first establish a small, train-only native learning control and a directly readable matched literal control before adding a new carrier or a longer trajectory.
+
+## A paired small-set trainability control
+
+Before choosing another carrier, source d316bce3f35d8de3aa025683d022e2b84fe17218 fixed four public training groups and two diagnostic dev groups. Stage 2/self inputs supplied 128 training decisions and 64 dev decisions, including both policy poles and order tags. Both fresh native recipients used the same initialization, question order, 64 updates and conditional-label objective. One received literal source text; the other received frozen raw E slots. All 24 source hashes replayed. The canonical teacher duplicates order tags, so this is a small-set learning control. [Fixed control](TRAINABILITY_PLAN.md) · [Every initial/final decision](trainability/decisions.jsonl) · [Summary](trainability/summary.json)
+
+| Input | Train initial | Train final | Exposed dev initial | Exposed dev final |
+| --- | ---: | ---: | ---: | ---: |
+| Literal text | 86/128 (67.19%) | 112/128 (87.50%) | 38/64 (59.38%) | 48/64 (75.00%) |
+| Eight raw slots | 48/128 (37.50%) | 58/128 (45.31%) | 32/64 (50.00%) | 34/64 (53.13%) |
+
+The final literal condition met 24/32 joint training units and the slot condition 4/32. Neither met the declared 95% training correctness plus 90% compound engineering screen. Literal training improved native correctness by 20.31 points on these exact training cases; the slot condition improved by 7.81. Final forced A/B ties were 0/128 for literal and 74/128 for slots. All final native argmax outputs were labels. The literal and slot input geometries and token costs differ. With four chosen groups, this control supplies descriptive trainability evidence, rather than a general capacity or independent-transfer conclusion.
+
+Both artifacts reproduced their checked logits exactly after serialization, and backbone hashes matched. The paired control completed 128 optimizer updates and 768 initial/final decisions in 44.04 seconds. It does not constitute a positive semantic gate or the intended two-step result. Its outcome directs the next study toward an established trainability control and the source-state/recipient connection before any G learning.

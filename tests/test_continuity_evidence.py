@@ -213,3 +213,80 @@ def test_joint_artifacts_bind_both_roles_and_the_frozen_source_captures():
             assert row["state_sha256"] == states[other]
     for name in ("NOTICE.txt", "ADAPTER_LICENSE.md", "GEMMA_TERMS.html", "GEMMA_PROHIBITED_USE_POLICY.html"):
         assert (folder / name).is_file()
+
+
+def test_paired_trainability_control_reproduces_its_training_only_endpoint():
+    from collections import defaultdict
+    from statistics import fmean
+
+    folder = STUDY / "trainability"
+    decisions, history, fits = (rows(folder / name) for name in ("decisions.jsonl", "training.jsonl", "fits.jsonl"))
+    terminal, source, host = (read(folder / name) for name in ("terminal.json", "source.json", "host.json"))
+    request, schedule, summary = (read(folder / name) for name in ("request.json", "schedule.json", "summary.json"))
+    assert len(decisions) == terminal["decisions"] == 768 and len(history) == terminal["optimizer_updates"] == 128
+    assert len(fits) == 2 and {f["condition"] for f in fits} == {"literal", "latent"} and len(schedule) == 64
+    assert source["git_status"] == "" and digest(source["files"]) == source["source_sha256"]
+    assert request["data_sha256"] == file_sha(DATA) and request["plan_sha256"] == file_sha(STUDY / "TRAINABILITY_PLAN.md")
+    previous = {r["key"]: r for r in rows(STUDY / "recipient/donors.jsonl")}
+    donors = rows(folder / "donors.jsonl")
+    assert len(donors) == len({r["key"] for r in donors}) == terminal["logical_donors"] == 24
+    for donor in donors:
+        assert donor["state_sha256"] == previous[donor["key"]]["state_sha256"]
+        assert donor["source_sha256"] == previous[donor["key"]]["source_sha256"]
+    for fit in fits:
+        entries = [r for r in history if r["condition"] == fit["condition"]]
+        assert [r["step"] for r in entries] == list(range(1, 65)) and [r["group"] for r in entries] == schedule
+        assert all(np.isfinite(r["gradient_norm"]) and r["gradient_norm"] >= 0 for r in entries)
+        assert all(len(r["losses"]) == 4 and np.isfinite(r["losses"]).all() for r in entries)
+        assert digest([r["tasks_sha256"] for r in entries]) == fit["task_order_sha256"]
+        assert fit["training_forwards"] == 64 * 4
+        assert file_sha(folder / fit["artifact"]) == fit["sha256"]
+        with np.load(folder / fit["artifact"], allow_pickle=False) as archive:
+            meta = json.loads(archive["metadata_utf8"].tobytes())
+            assert meta["kind"] == "scoped_recipient_qv_lora" and meta["base_host_sha256"] == digest(host)
+            assert meta["dataset_sha256"] == file_sha(DATA) and meta["source_sha256"] == source["source_sha256"]
+            assert meta["training"]["input_condition"] == fit["condition"] and meta["training"]["schedule_sha256"] == digest(schedule)
+            expected, parameter_hash = {"metadata_utf8"}, hashlib.sha256()
+            for i, target in enumerate(meta["architecture"]["targets"]):
+                for part, shape in (("down", (target["inputs"], 16)), ("up", (16, target["outputs"]))):
+                    name = f"factors.{i}.{part}"
+                    value = archive[name]
+                    assert value.shape == shape and value.dtype == np.float32 and np.isfinite(value).all()
+                    expected.add(name)
+                    parameter_hash.update((name + str(shape) + "torch.float32").encode())
+                    parameter_hash.update(value.tobytes(order="C"))
+            assert set(archive.files) == expected and parameter_hash.hexdigest() == fit["final_parameter_sha256"]
+    assert fits[0]["initial_parameter_sha256"] == fits[1]["initial_parameter_sha256"]
+    assert fits[0]["task_order_sha256"] == fits[1]["task_order_sha256"]
+    assert len({(r["condition"], r["phase"], r["case"], r["world"], r["label_order"]) for r in decisions}) == 768
+    for condition in ("literal", "latent"):
+        for phase in ("initial", "final"):
+            for split, count in (("train", 128), ("dev", 64)):
+                panel = [r for r in decisions if (r["condition"], r["phase"], r["split"]) == (condition, phase, split)]
+                assert len(panel) == count
+                groups, pairs = defaultdict(list), defaultdict(list)
+                for row in panel:
+                    assert row["stage"] == "stage2" and row["frame"] == "self" and row["wording"] == 0
+                    assert row["greedy_label"] in (None, "A", "B")
+                    assert all(np.isfinite(row[label]) for label in ("A", "B"))
+                    correct = row["greedy_label"] == row["gold"]
+                    groups[row["group"]].append(correct)
+                    pairs[row["group"], row["world"], row["label_order"]].append(correct)
+                assert all(len(g) == 32 for g in groups.values()) and all(len(pair) == 4 for pair in pairs.values())
+                forced = ["A" if r["A"] > r["B"] else ("B" if r["B"] > r["A"] else None) for r in panel]
+                native_correct, compound_correct = sum(sum(g) for g in groups.values()), sum(all(p) for p in pairs.values())
+                expected = {"n": count, "native_correct": native_correct, "native_accuracy": fmean(fmean(g) for g in groups.values()),
+                    "forced_correct": sum(pred == row["gold"] for pred, row in zip(forced, panel, strict=True)),
+                    "forced_ties": sum(pred is None for pred in forced),
+                    "native_label_coverage": sum(r["greedy_label"] in ("A", "B") for r in panel),
+                    "compound_n": len(pairs), "native_compound_correct": compound_correct,
+                    "native_compound_accuracy": compound_correct / len(pairs)}
+                assert summary[condition][phase][split] == expected
+        trained = summary[condition]["final"]["train"]
+        positive = trained["native_accuracy"] >= .95 and trained["native_compound_accuracy"] >= .90
+        assert summary[condition]["engineering_trainability_positive"] == terminal["engineering_trainability_positive"][condition] == positive
+    assert not terminal["G_trained"] and not terminal["qualification_content_loaded"]
+    assert terminal["backbone_sha256_before"] == terminal["backbone_sha256_after"] == read(STUDY / "recipient/terminal.json")["backbone_sha256_before"]
+    assert read(folder / "native_parity.json")["exact"]
+    for name in ("NOTICE.txt", "ADAPTER_LICENSE.md", "GEMMA_TERMS.html", "GEMMA_PROHIBITED_USE_POLICY.html"):
+        assert (folder / name).is_file()

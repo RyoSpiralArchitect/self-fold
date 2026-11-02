@@ -11,3 +11,5 @@ The synthetic descriptions and questions were written for these experiments. Bib
 The paired policy-binding study also distributes two Gemma-derived encoder arrays, `copy.npz` and `opposition.npz`. Their directory includes the terms, policy, modification notice and training provenance. [Conditions for these two arrays](../provenance/policy_binding_20261103/run/ADAPTER_LICENSE.md)
 
 The continuity study's task adapters, source adapter and activation-statistic arrays have artifact-specific Gemma notices and accompanying terms in each experiment folder. [Original recipients](../provenance/continuity_20261103/recipient/ADAPTER_LICENSE.md) · [Conditional-label follow-up](../provenance/continuity_20261103/binary/ADAPTER_LICENSE.md) · [Joint source/recipient](../provenance/continuity_20261103/joint/ADAPTER_LICENSE.md)
+
+The paired small-set control also provides its two recipient adapters with the same source-specific Gemma terms and notice. [Trainability-control artifact conditions](../provenance/continuity_20261103/trainability/ADAPTER_LICENSE.md)
