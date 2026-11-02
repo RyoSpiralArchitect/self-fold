@@ -91,8 +91,10 @@ def main():
 
         def check_path(module, label):
             row, slots = examples["dev"][0], cached["dev"][0]
+            checking = EncoderBridge(host.width, config["rank"]).to(host.device)
+            checking.load_state_dict(module.state_dict())
+            expected = float(codec_loss(host, checking, slots, row["target"], end_token_id=end_token).detach())
             with torch.no_grad():
-                expected = float(codec_loss(host, module, slots, row["target"], end_token_id=end_token))
                 injected = State(slots=module(slots))
             ids, locations = host.render(prompts.read_prompt())
             target = host.tokenizer.encode(row["target"], add_special_tokens=False) + [end_token]
@@ -131,6 +133,8 @@ def main():
             if any(p.grad is not None for p in host.model.parameters()):
                 raise RuntimeError("Backbone received gradients")
             grad_norm = torch.nn.utils.clip_grad_norm_(bridge.parameters(), max_norm=1., error_if_nonfinite=True)
+            if float(grad_norm) <= 0:
+                raise RuntimeError("Bridge received no learning signal")
             optimizer.step()
             store.append("training.jsonl", {"step": step, "train_mean_nll": sum(losses) / 8,
                                            "gradient_norm_before_clip": float(grad_norm)})

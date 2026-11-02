@@ -3,6 +3,7 @@ import torch
 import pytest
 from selffold.calibration import public_groups, write_public, codec_examples
 from selffold import prompts
+from selffold.records import State
 from selffold.codec_learning import EncoderBridge, codec_loss, save_bridge, install_bridge, load_bridge
 from selffold.carrier_probe import capture_description
 
@@ -41,8 +42,8 @@ def test_real_gradient_path_changes_only_bridge_and_cleans_hooks(host, tmp_path)
     assert all(torch.equal(p, original[n]) for n, p in host.model.named_parameters())
     assert not host.layers[host.cut]._forward_pre_hooks
     # The differentiable teacher-forcing objective agrees with the inference host.
+    expected_loss = codec_loss(host, bridge, state.slots, "new notes", end_token_id=2).detach()
     with torch.no_grad():
-        expected_loss = codec_loss(host, bridge, state.slots, "new notes", end_token_id=2)
         adapted = State(slots=bridge(state.slots))
     ids, positions = host.render(prompts.read_prompt())
     target = host.tokenizer.encode("new notes", add_special_tokens=False) + [2]
