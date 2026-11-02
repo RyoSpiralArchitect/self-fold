@@ -105,7 +105,9 @@ def run(args, store):
         if set(z.files) != {"mean","std","row_std"}:
             raise ValueError("Unexpected preprocessing arrays")
         stats = {k:torch.from_numpy(z[k].copy()).to(host.device) for k in z.files}
-    if any(not torch.isfinite(v).all() for v in stats.values()) or torch.any(stats["row_std"] <= 0):
+    if (stats["mean"].shape != (host.slots,host.width) or stats["std"].shape != (host.slots,host.width)
+            or stats["row_std"].shape != (host.slots,1) or torch.any(stats["std"] < 0)
+            or any(not torch.isfinite(v).all() for v in stats.values()) or torch.any(stats["row_std"] <= 0)):
         raise ValueError("Invalid train preprocessing statistics")
     def standardized(value):
         return (stats["mean"] + stats["row_std"]*(value.float()-stats["mean"])/stats["std"].clamp_min(stats["row_std"]*.01)).to(host.dtype)
@@ -120,16 +122,18 @@ def run(args, store):
         if candidate == "initial":
             adapter = RecipientAdapter(host,rank=16,last_layers=4,seed=47,scale=1.)
             if parameter_sha(adapter) != fits["raw"]["initial_parameters_sha256"]:
+                adapter.close()
                 raise ValueError("Initial recipient differs")
         else:
             artifact = fit/("recipient_"+candidate+".npz")
             adapter,metadata,sha = load_recipient(artifact,host)
             if sha != fits[candidate]["sha256"] or metadata["training"]["preprocessing_sha256"] != file_sha(preprocessing):
+                adapter.close()
                 raise ValueError("Recipient artifact binding differs")
-        adapter_before = parameter_sha(adapter)
-        states = {key:(standardized(value) if candidate == "standardized" else value) for key,value in raw.items()}
-        hidden_rows = {}
         try:
+            adapter_before = parameter_sha(adapter)
+            states = {key:(standardized(value) if candidate == "standardized" else value) for key,value in raw.items()}
+            hidden_rows = {}
             for start in range(0,len(tasks),8):
                 batch = tasks[start:start+8]
                 inputs = batch_inputs(host,batch,states,"matched")
