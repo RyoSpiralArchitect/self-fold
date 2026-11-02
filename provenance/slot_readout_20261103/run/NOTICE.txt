@@ -1,0 +1,7 @@
+Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms
+
+SELF-FOLD trained decoder/decoder.npz, lexical/lexical_bridge.npz,
+order/mixed_literal.npz and order/mixed_latent.npz for 64 updates each.
+They respectively contain a post-cut q/v recipient, a lexical-row residual
+transformation and two last-four-layer q/v recipients. Fit records, embedded
+metadata, source seals and PLAN.md record the modifications and bindings.

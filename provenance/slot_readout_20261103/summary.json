@@ -1,0 +1,1842 @@
+{
+  "decoder": {
+    "metrics": {
+      "all_24_are_training_examples": true,
+      "controls": {
+        "frozen_slots": {
+          "by_order": {
+            "correct": 24,
+            "fraction": 0.5,
+            "total": 48
+          },
+          "order_averaged_donors": {
+            "correct": 12,
+            "fraction": 0.5,
+            "total": 24
+          }
+        },
+        "original_text": {
+          "by_order": {
+            "correct": 48,
+            "fraction": 1.0,
+            "total": 48
+          },
+          "order_averaged_donors": {
+            "correct": 24,
+            "fraction": 1.0,
+            "total": 24
+          }
+        }
+      },
+      "final": {
+        "censored": 0,
+        "eos": 24,
+        "exact": {
+          "correct": 1,
+          "fraction": 0.041666666666666664,
+          "total": 24
+        },
+        "exact_opposed_pairs": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 12
+        },
+        "nll": {
+          "matched": 0.31399003726740676,
+          "opposed": 0.3159784947832425,
+          "zero": 0.33176201830307644
+        },
+        "reconstructed_text_questions": {
+          "by_order": {
+            "correct": 24,
+            "fraction": 0.5,
+            "total": 48
+          },
+          "order_averaged_donors": {
+            "correct": 12,
+            "fraction": 0.5,
+            "total": 24
+          }
+        },
+        "source_conditioned_references": 10,
+        "unique_outputs": 1
+      },
+      "initial": {
+        "censored": 0,
+        "eos": 24,
+        "exact": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 24
+        },
+        "exact_opposed_pairs": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 12
+        },
+        "nll": {
+          "matched": 5.737334767977397,
+          "opposed": 5.735457162062327,
+          "zero": 5.713194568951924
+        },
+        "reconstructed_text_questions": {
+          "by_order": {
+            "correct": 24,
+            "fraction": 0.5,
+            "total": 48
+          },
+          "order_averaged_donors": {
+            "correct": 12,
+            "fraction": 0.5,
+            "total": 24
+          }
+        },
+        "source_conditioned_references": 4,
+        "unique_outputs": 1
+      },
+      "reconstruction_screen": false
+    },
+    "terminal": {
+      "G_trained": false,
+      "arm": "decoder",
+      "backbone_sha256_after": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+      "backbone_sha256_before": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+      "compute": {
+        "forwards": 1714,
+        "generated_tokens": 647,
+        "processed_tokens": 117491
+      },
+      "elapsed_seconds": 52.704333556001075,
+      "examples": 24,
+      "qualification_content_loaded": false,
+      "status": "COMPLETED_BOUNDED_READOUT",
+      "training_scope": "all_24_original_descriptions",
+      "updates": 64
+    }
+  },
+  "lexical": {
+    "metrics": {
+      "all": {
+        "bridge_matched": {
+          "forced": {
+            "correct": 22,
+            "fraction": 0.9166666666666666,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 22,
+            "fraction": 0.9166666666666666,
+            "total": 24
+          },
+          "screen": true,
+          "strict_pairs": {
+            "correct": 5,
+            "fraction": 0.8333333333333334,
+            "total": 6
+          }
+        },
+        "bridge_opposed": {
+          "forced": {
+            "correct": 2,
+            "fraction": 0.08333333333333333,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 2,
+            "fraction": 0.08333333333333333,
+            "total": 24
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 6
+          }
+        },
+        "bridge_zero": {
+          "forced": {
+            "correct": 12,
+            "fraction": 0.5,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 10,
+            "fraction": 0.4166666666666667,
+            "total": 24
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 6
+          }
+        },
+        "gain_0": {
+          "forced": {
+            "correct": 12,
+            "fraction": 0.5,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 8,
+            "fraction": 0.3333333333333333,
+            "total": 24
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 6
+          }
+        },
+        "gain_0.5": {
+          "forced": {
+            "correct": 12,
+            "fraction": 0.5,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 8,
+            "fraction": 0.3333333333333333,
+            "total": 24
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 6
+          }
+        },
+        "gain_1": {
+          "forced": {
+            "correct": 13,
+            "fraction": 0.5416666666666666,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 8,
+            "fraction": 0.3333333333333333,
+            "total": 24
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 6
+          }
+        },
+        "gain_16": {
+          "forced": {
+            "correct": 17,
+            "fraction": 0.7083333333333334,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 14,
+            "fraction": 0.5833333333333334,
+            "total": 24
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.16666666666666666,
+            "total": 6
+          }
+        },
+        "gain_2": {
+          "forced": {
+            "correct": 14,
+            "fraction": 0.5833333333333334,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 11,
+            "fraction": 0.4583333333333333,
+            "total": 24
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 6
+          }
+        },
+        "gain_4": {
+          "forced": {
+            "correct": 15,
+            "fraction": 0.625,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 14,
+            "fraction": 0.5833333333333334,
+            "total": 24
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.16666666666666666,
+            "total": 6
+          }
+        },
+        "gain_8": {
+          "forced": {
+            "correct": 15,
+            "fraction": 0.625,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 12,
+            "fraction": 0.5,
+            "total": 24
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.16666666666666666,
+            "total": 6
+          }
+        },
+        "native_words": {
+          "forced": {
+            "correct": 23,
+            "fraction": 0.9583333333333334,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 23,
+            "fraction": 0.9583333333333334,
+            "total": 24
+          },
+          "screen": true,
+          "strict_pairs": {
+            "correct": 5,
+            "fraction": 0.8333333333333334,
+            "total": 6
+          }
+        },
+        "random_gain4": {
+          "forced": {
+            "correct": 13,
+            "fraction": 0.5416666666666666,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 8,
+            "fraction": 0.3333333333333333,
+            "total": 24
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 6
+          }
+        },
+        "reverse_gain4": {
+          "forced": {
+            "correct": 15,
+            "fraction": 0.625,
+            "total": 24
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 15,
+            "fraction": 0.625,
+            "total": 24
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.16666666666666666,
+            "total": 6
+          }
+        }
+      },
+      "train": {
+        "bridge_matched": {
+          "forced": {
+            "correct": 16,
+            "fraction": 1.0,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 16,
+            "fraction": 1.0,
+            "total": 16
+          },
+          "screen": true,
+          "strict_pairs": {
+            "correct": 4,
+            "fraction": 1.0,
+            "total": 4
+          }
+        },
+        "bridge_opposed": {
+          "forced": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 16
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "bridge_zero": {
+          "forced": {
+            "correct": 8,
+            "fraction": 0.5,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 6,
+            "fraction": 0.375,
+            "total": 16
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "gain_0": {
+          "forced": {
+            "correct": 8,
+            "fraction": 0.5,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 4,
+            "fraction": 0.25,
+            "total": 16
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "gain_0.5": {
+          "forced": {
+            "correct": 8,
+            "fraction": 0.5,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 4,
+            "fraction": 0.25,
+            "total": 16
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "gain_1": {
+          "forced": {
+            "correct": 9,
+            "fraction": 0.5625,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 4,
+            "fraction": 0.25,
+            "total": 16
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "gain_16": {
+          "forced": {
+            "correct": 10,
+            "fraction": 0.625,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 7,
+            "fraction": 0.4375,
+            "total": 16
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "gain_2": {
+          "forced": {
+            "correct": 9,
+            "fraction": 0.5625,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 6,
+            "fraction": 0.375,
+            "total": 16
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "gain_4": {
+          "forced": {
+            "correct": 9,
+            "fraction": 0.5625,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 8,
+            "fraction": 0.5,
+            "total": 16
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "gain_8": {
+          "forced": {
+            "correct": 9,
+            "fraction": 0.5625,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 6,
+            "fraction": 0.375,
+            "total": 16
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "native_words": {
+          "forced": {
+            "correct": 16,
+            "fraction": 1.0,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 16,
+            "fraction": 1.0,
+            "total": 16
+          },
+          "screen": true,
+          "strict_pairs": {
+            "correct": 4,
+            "fraction": 1.0,
+            "total": 4
+          }
+        },
+        "random_gain4": {
+          "forced": {
+            "correct": 9,
+            "fraction": 0.5625,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 4,
+            "fraction": 0.25,
+            "total": 16
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        },
+        "reverse_gain4": {
+          "forced": {
+            "correct": 9,
+            "fraction": 0.5625,
+            "total": 16
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 9,
+            "fraction": 0.5625,
+            "total": 16
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 4
+          }
+        }
+      },
+      "transfer": {
+        "bridge_matched": {
+          "forced": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.5,
+            "total": 2
+          }
+        },
+        "bridge_opposed": {
+          "forced": {
+            "correct": 2,
+            "fraction": 0.25,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 2,
+            "fraction": 0.25,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 2
+          }
+        },
+        "bridge_zero": {
+          "forced": {
+            "correct": 4,
+            "fraction": 0.5,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 4,
+            "fraction": 0.5,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 2
+          }
+        },
+        "gain_0": {
+          "forced": {
+            "correct": 4,
+            "fraction": 0.5,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 4,
+            "fraction": 0.5,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 2
+          }
+        },
+        "gain_0.5": {
+          "forced": {
+            "correct": 4,
+            "fraction": 0.5,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 4,
+            "fraction": 0.5,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 2
+          }
+        },
+        "gain_1": {
+          "forced": {
+            "correct": 4,
+            "fraction": 0.5,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 4,
+            "fraction": 0.5,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 2
+          }
+        },
+        "gain_16": {
+          "forced": {
+            "correct": 7,
+            "fraction": 0.875,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 7,
+            "fraction": 0.875,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.5,
+            "total": 2
+          }
+        },
+        "gain_2": {
+          "forced": {
+            "correct": 5,
+            "fraction": 0.625,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 5,
+            "fraction": 0.625,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 2
+          }
+        },
+        "gain_4": {
+          "forced": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.5,
+            "total": 2
+          }
+        },
+        "gain_8": {
+          "forced": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.5,
+            "total": 2
+          }
+        },
+        "native_words": {
+          "forced": {
+            "correct": 7,
+            "fraction": 0.875,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 7,
+            "fraction": 0.875,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.5,
+            "total": 2
+          }
+        },
+        "random_gain4": {
+          "forced": {
+            "correct": 4,
+            "fraction": 0.5,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 4,
+            "fraction": 0.5,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 2
+          }
+        },
+        "reverse_gain4": {
+          "forced": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 6,
+            "fraction": 0.75,
+            "total": 8
+          },
+          "screen": false,
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.5,
+            "total": 2
+          }
+        }
+      }
+    },
+    "terminal": {
+      "G_trained": false,
+      "arm": "lexical",
+      "backbone_sha256_after": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+      "backbone_sha256_before": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+      "compute": {
+        "forwards": 501,
+        "generated_tokens": 0,
+        "processed_tokens": 111012
+      },
+      "elapsed_seconds": 24.605484250932932,
+      "lexical_donors": 24,
+      "qualification_content_loaded": false,
+      "status": "COMPLETED_BOUNDED_READOUT",
+      "updates": 64
+    }
+  },
+  "order": {
+    "metrics": {
+      "all_four_orders": {
+        "latent/forward_fit/additional_dev": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        },
+        "latent/forward_fit/previous_dev": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        },
+        "latent/forward_fit/train": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 32
+        },
+        "latent/mixed_fit/additional_dev": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        },
+        "latent/mixed_fit/previous_dev": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        },
+        "latent/mixed_fit/train": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 32
+        },
+        "literal/forward_fit/additional_dev": {
+          "correct": 8,
+          "fraction": 0.5,
+          "total": 16
+        },
+        "literal/forward_fit/previous_dev": {
+          "correct": 8,
+          "fraction": 0.5,
+          "total": 16
+        },
+        "literal/forward_fit/train": {
+          "correct": 8,
+          "fraction": 0.25,
+          "total": 32
+        },
+        "literal/mixed_fit/additional_dev": {
+          "correct": 8,
+          "fraction": 0.5,
+          "total": 16
+        },
+        "literal/mixed_fit/previous_dev": {
+          "correct": 9,
+          "fraction": 0.5625,
+          "total": 16
+        },
+        "literal/mixed_fit/train": {
+          "correct": 14,
+          "fraction": 0.4375,
+          "total": 32
+        }
+      },
+      "by_order": {
+        "latent/forward_fit/additional_dev/forward": {
+          "forced": {
+            "correct": 9,
+            "fraction": 0.28125,
+            "total": 32
+          },
+          "forced_ties": 15,
+          "native": {
+            "correct": 18,
+            "fraction": 0.5625,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 2,
+            "fraction": 0.125,
+            "total": 16
+          }
+        },
+        "latent/forward_fit/additional_dev/permutation_1": {
+          "forced": {
+            "correct": 9,
+            "fraction": 0.28125,
+            "total": 32
+          },
+          "forced_ties": 13,
+          "native": {
+            "correct": 15,
+            "fraction": 0.46875,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 16
+          }
+        },
+        "latent/forward_fit/additional_dev/permutation_2": {
+          "forced": {
+            "correct": 9,
+            "fraction": 0.28125,
+            "total": 32
+          },
+          "forced_ties": 16,
+          "native": {
+            "correct": 17,
+            "fraction": 0.53125,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.0625,
+            "total": 16
+          }
+        },
+        "latent/forward_fit/additional_dev/reverse": {
+          "forced": {
+            "correct": 9,
+            "fraction": 0.28125,
+            "total": 32
+          },
+          "forced_ties": 14,
+          "native": {
+            "correct": 16,
+            "fraction": 0.5,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.0625,
+            "total": 16
+          }
+        },
+        "latent/forward_fit/previous_dev/forward": {
+          "forced": {
+            "correct": 5,
+            "fraction": 0.15625,
+            "total": 32
+          },
+          "forced_ties": 20,
+          "native": {
+            "correct": 13,
+            "fraction": 0.40625,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 16
+          }
+        },
+        "latent/forward_fit/previous_dev/permutation_1": {
+          "forced": {
+            "correct": 6,
+            "fraction": 0.1875,
+            "total": 32
+          },
+          "forced_ties": 23,
+          "native": {
+            "correct": 16,
+            "fraction": 0.5,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.0625,
+            "total": 16
+          }
+        },
+        "latent/forward_fit/previous_dev/permutation_2": {
+          "forced": {
+            "correct": 6,
+            "fraction": 0.1875,
+            "total": 32
+          },
+          "forced_ties": 20,
+          "native": {
+            "correct": 16,
+            "fraction": 0.5,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.0625,
+            "total": 16
+          }
+        },
+        "latent/forward_fit/previous_dev/reverse": {
+          "forced": {
+            "correct": 5,
+            "fraction": 0.15625,
+            "total": 32
+          },
+          "forced_ties": 23,
+          "native": {
+            "correct": 14,
+            "fraction": 0.4375,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 16
+          }
+        },
+        "latent/forward_fit/train/forward": {
+          "forced": {
+            "correct": 6,
+            "fraction": 0.09375,
+            "total": 64
+          },
+          "forced_ties": 56,
+          "native": {
+            "correct": 35,
+            "fraction": 0.546875,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 4,
+            "fraction": 0.125,
+            "total": 32
+          }
+        },
+        "latent/forward_fit/train/permutation_1": {
+          "forced": {
+            "correct": 4,
+            "fraction": 0.0625,
+            "total": 64
+          },
+          "forced_ties": 57,
+          "native": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 3,
+            "fraction": 0.09375,
+            "total": 32
+          }
+        },
+        "latent/forward_fit/train/permutation_2": {
+          "forced": {
+            "correct": 7,
+            "fraction": 0.109375,
+            "total": 64
+          },
+          "forced_ties": 52,
+          "native": {
+            "correct": 34,
+            "fraction": 0.53125,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 3,
+            "fraction": 0.09375,
+            "total": 32
+          }
+        },
+        "latent/forward_fit/train/reverse": {
+          "forced": {
+            "correct": 5,
+            "fraction": 0.078125,
+            "total": 64
+          },
+          "forced_ties": 51,
+          "native": {
+            "correct": 31,
+            "fraction": 0.484375,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 2,
+            "fraction": 0.0625,
+            "total": 32
+          }
+        },
+        "latent/mixed_fit/additional_dev/forward": {
+          "forced": {
+            "correct": 10,
+            "fraction": 0.3125,
+            "total": 32
+          },
+          "forced_ties": 13,
+          "native": {
+            "correct": 15,
+            "fraction": 0.46875,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.0625,
+            "total": 16
+          }
+        },
+        "latent/mixed_fit/additional_dev/permutation_1": {
+          "forced": {
+            "correct": 9,
+            "fraction": 0.28125,
+            "total": 32
+          },
+          "forced_ties": 13,
+          "native": {
+            "correct": 17,
+            "fraction": 0.53125,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 2,
+            "fraction": 0.125,
+            "total": 16
+          }
+        },
+        "latent/mixed_fit/additional_dev/permutation_2": {
+          "forced": {
+            "correct": 7,
+            "fraction": 0.21875,
+            "total": 32
+          },
+          "forced_ties": 17,
+          "native": {
+            "correct": 15,
+            "fraction": 0.46875,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 16
+          }
+        },
+        "latent/mixed_fit/additional_dev/reverse": {
+          "forced": {
+            "correct": 9,
+            "fraction": 0.28125,
+            "total": 32
+          },
+          "forced_ties": 14,
+          "native": {
+            "correct": 17,
+            "fraction": 0.53125,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.0625,
+            "total": 16
+          }
+        },
+        "latent/mixed_fit/previous_dev/forward": {
+          "forced": {
+            "correct": 7,
+            "fraction": 0.21875,
+            "total": 32
+          },
+          "forced_ties": 17,
+          "native": {
+            "correct": 14,
+            "fraction": 0.4375,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 16
+          }
+        },
+        "latent/mixed_fit/previous_dev/permutation_1": {
+          "forced": {
+            "correct": 2,
+            "fraction": 0.0625,
+            "total": 32
+          },
+          "forced_ties": 24,
+          "native": {
+            "correct": 13,
+            "fraction": 0.40625,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 16
+          }
+        },
+        "latent/mixed_fit/previous_dev/permutation_2": {
+          "forced": {
+            "correct": 6,
+            "fraction": 0.1875,
+            "total": 32
+          },
+          "forced_ties": 21,
+          "native": {
+            "correct": 16,
+            "fraction": 0.5,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 1,
+            "fraction": 0.0625,
+            "total": 16
+          }
+        },
+        "latent/mixed_fit/previous_dev/reverse": {
+          "forced": {
+            "correct": 7,
+            "fraction": 0.21875,
+            "total": 32
+          },
+          "forced_ties": 21,
+          "native": {
+            "correct": 18,
+            "fraction": 0.5625,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 3,
+            "fraction": 0.1875,
+            "total": 16
+          }
+        },
+        "latent/mixed_fit/train/forward": {
+          "forced": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 64
+          },
+          "forced_ties": 62,
+          "native": {
+            "correct": 30,
+            "fraction": 0.46875,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 0,
+            "fraction": 0.0,
+            "total": 32
+          }
+        },
+        "latent/mixed_fit/train/permutation_1": {
+          "forced": {
+            "correct": 2,
+            "fraction": 0.03125,
+            "total": 64
+          },
+          "forced_ties": 61,
+          "native": {
+            "correct": 33,
+            "fraction": 0.515625,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 2,
+            "fraction": 0.0625,
+            "total": 32
+          }
+        },
+        "latent/mixed_fit/train/permutation_2": {
+          "forced": {
+            "correct": 3,
+            "fraction": 0.046875,
+            "total": 64
+          },
+          "forced_ties": 60,
+          "native": {
+            "correct": 34,
+            "fraction": 0.53125,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 2,
+            "fraction": 0.0625,
+            "total": 32
+          }
+        },
+        "latent/mixed_fit/train/reverse": {
+          "forced": {
+            "correct": 2,
+            "fraction": 0.03125,
+            "total": 64
+          },
+          "forced_ties": 62,
+          "native": {
+            "correct": 34,
+            "fraction": 0.53125,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 2,
+            "fraction": 0.0625,
+            "total": 32
+          }
+        },
+        "literal/forward_fit/additional_dev/forward": {
+          "forced": {
+            "correct": 27,
+            "fraction": 0.84375,
+            "total": 32
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 27,
+            "fraction": 0.84375,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 12,
+            "fraction": 0.75,
+            "total": 16
+          }
+        },
+        "literal/forward_fit/additional_dev/permutation_1": {
+          "forced": {
+            "correct": 27,
+            "fraction": 0.84375,
+            "total": 32
+          },
+          "forced_ties": 1,
+          "native": {
+            "correct": 28,
+            "fraction": 0.875,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 12,
+            "fraction": 0.75,
+            "total": 16
+          }
+        },
+        "literal/forward_fit/additional_dev/permutation_2": {
+          "forced": {
+            "correct": 28,
+            "fraction": 0.875,
+            "total": 32
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 28,
+            "fraction": 0.875,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 12,
+            "fraction": 0.75,
+            "total": 16
+          }
+        },
+        "literal/forward_fit/additional_dev/reverse": {
+          "forced": {
+            "correct": 28,
+            "fraction": 0.875,
+            "total": 32
+          },
+          "forced_ties": 1,
+          "native": {
+            "correct": 29,
+            "fraction": 0.90625,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 13,
+            "fraction": 0.8125,
+            "total": 16
+          }
+        },
+        "literal/forward_fit/previous_dev/forward": {
+          "forced": {
+            "correct": 27,
+            "fraction": 0.84375,
+            "total": 32
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 27,
+            "fraction": 0.84375,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 12,
+            "fraction": 0.75,
+            "total": 16
+          }
+        },
+        "literal/forward_fit/previous_dev/permutation_1": {
+          "forced": {
+            "correct": 26,
+            "fraction": 0.8125,
+            "total": 32
+          },
+          "forced_ties": 1,
+          "native": {
+            "correct": 26,
+            "fraction": 0.8125,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 12,
+            "fraction": 0.75,
+            "total": 16
+          }
+        },
+        "literal/forward_fit/previous_dev/permutation_2": {
+          "forced": {
+            "correct": 28,
+            "fraction": 0.875,
+            "total": 32
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 28,
+            "fraction": 0.875,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 12,
+            "fraction": 0.75,
+            "total": 16
+          }
+        },
+        "literal/forward_fit/previous_dev/reverse": {
+          "forced": {
+            "correct": 27,
+            "fraction": 0.84375,
+            "total": 32
+          },
+          "forced_ties": 1,
+          "native": {
+            "correct": 28,
+            "fraction": 0.875,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 12,
+            "fraction": 0.75,
+            "total": 16
+          }
+        },
+        "literal/forward_fit/train/forward": {
+          "forced": {
+            "correct": 58,
+            "fraction": 0.90625,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 58,
+            "fraction": 0.90625,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 26,
+            "fraction": 0.8125,
+            "total": 32
+          }
+        },
+        "literal/forward_fit/train/permutation_1": {
+          "forced": {
+            "correct": 56,
+            "fraction": 0.875,
+            "total": 64
+          },
+          "forced_ties": 1,
+          "native": {
+            "correct": 57,
+            "fraction": 0.890625,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 25,
+            "fraction": 0.78125,
+            "total": 32
+          }
+        },
+        "literal/forward_fit/train/permutation_2": {
+          "forced": {
+            "correct": 53,
+            "fraction": 0.828125,
+            "total": 64
+          },
+          "forced_ties": 1,
+          "native": {
+            "correct": 54,
+            "fraction": 0.84375,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 22,
+            "fraction": 0.6875,
+            "total": 32
+          }
+        },
+        "literal/forward_fit/train/reverse": {
+          "forced": {
+            "correct": 47,
+            "fraction": 0.734375,
+            "total": 64
+          },
+          "forced_ties": 1,
+          "native": {
+            "correct": 47,
+            "fraction": 0.734375,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 15,
+            "fraction": 0.46875,
+            "total": 32
+          }
+        },
+        "literal/mixed_fit/additional_dev/forward": {
+          "forced": {
+            "correct": 27,
+            "fraction": 0.84375,
+            "total": 32
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 27,
+            "fraction": 0.84375,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 12,
+            "fraction": 0.75,
+            "total": 16
+          }
+        },
+        "literal/mixed_fit/additional_dev/permutation_1": {
+          "forced": {
+            "correct": 26,
+            "fraction": 0.8125,
+            "total": 32
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 26,
+            "fraction": 0.8125,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 12,
+            "fraction": 0.75,
+            "total": 16
+          }
+        },
+        "literal/mixed_fit/additional_dev/permutation_2": {
+          "forced": {
+            "correct": 27,
+            "fraction": 0.84375,
+            "total": 32
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 27,
+            "fraction": 0.84375,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 12,
+            "fraction": 0.75,
+            "total": 16
+          }
+        },
+        "literal/mixed_fit/additional_dev/reverse": {
+          "forced": {
+            "correct": 30,
+            "fraction": 0.9375,
+            "total": 32
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 30,
+            "fraction": 0.9375,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 14,
+            "fraction": 0.875,
+            "total": 16
+          }
+        },
+        "literal/mixed_fit/previous_dev/forward": {
+          "forced": {
+            "correct": 28,
+            "fraction": 0.875,
+            "total": 32
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 28,
+            "fraction": 0.875,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 13,
+            "fraction": 0.8125,
+            "total": 16
+          }
+        },
+        "literal/mixed_fit/previous_dev/permutation_1": {
+          "forced": {
+            "correct": 26,
+            "fraction": 0.8125,
+            "total": 32
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 26,
+            "fraction": 0.8125,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 12,
+            "fraction": 0.75,
+            "total": 16
+          }
+        },
+        "literal/mixed_fit/previous_dev/permutation_2": {
+          "forced": {
+            "correct": 26,
+            "fraction": 0.8125,
+            "total": 32
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 26,
+            "fraction": 0.8125,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 12,
+            "fraction": 0.75,
+            "total": 16
+          }
+        },
+        "literal/mixed_fit/previous_dev/reverse": {
+          "forced": {
+            "correct": 30,
+            "fraction": 0.9375,
+            "total": 32
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 30,
+            "fraction": 0.9375,
+            "total": 32
+          },
+          "strict_pairs": {
+            "correct": 14,
+            "fraction": 0.875,
+            "total": 16
+          }
+        },
+        "literal/mixed_fit/train/forward": {
+          "forced": {
+            "correct": 56,
+            "fraction": 0.875,
+            "total": 64
+          },
+          "forced_ties": 2,
+          "native": {
+            "correct": 57,
+            "fraction": 0.890625,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 25,
+            "fraction": 0.78125,
+            "total": 32
+          }
+        },
+        "literal/mixed_fit/train/permutation_1": {
+          "forced": {
+            "correct": 56,
+            "fraction": 0.875,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 56,
+            "fraction": 0.875,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 24,
+            "fraction": 0.75,
+            "total": 32
+          }
+        },
+        "literal/mixed_fit/train/permutation_2": {
+          "forced": {
+            "correct": 57,
+            "fraction": 0.890625,
+            "total": 64
+          },
+          "forced_ties": 0,
+          "native": {
+            "correct": 57,
+            "fraction": 0.890625,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 25,
+            "fraction": 0.78125,
+            "total": 32
+          }
+        },
+        "literal/mixed_fit/train/reverse": {
+          "forced": {
+            "correct": 55,
+            "fraction": 0.859375,
+            "total": 64
+          },
+          "forced_ties": 2,
+          "native": {
+            "correct": 56,
+            "fraction": 0.875,
+            "total": 64
+          },
+          "strict_pairs": {
+            "correct": 24,
+            "fraction": 0.75,
+            "total": 32
+          }
+        }
+      },
+      "screens": {
+        "latent": {
+          "permutation": false,
+          "trainability": false
+        },
+        "literal": {
+          "permutation": false,
+          "trainability": false
+        }
+      }
+    },
+    "terminal": {
+      "G_trained": false,
+      "arm": "order",
+      "backbone_sha256_after": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+      "backbone_sha256_before": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+      "compute": {
+        "forwards": 1093,
+        "generated_tokens": 0,
+        "processed_tokens": 975486
+      },
+      "elapsed_seconds": 60.096965184086,
+      "qualification_content_loaded": false,
+      "status": "COMPLETED_BOUNDED_READOUT",
+      "unique_donors": 64,
+      "updates": 128
+    }
+  }
+}
