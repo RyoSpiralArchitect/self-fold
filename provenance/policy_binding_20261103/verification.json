@@ -1,0 +1,48 @@
+{
+  "G_teacher_used_by_loss": false,
+  "fit_source": "5e4bd86f9ca45fd0e3f0192fb165cc3eac76c7e5",
+  "geometry_source": "65457166eb22d450802c2cc8f18ba09560ddb44a",
+  "independent_human_transition_review": "pending",
+  "initial_preflight": {
+    "failed": 1,
+    "failed_test": "test_preflight_receipt_is_reproducible_and_never_claims_gpu_readiness",
+    "passed": 130,
+    "pretrained_fits_started": 0,
+    "reason": "Frozen baseline file count changed"
+  },
+  "prefit_suite": {
+    "failed": 0,
+    "passed": 131,
+    "skipped": 0
+  },
+  "qualification": {
+    "commitment_sha256": "b408768d82296c367cc686fdd608b749ce4da911d1dfcdc099f91bf261c19997",
+    "groups": 24,
+    "status": "SEALED_NOT_EVALUATED"
+  },
+  "real_tokenizer_layout": {
+    "copper_id": 17410,
+    "native_eot_id": 107,
+    "paired_dev_prefixes": 48,
+    "paired_train_prefixes": 96,
+    "silver_id": 8343
+  },
+  "returned_archives_sha256": {
+    "geometry": "2ec7071113d5214cc15d8d7d6b8cb4ea42e7cc9b0de9ecefa3e5bfef3bb03e85",
+    "paired_fit": "8b4798dcbf3c37405ecec27c95b5930e8fe81c550b08a73deb67755e0269df44"
+  },
+  "schema": "policy_binding_development_verification",
+  "scientific_gate": "NOT_QUALIFIED",
+  "tiny_smoke": {
+    "compute": {
+      "forwards": 107,
+      "generated_tokens": 72,
+      "processed_tokens": 37006
+    },
+    "elapsed_seconds": 0.606422069016844,
+    "pretrained_family_tested": false,
+    "reasoning_gain": null,
+    "semantic_success": null,
+    "status": "ENGINEERING_PASS_NOT_SEMANTICS"
+  }
+}

@@ -58,3 +58,17 @@ The separator preflight binds the complete historical baseline tree and the test
 git worktree add --detach ../self-fold-separator-seal 66e499f30317b97b98527078f1a435ddbe36067c
 (cd ../self-fold-separator-seal && python3 provenance/separator_factorization_20261101/verify.py --check)
 ~~~
+
+## Paired Gemma fitting and clause-order geometry
+
+The two fits share the same train-only schedule and use the fixed step-64 endpoints. The geometry run uses the frozen base and the earlier capture hashes. Run each at its own source seal in a clean checkout with the pinned local Gemma snapshot and recorded dependencies. Each command needs a fresh ignored output directory.
+
+~~~bash
+# Source 5e4bd86f9ca45fd0e3f0192fb165cc3eac76c7e5
+PYTHONPATH=src python scripts/fit_policy_binding.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/paired-dev
+
+# Source 65457166eb22d450802c2cc8f18ba09560ddb44a
+PYTHONPATH=src python scripts/probe_policy_geometry.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/geometry-dev
+~~~
+
+The [study record](../provenance/policy_binding_20261103/RESULTS.md) includes both reducers, raw decisions, the generation rule for the crossed panel and the registered endpoints. These runs require no qualification inputs.

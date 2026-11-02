@@ -12,6 +12,8 @@ The [bounded qualification plan](SEMANTIC_GATE_PLAN.md) proposes six work packag
 
 The description-only study closed all four native-interface cells below its development screen. A first Gemma encoder-bridge fit improved source NLL but left functional dev accuracy near 50%, with little aggregate matched-versus-opposed donor advantage. The codec is unqualified, qualification material is still sealed, and independent human transition review is pending. [First learning evidence](../provenance/carriers_20261102/RESULTS.md)
 
+The matched copy and opposed-token fits both produced zero correct opposed switches in 288 functional comparisons. A separate centered readout recovered first mention in 93/96 reordered descriptions and trigger action in 51/96. Functional condition–action binding is the next development target. G and the six-check qualification challenge remain open. [Decision and evidence](../provenance/policy_binding_20261103/RESULTS.md)
+
 | Check | Evidence to collect on calibration-only data |
 |---|---|
 | Native parity | Unmodified host and observational hooks agree; injections disabled |
