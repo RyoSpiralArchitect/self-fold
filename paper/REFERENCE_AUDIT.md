@@ -1,6 +1,6 @@
 # Reference audit
 
-Checked 2026-11-01. The bibliography covers the references already discussed, including negative and contested findings. Metadata verification is not full methodological endorsement. ArXiv links are unversioned unless stated; pin consulted versions before submission. The review status below is a dated observation, not a live feed.
+Initial audit 2026-11-01. The two continuity references and the NLA causal-intervention scope were checked on 2026-11-03. The bibliography covers the references already discussed, including negative and contested findings. Metadata verification is not full methodological endorsement. ArXiv links are unversioned unless stated; pin consulted versions before submission. The review status below is a dated observation, not a live feed.
 
 ## Important correction
 
@@ -44,7 +44,7 @@ Source: https://proceedings.mlr.press/v306/lu26g.html
 
 Research article / technical thread, not a conference publication.
 
-A trained verbalizer and reconstructor; reconstruction fidelity and explanation fidelity are different. Released checkpoints are not interchangeable with this project's checkpoints.
+A trained activation verbalizer and reconstructor. The article also edits verbal explanations, reconstructs the edited activations and uses the resulting difference for steering later output. The SELF-FOLD target additionally tests reuse of a reconstructed current state by another meaning update. Reconstruction fidelity and explanation fidelity remain distinct. This scope was rechecked on 2026-11-03.
 
 Source: https://transformer-circuits.pub/2026/nla/index.html
 
@@ -111,6 +111,22 @@ arXiv version cited; official model cards checked separately.
 Phi-mini-MoE and Phi-tiny-MoE are MoE candidates. Active parameter count is not resident weight memory.
 
 Source: https://arxiv.org/abs/2506.18349
+
+### `babu2026quine`
+
+The Quine Test, Bibin Babu, Ivan P. Yamshchikov and Aleksei Shpilman. arXiv version 1 was submitted on 2026-10-28 and is treated as a preprint. The primary metadata and relevant abstract claims were checked on 2026-11-03.
+
+The paper transfers model-written self-descriptions to receiver models and fresh author instances to test preference-profile reconstruction. It includes successful preference transfer from descriptions written under explicit policies. SELF-FOLD's prospective contribution is scoped to successive supported reconstructions, intermediate-state reuse and a common-state language intervention. The review supports this positioning and supplies no priority determination.
+
+[Consulted version](https://arxiv.org/abs/2610.38726v1)
+
+### `feng2024propositional`
+
+Monitoring Latent World States in Language Models with Propositional Probes, Jiahai Feng, Stuart Russell and Jacob Steinhardt. The consulted arXiv version 2 was revised on 2024-12-06, following the first submission on 2024-06-27. Metadata and relevant abstract/method claims were checked on 2026-11-03.
+
+The method recovers lexical information and relational bindings as logical propositions. Its tests include faithful internal propositions when model output is unfaithful. This is a relevant precedent for measuring binding and later causal use, with the scope of its tested closed-world settings retained.
+
+[Consulted version](https://arxiv.org/abs/2406.19501v2)
 
 ## Bibliographic limits
 
