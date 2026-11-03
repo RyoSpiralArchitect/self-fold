@@ -3,7 +3,6 @@
 import torch
 
 from fit_continuity_recipient import batch_inputs
-from fit_joint_continuity import gradient_norm
 from selffold import prompts
 from selffold.conditional_curriculum import tasks_for
 from selffold.recipient_learning import (
@@ -11,6 +10,17 @@ from selffold.recipient_learning import (
     differentiable_source_slots,
 )
 from selffold.records import digest
+
+
+def gradient_norm(module):
+    gradients = [p.grad for p in module.parameters() if p.grad is not None]
+    if not gradients:
+        raise ValueError("The selected adapter has no gradient connection")
+    if any(not torch.isfinite(g).all() for g in gradients):
+        raise FloatingPointError("Nonfinite adapter gradient")
+    return torch.linalg.vector_norm(
+        torch.stack([g.float().norm() for g in gradients])
+    ).item()
 
 
 def native_source_slots(host, encoder, text):

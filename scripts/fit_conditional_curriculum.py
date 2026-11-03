@@ -51,7 +51,9 @@ def make_schedule(cases, stages, seed):
                 raise ValueError("Odd schedule pool")
             queues[stage] = [
                 pools[stage][i]
-                for i in torch.randperm(len(pools[stage]), generator=gen).tolist()
+                for i in torch.randperm(
+                    len(pools[stage]), generator=gen, device="cpu"
+                ).tolist()
             ]
         out.append([queues[stage].pop(), queues[stage].pop()])
     return out
