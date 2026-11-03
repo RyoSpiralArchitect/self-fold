@@ -99,7 +99,7 @@ def invariant_state_bank(path, maps):
 
 
 @torch.no_grad()
-def run(args, store):
+def run(args, store, fit_hook=None):
     design, base, prior, action = map(read, (DESIGN, BASE, PREVIOUS, ACTIONS))
     groups = action["groups"]
     seal = code_manifest(ROOT)
@@ -120,7 +120,10 @@ def run(args, store):
         "request.json",
         dict(
             reader=file_sha(focus),
-            plan=file_sha(STUDY / "CHAIN_PLAN.md"),
+            plan=file_sha(
+                STUDY
+                / ("CHAIN_PLAN.md" if fit_hook is None else "NATIVE_GRADIENT_PLAN.md")
+            ),
             scorer=file_sha(STUDY / "score_chain.py"),
             rank=32,
             ridge=0.001,
@@ -138,7 +141,19 @@ def run(args, store):
     train = records(groups, fixture(base, prior, design, "train"), "fit")
     values = bank(host, train, store, "fit")
     trainkeys = keys_for(train, "source")
-    fitted, mean = fit_maps(values, trainkeys)
+    if fit_hook is None:
+        fitted, mean = fit_maps(values, trainkeys)
+    else:
+        fitted, mean = fit_hook(
+            args,
+            host,
+            store,
+            train,
+            values,
+            trainkeys,
+            groups,
+            fixture(base, prior, design, "train"),
+        )
     models = invariant_state_bank(store.path / "maps.npz", fitted)
     x = tensors(values, trainkeys[:4])
     if not all(torch.equal(m(x), models[name](x)) for name, m in fitted.items()):
