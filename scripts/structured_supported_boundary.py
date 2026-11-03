@@ -284,7 +284,7 @@ def run(args, store):
     ):
         raise ValueError("Dirty or unbound input")
     store.write("source.json", seal)
-    host = new_host(args)
+    host = new_host(args, context=1024)
     backbone = parameter_sha(host.model)
     parity = host.native_parity()
     if not parity["exact"]:

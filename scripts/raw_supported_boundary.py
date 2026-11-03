@@ -1,6 +1,7 @@
 """Fit a paired boundary transport and exercise the native E/G/D path on development material."""
 
 import gzip
+import shutil
 import json
 import time
 
@@ -14,7 +15,15 @@ from fit_stage_grammar import ACTIONS, read
 from selffold import prompts
 from selffold.carrier_probe import capture_description, description_layout
 from selffold.cli import ROOT, make_host
-from selffold.records import RunStore, State, code_manifest, digest, file_sha
+from selffold.host import SlotHost
+from selffold.records import (
+    RunStore,
+    State,
+    TextOutput,
+    code_manifest,
+    digest,
+    file_sha,
+)
 from selffold.recipient_learning import load_recipient
 from selffold.supported_boundary import cases, questions
 from selffold.transport import Transport, fit_ridge
@@ -25,8 +34,8 @@ OPS = tuple(prompts.OPERATORS)
 PREFIX = "For this decision, use the stated policy. "
 
 
-def new_host(args):
-    args.max_context = 512
+def new_host(args, context=512):
+    args.max_context = context
     if args.device.startswith("cuda"):
         torch.cuda.set_per_process_memory_fraction(0.34, device=args.device)
     host, ident = make_host(args)
@@ -144,7 +153,83 @@ def run(args, store):
     base_identity = dict(host.identity)
     if host.transport.weight is not None:
         raise ValueError("Fitting needs native post-writer activations")
-    unrelated = fit_transport(host, menus, cfg, store)
+    # A bounded generation host owns G and D. The task adapter keeps its independently
+    # validated native host, with the same frozen model but no writer transport.
+    task_host = SlotHost(
+        host.model,
+        host.tokenizer,
+        slots=host.slots,
+        cut=host.cut,
+        writer=host.writer,
+        max_context=1024,
+        max_new_tokens=None,
+        wall_seconds=host.wall_seconds,
+        max_forwards=host.max_forwards,
+        max_processed_tokens=host.max_processed_tokens,
+    )
+    task_host.identity.update(
+        {
+            k: base_identity[k]
+            for k in (
+                "profile",
+                "checkpoint_sha256",
+                "torch_version",
+                "transformers_version",
+            )
+        }
+    )
+    task_host.meter = host.meter
+    task_host.started = host.started
+    if task_host.identity != read(
+        ROOT / "provenance/preprint_v1_20261104/raw/host.json"
+    ):
+        raise ValueError("The scoring interface differs from the archived one")
+    continued = getattr(args, "continue_capture", None)
+    previous_free = {}
+    if continued:
+        if (
+            read(continued / "terminal.json")
+            != {
+                "error": "Recipient artifact belongs to another host",
+                "status": "TECHNICAL_STOP",
+            }
+            or read(continued / "source.json")["git_commit"]
+            != "42de7977995ea39bc49ff4568fc38b4f1bdd04ed"
+            or file_sha(continued / "transport.npz")
+            != read(continued / "fit_closed.json")["transport"]
+            or (continued / "decisions.jsonl.gz").exists()
+        ):
+            raise ValueError(
+                "Only the recorded pre-score binding failure can be continued"
+            )
+        for name in ("transport.npz", "fit_closed.json", "pairs.jsonl"):
+            shutil.copyfile(continued / name, store.path / name)
+        host.transport = Transport.load(store.path / "transport.npz")
+        host.transport.weight = host.transport.weight.to(host.device)
+        host.transport.bias = host.transport.bias.to(host.device)
+        host.identity["transport_sha256"] = host.transport.artifact_sha256
+        first = cases(cfg, "train", raw=True)[0]
+        unrelated = capture_description(
+            host, first.source(menus, cfg["train"]), "workspace", forward_length=256
+        )[0]
+        previous_free = {
+            (tuple(r["key"]), r["stage"]): r
+            for r in map(
+                json.loads, (continued / "free_text.jsonl").read_text().splitlines()
+            )
+        }
+        store.write(
+            "continued.json",
+            dict(
+                source=file_sha(continued / "source.json"),
+                terminal=read(continued / "terminal.json"),
+                free_text=file_sha(continued / "free_text.jsonl"),
+                sources=file_sha(continued / "sources.jsonl"),
+                refits=0,
+            ),
+        )
+    else:
+        unrelated = fit_transport(host, menus, cfg, store)
     unrelated = host.update_latent(unrelated, "boundary")
     fresh = cases(cfg, "fresh", raw=True)
     sample = fresh[0]
@@ -178,6 +263,7 @@ def run(args, store):
         "binding.json",
         dict(
             host=host.identity,
+            task_host=task_host.identity,
             base_host=base_identity,
             reader=file_sha(READER),
             source=seal["source_sha256"],
@@ -224,13 +310,29 @@ def run(args, store):
                 ("initial", encoded[c]),
                 ("updated", updated[c]["boundary"]),
             ):
-                answer = host.decode(z.clone())
+                if continued:
+                    original = previous_free.pop((c.key, stage))
+                    if original["state"] != z.sha():
+                        raise ValueError("Reconstructed free-readout state differs")
+                    answer = TextOutput(
+                        **{k: original[k] for k in TextOutput.__dataclass_fields__}
+                    )
+                else:
+                    answer = host.decode(z.clone())
                 free[c, stage] = answer
                 store.append(
                     "free_text.jsonl",
                     dict(key=c.key, stage=stage, state=z.sha(), **answer.receipt()),
                 )
-    reader, _, _ = load_recipient(READER, host)
+    if continued and (
+        previous_free
+        or file_sha(store.path / "free_text.jsonl")
+        != file_sha(continued / "free_text.jsonl")
+        or file_sha(store.path / "sources.jsonl")
+        != file_sha(continued / "sources.jsonl")
+    ):
+        raise ValueError("Captured sources or original generations differ")
+    reader, _, _ = load_recipient(READER, task_host)
     rng = torch.Generator().manual_seed(4719)
     random_dir = torch.randn(host.slots, host.width, generator=rng).to(host.device)
     random_dir = torch.nn.functional.normalize(random_dir, dim=-1)
@@ -251,7 +353,11 @@ def run(args, store):
         )
         if key not in cache:
             cache[key] = model_scores(
-                host, reader, jobs, {"current": None if z is None else z.slots}, kind
+                task_host,
+                reader,
+                jobs,
+                {"current": None if z is None else z.slots},
+                kind,
             )
         return cache[key]
 
@@ -377,7 +483,11 @@ def run(args, store):
 
 
 if __name__ == "__main__":
-    args = parser().parse_args()
+    p = parser()
+    from pathlib import Path
+
+    p.add_argument("--continue-capture", type=Path)
+    args = p.parse_args()
     store = RunStore(args.out)
     start = time.monotonic()
     try:
