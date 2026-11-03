@@ -1,0 +1,4154 @@
+{
+  "assignments": {
+    "many/final/fit": {
+      "mean_true_weight": 0.945740592382208,
+      "policy": {
+        "correct": 483,
+        "fraction": 0.943359375,
+        "total": 512
+      },
+      "topic": {
+        "correct": 512,
+        "fraction": 1.0,
+        "total": 512
+      }
+    },
+    "many/final/joint": {
+      "mean_true_weight": 0.6169839553072161,
+      "policy": {
+        "correct": 82,
+        "fraction": 0.640625,
+        "total": 128
+      },
+      "topic": {
+        "correct": 128,
+        "fraction": 1.0,
+        "total": 128
+      }
+    },
+    "many/final/lexicon": {
+      "mean_true_weight": 0.6327461976198867,
+      "policy": {
+        "correct": 39,
+        "fraction": 0.609375,
+        "total": 64
+      },
+      "topic": {
+        "correct": 64,
+        "fraction": 1.0,
+        "total": 64
+      }
+    },
+    "many/final/questions": {
+      "mean_true_weight": 0.945740592382208,
+      "policy": {
+        "correct": 483,
+        "fraction": 0.943359375,
+        "total": 512
+      },
+      "topic": {
+        "correct": 512,
+        "fraction": 1.0,
+        "total": 512
+      }
+    },
+    "many/final/source": {
+      "mean_true_weight": 0.6169839553072161,
+      "policy": {
+        "correct": 82,
+        "fraction": 0.640625,
+        "total": 128
+      },
+      "topic": {
+        "correct": 128,
+        "fraction": 1.0,
+        "total": 128
+      }
+    },
+    "many/final/syntax": {
+      "mean_true_weight": 0.677249209765705,
+      "policy": {
+        "correct": 43,
+        "fraction": 0.671875,
+        "total": 64
+      },
+      "topic": {
+        "correct": 64,
+        "fraction": 1.0,
+        "total": 64
+      }
+    },
+    "many/initial/fit": {
+      "mean_true_weight": 0.9956760944332927,
+      "policy": {
+        "correct": 512,
+        "fraction": 1.0,
+        "total": 512
+      },
+      "topic": {
+        "correct": 512,
+        "fraction": 1.0,
+        "total": 512
+      }
+    },
+    "many/initial/joint": {
+      "mean_true_weight": 0.6002939631176081,
+      "policy": {
+        "correct": 75,
+        "fraction": 0.5859375,
+        "total": 128
+      },
+      "topic": {
+        "correct": 128,
+        "fraction": 1.0,
+        "total": 128
+      }
+    },
+    "single/final/fit": {
+      "mean_true_weight": 0.9669774664216675,
+      "policy": {
+        "correct": 508,
+        "fraction": 0.9921875,
+        "total": 512
+      },
+      "topic": {
+        "correct": 512,
+        "fraction": 1.0,
+        "total": 512
+      }
+    },
+    "single/final/joint": {
+      "mean_true_weight": 0.5951857463484471,
+      "policy": {
+        "correct": 77,
+        "fraction": 0.6015625,
+        "total": 128
+      },
+      "topic": {
+        "correct": 128,
+        "fraction": 1.0,
+        "total": 128
+      }
+    },
+    "single/final/lexicon": {
+      "mean_true_weight": 0.6596399570961023,
+      "policy": {
+        "correct": 42,
+        "fraction": 0.65625,
+        "total": 64
+      },
+      "topic": {
+        "correct": 64,
+        "fraction": 1.0,
+        "total": 64
+      }
+    },
+    "single/final/questions": {
+      "mean_true_weight": 0.9669774664216675,
+      "policy": {
+        "correct": 508,
+        "fraction": 0.9921875,
+        "total": 512
+      },
+      "topic": {
+        "correct": 512,
+        "fraction": 1.0,
+        "total": 512
+      }
+    },
+    "single/final/source": {
+      "mean_true_weight": 0.5951857463484471,
+      "policy": {
+        "correct": 77,
+        "fraction": 0.6015625,
+        "total": 128
+      },
+      "topic": {
+        "correct": 128,
+        "fraction": 1.0,
+        "total": 128
+      }
+    },
+    "single/final/syntax": {
+      "mean_true_weight": 0.6442248702883724,
+      "policy": {
+        "correct": 42,
+        "fraction": 0.65625,
+        "total": 64
+      },
+      "topic": {
+        "correct": 64,
+        "fraction": 1.0,
+        "total": 64
+      }
+    },
+    "single/initial/fit": {
+      "mean_true_weight": 0.9952110321028158,
+      "policy": {
+        "correct": 512,
+        "fraction": 1.0,
+        "total": 512
+      },
+      "topic": {
+        "correct": 512,
+        "fraction": 1.0,
+        "total": 512
+      }
+    },
+    "single/initial/joint": {
+      "mean_true_weight": 0.6247872447898566,
+      "policy": {
+        "correct": 81,
+        "fraction": 0.6328125,
+        "total": 128
+      },
+      "topic": {
+        "correct": 128,
+        "fraction": 1.0,
+        "total": 128
+      }
+    }
+  },
+  "by_fresh_style": {
+    "archived/fixed/joint/matched": {
+      "decision": {
+        "coverage": 253,
+        "forced": {
+          "correct": 136,
+          "fraction": 0.53125,
+          "total": 256
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 136,
+          "fraction": 0.53125,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 248,
+        "forced": {
+          "correct": 144,
+          "fraction": 0.5625,
+          "total": 256
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 141,
+          "fraction": 0.55078125,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "archived/fixed/joint/opposed": {
+      "decision": {
+        "coverage": 253,
+        "forced": {
+          "correct": 119,
+          "fraction": 0.46484375,
+          "total": 256
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 117,
+          "fraction": 0.45703125,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 248,
+        "forced": {
+          "correct": 111,
+          "fraction": 0.43359375,
+          "total": 256
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 107,
+          "fraction": 0.41796875,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "many/final/joint/matched": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 154,
+          "fraction": 0.6015625,
+          "total": 256
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 154,
+          "fraction": 0.6015625,
+          "total": 256
+        },
+        "strict": {
+          "correct": 1,
+          "fraction": 0.0625,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 154,
+          "fraction": 0.6015625,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 154,
+          "fraction": 0.6015625,
+          "total": 256
+        },
+        "strict": {
+          "correct": 1,
+          "fraction": 0.0625,
+          "total": 16
+        }
+      }
+    },
+    "many/final/joint/mean": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "many/final/joint/norm": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "many/final/joint/opposed": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 101,
+          "fraction": 0.39453125,
+          "total": 256
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 102,
+          "fraction": 0.3984375,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 102,
+          "fraction": 0.3984375,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 102,
+          "fraction": 0.3984375,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "many/final/joint/rendered_teacher": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 224,
+          "fraction": 0.875,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 224,
+          "fraction": 0.875,
+          "total": 256
+        },
+        "strict": {
+          "correct": 8,
+          "fraction": 0.5,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 224,
+          "fraction": 0.875,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 224,
+          "fraction": 0.875,
+          "total": 256
+        },
+        "strict": {
+          "correct": 8,
+          "fraction": 0.5,
+          "total": 16
+        }
+      }
+    },
+    "many/final/joint/reverse": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "many/final/joint/zero": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "many/final/syntax/matched": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 80,
+          "fraction": 0.625,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 80,
+          "fraction": 0.625,
+          "total": 128
+        },
+        "strict": {
+          "correct": 1,
+          "fraction": 0.125,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 86,
+          "fraction": 0.671875,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 86,
+          "fraction": 0.671875,
+          "total": 128
+        },
+        "strict": {
+          "correct": 2,
+          "fraction": 0.25,
+          "total": 8
+        }
+      }
+    },
+    "many/final/syntax/mean": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      }
+    },
+    "many/final/syntax/norm": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      }
+    },
+    "many/final/syntax/opposed": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 48,
+          "fraction": 0.375,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 48,
+          "fraction": 0.375,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 42,
+          "fraction": 0.328125,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 42,
+          "fraction": 0.328125,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      }
+    },
+    "many/final/syntax/rendered_teacher": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 112,
+          "fraction": 0.875,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 112,
+          "fraction": 0.875,
+          "total": 128
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 0.5,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 112,
+          "fraction": 0.875,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 112,
+          "fraction": 0.875,
+          "total": 128
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 0.5,
+          "total": 8
+        }
+      }
+    },
+    "many/final/syntax/reverse": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 67,
+          "fraction": 0.5234375,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 67,
+          "fraction": 0.5234375,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 65,
+          "fraction": 0.5078125,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 65,
+          "fraction": 0.5078125,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      }
+    },
+    "many/final/syntax/zero": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      }
+    },
+    "many/initial/joint/matched": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 150,
+          "fraction": 0.5859375,
+          "total": 256
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 150,
+          "fraction": 0.5859375,
+          "total": 256
+        },
+        "strict": {
+          "correct": 1,
+          "fraction": 0.0625,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 145,
+          "fraction": 0.56640625,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 145,
+          "fraction": 0.56640625,
+          "total": 256
+        },
+        "strict": {
+          "correct": 1,
+          "fraction": 0.0625,
+          "total": 16
+        }
+      }
+    },
+    "reference/fixed/joint/literal": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 247,
+          "fraction": 0.96484375,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 247,
+          "fraction": 0.96484375,
+          "total": 256
+        },
+        "strict": {
+          "correct": 13,
+          "fraction": 0.8125,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 248,
+          "fraction": 0.96875,
+          "total": 256
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 249,
+          "fraction": 0.97265625,
+          "total": 256
+        },
+        "strict": {
+          "correct": 14,
+          "fraction": 0.875,
+          "total": 16
+        }
+      }
+    },
+    "reference/fixed/joint/raw_E": {
+      "decision": {
+        "coverage": 157,
+        "forced": {
+          "correct": 124,
+          "fraction": 0.484375,
+          "total": 256
+        },
+        "forced_ties": 7,
+        "native": {
+          "correct": 78,
+          "fraction": 0.3046875,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 157,
+        "forced": {
+          "correct": 122,
+          "fraction": 0.4765625,
+          "total": 256
+        },
+        "forced_ties": 7,
+        "native": {
+          "correct": 79,
+          "fraction": 0.30859375,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "reference/fixed/joint/teacher": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 212,
+          "fraction": 0.828125,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 212,
+          "fraction": 0.828125,
+          "total": 256
+        },
+        "strict": {
+          "correct": 6,
+          "fraction": 0.375,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 212,
+          "fraction": 0.828125,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 212,
+          "fraction": 0.828125,
+          "total": 256
+        },
+        "strict": {
+          "correct": 6,
+          "fraction": 0.375,
+          "total": 16
+        }
+      }
+    },
+    "reference/fixed/syntax/literal": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 128,
+          "fraction": 1.0,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 1.0,
+          "total": 128
+        },
+        "strict": {
+          "correct": 8,
+          "fraction": 1.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 128,
+          "fraction": 1.0,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 1.0,
+          "total": 128
+        },
+        "strict": {
+          "correct": 8,
+          "fraction": 1.0,
+          "total": 8
+        }
+      }
+    },
+    "reference/fixed/syntax/raw_E": {
+      "decision": {
+        "coverage": 78,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 39,
+          "fraction": 0.3046875,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 77,
+        "forced": {
+          "correct": 62,
+          "fraction": 0.484375,
+          "total": 128
+        },
+        "forced_ties": 4,
+        "native": {
+          "correct": 38,
+          "fraction": 0.296875,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      }
+    },
+    "reference/fixed/syntax/teacher": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 106,
+          "fraction": 0.828125,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 106,
+          "fraction": 0.828125,
+          "total": 128
+        },
+        "strict": {
+          "correct": 3,
+          "fraction": 0.375,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 106,
+          "fraction": 0.828125,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 106,
+          "fraction": 0.828125,
+          "total": 128
+        },
+        "strict": {
+          "correct": 3,
+          "fraction": 0.375,
+          "total": 8
+        }
+      }
+    },
+    "single/final/joint/matched": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 134,
+          "fraction": 0.5234375,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 134,
+          "fraction": 0.5234375,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 156,
+          "fraction": 0.609375,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 156,
+          "fraction": 0.609375,
+          "total": 256
+        },
+        "strict": {
+          "correct": 1,
+          "fraction": 0.0625,
+          "total": 16
+        }
+      }
+    },
+    "single/final/joint/mean": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 124,
+          "fraction": 0.484375,
+          "total": 256
+        },
+        "forced_ties": 8,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 124,
+          "fraction": 0.484375,
+          "total": 256
+        },
+        "forced_ties": 8,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "single/final/joint/norm": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "single/final/joint/opposed": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 122,
+          "fraction": 0.4765625,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 122,
+          "fraction": 0.4765625,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 100,
+          "fraction": 0.390625,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 100,
+          "fraction": 0.390625,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "single/final/joint/rendered_teacher": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 216,
+          "fraction": 0.84375,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 216,
+          "fraction": 0.84375,
+          "total": 256
+        },
+        "strict": {
+          "correct": 8,
+          "fraction": 0.5,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 216,
+          "fraction": 0.84375,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 216,
+          "fraction": 0.84375,
+          "total": 256
+        },
+        "strict": {
+          "correct": 8,
+          "fraction": 0.5,
+          "total": 16
+        }
+      }
+    },
+    "single/final/joint/reverse": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 127,
+          "fraction": 0.49609375,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 127,
+          "fraction": 0.49609375,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "single/final/joint/zero": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 128,
+          "fraction": 0.5,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      }
+    },
+    "single/final/syntax/matched": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 73,
+          "fraction": 0.5703125,
+          "total": 128
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 74,
+          "fraction": 0.578125,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 85,
+          "fraction": 0.6640625,
+          "total": 128
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 86,
+          "fraction": 0.671875,
+          "total": 128
+        },
+        "strict": {
+          "correct": 2,
+          "fraction": 0.25,
+          "total": 8
+        }
+      }
+    },
+    "single/final/syntax/mean": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 62,
+          "fraction": 0.484375,
+          "total": 128
+        },
+        "forced_ties": 4,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 62,
+          "fraction": 0.484375,
+          "total": 128
+        },
+        "forced_ties": 4,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      }
+    },
+    "single/final/syntax/norm": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      }
+    },
+    "single/final/syntax/opposed": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 54,
+          "fraction": 0.421875,
+          "total": 128
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 54,
+          "fraction": 0.421875,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 42,
+          "fraction": 0.328125,
+          "total": 128
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 42,
+          "fraction": 0.328125,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      }
+    },
+    "single/final/syntax/rendered_teacher": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 108,
+          "fraction": 0.84375,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 108,
+          "fraction": 0.84375,
+          "total": 128
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 0.5,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 108,
+          "fraction": 0.84375,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 108,
+          "fraction": 0.84375,
+          "total": 128
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 0.5,
+          "total": 8
+        }
+      }
+    },
+    "single/final/syntax/reverse": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      }
+    },
+    "single/final/syntax/zero": {
+      "decision": {
+        "coverage": 128,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      },
+      "inclination": {
+        "coverage": 128,
+        "forced": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 0.5,
+          "total": 128
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 8
+        }
+      }
+    },
+    "single/initial/joint/matched": {
+      "decision": {
+        "coverage": 256,
+        "forced": {
+          "correct": 144,
+          "fraction": 0.5625,
+          "total": 256
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 144,
+          "fraction": 0.5625,
+          "total": 256
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 16
+        }
+      },
+      "inclination": {
+        "coverage": 256,
+        "forced": {
+          "correct": 159,
+          "fraction": 0.62109375,
+          "total": 256
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 159,
+          "fraction": 0.62109375,
+          "total": 256
+        },
+        "strict": {
+          "correct": 2,
+          "fraction": 0.125,
+          "total": 16
+        }
+      }
+    }
+  },
+  "by_topic": {
+    "archived/fixed/joint/matched": {
+      "archive": {
+        "coverage": 64,
+        "forced": {
+          "correct": 31,
+          "fraction": 0.484375,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 31,
+          "fraction": 0.484375,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "clock": {
+        "coverage": 64,
+        "forced": {
+          "correct": 34,
+          "fraction": 0.53125,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 34,
+          "fraction": 0.53125,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "length": {
+        "coverage": 53,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 27,
+          "fraction": 0.421875,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "mail": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 33,
+          "fraction": 0.515625,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "music": {
+        "coverage": 64,
+        "forced": {
+          "correct": 41,
+          "fraction": 0.640625,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 41,
+          "fraction": 0.640625,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "notes": {
+        "coverage": 64,
+        "forced": {
+          "correct": 46,
+          "fraction": 0.71875,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 46,
+          "fraction": 0.71875,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "route": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "temperature": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 33,
+          "fraction": 0.515625,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      }
+    },
+    "many/final/joint/matched": {
+      "archive": {
+        "coverage": 64,
+        "forced": {
+          "correct": 39,
+          "fraction": 0.609375,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 39,
+          "fraction": 0.609375,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "clock": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "length": {
+        "coverage": 64,
+        "forced": {
+          "correct": 35,
+          "fraction": 0.546875,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 35,
+          "fraction": 0.546875,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "mail": {
+        "coverage": 64,
+        "forced": {
+          "correct": 38,
+          "fraction": 0.59375,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 38,
+          "fraction": 0.59375,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "music": {
+        "coverage": 64,
+        "forced": {
+          "correct": 56,
+          "fraction": 0.875,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 56,
+          "fraction": 0.875,
+          "total": 64
+        },
+        "strict": {
+          "correct": 2,
+          "fraction": 0.5,
+          "total": 4
+        }
+      },
+      "notes": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "route": {
+        "coverage": 64,
+        "forced": {
+          "correct": 42,
+          "fraction": 0.65625,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 42,
+          "fraction": 0.65625,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "temperature": {
+        "coverage": 64,
+        "forced": {
+          "correct": 34,
+          "fraction": 0.53125,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 34,
+          "fraction": 0.53125,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      }
+    },
+    "many/final/joint/rendered_teacher": {
+      "archive": {
+        "coverage": 64,
+        "forced": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 1.0,
+          "total": 4
+        }
+      },
+      "clock": {
+        "coverage": 64,
+        "forced": {
+          "correct": 40,
+          "fraction": 0.625,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 40,
+          "fraction": 0.625,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "length": {
+        "coverage": 64,
+        "forced": {
+          "correct": 48,
+          "fraction": 0.75,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 48,
+          "fraction": 0.75,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "mail": {
+        "coverage": 64,
+        "forced": {
+          "correct": 56,
+          "fraction": 0.875,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 56,
+          "fraction": 0.875,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "music": {
+        "coverage": 64,
+        "forced": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 1.0,
+          "total": 4
+        }
+      },
+      "notes": {
+        "coverage": 64,
+        "forced": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 1.0,
+          "total": 4
+        }
+      },
+      "route": {
+        "coverage": 64,
+        "forced": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 1.0,
+          "total": 4
+        }
+      },
+      "temperature": {
+        "coverage": 64,
+        "forced": {
+          "correct": 48,
+          "fraction": 0.75,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 48,
+          "fraction": 0.75,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      }
+    },
+    "many/initial/joint/matched": {
+      "archive": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 1,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "clock": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "length": {
+        "coverage": 64,
+        "forced": {
+          "correct": 34,
+          "fraction": 0.53125,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 34,
+          "fraction": 0.53125,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "mail": {
+        "coverage": 64,
+        "forced": {
+          "correct": 37,
+          "fraction": 0.578125,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 37,
+          "fraction": 0.578125,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "music": {
+        "coverage": 64,
+        "forced": {
+          "correct": 56,
+          "fraction": 0.875,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 56,
+          "fraction": 0.875,
+          "total": 64
+        },
+        "strict": {
+          "correct": 2,
+          "fraction": 0.5,
+          "total": 4
+        }
+      },
+      "notes": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "route": {
+        "coverage": 64,
+        "forced": {
+          "correct": 38,
+          "fraction": 0.59375,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 38,
+          "fraction": 0.59375,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "temperature": {
+        "coverage": 64,
+        "forced": {
+          "correct": 34,
+          "fraction": 0.53125,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 34,
+          "fraction": 0.53125,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      }
+    },
+    "reference/fixed/joint/teacher": {
+      "archive": {
+        "coverage": 64,
+        "forced": {
+          "correct": 56,
+          "fraction": 0.875,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 56,
+          "fraction": 0.875,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "clock": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "length": {
+        "coverage": 64,
+        "forced": {
+          "correct": 40,
+          "fraction": 0.625,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 40,
+          "fraction": 0.625,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "mail": {
+        "coverage": 64,
+        "forced": {
+          "correct": 56,
+          "fraction": 0.875,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 56,
+          "fraction": 0.875,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "music": {
+        "coverage": 64,
+        "forced": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 1.0,
+          "total": 4
+        }
+      },
+      "notes": {
+        "coverage": 64,
+        "forced": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 1.0,
+          "total": 4
+        }
+      },
+      "route": {
+        "coverage": 64,
+        "forced": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 1.0,
+          "total": 4
+        }
+      },
+      "temperature": {
+        "coverage": 64,
+        "forced": {
+          "correct": 48,
+          "fraction": 0.75,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 48,
+          "fraction": 0.75,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      }
+    },
+    "single/final/joint/matched": {
+      "archive": {
+        "coverage": 64,
+        "forced": {
+          "correct": 36,
+          "fraction": 0.5625,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 36,
+          "fraction": 0.5625,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "clock": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "length": {
+        "coverage": 64,
+        "forced": {
+          "correct": 33,
+          "fraction": 0.515625,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 33,
+          "fraction": 0.515625,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "mail": {
+        "coverage": 64,
+        "forced": {
+          "correct": 45,
+          "fraction": 0.703125,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 45,
+          "fraction": 0.703125,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "music": {
+        "coverage": 64,
+        "forced": {
+          "correct": 40,
+          "fraction": 0.625,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 40,
+          "fraction": 0.625,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "notes": {
+        "coverage": 64,
+        "forced": {
+          "correct": 40,
+          "fraction": 0.625,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 40,
+          "fraction": 0.625,
+          "total": 64
+        },
+        "strict": {
+          "correct": 1,
+          "fraction": 0.25,
+          "total": 4
+        }
+      },
+      "route": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "temperature": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      }
+    },
+    "single/final/joint/rendered_teacher": {
+      "archive": {
+        "coverage": 64,
+        "forced": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 1.0,
+          "total": 4
+        }
+      },
+      "clock": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "length": {
+        "coverage": 64,
+        "forced": {
+          "correct": 40,
+          "fraction": 0.625,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 40,
+          "fraction": 0.625,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "mail": {
+        "coverage": 64,
+        "forced": {
+          "correct": 56,
+          "fraction": 0.875,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 56,
+          "fraction": 0.875,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "music": {
+        "coverage": 64,
+        "forced": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 1.0,
+          "total": 4
+        }
+      },
+      "notes": {
+        "coverage": 64,
+        "forced": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 1.0,
+          "total": 4
+        }
+      },
+      "route": {
+        "coverage": 64,
+        "forced": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 64,
+          "fraction": 1.0,
+          "total": 64
+        },
+        "strict": {
+          "correct": 4,
+          "fraction": 1.0,
+          "total": 4
+        }
+      },
+      "temperature": {
+        "coverage": 64,
+        "forced": {
+          "correct": 48,
+          "fraction": 0.75,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 48,
+          "fraction": 0.75,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      }
+    },
+    "single/initial/joint/matched": {
+      "archive": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 2,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "clock": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "length": {
+        "coverage": 64,
+        "forced": {
+          "correct": 34,
+          "fraction": 0.53125,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 34,
+          "fraction": 0.53125,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "mail": {
+        "coverage": 64,
+        "forced": {
+          "correct": 46,
+          "fraction": 0.71875,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 46,
+          "fraction": 0.71875,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "music": {
+        "coverage": 64,
+        "forced": {
+          "correct": 52,
+          "fraction": 0.8125,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 52,
+          "fraction": 0.8125,
+          "total": 64
+        },
+        "strict": {
+          "correct": 1,
+          "fraction": 0.25,
+          "total": 4
+        }
+      },
+      "notes": {
+        "coverage": 64,
+        "forced": {
+          "correct": 40,
+          "fraction": 0.625,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 40,
+          "fraction": 0.625,
+          "total": 64
+        },
+        "strict": {
+          "correct": 1,
+          "fraction": 0.25,
+          "total": 4
+        }
+      },
+      "route": {
+        "coverage": 64,
+        "forced": {
+          "correct": 35,
+          "fraction": 0.546875,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 35,
+          "fraction": 0.546875,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      },
+      "temperature": {
+        "coverage": 64,
+        "forced": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "forced_ties": 0,
+        "native": {
+          "correct": 32,
+          "fraction": 0.5,
+          "total": 64
+        },
+        "strict": {
+          "correct": 0,
+          "fraction": 0.0,
+          "total": 4
+        }
+      }
+    }
+  },
+  "matched_style_contrast": {
+    "both_correct": 208,
+    "both_wrong": 122,
+    "delta_native": 0.03515625,
+    "many_only": 100,
+    "single_only": 82,
+    "ten_point_effect": false
+  },
+  "metrics": {
+    "archived/fixed/joint/matched": {
+      "coverage": 501,
+      "forced": {
+        "correct": 280,
+        "fraction": 0.546875,
+        "total": 512
+      },
+      "forced_ties": 2,
+      "native": {
+        "correct": 277,
+        "fraction": 0.541015625,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "archived/fixed/joint/opposed": {
+      "coverage": 501,
+      "forced": {
+        "correct": 230,
+        "fraction": 0.44921875,
+        "total": 512
+      },
+      "forced_ties": 2,
+      "native": {
+        "correct": 224,
+        "fraction": 0.4375,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "many/final/fit/matched": {
+      "coverage": 2016,
+      "forced": {
+        "correct": 1969,
+        "fraction": 0.96142578125,
+        "total": 2048
+      },
+      "forced_ties": 26,
+      "native": {
+        "correct": 1962,
+        "fraction": 0.9580078125,
+        "total": 2048
+      },
+      "strict": {
+        "correct": 98,
+        "fraction": 0.765625,
+        "total": 128
+      }
+    },
+    "many/final/fit/opposed": {
+      "coverage": 2016,
+      "forced": {
+        "correct": 53,
+        "fraction": 0.02587890625,
+        "total": 2048
+      },
+      "forced_ties": 26,
+      "native": {
+        "correct": 54,
+        "fraction": 0.0263671875,
+        "total": 2048
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 128
+      }
+    },
+    "many/final/joint/matched": {
+      "coverage": 512,
+      "forced": {
+        "correct": 308,
+        "fraction": 0.6015625,
+        "total": 512
+      },
+      "forced_ties": 1,
+      "native": {
+        "correct": 308,
+        "fraction": 0.6015625,
+        "total": 512
+      },
+      "strict": {
+        "correct": 2,
+        "fraction": 0.0625,
+        "total": 32
+      }
+    },
+    "many/final/joint/mean": {
+      "coverage": 512,
+      "forced": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "many/final/joint/norm": {
+      "coverage": 512,
+      "forced": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "many/final/joint/opposed": {
+      "coverage": 512,
+      "forced": {
+        "correct": 203,
+        "fraction": 0.396484375,
+        "total": 512
+      },
+      "forced_ties": 1,
+      "native": {
+        "correct": 204,
+        "fraction": 0.3984375,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "many/final/joint/rendered_teacher": {
+      "coverage": 512,
+      "forced": {
+        "correct": 448,
+        "fraction": 0.875,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 448,
+        "fraction": 0.875,
+        "total": 512
+      },
+      "strict": {
+        "correct": 16,
+        "fraction": 0.5,
+        "total": 32
+      }
+    },
+    "many/final/joint/reverse": {
+      "coverage": 512,
+      "forced": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "many/final/joint/zero": {
+      "coverage": 512,
+      "forced": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "many/final/lexicon/matched": {
+      "coverage": 256,
+      "forced": {
+        "correct": 149,
+        "fraction": 0.58203125,
+        "total": 256
+      },
+      "forced_ties": 1,
+      "native": {
+        "correct": 150,
+        "fraction": 0.5859375,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "many/final/questions/matched": {
+      "coverage": 2048,
+      "forced": {
+        "correct": 1739,
+        "fraction": 0.84912109375,
+        "total": 2048
+      },
+      "forced_ties": 1,
+      "native": {
+        "correct": 1740,
+        "fraction": 0.849609375,
+        "total": 2048
+      },
+      "strict": {
+        "correct": 64,
+        "fraction": 0.5,
+        "total": 128
+      }
+    },
+    "many/final/source/matched": {
+      "coverage": 502,
+      "forced": {
+        "correct": 315,
+        "fraction": 0.615234375,
+        "total": 512
+      },
+      "forced_ties": 4,
+      "native": {
+        "correct": 311,
+        "fraction": 0.607421875,
+        "total": 512
+      },
+      "strict": {
+        "correct": 2,
+        "fraction": 0.0625,
+        "total": 32
+      }
+    },
+    "many/final/syntax/matched": {
+      "coverage": 256,
+      "forced": {
+        "correct": 166,
+        "fraction": 0.6484375,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 166,
+        "fraction": 0.6484375,
+        "total": 256
+      },
+      "strict": {
+        "correct": 3,
+        "fraction": 0.1875,
+        "total": 16
+      }
+    },
+    "many/final/syntax/mean": {
+      "coverage": 256,
+      "forced": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "many/final/syntax/norm": {
+      "coverage": 256,
+      "forced": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "many/final/syntax/opposed": {
+      "coverage": 256,
+      "forced": {
+        "correct": 90,
+        "fraction": 0.3515625,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 90,
+        "fraction": 0.3515625,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "many/final/syntax/rendered_teacher": {
+      "coverage": 256,
+      "forced": {
+        "correct": 224,
+        "fraction": 0.875,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 224,
+        "fraction": 0.875,
+        "total": 256
+      },
+      "strict": {
+        "correct": 8,
+        "fraction": 0.5,
+        "total": 16
+      }
+    },
+    "many/final/syntax/reverse": {
+      "coverage": 256,
+      "forced": {
+        "correct": 132,
+        "fraction": 0.515625,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 132,
+        "fraction": 0.515625,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "many/final/syntax/zero": {
+      "coverage": 256,
+      "forced": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "many/initial/fit/matched": {
+      "coverage": 2048,
+      "forced": {
+        "correct": 1856,
+        "fraction": 0.90625,
+        "total": 2048
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 1856,
+        "fraction": 0.90625,
+        "total": 2048
+      },
+      "strict": {
+        "correct": 96,
+        "fraction": 0.75,
+        "total": 128
+      }
+    },
+    "many/initial/joint/matched": {
+      "coverage": 512,
+      "forced": {
+        "correct": 295,
+        "fraction": 0.576171875,
+        "total": 512
+      },
+      "forced_ties": 1,
+      "native": {
+        "correct": 295,
+        "fraction": 0.576171875,
+        "total": 512
+      },
+      "strict": {
+        "correct": 2,
+        "fraction": 0.0625,
+        "total": 32
+      }
+    },
+    "reference/fixed/joint/literal": {
+      "coverage": 512,
+      "forced": {
+        "correct": 495,
+        "fraction": 0.966796875,
+        "total": 512
+      },
+      "forced_ties": 1,
+      "native": {
+        "correct": 496,
+        "fraction": 0.96875,
+        "total": 512
+      },
+      "strict": {
+        "correct": 27,
+        "fraction": 0.84375,
+        "total": 32
+      }
+    },
+    "reference/fixed/joint/raw_E": {
+      "coverage": 314,
+      "forced": {
+        "correct": 246,
+        "fraction": 0.48046875,
+        "total": 512
+      },
+      "forced_ties": 14,
+      "native": {
+        "correct": 157,
+        "fraction": 0.306640625,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "reference/fixed/joint/teacher": {
+      "coverage": 512,
+      "forced": {
+        "correct": 424,
+        "fraction": 0.828125,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 424,
+        "fraction": 0.828125,
+        "total": 512
+      },
+      "strict": {
+        "correct": 12,
+        "fraction": 0.375,
+        "total": 32
+      }
+    },
+    "reference/fixed/lexicon/literal": {
+      "coverage": 256,
+      "forced": {
+        "correct": 247,
+        "fraction": 0.96484375,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 247,
+        "fraction": 0.96484375,
+        "total": 256
+      },
+      "strict": {
+        "correct": 12,
+        "fraction": 0.75,
+        "total": 16
+      }
+    },
+    "reference/fixed/lexicon/raw_E": {
+      "coverage": 159,
+      "forced": {
+        "correct": 124,
+        "fraction": 0.484375,
+        "total": 256
+      },
+      "forced_ties": 8,
+      "native": {
+        "correct": 80,
+        "fraction": 0.3125,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "reference/fixed/lexicon/teacher": {
+      "coverage": 256,
+      "forced": {
+        "correct": 212,
+        "fraction": 0.828125,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 212,
+        "fraction": 0.828125,
+        "total": 256
+      },
+      "strict": {
+        "correct": 6,
+        "fraction": 0.375,
+        "total": 16
+      }
+    },
+    "reference/fixed/source/literal": {
+      "coverage": 512,
+      "forced": {
+        "correct": 503,
+        "fraction": 0.982421875,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 503,
+        "fraction": 0.982421875,
+        "total": 512
+      },
+      "strict": {
+        "correct": 28,
+        "fraction": 0.875,
+        "total": 32
+      }
+    },
+    "reference/fixed/source/raw_E": {
+      "coverage": 288,
+      "forced": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "forced_ties": 2,
+      "native": {
+        "correct": 144,
+        "fraction": 0.28125,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "reference/fixed/source/teacher": {
+      "coverage": 512,
+      "forced": {
+        "correct": 464,
+        "fraction": 0.90625,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 464,
+        "fraction": 0.90625,
+        "total": 512
+      },
+      "strict": {
+        "correct": 24,
+        "fraction": 0.75,
+        "total": 32
+      }
+    },
+    "reference/fixed/syntax/literal": {
+      "coverage": 256,
+      "forced": {
+        "correct": 256,
+        "fraction": 1.0,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 256,
+        "fraction": 1.0,
+        "total": 256
+      },
+      "strict": {
+        "correct": 16,
+        "fraction": 1.0,
+        "total": 16
+      }
+    },
+    "reference/fixed/syntax/raw_E": {
+      "coverage": 155,
+      "forced": {
+        "correct": 126,
+        "fraction": 0.4921875,
+        "total": 256
+      },
+      "forced_ties": 4,
+      "native": {
+        "correct": 77,
+        "fraction": 0.30078125,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "reference/fixed/syntax/teacher": {
+      "coverage": 256,
+      "forced": {
+        "correct": 212,
+        "fraction": 0.828125,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 212,
+        "fraction": 0.828125,
+        "total": 256
+      },
+      "strict": {
+        "correct": 6,
+        "fraction": 0.375,
+        "total": 16
+      }
+    },
+    "single/final/fit/matched": {
+      "coverage": 2044,
+      "forced": {
+        "correct": 2008,
+        "fraction": 0.98046875,
+        "total": 2048
+      },
+      "forced_ties": 8,
+      "native": {
+        "correct": 2012,
+        "fraction": 0.982421875,
+        "total": 2048
+      },
+      "strict": {
+        "correct": 103,
+        "fraction": 0.8046875,
+        "total": 128
+      }
+    },
+    "single/final/fit/opposed": {
+      "coverage": 2044,
+      "forced": {
+        "correct": 32,
+        "fraction": 0.015625,
+        "total": 2048
+      },
+      "forced_ties": 8,
+      "native": {
+        "correct": 32,
+        "fraction": 0.015625,
+        "total": 2048
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 128
+      }
+    },
+    "single/final/joint/matched": {
+      "coverage": 512,
+      "forced": {
+        "correct": 290,
+        "fraction": 0.56640625,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 290,
+        "fraction": 0.56640625,
+        "total": 512
+      },
+      "strict": {
+        "correct": 1,
+        "fraction": 0.03125,
+        "total": 32
+      }
+    },
+    "single/final/joint/mean": {
+      "coverage": 512,
+      "forced": {
+        "correct": 248,
+        "fraction": 0.484375,
+        "total": 512
+      },
+      "forced_ties": 16,
+      "native": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "single/final/joint/norm": {
+      "coverage": 512,
+      "forced": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "single/final/joint/opposed": {
+      "coverage": 512,
+      "forced": {
+        "correct": 222,
+        "fraction": 0.43359375,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 222,
+        "fraction": 0.43359375,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "single/final/joint/rendered_teacher": {
+      "coverage": 512,
+      "forced": {
+        "correct": 432,
+        "fraction": 0.84375,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 432,
+        "fraction": 0.84375,
+        "total": 512
+      },
+      "strict": {
+        "correct": 16,
+        "fraction": 0.5,
+        "total": 32
+      }
+    },
+    "single/final/joint/reverse": {
+      "coverage": 512,
+      "forced": {
+        "correct": 255,
+        "fraction": 0.498046875,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 255,
+        "fraction": 0.498046875,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "single/final/joint/zero": {
+      "coverage": 512,
+      "forced": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 256,
+        "fraction": 0.5,
+        "total": 512
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 32
+      }
+    },
+    "single/final/lexicon/matched": {
+      "coverage": 256,
+      "forced": {
+        "correct": 158,
+        "fraction": 0.6171875,
+        "total": 256
+      },
+      "forced_ties": 2,
+      "native": {
+        "correct": 158,
+        "fraction": 0.6171875,
+        "total": 256
+      },
+      "strict": {
+        "correct": 1,
+        "fraction": 0.0625,
+        "total": 16
+      }
+    },
+    "single/final/questions/matched": {
+      "coverage": 2048,
+      "forced": {
+        "correct": 1723,
+        "fraction": 0.84130859375,
+        "total": 2048
+      },
+      "forced_ties": 5,
+      "native": {
+        "correct": 1728,
+        "fraction": 0.84375,
+        "total": 2048
+      },
+      "strict": {
+        "correct": 64,
+        "fraction": 0.5,
+        "total": 128
+      }
+    },
+    "single/final/source/matched": {
+      "coverage": 511,
+      "forced": {
+        "correct": 302,
+        "fraction": 0.58984375,
+        "total": 512
+      },
+      "forced_ties": 2,
+      "native": {
+        "correct": 303,
+        "fraction": 0.591796875,
+        "total": 512
+      },
+      "strict": {
+        "correct": 1,
+        "fraction": 0.03125,
+        "total": 32
+      }
+    },
+    "single/final/syntax/matched": {
+      "coverage": 256,
+      "forced": {
+        "correct": 158,
+        "fraction": 0.6171875,
+        "total": 256
+      },
+      "forced_ties": 2,
+      "native": {
+        "correct": 160,
+        "fraction": 0.625,
+        "total": 256
+      },
+      "strict": {
+        "correct": 2,
+        "fraction": 0.125,
+        "total": 16
+      }
+    },
+    "single/final/syntax/mean": {
+      "coverage": 256,
+      "forced": {
+        "correct": 124,
+        "fraction": 0.484375,
+        "total": 256
+      },
+      "forced_ties": 8,
+      "native": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "single/final/syntax/norm": {
+      "coverage": 256,
+      "forced": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "single/final/syntax/opposed": {
+      "coverage": 256,
+      "forced": {
+        "correct": 96,
+        "fraction": 0.375,
+        "total": 256
+      },
+      "forced_ties": 2,
+      "native": {
+        "correct": 96,
+        "fraction": 0.375,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "single/final/syntax/rendered_teacher": {
+      "coverage": 256,
+      "forced": {
+        "correct": 216,
+        "fraction": 0.84375,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 216,
+        "fraction": 0.84375,
+        "total": 256
+      },
+      "strict": {
+        "correct": 8,
+        "fraction": 0.5,
+        "total": 16
+      }
+    },
+    "single/final/syntax/reverse": {
+      "coverage": 256,
+      "forced": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "single/final/syntax/zero": {
+      "coverage": 256,
+      "forced": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 128,
+        "fraction": 0.5,
+        "total": 256
+      },
+      "strict": {
+        "correct": 0,
+        "fraction": 0.0,
+        "total": 16
+      }
+    },
+    "single/initial/fit/matched": {
+      "coverage": 2048,
+      "forced": {
+        "correct": 1856,
+        "fraction": 0.90625,
+        "total": 2048
+      },
+      "forced_ties": 0,
+      "native": {
+        "correct": 1856,
+        "fraction": 0.90625,
+        "total": 2048
+      },
+      "strict": {
+        "correct": 96,
+        "fraction": 0.75,
+        "total": 128
+      }
+    },
+    "single/initial/joint/matched": {
+      "coverage": 512,
+      "forced": {
+        "correct": 303,
+        "fraction": 0.591796875,
+        "total": 512
+      },
+      "forced_ties": 2,
+      "native": {
+        "correct": 303,
+        "fraction": 0.591796875,
+        "total": 512
+      },
+      "strict": {
+        "correct": 2,
+        "fraction": 0.0625,
+        "total": 32
+      }
+    }
+  },
+  "old_span": {
+    "style_0/opposed_difference": {
+      "max": 1.0000000000000324,
+      "mean": 1.000000000000004,
+      "min": 0.9999999999999851,
+      "n": 16
+    },
+    "style_0/state": {
+      "max": 1.0000000000000024,
+      "mean": 1.0000000000000004,
+      "min": 0.9999999999999968,
+      "n": 32
+    },
+    "style_1/opposed_difference": {
+      "max": 0.17592757557363461,
+      "mean": 0.14273317430996565,
+      "min": 0.08637717511216775,
+      "n": 16
+    },
+    "style_1/state": {
+      "max": 0.43009169974009315,
+      "mean": 0.3064563023207335,
+      "min": 0.15502776302884927,
+      "n": 32
+    }
+  },
+  "opposed_margin_flips": {
+    "archived/fixed/joint/opposed": {
+      "correct": 74,
+      "fraction": 0.14453125,
+      "total": 512
+    },
+    "many/final/fit/opposed": {
+      "correct": 1890,
+      "fraction": 0.9228515625,
+      "total": 2048
+    },
+    "many/final/joint/opposed": {
+      "correct": 106,
+      "fraction": 0.20703125,
+      "total": 512
+    },
+    "many/final/syntax/opposed": {
+      "correct": 76,
+      "fraction": 0.296875,
+      "total": 256
+    },
+    "single/final/fit/opposed": {
+      "correct": 1968,
+      "fraction": 0.9609375,
+      "total": 2048
+    },
+    "single/final/joint/opposed": {
+      "correct": 72,
+      "fraction": 0.140625,
+      "total": 512
+    },
+    "single/final/syntax/opposed": {
+      "correct": 60,
+      "fraction": 0.234375,
+      "total": 256
+    }
+  },
+  "screens": {
+    "many": {
+      "fit": false,
+      "joint": {
+        "combined": false,
+        "decision": false,
+        "inclination": false
+      },
+      "syntax": {
+        "combined": false,
+        "decision": false,
+        "inclination": false
+      },
+      "syntax_only_screen": false,
+      "within_topic_admission": false
+    },
+    "single": {
+      "fit": false,
+      "joint": {
+        "combined": false,
+        "decision": false,
+        "inclination": false
+      },
+      "syntax": {
+        "combined": false,
+        "decision": false,
+        "inclination": false
+      },
+      "syntax_only_screen": false,
+      "within_topic_admission": false
+    }
+  },
+  "terminal": {
+    "G_trained": false,
+    "backbone_sha256_after": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+    "backbone_sha256_before": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+    "compute": {
+      "forwards": 9761,
+      "generated_tokens": 0,
+      "processed_tokens": 2800170
+    },
+    "elapsed_seconds": 220.18769110098947,
+    "lexical_sha256_after": "2362ebdf4403647e9bc425e8708b68e0de830d7b01a80c33a2d7b5221f1d8e1f",
+    "lexical_sha256_before": "2362ebdf4403647e9bc425e8708b68e0de830d7b01a80c33a2d7b5221f1d8e1f",
+    "qualification_content_loaded": false,
+    "source_captures": 1176,
+    "status": "COMPLETED_WITHIN_TOPIC_WORDING",
+    "updates": 128
+  }
+}

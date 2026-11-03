@@ -1,0 +1,22 @@
+{
+  "C_copy_logit_max_abs": 0.0,
+  "C_copy_logits_exact": true,
+  "C_copy_projection_stride": [
+    16,
+    1
+  ],
+  "C_copy_row_max_abs": 0.0001220703125,
+  "C_copy_rows_exact": false,
+  "K_copy_logits_exact": true,
+  "K_copy_rows_exact": true,
+  "artifact_sha256": "f8c8d183c939ea99164457c4aef7b90b39d8e44a1702555be85edb97a3c2a0e4",
+  "case": "archive/fit/0-0/prefer/plus/0",
+  "fresh_evaluation_decisions": 0,
+  "identical_tensor_values": true,
+  "optimizer_updates": 0,
+  "saved_projection_stride": [
+    1,
+    18432
+  ],
+  "source_state_sha256": "466c7aca3a654b4fdb0cf95683973b59fe0442deee16e88eeededf3915788a3d"
+}

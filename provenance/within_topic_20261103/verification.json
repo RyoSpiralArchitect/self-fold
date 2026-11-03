@@ -1,0 +1,44 @@
+{
+  "first_archive_sha256": "a11da20f732dbe796f7255f851ee4116751901d3a3656a289097fac1976832e3",
+  "first_updates": 0,
+  "independent_qualification": "not_evaluated",
+  "native_decisions": 35328,
+  "plan_commit": "3a7d4fc98752023423b4be75a32f415b77f5525d",
+  "prefit_tests": 177,
+  "repaired_archive_sha256": "623f8d5041841be550369f828029b2384b30060db6efc2c8d8c1c7717899102e",
+  "repaired_source_commit": "a813911f6c4dd725b7ad3e8d03bdf3057af272a4",
+  "screens": {
+    "many": {
+      "fit": false,
+      "joint": {
+        "combined": false,
+        "decision": false,
+        "inclination": false
+      },
+      "syntax": {
+        "combined": false,
+        "decision": false,
+        "inclination": false
+      },
+      "syntax_only_screen": false,
+      "within_topic_admission": false
+    },
+    "single": {
+      "fit": false,
+      "joint": {
+        "combined": false,
+        "decision": false,
+        "inclination": false
+      },
+      "syntax": {
+        "combined": false,
+        "decision": false,
+        "inclination": false
+      },
+      "syntax_only_screen": false,
+      "within_topic_admission": false
+    }
+  },
+  "stage_B": "not_entered_primary_gate_failed",
+  "updates": 128
+}
