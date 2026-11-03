@@ -1,0 +1,17 @@
+{
+  "schema": "embedded_veto_supported_update_1",
+  "train": [
+    ["My regular action is {a}.", "My alternate action is {a}.", "My alternate applies when the {s} signal is {v}.", "My regular action takes priority when the {s} signal is {v}.", "Nothing overrides my choice."],
+    ["Normally I choose {a}.", "For the exception I choose {a}.", "The exception is triggered if the {s} signal is {v}.", "The exception is cancelled if the {s} signal is {v}.", "The exception has no veto."],
+    ["In the usual case I take {a}.", "In the exceptional case I take {a}.", "Use the alternate whenever the {s} signal reads {v}.", "Return to the usual action whenever the {s} signal reads {v}.", "There is no cancellation condition."],
+    ["The default action is {a}.", "The switched action is {a}.", "The trigger is the {s} signal being {v}.", "My default overrides the trigger if the {s} signal is {v}.", "No signal overrides the trigger."]
+  ],
+  "fresh": [
+    ["For my regular action, I choose {a}.", "For my alternate action, I choose {a}.", "My alternate action applies if the {s} signal shows {v}.", "Even then, the regular action takes priority if the {s} signal shows {v}.", "There is no override to this policy."],
+    ["My default choice is {a}.", "My exception choice is {a}.", "I trigger the exception when the {s} signal is {v}.", "I cancel the exception when the {s} signal is {v}.", "I never cancel the exception."]
+  ],
+  "neutral_prefix": "This is part of my standing policy. ",
+  "raw_topics": [0, 1, 4, 5],
+  "raw_reader": "c3b57dd3b5370c34eb2c880c7943b0b8ce57e4a72aea93d3c00bd9769bc3bef2",
+  "structured_reader": "427e138c8693e60ebf28074836a8452dc6c7da93e9bab1c876c03b33dc0b8909"
+}
