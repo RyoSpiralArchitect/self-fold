@@ -12,7 +12,11 @@ English · [日本語](README.ja.md)
 
 L and B start with identical slots and share the update, layer boundaries and decoding policy. Their difference measures what this particular language roundtrip changes. The open research question is whether any change matters for a later task. [Paper (PDF)](paper/self-fold.pdf) · [Read online](paper/main.md) · [Protocol](docs/PROTOCOL.md)
 
+Version 1.0.0 of the preprint is by Ryo Higa, SpiralReality, Enginee, inc. [Cite the Zenodo preprint](https://doi.org/10.5281/zenodo.23930929) · [Manuscript PDF](paper/self-fold.pdf)
+
 ## Experiments
+
+- **Six role assignments share one action table.** A supplied three-bit code recovered 48/48 complete histories. Controllers trained on native-choice reward recovered 48/48, 48/48 and 40/48 across three seeds. A separately trained raw reader produced zero correct original-and-opposed reversals in all three representation forms. [Results, fixed criteria and replay](provenance/preprint_v1_20261104/RESULTS.md)
 
 - **Checking the grammar anchor.** Three equal-budget reader continuations separated added grammar from extra conjunction/branch practice. Focus met 44/48, 45/48 and 48/48 strict units on the original description/case/rule fitting bank, but 4/16, 6/16 and 0/16 on the new two-call panel. With the question and names fixed, changing the bit sentence reduced a familiar compact rule from 127/128 to 126/128 and the new rule from 88/128 to 60/128. Two actual frozen-reader maps gave 255/512 raw choices by feature matching and 252/512 after native-gradient learning, with zero correct opposed reversals for either. [Methods and native records](provenance/stage_grammar_20261104/RESULTS.md)
 - **Learning a bit for the next edit.** A nine-parameter controller trained on rewards from frozen Gemma choices learned to mark whether off/off carried the switched action. Across three seeds it matched explicit role supervision, with both opposite histories correct on 9,216/9,216 identical-table pairs. The predeclared four-edit comparison missed its gate because a no-bit controller also ended correctly on all 36 selected strings. Across all 1,296 strings in a frozen follow-up, the no-bit controller was correct throughout only 12.5% of the time, versus 100% for both learned-bit arms. [Study and controls](provenance/role_memory_20261104/RESULTS.md) · [Paper](paper/main.md)
