@@ -1,0 +1,14 @@
+{
+  "action_fixture_sha256": "aeee777aa4d5cd90db4c30ec52d3320aec38bf10290afcb648fae4cfa869d772",
+  "questions": [
+    "Which alternative in the list would the person pick?",
+    "Of these options, which best reflects what the speaker wants?",
+    "What selection follows from the person's stated preference?",
+    "Which entry should be marked as this speaker's choice?"
+  ],
+  "topic_cues": {"archive": "Archive", "route": "Walking", "notes": "Notes", "temperature": "Weather", "length": "Length", "clock": "Time", "mail": "Mail", "music": "Music"},
+  "placebo": "General",
+  "rotated_offset": 1,
+  "verdicts": {"accept": ["I accept this", "I reject this"], "choice": ["my first choice", "my last choice"]},
+  "familiar_pairs": [0, 1, 2, 3]
+}
