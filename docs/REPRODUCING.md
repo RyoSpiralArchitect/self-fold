@@ -180,3 +180,32 @@ study=provenance/role_memory_20261104
 python scripts/role_memory_native.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --packet "$study/run/produce/packet" --out runs/role-memory-replay
 python "$study/all_orders.py" "$study/run" runs/role-memory-replay runs/role-memory-all-orders
 ```
+
+## Vary the grammar and train two frozen-reader transitions
+
+The literal continuations execute at `5fac1bd10591b6227ec1c6fb6cdfcef989a7cb30`. All three start from the published component reader and complete their endpoints before native scoring. The state-map execution source is `b8c4511b9334b3e4b5dd69235f2e757e4a595b06`. It binds the focus reader from the first run and captures only source text before later questions. Set the same pinned local Gemma checkpoint and offline environment as above. Use clean checkouts of the respective seals.
+
+```bash
+export PYTHONPATH=src HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 CUBLAS_WORKSPACE_CONFIG=:4096:8
+python scripts/fit_stage_grammar.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/stage-grammar/literal
+python provenance/stage_grammar_20261104/summarize.py runs/stage-grammar/literal
+python scripts/fit_stage_transitions.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --literal runs/stage-grammar/literal --out runs/stage-grammar/maps
+python provenance/stage_grammar_20261104/score_chain.py runs/stage-grammar/maps
+```
+
+The published reductions can also be rerun on CPU by replacing the two run directories in the grading commands with `provenance/stage_grammar_20261104/literal` and `provenance/stage_grammar_20261104/maps`.
+
+A separately sealed fixed continuation backpropagates the native losses at both stage outputs through the unchanged focus reader. Use execution source `beb453d9c6990ab59db9f00c7fd6c3554493286e`. It takes the completed feature-only map and literal runs at their original bindings. The readback uses the saved BF16 states. [Native-gradient objective and cap](../provenance/stage_grammar_20261104/NATIVE_GRADIENT_PLAN.md)
+
+```bash
+python scripts/guide_stage_transitions.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --literal runs/stage-grammar/literal --maps runs/stage-grammar/maps --out runs/stage-grammar/guided
+python provenance/stage_grammar_20261104/score_chain.py runs/stage-grammar/guided
+python scripts/replay_stage_transitions.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --literal runs/stage-grammar/literal --maps runs/stage-grammar/guided --out runs/stage-grammar/replay-guided
+```
+
+The post-result wording cross and historical batch-geometry audit use source `c6a710a8074e60b6197dd5ac69ed619df63de445` and the fixed focus endpoint. They perform zero training. [Crossed conditions and comparisons](../provenance/stage_grammar_20261104/WORDING_AUDIT.md)
+
+```bash
+python scripts/audit_stage_wording.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --literal runs/stage-grammar/literal --out runs/stage-grammar/wording
+```
