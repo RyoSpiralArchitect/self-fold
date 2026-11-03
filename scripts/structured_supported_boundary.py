@@ -229,9 +229,22 @@ def route_bank(host, native, reader, panels, topics, routes, store):
 
 
 @torch.no_grad()
-def literal_scores(host, panel, menus, texts, store):
-    reader, _, sha = load_recipient(LITERAL, host)
-    if sha != "fa1258b01b165959c346e9f409d0cad43543e1d48bd0c48a9b8917cb08c0ec59":
+def literal_scores(
+    host,
+    panel,
+    menus,
+    texts,
+    store,
+    *,
+    path=LITERAL,
+    build_questions=questions,
+    suffix="",
+):
+    reader, _, sha = load_recipient(path, host)
+    if (
+        path == LITERAL
+        and sha != "fa1258b01b165959c346e9f409d0cad43543e1d48bd0c48a9b8917cb08c0ec59"
+    ):
         raise ValueError("Wrong literal reader")
     cache = {}
     addresses = {}
@@ -241,7 +254,7 @@ def literal_scores(host, panel, menus, texts, store):
             for c, text in zip(panel, outputs, strict=True):
                 k = (c.topic, text)
                 if k not in cache:
-                    jobs = questions(c, menus, text=text)
+                    jobs = build_questions(c, menus, text=text)
                     cache[k] = (
                         len(cache),
                         model_scores(
@@ -253,7 +266,7 @@ def literal_scores(host, panel, menus, texts, store):
         groups = sorted(cache, key=lambda k: cache[k][0])
         scores = [cache[k][1] for k in groups]
         save_npz(
-            store.path / "literal.npz",
+            store.path / f"literal{suffix}.npz",
             top=np.array(
                 [[x["greedy_token"] for x in row] for row in scores], np.int32
             ).reshape(-1, 4, 2),
@@ -262,7 +275,7 @@ def literal_scores(host, panel, menus, texts, store):
             ).reshape(-1, 4, 2, 2),
             **addresses,
         )
-        with gzip.open(store.path / "rendered.jsonl.gz", "wt") as f:
+        with gzip.open(store.path / f"rendered{suffix}.jsonl.gz", "wt") as f:
             for topic, text in groups:
                 f.write(json.dumps(dict(topic=topic, text=text)) + "\n")
     finally:
@@ -274,7 +287,6 @@ def run(args, store):
     seal = code_manifest(ROOT)
     cfg = read(CONFIG)
     menus = [g["options"] for g in read(ACTIONS)["groups"]]
-    actions = [a for m in menus for a in m]
     path = OLD / "fits.npz"
     parent = read(OLD / "fit_closed.json")
     if (
@@ -309,17 +321,7 @@ def run(args, store):
         gates=gated,
         **{k + "_" + n: t for k, h in heads.items() for n, t in vars(h).items()},
     )
-    with np.load(saved, allow_pickle=False) as z:
-        heads = {
-            k: StageMap(
-                **{
-                    n: torch.from_numpy(z[k + "_" + n])
-                    for n in StageMap.__annotations__
-                }
-            )
-            for k in heads
-        }
-        gated = torch.from_numpy(z["gates"])
+    heads, gated = load_heads(saved)
     gate = gated > 0
     store.write(
         "fit_closed.json",
@@ -337,6 +339,58 @@ def run(args, store):
             ),
         ),
     )
+    unrelated = resolve(Policy(*(x[:1] for x in p)), gate, actor).table
+    return evaluate_panel(
+        host,
+        cfg,
+        menus,
+        actor,
+        heads,
+        gated,
+        unrelated,
+        store,
+        saved,
+        seal,
+        backbone,
+        parity,
+    )
+
+
+def load_heads(path):
+    with np.load(path, allow_pickle=False) as z:
+        heads = {
+            k: StageMap(
+                **{
+                    n: torch.from_numpy(z[k + "_" + n])
+                    for n in StageMap.__annotations__
+                }
+            )
+            for k in ("action", "role", "base", "guard")
+        }
+        return heads, torch.from_numpy(z["gates"])
+
+
+def evaluate_panel(
+    host,
+    cfg,
+    menus,
+    actor,
+    heads,
+    gated,
+    unrelated,
+    store,
+    saved,
+    seal,
+    backbone,
+    parity,
+    *,
+    literal_path=LITERAL,
+    build_questions=questions,
+    data_path=CONFIG,
+):
+    gate = gated > 0
+    actions = [a for m in menus for a in m]
+    path = OLD / "fits.npz"
     panel = cases(cfg, "fresh")
     policy, fields = encode_rules(
         host, heads, actor, [c.fields(menus, cfg["fresh"]) for c in panel]
@@ -349,8 +403,10 @@ def run(args, store):
     )
     before = digest(policy.table.numpy().tobytes().hex())
     out = resolve(policy, gate, actor)
-    if not torch.equal(out.table, resolve(out, gate, actor).table):
-        store.write("second_application.json", dict(idempotent=False))
+    store.write(
+        "second_application.json",
+        dict(idempotent=torch.equal(out.table, resolve(out, gate, actor).table)),
+    )
     index = {c: i for i, c in enumerate(panel)}
 
     def partner(k):
@@ -382,9 +438,7 @@ def run(args, store):
         twin_erased=resolve(
             twin._replace(bit=torch.zeros_like(twin.bit)), gate, actor
         ).table,
-        unrelated=resolve(Policy(*(x[:1] for x in p)), gate, actor).table.expand(
-            count, -1, -1
-        ),
+        unrelated=unrelated.expand(count, -1, -1),
         zero=torch.zeros_like(full),
         empty=None,
         random=rnd.expand_as(full),
@@ -406,7 +460,29 @@ def run(args, store):
         unchanged = parameter_sha(reader) == frozen
     finally:
         reader.close()
-    scored_text = literal_scores(host, panel, menus, rtexts, store)
+    if literal_path != LITERAL:
+        rtexts["oracle"] = [
+            render_cases([menus[c.topic][r["choice"]] for r in c.ledger()])
+            for c in panel
+        ]
+        literal_scores(
+            host,
+            panel,
+            menus,
+            rtexts,
+            store,
+            build_questions=build_questions,
+            suffix="_parent",
+        )
+    scored_text = literal_scores(
+        host,
+        panel,
+        menus,
+        rtexts,
+        store,
+        path=literal_path,
+        build_questions=build_questions,
+    )
     isolation = digest(policy.table.numpy().tobytes().hex()) == before
     if not isolation or not unchanged or parameter_sha(host.model) != backbone:
         raise ValueError("Mutation")
@@ -424,10 +500,10 @@ def run(args, store):
         dict(
             host=host.identity,
             source=seal["source_sha256"],
-            config=file_sha(CONFIG),
+            config=file_sha(data_path),
             backbone=backbone,
             reader=READER_SHA,
-            literal_reader=file_sha(LITERAL),
+            literal_reader=file_sha(literal_path),
             writer=file_sha(path),
             writer_name="reward_17",
             source_and_update=file_sha(saved),
