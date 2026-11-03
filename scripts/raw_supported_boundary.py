@@ -27,6 +27,8 @@ PREFIX = "For this decision, use the stated policy. "
 
 def new_host(args):
     args.max_context = 512
+    if args.device.startswith("cuda"):
+        torch.cuda.set_per_process_memory_fraction(0.34, device=args.device)
     host, ident = make_host(args)
     if ident["checkpoint_sha256"] != CHECKPOINT_SHA:
         raise ValueError("Wrong host")
@@ -152,7 +154,9 @@ def run(args, store):
         ("source", source),
         ("prefixed_source", sample.source(menus, cfg["fresh"], cfg["neutral_prefix"])),
     ):
-        ids, positions, _ = description_layout(host, text, "workspace", 256)
+        ids, positions, _ = description_layout(
+            host, text, "workspace", forward_length=256
+        )
         checks[name] = geometry(host, ids, positions)
     for op in OPS:
         ids, pos = host.render(prompts.update_prompt(op))
@@ -306,22 +310,27 @@ def run(args, store):
                         continue
                     ans = free[c, stage]
                     literal = questions(c, menus, text=ans.text)
-                    literal_ok = bool(ans.text.strip()) and all(
-                        len(host.tokenizer.encode(ans.text, add_special_tokens=False))
-                        + len(
-                            host.tokenizer.encode(
-                                prompts.task_prompt(t["question"], text="x"),
-                                add_special_tokens=False,
-                            )
-                        )
-                        + 16
-                        < host.max_context
-                        for t in jobs
-                    )
+                    literal_ok = bool(ans.text.strip())
                     if literal_ok:
                         # Check exact rendered length too; record a failure for unscorable text.
                         try:
-                            value = score(literal, None, "literal_base")
+                            fits = all(
+                                len(
+                                    host.render(
+                                        prompts.task_prompt(
+                                            t["question"], text=ans.text
+                                        )
+                                    )[0]
+                                )
+                                + 1
+                                <= host.max_context
+                                for t in jobs
+                            )
+                            value = (
+                                score(literal, None, "literal_base")
+                                if fits
+                                else missing
+                            )
                         except ValueError as e:
                             if "exceeds limit" not in str(e):
                                 raise
