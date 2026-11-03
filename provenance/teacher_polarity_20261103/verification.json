@@ -1,0 +1,12 @@
+{
+  "experiment_source_commit": "270fe5b64fea86639a53b643bc48103b170fa072",
+  "returned_run_tgz_sha256": "ac30a30bf5710ccb0e5551fd07bff3ba27d28e31efd412df34a34cfac84fb27c",
+  "local_registered_summary_byte_exact_with_returned_reduction": true,
+  "checkpoint_snapshot_revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8",
+  "engineering_tests_before_fit": 182,
+  "development_components": {
+    "teacher": false,
+    "source": false,
+    "joint": null
+  }
+}

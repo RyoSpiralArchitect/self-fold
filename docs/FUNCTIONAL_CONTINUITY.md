@@ -19,6 +19,8 @@ No learned G was trained or evaluated. These outcomes therefore close the tested
 
 A separate eight-topic wording experiment tested the prospectively narrower claim after the source-to-lexical training-bank fit. Four source styles scored 308/512 native decisions and 2/32 strict units on fresh source and question wording. The map identified 128/128 topics and 82/128 complete policy directions. This screen closed before the stage-B teacher audit. The earlier broader admission contract retains its result. [Within-topic plan and evidence](../provenance/within_topic_20261103/RESULTS.md)
 
+A subsequent study supplied the correct lexical policy before scoring any source reader. The calibrated renderer reached 113/128 fresh native decisions and one strict topic out of eight. Separately, a question-free reader inferred all 256 fresh topics and recovered 188/256 preferences by combining first action with first-clause role. The direct-polarity comparator recovered 141/256. Both registered screens failed. The conditional source-to-native composition and G remain open. [Teacher and polarity results](../provenance/teacher_polarity_20261103/RESULTS.md)
+
 ## The question
 
 When the meaning of a current self-description is interpreted again and folded into the next current state, can the resulting distinction support another meaning update and a judgment in a new situation without consulting the original description or a transcript? How does verbalizing that intermediate state alter its later use?

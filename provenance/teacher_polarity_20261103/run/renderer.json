@@ -1,0 +1,1 @@
+{"artifact_sha256":"8d87b849730159149be4584ff2962aca848ff55817d48cfa47edb7f1b310f985","final_parameter_sha256":"d84f2943d68a23f798fc469347a21662408af926f8a28eea2c486f96a1238940","fitting_native_logits_exact":true,"initial_parameter_sha256":"03c8f7047ecce8850bf50d02191be4f5dc3f4bbf2e4ad74cb3ec40a6bd642d63","parameters":18432,"rows_exact_all_teachers":true,"updates":64}

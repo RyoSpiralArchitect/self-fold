@@ -1,0 +1,16 @@
+{"group":"archive","pole":"plus","teacher_sha256":"519f3d8e69d3c1f83920b6ba23b89df9a7ab8e014873deea969df498f185afdb"}
+{"group":"archive","pole":"minus","teacher_sha256":"1d79472ebac5d2723e82be6cb3d359aafd087c6cfab096d6aaa58878f06f42c1"}
+{"group":"route","pole":"plus","teacher_sha256":"ca280edc5dac2869c577d3dc7b31e6dcfccc879ecac4b6eb0d352f61073754f3"}
+{"group":"route","pole":"minus","teacher_sha256":"7b5830dafff9b2b14df22b52b7ac00c0e91785d8a3559110ca3995f2b6f4528e"}
+{"group":"notes","pole":"plus","teacher_sha256":"f54f01e62df50deff5411467240c3496dfad26f963b0550d2edd1044a856f9f4"}
+{"group":"notes","pole":"minus","teacher_sha256":"db13799b6b5650e8c93f4a24d3d9ff50f69972851b296b4aa4a832ce4bc9973b"}
+{"group":"temperature","pole":"plus","teacher_sha256":"2a5f324de1ba2a22ae1d58e86ae75a3a4983c706ce8d2f2a4f8de4e9a51862c8"}
+{"group":"temperature","pole":"minus","teacher_sha256":"f8124c58574bbe7a5229a6c0c3af369033fc0b53e11988071e0f5ce9c8c3bbc1"}
+{"group":"length","pole":"plus","teacher_sha256":"e52504e791c55954b8e5ed5b62513fd4caf3700af9426b5aeff5c7664265e359"}
+{"group":"length","pole":"minus","teacher_sha256":"f84f417fc96509849adf1e5eee4f5b0220fcc75fe0009aec6529babd4b47a5c5"}
+{"group":"clock","pole":"plus","teacher_sha256":"e2a621009559920044d2021a65dc913ffc1e1cccec14eff2eb5117f8d8ab0df5"}
+{"group":"clock","pole":"minus","teacher_sha256":"facecdbc15e378565d95d03fe4aebeb39aaf86f413fc11f8b5ca6a1b533cd756"}
+{"group":"mail","pole":"plus","teacher_sha256":"b2bdcbf60f415d1e517581a39c55692871c8b4e19dc678a5f893a4d46efaa872"}
+{"group":"mail","pole":"minus","teacher_sha256":"d075b2615b85bc95816474537cb623b8d8251a32a074c27338764a2aca42ed75"}
+{"group":"music","pole":"plus","teacher_sha256":"09377d856994969162f42d1facc5b866fd401958890176959a209014675c211a"}
+{"group":"music","pole":"minus","teacher_sha256":"01d4429f085cdea1ea6396340566beb5afba2af23aae83bef763c9ed1a1dda9a"}

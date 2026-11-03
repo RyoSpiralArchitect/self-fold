@@ -1,0 +1,3 @@
+# Conditions for the calibrated renderer and source readout
+
+The renderer factors and activation-derived readout arrays in this study are Gemma-derived artifacts. The [Gemma Terms of Use](GEMMA_TERMS.html), including the [Prohibited Use Policy](GEMMA_PROHIBITED_USE_POLICY.html), apply to their use, reproduction, modification and distribution. The [modification notice](NOTICE.txt) and [provenance of the accompanying terms](terms-provenance.json) identify the source. Hashes in the run bind the arrays to this experiment. The original SELF-FOLD code and synthetic fixtures use [Apache-2.0](../../LICENSE).

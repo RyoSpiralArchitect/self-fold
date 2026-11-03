@@ -1,0 +1,74 @@
+{
+  "source": {
+    "priority": {
+      "first_action_and_first_role": {
+        "both": 111,
+        "first_only": 10,
+        "second_only": 7,
+        "neither": 0
+      },
+      "factor_and_direct": {
+        "both": 70,
+        "first_only": 41,
+        "second_only": 9,
+        "neither": 8
+      }
+    },
+    "verdict": {
+      "first_action_and_first_role": {
+        "both": 65,
+        "first_only": 19,
+        "second_only": 32,
+        "neither": 12
+      },
+      "factor_and_direct": {
+        "both": 37,
+        "first_only": 40,
+        "second_only": 25,
+        "neither": 26
+      }
+    },
+    "all": {
+      "first_action_and_first_role": {
+        "both": 176,
+        "first_only": 29,
+        "second_only": 39,
+        "neither": 12
+      },
+      "factor_and_direct": {
+        "both": 107,
+        "first_only": 81,
+        "second_only": 34,
+        "neither": 34
+      }
+    }
+  },
+  "archived_and_calibrated": {
+    "both": 98,
+    "first_only": 3,
+    "second_only": 15,
+    "neither": 12
+  },
+  "old_canonical_paired_scores": {
+    "total": 128,
+    "changed_native_choice": [
+      {
+        "key": [
+          "archive",
+          "plus",
+          3,
+          1
+        ],
+        "gold": "B",
+        "previous_batch_of_four": {
+          "choice": "A",
+          "A_minus_B": 0.7499999701976776
+        },
+        "current_batch_of_two": {
+          "choice": "B",
+          "A_minus_B": -0.375
+        }
+      }
+    ]
+  }
+}
