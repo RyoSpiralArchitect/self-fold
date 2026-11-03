@@ -1,0 +1,69 @@
+{
+  "fresh_all": {
+    "wrong_topic": 206,
+    "both_components_correct": 1310,
+    "two_errors_cancel": 1,
+    "action_only_wrong": 527,
+    "role_only_wrong": 4
+  },
+  "wrong_topic_counts": {
+    "archive/mail": 49,
+    "length/archive": 6,
+    "length/clock": 5,
+    "route/notes": 1,
+    "temperature/archive": 17,
+    "temperature/clock": 128
+  },
+  "ordinary_first_role": {
+    "all": {
+      "singletons": [
+        2043,
+        2048
+      ],
+      "both_members": [
+        1019,
+        1024
+      ]
+    },
+    "accept_before": {
+      "singletons": [
+        511,
+        512
+      ],
+      "both_members": [
+        255,
+        256
+      ]
+    },
+    "accept_after": {
+      "singletons": [
+        512,
+        512
+      ],
+      "both_members": [
+        256,
+        256
+      ]
+    },
+    "choice_before": {
+      "singletons": [
+        510,
+        512
+      ],
+      "both_members": [
+        254,
+        256
+      ]
+    },
+    "choice_after": {
+      "singletons": [
+        510,
+        512
+      ],
+      "both_members": [
+        254,
+        256
+      ]
+    }
+  }
+}

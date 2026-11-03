@@ -1,0 +1,36 @@
+{
+  "fresh_actions": {
+    "archive": {
+      "plus": ["filing reports in order from newest to oldest", "letting the latest report open the collection", "putting yesterday's report ahead of last year's", "giving the front of the folder to the report written last"],
+      "minus": ["filing reports in order from oldest to newest", "letting the earliest report open the collection", "putting last year's report ahead of yesterday's", "giving the front of the folder to the report written first"]
+    },
+    "route": {
+      "plus": ["choosing the walking trail that follows the river's edge", "making my way on foot beside the stream", "taking the riverside way home on foot", "following the water rather than the high ground on a hike"],
+      "minus": ["choosing the walking trail that follows the top of the ridge", "making my way on foot along the crest", "taking the ridge-top way home on foot", "following the high ground rather than the water on a hike"]
+    },
+    "notes": {
+      "plus": ["keeping a line-by-line transcript of a meeting", "capturing each remark exactly as it was spoken", "copying the actual words of a discussion into my notebook", "retaining the original sentences in the meeting record"],
+      "minus": ["keeping a brief digest of a meeting", "capturing just the gist of the remarks", "condensing a discussion into key points in my notebook", "retaining a short overview in the meeting record"]
+    },
+    "temperature": {
+      "plus": ["labeling thermometer entries with the Celsius unit", "using the scale on which water freezes at zero for my weather diary", "writing a C after each outdoor temperature reading", "reporting daily highs in degrees centigrade"],
+      "minus": ["labeling thermometer entries with the Fahrenheit unit", "using the scale on which water freezes at thirty-two for my weather diary", "writing an F after each outdoor temperature reading", "reporting daily highs in degrees Fahrenheit"]
+    },
+    "length": {
+      "plus": ["giving the width of a button in centimetres", "marking the length of short objects with cm", "taking the centimeter reading from a two-scale ruler", "sizing a small strip of paper in units of one hundredth of a metre"],
+      "minus": ["giving the width of a button in inches", "marking the length of short objects in inches", "taking the inch reading from a two-scale ruler", "sizing a small strip of paper in units of one twelfth of a foot"]
+    },
+    "clock": {
+      "plus": ["writing three in the afternoon as 15:00", "reading evening appointments on a twenty-four-hour display", "keeping afternoon times in a single zero-to-twenty-three cycle", "showing one in the afternoon as thirteen hundred"],
+      "minus": ["writing three in the afternoon as 3 PM", "reading evening appointments on a twelve-hour display", "keeping afternoon times in a twelve-hour cycle with a PM tag", "showing one in the afternoon as one PM"]
+    },
+    "mail": {
+      "plus": ["grouping saved messages under the writer's name", "using the correspondent as the key to my mail folders", "ordering stored emails according to who wrote them", "filing a message beside others from the same person"],
+      "minus": ["grouping saved messages under the day of arrival", "using the delivery date as the key to my mail folders", "ordering stored emails according to when they arrived", "filing a message beside others received on the same day"]
+    },
+    "music": {
+      "plus": ["playing a recording performed entirely on instruments", "choosing a track with no one singing", "listening to a tune carried by instruments alone", "building a playlist of pieces without a vocal line"],
+      "minus": ["playing a recording that includes a sung part", "choosing a track with someone singing", "listening to a tune carried by a human singing voice", "building a playlist of pieces with a vocal line"]
+    }
+  }
+}
