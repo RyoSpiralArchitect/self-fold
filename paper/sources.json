@@ -134,5 +134,13 @@
     "scope": "Uses a synthetic gold reward to study disagreement under optimization of a proxy. Motivates a separate evaluator for planned RL.",
     "checked_on": "2026-11-04",
     "review_depth": "Metadata and abstract for scope of the proposed comparison."
+  },
+  {
+    "key": "williams1992reinforce",
+    "source": "https://link.springer.com/article/10.1007/BF00992696",
+    "metadata_status": "Publisher article record",
+    "scope": "Credit for the sampled policy-gradient learning rule used by the bounded role controller.",
+    "checked_on": "2026-11-04",
+    "review_depth": "Bibliographic record and abstract."
   }
 ]

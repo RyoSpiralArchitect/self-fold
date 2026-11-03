@@ -35,3 +35,5 @@ The margin continuation provides its fixed native-recipient and any conditionall
 The two final-action and component-trained task adapters have [Gemma-specific artifact conditions](../provenance/two_flags_20261104/ARTIFACT_LICENSE.md).
 
 The study of updates after discarding the source includes the fitted compiler, update, native reader, and numeric state and score records. [Study-specific artifact conditions](../provenance/state_only_20261104/ARTIFACT_LICENSE.md)
+
+The nine-parameter role controllers, captured rows and native decisions have [study-specific distribution conditions](../provenance/role_memory_20261104/ARTIFACT_LICENSE.md).

@@ -6,9 +6,9 @@ ROOT=Path(__file__).resolve().parents[1]
 def test_bibliography_resolves_and_has_audit():
     bib=(ROOT/'paper/references.bib').read_text()
     keys=set(re.findall(r'@\w+\{([^,]+),',bib))
-    assert len(keys)==17
+    assert len(keys)==18
     assert {"babu2026quine", "feng2024propositional", "frasertaliente2026nla",
-            "kumar2024score", "gao2022overoptimization"} <= keys
+            "kumar2024score", "gao2022overoptimization", "williams1992reinforce"} <= keys
     tex=(ROOT/'paper/main.tex').read_text()
     citations={k.strip() for group in re.findall(r'\\cite\w*\{([^}]+)\}',tex) for k in group.split(',')}
     assert citations <= keys
