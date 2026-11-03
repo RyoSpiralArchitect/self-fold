@@ -56,3 +56,21 @@ def test_every_semantic_block_keeps_both_mappings_and_exact_task_budget():
                 if a == "focus"
                 else dict.fromkeys(("action", "bind", "and", "flag"), 4)
             )
+
+
+def test_two_fitted_maps_have_actual_source_only_inputs_and_bound_output_rank():
+    import torch
+    from selffold.stage_transitions import fit_stage_map, target_preference
+
+    state = torch.randn(40, 2, 6, generator=torch.Generator().manual_seed(731))
+    cases = state.flip(-1) * 0.8 + 0.3
+    rules = cases.flip(1) * 0.5 - 0.1
+    g1 = fit_stage_map(state, cases)
+    z1 = g1.slots(state)
+    g2 = fit_stage_map(torch.cat((z1, cases)), torch.cat((rules, rules)))
+    z2 = g2.slots(z1)
+    assert z2.shape == rules.shape and torch.all(
+        target_preference(z2, rules, rules.roll(1, 0)) > 0
+    )
+    assert torch.allclose(z2, rules, atol=0.04)
+    assert torch.allclose(g2.slots(z1.flip(0)), z2.flip(0), atol=1e-5)
