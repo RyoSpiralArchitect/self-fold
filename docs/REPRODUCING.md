@@ -117,3 +117,13 @@ The second source includes the first run's arrays and complete receipts. A repro
 ~~~
 
 The [first plan](../provenance/conditional_curriculum_20261103/PLAN.md) and [continuation plan](../provenance/conditional_margin_20261103/PLAN.md) specify literal fitting gates, conditional source-learning arms, full-vocabulary native answers and all-world strict units. Their result records retain any unattempted branch. Source-only adaptation follows the ordinary encoder's exact native prompt length and uses mutually exclusive source and task scopes. It is a separately learned interface and does not extend the earlier frozen-role claim.
+
+## From two flags to an action
+
+Use clean execution source `9913c3ffd2c827e04faaa32076435f10522cebda` and the pinned Gemma runtime recorded in the [study](../provenance/two_flags_20261104/RESULTS.md). The two arms load the same published margin-continuation adapter, use a single training schedule, and close their fixed endpoints before fresh scoring. The reducers run without model inference.
+
+~~~bash
+HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src python scripts/fit_two_flags.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/two-flags
+python3 -S provenance/two_flags_20261104/summarize.py runs/two-flags
+(cd provenance/two_flags_20261104 && shasum -a 256 -c SHA256SUMS && python3 -S summarize.py | diff - summary.json)
+~~~

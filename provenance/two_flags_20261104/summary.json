@@ -1,0 +1,4840 @@
+{
+  "comparison": {
+    "benefit": false,
+    "denominator": 1280,
+    "lost": 25,
+    "net": -6,
+    "net_strict": -6,
+    "recovered": 19,
+    "topics": {
+      "archive": 0,
+      "clock": -3,
+      "length": 2,
+      "mail": 2,
+      "music": -3,
+      "notes": 1,
+      "route": 1,
+      "temperature": -6
+    }
+  },
+  "components": {
+    "direct": {
+      "fit": {
+        "and_0": {
+          "by_order": [
+            [
+              11,
+              12
+            ],
+            [
+              12,
+              12
+            ]
+          ],
+          "native": [
+            23,
+            24
+          ]
+        },
+        "flag_0": {
+          "by_order": [
+            [
+              12,
+              12
+            ],
+            [
+              12,
+              12
+            ]
+          ],
+          "native": [
+            24,
+            24
+          ]
+        },
+        "flag_1": {
+          "by_order": [
+            [
+              12,
+              12
+            ],
+            [
+              12,
+              12
+            ]
+          ],
+          "native": [
+            24,
+            24
+          ]
+        }
+      },
+      "names+grammar+question": {
+        "and_0": {
+          "by_order": [
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "native": [
+            13,
+            16
+          ]
+        },
+        "flag_0": {
+          "by_order": [
+            [
+              8,
+              8
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "native": [
+            16,
+            16
+          ]
+        },
+        "flag_1": {
+          "by_order": [
+            [
+              8,
+              8
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "native": [
+            16,
+            16
+          ]
+        }
+      }
+    },
+    "parts": {
+      "fit": {
+        "and_0": {
+          "by_order": [
+            [
+              12,
+              12
+            ],
+            [
+              12,
+              12
+            ]
+          ],
+          "native": [
+            24,
+            24
+          ]
+        },
+        "flag_0": {
+          "by_order": [
+            [
+              12,
+              12
+            ],
+            [
+              12,
+              12
+            ]
+          ],
+          "native": [
+            24,
+            24
+          ]
+        },
+        "flag_1": {
+          "by_order": [
+            [
+              12,
+              12
+            ],
+            [
+              12,
+              12
+            ]
+          ],
+          "native": [
+            24,
+            24
+          ]
+        }
+      },
+      "names+grammar+question": {
+        "and_0": {
+          "by_order": [
+            [
+              7,
+              8
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "native": [
+            15,
+            16
+          ]
+        },
+        "flag_0": {
+          "by_order": [
+            [
+              8,
+              8
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "native": [
+            16,
+            16
+          ]
+        },
+        "flag_1": {
+          "by_order": [
+            [
+              8,
+              8
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "native": [
+            16,
+            16
+          ]
+        }
+      }
+    }
+  },
+  "composition": {
+    "direct": {
+      "cases": {
+        "correct_bit_exchange": [
+          670,
+          1024
+        ],
+        "correct_policy_exchange": [
+          700,
+          1024
+        ],
+        "gold_bit": [
+          938,
+          1024
+        ],
+        "invalid_first_label": [
+          0,
+          1024
+        ],
+        "native": [
+          782,
+          1024
+        ],
+        "strict": [
+          0,
+          16
+        ]
+      },
+      "rule": {
+        "correct_bit_exchange": [
+          351,
+          512
+        ],
+        "correct_policy_exchange": [
+          402,
+          512
+        ],
+        "gold_bit": [
+          492,
+          512
+        ],
+        "invalid_first_label": [
+          0,
+          512
+        ],
+        "native": [
+          411,
+          512
+        ],
+        "strict": [
+          0,
+          16
+        ]
+      },
+      "source": {
+        "correct_bit_exchange": [
+          697,
+          1024
+        ],
+        "correct_policy_exchange": [
+          622,
+          1024
+        ],
+        "gold_bit": [
+          898,
+          1024
+        ],
+        "invalid_first_label": [
+          0,
+          1024
+        ],
+        "native": [
+          739,
+          1024
+        ],
+        "strict": [
+          0,
+          16
+        ]
+      }
+    },
+    "parts": {
+      "cases": {
+        "correct_bit_exchange": [
+          817,
+          1024
+        ],
+        "correct_policy_exchange": [
+          858,
+          1024
+        ],
+        "gold_bit": [
+          966,
+          1024
+        ],
+        "invalid_first_label": [
+          0,
+          1024
+        ],
+        "native": [
+          910,
+          1024
+        ],
+        "strict": [
+          2,
+          16
+        ]
+      },
+      "rule": {
+        "correct_bit_exchange": [
+          412,
+          512
+        ],
+        "correct_policy_exchange": [
+          458,
+          512
+        ],
+        "gold_bit": [
+          494,
+          512
+        ],
+        "invalid_first_label": [
+          0,
+          512
+        ],
+        "native": [
+          466,
+          512
+        ],
+        "strict": [
+          6,
+          16
+        ]
+      },
+      "source": {
+        "correct_bit_exchange": [
+          820,
+          1024
+        ],
+        "correct_policy_exchange": [
+          756,
+          1024
+        ],
+        "gold_bit": [
+          910,
+          1024
+        ],
+        "invalid_first_label": [
+          0,
+          1024
+        ],
+        "native": [
+          858,
+          1024
+        ],
+        "strict": [
+          3,
+          16
+        ]
+      }
+    }
+  },
+  "direct": {
+    "direct": {
+      "familiar": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            509,
+            512
+          ],
+          "native": [
+            509,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                125,
+                128
+              ],
+              "native": [
+                125,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            15,
+            16
+          ],
+          "ties": 0
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            256,
+            256
+          ],
+          "native": [
+            256,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            16,
+            16
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            511,
+            512
+          ],
+          "native": [
+            511,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                127,
+                128
+              ],
+              "native": [
+                127,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            15,
+            16
+          ],
+          "ties": 0
+        }
+      },
+      "fit": {
+        "cases": {
+          "coverage": [
+            1536,
+            1536
+          ],
+          "forced": [
+            1526,
+            1536
+          ],
+          "native": [
+            1526,
+            1536
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                384,
+                384
+              ],
+              "native": [
+                384,
+                384
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                384,
+                384
+              ],
+              "native": [
+                384,
+                384
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                374,
+                384
+              ],
+              "native": [
+                374,
+                384
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                384,
+                384
+              ],
+              "native": [
+                384,
+                384
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            43,
+            48
+          ],
+          "ties": 0
+        },
+        "rule": {
+          "coverage": [
+            768,
+            768
+          ],
+          "forced": [
+            768,
+            768
+          ],
+          "native": [
+            768,
+            768
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                192,
+                192
+              ],
+              "forced": [
+                192,
+                192
+              ],
+              "native": [
+                192,
+                192
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                192,
+                192
+              ],
+              "forced": [
+                192,
+                192
+              ],
+              "native": [
+                192,
+                192
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                192,
+                192
+              ],
+              "forced": [
+                192,
+                192
+              ],
+              "native": [
+                192,
+                192
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                192,
+                192
+              ],
+              "forced": [
+                192,
+                192
+              ],
+              "native": [
+                192,
+                192
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            48,
+            48
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            1536,
+            1536
+          ],
+          "forced": [
+            1533,
+            1536
+          ],
+          "native": [
+            1533,
+            1536
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                384,
+                384
+              ],
+              "native": [
+                384,
+                384
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                382,
+                384
+              ],
+              "native": [
+                382,
+                384
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                384,
+                384
+              ],
+              "native": [
+                384,
+                384
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                383,
+                384
+              ],
+              "native": [
+                383,
+                384
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            45,
+            48
+          ],
+          "ties": 0
+        }
+      },
+      "grammar": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            491,
+            512
+          ],
+          "native": [
+            492,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                126,
+                128
+              ],
+              "native": [
+                126,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                109,
+                128
+              ],
+              "native": [
+                110,
+                128
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            6,
+            16
+          ],
+          "ties": 1
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            230,
+            256
+          ],
+          "native": [
+            231,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                45,
+                64
+              ],
+              "native": [
+                45,
+                64
+              ],
+              "ties": 1
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                59,
+                64
+              ],
+              "native": [
+                60,
+                64
+              ],
+              "ties": 2
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                62,
+                64
+              ],
+              "native": [
+                62,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            6,
+            16
+          ],
+          "ties": 3
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            486,
+            512
+          ],
+          "native": [
+            486,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                112,
+                128
+              ],
+              "native": [
+                112,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                120,
+                128
+              ],
+              "native": [
+                120,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                126,
+                128
+              ],
+              "native": [
+                126,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            4,
+            16
+          ],
+          "ties": 0
+        }
+      },
+      "grammar+question": {
+        "cases": {
+          "coverage": [
+            510,
+            512
+          ],
+          "forced": [
+            468,
+            512
+          ],
+          "native": [
+            466,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                125,
+                128
+              ],
+              "native": [
+                125,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                87,
+                128
+              ],
+              "native": [
+                87,
+                128
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                126,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                126,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            1,
+            16
+          ],
+          "ties": 1
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            234,
+            256
+          ],
+          "native": [
+            234,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                56,
+                64
+              ],
+              "native": [
+                56,
+                64
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                50,
+                64
+              ],
+              "native": [
+                50,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            7,
+            16
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            452,
+            512
+          ],
+          "native": [
+            452,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                91,
+                128
+              ],
+              "native": [
+                91,
+                128
+              ],
+              "ties": 1
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                105,
+                128
+              ],
+              "native": [
+                105,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            0,
+            16
+          ],
+          "ties": 1
+        }
+      },
+      "names": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            510,
+            512
+          ],
+          "native": [
+            510,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                126,
+                128
+              ],
+              "native": [
+                126,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            14,
+            16
+          ],
+          "ties": 0
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            256,
+            256
+          ],
+          "native": [
+            256,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            16,
+            16
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            510,
+            512
+          ],
+          "native": [
+            510,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                126,
+                128
+              ],
+              "native": [
+                126,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            14,
+            16
+          ],
+          "ties": 0
+        }
+      },
+      "names+grammar": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            498,
+            512
+          ],
+          "native": [
+            498,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                124,
+                128
+              ],
+              "native": [
+                124,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                119,
+                128
+              ],
+              "native": [
+                119,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                127,
+                128
+              ],
+              "native": [
+                127,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            7,
+            16
+          ],
+          "ties": 0
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            222,
+            256
+          ],
+          "native": [
+            224,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                37,
+                64
+              ],
+              "native": [
+                38,
+                64
+              ],
+              "ties": 1
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                59,
+                64
+              ],
+              "native": [
+                60,
+                64
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                62,
+                64
+              ],
+              "native": [
+                62,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            3,
+            16
+          ],
+          "ties": 2
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            485,
+            512
+          ],
+          "native": [
+            485,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                112,
+                128
+              ],
+              "native": [
+                112,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                120,
+                128
+              ],
+              "native": [
+                120,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                125,
+                128
+              ],
+              "native": [
+                125,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            3,
+            16
+          ],
+          "ties": 0
+        }
+      },
+      "names+grammar+question": {
+        "cases": {
+          "coverage": [
+            511,
+            512
+          ],
+          "forced": [
+            469,
+            512
+          ],
+          "native": [
+            470,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                122,
+                128
+              ],
+              "native": [
+                122,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                91,
+                128
+              ],
+              "native": [
+                93,
+                128
+              ],
+              "ties": 2
+            },
+            "3": {
+              "coverage": [
+                127,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                127,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            3,
+            16
+          ],
+          "ties": 2
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            235,
+            256
+          ],
+          "native": [
+            235,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                54,
+                64
+              ],
+              "native": [
+                54,
+                64
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                53,
+                64
+              ],
+              "native": [
+                53,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            6,
+            16
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            459,
+            512
+          ],
+          "native": [
+            460,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                86,
+                128
+              ],
+              "native": [
+                87,
+                128
+              ],
+              "ties": 1
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                117,
+                128
+              ],
+              "native": [
+                117,
+                128
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            1,
+            16
+          ],
+          "ties": 2
+        }
+      },
+      "names+question": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            506,
+            512
+          ],
+          "native": [
+            506,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                122,
+                128
+              ],
+              "native": [
+                122,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            13,
+            16
+          ],
+          "ties": 0
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            255,
+            256
+          ],
+          "native": [
+            255,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                63,
+                64
+              ],
+              "native": [
+                63,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            15,
+            16
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            506,
+            512
+          ],
+          "native": [
+            506,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                122,
+                128
+              ],
+              "native": [
+                122,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            12,
+            16
+          ],
+          "ties": 0
+        }
+      },
+      "question": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            495,
+            512
+          ],
+          "native": [
+            495,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                111,
+                128
+              ],
+              "native": [
+                111,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            8,
+            16
+          ],
+          "ties": 0
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            255,
+            256
+          ],
+          "native": [
+            255,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                63,
+                64
+              ],
+              "native": [
+                63,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            15,
+            16
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            502,
+            512
+          ],
+          "native": [
+            503,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                119,
+                128
+              ],
+              "native": [
+                119,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                127,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            11,
+            16
+          ],
+          "ties": 1
+        }
+      }
+    },
+    "parts": {
+      "familiar": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            508,
+            512
+          ],
+          "native": [
+            508,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                125,
+                128
+              ],
+              "native": [
+                125,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                127,
+                128
+              ],
+              "native": [
+                127,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            14,
+            16
+          ],
+          "ties": 0
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            256,
+            256
+          ],
+          "native": [
+            256,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            16,
+            16
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            510,
+            512
+          ],
+          "native": [
+            510,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                127,
+                128
+              ],
+              "native": [
+                127,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                127,
+                128
+              ],
+              "native": [
+                127,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            14,
+            16
+          ],
+          "ties": 0
+        }
+      },
+      "fit": {
+        "cases": {
+          "coverage": [
+            1536,
+            1536
+          ],
+          "forced": [
+            1521,
+            1536
+          ],
+          "native": [
+            1521,
+            1536
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                384,
+                384
+              ],
+              "native": [
+                384,
+                384
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                384,
+                384
+              ],
+              "native": [
+                384,
+                384
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                372,
+                384
+              ],
+              "native": [
+                372,
+                384
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                381,
+                384
+              ],
+              "native": [
+                381,
+                384
+              ],
+              "ties": 1
+            }
+          },
+          "strict": [
+            38,
+            48
+          ],
+          "ties": 2
+        },
+        "rule": {
+          "coverage": [
+            768,
+            768
+          ],
+          "forced": [
+            768,
+            768
+          ],
+          "native": [
+            768,
+            768
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                192,
+                192
+              ],
+              "forced": [
+                192,
+                192
+              ],
+              "native": [
+                192,
+                192
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                192,
+                192
+              ],
+              "forced": [
+                192,
+                192
+              ],
+              "native": [
+                192,
+                192
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                192,
+                192
+              ],
+              "forced": [
+                192,
+                192
+              ],
+              "native": [
+                192,
+                192
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                192,
+                192
+              ],
+              "forced": [
+                192,
+                192
+              ],
+              "native": [
+                192,
+                192
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            48,
+            48
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            1536,
+            1536
+          ],
+          "forced": [
+            1528,
+            1536
+          ],
+          "native": [
+            1528,
+            1536
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                383,
+                384
+              ],
+              "native": [
+                383,
+                384
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                379,
+                384
+              ],
+              "native": [
+                379,
+                384
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                384,
+                384
+              ],
+              "native": [
+                384,
+                384
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                384,
+                384
+              ],
+              "forced": [
+                382,
+                384
+              ],
+              "native": [
+                382,
+                384
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            41,
+            48
+          ],
+          "ties": 0
+        }
+      },
+      "grammar": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            484,
+            512
+          ],
+          "native": [
+            485,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                120,
+                128
+              ],
+              "native": [
+                121,
+                128
+              ],
+              "ties": 1
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                108,
+                128
+              ],
+              "native": [
+                108,
+                128
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            3,
+            16
+          ],
+          "ties": 2
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            229,
+            256
+          ],
+          "native": [
+            229,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                43,
+                64
+              ],
+              "native": [
+                43,
+                64
+              ],
+              "ties": 1
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                60,
+                64
+              ],
+              "native": [
+                60,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                62,
+                64
+              ],
+              "native": [
+                62,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            4,
+            16
+          ],
+          "ties": 1
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            485,
+            512
+          ],
+          "native": [
+            485,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                113,
+                128
+              ],
+              "native": [
+                113,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                118,
+                128
+              ],
+              "native": [
+                118,
+                128
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                126,
+                128
+              ],
+              "native": [
+                126,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            5,
+            16
+          ],
+          "ties": 1
+        }
+      },
+      "grammar+question": {
+        "cases": {
+          "coverage": [
+            510,
+            512
+          ],
+          "forced": [
+            465,
+            512
+          ],
+          "native": [
+            463,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                122,
+                128
+              ],
+              "native": [
+                122,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                87,
+                128
+              ],
+              "native": [
+                87,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                126,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                126,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            0,
+            16
+          ],
+          "ties": 0
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            230,
+            256
+          ],
+          "native": [
+            231,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                52,
+                64
+              ],
+              "native": [
+                53,
+                64
+              ],
+              "ties": 1
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                50,
+                64
+              ],
+              "native": [
+                50,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            2,
+            16
+          ],
+          "ties": 1
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            450,
+            512
+          ],
+          "native": [
+            450,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                86,
+                128
+              ],
+              "native": [
+                86,
+                128
+              ],
+              "ties": 1
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                108,
+                128
+              ],
+              "native": [
+                108,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            1,
+            16
+          ],
+          "ties": 1
+        }
+      },
+      "names": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            509,
+            512
+          ],
+          "native": [
+            509,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                126,
+                128
+              ],
+              "native": [
+                126,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                127,
+                128
+              ],
+              "native": [
+                127,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            13,
+            16
+          ],
+          "ties": 0
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            255,
+            256
+          ],
+          "native": [
+            255,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                63,
+                64
+              ],
+              "native": [
+                63,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            15,
+            16
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            508,
+            512
+          ],
+          "native": [
+            508,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                126,
+                128
+              ],
+              "native": [
+                126,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                126,
+                128
+              ],
+              "native": [
+                126,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            12,
+            16
+          ],
+          "ties": 0
+        }
+      },
+      "names+grammar": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            493,
+            512
+          ],
+          "native": [
+            493,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                121,
+                128
+              ],
+              "native": [
+                121,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                117,
+                128
+              ],
+              "native": [
+                117,
+                128
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                127,
+                128
+              ],
+              "native": [
+                127,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            5,
+            16
+          ],
+          "ties": 1
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            223,
+            256
+          ],
+          "native": [
+            224,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                63,
+                64
+              ],
+              "native": [
+                63,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                37,
+                64
+              ],
+              "native": [
+                38,
+                64
+              ],
+              "ties": 1
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                61,
+                64
+              ],
+              "native": [
+                61,
+                64
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                62,
+                64
+              ],
+              "native": [
+                62,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            2,
+            16
+          ],
+          "ties": 2
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            481,
+            512
+          ],
+          "native": [
+            481,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                127,
+                128
+              ],
+              "native": [
+                127,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                109,
+                128
+              ],
+              "native": [
+                109,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                120,
+                128
+              ],
+              "native": [
+                120,
+                128
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                125,
+                128
+              ],
+              "native": [
+                125,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            1,
+            16
+          ],
+          "ties": 1
+        }
+      },
+      "names+grammar+question": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            468,
+            512
+          ],
+          "native": [
+            468,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                119,
+                128
+              ],
+              "native": [
+                119,
+                128
+              ],
+              "ties": 1
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                93,
+                128
+              ],
+              "native": [
+                93,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            0,
+            16
+          ],
+          "ties": 1
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            232,
+            256
+          ],
+          "native": [
+            232,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                53,
+                64
+              ],
+              "native": [
+                53,
+                64
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                51,
+                64
+              ],
+              "native": [
+                51,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            3,
+            16
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            456,
+            512
+          ],
+          "native": [
+            459,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                81,
+                128
+              ],
+              "native": [
+                83,
+                128
+              ],
+              "ties": 2
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                119,
+                128
+              ],
+              "native": [
+                120,
+                128
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            1,
+            16
+          ],
+          "ties": 3
+        }
+      },
+      "names+question": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            506,
+            512
+          ],
+          "native": [
+            506,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                126,
+                128
+              ],
+              "native": [
+                126,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                124,
+                128
+              ],
+              "native": [
+                124,
+                128
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            13,
+            16
+          ],
+          "ties": 1
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            255,
+            256
+          ],
+          "native": [
+            255,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                63,
+                64
+              ],
+              "native": [
+                63,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            15,
+            16
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            505,
+            512
+          ],
+          "native": [
+            506,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                121,
+                128
+              ],
+              "native": [
+                122,
+                128
+              ],
+              "ties": 1
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            12,
+            16
+          ],
+          "ties": 1
+        }
+      },
+      "question": {
+        "cases": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            490,
+            512
+          ],
+          "native": [
+            492,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                126,
+                128
+              ],
+              "native": [
+                127,
+                128
+              ],
+              "ties": 1
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                108,
+                128
+              ],
+              "native": [
+                109,
+                128
+              ],
+              "ties": 1
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            9,
+            16
+          ],
+          "ties": 2
+        },
+        "rule": {
+          "coverage": [
+            256,
+            256
+          ],
+          "forced": [
+            255,
+            256
+          ],
+          "native": [
+            255,
+            256
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                63,
+                64
+              ],
+              "native": [
+                63,
+                64
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                64,
+                64
+              ],
+              "forced": [
+                64,
+                64
+              ],
+              "native": [
+                64,
+                64
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            15,
+            16
+          ],
+          "ties": 0
+        },
+        "source": {
+          "coverage": [
+            512,
+            512
+          ],
+          "forced": [
+            502,
+            512
+          ],
+          "native": [
+            502,
+            512
+          ],
+          "per_world": {
+            "0": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "1": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                118,
+                128
+              ],
+              "native": [
+                118,
+                128
+              ],
+              "ties": 0
+            },
+            "2": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            },
+            "3": {
+              "coverage": [
+                128,
+                128
+              ],
+              "forced": [
+                128,
+                128
+              ],
+              "native": [
+                128,
+                128
+              ],
+              "ties": 0
+            }
+          },
+          "strict": [
+            10,
+            16
+          ],
+          "ties": 0
+        }
+      }
+    }
+  },
+  "gates": {
+    "direct": {
+      "bit_path_stages": {
+        "cases": false,
+        "rule": false,
+        "source": false
+      },
+      "direct_fresh": false,
+      "literal_fit": false,
+      "typed_interface": false,
+      "world_components": false
+    },
+    "parts": {
+      "bit_path_stages": {
+        "cases": false,
+        "rule": false,
+        "source": false
+      },
+      "direct_fresh": false,
+      "literal_fit": false,
+      "typed_interface": false,
+      "world_components": false
+    }
+  },
+  "training_cost": {
+    "direct": {
+      "forwards": 3072,
+      "padded_tokens": 1747152,
+      "unmasked_tokens": 1747152
+    },
+    "parts": {
+      "forwards": 3072,
+      "padded_tokens": 1747152,
+      "unmasked_tokens": 1369704
+    }
+  }
+}
