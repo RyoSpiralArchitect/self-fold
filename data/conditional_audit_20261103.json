@@ -1,0 +1,15 @@
+{
+  "action_fixture_sha256": "aeee777aa4d5cd90db4c30ec52d3320aec38bf10290afcb648fae4cfa869d772",
+  "rule": "choose the pole's action if and only if both flags are on, otherwise choose the other action",
+  "worlds": [[false, false], [false, true], [true, false], [true, true]],
+  "groups": {
+    "archive": {"flags": ["filing marker P", "filing marker Q"], "operation": "Which reports go first in the archive under this policy?"},
+    "route": {"flags": ["walking marker P", "walking marker Q"], "operation": "Which path does the person take under this policy?"},
+    "notes": {"flags": ["meeting marker P", "meeting marker Q"], "operation": "How does the person record a meeting under this policy?"},
+    "temperature": {"flags": ["weather marker P", "weather marker Q"], "operation": "Which temperature scale does the person use under this policy?"},
+    "length": {"flags": ["ruler marker P", "ruler marker Q"], "operation": "Which unit does the person use for a short length under this policy?"},
+    "clock": {"flags": ["time marker P", "time marker Q"], "operation": "Which clock format does the person use under this policy?"},
+    "mail": {"flags": ["message marker P", "message marker Q"], "operation": "How does the person sort saved mail under this policy?"},
+    "music": {"flags": ["listening marker P", "listening marker Q"], "operation": "Which kind of recording does the person play under this policy?"}
+  }
+}
