@@ -166,3 +166,52 @@ def test_chain_consumes_actual_first_outputs_and_directional_reversals():
         cells["exactly_one_on/" + op]["paired"] == [0, 1024]
         for op in ("both_on", "either_on", "exactly_one_on")
     )
+
+
+def test_fixed_role_recovery_preserves_soft_values_and_blind_omissions():
+    import sys
+
+    chain = STUDY / "chain"
+    recovery = STUDY / "recovery"
+    assert read(recovery / "preparation.json")["training_updates"] == 0
+    with np.load(chain / "packet/inputs.npz", allow_pickle=False) as f:
+        old, req = f["states"], f["requests"]
+    # Independent calculation using per-row vector norms. No action IDs enter this join.
+    partner = np.array(
+        [
+            1 + np.argmax([np.linalg.norm(row.astype(float) - z[0]) for row in z[1:]])
+            for z in old
+        ]
+    )
+    other = old[np.arange(len(old)), partner]
+    n = len(old)
+    for mode, default, switched in (
+        ("restore_roles", old[:, 0], other),
+        ("exchange_roles", other, old[:, 0]),
+    ):
+        p = recovery / mode / "packet"
+        for name in ("reader.npz", "update.npz", "menus.json"):
+            assert file_sha(p / name) == file_sha(chain / "packet" / name)
+        with np.load(p / "inputs.npz", allow_pickle=False) as f:
+            states, addr = f["states"], f["requests"]
+        assert np.array_equal(states[n:], old)
+        assert np.array_equal(
+            states[:n], np.stack((default, default, default, switched), axis=1)
+        )
+        assert np.array_equal(addr[:, 1:], req[:, 1:])
+        assert np.array_equal(addr[:, 0], req[:, 0] + n * req[:, 5])
+    score = json.loads(
+        subprocess.check_output(
+            [
+                sys.executable,
+                str(STUDY / "role_recovery.py"),
+                "grade",
+                str(RUN),
+                str(chain),
+                str(recovery),
+            ]
+        )
+    )
+    assert score == read(STUDY / "recovery-summary.json") and score["pass_all"]
+    for mode, total in (("restore_roles", 9216), ("exchange_roles", 0)):
+        assert score["modes"][mode]["native"] == [total, 9216]

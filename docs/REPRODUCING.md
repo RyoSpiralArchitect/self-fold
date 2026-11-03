@@ -149,3 +149,14 @@ python provenance/state_only_20261104/compose.py grade provenance/state_only_202
 ```
 
 The source seal predates the public result files. For a new checkout at the seal, supply the immutable published one-edit run at the first path in the example or pass its external path to the preparation and grading commands. To verify the published numbers directly, run each grader on `provenance/state_only_20261104/run` and, for the follow-up, `provenance/state_only_20261104/chain`.
+
+The fixed role-recovery diagnostic uses source `4b8b54bcf1970e11c7f95337d6fa3bd6702ba525` and the unmodified one-edit and chain artifacts. The restored and deliberately swapped layouts go through the same blind native consumer. [Recovery design](../provenance/state_only_20261104/ROLE_RECOVERY_PLAN.md)
+
+```bash
+study=provenance/state_only_20261104
+python "$study/role_recovery.py" prepare "$study/run" "$study/chain" runs/policy-recovery
+for mode in restore_roles exchange_roles; do
+  python scripts/decide_state_only.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --packet "runs/policy-recovery/$mode/packet" --out "runs/policy-recovery/$mode/decide"
+done
+python "$study/role_recovery.py" grade "$study/run" "$study/chain" runs/policy-recovery
+```
