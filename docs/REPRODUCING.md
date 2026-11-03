@@ -160,3 +160,23 @@ for mode in restore_roles exchange_roles; do
 done
 python "$study/role_recovery.py" grade "$study/run" "$study/chain" runs/policy-recovery
 ```
+
+## Learn a role bit on two-edit trajectories
+
+The frozen design and execution code are at `00104f747316d77f91e4aa143eed0231272e63b9`. The first command fits all nine controllers before compiling the new evaluation descriptions. The second starts a fresh Gemma process with only numerical rows, menus and bindings. A lossless row index for each actual continuous output joins it to its native decision after scoring. The reducer can also run directly on the published study directory. [Prospective protocol](../provenance/role_memory_20261104/PLAN.md)
+
+```bash
+export PYTHONPATH=src HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 CUBLAS_WORKSPACE_CONFIG=:4096:8
+python scripts/fit_role_memory.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/role-memory/produce
+python scripts/role_memory_native.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --packet runs/role-memory/produce/packet --out runs/role-memory/decide
+python provenance/role_memory_20261104/summarize.py runs/role-memory
+```
+
+The parity follow-up uses source `cf946256111981945732b40ab4106344e8a93bb3` and the exact published original run. It verifies a fresh native replay before simulating every four-edit string using the original soft rows and endpoint weights.
+
+```bash
+study=provenance/role_memory_20261104
+python scripts/role_memory_native.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --packet "$study/run/produce/packet" --out runs/role-memory-replay
+python "$study/all_orders.py" "$study/run" runs/role-memory-replay runs/role-memory-all-orders
+```

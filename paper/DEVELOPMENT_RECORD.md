@@ -53,6 +53,8 @@ In task outputs, **A** and **B** label the two displayed alternatives, whose ord
 | Change the remembered condition after discarding the words | Current paper §6 | [state_only_20261104](../provenance/state_only_20261104/RESULTS.md) |
 | Reuse the same updater on its own edited table | Frozen composition follow-up | [state_only_20261104/chain](../provenance/state_only_20261104/RESULTS.md#can-the-same-update-use-its-own-output) |
 | Recover default and switched roles from the same table | Paper-only review follow-up | [state_only_20261104/recovery](../provenance/state_only_20261104/RESULTS.md#can-the-two-actions-be-recovered-from-the-same-table) |
+| Learn the role bit with native-choice rewards | Current paper §7 | [role_memory_20261104](../provenance/role_memory_20261104/RESULTS.md) |
+| Balance the parity of every four-edit history | Frozen exhaustive diagnostic | [role_memory_20261104/full](../provenance/role_memory_20261104/RESULTS.md#why-final-correctness-hid-errors) |
 
 <a id="study-1"></a>
 
