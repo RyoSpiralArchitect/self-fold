@@ -95,3 +95,25 @@ PYTHONPATH=src python scripts/probe_recipient_trainability.py --checkpoint "$GEM
 ~~~
 
 The [integrated study](../provenance/continuity_20261103/RESULTS.md) preserves source hashes, all decisions, intermediate numerical observations, learned arrays and Gemma terms. Each of the four candidate fits ended at its cap without admitting the recipient. The final paired control measures small-set trainability. None trains G or opens the sealed qualification material.
+
+## Literal-first conditional curriculum and margin continuation
+
+These two studies have separate source seals and preserve the first closed gate. The margin continuation starts from the archived warm task adapter, with its exact hash enforced by the entrypoint. Each run needs the pinned Gemma snapshot and runtime from its `run/host.json`, a clean checkout at its source seal and a fresh output directory. No qualification inputs are required.
+
+~~~bash
+# First curriculum source 94473d4c775a01c9e60cf83ccccdf615bf073121
+PYTHONPATH=src python scripts/fit_conditional_curriculum.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/conditional-curriculum
+
+# Margin continuation source d5d152f4dfae21f0fccf60fe864a5e0e90cf84f7
+# Uses the published first run's warm_task.npz as the fixed parent.
+PYTHONPATH=src python scripts/fit_conditional_margin.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/conditional-margin
+~~~
+
+The second source includes the first run's arrays and complete receipts. A reproduction of the first warm fit is a separate check; the continuation binds the published parent rather than silently replacing it with a newly fitted endpoint. Recompute every study's scores and verify its public file manifest:
+
+~~~bash
+(cd provenance/conditional_curriculum_20261103 && shasum -a 256 -c SHA256SUMS && python3 -S summarize.py | diff - summary.json)
+(cd provenance/conditional_margin_20261103 && shasum -a 256 -c SHA256SUMS && python3 -S summarize.py | diff - summary.json)
+~~~
+
+The [first plan](../provenance/conditional_curriculum_20261103/PLAN.md) and [continuation plan](../provenance/conditional_margin_20261103/PLAN.md) specify literal fitting gates, conditional source-learning arms, full-vocabulary native answers and all-world strict units. Their result records retain any unattempted branch. Source-only adaptation follows the ordinary encoder's exact native prompt length and uses mutually exclusive source and task scopes. It is a separately learned interface and does not extend the earlier frozen-role claim.
