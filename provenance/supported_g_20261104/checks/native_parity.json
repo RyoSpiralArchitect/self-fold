@@ -1,0 +1,193 @@
+{
+  "check": "native_parity",
+  "interfaces": {
+    "raw_native": {
+      "execution_binding_sha256": "909fa996b2664dc377662e256e5a732fa968ae852bb3b2567a13227d0e66f407",
+      "measurement": {
+        "evidence": {
+          "free_read": {
+            "input_sha256": "d444464e6072589d8833dfcc1d212f90bff11567afb51f7214d1ab58fb7ddd1c",
+            "native": true,
+            "neutral": true,
+            "positions": [
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21
+            ],
+            "width": 57
+          },
+          "prefixed_source": {
+            "input_sha256": "b4db3e184555d39ffe91626627c3abfb6cad09bc6880db30837846c901f34f75",
+            "native": true,
+            "neutral": true,
+            "positions": [
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115
+            ],
+            "width": 256
+          },
+          "prefixed_task": {
+            "input_sha256": "fb07a678bcde86d140fc4c5c4c262d3cb23281ba4bcf0c112ac72b41c9672ea5",
+            "native": true,
+            "neutral": true,
+            "positions": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16
+            ],
+            "width": 97
+          },
+          "source": {
+            "input_sha256": "bfc36ef87b916c72fbfe69f202556b7983a6e1b19b6be86eafc46717f4a0761f",
+            "native": true,
+            "neutral": true,
+            "positions": [
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83
+            ],
+            "width": 256
+          },
+          "task": {
+            "input_sha256": "66f474b3aed115cf9a17b2434fba647f19ac9ec1e9587bf4c164e86250be65e4",
+            "native": true,
+            "neutral": true,
+            "positions": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16
+            ],
+            "width": 88
+          },
+          "update_boundary": {
+            "input_sha256": "2b5c71259d7e971274909988d6de6903e9f93e5ea30c9c6b6e9f09b7ccbb93c5",
+            "native": true,
+            "neutral": true,
+            "positions": [
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21
+            ],
+            "width": 127
+          },
+          "update_decompose": {
+            "input_sha256": "62b304f8c60ffde72dd25540ea06f48703daa28df1791f4e7ba8672200294a3d",
+            "native": true,
+            "neutral": true,
+            "positions": [
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21
+            ],
+            "width": 124
+          },
+          "update_plain": {
+            "input_sha256": "64aff4c473e1c6cb20e7ad0be1f7da2202d96e5778dcf32fad15d6586fdf2e93",
+            "native": true,
+            "neutral": true,
+            "positions": [
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21
+            ],
+            "width": 125
+          },
+          "update_reintegrate": {
+            "input_sha256": "f7607bb2f3d0fcb635aea66d0df6991f8b788d688c904af9877d6213b32c6f3f",
+            "native": true,
+            "neutral": true,
+            "positions": [
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21
+            ],
+            "width": 122
+          }
+        },
+        "mechanical": "pass"
+      },
+      "reduction_sha256": "ad4fe30af86afb37bb1c0ed1715f8a8bae113b9493fc5d540e152dd2a61662ca"
+    },
+    "structured_primary": {
+      "execution_binding_sha256": "14c71325c78ce19e14bef1b6cd1dafc2360f694ad2f1fcf12a062bf904f894bb",
+      "measurement": {
+        "evidence": {
+          "lexical": true,
+          "native": {
+            "exact": true,
+            "max_abs": 0.0,
+            "scope": "unmodified_native_vs_observation_hooks_no_injection"
+          },
+          "state_isolation": true,
+          "unchanged_reader": true
+        },
+        "mechanical": "pass"
+      },
+      "reduction_sha256": "f08293f3ad516897c06847016014a81ecd6c67cf40260ce381be5a9b48202a57"
+    },
+    "structured_reworded": {
+      "execution_binding_sha256": "5e62ed7a233b6a2dda62fe719caf2c2d4890e12ef1253b69a31f40563f1e3780",
+      "measurement": {
+        "evidence": {
+          "lexical": true,
+          "native": {
+            "exact": true,
+            "max_abs": 0.0,
+            "scope": "unmodified_native_vs_observation_hooks_no_injection"
+          },
+          "state_isolation": true,
+          "unchanged_reader": true
+        },
+        "mechanical": "pass"
+      },
+      "reduction_sha256": "0d2d9e5484371f58978ec41b91c5430d36deaccedc3c3f02c184431e6c8f5597"
+    }
+  },
+  "scope": "mechanical_development_only"
+}

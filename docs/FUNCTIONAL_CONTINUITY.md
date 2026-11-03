@@ -1,5 +1,7 @@
 # Functional continuity under semantic recurrence
 
+A subsequent post-v1 development challenge evaluated a supported boundary operation under the same source policy before and after updating. The structured condition resolver improved held-out decisions on its first wording. The reworded study missed the stability floor, and the original eight-slot G missed the update screen. The formal qualification and common-state language insertion remain open. [One-step results and six-item record](../provenance/supported_g_20261104/RESULTS.md)
+
 **Development protocol and status, 2026-11-04.** This document integrates the experiment around the original SELF-FOLD question. Execution is sealed by phase. The original recipient contracts below retain their fixed architectures, budgets and decision rules. All four tested configurations are now closed with negative development outcomes. G learning and the subsequent language intervention require separate phase seals. The intended two-stage contribution remains prospective, and no semantic qualification pass has been issued.
 
 ## Dated development status

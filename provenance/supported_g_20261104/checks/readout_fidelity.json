@@ -1,0 +1,192 @@
+{
+  "check": "readout_fidelity",
+  "interfaces": {
+    "raw_native": {
+      "execution_binding_sha256": "909fa996b2664dc377662e256e5a732fa968ae852bb3b2567a13227d0e66f407",
+      "measurement": {
+        "D": {
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "macro": 0.5,
+          "n": 128,
+          "score": 64
+        },
+        "ED": {
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "macro": 0.5,
+          "n": 128,
+          "score": 64
+        },
+        "ED_minus_G": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "macro": 0.0,
+          "n": 128,
+          "score": 0
+        },
+        "G_same_panel": {
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "macro": 0.5,
+          "n": 128,
+          "score": 64
+        },
+        "human_additions": "not_assessed",
+        "initial_D": {
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "macro": 0.5,
+          "n": 128,
+          "score": 64
+        },
+        "initial_ED": {
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "macro": 0.5,
+          "n": 128,
+          "score": 64
+        },
+        "mechanical": "fail"
+      },
+      "reduction_sha256": "ad4fe30af86afb37bb1c0ed1715f8a8bae113b9493fc5d540e152dd2a61662ca"
+    },
+    "structured_primary": {
+      "execution_binding_sha256": "14c71325c78ce19e14bef1b6cd1dafc2360f694ad2f1fcf12a062bf904f894bb",
+      "measurement": {
+        "D": {
+          "ci95": [
+            0.7699218750000001,
+            0.823046875
+          ],
+          "macro": 0.7966796875,
+          "n": 10240,
+          "score": 8158
+        },
+        "ED": {
+          "ci95": [
+            0.975,
+            0.975
+          ],
+          "macro": 0.975,
+          "n": 10240,
+          "score": 9984
+        },
+        "ED_minus_G": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "macro": 0.0,
+          "n": 10240,
+          "score": 0
+        },
+        "G_same_panel": {
+          "ci95": [
+            0.975,
+            0.975
+          ],
+          "macro": 0.975,
+          "n": 10240,
+          "score": 9984
+        },
+        "human_additions": "not_assessed",
+        "initial_D": {
+          "ci95": [
+            0.6140625,
+            0.67109375
+          ],
+          "macro": 0.6429687500000001,
+          "n": 10240,
+          "score": 6584
+        },
+        "initial_ED": {
+          "ci95": [
+            0.8,
+            0.8
+          ],
+          "macro": 0.8,
+          "n": 10240,
+          "score": 8192
+        },
+        "mechanical": "fail"
+      },
+      "reduction_sha256": "f08293f3ad516897c06847016014a81ecd6c67cf40260ce381be5a9b48202a57"
+    },
+    "structured_reworded": {
+      "execution_binding_sha256": "5e62ed7a233b6a2dda62fe719caf2c2d4890e12ef1253b69a31f40563f1e3780",
+      "measurement": {
+        "D": {
+          "ci95": [
+            0.7447265625000001,
+            0.8216796875
+          ],
+          "macro": 0.7861328125,
+          "n": 10240,
+          "score": 8050
+        },
+        "ED": {
+          "ci95": [
+            0.8875,
+            0.95
+          ],
+          "macro": 0.925,
+          "n": 10240,
+          "score": 9472
+        },
+        "ED_minus_G": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "macro": 0.0,
+          "n": 10240,
+          "score": 0
+        },
+        "G_same_panel": {
+          "ci95": [
+            0.8875,
+            0.95
+          ],
+          "macro": 0.925,
+          "n": 10240,
+          "score": 9472
+        },
+        "human_additions": "not_assessed",
+        "initial_D": {
+          "ci95": [
+            0.591796875,
+            0.6632812499999999
+          ],
+          "macro": 0.6275390625,
+          "n": 10240,
+          "score": 6426
+        },
+        "initial_ED": {
+          "ci95": [
+            0.7218749999999999,
+            0.7625
+          ],
+          "macro": 0.7484374999999999,
+          "n": 10240,
+          "score": 7664
+        },
+        "mechanical": "fail"
+      },
+      "reduction_sha256": "0d2d9e5484371f58978ec41b91c5430d36deaccedc3c3f02c184431e6c8f5597"
+    }
+  },
+  "scope": "mechanical_development_only"
+}

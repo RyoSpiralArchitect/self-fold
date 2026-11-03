@@ -1,5 +1,7 @@
 # A bounded route to semantic qualification
 
+A post-v1 formal task now tests one supported update without issuing a new instruction. On one wording the structured state met its one-step criterion. Rewording missed justified stability, and a trained raw eight-slot transport missed the same functional comparison. The independent holdout and human support review remain pending. [Full prospective comparison](../provenance/supported_g_20261104/RESULTS.md)
+
 English · [日本語](SEMANTIC_GATE_PLAN.ja.md)
 
 The six-package plan was proposed on 2026-11-01 at `6b054baf2571c3fa0e4f19d5d841ea760d3eaba2`. The dated entries distinguish completed development experiments from proposed qualification thresholds. Qualification and independent human transition review are pending.

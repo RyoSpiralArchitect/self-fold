@@ -12,6 +12,10 @@ The [bounded qualification plan](SEMANTIC_GATE_PLAN.md) proposes six work packag
 
 The integrated two-stage study completed four configurations with final-teacher native accuracy between 49.78% and 50.69%. All missed their fixed admission screen. Teacher encodings, exact source swaps and numerical audits retain their declared scope. The intended learned G composition and independent challenge remain pending. [Evidence](../provenance/continuity_20261103/RESULTS.md)
 
+## Supported one-step development result after preprint v1
+
+The frozen one-bit writer and a newly supervised state update resolved a veto already stated by the source. On the primary wording the update gained 30.21 percentage points over identity on change-required policies and kept 480/512 justified-stability policies fully correct. It missed the stability floor on fresh wording. Free D of the raw native update produced one generic output across the tested states. The study publishes all six mechanical evidence entries and a negative admission record. Human transition appraisal was deferred. The original calibration holdout was not accessed. [Results](../provenance/supported_g_20261104/RESULTS.md) · [Development record](../provenance/supported_g_20261104/gate.json)
+
 ## Required checks
 
 The description-only study closed all four native-interface cells below its development screen. A first Gemma encoder-bridge fit improved source NLL but left functional dev accuracy near 50%, with little aggregate matched-versus-opposed donor advantage. The codec is unqualified, qualification material is still sealed, and independent human transition review is pending. [First learning evidence](../provenance/carriers_20261102/RESULTS.md)

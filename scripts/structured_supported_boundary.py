@@ -172,7 +172,7 @@ def no_injection(host, reader, native, topic, order):
     return int(logits.argmax()), logits.log_softmax(-1)[native.labels].tolist()
 
 
-def route_bank(host, native, reader, panels, topics, routes, store):
+def route_bank(host, native, reader, topics, routes, store):
     dispatch = {}
     addresses = {}
     entries = []
@@ -454,9 +454,7 @@ def evaluate_panel(
         exact = native.lexical_parity(reader)
         if not exact:
             raise ValueError("Native lexical parity")
-        scored = route_bank(
-            host, native, reader, panel, [c.topic for c in panel], rows, store
-        )
+        scored = route_bank(host, native, reader, [c.topic for c in panel], rows, store)
         unchanged = parameter_sha(reader) == frozen
     finally:
         reader.close()

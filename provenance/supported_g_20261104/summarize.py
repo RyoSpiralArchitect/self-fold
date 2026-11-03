@@ -116,9 +116,16 @@ def summarize(study, kind):
                 data[tag] = decode(f["top"][d[tag]], f["ab"][d[tag]])
             if not np.array_equal(d["erased"], d["twin_erased"]):
                 raise ValueError("Erased identical tables diverged")
-        with np.load(folder / "literal.npz", allow_pickle=False) as f:
-            for tag in ("D_initial", "D_updated"):
-                data[tag] = decode(f["top"][f[tag]], f["ab"][f[tag]])
+        for suffix in ("", "_parent") if kind == "readout" else ("",):
+            with np.load(
+                folder / ("literal" + suffix + ".npz"), allow_pickle=False
+            ) as f:
+                for tag in (
+                    ("D_initial", "D_updated", "oracle")
+                    if kind == "readout"
+                    else ("D_initial", "D_updated")
+                ):
+                    data[tag + suffix] = decode(f["top"][f[tag]], f["ab"][f[tag]])
     topics = np.array([k[0] for k in keys])
     unique = np.unique(topics)
     boot = np.random.default_rng(4719).integers(0, len(unique), (10000, len(unique)))
@@ -313,13 +320,58 @@ def summarize(study, kind):
             ),
         )
         result["analytic_gap"] = delta(main, correct["analytic"], None)
+    if kind == "readout":
+        cmp = {}
+        for name, mask in (
+            ("all", np.ones(len(keys), bool)),
+            ("fit_menus", topics % 2 == 0),
+            ("held_menus", topics % 2 == 1),
+        ):
+            mask = mask[:, None, None]
+            cells = {
+                k: stat(correct[k], mask)
+                for k in (
+                    "D_initial",
+                    "D_updated",
+                    "D_initial_parent",
+                    "D_updated_parent",
+                    "oracle",
+                    "oracle_parent",
+                    "ED_updated",
+                    "updated",
+                )
+            }
+            cells["gain"] = delta(
+                correct["D_updated"], correct["D_updated_parent"], mask
+            )
+            cells["oracle_gain"] = delta(
+                correct["oracle"], correct["oracle_parent"], mask
+            )
+            cells["reencode_loss"] = delta(main, correct["ED_updated"], mask)
+            cells["passes"] = (
+                min(cells[k]["macro"] for k in ("D_updated", "ED_updated")) >= 0.8
+                and cells["reencode_loss"]["macro"] <= 0.1
+            )
+            cells["reader_gain"] = cells["gain"]["macro"] > 0 and (
+                cells["oracle_gain"]["macro"] >= 0.1 or cells["oracle"]["macro"] >= 0.95
+            )
+            cmp[name] = cells
+        result["readout_comparison"] = cmp
+        result["fresh_readout_pass"] = all(
+            cmp[k]["passes"] for k in ("all", "held_menus")
+        )
+        result["literal_gain_pass"] = all(
+            cmp[k]["reader_gain"] for k in ("all", "held_menus")
+        )
+        if not result["fresh_readout_pass"]:
+            result["checks"]["readout_fidelity"]["mechanical"] = "fail"
     return result
 
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("study", type=Path)
-    p.add_argument("route", choices=("structured", "raw-bound"))
+    p.add_argument("route", choices=("structured", "raw-bound", "readout"))
     a = p.parse_args()
     print(
         json.dumps(summarize(a.study, a.route), sort_keys=True, separators=(",", ":"))

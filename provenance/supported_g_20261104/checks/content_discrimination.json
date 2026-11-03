@@ -1,0 +1,84 @@
+{
+  "check": "content_discrimination",
+  "interfaces": {
+    "raw_native": {
+      "execution_binding_sha256": "909fa996b2664dc377662e256e5a732fa968ae852bb3b2567a13227d0e66f407",
+      "measurement": {
+        "E": {
+          "ci95": [
+            0.4736328125,
+            0.5
+          ],
+          "macro": 0.4912109375,
+          "n": 1024,
+          "score": 503
+        },
+        "gap": {
+          "ci95": [
+            -0.0263671875,
+            0.0
+          ],
+          "macro": -0.0087890625,
+          "n": 1024,
+          "score": -9
+        },
+        "mechanical": "fail",
+        "strongest_fixed_null": "empty"
+      },
+      "reduction_sha256": "ad4fe30af86afb37bb1c0ed1715f8a8bae113b9493fc5d540e152dd2a61662ca"
+    },
+    "structured_primary": {
+      "execution_binding_sha256": "14c71325c78ce19e14bef1b6cd1dafc2360f694ad2f1fcf12a062bf904f894bb",
+      "measurement": {
+        "E": {
+          "ci95": [
+            0.8,
+            0.8
+          ],
+          "macro": 0.8,
+          "n": 10240,
+          "score": 8192
+        },
+        "gap": {
+          "ci95": [
+            0.3,
+            0.3
+          ],
+          "macro": 0.3,
+          "n": 10240,
+          "score": 3072
+        },
+        "mechanical": "pass",
+        "strongest_fixed_null": "empty"
+      },
+      "reduction_sha256": "f08293f3ad516897c06847016014a81ecd6c67cf40260ce381be5a9b48202a57"
+    },
+    "structured_reworded": {
+      "execution_binding_sha256": "5e62ed7a233b6a2dda62fe719caf2c2d4890e12ef1253b69a31f40563f1e3780",
+      "measurement": {
+        "E": {
+          "ci95": [
+            0.7218749999999999,
+            0.7625
+          ],
+          "macro": 0.7484374999999999,
+          "n": 10240,
+          "score": 7664
+        },
+        "gap": {
+          "ci95": [
+            0.221875,
+            0.2625
+          ],
+          "macro": 0.24843750000000003,
+          "n": 10240,
+          "score": 2544
+        },
+        "mechanical": "fail",
+        "strongest_fixed_null": "empty"
+      },
+      "reduction_sha256": "0d2d9e5484371f58978ec41b91c5430d36deaccedc3c3f02c184431e6c8f5597"
+    }
+  },
+  "scope": "mechanical_development_only"
+}
