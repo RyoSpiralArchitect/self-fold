@@ -209,3 +209,16 @@ The post-result wording cross and historical batch-geometry audit use source `c6
 ```bash
 python scripts/audit_stage_wording.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --literal runs/stage-grammar/literal --out runs/stage-grammar/wording
 ```
+
+### Preprint v1
+
+The independent questions and stopping rules were sealed at `d351d97c6749c1d8278b72239d2845a787079ce8`. The raw reader ran at `cb6645e91c566370df5338c13bf1416df220c7d4` and the three-role experiment at `e1ad2552b45d13013b239b0612115822fa98bd3c`. Use the same pinned local CUDA model, one CPU thread and offline settings as in the preceding experiments. Each output path must be new. [Plan and finite criteria](../provenance/preprint_v1_20261104/PLAN.md)
+
+~~~bash
+export PYTHONPATH=src
+python scripts/fit_preprint_reader.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/v1/raw
+python scripts/fit_three_role_capacity.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/v1/capacity
+python scripts/replay_preprint_v1.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --raw runs/v1/raw --capacity runs/v1/capacity --out runs/v1/replay
+~~~
+
+The replay was sealed at `276580005a86711015a002db18e8f056827f13ed`. To verify the published endpoints without refitting, point its raw and capacity arguments at the corresponding directories under `provenance/preprint_v1_20261104`. The model-free checks in `tests/test_preprint_v1.py` reconstruct counts and the two-bit bound from numerical decisions. [Outcomes and replay](../provenance/preprint_v1_20261104/RESULTS.md)

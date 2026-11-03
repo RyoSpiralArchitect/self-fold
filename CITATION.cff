@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "Please cite the versioned preprint for the experiments in this repository."
+title: SELF-FOLD
+type: software
+authors:
+  - family-names: Higa
+    given-names: Ryo
+    affiliation: "SpiralReality, Enginee, inc."
+    email: kishkavsesvit@icloud.com
+version: 1.0.0
+date-released: 2026-11-04
+license: Apache-2.0
+repository-code: "https://github.com/RyoSpiralArchitect/self-fold"
+preferred-citation:
+  type: article
+  title: "Self Without a Transcript: Reading, changing and reusing a conditional policy"
+  authors:
+    - family-names: Higa
+      given-names: Ryo
+      affiliation: "SpiralReality, Enginee, inc."
+      email: kishkavsesvit@icloud.com
+  year: 2026
+  month: 11
+  version: 1.0.0
+  doi: "10.5281/zenodo.23930929"

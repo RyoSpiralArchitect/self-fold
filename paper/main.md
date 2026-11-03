@@ -2,11 +2,13 @@
 
 ## Reading, changing and reusing a conditional policy
 
-**Research working paper · November 4, 2026**
+**Ryo Higa** · SpiralReality, Enginee, inc. · kishkavsesvit@icloud.com
+
+Preprint v1.0.0 · November 4, 2026 · [DOI 10.5281/zenodo.23930929](https://doi.org/10.5281/zenodo.23930929)
 
 ### Abstract
 
-What must a model remember to edit a policy after its original words are gone? Two policies can prescribe identical actions today yet require opposite choices after the same edit. We constructed such histories in a four-row action memory read by frozen Gemma. Given a trigger mask and a one-bit channel, a nine-parameter controller learned which role occupied the first row. Its only training signal was a scalar reward from an external scorer that checked Gemma's choices after each edit. It resolved all 9,216 paired tests in each of three seeds, matching explicit role supervision. Erasing the bit makes the two histories indistinguishable by construction. The evaluation reuses 16 policies and 196 distinct native model inputs. The registered advantage over a controller without the bit failed at the fourth edit. In an exhaustive follow-up, all four answers were correct on 100% of trajectories with either learned bit and 12.5% without it. In a separate attempt to rewrite equivalent rules in eight raw state vectors, two learned updates gave 252/512 correct choices. The independently encoded target rule and zero input each gave 256/512.
+What must a model remember to edit a policy after its original words are gone? A four-row continuous action memory passed every registered single-edit test under familiar wording, with 3,072/3,072 correct Gemma choices. Reusing the edited table passed only three of nine two-edit sequences as the branch roles moved between rows. Two histories can even have identical current actions and require opposite choices next. Given the trigger mask, a nine-parameter controller learned from externally scored Gemma choices to carry the role of the first row in one bit. It resolved all 9,216 paired tests in each of three seeds, matching explicit role supervision. This evaluation reuses 16 policies and 196 distinct native inputs. The registered advantage over a no-bit control failed at the fourth edit. In an exhaustive follow-up, all four answers were correct on 100% of trajectories with either learned bit and 12.5% without it. With three roles, six assignments shared one table. Two of three reward-trained controllers resolved all six through a three-bit channel. The third resolved five. Rewriting equivalent rules in raw Gemma slots remains open. Two learned updates gave 252/512 correct choices, and the independently encoded target rule and zero input each gave 256/512.
 
 ## 1. A rule for choosing a route
 
@@ -90,6 +92,8 @@ The familiar rule gives the switched action first, and the notebook rule starts 
 
 ## 6. Changing the policy after its words are gone
 
+In Section 5 the second call could still read the original policy. We now remove both clauses before the first edit. To read the resulting action table, we start from the component-trained Gemma reader of Section 5, calibrate its adapters on individual action rows for 96 updates, and freeze it before testing. This is the final decision path used for the structured memories in Sections 6 and 7. Section 6.1 tests the separate eight-slot path.
+
 The walker takes the ridge by default and the river when both lamps are on. Now change the trigger to either lamp. With just one on, the walker should switch from ridge to river. With both on, the route should stay the same. We use these changed and unchanged worlds to test whether a later computation actually revises a remembered policy.
 
 A frozen Gemma encoded the two clauses separately, before any later world or choices appeared. Two supervised heads, trained on 288 labelled clauses, identified each clause's role and action among 16 familiar actions. The two resulting soft action distributions populated the ordinary case table. Off/off, off/on and on/off received the default distribution, and on/on received the switched distribution. This initial layout was prescribed. For each requested trigger, a four-by-four map learned to revise the whole table from 288 fitting policy realizations. Its targets were the correct action identities in all four worlds under that trigger. A world address entered only after the revised table was complete. The native Gemma reader received that row as a continuous mixture of action embeddings, together with the two displayed alternatives. It received no original words or source attention.
@@ -133,6 +137,8 @@ On 64 held-out descriptions, four worlds and two label orders, the independently
 
 To localize the loss, a separate classifier read a state's topic and policy and rendered one of 16 canonical rule texts. The guided final states gave 251/512 native choices through this explicit decoder, whereas supplying the correct class to the same renderer gave 508/512. Knowing the canonical rule is enough for most decisions at that interface. Neither the separately encoded raw rule nor the learned two-step states supported the required native use on the new panel. The positive experiments in this paper use the explicitly structured action memory. [Native, decoded and midpoint controls](../provenance/stage_grammar_20261104/RESULTS.md#expansion-and-reintegration-on-a-frozen-native-reader)
 
+We next trained the Section 5.1 reader directly on independently encoded teachers for 192 updates and froze it. The test held the question wording familiar and changed the source grammar and lamp names. With matched slots, the native reader scored 254/512 on descriptions, 263/512 on cases and 123/256 on rules. Zero slots gave 256/512, 256/512 and 128/256. Across the three stages, zero of 1,280 original-and-opposed comparisons produced two correct choices with reversed margins. All three stages failed the registered requirement. The comparison that puts an intermediate state into words remains gated on a reader that can first use the independently encoded states. [New grammar and opposed teachers](../provenance/preprint_v1_20261104/RESULTS.md#independently-encoded-teachers)
+
 ## 7. Learning what the next edit will need
 
 Return to the two walkers in Section 1. With both lamps off after the edit, the first should take the ridge and the second the river. Their pre-edit action tables are identical. The earlier recovery rule assumed the off/off row was always the default. Here that row can hold either role.
@@ -158,11 +164,26 @@ The preregistered comparison required a 25-point gain over the no-bit control at
 
 We then fixed a follow-up covering all 1,296 strings with unchanged weights and sources. The no-bit control ended correctly on all 331,776 judgments after even prefix parity and none after odd parity. This accounts for its behavior on the finite instruction set. The registered criterion remains unmet. [Native outputs, parity strata and complete outcomes](../provenance/role_memory_20261104/RESULTS.md)
 
+### 7.1. Six histories through two or three bits
+
+Six histories can share the same three action rows. Each history assigns the roles to those rows in a different order. A later instruction names a role and asks for its action. Taken together, the three instructions distinguish every pair of histories. If the only additional state is a discrete message, two bits can distinguish at most four complete histories. Three bits have enough codes for six.
+
+We built each physical table from three familiar action phrases using the frozen clause encoder and value head. The writer received the previous role assignment as one of six categories. Its message crossed the boundary with the unchanged table. Given a later role, the learned reader picked a row. Frozen Gemma compared that row with each of the two rival actions in both A/B orders. A complete history required all twelve choices correct. Each controller fitted the expected native-choice reward over all available messages and row selections for 512 updates. Fitting used four action triplets. Testing used four different combinations of familiar actions and two new lamp-name pairs. All six role assignments occurred in both splits.
+
+| Code and seed | Complete histories | Individual choices |
+| --- | ---: | ---: |
+| Supplied three bits | 48/48 | 576/576 |
+| Learned two bits, each seed | 16/48 | 472/576 |
+| Learned three bits, seeds 17 and 41 | 48/48 | 576/576 |
+| Learned three bits, seed 73 | 40/48 | 526/576 |
+
+The supplied three-bit code made every native choice correctly. The same six assignments and eight physical test tables underlie all 48 histories. The three-bit learner that missed one assignment used five distinct symbols and wrote the same symbol for two histories. The all-seed learning criterion therefore failed. Enumerating every partition of the six histories to maximize fitting reward gave 48/48 complete test histories with three bits and 16/48 with two. A separate, supplied two-bit code preserved four chosen assignments per table, or 32/48 histories. Maximizing the number of individual answers and preserving a complete history reward different solutions in this task. [Capacity, missing codes and native controls](../provenance/preprint_v1_20261104/RESULTS.md#six-histories-through-a-discrete-message)
+
 ## 8. From a role bit to richer updates
 
 An action table records what a policy does. A later edit can also need the roles its actions played. With a supplied row comparison and a writable bit, the controller learned that distinction from outcome reward. Independent confirmation requires new policy families and fresh wording.
 
-With three distinct roles and three actions, six assignments are possible. Give all six histories the same current table and allow only the tested bits to distinguish them. Choose later instructions that separate every pair. Two bits can label at most four histories. Three can label all six. Compare a supplied three-bit code with a learned one to test how much of that capacity the controller uses.
+The three-role test separates capacity from learning at a supplied interface. A wider test can withhold whole role assignments and replace the six-category writer input with the preceding observations or a textual edit. A supplied code establishes whether the reader can use enough bits. A learned writer on the same tasks then tests whether it can discover what each bit should carry.
 
 To extend the test beyond fixed masks, introduce textual edits with exceptions and balance histories at every prefix. Measure both changes of a previously wrong answer and damage to a previously correct one. Compare reward learning and supervised update training at matched training and inference budgets, including world verifiers and readouts. Unseen planning or language tasks and retention measures would be needed for a broader capability claim. [Kumar et al.](https://arxiv.org/abs/2409.12917v2) · [Gao et al.](https://arxiv.org/abs/2210.10760)
 
