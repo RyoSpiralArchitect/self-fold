@@ -1,0 +1,31 @@
+{
+  "schema": "matched_question_operations_v1",
+  "action_fixture_sha256": "aeee777aa4d5cd90db4c30ec52d3320aec38bf10290afcb648fae4cfa869d772",
+  "topic_cues": {
+    "archive": "Archive",
+    "route": "Walking",
+    "notes": "Notes",
+    "temperature": "Weather",
+    "length": "Length",
+    "clock": "Time",
+    "mail": "Mail",
+    "music": "Music"
+  },
+  "scaffolds": [
+    "Which option would this person {operation}?",
+    "Which alternative would the speaker {operation}?",
+    "Which of the two options would this person {operation}?",
+    "Which listed alternative would the speaker {operation}?"
+  ],
+  "generic_operation": "choose according to the stated preference",
+  "concrete_operations": {
+    "archive": "put at the front when arranging the reports",
+    "route": "follow when going for a walk",
+    "notes": "use when recording the discussion",
+    "temperature": "write beside a weather temperature",
+    "length": "use to state the length of a small object",
+    "clock": "use when writing an appointment time",
+    "mail": "use when organizing saved messages",
+    "music": "play when picking a recording to hear"
+  }
+}
