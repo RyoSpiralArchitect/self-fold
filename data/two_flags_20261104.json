@@ -1,0 +1,56 @@
+{
+  "base_fixture_sha256": "e2cc7c0443fa782510a38775cb62bc115e7c493d0e1fbb76e9bd0486cabe174f",
+  "arm_names": {
+    "direct": "Practise the final choice",
+    "parts": "Learn the parts of the choice"
+  },
+  "new_flags": [
+    [
+      "signal Reed",
+      "signal Moss"
+    ],
+    [
+      "signal Nacre",
+      "signal Flint"
+    ]
+  ],
+  "new_style_name": "standing_instruction",
+  "new_style": {
+    "prefix": "My standing instruction uses two signals. ",
+    "source_true": "I pick the option \"{selected}\" whenever {first} and {second} are on together.",
+    "source_false": "I pick the option \"{other}\" whenever one or both of {first} and {second} are off.",
+    "cases_prefix": "Here are my choices for every possible reading. ",
+    "case": "In the situation where {world}, my choice is \"{action}\".",
+    "rule": "My usual choice is \"{other}\". I switch to \"{selected}\" exactly when {first} and {second} both read on."
+  },
+  "world_prefix": "Today's readings say that {world}.",
+  "question": "Under these readings, which alternative does this person choose to {operation}?",
+  "operations": {
+    "archive": "put first in a collection of reports",
+    "route": "take for an afternoon walk",
+    "notes": "use for the notes of a discussion",
+    "temperature": "use to record today's temperature",
+    "length": "use for the length of a short item",
+    "clock": "use to give a meeting time",
+    "mail": "use to organize a mailbox",
+    "music": "listen to when choosing a recording"
+  },
+  "fit_probes": {
+    "world_prefix": "Current indicators: {world}.",
+    "flag": "What value is reported for {flag}?",
+    "and": "Are both indicators on?",
+    "bit": [
+      "The joint test says that at least one indicator is off.",
+      "The joint test says that both indicators are on."
+    ]
+  },
+  "fresh_probes": {
+    "world_prefix": "Today's readings say that {world}.",
+    "flag": "Which state does {flag} have in these readings?",
+    "and": "Do the two readings both have the on value?",
+    "bit": [
+      "The condition that both indicators read on is false.",
+      "The condition that both indicators read on is true."
+    ]
+  }
+}
