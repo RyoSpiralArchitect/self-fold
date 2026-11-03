@@ -180,7 +180,7 @@ def reduce(run):
             lost=sum(fixed[a, *k] and not fixed[b, *k] for k in keys),
             n=len(keys),
         )
-    train = [json.loads(l) for l in (run / "training.jsonl").read_text().splitlines()]
+    train = [json.loads(line) for line in (run / "training.jsonl").read_text().splitlines()]
     by = {(r["arm"], r["step"]): r for r in train}
     if len(by) != len(train) or len(by) != len(ARMS) * design["steps"]:
         raise ValueError("Incomplete training")
