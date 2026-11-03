@@ -23,6 +23,8 @@ A subsequent study supplied the correct lexical policy before scoring any source
 
 The matched-cue study froze both interfaces. Adding a single topic word gave the true teacher 99/128 on fresh questions, compared with 101/128 without a heading. On two-field records the literal base improved from 358/512 to 452/512 when verdicts followed actions. Under each placement the source reader selected the same policy on 122/128 opposed pairs at fixed action mention order. The paired effect and reliability screens closed without admission. [Protocol, native choices and source exchange counts](../provenance/matched_cues_20261103/RESULTS.md)
 
+A fitted source head passed its separately registered first-role development criterion on 64 unfamiliar action expressions in eight known topics. It identified acceptance versus rejection of the first action from 2,043/2,048 individual E states and correctly classified both members of 1,019/1,024 opposed pairs. The two verdict vocabularies and record layout were familiar. Complete policy recovery reached 1,311/2,048 and missed admission. No weighting-specific advantage or G qualification was obtained. [Role-exchange fit, controls and frozen readouts](../provenance/role_exchange_20261103/RESULTS.md)
+
 ## The question
 
 When the meaning of a current self-description is interpreted again and folded into the next current state, can the resulting distinction support another meaning update and a judgment in a new situation without consulting the original description or a transcript? How does verbalizing that intermediate state alter its later use?

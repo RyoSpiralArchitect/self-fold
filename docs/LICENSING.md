@@ -23,3 +23,5 @@ The E-to-lexical source maps contain training-only activation-derived ridge buff
 The stopped initialization and the four within-topic policy mixture artifacts contain Gemma-derived teacher rows and statistics. [Within-topic artifact conditions](../provenance/within_topic_20261103/ARTIFACT_LICENSE.md)
 
 The calibrated teacher renderer and source-direction arrays use the same Gemma terms. [Teacher and source readout artifact conditions](../provenance/teacher_polarity_20261103/ARTIFACT_LICENSE.md)
+
+The role-exchange readouts contain activation-derived directions, standardization and the prior topic router. [Role-exchange artifact conditions](../provenance/role_exchange_20261103/ARTIFACT_LICENSE.md)
