@@ -51,7 +51,7 @@ def capture_clauses(host, texts):
 class NativeChoice:
     """Only a continuous action row and two displayed options enter the final LM call."""
 
-    def __init__(self, host, menus):
+    def __init__(self, host, menus, *, actions=None):
         self.host = host
         self.labels = [self.single(k) for k in ("A", "B")]
         self.prompts = {}
@@ -64,11 +64,9 @@ class NativeChoice:
                 )
                 ids, where = host.render(text)
                 self.prompts[group, order] = (ids, where[INPUT_MARKER])
-        phrases = [
-            host.tokenizer.encode(s, add_special_tokens=False)
-            for menu in menus
-            for s in menu
-        ]
+        if actions is None:
+            actions = [phrase for menu in menus for phrase in menu]
+        phrases = [host.tokenizer.encode(s, add_special_tokens=False) for s in actions]
         if max(map(len, phrases)) > host.slots or min(map(len, phrases)) < 1:
             raise ValueError("An action exceeds the fixed lexical bank width")
         blank = self.single(" ")
