@@ -64,7 +64,7 @@ We compared two curricula from the same saved literal Gemma reader. *Practise th
 
 For the two-call route, the first call saw just the two readings and answered whether both were on. A fixed rendering of that Boolean and the original policy text went to the second call. The two calls had independently swapped A/B labels. We also complemented the bit at fixed policy, exchanged the policy at fixed bit and supplied the true bit. These interventions distinguish errors in reading the world from errors in applying the policy.
 
-| Training | Direct action | Two calls, predicted bit | Both bit settings correct | Strict composed units |
+| Training | Direct action | Two calls, predicted bit | Both bit settings correct | Strict two-call units |
 | --- | ---: | ---: | ---: | ---: |
 | Final choice | 1,165/1,280 | 1,932/2,560 | 1,718/2,560 | 0/48 |
 | Learn parts | 1,159/1,280 | 2,234/2,560 | 2,049/2,560 | 11/48 |
@@ -73,7 +73,7 @@ Compared with final-choice training, component practice lost 6 of 1,280 direct a
 
 ### 5.1. When a familiar rule frame stops working
 
-The earlier margin-trained reader had met 47/48 fitting strict units on compact rules, compared with 23/48 on descriptions and 28/48 on case tables. After component training the fitting counts were 48/48, 41/48 and 38/48 respectively. On the jointly new material only 3/16 rule, 1/16 description and 0/16 case units held. All 44 ordinary case errors occurred in forward table order. We asked whether broader wording practice or additional branch supervision could close the gap.
+The earlier margin-trained reader had met 47/48 fitting strict units on compact rules, compared with 23/48 on descriptions and 28/48 on case tables. After component training the fitting counts were 48/48, 41/48 and 38/48 respectively. On the earlier jointly new panel, direct answers passed 4/48 strict units (1/16 descriptions, 0/16 cases and 3/16 rules). The same reader passed 11/48 units on this panel when it first evaluated the conjunction and then chose an action, as shown in the preceding table. Each direct unit requires 32 correct choices for a description or case table, covering both presentation orders, and 16 for the single-order compact rule. All 44 ordinary case errors occurred in forward table order. We asked whether broader wording practice or additional branch supervision could close the gap.
 
 Three continuations began from the same component reader and received 400 updates, 12,800 labels and identical padded-token budgets. At equal task proportions, widening the grammar bank raised ordinary new-panel accuracy from 1,169 to 1,187 of 1,280. With that wider bank, assigning seven of sixteen label pairs to branch binding and five to conjunction gave 1,182. The focus reader reached 44/48, 45/48 and 48/48 strict units on the two original fitting families, but only 44/96, 47/96 and 91/96 on all four training families (description, cases, rule).
 
@@ -84,7 +84,7 @@ On the new panel the unchanged parent and all three continuations already answer
 | Familiar if/else wording | 127/128 | 126/128 |
 | New notebook wording | 88/128 | 60/128 |
 
-With the familiar question, changing only the bit sentence cost one choice on familiar rule syntax but 28 on the new rule syntax. In the new-rule/new-bit cell, false-bit choices stayed correct on 60/64 and true-bit choices fell to 0/64. The table weights both bit values equally and the composed counts above weight the four worlds equally. These are effects of the specific wordings and this frozen reader. [Training comparison, wording cross and scoring audit](../provenance/stage_grammar_20261104/RESULTS.md#a-frozen-cross-of-grammar-bit-wording-and-question)
+The familiar rule gives the switched action first, and the notebook rule starts with the default. For a true bit, “The joint test says that both indicators are on.” became “Each of the two current settings is on.” Across both bit values, changing the bit sentence cost one choice on the familiar rule and 28 on the notebook rule. In the new-rule/new-bit cell, false-bit choices stayed correct on 60/64 and true-bit choices fell to 0/64. The table weights both bit values equally and the composed counts above weight the four worlds equally. These are effects of the specific wordings and this frozen reader. [Training comparison, wording cross and scoring audit](../provenance/stage_grammar_20261104/RESULTS.md#a-frozen-cross-of-grammar-bit-wording-and-question)
 
 ## 6. Changing the policy after its words are gone
 
