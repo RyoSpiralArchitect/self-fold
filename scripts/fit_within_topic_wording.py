@@ -237,6 +237,7 @@ def train_arm(
     store,
     arm,
     binding,
+    first_attempt=None,
 ):
     fit = bank["fit"]
     x = torch.stack([states[c["source"]].slots for c in fit])
@@ -264,6 +265,46 @@ def train_arm(
         "initial",
         meta,
     )
+    if arm == "single" and first_attempt is not None:
+        import numpy as np
+
+        if (
+            file_sha(first_attempt / "single_initial.npz")
+            != "f8c8d183c939ea99164457c4aef7b90b39d8e44a1702555be85edb97a3c2a0e4"
+        ):
+            raise ValueError("Unexpected initial-attempt artifact")
+        replay_files = (
+            "request.json",
+            "sources.jsonl",
+            "teachers.jsonl",
+            "schedule.json",
+            "lexical_replay.jsonl",
+            "geometry.jsonl",
+        )
+        if any(
+            file_sha(first_attempt / name) != file_sha(store.path / name)
+            for name in replay_files
+        ):
+            raise ValueError("Initial-attempt capture or design replay failed")
+        with (
+            np.load(first_attempt / "single_initial.npz", allow_pickle=False) as old,
+            np.load(store.path / "single_initial.npz", allow_pickle=False) as new,
+        ):
+            fields = sorted(set(old.files) - {"metadata_utf8"})
+            if set(old.files) != set(new.files) or any(
+                not np.array_equal(old[k], new[k]) or old[k].strides != new[k].strides
+                for k in fields
+            ):
+                raise ValueError("Initial analytic weights or storage order differ")
+        store.write(
+            "repair_replay.json",
+            {
+                "files_exact": list(replay_files),
+                "tensor_values_and_strides_exact": fields,
+                "updates_before_replay": 0,
+                "first_artifact_sha256": file_sha(first_attempt / "single_initial.npz"),
+            },
+        )
     cases = {(c["group"], c["a"], c["b"], c["source_order"], c["pole"]): c for c in fit}
     label_ids = [
         host.tokenizer.encode(t, add_special_tokens=False)[0] for t in ("A", "B")
@@ -570,6 +611,7 @@ def run(args, store):
                 store,
                 arm,
                 meta,
+                args.first_attempt,
             )
         # Both fits are complete and serialized before any fresh readout is scored.
         previous, _, old_sha = load_source_mapper(
@@ -672,6 +714,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument(
+        "--first-attempt",
+        type=Path,
+        help="Verify the archived stopped attempt before the first optimizer update",
+    )
     parser.set_defaults(
         backend="hf",
         cpu_threads=1,

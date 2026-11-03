@@ -131,7 +131,7 @@ def load_policy_mixture(path, host_identity, lexical_sha, device):
         ):
             raise ValueError("Policy mixture binding mismatch")
         arrays = {
-            k: torch.from_numpy(archive[k].copy())
+            k: torch.from_numpy(archive[k].copy(order="K"))
             for k in archive.files
             if k != "metadata_utf8"
         }

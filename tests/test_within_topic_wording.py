@@ -98,6 +98,7 @@ def test_policy_directions_remove_sample_axis_support_gradients_and_reload(tmp_p
         path, model, {"base_host_sha256": digest(host), "lexical_sha256": "a" * 64}
     )
     restored, _, _ = load_policy_mixture(path, host, "a" * 64, "cpu")
+    assert restored.projection.stride() == model.projection.stride()
     assert torch.equal(model(states), restored(states))
     with pytest.raises(ValueError, match="binding"):
         load_policy_mixture(path, host, "b" * 64, "cpu")
