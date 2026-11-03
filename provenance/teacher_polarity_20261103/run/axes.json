@@ -1,0 +1,1 @@
+{"artifact_sha256":"37981ffed73bf31c343995a5a6947251f59953f0d10cd6743be2d96651ebbde9","fit_state_sha256":"4f4887c259b61eef4c6257a86338dc75dc891d07be2b4dde2aaf64b842d6001f","score_replay":512,"shape":{"biases":[8,2],"mean":[18432],"offset":[9],"scale":[18432],"shared":[18432,9],"slopes":[8,18432,2]}}

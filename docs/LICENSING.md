@@ -21,3 +21,5 @@ The bounded readout cycle provides four learned arrays with source-specific Gemm
 The E-to-lexical source maps contain training-only activation-derived ridge buffers and learned residual factors with their applicable Gemma conditions. [Source-map artifact conditions](../provenance/source_lexical_20261103/run/ADAPTER_LICENSE.md)
 
 The stopped initialization and the four within-topic policy mixture artifacts contain Gemma-derived teacher rows and statistics. [Within-topic artifact conditions](../provenance/within_topic_20261103/ARTIFACT_LICENSE.md)
+
+The calibrated teacher renderer and source-direction arrays use the same Gemma terms. [Teacher and source readout artifact conditions](../provenance/teacher_polarity_20261103/ARTIFACT_LICENSE.md)

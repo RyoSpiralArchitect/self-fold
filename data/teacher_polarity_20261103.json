@@ -1,0 +1,23 @@
+{
+  "prior_fixture": "data/within_topic_wording_20261103.json",
+  "prior_sha256": "aeee777aa4d5cd90db4c30ec52d3320aec38bf10290afcb648fae4cfa869d772",
+  "familiar_pairs": [0, 1, 2, 3],
+  "fresh_frames": {
+    "priority": {"chosen": "I give priority to {}.", "rejected": "I have no interest in {}."},
+    "verdict": {"chosen": "The prospect of {} appeals to me.", "rejected": "The prospect of {} puts me off."}
+  },
+  "generic_questions": [
+    "Of the two alternatives shown, which one does this person favor?",
+    "Which choice below accords with the speaker's wishes?"
+  ],
+  "specific_questions": {
+    "archive": ["When the speaker files reports, which ones get the leading position?", "Which reports belong at the front according to this archivist?"],
+    "route": ["Which path would the speaker choose for today's stroll?", "Which of these walks suits the person who supplied the description?"],
+    "notes": ["What treatment of the discussion belongs in this speaker's notes?", "Which method of recording a meeting suits the note taker?"],
+    "temperature": ["What units would the speaker mark on a temperature chart?", "Which scale would appear beside a reading in this person's weather record?"],
+    "length": ["Which units would this speaker mark on a small object's measurement?", "Which unit fits an entry in this person's length measurements?"],
+    "clock": ["Which convention would this speaker use to display an appointment time?", "What format would a clock set by this person show?"],
+    "mail": ["How would this person sort a folder of retained messages?", "What organizing principle would the speaker use for old mail?"],
+    "music": ["Which kind of track would the speaker add to a playlist?", "What sort of recording would this listener select for the evening?"]
+  }
+}

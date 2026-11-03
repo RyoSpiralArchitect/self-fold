@@ -1,0 +1,1894 @@
+{
+  "historical_joint": [
+    {
+      "assignment_correct": false,
+      "rendered_oracle_correct": false,
+      "matched_correct": false,
+      "n": 28
+    },
+    {
+      "assignment_correct": false,
+      "rendered_oracle_correct": false,
+      "matched_correct": true,
+      "n": 0
+    },
+    {
+      "assignment_correct": false,
+      "rendered_oracle_correct": true,
+      "matched_correct": false,
+      "n": 126
+    },
+    {
+      "assignment_correct": false,
+      "rendered_oracle_correct": true,
+      "matched_correct": true,
+      "n": 30
+    },
+    {
+      "assignment_correct": true,
+      "rendered_oracle_correct": false,
+      "matched_correct": false,
+      "n": 36
+    },
+    {
+      "assignment_correct": true,
+      "rendered_oracle_correct": false,
+      "matched_correct": true,
+      "n": 0
+    },
+    {
+      "assignment_correct": true,
+      "rendered_oracle_correct": true,
+      "matched_correct": false,
+      "n": 14
+    },
+    {
+      "assignment_correct": true,
+      "rendered_oracle_correct": true,
+      "matched_correct": true,
+      "n": 278
+    }
+  ],
+  "teacher": {
+    "fit/archived": {
+      "native": [
+        118,
+        128
+      ],
+      "coverage": [
+        126,
+        128
+      ],
+      "forced": [
+        119,
+        128
+      ],
+      "ties": 1,
+      "each_wording": [
+        [
+          32,
+          32
+        ],
+        [
+          30,
+          32
+        ],
+        [
+          27,
+          32
+        ],
+        [
+          29,
+          32
+        ]
+      ],
+      "each_topic": [
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          14,
+          16
+        ],
+        [
+          12,
+          16
+        ],
+        [
+          13,
+          16
+        ],
+        [
+          15,
+          16
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "strict_topics": [
+        4,
+        8
+      ],
+      "opposed_flips": [
+        55,
+        64
+      ]
+    },
+    "fit/calibrated": {
+      "native": [
+        128,
+        128
+      ],
+      "coverage": [
+        128,
+        128
+      ],
+      "forced": [
+        128,
+        128
+      ],
+      "ties": 0,
+      "each_wording": [
+        [
+          32,
+          32
+        ],
+        [
+          32,
+          32
+        ],
+        [
+          32,
+          32
+        ],
+        [
+          32,
+          32
+        ]
+      ],
+      "each_topic": [
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "strict_topics": [
+        8,
+        8
+      ],
+      "opposed_flips": [
+        64,
+        64
+      ]
+    },
+    "fit/canonical": {
+      "native": [
+        112,
+        128
+      ],
+      "coverage": [
+        128,
+        128
+      ],
+      "forced": [
+        112,
+        128
+      ],
+      "ties": 0,
+      "each_wording": [
+        [
+          29,
+          32
+        ],
+        [
+          29,
+          32
+        ],
+        [
+          26,
+          32
+        ],
+        [
+          28,
+          32
+        ]
+      ],
+      "each_topic": [
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          14,
+          16
+        ],
+        [
+          11,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          15,
+          16
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "strict_topics": [
+        4,
+        8
+      ],
+      "opposed_flips": [
+        48,
+        64
+      ]
+    },
+    "fit/mean": {
+      "native": [
+        64,
+        128
+      ],
+      "coverage": [
+        128,
+        128
+      ],
+      "forced": [
+        64,
+        128
+      ],
+      "ties": 0,
+      "each_wording": [
+        [
+          16,
+          32
+        ],
+        [
+          16,
+          32
+        ],
+        [
+          16,
+          32
+        ],
+        [
+          16,
+          32
+        ]
+      ],
+      "each_topic": [
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ]
+      ],
+      "strict_topics": [
+        0,
+        8
+      ],
+      "opposed_flips": [
+        0,
+        64
+      ]
+    },
+    "fresh/archived": {
+      "native": [
+        101,
+        128
+      ],
+      "coverage": [
+        123,
+        128
+      ],
+      "forced": [
+        102,
+        128
+      ],
+      "ties": 1,
+      "each_wording": [
+        [
+          20,
+          32
+        ],
+        [
+          28,
+          32
+        ],
+        [
+          28,
+          32
+        ],
+        [
+          25,
+          32
+        ]
+      ],
+      "each_topic": [
+        [
+          15,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          15,
+          16
+        ],
+        [
+          13,
+          16
+        ],
+        [
+          6,
+          16
+        ],
+        [
+          10,
+          16
+        ],
+        [
+          11,
+          16
+        ],
+        [
+          15,
+          16
+        ]
+      ],
+      "strict_topics": [
+        1,
+        8
+      ],
+      "opposed_flips": [
+        40,
+        64
+      ]
+    },
+    "fresh/calibrated": {
+      "native": [
+        113,
+        128
+      ],
+      "coverage": [
+        128,
+        128
+      ],
+      "forced": [
+        113,
+        128
+      ],
+      "ties": 0,
+      "each_wording": [
+        [
+          24,
+          32
+        ],
+        [
+          27,
+          32
+        ],
+        [
+          31,
+          32
+        ],
+        [
+          31,
+          32
+        ]
+      ],
+      "each_topic": [
+        [
+          15,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          15,
+          16
+        ],
+        [
+          13,
+          16
+        ],
+        [
+          10,
+          16
+        ],
+        [
+          15,
+          16
+        ],
+        [
+          14,
+          16
+        ],
+        [
+          15,
+          16
+        ]
+      ],
+      "strict_topics": [
+        1,
+        8
+      ],
+      "opposed_flips": [
+        49,
+        64
+      ]
+    },
+    "fresh/canonical": {
+      "native": [
+        102,
+        128
+      ],
+      "coverage": [
+        123,
+        128
+      ],
+      "forced": [
+        102,
+        128
+      ],
+      "ties": 1,
+      "each_wording": [
+        [
+          21,
+          32
+        ],
+        [
+          26,
+          32
+        ],
+        [
+          28,
+          32
+        ],
+        [
+          27,
+          32
+        ]
+      ],
+      "each_topic": [
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          15,
+          16
+        ],
+        [
+          12,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          12,
+          16
+        ],
+        [
+          15,
+          16
+        ]
+      ],
+      "strict_topics": [
+        2,
+        8
+      ],
+      "opposed_flips": [
+        40,
+        64
+      ]
+    },
+    "fresh/mean": {
+      "native": [
+        64,
+        128
+      ],
+      "coverage": [
+        128,
+        128
+      ],
+      "forced": [
+        64,
+        128
+      ],
+      "ties": 0,
+      "each_wording": [
+        [
+          16,
+          32
+        ],
+        [
+          16,
+          32
+        ],
+        [
+          16,
+          32
+        ],
+        [
+          16,
+          32
+        ]
+      ],
+      "each_topic": [
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          16
+        ]
+      ],
+      "strict_topics": [
+        0,
+        8
+      ],
+      "opposed_flips": [
+        0,
+        64
+      ]
+    }
+  },
+  "source": {
+    "fit/all": {
+      "factor": {
+        "policy": [
+          512,
+          512
+        ],
+        "strict": [
+          128,
+          128
+        ],
+        "by_order": [
+          [
+            256,
+            256
+          ],
+          [
+            256,
+            256
+          ]
+        ],
+        "opposed_same_role_order": [
+          256,
+          256
+        ],
+        "opposed_same_action_order": [
+          256,
+          256
+        ]
+      },
+      "direct": {
+        "policy": [
+          512,
+          512
+        ],
+        "strict": [
+          128,
+          128
+        ],
+        "by_order": [
+          [
+            256,
+            256
+          ],
+          [
+            256,
+            256
+          ]
+        ],
+        "opposed_same_role_order": [
+          256,
+          256
+        ],
+        "opposed_same_action_order": [
+          256,
+          256
+        ]
+      },
+      "mention": {
+        "policy": [
+          256,
+          512
+        ],
+        "strict": [
+          0,
+          128
+        ],
+        "by_order": [
+          [
+            256,
+            256
+          ],
+          [
+            0,
+            256
+          ]
+        ],
+        "opposed_same_role_order": [
+          128,
+          256
+        ],
+        "opposed_same_action_order": [
+          0,
+          256
+        ]
+      },
+      "flat": {
+        "policy": [
+          429,
+          512
+        ],
+        "strict": [
+          77,
+          128
+        ],
+        "by_order": [
+          [
+            219,
+            256
+          ],
+          [
+            210,
+            256
+          ]
+        ],
+        "opposed_same_role_order": [
+          173,
+          256
+        ],
+        "opposed_same_action_order": [
+          173,
+          256
+        ]
+      },
+      "oracle_factor": {
+        "policy": [
+          512,
+          512
+        ],
+        "strict": [
+          128,
+          128
+        ],
+        "by_order": [
+          [
+            256,
+            256
+          ],
+          [
+            256,
+            256
+          ]
+        ],
+        "opposed_same_role_order": [
+          256,
+          256
+        ],
+        "opposed_same_action_order": [
+          256,
+          256
+        ]
+      },
+      "topic": [
+        512,
+        512
+      ],
+      "first_role": [
+        512,
+        512
+      ],
+      "first_action_oracle_topic": [
+        512,
+        512
+      ]
+    },
+    "fit/prefer": {
+      "factor": {
+        "policy": [
+          128,
+          128
+        ],
+        "strict": [
+          32,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          64,
+          64
+        ],
+        "opposed_same_action_order": [
+          64,
+          64
+        ]
+      },
+      "direct": {
+        "policy": [
+          128,
+          128
+        ],
+        "strict": [
+          32,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          64,
+          64
+        ],
+        "opposed_same_action_order": [
+          64,
+          64
+        ]
+      },
+      "mention": {
+        "policy": [
+          64,
+          128
+        ],
+        "strict": [
+          0,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            0,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          32,
+          64
+        ],
+        "opposed_same_action_order": [
+          0,
+          64
+        ]
+      },
+      "flat": {
+        "policy": [
+          109,
+          128
+        ],
+        "strict": [
+          22,
+          32
+        ],
+        "by_order": [
+          [
+            55,
+            64
+          ],
+          [
+            54,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          45,
+          64
+        ],
+        "opposed_same_action_order": [
+          45,
+          64
+        ]
+      },
+      "oracle_factor": {
+        "policy": [
+          128,
+          128
+        ],
+        "strict": [
+          32,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          64,
+          64
+        ],
+        "opposed_same_action_order": [
+          64,
+          64
+        ]
+      },
+      "topic": [
+        128,
+        128
+      ],
+      "first_role": [
+        128,
+        128
+      ],
+      "first_action_oracle_topic": [
+        128,
+        128
+      ]
+    },
+    "fit/suitable": {
+      "factor": {
+        "policy": [
+          128,
+          128
+        ],
+        "strict": [
+          32,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          64,
+          64
+        ],
+        "opposed_same_action_order": [
+          64,
+          64
+        ]
+      },
+      "direct": {
+        "policy": [
+          128,
+          128
+        ],
+        "strict": [
+          32,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          64,
+          64
+        ],
+        "opposed_same_action_order": [
+          64,
+          64
+        ]
+      },
+      "mention": {
+        "policy": [
+          64,
+          128
+        ],
+        "strict": [
+          0,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            0,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          32,
+          64
+        ],
+        "opposed_same_action_order": [
+          0,
+          64
+        ]
+      },
+      "flat": {
+        "policy": [
+          114,
+          128
+        ],
+        "strict": [
+          22,
+          32
+        ],
+        "by_order": [
+          [
+            58,
+            64
+          ],
+          [
+            56,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          50,
+          64
+        ],
+        "opposed_same_action_order": [
+          50,
+          64
+        ]
+      },
+      "oracle_factor": {
+        "policy": [
+          128,
+          128
+        ],
+        "strict": [
+          32,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          64,
+          64
+        ],
+        "opposed_same_action_order": [
+          64,
+          64
+        ]
+      },
+      "topic": [
+        128,
+        128
+      ],
+      "first_role": [
+        128,
+        128
+      ],
+      "first_action_oracle_topic": [
+        128,
+        128
+      ]
+    },
+    "fit/usual": {
+      "factor": {
+        "policy": [
+          128,
+          128
+        ],
+        "strict": [
+          32,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          64,
+          64
+        ],
+        "opposed_same_action_order": [
+          64,
+          64
+        ]
+      },
+      "direct": {
+        "policy": [
+          128,
+          128
+        ],
+        "strict": [
+          32,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          64,
+          64
+        ],
+        "opposed_same_action_order": [
+          64,
+          64
+        ]
+      },
+      "mention": {
+        "policy": [
+          64,
+          128
+        ],
+        "strict": [
+          0,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            0,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          32,
+          64
+        ],
+        "opposed_same_action_order": [
+          0,
+          64
+        ]
+      },
+      "flat": {
+        "policy": [
+          104,
+          128
+        ],
+        "strict": [
+          17,
+          32
+        ],
+        "by_order": [
+          [
+            53,
+            64
+          ],
+          [
+            51,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          40,
+          64
+        ],
+        "opposed_same_action_order": [
+          40,
+          64
+        ]
+      },
+      "oracle_factor": {
+        "policy": [
+          128,
+          128
+        ],
+        "strict": [
+          32,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          64,
+          64
+        ],
+        "opposed_same_action_order": [
+          64,
+          64
+        ]
+      },
+      "topic": [
+        128,
+        128
+      ],
+      "first_role": [
+        128,
+        128
+      ],
+      "first_action_oracle_topic": [
+        128,
+        128
+      ]
+    },
+    "fit/welcome": {
+      "factor": {
+        "policy": [
+          128,
+          128
+        ],
+        "strict": [
+          32,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          64,
+          64
+        ],
+        "opposed_same_action_order": [
+          64,
+          64
+        ]
+      },
+      "direct": {
+        "policy": [
+          128,
+          128
+        ],
+        "strict": [
+          32,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          64,
+          64
+        ],
+        "opposed_same_action_order": [
+          64,
+          64
+        ]
+      },
+      "mention": {
+        "policy": [
+          64,
+          128
+        ],
+        "strict": [
+          0,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            0,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          32,
+          64
+        ],
+        "opposed_same_action_order": [
+          0,
+          64
+        ]
+      },
+      "flat": {
+        "policy": [
+          102,
+          128
+        ],
+        "strict": [
+          16,
+          32
+        ],
+        "by_order": [
+          [
+            53,
+            64
+          ],
+          [
+            49,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          38,
+          64
+        ],
+        "opposed_same_action_order": [
+          38,
+          64
+        ]
+      },
+      "oracle_factor": {
+        "policy": [
+          128,
+          128
+        ],
+        "strict": [
+          32,
+          32
+        ],
+        "by_order": [
+          [
+            64,
+            64
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          64,
+          64
+        ],
+        "opposed_same_action_order": [
+          64,
+          64
+        ]
+      },
+      "topic": [
+        128,
+        128
+      ],
+      "first_role": [
+        128,
+        128
+      ],
+      "first_action_oracle_topic": [
+        128,
+        128
+      ]
+    },
+    "fresh/all": {
+      "factor": {
+        "policy": [
+          188,
+          256
+        ],
+        "strict": [
+          25,
+          64
+        ],
+        "by_order": [
+          [
+            98,
+            128
+          ],
+          [
+            90,
+            128
+          ]
+        ],
+        "opposed_same_role_order": [
+          66,
+          128
+        ],
+        "opposed_same_action_order": [
+          72,
+          128
+        ]
+      },
+      "direct": {
+        "policy": [
+          141,
+          256
+        ],
+        "strict": [
+          4,
+          64
+        ],
+        "by_order": [
+          [
+            68,
+            128
+          ],
+          [
+            73,
+            128
+          ]
+        ],
+        "opposed_same_role_order": [
+          15,
+          128
+        ],
+        "opposed_same_action_order": [
+          20,
+          128
+        ]
+      },
+      "mention": {
+        "policy": [
+          121,
+          256
+        ],
+        "strict": [
+          0,
+          64
+        ],
+        "by_order": [
+          [
+            99,
+            128
+          ],
+          [
+            22,
+            128
+          ]
+        ],
+        "opposed_same_role_order": [
+          35,
+          128
+        ],
+        "opposed_same_action_order": [
+          0,
+          128
+        ]
+      },
+      "flat": {
+        "policy": [
+          152,
+          256
+        ],
+        "strict": [
+          4,
+          64
+        ],
+        "by_order": [
+          [
+            75,
+            128
+          ],
+          [
+            77,
+            128
+          ]
+        ],
+        "opposed_same_role_order": [
+          26,
+          128
+        ],
+        "opposed_same_action_order": [
+          27,
+          128
+        ]
+      },
+      "oracle_factor": {
+        "policy": [
+          188,
+          256
+        ],
+        "strict": [
+          25,
+          64
+        ],
+        "by_order": [
+          [
+            98,
+            128
+          ],
+          [
+            90,
+            128
+          ]
+        ],
+        "opposed_same_role_order": [
+          66,
+          128
+        ],
+        "opposed_same_action_order": [
+          72,
+          128
+        ]
+      },
+      "topic": [
+        256,
+        256
+      ],
+      "first_role": [
+        215,
+        256
+      ],
+      "first_action_oracle_topic": [
+        205,
+        256
+      ]
+    },
+    "fresh/priority": {
+      "factor": {
+        "policy": [
+          111,
+          128
+        ],
+        "strict": [
+          20,
+          32
+        ],
+        "by_order": [
+          [
+            58,
+            64
+          ],
+          [
+            53,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          49,
+          64
+        ],
+        "opposed_same_action_order": [
+          49,
+          64
+        ]
+      },
+      "direct": {
+        "policy": [
+          79,
+          128
+        ],
+        "strict": [
+          4,
+          32
+        ],
+        "by_order": [
+          [
+            37,
+            64
+          ],
+          [
+            42,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          15,
+          64
+        ],
+        "opposed_same_action_order": [
+          19,
+          64
+        ]
+      },
+      "mention": {
+        "policy": [
+          59,
+          128
+        ],
+        "strict": [
+          0,
+          32
+        ],
+        "by_order": [
+          [
+            58,
+            64
+          ],
+          [
+            1,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          26,
+          64
+        ],
+        "opposed_same_action_order": [
+          0,
+          64
+        ]
+      },
+      "flat": {
+        "policy": [
+          82,
+          128
+        ],
+        "strict": [
+          4,
+          32
+        ],
+        "by_order": [
+          [
+            42,
+            64
+          ],
+          [
+            40,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          18,
+          64
+        ],
+        "opposed_same_action_order": [
+          18,
+          64
+        ]
+      },
+      "oracle_factor": {
+        "policy": [
+          111,
+          128
+        ],
+        "strict": [
+          20,
+          32
+        ],
+        "by_order": [
+          [
+            58,
+            64
+          ],
+          [
+            53,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          49,
+          64
+        ],
+        "opposed_same_action_order": [
+          49,
+          64
+        ]
+      },
+      "topic": [
+        128,
+        128
+      ],
+      "first_role": [
+        118,
+        128
+      ],
+      "first_action_oracle_topic": [
+        121,
+        128
+      ]
+    },
+    "fresh/verdict": {
+      "factor": {
+        "policy": [
+          77,
+          128
+        ],
+        "strict": [
+          5,
+          32
+        ],
+        "by_order": [
+          [
+            40,
+            64
+          ],
+          [
+            37,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          17,
+          64
+        ],
+        "opposed_same_action_order": [
+          23,
+          64
+        ]
+      },
+      "direct": {
+        "policy": [
+          62,
+          128
+        ],
+        "strict": [
+          0,
+          32
+        ],
+        "by_order": [
+          [
+            31,
+            64
+          ],
+          [
+            31,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          0,
+          64
+        ],
+        "opposed_same_action_order": [
+          1,
+          64
+        ]
+      },
+      "mention": {
+        "policy": [
+          62,
+          128
+        ],
+        "strict": [
+          0,
+          32
+        ],
+        "by_order": [
+          [
+            41,
+            64
+          ],
+          [
+            21,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          9,
+          64
+        ],
+        "opposed_same_action_order": [
+          0,
+          64
+        ]
+      },
+      "flat": {
+        "policy": [
+          70,
+          128
+        ],
+        "strict": [
+          0,
+          32
+        ],
+        "by_order": [
+          [
+            33,
+            64
+          ],
+          [
+            37,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          8,
+          64
+        ],
+        "opposed_same_action_order": [
+          9,
+          64
+        ]
+      },
+      "oracle_factor": {
+        "policy": [
+          77,
+          128
+        ],
+        "strict": [
+          5,
+          32
+        ],
+        "by_order": [
+          [
+            40,
+            64
+          ],
+          [
+            37,
+            64
+          ]
+        ],
+        "opposed_same_role_order": [
+          17,
+          64
+        ],
+        "opposed_same_action_order": [
+          23,
+          64
+        ]
+      },
+      "topic": [
+        128,
+        128
+      ],
+      "first_role": [
+        97,
+        128
+      ],
+      "first_action_oracle_topic": [
+        84,
+        128
+      ]
+    }
+  },
+  "joint": null,
+  "gates": {
+    "teacher": false,
+    "source": false,
+    "joint": null
+  }
+}
