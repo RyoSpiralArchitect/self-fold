@@ -1,0 +1,39 @@
+{
+  "parent_sha256": "fa1258b01b165959c346e9f409d0cad43543e1d48bd0c48a9b8917cb08c0ec59",
+  "seed": 817,
+  "steps": 400,
+  "extra_styles": {
+    "action_first": {
+      "prefix": "My choices follow a two-signal plan. ",
+      "source_true": "I use {selected} in the event that {first} and {second} both read on.",
+      "source_false": "I use {other} in the event that either {first} or {second} reads off.",
+      "cases_prefix": "This is the full list of situations and my decisions. ",
+      "case": "I use {action} for the reading where {world}.",
+      "rule": "My default is {other}. I change to {selected} only when both {first} and {second} read on."
+    },
+    "ledger": {
+      "prefix": "Here is the policy I follow. ",
+      "source_true": "The two-on reading of {first} and {second} calls for my choice of {selected}.",
+      "source_false": "An off reading on at least one of {first} and {second} calls for my choice of {other}.",
+      "cases_prefix": "My complete ledger has one decision for each pair of readings. ",
+      "case": "Reading: {world}. My decision: {action}.",
+      "rule": "When {first} and {second} are on together I use {selected}. In all other cases my decision is {other}."
+    }
+  },
+  "new_style_name":"notebook",
+  "new_flags":[["signal Garnet","signal Ash"],["signal Coral","signal Yew"]],
+  "new_style":{
+    "prefix":"My notebook records my choices. ",
+    "source_true":"If {first} and {second} each show an on reading, I take {selected}.",
+    "source_false":"If {first} or {second} shows an off reading, I take {other}.",
+    "cases_prefix":"For reference I have written out the four possibilities. ",
+    "case":"In the case where {world}, I take {action}.",
+    "rule":"I normally take {other}. Only a pair of on readings from {first} and {second} changes my choice to {selected}."
+  },
+  "world_prefix":"The two signals currently report that {world}.",
+  "question":"With those readings, which alternative will I {operation}?",
+  "operations":{"archive":"file first","route":"take on my walk","notes":"use to prepare the notes","temperature":"use for the temperature reading","length":"use for the measured length","clock":"use to display the time","mail":"use to sort messages","music":"choose to listen to"},
+  "alternate_probes":{"world_prefix":"The two readings are as follows: {world}.","flag":"Is the reading of {flag} on or off?","and":"Are both signals reporting on at once?","bit":["The two signals are not both on.","The two signals are both on."]},
+  "fresh_probes":{"world_prefix":"The two signals currently report that {world}.","flag":"What is the present setting of {flag}?","and":"Do both of these signals currently show on?","bit":["At least one of the two current settings is off.","Each of the two current settings is on."]},
+  "focus_cycle":["action","bind","and","bind","and","action","bind","flag","bind","and","bind","action","and","bind","and","bind"]
+}
