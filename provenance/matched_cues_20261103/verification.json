@@ -1,0 +1,12 @@
+{
+  "source_commit": "95db5846d7b5f78a0a36dd9b1e850051b3907e81",
+  "returned_run_tgz_sha256": "c90b1756a18a41cdfdd14cfe15cf5e7989db3612eb7e5acb792223a330f9abe9",
+  "registered_reduction_byte_exact": true,
+  "checkpoint_snapshot_revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8",
+  "prefit_tests": {
+    "tests": 188,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

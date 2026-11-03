@@ -21,6 +21,8 @@ A separate eight-topic wording experiment tested the prospectively narrower clai
 
 A subsequent study supplied the correct lexical policy before scoring any source reader. The calibrated renderer reached 113/128 fresh native decisions and one strict topic out of eight. Separately, a question-free reader inferred all 256 fresh topics and recovered 188/256 preferences by combining first action with first-clause role. The direct-polarity comparator recovered 141/256. Both registered screens failed. The conditional source-to-native composition and G remain open. [Teacher and polarity results](../provenance/teacher_polarity_20261103/RESULTS.md)
 
+The matched-cue study froze both interfaces. Adding a single topic word gave the true teacher 99/128 on fresh questions, compared with 101/128 without a heading. On two-field records the literal base improved from 358/512 to 452/512 when verdicts followed actions. Under each placement the source reader selected the same policy on 122/128 opposed pairs at fixed action mention order. The paired effect and reliability screens closed without admission. [Protocol, native choices and source exchange counts](../provenance/matched_cues_20261103/RESULTS.md)
+
 ## The question
 
 When the meaning of a current self-description is interpreted again and folded into the next current state, can the resulting distinction support another meaning update and a judgment in a new situation without consulting the original description or a transcript? How does verbalizing that intermediate state alter its later use?

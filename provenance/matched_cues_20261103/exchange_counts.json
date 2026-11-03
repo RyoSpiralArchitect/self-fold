@@ -1,0 +1,50 @@
+{
+  "teacher_opposed_at_fixed_question": {
+    "bare": {
+      "correct_switch": 37,
+      "same_label": 27
+    },
+    "topic": {
+      "correct_switch": 35,
+      "same_label": 29
+    },
+    "placebo": {
+      "correct_switch": 32,
+      "same_label": 32
+    },
+    "rotated": {
+      "correct_switch": 32,
+      "same_label": 32
+    }
+  },
+  "source_opposed_at_fixed_action_order": {
+    "before": {
+      "all": {
+        "same_policy": 122,
+        "correct_switch": 6
+      },
+      "opposed_E_hashes_differ": 128,
+      "by_literal_both_poles_and_label_orders": {
+        "literal_incomplete/same_policy": 98,
+        "literal_incomplete/correct_switch": 6,
+        "literal_complete/same_policy": 24
+      }
+    },
+    "after": {
+      "all": {
+        "same_policy": 122,
+        "correct_switch": 4,
+        "inverted_switch": 2
+      },
+      "opposed_E_hashes_differ": 128,
+      "by_literal_both_poles_and_label_orders": {
+        "literal_complete/same_policy": 82,
+        "literal_incomplete/same_policy": 40,
+        "literal_incomplete/correct_switch": 3,
+        "literal_complete/correct_switch": 1,
+        "literal_incomplete/inverted_switch": 1,
+        "literal_complete/inverted_switch": 1
+      }
+    }
+  }
+}
