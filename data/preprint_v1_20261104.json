@@ -1,0 +1,14 @@
+{
+  "schema": "preprint_v1_development",
+  "capacity_fit_flags": ["Alder", "Birch"],
+  "capacity_test_flags": [["Umber", "Moss"], ["Cinder", "Reed"]],
+  "raw_flags": [["signal Pewter", "signal Larch"], ["signal Flintwood", "signal Poppy"]],
+  "raw_style": {
+    "prefix": "This is my standing instruction. ",
+    "source_true": "Two on readings, one from {first} and one from {second}, are my cue to choose {selected}.",
+    "source_false": "An off reading from either {first} or {second} is my cue to choose {other}.",
+    "cases_prefix": "Here are my decisions for the possible readings. ",
+    "case": "Given that {world}, my choice is {action}.",
+    "rule": "My usual choice is {other}. I make the exception and choose {selected} precisely when {first} and {second} both indicate on."
+  }
+}
