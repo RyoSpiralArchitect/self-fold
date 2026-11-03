@@ -1,0 +1,2250 @@
+{
+  "source": {
+    "panels": {
+      "fit/all": {
+        "action": {
+          "old/gold": {
+            "singletons": [
+              4608,
+              4608
+            ],
+            "strict": [
+              1152,
+              1152
+            ],
+            "pairs": [
+              2304,
+              2304
+            ]
+          },
+          "old/inferred": {
+            "singletons": [
+              4607,
+              4608
+            ],
+            "strict": [
+              1151,
+              1152
+            ],
+            "pairs": [
+              2303,
+              2304
+            ]
+          },
+          "swap/gold": {
+            "singletons": [
+              4608,
+              4608
+            ],
+            "strict": [
+              1152,
+              1152
+            ],
+            "pairs": [
+              2304,
+              2304
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              4607,
+              4608
+            ],
+            "strict": [
+              1151,
+              1152
+            ],
+            "pairs": [
+              2303,
+              2304
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              4608,
+              4608
+            ],
+            "strict": [
+              1152,
+              1152
+            ],
+            "pairs": [
+              2304,
+              2304
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              4607,
+              4608
+            ],
+            "strict": [
+              1151,
+              1152
+            ],
+            "pairs": [
+              2303,
+              2304
+            ]
+          }
+        },
+        "policy": {
+          "swap/gold": {
+            "singletons": [
+              4608,
+              4608
+            ],
+            "strict": [
+              1152,
+              1152
+            ],
+            "opposed_role": [
+              2304,
+              2304
+            ],
+            "opposed_action": [
+              2304,
+              2304
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              4607,
+              4608
+            ],
+            "strict": [
+              1151,
+              1152
+            ],
+            "opposed_role": [
+              2303,
+              2304
+            ],
+            "opposed_action": [
+              2303,
+              2304
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              4608,
+              4608
+            ],
+            "strict": [
+              1152,
+              1152
+            ],
+            "opposed_role": [
+              2304,
+              2304
+            ],
+            "opposed_action": [
+              2304,
+              2304
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              4607,
+              4608
+            ],
+            "strict": [
+              1151,
+              1152
+            ],
+            "opposed_role": [
+              2303,
+              2304
+            ],
+            "opposed_action": [
+              2303,
+              2304
+            ]
+          }
+        },
+        "role": [
+          4608,
+          4608
+        ],
+        "topic": [
+          4607,
+          4608
+        ]
+      },
+      "fit/accept_before": {
+        "action": {
+          "old/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "old/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "swap/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          }
+        },
+        "policy": {
+          "swap/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          }
+        },
+        "role": [
+          1152,
+          1152
+        ],
+        "topic": [
+          1152,
+          1152
+        ]
+      },
+      "fit/accept_after": {
+        "action": {
+          "old/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "old/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "swap/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          }
+        },
+        "policy": {
+          "swap/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          }
+        },
+        "role": [
+          1152,
+          1152
+        ],
+        "topic": [
+          1152,
+          1152
+        ]
+      },
+      "fit/choice_before": {
+        "action": {
+          "old/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "old/inferred": {
+            "singletons": [
+              1151,
+              1152
+            ],
+            "strict": [
+              287,
+              288
+            ],
+            "pairs": [
+              575,
+              576
+            ]
+          },
+          "swap/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              1151,
+              1152
+            ],
+            "strict": [
+              287,
+              288
+            ],
+            "pairs": [
+              575,
+              576
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              1151,
+              1152
+            ],
+            "strict": [
+              287,
+              288
+            ],
+            "pairs": [
+              575,
+              576
+            ]
+          }
+        },
+        "policy": {
+          "swap/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              1151,
+              1152
+            ],
+            "strict": [
+              287,
+              288
+            ],
+            "opposed_role": [
+              575,
+              576
+            ],
+            "opposed_action": [
+              575,
+              576
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              1151,
+              1152
+            ],
+            "strict": [
+              287,
+              288
+            ],
+            "opposed_role": [
+              575,
+              576
+            ],
+            "opposed_action": [
+              575,
+              576
+            ]
+          }
+        },
+        "role": [
+          1152,
+          1152
+        ],
+        "topic": [
+          1151,
+          1152
+        ]
+      },
+      "fit/choice_after": {
+        "action": {
+          "old/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "old/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "swap/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "pairs": [
+              576,
+              576
+            ]
+          }
+        },
+        "policy": {
+          "swap/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              1152,
+              1152
+            ],
+            "strict": [
+              288,
+              288
+            ],
+            "opposed_role": [
+              576,
+              576
+            ],
+            "opposed_action": [
+              576,
+              576
+            ]
+          }
+        },
+        "role": [
+          1152,
+          1152
+        ],
+        "topic": [
+          1152,
+          1152
+        ]
+      },
+      "fresh/all": {
+        "action": {
+          "old/gold": {
+            "singletons": [
+              1450,
+              2048
+            ],
+            "strict": [
+              194,
+              512
+            ],
+            "pairs": [
+              427,
+              1024
+            ]
+          },
+          "old/inferred": {
+            "singletons": [
+              1439,
+              2048
+            ],
+            "strict": [
+              193,
+              512
+            ],
+            "pairs": [
+              426,
+              1024
+            ]
+          },
+          "swap/gold": {
+            "singletons": [
+              1450,
+              2048
+            ],
+            "strict": [
+              195,
+              512
+            ],
+            "pairs": [
+              427,
+              1024
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              1438,
+              2048
+            ],
+            "strict": [
+              194,
+              512
+            ],
+            "pairs": [
+              425,
+              1024
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              1449,
+              2048
+            ],
+            "strict": [
+              196,
+              512
+            ],
+            "pairs": [
+              426,
+              1024
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              1438,
+              2048
+            ],
+            "strict": [
+              195,
+              512
+            ],
+            "pairs": [
+              425,
+              1024
+            ]
+          }
+        },
+        "policy": {
+          "swap/gold": {
+            "singletons": [
+              1450,
+              2048
+            ],
+            "strict": [
+              195,
+              512
+            ],
+            "opposed_role": [
+              706,
+              1024
+            ],
+            "opposed_action": [
+              427,
+              1024
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              1438,
+              2048
+            ],
+            "strict": [
+              194,
+              512
+            ],
+            "opposed_role": [
+              699,
+              1024
+            ],
+            "opposed_action": [
+              425,
+              1024
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              1449,
+              2048
+            ],
+            "strict": [
+              196,
+              512
+            ],
+            "opposed_role": [
+              707,
+              1024
+            ],
+            "opposed_action": [
+              426,
+              1024
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              1438,
+              2048
+            ],
+            "strict": [
+              195,
+              512
+            ],
+            "opposed_role": [
+              700,
+              1024
+            ],
+            "opposed_action": [
+              425,
+              1024
+            ]
+          }
+        },
+        "role": [
+          2048,
+          2048
+        ],
+        "topic": [
+          2028,
+          2048
+        ]
+      },
+      "fresh/accept_before": {
+        "action": {
+          "old/gold": {
+            "singletons": [
+              357,
+              512
+            ],
+            "strict": [
+              46,
+              128
+            ],
+            "pairs": [
+              102,
+              256
+            ]
+          },
+          "old/inferred": {
+            "singletons": [
+              353,
+              512
+            ],
+            "strict": [
+              46,
+              128
+            ],
+            "pairs": [
+              102,
+              256
+            ]
+          },
+          "swap/gold": {
+            "singletons": [
+              355,
+              512
+            ],
+            "strict": [
+              46,
+              128
+            ],
+            "pairs": [
+              100,
+              256
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              351,
+              512
+            ],
+            "strict": [
+              46,
+              128
+            ],
+            "pairs": [
+              100,
+              256
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              357,
+              512
+            ],
+            "strict": [
+              47,
+              128
+            ],
+            "pairs": [
+              102,
+              256
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              353,
+              512
+            ],
+            "strict": [
+              47,
+              128
+            ],
+            "pairs": [
+              102,
+              256
+            ]
+          }
+        },
+        "policy": {
+          "swap/gold": {
+            "singletons": [
+              355,
+              512
+            ],
+            "strict": [
+              46,
+              128
+            ],
+            "opposed_role": [
+              173,
+              256
+            ],
+            "opposed_action": [
+              100,
+              256
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              351,
+              512
+            ],
+            "strict": [
+              46,
+              128
+            ],
+            "opposed_role": [
+              171,
+              256
+            ],
+            "opposed_action": [
+              100,
+              256
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              357,
+              512
+            ],
+            "strict": [
+              47,
+              128
+            ],
+            "opposed_role": [
+              174,
+              256
+            ],
+            "opposed_action": [
+              102,
+              256
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              353,
+              512
+            ],
+            "strict": [
+              47,
+              128
+            ],
+            "opposed_role": [
+              172,
+              256
+            ],
+            "opposed_action": [
+              102,
+              256
+            ]
+          }
+        },
+        "role": [
+          512,
+          512
+        ],
+        "topic": [
+          505,
+          512
+        ]
+      },
+      "fresh/accept_after": {
+        "action": {
+          "old/gold": {
+            "singletons": [
+              358,
+              512
+            ],
+            "strict": [
+              45,
+              128
+            ],
+            "pairs": [
+              102,
+              256
+            ]
+          },
+          "old/inferred": {
+            "singletons": [
+              357,
+              512
+            ],
+            "strict": [
+              45,
+              128
+            ],
+            "pairs": [
+              102,
+              256
+            ]
+          },
+          "swap/gold": {
+            "singletons": [
+              358,
+              512
+            ],
+            "strict": [
+              43,
+              128
+            ],
+            "pairs": [
+              102,
+              256
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              356,
+              512
+            ],
+            "strict": [
+              43,
+              128
+            ],
+            "pairs": [
+              101,
+              256
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              357,
+              512
+            ],
+            "strict": [
+              44,
+              128
+            ],
+            "pairs": [
+              101,
+              256
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              356,
+              512
+            ],
+            "strict": [
+              44,
+              128
+            ],
+            "pairs": [
+              101,
+              256
+            ]
+          }
+        },
+        "policy": {
+          "swap/gold": {
+            "singletons": [
+              358,
+              512
+            ],
+            "strict": [
+              43,
+              128
+            ],
+            "opposed_role": [
+              171,
+              256
+            ],
+            "opposed_action": [
+              102,
+              256
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              356,
+              512
+            ],
+            "strict": [
+              43,
+              128
+            ],
+            "opposed_role": [
+              170,
+              256
+            ],
+            "opposed_action": [
+              101,
+              256
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              357,
+              512
+            ],
+            "strict": [
+              44,
+              128
+            ],
+            "opposed_role": [
+              172,
+              256
+            ],
+            "opposed_action": [
+              101,
+              256
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              356,
+              512
+            ],
+            "strict": [
+              44,
+              128
+            ],
+            "opposed_role": [
+              171,
+              256
+            ],
+            "opposed_action": [
+              101,
+              256
+            ]
+          }
+        },
+        "role": [
+          512,
+          512
+        ],
+        "topic": [
+          507,
+          512
+        ]
+      },
+      "fresh/choice_before": {
+        "action": {
+          "old/gold": {
+            "singletons": [
+              366,
+              512
+            ],
+            "strict": [
+              50,
+              128
+            ],
+            "pairs": [
+              110,
+              256
+            ]
+          },
+          "old/inferred": {
+            "singletons": [
+              361,
+              512
+            ],
+            "strict": [
+              50,
+              128
+            ],
+            "pairs": [
+              110,
+              256
+            ]
+          },
+          "swap/gold": {
+            "singletons": [
+              367,
+              512
+            ],
+            "strict": [
+              52,
+              128
+            ],
+            "pairs": [
+              111,
+              256
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              362,
+              512
+            ],
+            "strict": [
+              52,
+              128
+            ],
+            "pairs": [
+              111,
+              256
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              367,
+              512
+            ],
+            "strict": [
+              52,
+              128
+            ],
+            "pairs": [
+              111,
+              256
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              362,
+              512
+            ],
+            "strict": [
+              52,
+              128
+            ],
+            "pairs": [
+              111,
+              256
+            ]
+          }
+        },
+        "policy": {
+          "swap/gold": {
+            "singletons": [
+              367,
+              512
+            ],
+            "strict": [
+              52,
+              128
+            ],
+            "opposed_role": [
+              180,
+              256
+            ],
+            "opposed_action": [
+              111,
+              256
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              362,
+              512
+            ],
+            "strict": [
+              52,
+              128
+            ],
+            "opposed_role": [
+              177,
+              256
+            ],
+            "opposed_action": [
+              111,
+              256
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              367,
+              512
+            ],
+            "strict": [
+              52,
+              128
+            ],
+            "opposed_role": [
+              180,
+              256
+            ],
+            "opposed_action": [
+              111,
+              256
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              362,
+              512
+            ],
+            "strict": [
+              52,
+              128
+            ],
+            "opposed_role": [
+              177,
+              256
+            ],
+            "opposed_action": [
+              111,
+              256
+            ]
+          }
+        },
+        "role": [
+          512,
+          512
+        ],
+        "topic": [
+          505,
+          512
+        ]
+      },
+      "fresh/choice_after": {
+        "action": {
+          "old/gold": {
+            "singletons": [
+              369,
+              512
+            ],
+            "strict": [
+              53,
+              128
+            ],
+            "pairs": [
+              113,
+              256
+            ]
+          },
+          "old/inferred": {
+            "singletons": [
+              368,
+              512
+            ],
+            "strict": [
+              52,
+              128
+            ],
+            "pairs": [
+              112,
+              256
+            ]
+          },
+          "swap/gold": {
+            "singletons": [
+              370,
+              512
+            ],
+            "strict": [
+              54,
+              128
+            ],
+            "pairs": [
+              114,
+              256
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              369,
+              512
+            ],
+            "strict": [
+              53,
+              128
+            ],
+            "pairs": [
+              113,
+              256
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              368,
+              512
+            ],
+            "strict": [
+              53,
+              128
+            ],
+            "pairs": [
+              112,
+              256
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              367,
+              512
+            ],
+            "strict": [
+              52,
+              128
+            ],
+            "pairs": [
+              111,
+              256
+            ]
+          }
+        },
+        "policy": {
+          "swap/gold": {
+            "singletons": [
+              370,
+              512
+            ],
+            "strict": [
+              54,
+              128
+            ],
+            "opposed_role": [
+              182,
+              256
+            ],
+            "opposed_action": [
+              114,
+              256
+            ]
+          },
+          "swap/inferred": {
+            "singletons": [
+              369,
+              512
+            ],
+            "strict": [
+              53,
+              128
+            ],
+            "opposed_role": [
+              181,
+              256
+            ],
+            "opposed_action": [
+              113,
+              256
+            ]
+          },
+          "invariant/gold": {
+            "singletons": [
+              368,
+              512
+            ],
+            "strict": [
+              53,
+              128
+            ],
+            "opposed_role": [
+              181,
+              256
+            ],
+            "opposed_action": [
+              112,
+              256
+            ]
+          },
+          "invariant/inferred": {
+            "singletons": [
+              367,
+              512
+            ],
+            "strict": [
+              52,
+              128
+            ],
+            "opposed_role": [
+              180,
+              256
+            ],
+            "opposed_action": [
+              111,
+              256
+            ]
+          }
+        },
+        "role": [
+          512,
+          512
+        ],
+        "topic": [
+          511,
+          512
+        ]
+      }
+    },
+    "gates": {
+      "gold": {
+        "fit": true,
+        "cells": {
+          "accept_before": false,
+          "accept_after": false,
+          "choice_before": false,
+          "choice_after": false
+        },
+        "admission": false
+      },
+      "inferred": {
+        "fit": true,
+        "cells": {
+          "accept_before": false,
+          "accept_after": false,
+          "choice_before": false,
+          "choice_after": false
+        },
+        "admission": false
+      },
+      "covariance_effect": false
+    }
+  },
+  "teacher": {
+    "metrics": {
+      "generic/calibrated": {
+        "native": [
+          98,
+          128
+        ],
+        "coverage": [
+          124,
+          128
+        ],
+        "forced": [
+          100,
+          128
+        ],
+        "ties": 0,
+        "families": [
+          [
+            26,
+            32
+          ],
+          [
+            24,
+            32
+          ],
+          [
+            25,
+            32
+          ],
+          [
+            23,
+            32
+          ]
+        ],
+        "topics": [
+          [
+            16,
+            16
+          ],
+          [
+            16,
+            16
+          ],
+          [
+            11,
+            16
+          ],
+          [
+            10,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            13,
+            16
+          ],
+          [
+            16,
+            16
+          ]
+        ],
+        "strict": [
+          3,
+          8
+        ],
+        "flips": [
+          36,
+          64
+        ]
+      },
+      "generic/mean": {
+        "native": [
+          56,
+          128
+        ],
+        "coverage": [
+          112,
+          128
+        ],
+        "forced": [
+          64,
+          128
+        ],
+        "ties": 0,
+        "families": [
+          [
+            14,
+            32
+          ],
+          [
+            14,
+            32
+          ],
+          [
+            14,
+            32
+          ],
+          [
+            14,
+            32
+          ]
+        ],
+        "topics": [
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            0,
+            16
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        "strict": [
+          0,
+          8
+        ],
+        "flips": [
+          0,
+          64
+        ]
+      },
+      "concrete/calibrated": {
+        "native": [
+          125,
+          128
+        ],
+        "coverage": [
+          128,
+          128
+        ],
+        "forced": [
+          124,
+          128
+        ],
+        "ties": 1,
+        "families": [
+          [
+            31,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            30,
+            32
+          ]
+        ],
+        "topics": [
+          [
+            16,
+            16
+          ],
+          [
+            16,
+            16
+          ],
+          [
+            16,
+            16
+          ],
+          [
+            16,
+            16
+          ],
+          [
+            16,
+            16
+          ],
+          [
+            14,
+            16
+          ],
+          [
+            15,
+            16
+          ],
+          [
+            16,
+            16
+          ]
+        ],
+        "strict": [
+          6,
+          8
+        ],
+        "flips": [
+          60,
+          64
+        ]
+      },
+      "concrete/mean": {
+        "native": [
+          64,
+          128
+        ],
+        "coverage": [
+          128,
+          128
+        ],
+        "forced": [
+          62,
+          128
+        ],
+        "ties": 4,
+        "families": [
+          [
+            16,
+            32
+          ],
+          [
+            16,
+            32
+          ],
+          [
+            16,
+            32
+          ],
+          [
+            16,
+            32
+          ]
+        ],
+        "topics": [
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        "strict": [
+          0,
+          8
+        ],
+        "flips": [
+          0,
+          64
+        ]
+      }
+    },
+    "paired": {
+      "both": 97,
+      "first_only": 28,
+      "second_only": 1,
+      "neither": 2,
+      "net": 27,
+      "n": 128,
+      "by_topic_net": {
+        "0": 0,
+        "1": 0,
+        "2": 5,
+        "3": 6,
+        "4": 8,
+        "5": 6,
+        "6": 2,
+        "7": 0
+      },
+      "delta_pp": 21.09375,
+      "leave_one_topic_out_pp": [
+        16.964285714285715,
+        24.107142857142858
+      ]
+    },
+    "by_family_net": [
+      5,
+      8,
+      7,
+      7
+    ],
+    "reliability": false,
+    "operation_benefit": true
+  },
+  "conditional": {
+    "panels": {
+      "source/literal": {
+        "native": [
+          219,
+          256
+        ],
+        "forced": [
+          219,
+          256
+        ],
+        "coverage": [
+          256,
+          256
+        ],
+        "ties": 0,
+        "strict_topics": [
+          1,
+          8
+        ]
+      },
+      "source/raw_E": {
+        "native": [
+          127,
+          256
+        ],
+        "forced": [
+          127,
+          256
+        ],
+        "coverage": [
+          256,
+          256
+        ],
+        "ties": 2,
+        "strict_topics": [
+          0,
+          8
+        ]
+      },
+      "source/zero": {
+        "native": [
+          128,
+          256
+        ],
+        "forced": [
+          128,
+          256
+        ],
+        "coverage": [
+          256,
+          256
+        ],
+        "ties": 0,
+        "strict_topics": [
+          0,
+          8
+        ]
+      },
+      "cases/literal": {
+        "native": [
+          215,
+          256
+        ],
+        "forced": [
+          215,
+          256
+        ],
+        "coverage": [
+          256,
+          256
+        ],
+        "ties": 0,
+        "strict_topics": [
+          0,
+          8
+        ]
+      },
+      "cases/raw_E": {
+        "native": [
+          128,
+          256
+        ],
+        "forced": [
+          128,
+          256
+        ],
+        "coverage": [
+          256,
+          256
+        ],
+        "ties": 0,
+        "strict_topics": [
+          0,
+          8
+        ]
+      },
+      "cases/zero": {
+        "native": [
+          128,
+          256
+        ],
+        "forced": [
+          128,
+          256
+        ],
+        "coverage": [
+          256,
+          256
+        ],
+        "ties": 0,
+        "strict_topics": [
+          0,
+          8
+        ]
+      },
+      "rule/literal": {
+        "native": [
+          88,
+          128
+        ],
+        "forced": [
+          88,
+          128
+        ],
+        "coverage": [
+          128,
+          128
+        ],
+        "ties": 0,
+        "strict_topics": [
+          0,
+          8
+        ]
+      },
+      "rule/raw_E": {
+        "native": [
+          64,
+          128
+        ],
+        "forced": [
+          64,
+          128
+        ],
+        "coverage": [
+          128,
+          128
+        ],
+        "ties": 0,
+        "strict_topics": [
+          0,
+          8
+        ]
+      },
+      "rule/zero": {
+        "native": [
+          64,
+          128
+        ],
+        "forced": [
+          64,
+          128
+        ],
+        "coverage": [
+          128,
+          128
+        ],
+        "ties": 0,
+        "strict_topics": [
+          0,
+          8
+        ]
+      }
+    },
+    "stages": {
+      "source": false,
+      "cases": false,
+      "rule": false
+    },
+    "native_three_stage_admission": false,
+    "distinct_teacher_states": {
+      "source": 32,
+      "cases": 32,
+      "rule": 16
+    }
+  }
+}

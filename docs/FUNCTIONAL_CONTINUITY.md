@@ -25,6 +25,8 @@ The matched-cue study froze both interfaces. Adding a single topic word gave the
 
 A fitted source head passed its separately registered first-role development criterion on 64 unfamiliar action expressions in eight known topics. It identified acceptance versus rejection of the first action from 2,043/2,048 individual E states and correctly classified both members of 1,019/1,024 opposed pairs. The two verdict vocabularies and record layout were familiar. Complete policy recovery reached 1,311/2,048 and missed admission. No weighting-specific advantage or G qualification was obtained. [Role-exchange fit, controls and frozen readouts](../provenance/role_exchange_20261103/RESULTS.md)
 
+The action/operation cycle passed its paired lexical-query benefit criterion (125/128 concrete versus 98/128 generic), but missed full question-class reliability and both action-head screens. Independently encoded genuine conditional teachers on the same eight action topics scored 127/256 source, 128/256 cases and 64/128 rule through raw E, with zero strict topics at every stage. The fixed-vocabulary native G prerequisite failed. [Action directions, matched question operations and conditional portability](../provenance/action_operation_20261103/RESULTS.md)
+
 ## The question
 
 When the meaning of a current self-description is interpreted again and folded into the next current state, can the resulting distinction support another meaning update and a judgment in a new situation without consulting the original description or a transcript? How does verbalizing that intermediate state alter its later use?
