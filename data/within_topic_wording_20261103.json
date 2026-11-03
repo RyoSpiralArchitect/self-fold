@@ -1,0 +1,294 @@
+{
+  "schema": "within_topic_wording_v1",
+  "base_commit": "03274f185623385c0a813035b3b547002564ec75",
+  "fit_styles": [
+    "prefer",
+    "usual",
+    "welcome",
+    "suitable"
+  ],
+  "fresh_styles": [
+    "inclination",
+    "decision"
+  ],
+  "styles": {
+    "prefer": {
+      "chosen": "I prefer {}.",
+      "rejected": "I avoid {}."
+    },
+    "usual": {
+      "chosen": "My usual choice is {}.",
+      "rejected": "I pass over {}."
+    },
+    "welcome": {
+      "chosen": "I welcome the option of {}.",
+      "rejected": "I dislike the idea of {}."
+    },
+    "suitable": {
+      "chosen": "For me, {} is the suitable choice.",
+      "rejected": "I would rule out {}."
+    },
+    "inclination": {
+      "chosen": "I am inclined toward {}.",
+      "rejected": "I steer clear of {}."
+    },
+    "decision": {
+      "chosen": "Given the choice, I opt for {}.",
+      "rejected": "I would turn down {}."
+    }
+  },
+  "fit_lexeme_indices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "fresh_lexeme_indices": [
+    4,
+    5
+  ],
+  "fit_question_indices": [
+    0,
+    1
+  ],
+  "fresh_question_indices": [
+    2,
+    3
+  ],
+  "groups": [
+    {
+      "id": "archive",
+      "options": [
+        "the most recent reports",
+        "the earliest reports"
+      ],
+      "questions": [
+        "Which reports does the speaker put at the front of an archive?",
+        "Which archive placement fits this person's preference?",
+        "Which reports would this person put ahead of the others?",
+        "In this filing system, which reports come first?"
+      ],
+      "plus": [
+        "placing the newest reports at the front of my archive",
+        "putting recent reports first in an archive",
+        "starting the report file with its latest entries",
+        "giving newer archive reports the front position",
+        "keeping the most up-to-date reports at the head of the file",
+        "leading my archive with the reports filed most recently"
+      ],
+      "minus": [
+        "placing the oldest reports at the front of my archive",
+        "putting early reports first in an archive",
+        "starting the report file with its earliest entries",
+        "giving older archive reports the front position",
+        "keeping the longest-standing reports at the head of the file",
+        "leading my archive with the reports filed earliest"
+      ]
+    },
+    {
+      "id": "route",
+      "options": [
+        "the path along the river",
+        "the path along the ridge"
+      ],
+      "questions": [
+        "Which path does the speaker prefer on a walk?",
+        "Which walking route fits this person's preference?",
+        "Which trail would this walker take?",
+        "Which of the two routes matches the described walking habit?"
+      ],
+      "plus": [
+        "walking along the riverbank",
+        "following a path beside the river",
+        "taking the trail by the river",
+        "staying near the watercourse on my walks",
+        "walking on the track that hugs the river",
+        "following the bank when choosing a footpath"
+      ],
+      "minus": [
+        "walking along the hill's crest",
+        "following a path along the ridgeline",
+        "taking the trail on the ridge",
+        "staying on the high crest on my walks",
+        "walking on the track that follows the ridge",
+        "following the crest when choosing a footpath"
+      ]
+    },
+    {
+      "id": "notes",
+      "options": [
+        "preserve the exact words",
+        "summarize the main ideas"
+      ],
+      "questions": [
+        "How does the speaker prefer to take meeting notes?",
+        "Which kind of notes fits this person's preference?",
+        "How would this person record a discussion?",
+        "Which approach to meeting minutes would this person use?"
+      ],
+      "plus": [
+        "writing down the speakers' exact words in meetings",
+        "preserving the precise wording when taking meeting notes",
+        "making verbatim notes of a discussion",
+        "recording the conversation word for word",
+        "transcribing exactly what each speaker said",
+        "keeping the original phrasing in my meeting minutes"
+      ],
+      "minus": [
+        "writing down a summary of the main points in meetings",
+        "preserving the gist when taking meeting notes",
+        "making condensed notes of a discussion",
+        "recording the principal ideas from the conversation",
+        "distilling what the speakers said into key points",
+        "keeping a synopsis in my meeting minutes"
+      ]
+    },
+    {
+      "id": "temperature",
+      "options": [
+        "degrees Celsius",
+        "degrees Fahrenheit"
+      ],
+      "questions": [
+        "Which temperature scale does the speaker use in a weather log?",
+        "Which weather-log unit fits this person's preference?",
+        "Which scale belongs in this weather diary?",
+        "How would the speaker express an outdoor temperature?"
+      ],
+      "plus": [
+        "using Celsius for weather temperatures",
+        "recording the day's temperature in Celsius",
+        "logging the weather on the Celsius scale",
+        "noting air temperature in degrees Celsius",
+        "entering centigrade readings in my weather notebook",
+        "keeping a temperature record using Celsius units"
+      ],
+      "minus": [
+        "using Fahrenheit for weather temperatures",
+        "recording the day's temperature in Fahrenheit",
+        "logging the weather on the Fahrenheit scale",
+        "noting air temperature in degrees Fahrenheit",
+        "entering Fahrenheit readings in my weather notebook",
+        "keeping a temperature record using Fahrenheit units"
+      ]
+    },
+    {
+      "id": "length",
+      "options": [
+        "centimeters",
+        "inches"
+      ],
+      "questions": [
+        "Which unit does the speaker use for short lengths?",
+        "Which length unit fits this person's preference?",
+        "Which unit would this person write beside a short length?",
+        "How does this person measure the length of a small object?"
+      ],
+      "plus": [
+        "measuring small lengths in centimeters",
+        "recording a short distance as centimeters",
+        "using centimeters on my ruler",
+        "noting short measurements in centimeter units",
+        "taking a small object's length in centimetres",
+        "counting centimeters when measuring short pieces"
+      ],
+      "minus": [
+        "measuring small lengths in inches",
+        "recording a short distance as inches",
+        "using inches on my ruler",
+        "noting short measurements in inch units",
+        "taking a small object's length in inches",
+        "counting inches when measuring short pieces"
+      ]
+    },
+    {
+      "id": "clock",
+      "options": [
+        "the 24-hour clock",
+        "the 12-hour clock"
+      ],
+      "questions": [
+        "Which clock format does the speaker use?",
+        "Which time format fits this person's preference?",
+        "Which time display would this person choose?",
+        "How would this speaker write the time of an appointment?"
+      ],
+      "plus": [
+        "writing times with the twenty-four-hour clock",
+        "showing times from zero through twenty-three hours",
+        "using a 24-hour display",
+        "recording afternoon hours as numbers above twelve",
+        "notating time on a twenty-four-hour dial",
+        "giving times on a scale running from 00 to 23"
+      ],
+      "minus": [
+        "writing times with the twelve-hour clock",
+        "showing times with AM or PM",
+        "using a 12-hour display",
+        "recording afternoon hours with a PM indicator",
+        "notating time on a twelve-hour dial",
+        "giving times on a scale that restarts after twelve"
+      ]
+    },
+    {
+      "id": "mail",
+      "options": [
+        "sorting mail by sender",
+        "sorting mail by date"
+      ],
+      "questions": [
+        "How does the speaker organize saved mail?",
+        "Which mail organization fits this person's preference?",
+        "Which ordering would this person give a mail archive?",
+        "What would determine where a saved message is filed?"
+      ],
+      "plus": [
+        "organizing saved mail by who sent it",
+        "keeping messages from the same sender together",
+        "sorting archived mail by sender",
+        "filing correspondence by its author",
+        "collecting letters according to the person they came from",
+        "arranging stored messages by the identity of the sender"
+      ],
+      "minus": [
+        "organizing saved mail by when it arrived",
+        "keeping messages from the same date together",
+        "sorting archived mail by date",
+        "filing correspondence by its arrival date",
+        "collecting letters according to the day they came in",
+        "arranging stored messages by the date of receipt"
+      ]
+    },
+    {
+      "id": "music",
+      "options": [
+        "instrumental music",
+        "music with vocals"
+      ],
+      "questions": [
+        "Which kind of music does the speaker prefer?",
+        "Which music fits this person's preference?",
+        "Which recording suits this listener?",
+        "What kind of track would this person put on?"
+      ],
+      "plus": [
+        "listening to instrumental music",
+        "hearing instruments without a singer",
+        "choosing recordings played by instruments alone",
+        "putting on music without any vocals",
+        "playing a track consisting solely of instrumental parts",
+        "picking pieces that have no sung passage"
+      ],
+      "minus": [
+        "listening to music with singing",
+        "hearing a singer alongside the music",
+        "choosing recordings with a vocal part",
+        "putting on music with a singing voice",
+        "playing a track that features sung passages",
+        "picking pieces that include a vocalist"
+      ]
+    }
+  ],
+  "scope": "prospective_development_in_eight_known_topics",
+  "independent_human_review": "pending"
+}

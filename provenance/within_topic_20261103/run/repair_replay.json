@@ -1,0 +1,1 @@
+{"files_exact":["request.json","sources.jsonl","teachers.jsonl","schedule.json","lexical_replay.jsonl","geometry.jsonl"],"first_artifact_sha256":"f8c8d183c939ea99164457c4aef7b90b39d8e44a1702555be85edb97a3c2a0e4","tensor_values_and_strides_exact":["bias","calibration","mean","projection","renderer.down","renderer.up","scale","teachers"],"updates_before_replay":0}

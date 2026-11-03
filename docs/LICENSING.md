@@ -19,3 +19,5 @@ The two recipient arrays in the policy-form study carry their Gemma conditions, 
 The bounded readout cycle provides four learned arrays with source-specific Gemma conditions and copied terms. [Decoder, lexical transformation and mixed-order recipient conditions](../provenance/slot_readout_20261103/run/ADAPTER_LICENSE.md)
 
 The E-to-lexical source maps contain training-only activation-derived ridge buffers and learned residual factors with their applicable Gemma conditions. [Source-map artifact conditions](../provenance/source_lexical_20261103/run/ADAPTER_LICENSE.md)
+
+The stopped initialization and the four within-topic policy mixture artifacts contain Gemma-derived teacher rows and statistics. [Within-topic artifact conditions](../provenance/within_topic_20261103/ARTIFACT_LICENSE.md)

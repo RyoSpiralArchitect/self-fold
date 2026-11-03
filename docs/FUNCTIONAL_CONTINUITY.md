@@ -17,6 +17,8 @@ Every row missed the same recipient screen of 90% native accuracy, a ten-point a
 
 No learned G was trained or evaluated. These outcomes therefore close the tested input/readout configurations and leave actual two-stage state reconstruction, operation omissions, intermediate-state exchange and language insertion pending. The earlier sealed qualification groups retain their original commitment. New two-stage confirmation content and independent human review remain pending.
 
+A separate eight-topic wording experiment tested the prospectively narrower claim after the source-to-lexical training-bank fit. Four source styles scored 308/512 native decisions and 2/32 strict units on fresh source and question wording. The map identified 128/128 topics and 82/128 complete policy directions. This screen closed before the stage-B teacher audit. The earlier broader admission contract retains its result. [Within-topic plan and evidence](../provenance/within_topic_20261103/RESULTS.md)
+
 ## The question
 
 When the meaning of a current self-description is interpreted again and folded into the next current state, can the resulting distinction support another meaning update and a judgment in a new situation without consulting the original description or a transcript? How does verbalizing that intermediate state alter its later use?
