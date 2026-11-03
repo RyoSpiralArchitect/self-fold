@@ -1,0 +1,47 @@
+{
+  "source": "0405d2bce6bb9e60432ed7d1b1618558e4808bee",
+  "fresh_OS_process_per_packet": true,
+  "training_updates": 0,
+  "records": {
+    "single": {
+      "identical_files": {
+        "answers.npz": "74f353a3026e5ae45324659b513b36db789d8bd061114fd0a94ce7b12cb0c46a",
+        "calls.json": "6f166e651967377a2e9df839cce8643b062c6b6a73ea419e149bc8907eb1e529",
+        "binding.json": "55266534d910d0720aff725a1b05b34251ca09fccead6e3eb6f99a8f35226d12"
+      },
+      "terminal": {
+        "backbone_sha256": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+        "compute": {
+          "forwards": 109,
+          "generated_tokens": 0,
+          "processed_tokens": 103456
+        },
+        "elapsed_seconds": 16.995539091993123,
+        "logical": 36864,
+        "memory_count": 334,
+        "native_inputs": 1740,
+        "status": "BLIND_DECISION_COMPLETE"
+      }
+    },
+    "chained": {
+      "identical_files": {
+        "answers.npz": "7a5a1cdabf39dc53dcdd90f279f16da0046816458c83277aaf464b587da1cb2d",
+        "calls.json": "51dd1f168ae1dc645c069c6f5d032dcbc63b889336ca0392a07d7387ec093373",
+        "binding.json": "1252f1625d12dea6fa07af0a3168162fa4ca765308065be753d5efdb83e03efa"
+      },
+      "terminal": {
+        "backbone_sha256": "2690ac5991d97f7caf539b457d3de686949626739480b7d228bcdad8609b9e92",
+        "compute": {
+          "forwards": 70,
+          "generated_tokens": 0,
+          "processed_tokens": 66880
+        },
+        "elapsed_seconds": 15.35481686994899,
+        "logical": 27648,
+        "memory_count": 291,
+        "native_inputs": 1120,
+        "status": "BLIND_DECISION_COMPLETE"
+      }
+    }
+  }
+}

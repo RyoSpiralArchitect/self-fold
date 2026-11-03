@@ -118,5 +118,21 @@
     "scope": "Lexical information and binding subspaces support recovery of logical world-state propositions, including tested settings with unfaithful model output. This motivates an explicit downstream-use test for SELF-FOLD rather than a claim based on decodability alone.",
     "checked_on": "2026-11-03",
     "review_depth": "primary metadata and relevant abstract/method claims; no replication or systematic review"
+  },
+  {
+    "key": "kumar2024score",
+    "source": "https://arxiv.org/abs/2409.12917v2",
+    "metadata_status": "Author-provided arXiv record",
+    "scope": "Motivates on-policy trajectories and independent tests of correction behavior in a future RL experiment.",
+    "checked_on": "2026-11-04",
+    "review_depth": "Metadata and abstract for scope of the proposed comparison."
+  },
+  {
+    "key": "gao2022overoptimization",
+    "source": "https://arxiv.org/abs/2210.10760v1",
+    "metadata_status": "Author-provided arXiv record",
+    "scope": "Uses a synthetic gold reward to study disagreement under optimization of a proxy. Motivates a separate evaluator for planned RL.",
+    "checked_on": "2026-11-04",
+    "review_depth": "Metadata and abstract for scope of the proposed comparison."
   }
 ]

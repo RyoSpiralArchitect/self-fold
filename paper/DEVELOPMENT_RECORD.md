@@ -49,7 +49,10 @@ In task outputs, **A** and **B** label the two displayed alternatives, whose ord
 | [Swap actions, vary the question operation and test literal conditions](#study-17) | 6.17 | [action_operation_20261103](../provenance/action_operation_20261103/RESULTS.md) |
 | [Teach the model to read complete conditional descriptions](#study-18) | 6.18 | [conditional_curriculum_20261103](../provenance/conditional_curriculum_20261103/RESULTS.md) |
 | [Increase answer margins and count complete policies](#study-19) | 6.19 | [conditional_margin_20261103](../provenance/conditional_margin_20261103/RESULTS.md) |
-| From two flags to an action | Closing experiment | [two_flags_20261104](../provenance/two_flags_20261104/RESULTS.md) |
+| From two flags to an action | Matched-curriculum experiment | [two_flags_20261104](../provenance/two_flags_20261104/RESULTS.md) |
+| Change the remembered condition after discarding the words | Current paper §6 | [state_only_20261104](../provenance/state_only_20261104/RESULTS.md) |
+| Reuse the same updater on its own edited table | Frozen composition follow-up | [state_only_20261104/chain](../provenance/state_only_20261104/RESULTS.md#can-the-same-update-use-its-own-output) |
+| Recover default and switched roles from the same table | Paper-only review follow-up | [state_only_20261104/recovery](../provenance/state_only_20261104/RESULTS.md#can-the-two-actions-be-recovered-from-the-same-table) |
 
 <a id="study-1"></a>
 

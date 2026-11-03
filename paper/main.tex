@@ -11,7 +11,7 @@
 \usepackage[colorlinks=true,urlcolor=recordblue,citecolor=recordblue,linkcolor=black]{hyperref}
 \widowpenalty=10000
 \clubpenalty=10000
-\title{Self Without a Transcript\\\large Reading a preference and acting on a conditional rule}
+\title{Self Without a Transcript\\\large Reading, changing and reusing a conditional policy}
 \author{}
 \date{November 4, 2026}
 \begin{document}
@@ -19,7 +19,7 @@
 
 
 \begin{abstract}
-Can a model carry a rule from a self-description into a later decision, when the original words are gone? We separate reading a distinction, using it and updating it. On eight known topics, a probe of frozen Gemma states identified whether the first action was accepted or rejected on 2,043/2,048 rephrased records. Recovering the identity of the preferred action succeeded on 1,311/2,048. We then trained two literal readers from the same weights to apply a two-flag policy. One practised final actions, the other also practised flag reading, conjunction and branch selection. Under joint changes in names, grammar and questions, component training gave 90.5\% correct direct actions versus 91.0\% for final-action training. When the first call supplied only the conjunction bit and the second received that bit and the original policy text, the corresponding accuracies were 87.3\% and 75.5\%. The registered direct-transfer benefit and full intervention criterion both failed. This finite-domain contrast identifies the interface on which a descriptive gain appeared and specifies a test for a future learned two-step update.
+Can a model change a policy after discarding the words that specified it? On eight familiar topics, a probe of frozen Gemma states recovered the order of verdicts on 2,043/2,048 rephrased records, but the complete preference on only 1,311/2,048. We then trained a compiler to store two conditional actions, a small map to revise the trigger and a native Gemma reader to choose an action. With familiar clause patterns and new signal names, all 3,072 choices were correct. Replacing the midpoint with the opposed policy reversed every choice. Bypassing the update missed all 1,280 judgments whose correct action changed. New clause wording reduced correct choices to 1,140/1,536. Applying the same updater twice on the familiar wording gave 4,608/9,216. Thus a learned policy memory supported a single source-free revision within its trained format. Rearranging the same tables by a fixed two-role rule restored 9,216/9,216. The actions survived even where the learned updater could no longer locate them.
 \end{abstract}
 
 \section{A rule for choosing a route}
@@ -39,17 +39,15 @@ Reintegrated rule & Take the ridge path by default. Switch to the river path exa
 \end{tabular}
 \end{center}
 
-The opposed policy exchanges river and ridge in every row. Exchanging the order of sentences changes neither policy. These transformations make the research question testable, but they also create an ambiguity. A model that simply copies the initial policy can give the correct final answer. Evidence for a useful update must therefore identify what the intermediate state supports, whether replacing it changes the later choice, and what is lost when an update is omitted.
+Writing out the cases above preserves the route in every world. The intervention we test in this paper changes the rule itself. If either lamp now suffices for the river, the walker switches routes on days with just one lamp on and keeps the old route when both are on. This gives us a positive check on the update and a check on what it must preserve. Exchanging river and ridge gives an opposed policy. A future experiment will ask whether the model itself can rewrite an equivalent rule and how putting its state into words affects its next decision.
 
-We test prerequisites for that experiment. First we ask which relationship a question-free hidden state preserves when the actions are rephrased. Then we ask whether changing a source can change a subsequent model answer. Finally we compare two ways of teaching a model to apply a conditional policy. In this last experiment an explicit one-bit interface lets us change a single intermediate decision and observe the resulting action. The first-person frame is a way to supply a policy. A claim specific to self-attribution would also require matched descriptions of another agent and impersonal rules.
+We first ask what a question-free state preserves about a preference and whether exchanging such a state changes a native answer. We then follow the walker's policy through two interfaces. The first passes a conjunction bit and lets the second call reread the policy. The second passes a learned numeric policy and removes the original wording. The first-person frame supplies the policy. An effect specific to self-attribution would require matched third-person and impersonal descriptions.
 
 \section{What is read, and by whom?}
 
 \textbf{Reading a state.} An encoder reads a description before any evaluation question appears. We retain eight vectors at a specified layer and call this state $E(s)$. A source probe learns a score from these vectors to predict a feature of the description. A high probe score establishes that the fitted reader can recover that feature from one state. In a separate test, we inject a state into a task prompt and read the language model's own next token. We call this the \emph{native answer}. An \emph{opposed donor} supplies the state of the other policy while the question and its displayed options stay fixed.
 
 \textbf{Reading a choice.} Every binary action question is presented twice, with the options exchanged. Native correctness requires the most likely token over the full vocabulary to be the requested letter. Other tokens count as errors. A strict unit in the conditional experiments fixes topic, flag-name pair, wording and representation stage. It passes only when both policies are correct in all four worlds, in every genuine source order and in both label orders. For example, a reader that always follows the last clause can score many individual decisions and still fail the entire unit. The original description and the table each have two orders. The reintegrated rule has one realization per wording family.
-
-\textbf{Reading across updates.} The eventual comparison has three paths. \emph{Rewrite in words} (\texttt{T}) passes generated text to the next step. \emph{Continue in slots} (\texttt{L}) passes the updated hidden state. \emph{Say it, encode it, then continue} (\texttt{B}) verbalizes that same intermediate state and encodes the words before the next update. The encoder, verbalizer and updater have internal identifiers $E$, $D$ and $G$. The learned operation sequence is expansion into cases ($G_1$) followed by reintegration into a rule ($G_2$). The primary language intervention shares the same first-stage state across the last two paths. Generation proceeds to native end of sequence when context permits, with the actual stopping reason and any censored text retained.
 
 Earlier Mistral-7B-Instruct-v0.3 and Gemma-2-2B-IT probes explain the ordering of our tests. Both models answered 24/24 preference questions from literal descriptions. Twenty-four distinct updated slot tensors nevertheless produced one verbalization per checkpoint, and all 12 re-encoded donor contrasts tied. Replaying states from positions that had already processed both options could reproduce native lexical choices. A recurrence needs a state formed \emph{before} the question. The original tests of uncalibrated transport, output positions and stopping conditions are indexed in the supplement. \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/paper/DEVELOPMENT_RECORD.md#study-1}{Development experiments 1--8}
 
@@ -86,60 +84,93 @@ On the 32 fitting states the mapped sources gave 64/64 native choices. Opposed d
 
 We tested that operation on the eight known action topics by supplying each original description, case table and reintegrated rule independently. These were experimenter-authored teachers. None was generated by a learned update. Native choices from ordinary slots were 127/256, 128/256 and 64/128, respectively, against balanced zero-state counts of 128/256, 128/256 and 64/128. Literal text gave 219/256, 215/256 and 88/128. Because even the original text left errors, the next experiment trained a reader on text before admitting slot learning. \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/provenance/action_operation_20261103/RESULTS.md}{Independent teacher controls}
 
-Literal training and one fixed continuation raised fitting accuracy to 3,751/3,840 (97.7\%). The corresponding strict counts were 23/48 for the original description, 28/48 for the table and 47/48 for the rule. Only the rule cleared the fitting requirement of 95\% native and 90\% strict. New names, source wording and questions gave 923/1,280 native choices. Of 89 fitting errors, 85 returned B when A was correct. This discrepancy motivates the closing experiment. It keeps both label orders, separates changes in names, grammar and questions, and asks where the decision fails when its parts can be tested independently. \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/provenance/conditional_curriculum_20261103/RESULTS.md}{Literal curriculum} $\cdot$ \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/provenance/conditional_margin_20261103/RESULTS.md}{Margin continuation and label-order diagnostic}
+Literal training and one fixed continuation raised fitting accuracy to 3,751/3,840 (97.7\%). The corresponding strict counts were 23/48 for the original description, 28/48 for the table and 47/48 for the rule. Only the rule cleared the fitting requirement of 95\% native and 90\% strict. New names, source wording and questions gave 923/1,280 native choices. Of 89 fitting errors, 85 returned B when A was correct. This discrepancy motivates the curriculum comparison. It keeps both label orders, separates changes in names, grammar and questions, and asks where the decision fails when its parts can be tested independently. \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/provenance/conditional_curriculum_20261103/RESULTS.md}{Literal curriculum} $\cdot$ \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/provenance/conditional_margin_20261103/RESULTS.md}{Margin continuation and label-order diagnostic}
 
 \section{From two flags to an action}
 
-We compared two training curricula at equal update, target and padded-token budgets. Both began from the same saved literal reader on a frozen Gemma backbone. \emph{Practise the final choice} (\texttt{direct}) spends every target on choosing the action from the policy and the two current flag values. \emph{Learn the parts of the choice} (\texttt{parts}) splits its targets equally among reading one flag, deciding whether both are on, selecting an action from a supplied branch value, and answering the ordinary action question. Both arms train the same rank-16 query/value adapters in the final four layers. They use the same ordered source units, loss and fresh optimizer settings for 384 updates of 32 answers. Alongside full-vocabulary cross entropy, both include a gold-letter margin and a penalty for a common A/B bias under a swap of the displayed options.
+We compared two curricula from the same saved literal Gemma reader. \emph{Practise the final choice} (\texttt{direct}) trained on actions given the policy and two flag values. \emph{Learn the parts of the choice} (\texttt{parts}) divided its targets equally among reading a flag, deciding whether both flags were on, choosing from a supplied condition bit and answering the full action question. Both trained rank-16 query/value adapters for 384 updates in the final four layers, with 12,288 labels and 1,747,152 padded tokens. We froze the endpoints before crossing familiar and new signal names, source grammars and question wordings. The primary comparison used the cell in which all three changed.
 
-We fixed the final weights before scoring any new panel. Familiar or new indicator names, source grammar and question wording form eight crossed cells. Each cell includes 1,280 native decisions on 160 descriptions. The primary comparison uses the cell in which all three factors changed. A training benefit requires a net gain of at least 64 decisions (five percentage points), gains in at least five of eight topics, and no loss in the total number of strict units. This paired test concerns the allocation of a fixed training budget. The historical absolute thresholds for using the literal reader are reported separately. \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/provenance/two_flags_20261104/PLAN.md}{Prospective design and decision rules}
-
-The secondary endpoint tests an explicit intermediate state. The first call receives only the two readings and answers ``Are both on?'' The answer's displayed label maps to a single Boolean value. The second call receives the policy and a fixed verbal rendering of that bit. It has no access to the individual readings. We also complement the bit at fixed policy or exchange the policy at fixed bit. Both interventions should reverse the final action. The two calls have independently swapped answer labels. Identical calls are reused, and an invalid first answer counts against every path that needs it. A separate true-bit oracle localizes errors after the world test. This experiment uses a hand-specified one-bit message and retains the original policy in the second call. For the walker, a false bit should lead to the ridge and exchanging it for true should send the walker to the river. A learned hidden-state updater would also have to carry the policy itself.
-
-Both arms received 12,288 labels, 3,072 training forwards and 1,747,152 padded training tokens. The number of unmasked tokens was 1,747,152 for final-choice training and 1,369,704 for component training. On the jointly new panel the component arm recovered 19 answers that the final-choice arm missed and lost 25 that it got right. The net was $-$6/1,280 with gains in four of eight topics. The primary benefit criterion failed. Changing names alone left the final-choice arm at 1,276/1,280, its familiar count. Changing source grammar alone reduced it to 1,209/1,280. The component arm showed a similar pattern, scoring 1,272 and 1,199 respectively. These contrasts concern the specified templates.
+For the two-call route, the first call saw just the two readings and answered whether both were on. A fixed rendering of that Boolean and the original policy text went to the second call. The two calls had independently swapped A/B labels. We also complemented the bit at fixed policy, exchanged the policy at fixed bit and supplied the true bit. These interventions distinguish errors in reading the world from errors in applying the policy.
 
 \begin{center}
 \small\renewcommand{\arraystretch}{1.15}
 \begin{tabular}{@{}lrrrr@{}}
 \toprule
-Jointly new stage & Final choice, native & Parts, native & Final choice, strict & Parts, strict \\
+Training & Direct action & Two calls & Both bit settings correct & Strict units \\
 \midrule
-Description & 460/512 & 459/512 & 1/16 & 1/16 \\
-Exhaustive cases & 470/512 & 468/512 & 3/16 & 0/16 \\
-Reintegrated rule & 235/256 & 232/256 & 6/16 & 3/16 \\
-All three & 1,165/1,280 & 1,159/1,280 & 10/48 & 4/48 \\
+Final choice & 1,165/1,280 & 1,932/2,560 & 1,718/2,560 & 0/48 \\
+Learn parts & 1,159/1,280 & 2,234/2,560 & 2,049/2,560 & 11/48 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-For the one-bit route, both arms read every individual flag correctly (32/32). The final-choice arm recognized the conjunction on 13/16 native questions, the component arm on 15/16. In the latter arm, when Nacre was on, Flint was off and A meant yes, the model answered A to the question of whether both were on. It correctly answered the same question with the labels reversed. That one error failed the per-order criterion. The second call can reuse the same bit across many policies, so 2,560 composed paths draw on just 16 conjunction judgments and 640 distinct second-call responses per arm.
+Compared with final-choice training, component practice lost 6 of 1,280 direct answers on net and gained 302 of 2,560 composed paths. Those paths reuse 16 distinct conjunction judgments and 640 distinct second-call responses per arm. Supplying the true bit gave 2,370/2,560 for component practice and 2,328/2,560 for final-choice practice. The registered five-point direct-transfer advantage and the full absolute intervention criterion both failed. Most importantly for the next experiment, even a correct conjunction says nothing about which action the walker takes. The second call still had the original policy in front of it. \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/provenance/two_flags_20261104/RESULTS.md}{Crossed panels, label controls and criteria}
+
+\section{Changing the policy after its words are gone}
+
+The walker takes the ridge by default and the river when both lamps are on. Now change the trigger to either lamp. With just one on, the walker should switch from ridge to river. With both on, the route should stay the same. We use these changed and unchanged worlds to test whether a later computation actually revises a remembered policy.
+
+A frozen Gemma encoded the two clauses separately, before any later world or choices appeared. Two supervised heads, trained on 288 labelled clauses, identified each clause's role and action among 16 familiar actions. The two resulting soft action distributions populated the ordinary case table. Off/off, off/on and on/off received the default distribution, and on/on received the switched distribution. This initial layout was prescribed. For each requested trigger, a four-by-four map learned to revise the whole table from 288 fitting policy realizations. Its targets were the correct action identities in all four worlds under that trigger. A world address entered only after the revised table was complete. The native Gemma reader received that row as a continuous mixture of action embeddings, together with the two displayed alternatives. It received no original words or source attention.
+
+\begin{center}
+\setlength{\fboxsep}{3pt}\footnotesize
+\newcommand{\policystep}[2]{\fbox{\parbox[c][4.0em][c]{.144\linewidth}{\centering\textbf{#1}\\#2}}}
+\policystep{Learned}{Bind two clauses to two actions}\hfill$\to$\hfill
+\policystep{Given}{Place actions in four world rows}\hfill$\to$\hfill
+\policystep{Learned}{Revise all rows with one map}\hfill$\to$\hfill
+\policystep{Given}{Address one row with the world}\hfill$\to$\hfill
+\policystep{Learned}{Read row and answer A/B}
+\par\smallskip
+\emph{Figure 1. Only the current table and the requested operation enter the revision.
+The world and displayed alternatives arrive later.}
+\end{center}
+
+Both panels used new lamp names, both clause orders and both A/B orders. The primary panel used two familiar clause patterns. The challenge used a new contrast between reaching full illumination and falling short of it. A correct opposed exchange required the original and donor choices to be correct with a reversed A/B margin.
 
 \begin{center}
 \small\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{@{}lrrrr@{}}
+\begin{tabular}{@{}lrr@{}}
 \toprule
-Training & Predicted bit & True bit & Both bit settings correct & Strict units \\
+Outcome & Familiar wording & New wording \\
 \midrule
-Final choice & 1,932/2,560 & 2,328/2,560 & 1,718/2,560 & 0/48 \\
-Learn parts & 2,234/2,560 & 2,370/2,560 & 2,049/2,560 & 11/48 \\
+Correct complete midpoint & 128/128 & 32/64 \\
+Native action after one edit & 3,072/3,072 & 1,140/1,536 \\
+Correct original and opposed reversal & 3,072/3,072 & 744/1,536 \\
+All 96 judgments in a strict unit & 32/32 & 3/16 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-Component supervision improved the observed two-call score by 302 paths (11.8 percentage points) relative to the matched training control. Supplying the true bit increased this arm's count by a further 136, leaving action errors even with the world test solved. The 11 strict units comprised 3/16 descriptions, 2/16 tables and 6/16 rules. Correct original and opposed-policy answers occurred on 2,072/2,560 paths. The predeclared constructive criterion required at least 90\% final correctness, 75\% strict units and 90\% correct paired reversals for both interventions at \emph{each} stage, as well as 90\% on each component under each label mapping. It failed. The observed two-call gain is a descriptive comparison under one schedule and one checkpoint. Its 87.3\% accuracy also falls below the same arm's ordinary 90.5\% accuracy. \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/provenance/two_flags_20261104/RESULTS.md}{All eight panels, stage counts and native intervention records}
+{\footnotesize Both panels repeat 16 policy bindings. The primary total consists of 32 topic/name/wording units of 96 judgments each. Each unit crosses both policies, both clause orders, four worlds, three operations and both label mappings. The new-wording panel has 16 such units.\par}
 
-\section{From a checkable intermediate to learned recurrence}
+On familiar wording, exchanging only the switched-action row changed the correct choice on all 1,536 affected judgments and preserved it on all 1,536 unaffected judgments. Replacing only the default rows gave the same counts. Updating solved all 1,280 judgments whose correct choice changed, while skipping the update solved zero. On the other 1,792, both paths were completely correct. Uniform memory gave 1,536/3,072. All registered primary criteria passed.
 
-Training a reader to recognize the role of a phrase can make that role readable across new action words. A native reader can also use an intermediate decision where the interface explicitly supplies it. In the closing comparison, component practice improved performance on that particular two-call path while ordinary action transfer showed a net loss of six decisions. A larger recursive model would have to learn which distinction to retain, transmit it faithfully and exploit it in a new operation. The difference between the two paths motivates testing all three abilities separately as compute grows.
+On new wording only 32 of 64 midpoints recovered both branch actions. In 20 incomplete memories both branches named the same action on the correct menu. In another 12 at least one branch pointed outside the menu. The correct one-hot policy drove all 1,536 answers through the same update and reader. The wording challenge missed its gate. Across both panels and eight interventions, 36,864 requests shared 1,740 distinct native inputs. \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/provenance/state_only_20261104/RESULTS.md}{Native outputs and intervention scores}
 
-For an actual state update, first train a native reader on independently encoded descriptions, case tables and rules. Freeze its weights and scoring rule for independent confirmation on newly sealed policy groups. Then train the updater to generate the case state from the current state alone and to reintegrate it on the next call. On held-out descriptions test both intermediate and final reconstructions against the truth table. Exchange the intermediate with a same-meaning paraphrase and with the opposed policy. Omit each operation in turn. Identity can preserve the final action, so a stage earns credit for doing useful work only when its specified distinction and later use survive these controls. Compare direct continuation with one language insertion from the identical saved intermediate. Record the extra decoding and re-encoding cost. \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/docs/FUNCTIONAL_CONTINUITY.md}{Two-stage protocol}
+We then froze a follow-up test on the already scored primary panel. A second edit replaced the first trigger while preserving the two branch actions. The updater received its own complete output and the new operation, without the first operation's name. When the first trigger was both-on, the second edit was correct on 3,072/3,072 judgments across the three requested triggers. After either-on the count was 1,536/3,072. After exactly-one-on it was 0/3,072. Opposed donors still flipped all 3,072 answers in that last condition, but both answers in each pair contradicted their policies. Only three of nine sequences met the reuse criterion. All first edits on these policies had been correct. \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/provenance/state_only_20261104/COMPOSITION_PLAN.md}{Frozen follow-up design}
 
-Scaling becomes an empirical question once that small route works. Hold out whole policy and operation families before training, including disjunctions, exceptions and rules with new actions. Increase training diversity, depth and model size in separate comparisons across multiple seeds within one model family. At each size compare learned recurrence to an ordinary final-answer model given the same training and inference compute, including all readouts and language conversions. Depths zero, one, two and four distinguish learning a single useful update from reusing it. To test a claim about broader intelligence, predeclare independent planning and language-reasoning tasks and retention controls, then estimate paired transfer effects by task family and seed. The current finite truth tables supply a way to decide whether to invest in those comparisons.
+The fitted map gave the first three input rows equal weights when reading the default. All three had held the default during fitting. After an exactly-one edit, two held the switched action, and the fourth row held the default. We tested whether those roles remained recoverable in the same intermediate tables.
+
+In a separately sealed diagnostic, a fixed rule took the off/off row as the default and selected the most different of the other three soft rows as the switched action. It restored the original layout and passed it to the same learned update and native reader. Only the incoming table was consulted. Across the nine sequences, accuracy rose from 4,608/9,216 to 9,216/9,216. Deliberately exchanging the two recovered roles gave 0/9,216. The two actions survived the first edit and were accessible under the known convention that off/off always selects the default. The trained updater required external help to recover them after its input layout changed. \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/provenance/state_only_20261104/RESULTS.md#can-the-two-actions-be-recovered-from-the-same-table}{Role-restoration test and controls}
+
+\section{From one revision to learning across revisions}
+
+The constructed memory establishes source-free conditional use on a fixed action vocabulary. It also exposes two distinct requirements for recurrence. A new source wording must bind the correct actions, and the updater must preserve a format that it can consume again. The single-bit reader in Section 5 had retained the literal policy. Here the next computation used the numeric table alone. The table format, world address and action vocabulary were supplied by design. Independent confirmation requires newly sealed policy families and additional seeds.
+
+Our next test would train on whole sequences of revisions with exceptions, redundant edits and rule reintegration. Rollouts must include the learner's own intermediate errors. Branch a saved midpoint into an edit, a bypass and a donor exchange, and score them on independent changed and unchanged worlds. A reward for improvement alone can favor a poor first answer. Reward correctness before and after the edit, audit a separately held verifier, and measure loss of previously correct choices. These comparisons connect the observed failure of reuse with work on multi-turn self-correction and reward overoptimization \citep{kumar2024score,gao2022overoptimization}.
+
+For the original eight-slot hypothesis, first verify independently encoded descriptions, case tables and reintegrated rules. Then compare rewriting in words (\texttt{T}), continuing in slots (\texttt{L}), and verbalizing and re-encoding the same intermediate before continuing (\texttt{B}). The last two routes share their first updated state and their next updater. Record native end of sequence or censoring for each verbalization.
+
+For a scaling claim, compare recurrent reinforcement learning with direct-answer and supervised recurrent baselines at equal training and inference compute, including verifier calls and verbalization. Vary depth, task diversity and model size separately. Hold out whole operation and action families. Test independent planning and language tasks, retention and variability across seeds. \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/docs/FUNCTIONAL_CONTINUITY.md}{Protocols and scaling comparisons}
 
 \section*{Supporting material}
 
 The \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/paper/DEVELOPMENT_RECORD.md}{development record and experiment key} names each earlier experiment and preserves its run identifiers, results tables and links to the raw records. The \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/docs/REPRODUCING.md}{reproduction instructions} give the execution seals. The \href{https://github.com/RyoSpiralArchitect/self-fold/blob/main/paper/REFERENCE_AUDIT.md}{reference audit} records source and version information.
 
+\begingroup
+\small
+\setlength{\bibsep}{2pt plus 1pt}
 \bibliographystyle{plainnat}
 \bibliography{references}
+\endgroup
 \end{document}

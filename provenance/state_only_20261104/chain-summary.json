@@ -1,0 +1,252 @@
+{
+  "cells": {
+    "both_on/both_on": {
+      "native": [
+        1024,
+        1024
+      ],
+      "paired": [
+        1024,
+        1024
+      ],
+      "strict": [
+        32,
+        32
+      ],
+      "bypass": [
+        1024,
+        1024
+      ],
+      "updated_changed": [
+        0,
+        0
+      ],
+      "bypass_changed": [
+        0,
+        0
+      ],
+      "pass_all": true
+    },
+    "both_on/either_on": {
+      "native": [
+        1024,
+        1024
+      ],
+      "paired": [
+        1024,
+        1024
+      ],
+      "strict": [
+        32,
+        32
+      ],
+      "bypass": [
+        512,
+        1024
+      ],
+      "updated_changed": [
+        512,
+        512
+      ],
+      "bypass_changed": [
+        0,
+        512
+      ],
+      "pass_all": true
+    },
+    "both_on/exactly_one_on": {
+      "native": [
+        1024,
+        1024
+      ],
+      "paired": [
+        1024,
+        1024
+      ],
+      "strict": [
+        32,
+        32
+      ],
+      "bypass": [
+        256,
+        1024
+      ],
+      "updated_changed": [
+        768,
+        768
+      ],
+      "bypass_changed": [
+        0,
+        768
+      ],
+      "pass_all": true
+    },
+    "either_on/both_on": {
+      "native": [
+        256,
+        1024
+      ],
+      "paired": [
+        256,
+        1024
+      ],
+      "strict": [
+        0,
+        32
+      ],
+      "bypass": [
+        512,
+        1024
+      ],
+      "updated_changed": [
+        0,
+        512
+      ],
+      "bypass_changed": [
+        0,
+        512
+      ],
+      "pass_all": false
+    },
+    "either_on/either_on": {
+      "native": [
+        768,
+        1024
+      ],
+      "paired": [
+        768,
+        1024
+      ],
+      "strict": [
+        0,
+        32
+      ],
+      "bypass": [
+        1024,
+        1024
+      ],
+      "updated_changed": [
+        0,
+        0
+      ],
+      "bypass_changed": [
+        0,
+        0
+      ],
+      "pass_all": false
+    },
+    "either_on/exactly_one_on": {
+      "native": [
+        512,
+        1024
+      ],
+      "paired": [
+        512,
+        1024
+      ],
+      "strict": [
+        0,
+        32
+      ],
+      "bypass": [
+        768,
+        1024
+      ],
+      "updated_changed": [
+        0,
+        256
+      ],
+      "bypass_changed": [
+        0,
+        256
+      ],
+      "pass_all": false
+    },
+    "exactly_one_on/both_on": {
+      "native": [
+        0,
+        1024
+      ],
+      "paired": [
+        0,
+        1024
+      ],
+      "strict": [
+        0,
+        32
+      ],
+      "bypass": [
+        256,
+        1024
+      ],
+      "updated_changed": [
+        0,
+        768
+      ],
+      "bypass_changed": [
+        0,
+        768
+      ],
+      "pass_all": false
+    },
+    "exactly_one_on/either_on": {
+      "native": [
+        0,
+        1024
+      ],
+      "paired": [
+        0,
+        1024
+      ],
+      "strict": [
+        0,
+        32
+      ],
+      "bypass": [
+        768,
+        1024
+      ],
+      "updated_changed": [
+        0,
+        256
+      ],
+      "bypass_changed": [
+        0,
+        256
+      ],
+      "pass_all": false
+    },
+    "exactly_one_on/exactly_one_on": {
+      "native": [
+        0,
+        1024
+      ],
+      "paired": [
+        0,
+        1024
+      ],
+      "strict": [
+        0,
+        32
+      ],
+      "bypass": [
+        1024,
+        1024
+      ],
+      "updated_changed": [
+        0,
+        0
+      ],
+      "bypass_changed": [
+        0,
+        0
+      ],
+      "pass_all": false
+    }
+  },
+  "native": [
+    4608,
+    9216
+  ],
+  "pass_all": false
+}
