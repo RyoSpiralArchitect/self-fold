@@ -1,0 +1,19 @@
+{
+  "schema": "state_only_policy_1",
+  "action_bank_sha256": "aeee777aa4d5cd90db4c30ec52d3320aec38bf10290afcb648fae4cfa869d772",
+  "fit_flags": [["Alder","Birch"],["Copper","Tin"],["Lilac","Clover"]],
+  "test_flags": [["Topaz","Elm"],["Hazel","Jade"]],
+  "fit_styles": ["when", "plan", "reading"],
+  "primary_styles": ["when", "plan"],
+  "challenge_styles": ["exception"],
+  "styles": {
+    "when": ["When at least one of {a} and {b} is off, I choose {action}.", "When both {a} and {b} are on, I choose {action}."],
+    "plan": ["I use {action} if either {a} or {b} is off.", "I use {action} if {a} and {b} are on together."],
+    "reading": ["Unless {a} and {b} both light up, my choice is {action}.", "With {a} and {b} both lit, my choice is {action}."],
+    "exception": ["I go with {action} whenever the pair of lamps {a} and {b} falls short of full illumination.", "I go with {action} whenever the pair of lamps {a} and {b} reaches full illumination."]
+  },
+  "seed": 631,
+  "compiler_steps": 120,
+  "update_steps": 96,
+  "reader_steps": 96
+}
