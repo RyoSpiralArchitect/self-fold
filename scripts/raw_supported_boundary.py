@@ -1,0 +1,381 @@
+"""Fit a paired boundary transport and exercise the native E/G/D path on development material."""
+
+import gzip
+import json
+import time
+
+import numpy as np
+import torch
+
+from fit_codec import CHECKPOINT_SHA, parameter_sha
+from fit_conditional_curriculum import parser
+from fit_continuity_recipient import model_scores
+from fit_stage_grammar import ACTIONS, read
+from selffold import prompts
+from selffold.carrier_probe import capture_description, description_layout
+from selffold.cli import ROOT, make_host
+from selffold.records import RunStore, State, code_manifest, digest, file_sha
+from selffold.recipient_learning import load_recipient
+from selffold.supported_boundary import cases, questions
+from selffold.transport import Transport, fit_ridge
+
+CONFIG = ROOT / "data/supported_g_20261104.json"
+READER = ROOT / "provenance/preprint_v1_20261104/raw/reader.npz"
+OPS = tuple(prompts.OPERATORS)
+PREFIX = "For this decision, use the stated policy. "
+
+
+def new_host(args):
+    args.max_context = 512
+    host, ident = make_host(args)
+    if ident["checkpoint_sha256"] != CHECKPOINT_SHA:
+        raise ValueError("Wrong host")
+    host.max_forwards = 40000
+    host.max_processed_tokens = 12000000
+    return host
+
+
+def save_npz(path, **arrays):
+    np.savez_compressed(
+        path,
+        **{
+            k: v.detach().cpu().numpy() if torch.is_tensor(v) else v
+            for k, v in arrays.items()
+        },
+    )
+
+
+@torch.no_grad()
+def geometry(host, ids, slots):
+    """Full native logits, observed logits and matched-slot self-replay at the identical geometry."""
+    x = torch.tensor([ids], device=host.device)
+    host._budget(len(ids))
+    ref = host.model(
+        input_ids=x,
+        attention_mask=torch.ones_like(x),
+        use_cache=False,
+        return_dict=True,
+    ).logits
+    host.meter.forwards += 1
+    host.meter.processed_tokens += len(ids)
+    observed, cap = host.forward(ids, capture_positions=slots, instrument=True)
+    native = torch.equal(ref, observed)
+    del ref
+    replay, _ = host.forward(
+        ids, state=State(slots=cap["pre_cut"][0]), input_positions=slots
+    )
+    return dict(
+        native=native,
+        neutral=torch.equal(observed, replay),
+        width=len(ids),
+        positions=slots,
+        input_sha256=digest(ids),
+    )
+
+
+def fit_transport(host, menus, cfg, store):
+    train = cases(cfg, "train", raw=True)
+    writers, targets = [], []
+    target_cache = {}
+    first = None
+    for c in train:
+        source = c.source(menus, cfg["train"])
+        text = c.successor(menus, cfg["train"])
+        current, _ = capture_description(host, source, "workspace", forward_length=256)
+        if text not in target_cache:
+            target_cache[text] = capture_description(
+                host, text, "workspace", forward_length=256
+            )[0]
+        for op in OPS:
+            state = host.update_latent(current, op)
+            writers.append(state.slots.cpu())
+            targets.append(target_cache[text].slots.cpu())
+            store.append(
+                "pairs.jsonl",
+                dict(
+                    key=c.key,
+                    op=op,
+                    source=digest(source),
+                    target=digest(text),
+                    writer=state.sha(),
+                    aligned=target_cache[text].sha(),
+                ),
+            )
+        if first is None:
+            first = current
+    tr = fit_ridge(torch.cat(writers), torch.cat(targets), ridge=0.001)
+    # Reload the artifact itself; the runtime G performs the writer-to-cut transform.
+    path = store.path / "transport.npz"
+    save_npz(path, weight=tr.weight, bias=tr.bias)
+    host.transport = Transport.load(path)
+    host.transport.weight = host.transport.weight.to(host.device)
+    host.transport.bias = host.transport.bias.to(host.device)
+    host.identity["transport_sha256"] = file_sha(path)
+    store.write(
+        "fit_closed.json",
+        dict(
+            train_sources=len(train),
+            pairs=len(writers),
+            rows=8 * len(writers),
+            ridge=0.001,
+            transport=file_sha(path),
+            fresh_sources=0,
+        ),
+    )
+    return first
+
+
+def free_subset(c):
+    return c.topic in (0, 1) and c.base == c.topic and c.order == c.style
+
+
+@torch.no_grad()
+def run(args, store):
+    cfg = read(CONFIG)
+    menus = [g["options"] for g in read(ACTIONS)["groups"]]
+    seal = code_manifest(ROOT)
+    if seal["git_status"] or file_sha(READER) != cfg["raw_reader"]:
+        raise ValueError("Source or task reader mismatch")
+    store.write("source.json", seal)
+    host = new_host(args)
+    backbone = parameter_sha(host.model)
+    base_identity = dict(host.identity)
+    if host.transport.weight is not None:
+        raise ValueError("Fitting needs native post-writer activations")
+    unrelated = fit_transport(host, menus, cfg, store)
+    unrelated = host.update_latent(unrelated, "boundary")
+    fresh = cases(cfg, "fresh", raw=True)
+    sample = fresh[0]
+    source = sample.source(menus, cfg["fresh"])
+    checks = {}
+    for name, text in (
+        ("source", source),
+        ("prefixed_source", sample.source(menus, cfg["fresh"], cfg["neutral_prefix"])),
+    ):
+        ids, positions, _ = description_layout(host, text, "workspace", 256)
+        checks[name] = geometry(host, ids, positions)
+    for op in OPS:
+        ids, pos = host.render(prompts.update_prompt(op))
+        checks["update_" + op] = geometry(host, ids, pos[prompts.INPUT_MARKER])
+    for name, content in (
+        ("free_read", prompts.read_prompt()),
+        ("task", prompts.task_prompt(questions(sample, menus)[0]["question"])),
+        (
+            "prefixed_task",
+            prompts.task_prompt(questions(sample, menus, prefix=PREFIX)[0]["question"]),
+        ),
+    ):
+        ids, pos = host.render(content)
+        checks[name] = geometry(host, ids, pos[prompts.INPUT_MARKER])
+    store.write("parity.json", checks)
+    if not all(x["native"] and x["neutral"] for x in checks.values()):
+        raise ValueError("Native geometry or self-replay mismatch")
+    store.write(
+        "binding.json",
+        dict(
+            host=host.identity,
+            base_host=base_identity,
+            reader=file_sha(READER),
+            source=seal["source_sha256"],
+            config=file_sha(CONFIG),
+            capture=256,
+            template=prompts.BASE,
+            backbone=backbone,
+            qualification_content_loaded=False,
+        ),
+    )
+    encoded = {}
+    updated = {}
+    extra = {}
+    teacher = {}
+    state_before = {}
+    for c in fresh:
+        text = c.source(menus, cfg["fresh"])
+        z, meta = capture_description(host, text, "workspace", forward_length=256)
+        encoded[c] = z
+        prefixed = c.source(menus, cfg["fresh"], cfg["neutral_prefix"])
+        zp, mp = capture_description(host, prefixed, "workspace", forward_length=256)
+        extra[c] = host.update_latent(zp, "boundary")
+        teacher[c] = capture_description(
+            host, c.successor(menus, cfg["fresh"]), "workspace", forward_length=256
+        )[0]
+        updated[c] = {op: host.update_latent(z, op) for op in OPS}
+        state_before[c] = (z.sha(), updated[c]["boundary"].sha())
+        store.append(
+            "sources.jsonl",
+            dict(
+                key=c.key,
+                source=digest(text),
+                hashes=state_before[c],
+                target=teacher[c].sha(),
+                aligned_positions=meta["capture_positions"],
+                prefixed_positions=mp["capture_positions"],
+                gold=c.ledger(),
+            ),
+        )
+    free = {}
+    for c in fresh:
+        if free_subset(c):
+            for stage, z in (
+                ("initial", encoded[c]),
+                ("updated", updated[c]["boundary"]),
+            ):
+                answer = host.decode(z.clone())
+                free[c, stage] = answer
+                store.append(
+                    "free_text.jsonl",
+                    dict(key=c.key, stage=stage, state=z.sha(), **answer.receipt()),
+                )
+    reader, _, _ = load_recipient(READER, host)
+    rng = torch.Generator().manual_seed(4719)
+    random_dir = torch.randn(host.slots, host.width, generator=rng).to(host.device)
+    random_dir = torch.nn.functional.normalize(random_dir, dim=-1)
+    # One fixed unrelated norm sets the random control magnitude independently of the tested donor.
+    random_state = State(
+        slots=(random_dir * unrelated.slots.float().norm(dim=-1, keepdim=True)).to(
+            host.dtype
+        )
+    )
+    cache = {}
+
+    def score(jobs, z, kind):
+        key = (
+            tuple(t["question"] for t in jobs),
+            jobs[0]["source"] if kind == "literal_base" else None,
+            None if z is None else z.sha(),
+            kind,
+        )
+        if key not in cache:
+            cache[key] = model_scores(
+                host, reader, jobs, {"current": None if z is None else z.slots}, kind
+            )
+        return cache[key]
+
+    def emit(stream, c, tag, jobs, answers):
+        for t, r in zip(jobs, answers, strict=True):
+            stream.write(
+                json.dumps(
+                    [
+                        *c.key,
+                        tag,
+                        t["world"],
+                        t["label_order"],
+                        t["gold"],
+                        r["greedy_label"],
+                        r["greedy_token"],
+                        r["A"],
+                        r["B"],
+                        digest(t["question"]),
+                    ],
+                    separators=(",", ":"),
+                )
+                + "\n"
+            )
+
+    missing = [dict(greedy_label=None, greedy_token=None, A=None, B=None)] * 8
+    try:
+        with gzip.open(store.path / "decisions.jsonl.gz", "wt") as out:
+            for c in fresh:
+                jobs = questions(c, menus)
+                z = updated[c]["boundary"]
+                norms = z.slots.float().norm(dim=-1, keepdim=True)
+                normonly = State(slots=(random_dir * norms).to(host.dtype))
+                routes = dict(
+                    identity=encoded[c],
+                    teacher=teacher[c],
+                    **updated[c],
+                    opposed=updated[c.donor("opposed")]["boundary"],
+                    equivalent=updated[c.donor("equivalent")]["boundary"],
+                    unrelated=unrelated,
+                    zero=State(slots=torch.zeros_like(z.slots)),
+                    empty=None,
+                    random=random_state,
+                    permuted=State(slots=z.slots.flip([0])),
+                    norm_only=normonly,
+                    source_prefix=extra[c],
+                    reordered=updated[c.donor("reordered")]["boundary"],
+                )
+                for name, state in routes.items():
+                    emit(out, c, name, jobs, score(jobs, state, "matched"))
+                shifted = questions(c, menus, prefix=PREFIX)
+                emit(out, c, "question_prefix", shifted, score(shifted, z, "matched"))
+                literal = questions(c, menus, text=c.source(menus, cfg["fresh"]))
+                emit(out, c, "literal", literal, score(literal, None, "literal_base"))
+                for stage in ("initial", "updated"):
+                    if (c, stage) not in free:
+                        continue
+                    ans = free[c, stage]
+                    literal = questions(c, menus, text=ans.text)
+                    literal_ok = bool(ans.text.strip()) and all(
+                        len(host.tokenizer.encode(ans.text, add_special_tokens=False))
+                        + len(
+                            host.tokenizer.encode(
+                                prompts.task_prompt(t["question"], text="x"),
+                                add_special_tokens=False,
+                            )
+                        )
+                        + 16
+                        < host.max_context
+                        for t in jobs
+                    )
+                    if literal_ok:
+                        # Check exact rendered length too; record a failure for unscorable text.
+                        try:
+                            value = score(literal, None, "literal_base")
+                        except ValueError as e:
+                            if "exceeds limit" not in str(e):
+                                raise
+                            value = missing
+                    else:
+                        value = missing
+                    emit(out, c, "D_" + stage, literal, value)
+                    roundtrip = None
+                    if ans.text.strip():
+                        try:
+                            roundtrip = capture_description(
+                                host, ans.text, "workspace", forward_length=256
+                            )[0]
+                        except ValueError as e:
+                            if "exceeds" not in str(e):
+                                raise
+                    emit(
+                        out,
+                        c,
+                        "ED_" + stage,
+                        jobs,
+                        score(jobs, roundtrip, "matched")
+                        if roundtrip is not None
+                        else missing,
+                    )
+    finally:
+        reader.close()
+    unchanged = all(
+        state_before[c] == (encoded[c].sha(), updated[c]["boundary"].sha())
+        for c in fresh
+    )
+    if not unchanged or parameter_sha(host.model) != backbone:
+        raise ValueError("State or backbone changed")
+    return dict(
+        status="RAW_DEVELOPMENT_COMPLETE",
+        fresh_states=len(fresh),
+        operators=len(OPS),
+        free_outputs=len(free),
+        isolated=unchanged,
+        backbone=backbone,
+        distinct_score_batches=len(cache),
+        compute=host.meter.snapshot(),
+    )
+
+
+if __name__ == "__main__":
+    args = parser().parse_args()
+    store = RunStore(args.out)
+    start = time.monotonic()
+    try:
+        result = run(args, store)
+    except Exception as exc:
+        store.write("terminal.json", dict(status="TECHNICAL_STOP", error=str(exc)))
+        raise
+    store.write(
+        "terminal.json", result | dict(elapsed_seconds=time.monotonic() - start)
+    )
