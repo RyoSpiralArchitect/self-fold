@@ -1,0 +1,381 @@
+{
+  "check": "one_step_update",
+  "interfaces": {
+    "raw_native": {
+      "execution_binding_sha256": "909fa996b2664dc377662e256e5a732fa968ae852bb3b2567a13227d0e66f407",
+      "measurement": {
+        "already_correct_spoiled": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "macro": 0.0,
+          "n": 896,
+          "score": 0
+        },
+        "complete_change": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "macro": 0.0,
+          "n": 64,
+          "score": 0
+        },
+        "correct_change_policies": {
+          "ci95": [
+            0.482421875,
+            0.5
+          ],
+          "macro": 0.494140625,
+          "n": 512,
+          "score": 253
+        },
+        "correct_changed_worlds": {
+          "ci95": [
+            0.453125,
+            0.5
+          ],
+          "macro": 0.484375,
+          "n": 128,
+          "score": 62
+        },
+        "gain_over_identity": {
+          "ci95": [
+            0.0,
+            0.01171875
+          ],
+          "macro": 0.00390625,
+          "n": 512,
+          "score": 2
+        },
+        "gain_over_unrelated": {
+          "ci95": [
+            -0.017578125,
+            0.0
+          ],
+          "macro": -0.005859375,
+          "n": 512,
+          "score": -3
+        },
+        "human_support": "not_assessed",
+        "identity_change_policies": {
+          "ci95": [
+            0.470703125,
+            0.5
+          ],
+          "macro": 0.490234375,
+          "n": 512,
+          "score": 251
+        },
+        "identity_changed_worlds": {
+          "ci95": [
+            0.453125,
+            0.5
+          ],
+          "macro": 0.484375,
+          "n": 128,
+          "score": 62
+        },
+        "mechanical": "fail",
+        "newly_complete": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "macro": 0.0,
+          "n": 64,
+          "score": 0
+        },
+        "stable_complete": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "macro": 0.0,
+          "n": 64,
+          "score": 0
+        },
+        "stable_native": {
+          "ci95": [
+            0.48828125,
+            0.5
+          ],
+          "macro": 0.49609375,
+          "n": 512,
+          "score": 254
+        },
+        "stable_new_errors": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "macro": 0.0,
+          "n": 512,
+          "score": 0
+        },
+        "unrelated_change_policies": {
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "macro": 0.5,
+          "n": 512,
+          "score": 256
+        }
+      },
+      "reduction_sha256": "ad4fe30af86afb37bb1c0ed1715f8a8bae113b9493fc5d540e152dd2a61662ca"
+    },
+    "structured_primary": {
+      "execution_binding_sha256": "14c71325c78ce19e14bef1b6cd1dafc2360f694ad2f1fcf12a062bf904f894bb",
+      "measurement": {
+        "already_correct_spoiled": {
+          "ci95": [
+            0.015625,
+            0.015625
+          ],
+          "macro": 0.015625,
+          "n": 8192,
+          "score": 128
+        },
+        "complete_change": {
+          "ci95": [
+            0.875,
+            0.875
+          ],
+          "macro": 0.875,
+          "n": 768,
+          "score": 672
+        },
+        "correct_change_policies": {
+          "ci95": [
+            0.96875,
+            0.96875
+          ],
+          "macro": 0.96875,
+          "n": 6144,
+          "score": 5952
+        },
+        "correct_changed_worlds": {
+          "ci95": [
+            0.9375,
+            0.9375
+          ],
+          "macro": 0.9375,
+          "n": 2048,
+          "score": 1920
+        },
+        "gain_over_identity": {
+          "ci95": [
+            0.3020833333333333,
+            0.3020833333333333
+          ],
+          "macro": 0.3020833333333333,
+          "n": 6144,
+          "score": 1856
+        },
+        "gain_over_unrelated": {
+          "ci95": [
+            0.46875,
+            0.46875
+          ],
+          "macro": 0.46875,
+          "n": 6144,
+          "score": 2880
+        },
+        "human_support": "not_assessed",
+        "identity_change_policies": {
+          "ci95": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "macro": 0.6666666666666666,
+          "n": 6144,
+          "score": 4096
+        },
+        "identity_changed_worlds": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "macro": 0.0,
+          "n": 2048,
+          "score": 0
+        },
+        "mechanical": "pass",
+        "newly_complete": {
+          "ci95": [
+            0.875,
+            0.875
+          ],
+          "macro": 0.875,
+          "n": 768,
+          "score": 672
+        },
+        "stable_complete": {
+          "ci95": [
+            0.9375,
+            0.9375
+          ],
+          "macro": 0.9375,
+          "n": 512,
+          "score": 480
+        },
+        "stable_native": {
+          "ci95": [
+            0.984375,
+            0.984375
+          ],
+          "macro": 0.984375,
+          "n": 4096,
+          "score": 4032
+        },
+        "stable_new_errors": {
+          "ci95": [
+            0.015625,
+            0.015625
+          ],
+          "macro": 0.015625,
+          "n": 4096,
+          "score": 64
+        },
+        "unrelated_change_policies": {
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "macro": 0.5,
+          "n": 6144,
+          "score": 3072
+        }
+      },
+      "reduction_sha256": "f08293f3ad516897c06847016014a81ecd6c67cf40260ce381be5a9b48202a57"
+    },
+    "structured_reworded": {
+      "execution_binding_sha256": "5e62ed7a233b6a2dda62fe719caf2c2d4890e12ef1253b69a31f40563f1e3780",
+      "measurement": {
+        "already_correct_spoiled": {
+          "ci95": [
+            0.0107421875,
+            0.015625
+          ],
+          "macro": 0.013671875,
+          "n": 8192,
+          "score": 112
+        },
+        "complete_change": {
+          "ci95": [
+            0.7604166666666666,
+            0.8333333333333334
+          ],
+          "macro": 0.8020833333333334,
+          "n": 768,
+          "score": 616
+        },
+        "correct_change_policies": {
+          "ci95": [
+            0.8854166666666667,
+            0.9583333333333334
+          ],
+          "macro": 0.9322916666666667,
+          "n": 6144,
+          "score": 5728
+        },
+        "correct_changed_worlds": {
+          "ci95": [
+            0.880859375,
+            0.974609375
+          ],
+          "macro": 0.94140625,
+          "n": 2048,
+          "score": 1928
+        },
+        "gain_over_identity": {
+          "ci95": [
+            0.26692708333333337,
+            0.3125
+          ],
+          "macro": 0.29427083333333337,
+          "n": 6144,
+          "score": 1808
+        },
+        "gain_over_unrelated": {
+          "ci95": [
+            0.38541666666666663,
+            0.4583333333333333
+          ],
+          "macro": 0.43229166666666663,
+          "n": 6144,
+          "score": 2656
+        },
+        "human_support": "not_assessed",
+        "identity_change_policies": {
+          "ci95": [
+            0.6028645833333334,
+            0.6653645833333334
+          ],
+          "macro": 0.6380208333333334,
+          "n": 6144,
+          "score": 3920
+        },
+        "identity_changed_worlds": {
+          "ci95": [
+            0.05078125,
+            0.14453125
+          ],
+          "macro": 0.0859375,
+          "n": 2048,
+          "score": 176
+        },
+        "mechanical": "fail",
+        "newly_complete": {
+          "ci95": [
+            0.7291666666666667,
+            0.8333333333333334
+          ],
+          "macro": 0.7916666666666667,
+          "n": 768,
+          "score": 608
+        },
+        "stable_complete": {
+          "ci95": [
+            0.71484375,
+            0.8125
+          ],
+          "macro": 0.7734375,
+          "n": 512,
+          "score": 396
+        },
+        "stable_native": {
+          "ci95": [
+            0.87890625,
+            0.9375
+          ],
+          "macro": 0.9140625,
+          "n": 4096,
+          "score": 3744
+        },
+        "stable_new_errors": {
+          "ci95": [
+            0.0107421875,
+            0.015625
+          ],
+          "macro": 0.013671875,
+          "n": 4096,
+          "score": 56
+        },
+        "unrelated_change_policies": {
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "macro": 0.5,
+          "n": 6144,
+          "score": 3072
+        }
+      },
+      "reduction_sha256": "0d2d9e5484371f58978ec41b91c5430d36deaccedc3c3f02c184431e6c8f5597"
+    }
+  },
+  "scope": "mechanical_development_only"
+}

@@ -222,3 +222,24 @@ python scripts/replay_preprint_v1.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --ra
 ~~~
 
 The replay was sealed at `276580005a86711015a002db18e8f056827f13ed`. To verify the published endpoints without refitting, point its raw and capacity arguments at the corresponding directories under `provenance/preprint_v1_20261104`. The model-free checks in `tests/test_preprint_v1.py` reconstruct counts and the two-bit bound from numerical decisions. [Outcomes and replay](../provenance/preprint_v1_20261104/RESULTS.md)
+
+
+### Supported one-step boundary
+
+The development plan was sealed at `020c8cb37be9d1b802b9c0bb888a83ce7150136f`. The original raw fit and free generations used `42de7977995ea39bc49ff4568fc38b4f1bdd04ed`. That run stopped before scoring on a host-binding mismatch. The corrected native scoring path and the primary structured run used `3b391e7b22120d12b46c0846dc87420c17a4684f`. The fresh literal-only continuation was specified at `17841cf6115a1bd7d5b727c5a66b63b1c0fef773` and executed at `ee506a4b204e13264e69effb438de891f976b26b`. The physical replay used `a28b70cf22166bceefa0b259eb27538a6c9f0d7a`. Use the same pinned offline model and one-thread environment as preprint v1. Output directories must be new.
+
+~~~bash
+export PYTHONPATH=src
+study=provenance/supported_g_20261104
+python scripts/raw_supported_boundary.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/supported/raw
+python scripts/structured_supported_boundary.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/supported/structured
+python scripts/calibrate_boundary_readout.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --primary runs/supported/structured --out runs/supported/readout
+python scripts/replay_supported_boundary.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --structured "$study/structured" --raw "$study/raw-bound" --readout "$study/readout" --out runs/supported/published-replay
+python "$study/summarize.py" "$study" structured
+python "$study/summarize.py" "$study" readout
+python "$study/summarize.py" "$study" raw-bound
+python "$study/diagnose_fields.py" "$study" readout
+python "$study/screen_record.py" "$study" runs/supported/six-check-evidence
+~~~
+
+No command above takes an independent qualification file. The paper DOI and versioned archive still identify preprint v1. [Post-v1 endpoint and original stop](../provenance/supported_g_20261104/RESULTS.md)

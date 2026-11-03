@@ -1,0 +1,1 @@
+{"G_updates":0,"compute":{"forwards":1135,"generated_tokens":0,"processed_tokens":872854},"distinct_fresh_literal_inputs":1016,"distinct_literal_batches":127,"elapsed_seconds":58.72389686992392,"fit_test_literal_overlap":0,"physical_native_queries":608,"qualification_opened":false,"sources":1280,"status":"FROZEN_G_READOUT_REPLICATION_COMPLETE"}

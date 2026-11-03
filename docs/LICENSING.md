@@ -41,3 +41,5 @@ The nine-parameter role controllers, captured rows and native decisions have [st
 The stage-grammar study's three continued task readers, state-to-state maps, rule decoder and numerical records have [study-specific artifact conditions](../provenance/stage_grammar_20261104/ARTIFACT_LICENSE.md).
 
 The version-one preprint PDF uses Apache-2.0. The associated experimental arrays and native scores carry the [study-specific Gemma terms and notice](../provenance/preprint_v1_20261104/ARTIFACT_LICENSE.md).
+
+The post-v1 supported-boundary development study distributes its learned arrays, captures, native scores and generations with [artifact-specific Gemma terms and notice](../provenance/supported_g_20261104/ARTIFACT_LICENSE.md).

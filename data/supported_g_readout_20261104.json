@@ -1,0 +1,14 @@
+{
+ "fresh": [
+    ["My regular choice here is {a}.", "My alternate choice here is {a}.", "The alternate choice is triggered when the {s} signal is {v}.", "The regular choice overrides it when the {s} signal is {v}.", "There is no veto on the alternate choice."],
+    ["I choose {a} as my default.", "I choose {a} as my exception.", "I use the exception if the {s} signal reads {v}.", "I cancel that exception if the {s} signal reads {v}.", "Nothing cancels this exception."]
+ ],
+ "training_questions": [
+    "For this decision the left signal reads {left} and the right signal reads {right}. Which action does the table prescribe?",
+    "Read the entry for a {left} left signal and a {right} right signal. Which action is listed?"
+ ],
+ "fresh_question": "At decision time the left signal reads {left}. The right signal reads {right}. For these readings, which listed action follows the policy?",
+ "seed": 4187,
+ "fit_topics": [0,2,4,6],
+ "source_and_update_sha256": "62ef6e2f1a7bd15b186c72b0018a574803b3ebb6c461936e36b2daed2477f998"
+}
