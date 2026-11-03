@@ -128,6 +128,10 @@ The method recovers lexical information and relational bindings as logical propo
 
 [Consulted version](https://arxiv.org/abs/2406.19501v2)
 
+### `kumar2024score` and `gao2022overoptimization`
+
+On 2026-11-04 we checked the authors' arXiv records for the discussion of on-policy self-correction and divergence between a proxy reward and a held evaluator. SELF-FOLD's proposed comparison uses these as design considerations. [Kumar et al., v2](https://arxiv.org/abs/2409.12917v2) · [Gao et al., v1](https://arxiv.org/abs/2210.10760v1)
+
 ## Bibliographic limits
 
 Publication pages and author-provided citation metadata were preferred. For the NLA article, the author list follows its published citation block. No external paper PDF or copyrighted article body is bundled. A future submission must recheck title capitalization, venue-specific formatting, revisions, corrections and review status.

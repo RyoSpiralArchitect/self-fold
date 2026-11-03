@@ -1,0 +1,488 @@
+{
+  "primary": {
+    "native": [
+      3072,
+      3072
+    ],
+    "oracle": [
+      3072,
+      3072
+    ],
+    "opposed_pair": [
+      3072,
+      3072
+    ],
+    "equivalent_pair": [
+      3072,
+      3072
+    ],
+    "uniform": [
+      1536,
+      3072
+    ],
+    "strict": [
+      32,
+      32
+    ],
+    "by_operation": {
+      "both_on": {
+        "matched": [
+          1024,
+          1024
+        ],
+        "opposed": [
+          1024,
+          1024
+        ],
+        "equivalent": [
+          1024,
+          1024
+        ],
+        "joint_row": [
+          1024,
+          1024
+        ],
+        "default_rows": [
+          1024,
+          1024
+        ],
+        "omit": [
+          1024,
+          1024
+        ],
+        "uniform": [
+          512,
+          1024
+        ],
+        "oracle": [
+          1024,
+          1024
+        ],
+        "original_and_reversed_margin": [
+          1024,
+          1024
+        ],
+        "original_and_equivalent": [
+          1024,
+          1024
+        ]
+      },
+      "either_on": {
+        "matched": [
+          1024,
+          1024
+        ],
+        "opposed": [
+          1024,
+          1024
+        ],
+        "equivalent": [
+          1024,
+          1024
+        ],
+        "joint_row": [
+          1024,
+          1024
+        ],
+        "default_rows": [
+          1024,
+          1024
+        ],
+        "omit": [
+          512,
+          1024
+        ],
+        "uniform": [
+          512,
+          1024
+        ],
+        "oracle": [
+          1024,
+          1024
+        ],
+        "original_and_reversed_margin": [
+          1024,
+          1024
+        ],
+        "original_and_equivalent": [
+          1024,
+          1024
+        ]
+      },
+      "exactly_one_on": {
+        "matched": [
+          1024,
+          1024
+        ],
+        "opposed": [
+          1024,
+          1024
+        ],
+        "equivalent": [
+          1024,
+          1024
+        ],
+        "joint_row": [
+          1024,
+          1024
+        ],
+        "default_rows": [
+          1024,
+          1024
+        ],
+        "omit": [
+          256,
+          1024
+        ],
+        "uniform": [
+          512,
+          1024
+        ],
+        "oracle": [
+          1024,
+          1024
+        ],
+        "original_and_reversed_margin": [
+          1024,
+          1024
+        ],
+        "original_and_equivalent": [
+          1024,
+          1024
+        ]
+      }
+    },
+    "by_topic": {
+      "0": [
+        384,
+        384
+      ],
+      "1": [
+        384,
+        384
+      ],
+      "2": [
+        384,
+        384
+      ],
+      "3": [
+        384,
+        384
+      ],
+      "4": [
+        384,
+        384
+      ],
+      "5": [
+        384,
+        384
+      ],
+      "6": [
+        384,
+        384
+      ],
+      "7": [
+        384,
+        384
+      ]
+    },
+    "joint_row": {
+      "affected": [
+        1536,
+        1536
+      ],
+      "unaffected": [
+        1536,
+        1536
+      ]
+    },
+    "default_rows": {
+      "affected": [
+        1536,
+        1536
+      ],
+      "unaffected": [
+        1536,
+        1536
+      ]
+    },
+    "changed_worlds": {
+      "updated": [
+        1280,
+        1280
+      ],
+      "omitted": [
+        0,
+        1280
+      ]
+    },
+    "unchanged_worlds": {
+      "updated": [
+        1792,
+        1792
+      ],
+      "omitted": [
+        1792,
+        1792
+      ]
+    },
+    "criteria": {
+      "native_each_operation": true,
+      "opposed_paired_each_operation": true,
+      "equivalent_each_operation": true,
+      "strict_units": true,
+      "partial_donors": true,
+      "over_uniform_each_operation": true,
+      "benefit_on_changed_worlds": true
+    },
+    "pass_all": true,
+    "middle_all_four_rows": [
+      128,
+      128
+    ],
+    "cases": 128
+  },
+  "challenge": {
+    "native": [
+      1140,
+      1536
+    ],
+    "oracle": [
+      1536,
+      1536
+    ],
+    "opposed_pair": [
+      744,
+      1536
+    ],
+    "equivalent_pair": [
+      1104,
+      1536
+    ],
+    "uniform": [
+      768,
+      1536
+    ],
+    "strict": [
+      3,
+      16
+    ],
+    "by_operation": {
+      "both_on": {
+        "matched": [
+          374,
+          512
+        ],
+        "opposed": [
+          374,
+          512
+        ],
+        "equivalent": [
+          374,
+          512
+        ],
+        "joint_row": [
+          376,
+          512
+        ],
+        "default_rows": [
+          376,
+          512
+        ],
+        "omit": [
+          376,
+          512
+        ],
+        "uniform": [
+          256,
+          512
+        ],
+        "oracle": [
+          512,
+          512
+        ],
+        "original_and_reversed_margin": [
+          236,
+          512
+        ],
+        "original_and_equivalent": [
+          360,
+          512
+        ]
+      },
+      "either_on": {
+        "matched": [
+          386,
+          512
+        ],
+        "opposed": [
+          386,
+          512
+        ],
+        "equivalent": [
+          386,
+          512
+        ],
+        "joint_row": [
+          392,
+          512
+        ],
+        "default_rows": [
+          392,
+          512
+        ],
+        "omit": [
+          264,
+          512
+        ],
+        "uniform": [
+          256,
+          512
+        ],
+        "oracle": [
+          512,
+          512
+        ],
+        "original_and_reversed_margin": [
+          260,
+          512
+        ],
+        "original_and_equivalent": [
+          376,
+          512
+        ]
+      },
+      "exactly_one_on": {
+        "matched": [
+          380,
+          512
+        ],
+        "opposed": [
+          380,
+          512
+        ],
+        "equivalent": [
+          380,
+          512
+        ],
+        "joint_row": [
+          384,
+          512
+        ],
+        "default_rows": [
+          384,
+          512
+        ],
+        "omit": [
+          192,
+          512
+        ],
+        "uniform": [
+          256,
+          512
+        ],
+        "oracle": [
+          512,
+          512
+        ],
+        "original_and_reversed_margin": [
+          248,
+          512
+        ],
+        "original_and_equivalent": [
+          368,
+          512
+        ]
+      }
+    },
+    "by_topic": {
+      "0": [
+        180,
+        192
+      ],
+      "1": [
+        144,
+        192
+      ],
+      "2": [
+        192,
+        192
+      ],
+      "3": [
+        144,
+        192
+      ],
+      "4": [
+        96,
+        192
+      ],
+      "5": [
+        144,
+        192
+      ],
+      "6": [
+        144,
+        192
+      ],
+      "7": [
+        96,
+        192
+      ]
+    },
+    "joint_row": {
+      "affected": [
+        420,
+        768
+      ],
+      "unaffected": [
+        552,
+        768
+      ]
+    },
+    "default_rows": {
+      "affected": [
+        336,
+        768
+      ],
+      "unaffected": [
+        588,
+        768
+      ]
+    },
+    "changed_worlds": {
+      "updated": [
+        484,
+        640
+      ],
+      "omitted": [
+        172,
+        640
+      ]
+    },
+    "unchanged_worlds": {
+      "updated": [
+        656,
+        896
+      ],
+      "omitted": [
+        660,
+        896
+      ]
+    },
+    "criteria": {
+      "native_each_operation": false,
+      "opposed_paired_each_operation": false,
+      "equivalent_each_operation": false,
+      "strict_units": false,
+      "partial_donors": false,
+      "over_uniform_each_operation": false,
+      "benefit_on_changed_worlds": true
+    },
+    "pass_all": false,
+    "middle_all_four_rows": [
+      32,
+      64
+    ],
+    "cases": 64
+  }
+}

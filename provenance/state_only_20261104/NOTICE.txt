@@ -1,0 +1,3 @@
+Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms
+
+SELF-FOLD fitted a two-head clause compiler to frozen Gemma-2-2B-IT features, trained a small conditional update map and continued the preceding rank-16 query/value reader on stored action choices. The included model-derived arrays, compiled states and scored choices are identified by the study's source and artifact digests.

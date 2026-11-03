@@ -127,3 +127,25 @@ HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
 python3 -S provenance/two_flags_20261104/summarize.py runs/two-flags
 (cd provenance/two_flags_20261104 && shasum -a 256 -c SHA256SUMS && python3 -S summarize.py | diff - summary.json)
 ~~~
+
+## Change a policy after discarding its words
+
+Check out the prospective source `effaaef64af873f8e32342049470558bfeb8c0a9` to reproduce the fit. The second command runs in a fresh process and takes only the published numeric packet directory plus the original Gemma checkpoint. The grader joins the predictions to their labels after inference. The released study directory can also be graded directly without a GPU. [Design and cutoffs](../provenance/state_only_20261104/PLAN.md)
+
+```bash
+export PYTHONPATH=src HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 CUBLAS_WORKSPACE_CONFIG=:4096:8
+python scripts/fit_state_only.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --out runs/state-only/produce
+python scripts/decide_state_only.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --packet runs/state-only/produce/packet --out runs/state-only/decide
+python provenance/state_only_20261104/summarize.py runs/state-only
+```
+
+For the separate, zero-training reuse diagnostic, use source `0405d2bce6bb9e60432ed7d1b1618558e4808bee` and the released one-edit run bytes. Prepare a new packet from the complete outputs of the learned first update, then use the identical blind decision program. [Composition protocol](../provenance/state_only_20261104/COMPOSITION_PLAN.md)
+
+```bash
+python provenance/state_only_20261104/compose.py prepare provenance/state_only_20261104/run runs/policy-chain
+python scripts/decide_state_only.py --checkpoint "$GEMMA_LOCAL_CHECKPOINT" --packet runs/policy-chain/packet --out runs/policy-chain/decide
+python provenance/state_only_20261104/compose.py grade provenance/state_only_20261104/run runs/policy-chain
+```
+
+The source seal predates the public result files. For a new checkout at the seal, supply the immutable published one-edit run at the first path in the example or pass its external path to the preparation and grading commands. To verify the published numbers directly, run each grader on `provenance/state_only_20261104/run` and, for the follow-up, `provenance/state_only_20261104/chain`.
