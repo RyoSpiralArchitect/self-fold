@@ -1,0 +1,3 @@
+Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms
+
+SELF-FOLD continued two task-only query/value adapters from a shared Gemma-2-2B-IT endpoint. One learned final actions and the other learned the components of a conditional choice. Both modified rank-16 factors on the final four attention layers. The source seal, training schedule, fits and metadata identify the modifications.

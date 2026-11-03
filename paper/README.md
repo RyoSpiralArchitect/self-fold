@@ -1,23 +1,11 @@
 # Self Without a Transcript
 
-## Testing Functional Continuity under Semantic Recurrence
+## Reading a preference and acting on a conditional rule
 
-The working paper asks whether a distinction reconstructed from a current self-description can support another meaning update and a later decision without the original source or transcript. Its prospective constructive endpoint is a two-stage route with intermediate-state exchange and one shared-state language insertion. It covers T/L/B recurrence, the native-EOS comparison, paired donor readouts and position-controlled interventions on Mistral and Gemma. It also reports which downstream locations retain the lexical contrast when the donor's options are reordered or masked. The proposed confirmation study has separate qualification and data requirements. [PDF](self-fold.pdf) · [Read online](main.md) · [LaTeX source](main.tex) · [Donor readouts](../provenance/slot_content_20261101/RESULTS.md) · [Downstream localization](../provenance/downstream_span_20261101/RESULTS.md)
+Follow a walker's rule from its original wording through a table of cases and back to a compact rule. The working paper asks which distinction survives when only a current state is available for a later task.
 
-The paper now includes question-independent carrier screens, the first codec-only fit and a read-only opposed-donor audit. Source-text NLL improved while functional accuracy stayed near 50%. [Learning evidence](../provenance/carriers_20261102/RESULTS.md)
+[Read the paper](main.md) · [Download the PDF](self-fold.pdf)
 
-The paired training comparison and single-source geometry follow-up add a clause-order control. A neutral reference exposed the first-mentioned tray in 93/96 descriptions, while the trigger action was correct in both readings of only 6/48 policies. [Paired training and geometry evidence](../provenance/policy_binding_20261103/RESULTS.md)
+The main text distinguishes three observations. A frozen source state can reveal the order of familiar verdicts on rephrased actions. Exchanging fitted preference states can reverse a native answer. In the closing matched experiment, component supervision increased the observed accuracy of a two-call one-bit path while ordinary held-out action accuracy was six decisions lower. The planned complete-policy and intervention criteria remained unmet. The final section specifies how to test a learned recursive updater and its transfer at matched compute.
 
-The integrated protocol uses Gemma for a bounded recipient phase, followed by separately sealed G and language-intervention phases. The current results supply development evidence for locating the failed connections. Independent human transition review and a new two-stage confirmation panel remain pending. [Functional continuity protocol](../docs/FUNCTIONAL_CONTINUITY.md)
-
-The bibliography has 15 entries. The [reference audit](REFERENCE_AUDIT.md) documents the scope of the literature discussion and the status of contested results.
-
-Build from this directory with Tectonic or TeX Live.
-
-~~~bash
-tectonic main.tex
-# or
-latexmk -pdf main.tex
-~~~
-
-The integrated study now reports four native-recipient configurations and a numerical audit. All four missed the fixed development screen. The intended two-step positive result remains a prospective contribution. [Complete native-recipient evidence](../provenance/continuity_20261103/RESULTS.md)
+The [development record and experiment key](DEVELOPMENT_RECORD.md) preserves all nineteen previous result sections, human-readable experiment names, internal route and arm identifiers, controls and raw evidence links. The [reference audit](REFERENCE_AUDIT.md) and [bibliography](references.bib) retain the source records. Build `main.tex` with Tectonic or `latexmk -pdf main.tex`.

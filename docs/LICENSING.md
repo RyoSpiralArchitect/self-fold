@@ -31,3 +31,5 @@ The action-swap direction arrays and their paraphrase-penalized counterpart have
 The scoped native-recipient and source adapters from the conditional curriculum retain their Gemma-derived terms. [Conditional curriculum artifact conditions](../provenance/conditional_curriculum_20261103/ARTIFACT_LICENSE.md)
 
 The margin continuation provides its fixed native-recipient and any conditionally admitted source adapters under the same Gemma-derived conditions. [Margin continuation artifact conditions](../provenance/conditional_margin_20261103/ARTIFACT_LICENSE.md)
+
+The two final-action and component-trained task adapters have [Gemma-specific artifact conditions](../provenance/two_flags_20261104/ARTIFACT_LICENSE.md).
