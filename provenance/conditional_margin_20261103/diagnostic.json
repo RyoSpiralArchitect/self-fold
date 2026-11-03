@@ -1,0 +1,803 @@
+{
+  "classification": "exploratory_posthoc_external_forced_two_forward_readout",
+  "denominator_note": "Two saved native forwards yield one external forced action decision; paired decision denominators are half native denominators. Strict units retain both poles, every world and every genuine source order.",
+  "fit_error_asymmetry": {
+    "by_stage": {
+      "cases": {
+        "all_on_errors_by_source_order": {
+          "0": 25,
+          "1": 0
+        },
+        "errors": 40,
+        "gold_A_predicted_B": 36
+      },
+      "rule": {
+        "all_on_errors_by_source_order": {
+          "0": 0,
+          "1": 0
+        },
+        "errors": 1,
+        "gold_A_predicted_B": 1
+      },
+      "source": {
+        "all_on_errors_by_source_order": {
+          "0": 0,
+          "1": 23
+        },
+        "errors": 48,
+        "gold_A_predicted_B": 48
+      }
+    },
+    "errors": 89,
+    "gold_A_predicted_B": 85
+  },
+  "fit_native_final": [
+    3751,
+    3840
+  ],
+  "fit_native_initial": [
+    3687,
+    3840
+  ],
+  "fit_world_transitions": {
+    "cases": {
+      "0": {
+        "final": [
+          384,
+          384
+        ],
+        "improved": 1,
+        "initial": [
+          383,
+          384
+        ],
+        "net_change": 1,
+        "regressed": 0,
+        "still_correct": 383,
+        "still_wrong": 0
+      },
+      "1": {
+        "final": [
+          384,
+          384
+        ],
+        "improved": 29,
+        "initial": [
+          355,
+          384
+        ],
+        "net_change": 29,
+        "regressed": 0,
+        "still_correct": 355,
+        "still_wrong": 0
+      },
+      "2": {
+        "final": [
+          369,
+          384
+        ],
+        "improved": 39,
+        "initial": [
+          339,
+          384
+        ],
+        "net_change": 30,
+        "regressed": 9,
+        "still_correct": 330,
+        "still_wrong": 6
+      },
+      "3": {
+        "final": [
+          359,
+          384
+        ],
+        "improved": 18,
+        "initial": [
+          366,
+          384
+        ],
+        "net_change": -7,
+        "regressed": 25,
+        "still_correct": 341,
+        "still_wrong": 0
+      }
+    },
+    "rule": {
+      "0": {
+        "final": [
+          192,
+          192
+        ],
+        "improved": 0,
+        "initial": [
+          192,
+          192
+        ],
+        "net_change": 0,
+        "regressed": 0,
+        "still_correct": 192,
+        "still_wrong": 0
+      },
+      "1": {
+        "final": [
+          191,
+          192
+        ],
+        "improved": 2,
+        "initial": [
+          190,
+          192
+        ],
+        "net_change": 1,
+        "regressed": 1,
+        "still_correct": 189,
+        "still_wrong": 0
+      },
+      "2": {
+        "final": [
+          192,
+          192
+        ],
+        "improved": 3,
+        "initial": [
+          189,
+          192
+        ],
+        "net_change": 3,
+        "regressed": 0,
+        "still_correct": 189,
+        "still_wrong": 0
+      },
+      "3": {
+        "final": [
+          192,
+          192
+        ],
+        "improved": 1,
+        "initial": [
+          191,
+          192
+        ],
+        "net_change": 1,
+        "regressed": 0,
+        "still_correct": 191,
+        "still_wrong": 0
+      }
+    },
+    "source": {
+      "0": {
+        "final": [
+          381,
+          384
+        ],
+        "improved": 10,
+        "initial": [
+          374,
+          384
+        ],
+        "net_change": 7,
+        "regressed": 3,
+        "still_correct": 371,
+        "still_wrong": 0
+      },
+      "1": {
+        "final": [
+          375,
+          384
+        ],
+        "improved": 26,
+        "initial": [
+          357,
+          384
+        ],
+        "net_change": 18,
+        "regressed": 8,
+        "still_correct": 349,
+        "still_wrong": 1
+      },
+      "2": {
+        "final": [
+          371,
+          384
+        ],
+        "improved": 9,
+        "initial": [
+          375,
+          384
+        ],
+        "net_change": -4,
+        "regressed": 13,
+        "still_correct": 362,
+        "still_wrong": 0
+      },
+      "3": {
+        "final": [
+          361,
+          384
+        ],
+        "improved": 6,
+        "initial": [
+          376,
+          384
+        ],
+        "net_change": -15,
+        "regressed": 21,
+        "still_correct": 355,
+        "still_wrong": 2
+      }
+    }
+  },
+  "input_decisions_sha256": "83cbd32131bdbdfa3d7ee248de99564de59b34a448800a4bb0c0a5cf4bab5205",
+  "limits": [
+    "External forced pairing cannot replace the native full-vocabulary admission gate or establish a causal effect of the margin objective.",
+    "Fresh source names, wording families and question operations changed together; these scores do not isolate flag conjunction, source binding or question transfer.",
+    "No source-learning branch or G was trained, and old/new fresh panels are not paired."
+  ],
+  "native_admission_established": false,
+  "native_gates_changed": false,
+  "native_observations": 8960,
+  "paired_formula": "((A-B)_label_order_0 - (A-B)_label_order_1) / 2; positive selects canonical action0; negative selects action1.",
+  "paired_order": {
+    "fit": {
+      "cases": {
+        "excluded_native_non_ab": 0,
+        "forced_correct": [
+          757,
+          768
+        ],
+        "forced_strict": [
+          38,
+          48
+        ],
+        "forced_ties": 0,
+        "native_by_source_order": {
+          "0": [
+            738,
+            768
+          ],
+          "1": [
+            758,
+            768
+          ]
+        },
+        "native_correct": [
+          1496,
+          1536
+        ],
+        "native_correct_mappings_per_pair": {
+          "0": 4,
+          "1": 32,
+          "2": 732
+        },
+        "native_coverage": [
+          1536,
+          1536
+        ],
+        "native_ties": 2,
+        "per_world": {
+          "0": {
+            "forced_correct": [
+              192,
+              192
+            ],
+            "native_correct": [
+              384,
+              384
+            ],
+            "native_coverage": [
+              384,
+              384
+            ]
+          },
+          "1": {
+            "forced_correct": [
+              192,
+              192
+            ],
+            "native_correct": [
+              384,
+              384
+            ],
+            "native_coverage": [
+              384,
+              384
+            ]
+          },
+          "2": {
+            "forced_correct": [
+              189,
+              192
+            ],
+            "native_correct": [
+              369,
+              384
+            ],
+            "native_coverage": [
+              384,
+              384
+            ]
+          },
+          "3": {
+            "forced_correct": [
+              184,
+              192
+            ],
+            "native_correct": [
+              359,
+              384
+            ],
+            "native_coverage": [
+              384,
+              384
+            ]
+          }
+        }
+      },
+      "rule": {
+        "excluded_native_non_ab": 0,
+        "forced_correct": [
+          384,
+          384
+        ],
+        "forced_strict": [
+          48,
+          48
+        ],
+        "forced_ties": 0,
+        "native_by_source_order": {
+          "0": [
+            767,
+            768
+          ]
+        },
+        "native_correct": [
+          767,
+          768
+        ],
+        "native_correct_mappings_per_pair": {
+          "0": 0,
+          "1": 1,
+          "2": 383
+        },
+        "native_coverage": [
+          768,
+          768
+        ],
+        "native_ties": 0,
+        "per_world": {
+          "0": {
+            "forced_correct": [
+              96,
+              96
+            ],
+            "native_correct": [
+              192,
+              192
+            ],
+            "native_coverage": [
+              192,
+              192
+            ]
+          },
+          "1": {
+            "forced_correct": [
+              96,
+              96
+            ],
+            "native_correct": [
+              191,
+              192
+            ],
+            "native_coverage": [
+              192,
+              192
+            ]
+          },
+          "2": {
+            "forced_correct": [
+              96,
+              96
+            ],
+            "native_correct": [
+              192,
+              192
+            ],
+            "native_coverage": [
+              192,
+              192
+            ]
+          },
+          "3": {
+            "forced_correct": [
+              96,
+              96
+            ],
+            "native_correct": [
+              192,
+              192
+            ],
+            "native_coverage": [
+              192,
+              192
+            ]
+          }
+        }
+      },
+      "source": {
+        "excluded_native_non_ab": 0,
+        "forced_correct": [
+          767,
+          768
+        ],
+        "forced_strict": [
+          47,
+          48
+        ],
+        "forced_ties": 0,
+        "native_by_source_order": {
+          "0": [
+            745,
+            768
+          ],
+          "1": [
+            743,
+            768
+          ]
+        },
+        "native_correct": [
+          1488,
+          1536
+        ],
+        "native_correct_mappings_per_pair": {
+          "0": 0,
+          "1": 48,
+          "2": 720
+        },
+        "native_coverage": [
+          1536,
+          1536
+        ],
+        "native_ties": 1,
+        "per_world": {
+          "0": {
+            "forced_correct": [
+              192,
+              192
+            ],
+            "native_correct": [
+              381,
+              384
+            ],
+            "native_coverage": [
+              384,
+              384
+            ]
+          },
+          "1": {
+            "forced_correct": [
+              192,
+              192
+            ],
+            "native_correct": [
+              375,
+              384
+            ],
+            "native_coverage": [
+              384,
+              384
+            ]
+          },
+          "2": {
+            "forced_correct": [
+              192,
+              192
+            ],
+            "native_correct": [
+              371,
+              384
+            ],
+            "native_coverage": [
+              384,
+              384
+            ]
+          },
+          "3": {
+            "forced_correct": [
+              191,
+              192
+            ],
+            "native_correct": [
+              361,
+              384
+            ],
+            "native_coverage": [
+              384,
+              384
+            ]
+          }
+        }
+      }
+    },
+    "fresh": {
+      "cases": {
+        "excluded_native_non_ab": 0,
+        "forced_correct": [
+          241,
+          256
+        ],
+        "forced_strict": [
+          6,
+          16
+        ],
+        "forced_ties": 0,
+        "native_by_source_order": {
+          "0": [
+            213,
+            256
+          ],
+          "1": [
+            235,
+            256
+          ]
+        },
+        "native_correct": [
+          448,
+          512
+        ],
+        "native_correct_mappings_per_pair": {
+          "0": 6,
+          "1": 52,
+          "2": 198
+        },
+        "native_coverage": [
+          496,
+          512
+        ],
+        "native_ties": 1,
+        "per_world": {
+          "0": {
+            "forced_correct": [
+              64,
+              64
+            ],
+            "native_correct": [
+              128,
+              128
+            ],
+            "native_coverage": [
+              128,
+              128
+            ]
+          },
+          "1": {
+            "forced_correct": [
+              59,
+              64
+            ],
+            "native_correct": [
+              114,
+              128
+            ],
+            "native_coverage": [
+              125,
+              128
+            ]
+          },
+          "2": {
+            "forced_correct": [
+              57,
+              64
+            ],
+            "native_correct": [
+              101,
+              128
+            ],
+            "native_coverage": [
+              122,
+              128
+            ]
+          },
+          "3": {
+            "forced_correct": [
+              61,
+              64
+            ],
+            "native_correct": [
+              105,
+              128
+            ],
+            "native_coverage": [
+              121,
+              128
+            ]
+          }
+        }
+      },
+      "rule": {
+        "excluded_native_non_ab": 0,
+        "forced_correct": [
+          92,
+          128
+        ],
+        "forced_strict": [
+          0,
+          16
+        ],
+        "forced_ties": 0,
+        "native_by_source_order": {
+          "0": [
+            166,
+            256
+          ]
+        },
+        "native_correct": [
+          166,
+          256
+        ],
+        "native_correct_mappings_per_pair": {
+          "0": 15,
+          "1": 60,
+          "2": 53
+        },
+        "native_coverage": [
+          255,
+          256
+        ],
+        "native_ties": 0,
+        "per_world": {
+          "0": {
+            "forced_correct": [
+              28,
+              32
+            ],
+            "native_correct": [
+              45,
+              64
+            ],
+            "native_coverage": [
+              64,
+              64
+            ]
+          },
+          "1": {
+            "forced_correct": [
+              32,
+              32
+            ],
+            "native_correct": [
+              50,
+              64
+            ],
+            "native_coverage": [
+              64,
+              64
+            ]
+          },
+          "2": {
+            "forced_correct": [
+              3,
+              32
+            ],
+            "native_correct": [
+              21,
+              64
+            ],
+            "native_coverage": [
+              64,
+              64
+            ]
+          },
+          "3": {
+            "forced_correct": [
+              29,
+              32
+            ],
+            "native_correct": [
+              50,
+              64
+            ],
+            "native_coverage": [
+              63,
+              64
+            ]
+          }
+        }
+      },
+      "source": {
+        "excluded_native_non_ab": 0,
+        "forced_correct": [
+          157,
+          256
+        ],
+        "forced_strict": [
+          0,
+          16
+        ],
+        "forced_ties": 0,
+        "native_by_source_order": {
+          "0": [
+            197,
+            256
+          ],
+          "1": [
+            112,
+            256
+          ]
+        },
+        "native_correct": [
+          309,
+          512
+        ],
+        "native_correct_mappings_per_pair": {
+          "0": 60,
+          "1": 83,
+          "2": 113
+        },
+        "native_coverage": [
+          512,
+          512
+        ],
+        "native_ties": 4,
+        "per_world": {
+          "0": {
+            "forced_correct": [
+              33,
+              64
+            ],
+            "native_correct": [
+              62,
+              128
+            ],
+            "native_coverage": [
+              128,
+              128
+            ]
+          },
+          "1": {
+            "forced_correct": [
+              40,
+              64
+            ],
+            "native_correct": [
+              78,
+              128
+            ],
+            "native_coverage": [
+              128,
+              128
+            ]
+          },
+          "2": {
+            "forced_correct": [
+              40,
+              64
+            ],
+            "native_correct": [
+              83,
+              128
+            ],
+            "native_coverage": [
+              128,
+              128
+            ]
+          },
+          "3": {
+            "forced_correct": [
+              44,
+              64
+            ],
+            "native_correct": [
+              86,
+              128
+            ],
+            "native_coverage": [
+              128,
+              128
+            ]
+          }
+        }
+      }
+    }
+  },
+  "selection": "All sealed observations retained, including native non-A/B answers and ties; strict sign ties count incorrect."
+}

@@ -1,0 +1,1851 @@
+{
+  "metrics": {
+    "warm/final/fit/cases/literal": {
+      "native": [
+        1496,
+        1536
+      ],
+      "forced": [
+        1495,
+        1536
+      ],
+      "coverage": [
+        1536,
+        1536
+      ],
+      "ties": 2,
+      "strict": [
+        28,
+        48
+      ],
+      "per_world": {
+        "0": {
+          "native": [
+            384,
+            384
+          ],
+          "forced": [
+            384,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 0
+        },
+        "1": {
+          "native": [
+            384,
+            384
+          ],
+          "forced": [
+            384,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 0
+        },
+        "2": {
+          "native": [
+            369,
+            384
+          ],
+          "forced": [
+            369,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 0
+        },
+        "3": {
+          "native": [
+            359,
+            384
+          ],
+          "forced": [
+            358,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 2
+        }
+      },
+      "per_topic": {
+        "archive": {
+          "native": [
+            176,
+            192
+          ],
+          "forced": [
+            176,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 1
+        },
+        "route": {
+          "native": [
+            189,
+            192
+          ],
+          "forced": [
+            188,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 1
+        },
+        "notes": {
+          "native": [
+            190,
+            192
+          ],
+          "forced": [
+            190,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "temperature": {
+          "native": [
+            191,
+            192
+          ],
+          "forced": [
+            191,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "length": {
+          "native": [
+            192,
+            192
+          ],
+          "forced": [
+            192,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "clock": {
+          "native": [
+            184,
+            192
+          ],
+          "forced": [
+            184,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "mail": {
+          "native": [
+            183,
+            192
+          ],
+          "forced": [
+            183,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "music": {
+          "native": [
+            191,
+            192
+          ],
+          "forced": [
+            191,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        }
+      }
+    },
+    "warm/final/fit/rule/literal": {
+      "native": [
+        767,
+        768
+      ],
+      "forced": [
+        767,
+        768
+      ],
+      "coverage": [
+        768,
+        768
+      ],
+      "ties": 0,
+      "strict": [
+        47,
+        48
+      ],
+      "per_world": {
+        "0": {
+          "native": [
+            192,
+            192
+          ],
+          "forced": [
+            192,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "1": {
+          "native": [
+            191,
+            192
+          ],
+          "forced": [
+            191,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "2": {
+          "native": [
+            192,
+            192
+          ],
+          "forced": [
+            192,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "3": {
+          "native": [
+            192,
+            192
+          ],
+          "forced": [
+            192,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        }
+      },
+      "per_topic": {
+        "archive": {
+          "native": [
+            96,
+            96
+          ],
+          "forced": [
+            96,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "route": {
+          "native": [
+            96,
+            96
+          ],
+          "forced": [
+            96,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "notes": {
+          "native": [
+            96,
+            96
+          ],
+          "forced": [
+            96,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "temperature": {
+          "native": [
+            96,
+            96
+          ],
+          "forced": [
+            96,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "length": {
+          "native": [
+            96,
+            96
+          ],
+          "forced": [
+            96,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "clock": {
+          "native": [
+            95,
+            96
+          ],
+          "forced": [
+            95,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "mail": {
+          "native": [
+            96,
+            96
+          ],
+          "forced": [
+            96,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "music": {
+          "native": [
+            96,
+            96
+          ],
+          "forced": [
+            96,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        }
+      }
+    },
+    "warm/final/fit/source/literal": {
+      "native": [
+        1488,
+        1536
+      ],
+      "forced": [
+        1487,
+        1536
+      ],
+      "coverage": [
+        1536,
+        1536
+      ],
+      "ties": 1,
+      "strict": [
+        23,
+        48
+      ],
+      "per_world": {
+        "0": {
+          "native": [
+            381,
+            384
+          ],
+          "forced": [
+            381,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 0
+        },
+        "1": {
+          "native": [
+            375,
+            384
+          ],
+          "forced": [
+            374,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 1
+        },
+        "2": {
+          "native": [
+            371,
+            384
+          ],
+          "forced": [
+            371,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 0
+        },
+        "3": {
+          "native": [
+            361,
+            384
+          ],
+          "forced": [
+            361,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 0
+        }
+      },
+      "per_topic": {
+        "archive": {
+          "native": [
+            186,
+            192
+          ],
+          "forced": [
+            186,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "route": {
+          "native": [
+            184,
+            192
+          ],
+          "forced": [
+            183,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 1
+        },
+        "notes": {
+          "native": [
+            192,
+            192
+          ],
+          "forced": [
+            192,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "temperature": {
+          "native": [
+            191,
+            192
+          ],
+          "forced": [
+            191,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "length": {
+          "native": [
+            190,
+            192
+          ],
+          "forced": [
+            190,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "clock": {
+          "native": [
+            177,
+            192
+          ],
+          "forced": [
+            177,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "mail": {
+          "native": [
+            181,
+            192
+          ],
+          "forced": [
+            181,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "music": {
+          "native": [
+            187,
+            192
+          ],
+          "forced": [
+            187,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        }
+      }
+    },
+    "warm/final/fresh/cases/literal": {
+      "native": [
+        448,
+        512
+      ],
+      "forced": [
+        459,
+        512
+      ],
+      "coverage": [
+        496,
+        512
+      ],
+      "ties": 1,
+      "strict": [
+        1,
+        16
+      ],
+      "per_world": {
+        "0": {
+          "native": [
+            128,
+            128
+          ],
+          "forced": [
+            128,
+            128
+          ],
+          "coverage": [
+            128,
+            128
+          ],
+          "ties": 0
+        },
+        "1": {
+          "native": [
+            114,
+            128
+          ],
+          "forced": [
+            115,
+            128
+          ],
+          "coverage": [
+            125,
+            128
+          ],
+          "ties": 1
+        },
+        "2": {
+          "native": [
+            101,
+            128
+          ],
+          "forced": [
+            104,
+            128
+          ],
+          "coverage": [
+            122,
+            128
+          ],
+          "ties": 0
+        },
+        "3": {
+          "native": [
+            105,
+            128
+          ],
+          "forced": [
+            112,
+            128
+          ],
+          "coverage": [
+            121,
+            128
+          ],
+          "ties": 0
+        }
+      },
+      "per_topic": {
+        "archive": {
+          "native": [
+            59,
+            64
+          ],
+          "forced": [
+            59,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "route": {
+          "native": [
+            59,
+            64
+          ],
+          "forced": [
+            59,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "notes": {
+          "native": [
+            62,
+            64
+          ],
+          "forced": [
+            62,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "temperature": {
+          "native": [
+            58,
+            64
+          ],
+          "forced": [
+            58,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "length": {
+          "native": [
+            45,
+            64
+          ],
+          "forced": [
+            56,
+            64
+          ],
+          "coverage": [
+            49,
+            64
+          ],
+          "ties": 0
+        },
+        "clock": {
+          "native": [
+            56,
+            64
+          ],
+          "forced": [
+            56,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "mail": {
+          "native": [
+            53,
+            64
+          ],
+          "forced": [
+            53,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "music": {
+          "native": [
+            56,
+            64
+          ],
+          "forced": [
+            56,
+            64
+          ],
+          "coverage": [
+            63,
+            64
+          ],
+          "ties": 1
+        }
+      }
+    },
+    "warm/final/fresh/rule/literal": {
+      "native": [
+        166,
+        256
+      ],
+      "forced": [
+        167,
+        256
+      ],
+      "coverage": [
+        255,
+        256
+      ],
+      "ties": 0,
+      "strict": [
+        0,
+        16
+      ],
+      "per_world": {
+        "0": {
+          "native": [
+            45,
+            64
+          ],
+          "forced": [
+            45,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "1": {
+          "native": [
+            50,
+            64
+          ],
+          "forced": [
+            50,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "2": {
+          "native": [
+            21,
+            64
+          ],
+          "forced": [
+            21,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "3": {
+          "native": [
+            50,
+            64
+          ],
+          "forced": [
+            51,
+            64
+          ],
+          "coverage": [
+            63,
+            64
+          ],
+          "ties": 0
+        }
+      },
+      "per_topic": {
+        "archive": {
+          "native": [
+            23,
+            32
+          ],
+          "forced": [
+            23,
+            32
+          ],
+          "coverage": [
+            32,
+            32
+          ],
+          "ties": 0
+        },
+        "route": {
+          "native": [
+            24,
+            32
+          ],
+          "forced": [
+            24,
+            32
+          ],
+          "coverage": [
+            32,
+            32
+          ],
+          "ties": 0
+        },
+        "notes": {
+          "native": [
+            26,
+            32
+          ],
+          "forced": [
+            26,
+            32
+          ],
+          "coverage": [
+            32,
+            32
+          ],
+          "ties": 0
+        },
+        "temperature": {
+          "native": [
+            19,
+            32
+          ],
+          "forced": [
+            19,
+            32
+          ],
+          "coverage": [
+            32,
+            32
+          ],
+          "ties": 0
+        },
+        "length": {
+          "native": [
+            20,
+            32
+          ],
+          "forced": [
+            21,
+            32
+          ],
+          "coverage": [
+            31,
+            32
+          ],
+          "ties": 0
+        },
+        "clock": {
+          "native": [
+            18,
+            32
+          ],
+          "forced": [
+            18,
+            32
+          ],
+          "coverage": [
+            32,
+            32
+          ],
+          "ties": 0
+        },
+        "mail": {
+          "native": [
+            16,
+            32
+          ],
+          "forced": [
+            16,
+            32
+          ],
+          "coverage": [
+            32,
+            32
+          ],
+          "ties": 0
+        },
+        "music": {
+          "native": [
+            20,
+            32
+          ],
+          "forced": [
+            20,
+            32
+          ],
+          "coverage": [
+            32,
+            32
+          ],
+          "ties": 0
+        }
+      }
+    },
+    "warm/final/fresh/source/literal": {
+      "native": [
+        309,
+        512
+      ],
+      "forced": [
+        307,
+        512
+      ],
+      "coverage": [
+        512,
+        512
+      ],
+      "ties": 4,
+      "strict": [
+        0,
+        16
+      ],
+      "per_world": {
+        "0": {
+          "native": [
+            62,
+            128
+          ],
+          "forced": [
+            62,
+            128
+          ],
+          "coverage": [
+            128,
+            128
+          ],
+          "ties": 0
+        },
+        "1": {
+          "native": [
+            78,
+            128
+          ],
+          "forced": [
+            77,
+            128
+          ],
+          "coverage": [
+            128,
+            128
+          ],
+          "ties": 1
+        },
+        "2": {
+          "native": [
+            83,
+            128
+          ],
+          "forced": [
+            82,
+            128
+          ],
+          "coverage": [
+            128,
+            128
+          ],
+          "ties": 2
+        },
+        "3": {
+          "native": [
+            86,
+            128
+          ],
+          "forced": [
+            86,
+            128
+          ],
+          "coverage": [
+            128,
+            128
+          ],
+          "ties": 1
+        }
+      },
+      "per_topic": {
+        "archive": {
+          "native": [
+            35,
+            64
+          ],
+          "forced": [
+            35,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "route": {
+          "native": [
+            42,
+            64
+          ],
+          "forced": [
+            42,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "notes": {
+          "native": [
+            36,
+            64
+          ],
+          "forced": [
+            36,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 1
+        },
+        "temperature": {
+          "native": [
+            41,
+            64
+          ],
+          "forced": [
+            41,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "length": {
+          "native": [
+            39,
+            64
+          ],
+          "forced": [
+            38,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 1
+        },
+        "clock": {
+          "native": [
+            44,
+            64
+          ],
+          "forced": [
+            43,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 2
+        },
+        "mail": {
+          "native": [
+            33,
+            64
+          ],
+          "forced": [
+            33,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        },
+        "music": {
+          "native": [
+            39,
+            64
+          ],
+          "forced": [
+            39,
+            64
+          ],
+          "coverage": [
+            64,
+            64
+          ],
+          "ties": 0
+        }
+      }
+    },
+    "warm/initial/fit/cases/literal": {
+      "native": [
+        1443,
+        1536
+      ],
+      "forced": [
+        1440,
+        1536
+      ],
+      "coverage": [
+        1536,
+        1536
+      ],
+      "ties": 4,
+      "strict": [
+        13,
+        48
+      ],
+      "per_world": {
+        "0": {
+          "native": [
+            383,
+            384
+          ],
+          "forced": [
+            383,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 0
+        },
+        "1": {
+          "native": [
+            355,
+            384
+          ],
+          "forced": [
+            354,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 2
+        },
+        "2": {
+          "native": [
+            339,
+            384
+          ],
+          "forced": [
+            338,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 1
+        },
+        "3": {
+          "native": [
+            366,
+            384
+          ],
+          "forced": [
+            365,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 1
+        }
+      },
+      "per_topic": {
+        "archive": {
+          "native": [
+            168,
+            192
+          ],
+          "forced": [
+            167,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 1
+        },
+        "route": {
+          "native": [
+            187,
+            192
+          ],
+          "forced": [
+            187,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "notes": {
+          "native": [
+            172,
+            192
+          ],
+          "forced": [
+            172,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "temperature": {
+          "native": [
+            191,
+            192
+          ],
+          "forced": [
+            191,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "length": {
+          "native": [
+            187,
+            192
+          ],
+          "forced": [
+            187,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "clock": {
+          "native": [
+            178,
+            192
+          ],
+          "forced": [
+            177,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 2
+        },
+        "mail": {
+          "native": [
+            180,
+            192
+          ],
+          "forced": [
+            180,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "music": {
+          "native": [
+            180,
+            192
+          ],
+          "forced": [
+            179,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 1
+        }
+      }
+    },
+    "warm/initial/fit/rule/literal": {
+      "native": [
+        762,
+        768
+      ],
+      "forced": [
+        761,
+        768
+      ],
+      "coverage": [
+        768,
+        768
+      ],
+      "ties": 1,
+      "strict": [
+        44,
+        48
+      ],
+      "per_world": {
+        "0": {
+          "native": [
+            192,
+            192
+          ],
+          "forced": [
+            192,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "1": {
+          "native": [
+            190,
+            192
+          ],
+          "forced": [
+            189,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 1
+        },
+        "2": {
+          "native": [
+            189,
+            192
+          ],
+          "forced": [
+            189,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "3": {
+          "native": [
+            191,
+            192
+          ],
+          "forced": [
+            191,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        }
+      },
+      "per_topic": {
+        "archive": {
+          "native": [
+            92,
+            96
+          ],
+          "forced": [
+            91,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 1
+        },
+        "route": {
+          "native": [
+            96,
+            96
+          ],
+          "forced": [
+            96,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "notes": {
+          "native": [
+            95,
+            96
+          ],
+          "forced": [
+            95,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "temperature": {
+          "native": [
+            96,
+            96
+          ],
+          "forced": [
+            96,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "length": {
+          "native": [
+            96,
+            96
+          ],
+          "forced": [
+            96,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "clock": {
+          "native": [
+            96,
+            96
+          ],
+          "forced": [
+            96,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "mail": {
+          "native": [
+            96,
+            96
+          ],
+          "forced": [
+            96,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        },
+        "music": {
+          "native": [
+            95,
+            96
+          ],
+          "forced": [
+            95,
+            96
+          ],
+          "coverage": [
+            96,
+            96
+          ],
+          "ties": 0
+        }
+      }
+    },
+    "warm/initial/fit/source/literal": {
+      "native": [
+        1482,
+        1536
+      ],
+      "forced": [
+        1480,
+        1536
+      ],
+      "coverage": [
+        1536,
+        1536
+      ],
+      "ties": 4,
+      "strict": [
+        17,
+        48
+      ],
+      "per_world": {
+        "0": {
+          "native": [
+            374,
+            384
+          ],
+          "forced": [
+            374,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 0
+        },
+        "1": {
+          "native": [
+            357,
+            384
+          ],
+          "forced": [
+            357,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 1
+        },
+        "2": {
+          "native": [
+            375,
+            384
+          ],
+          "forced": [
+            375,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 1
+        },
+        "3": {
+          "native": [
+            376,
+            384
+          ],
+          "forced": [
+            374,
+            384
+          ],
+          "coverage": [
+            384,
+            384
+          ],
+          "ties": 2
+        }
+      },
+      "per_topic": {
+        "archive": {
+          "native": [
+            191,
+            192
+          ],
+          "forced": [
+            191,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "route": {
+          "native": [
+            182,
+            192
+          ],
+          "forced": [
+            182,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "notes": {
+          "native": [
+            189,
+            192
+          ],
+          "forced": [
+            189,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "temperature": {
+          "native": [
+            181,
+            192
+          ],
+          "forced": [
+            181,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "length": {
+          "native": [
+            183,
+            192
+          ],
+          "forced": [
+            182,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 1
+        },
+        "clock": {
+          "native": [
+            181,
+            192
+          ],
+          "forced": [
+            181,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 1
+        },
+        "mail": {
+          "native": [
+            186,
+            192
+          ],
+          "forced": [
+            186,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 0
+        },
+        "music": {
+          "native": [
+            189,
+            192
+          ],
+          "forced": [
+            188,
+            192
+          ],
+          "coverage": [
+            192,
+            192
+          ],
+          "ties": 2
+        }
+      }
+    }
+  },
+  "opposed_margin_flips": {},
+  "gates": {
+    "warm": {
+      "stages": {
+        "source": false,
+        "cases": false,
+        "rule": true
+      },
+      "total": true,
+      "passed": false
+    },
+    "frozen": {
+      "attempted": false,
+      "admission": false
+    },
+    "joint": {
+      "attempted": false,
+      "admission": false
+    }
+  }
+}

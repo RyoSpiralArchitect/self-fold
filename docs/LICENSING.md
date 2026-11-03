@@ -27,3 +27,7 @@ The calibrated teacher renderer and source-direction arrays use the same Gemma t
 The role-exchange readouts contain activation-derived directions, standardization and the prior topic router. [Role-exchange artifact conditions](../provenance/role_exchange_20261103/ARTIFACT_LICENSE.md)
 
 The action-swap direction arrays and their paraphrase-penalized counterpart have Gemma-derived artifact conditions. [Action and operation artifact conditions](../provenance/action_operation_20261103/ARTIFACT_LICENSE.md)
+
+The scoped native-recipient and source adapters from the conditional curriculum retain their Gemma-derived terms. [Conditional curriculum artifact conditions](../provenance/conditional_curriculum_20261103/ARTIFACT_LICENSE.md)
+
+The margin continuation provides its fixed native-recipient and any conditionally admitted source adapters under the same Gemma-derived conditions. [Margin continuation artifact conditions](../provenance/conditional_margin_20261103/ARTIFACT_LICENSE.md)
