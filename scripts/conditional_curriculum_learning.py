@@ -1,5 +1,7 @@
 """Scoped literal, frozen-source and joint-source phases for the conditional curriculum."""
 
+import math
+
 import torch
 
 from fit_continuity_recipient import batch_inputs
@@ -29,7 +31,7 @@ def native_source_slots(host, encoder, text):
     return differentiable_source_slots(host, encoder, text, forward_length=len(ids))
 
 
-def weighted_native_loss(logits, targets, worlds):
+def weighted_native_loss(logits, targets, worlds, *, margin=0.0, label_ids=None):
     """One microbatch's contribution to a four-source, eight-question-per-source step."""
     if (
         logits.ndim != 2
@@ -39,10 +41,34 @@ def weighted_native_loss(logits, targets, worlds):
         raise ValueError("Need one target and world index per native score")
     if any(world not in range(4) for world in worlds):
         raise ValueError("Unexpected conditional world")
+    if not math.isfinite(margin) or margin < 0:
+        raise ValueError("The native A/B margin must be finite and nonnegative")
     weights = logits.new_tensor([3.0 if world == 3 else 1.0 for world in worlds])
     losses = torch.nn.functional.cross_entropy(logits, targets, reduction="none")
-    # Four sources each contribute six false-world labels and two true-world labels.
-    return (weights * losses).sum() / 48.0
+    # Preserve the original true-world-balanced full-vocabulary CE.
+    loss = (weights * losses).sum() / 48.0
+    if margin > 0:
+        if label_ids is None:
+            raise ValueError("A positive margin requires two native label IDs")
+        labels = torch.as_tensor(label_ids, device=logits.device)
+        if (
+            labels.shape != (2,)
+            or labels.dtype not in (torch.int32, torch.int64)
+            or labels[0] == labels[1]
+            or torch.any(labels < 0)
+            or torch.any(labels >= logits.shape[-1])
+        ):
+            raise ValueError("Need two distinct valid integer native label IDs")
+        labels = labels.long()
+        matches = targets[:, None] == labels[None, :]
+        if not torch.all(matches.sum(-1) == 1):
+            raise ValueError("Every margin target must be a native A or B label")
+        foil_ids = labels[1 - matches.long().argmax(-1)]
+        gold_logits = logits.gather(-1, targets[:, None]).squeeze(-1)
+        foil_logits = logits.gather(-1, foil_ids[:, None]).squeeze(-1)
+        # The hinge treats all 32 decisions equally, including mixed worlds.
+        loss = loss + torch.relu(margin - (gold_logits - foil_logits)).sum() / 32.0
+    return loss
 
 
 def train_phase(
@@ -57,6 +83,7 @@ def train_phase(
     phase,
     raw_cache=None,
     literal=False,
+    margin=0.0,
 ):
     """Mutate the declared adapters at one fixed endpoint, retaining every training step."""
     if torch.is_inference_mode_enabled() or not torch.is_grad_enabled():
@@ -163,7 +190,13 @@ def train_phase(
                     dtype=torch.long,
                     device=host.device,
                 )
-                loss = weighted_native_loss(logits, target, [t["world"] for t in batch])
+                loss = weighted_native_loss(
+                    logits,
+                    target,
+                    [t["world"] for t in batch],
+                    margin=margin,
+                    label_ids=[label_ids[label][0] for label in ("A", "B")],
+                )
                 loss.backward()
                 losses.append(loss.item())
         if any(p.grad is not None for p in host.model.parameters()):
@@ -183,6 +216,8 @@ def train_phase(
                 "units": units,
                 "source_keys": [c["key"] for c in chosen],
                 "weighted_loss": sum(losses),
+                "margin": margin,
+                **({"margin_weighting": "uniform_worlds"} if margin > 0 else {}),
                 "micro_losses": losses,
                 "task_gradient_norm": task_norm,
                 "source_gradient_norm": source_norm,

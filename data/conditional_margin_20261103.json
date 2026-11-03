@@ -1,0 +1,115 @@
+{
+  "schema": "conditional_margin_v1",
+  "action_fixture_sha256": "aeee777aa4d5cd90db4c30ec52d3320aec38bf10290afcb648fae4cfa869d772",
+  "worlds": [
+    [
+      false,
+      false
+    ],
+    [
+      false,
+      true
+    ],
+    [
+      true,
+      false
+    ],
+    [
+      true,
+      true
+    ]
+  ],
+  "fit": {
+    "flag_pairs": [
+      [
+        "signal Alder",
+        "signal Birch"
+      ],
+      [
+        "signal Copper",
+        "signal Tin"
+      ],
+      [
+        "signal Lilac",
+        "signal Clover"
+      ]
+    ],
+    "styles": [
+      "if_else",
+      "condition_test"
+    ],
+    "world_prefix": "Current indicators: {world}.",
+    "question": "Which option would this person {operation}?"
+  },
+  "fresh": {
+    "flag_pairs": [
+      [
+        "signal Mica",
+        "signal Slate"
+      ],
+      [
+        "signal Larch",
+        "signal Maple"
+      ]
+    ],
+    "styles": [
+      "joint_switch"
+    ],
+    "world_prefix": "The indicator readings in the present situation are {world}.",
+    "question": "Applying my stated rule to these readings, which listed option should I {operation}?",
+    "operations": {
+      "archive": "place first when filing reports",
+      "route": "take on a walking trip",
+      "notes": "adopt for my written account of the meeting",
+      "temperature": "use to express an outdoor thermometer reading",
+      "length": "write for the measurement of a small object",
+      "clock": "use to show the time of an appointment",
+      "mail": "adopt for filing the saved correspondence",
+      "music": "put on when selecting a musical recording"
+    }
+  },
+  "styles": {
+    "if_else": {
+      "prefix": "My current conditional policy is as follows. ",
+      "source_true": "If {first} and {second} are both on, I choose {selected}.",
+      "source_false": "If at least one of {first} and {second} is off, I choose {other}.",
+      "cases_prefix": "The cases are mutually exclusive and exhaustive. ",
+      "case": "When {world}, I choose {action}.",
+      "rule": "I choose {selected} if and only if {first} and {second} are both on. Otherwise, I choose {other}."
+    },
+    "condition_test": {
+      "prefix": "This is the conditional rule I currently follow. ",
+      "source_true": "With both {first} and {second} on, my choice is {selected}.",
+      "source_false": "With either {first} or {second} off, my choice is {other}.",
+      "cases_prefix": "The complete table has these four entries. ",
+      "case": "For {world}, my choice is {action}.",
+      "rule": "Both {first} and {second} being on is exactly the condition for my choosing {selected}. In all remaining situations I choose {other}."
+    },
+    "trigger_rule": {
+      "prefix": "The following statement specifies my present policy. ",
+      "source_true": "The joint presence of an on value for {first} and an on value for {second} makes me select {selected}.",
+      "source_false": "An off value for {first}, {second}, or both makes me select {other}.",
+      "cases_prefix": "Exhaustively, my decisions for the possible observations are these. ",
+      "case": "Given {world}, I select {action}.",
+      "rule": "My selection is {selected} precisely in the situation where both {first} and {second} are on, and is {other} in every other situation."
+    },
+    "joint_switch": {
+      "prefix": "My decisions follow this two-indicator policy. ",
+      "source_true": "I select {selected} when the two indicators {first} and {second} each show on.",
+      "source_false": "I select {other} when one or both of the indicators {first} and {second} show off.",
+      "cases_prefix": "Listing every possible reading gives this complete decision table. ",
+      "case": "For the observation {world}, my selected alternative is {action}.",
+      "rule": "The alternative I select is governed by a joint test of {first} and {second}. A joint on reading leads me to select {selected}. Any off reading leads me to select {other}."
+    }
+  },
+  "operations": {
+    "archive": "put at the front when arranging the reports",
+    "route": "follow when going for a walk",
+    "notes": "use when recording the discussion",
+    "temperature": "write beside a weather temperature",
+    "length": "use to state the length of a small object",
+    "clock": "use when writing an appointment time",
+    "mail": "use when organizing saved messages",
+    "music": "play when picking a recording to hear"
+  }
+}

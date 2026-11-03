@@ -92,7 +92,8 @@ def tasks_for(case, group, fixture, world_index):
     world = fixture["worlds"][world_index]
     correct = action_index(case["pole"], world)
     prefix = details["world_prefix"].format(world=world_text(case["flags"], world))
-    stem = details["question"].format(operation=fixture["operations"][group["id"]])
+    operation = details.get("operations", fixture["operations"])[group["id"]]
+    stem = details["question"].format(operation=operation)
     tasks = []
     for order in (0, 1):
         options = group["options"] if order == 0 else group["options"][::-1]

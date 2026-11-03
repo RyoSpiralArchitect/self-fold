@@ -24,11 +24,6 @@ from selffold.records import RunStore, State, code_manifest, digest, file_sha
 DATA = ROOT / "data/conditional_curriculum_20261103.json"
 ACTIONS = ROOT / "data/within_topic_wording_20261103.json"
 STUDY = ROOT / "provenance/conditional_curriculum_20261103"
-spec = importlib.util.spec_from_file_location(
-    "curriculum_scores", STUDY / "summarize.py"
-)
-scorer = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(scorer)
 
 
 def make_schedule(cases, stages, seed):
@@ -186,7 +181,9 @@ def evaluate(
                     )
 
 
-def save_checked(host, adapter, encoder, case, groups, fixture, store, name, seal):
+def save_checked(
+    host, adapter, encoder, case, groups, fixture, store, name, seal, dataset_path=DATA
+):
     ts = tasks(case, groups, fixture)[:4]
     with torch.no_grad():
         z = (
@@ -211,16 +208,16 @@ def save_checked(host, adapter, encoder, case, groups, fixture, store, name, sea
             store.path / filename,
             module,
             host.identity,
-            dataset_sha256=file_sha(DATA),
+            dataset_sha256=file_sha(dataset_path),
             source_sha256=seal["source_sha256"],
             training={
                 "phase": name,
                 "fixed_endpoint": True,
                 "schedule_file_sha256": file_sha(store.path / "schedule.json"),
                 "task_parameters_sha256": parameter_sha(adapter),
-                "source_parameters_sha256": parameter_sha(encoder)
-                if encoder is not None
-                else None,
+                "source_parameters_sha256": (
+                    parameter_sha(encoder) if encoder is not None else None
+                ),
             },
         )
     adapter.close()
@@ -266,11 +263,26 @@ def save_checked(host, adapter, encoder, case, groups, fixture, store, name, sea
     return restored, source
 
 
-def run(args, store):
+def run(
+    args,
+    store,
+    *,
+    data=DATA,
+    study=STUDY,
+    warm_start=None,
+    margin=0.0,
+    warm_stages=None,
+    completion_status="COMPLETED_CONDITIONAL_CURRICULUM",
+):
     seal = code_manifest(ROOT)
     if not seal["git_commit"] or seal["git_status"] != "":
         raise ValueError("Clean sealed source required")
-    fixture = json.loads(DATA.read_text())
+    fixture = json.loads(data.read_text())
+    reducer_spec = importlib.util.spec_from_file_location(
+        "active_curriculum_scores", study / "summarize.py"
+    )
+    reducer = importlib.util.module_from_spec(reducer_spec)
+    reducer_spec.loader.exec_module(reducer)
     groups = {g["id"]: g for g in json.loads(ACTIONS.read_text())["groups"]}
     if file_sha(ACTIONS) != fixture["action_fixture_sha256"]:
         raise ValueError("Canonical actions differ")
@@ -279,7 +291,13 @@ def run(args, store):
     if len(fit) != 480 or len(fresh) != 160:
         raise ValueError("Fixture counts differ")
     warm_schedule = make_schedule(
-        fit, ["cases"] * 64 + ["rule"] * 64 + [STAGES[i % 3] for i in range(256)], 47
+        fit,
+        (
+            warm_stages
+            if warm_stages is not None
+            else ["cases"] * 64 + ["rule"] * 64 + [STAGES[i % 3] for i in range(256)]
+        ),
+        47,
     )
     slot_schedule = make_schedule(fit, [STAGES[i % 3] for i in range(256)], 947)
     store.write("source.json", seal)
@@ -287,15 +305,18 @@ def run(args, store):
     store.write(
         "request.json",
         {
-            "fixture_sha256": file_sha(DATA),
-            "plan_sha256": file_sha(STUDY / "PLAN.md"),
-            "reducer_sha256": file_sha(STUDY / "summarize.py"),
+            "fixture_sha256": file_sha(data),
+            "plan_sha256": file_sha(study / "PLAN.md"),
+            "reducer_sha256": file_sha(study / "summarize.py"),
             "schedule_sha256": digest(
                 {"warm": warm_schedule, "adaptation": slot_schedule}
             ),
             "warm_updates": 384,
             "adaptation_updates": 256,
             "arms": ["frozen", "joint"],
+            "margin": margin,
+            "warm_start_sha256": file_sha(warm_start) if warm_start else None,
+            "optimizer_reset": True,
         },
     )
     host, checkpoint = make_host(args)
@@ -306,7 +327,18 @@ def run(args, store):
     if not parity["exact"] or checkpoint["checkpoint_sha256"] != CHECKPOINT_SHA:
         raise ValueError("Model binding differs")
     backbone = parameter_sha(host.model)
-    task = RecipientAdapter(host, rank=16, last_layers=4, seed=47)
+    if warm_start is None:
+        task = RecipientAdapter(host, rank=16, last_layers=4, seed=47)
+    else:
+        task, _, _ = load_recipient(warm_start, host, trainable=True)
+        store.write(
+            "parent_initialization.json",
+            {
+                "artifact_sha256": file_sha(warm_start),
+                "parameter_sha256": parameter_sha(task),
+                "parent_literal_gate": False,
+            },
+        )
     try:
         evaluate(
             host,
@@ -331,9 +363,10 @@ def run(args, store):
             store,
             "warm",
             literal=True,
+            margin=margin,
         )
         task, _ = save_checked(
-            host, task, None, fit[0], groups, fixture, store, "warm", seal
+            host, task, None, fit[0], groups, fixture, store, "warm", seal, data
         )
         evaluate(
             host,
@@ -354,7 +387,7 @@ def run(args, store):
                 "artifact_sha256": file_sha(store.path / "warm_task.npz"),
             },
         )
-        gate = scorer.warm_gate(scorer.rows(store.path / "decisions.jsonl"))
+        gate = reducer.warm_gate(reducer.rows(store.path / "decisions.jsonl"))
         store.write("warm_gate.json", gate)
     finally:
         task.close()
@@ -417,9 +450,10 @@ def run(args, store):
                     store,
                     arm,
                     raw_cache=raw,
+                    margin=margin,
                 )
                 task, encoder = save_checked(
-                    host, task, encoder, fit[0], groups, fixture, store, arm, seal
+                    host, task, encoder, fit[0], groups, fixture, store, arm, seal, data
                 )
                 bank = (
                     raw
@@ -505,7 +539,7 @@ def run(args, store):
     if after != backbone:
         raise ValueError("Backbone parameters changed")
     return {
-        "status": "COMPLETED_CONDITIONAL_CURRICULUM",
+        "status": completion_status,
         "literal_gate": gate["passed"],
         "backbone_before": backbone,
         "backbone_after": after,
@@ -515,7 +549,7 @@ def run(args, store):
     }
 
 
-if __name__ == "__main__":
+def parser():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--checkpoint", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
@@ -536,10 +570,14 @@ if __name__ == "__main__":
         wall_seconds=2400,
         profile=ROOT / "configs/models/gemma2b.yaml",
     )
-    a = p.parse_args()
+    return p
+
+
+def main(run_fn=run):
+    a = parser().parse_args()
     store, start = RunStore(a.out), time.monotonic()
     try:
-        r = run(a, store)
+        r = run_fn(a, store)
     except Exception as e:
         store.write(
             "terminal.json",
@@ -553,3 +591,7 @@ if __name__ == "__main__":
         raise
     store.write("terminal.json", r | {"elapsed_seconds": time.monotonic() - start})
     print(json.dumps(r))
+
+
+if __name__ == "__main__":
+    main()
