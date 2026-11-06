@@ -48,16 +48,40 @@ def mark(weights, on, eps=TRACE_EPS):
     )
 
 
-def boundary_weights(out_bits, mask, channel, width):
+def boundary_weights(out_bits, mask, channel, width, lm_bits=None):
     if channel in ("none", "traced"):
         return torch.zeros_like(out_bits)
     if channel == "supplied":
         return convention_bits(mask, width)
+    if channel == "lm":
+        if (not isinstance(lm_bits, torch.Tensor)
+                or lm_bits.shape != out_bits.shape
+                or lm_bits.device != out_bits.device
+                or not torch.all((lm_bits == 0) | (lm_bits == 1))):
+            raise ValueError("LM messages must be explicit binary tensors matching out_bits")
+        return lm_bits.long()
+    if channel not in ("reward", "supervised"):
+        raise ValueError(f"Unknown boundary channel: {channel}")
     return out_bits
 
 
+def _validate_lm_matrix(channel, model, members, masks, matrix):
+    """Reject missing/partial LM messages instead of silently becoming no-message."""
+    if channel != "lm":
+        return
+    if (model.width != 1 or not isinstance(matrix, torch.Tensor)
+            or matrix.shape != (len(members), 16)
+            or matrix.device != members.device):
+        raise ValueError("LM rollout requires width=1 and a [sources,16] bit matrix")
+    if not masks or any(m < 0 or m > 15 for m in masks):
+        raise ValueError("LM masks must be nonempty four-world masks")
+    selected = matrix[:, masks]
+    if not torch.all((selected == 0) | (selected == 1)):
+        raise ValueError("LM matrix is missing a required binary message")
+
+
 def step(model, table, weights, message, mask, form, channel, members,
-         uniform=None, floor=0.0, eps=TRACE_EPS):
+         uniform=None, floor=0.0, eps=TRACE_EPS, lm_bits=None):
     """One update plus the boundary transform that hands state to the next edit.
 
     `table` is the realized input for this edit's pointer. The returned
@@ -90,12 +114,12 @@ def step(model, table, weights, message, mask, form, channel, members,
         result_table = realize(result_w, members)
     row_logp = row_prob.gather(-1, choice[..., None]).squeeze(-1).log().sum(-1)
     bit_logp = torch.where(out_bits.bool(), bit_prob, 1 - bit_prob).log().sum(-1)
-    carried = bits_to_int(boundary_weights(out_bits, mask, channel, model.width))
+    carried = bits_to_int(boundary_weights(out_bits, mask, channel, model.width, lm_bits))
     return result_table, result_w, out_bits, carried, row_logp, bit_logp, pointer, logits
 
 
 def train_batch(model, members, reward, masks, randoms, form, channel,
-                floor, beta=1.0):
+                floor, beta=1.0, lm_bits=None):
     """Two on-policy edits scored by realized-row native correctness.
 
     reward: callable (realized_descriptor, mask_at_t) -> (batch, 4 worlds, 2 orders)
@@ -110,6 +134,7 @@ def train_batch(model, members, reward, masks, randoms, form, channel,
         table, weights, out_bits, carried, logrow, logbit, ptr, wl = step(
             model, table, weights, message, masks[:, t], form, channel, members,
             uniform=randoms[:, t], floor=floor,
+            lm_bits=lm_bits[:, t : t + 1] if lm_bits is not None else None,
         )
         descriptor = weights[..., 1] if form == "soft" else weights.argmax(-1).float()
         credits.append(reward(descriptor, masks[:, t]).mean((-1, -2)))
@@ -140,11 +165,16 @@ def train_batch(model, members, reward, masks, randoms, form, channel,
 
 
 @torch.no_grad()
-def eval_step(model, table, weights, message, mask, form, channel, members):
+def eval_step(model, table, weights, message, mask, form, channel, members,
+              lm_bits=None):
     result, w, out_bits, carried, *_ = step(
-        model, table, weights, message, mask, form, channel, members
+        model, table, weights, message, mask, form, channel, members,
+        lm_bits=lm_bits,
     )
-    return result, w, carried, out_bits
+    # out_bits belongs to the controller's sampled writer. For LM/supplied/none
+    # it is NOT the message crossing the boundary. Record the actual message.
+    written = (carried[:, None] >> torch.arange(model.width, device=carried.device)) & 1
+    return result, w, carried, written
 
 
 def enumerate_w(beta, eps=TRACE_EPS, depth=4):
@@ -170,7 +200,7 @@ def enumerate_w(beta, eps=TRACE_EPS, depth=4):
 
 
 @torch.no_grad()
-def rollout_w(model, form, channel, members, keys, masks, beta=1.0):
+def rollout_w(model, form, channel, members, keys, masks, beta=1.0, lm_matrix=None):
     """Four-edit strings over `masks`; realized rows stay in member space.
 
     members: (n, 2, 16) already-mixed member rows for the arm's beta.
@@ -178,6 +208,7 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0):
     """
     from .role_trials import donor_indices
 
+    _validate_lm_matrix(channel, model, members, masks, lm_matrix)
     n = len(members)
     paths = torch.tensor(list(itertools.product(range(len(masks)), repeat=4)))
     num = len(paths)
@@ -187,9 +218,16 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0):
     weights = init_weights(n * num, beta)
     table = realize(weights, carried_members)
     message = torch.zeros(n * num, dtype=torch.long)
+    case_of = torch.arange(n * num) // num
+
+    def bits_for(mask_vec, cases):
+        if lm_matrix is None:
+            return None
+        return lm_matrix[cases, mask_vec].unsqueeze(-1)
+
     table, weights, message, w0 = eval_step(
         model, table, weights, message, instructions[:, 0], form, channel,
-        carried_members,
+        carried_members, lm_bits=bits_for(instructions[:, 0], case_of),
     )
     depths = [weights[..., 1].reshape(n, num, 4)]
     second, fourth, written = [], [], [w0.reshape(n, num, -1)]
@@ -203,10 +241,11 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0):
         start_table = realize(start_w, start_members)
         w2, msg2 = start_w, msg
         ws = []
+        route_cases = torch.as_tensor(ids).repeat_interleave(num)
         for t in range(1, 4):
             table, w2, msg2, wt = eval_step(
                 model, start_table, w2, msg2, instructions[:, t], form, channel,
-                start_members,
+                start_members, lm_bits=bits_for(instructions[:, t], route_cases),
             )
             start_table = table
             ws.append(w2)
@@ -223,11 +262,12 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0):
         fourth=np.stack([s.numpy() for s in fourth], 1).astype(np.float16),
         routes=np.asarray(["matched", "opposed", "equivalent", "erase"]),
         written=torch.stack(written, 2).numpy().astype(np.uint8),
+        written_semantics=np.asarray("carried_message_bits_v2"),
     )
 
 
 @torch.no_grad()
-def twins_w(model, form, channel, members, masks, beta=1.0):
+def twins_w(model, form, channel, members, masks, beta=1.0, lm_matrix=None):
     """Identical boundary state, opposite required answers; trace may separate them.
 
     For `traced` soft arms the two priors produce *different* boundary states —
@@ -235,8 +275,9 @@ def twins_w(model, form, channel, members, masks, beta=1.0):
     """
     from itertools import product as iproduct
 
+    _validate_lm_matrix(channel, model, members, masks, lm_matrix)
     representatives = masks[::2]
-    if any(a ^ b != 15 for a, b in zip(representatives, masks[1::2])):
+    if not masks or len(masks) % 2 or any(a ^ b != 15 for a, b in zip(representatives, masks[1::2])):
         raise ValueError("Need complement-paired masks")
     grid = torch.tensor(list(iproduct(range(len(members)), representatives, masks)))
     ix, prior, current = grid.T
@@ -246,11 +287,12 @@ def twins_w(model, form, channel, members, masks, beta=1.0):
     shared_w = torch.nn.functional.one_hot(prior_bits.long(), 2).float()
     results = []
     for history in (prior, 15 - prior):
-        written = (
-            convention_bits(history, model.width)
-            if channel == "supplied"
-            else (model.write_logits(history) > 0).long()
-        )
+        if channel == "supplied":
+            written = convention_bits(history, model.width)
+        elif channel == "lm":
+            written = lm_matrix[ix, history].unsqueeze(-1)
+        else:
+            written = (model.write_logits(history) > 0).long()
         incoming = (
             torch.zeros(len(shared_w), dtype=torch.long)
             if channel in ("none", "traced")
@@ -265,10 +307,13 @@ def twins_w(model, form, channel, members, masks, beta=1.0):
             if form == "hard":
                 table = torch.nn.functional.one_hot(table.argmax(-1), 16).to(table)
             revised, w2, _, _ = eval_step(
-                model, table, hist_w, msg, current, form, channel, base
+                model, table, hist_w, msg, current, form, channel, base,
+                lm_bits=lm_matrix[ix, current].unsqueeze(-1) if channel == "lm" else None,
             )
             results.append(w2[..., 1].reshape(len(members), len(representatives), len(masks), 4))
-    return torch.stack(results, -1).reshape(
+    # Stack the four (history, erasure) conditions BEFORE the world axis.
+    # Stacking at -1 and merely reshaping interleaves worlds with conditions.
+    return torch.stack(results, -2).reshape(
         len(members), len(representatives), len(masks), 2, 2, 4
     ).numpy().astype(np.float16)
 

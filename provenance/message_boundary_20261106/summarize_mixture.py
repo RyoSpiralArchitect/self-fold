@@ -6,9 +6,6 @@ from pathlib import Path
 
 import numpy as np
 
-ROOT = Path(__file__).resolve().parents[2]
-CFG = json.loads((ROOT / "data/mixture_boundary_20261106.json").read_text())
-
 
 def read(path):
     return json.loads(path.read_text())
@@ -29,7 +26,9 @@ def w_index(w_values, descriptor):
     """Map realized descriptors to scored-variant indices; exact within fp16."""
     w = np.asarray(w_values)
     if np.array_equal(w, [0.0, 1.0]):
-        return np.rint(descriptor).astype(np.int64)
+        if not np.isin(descriptor, [0., 1.]).all():
+            raise ValueError("Hard descriptors must be exactly zero or one")
+        return descriptor.astype(np.int64)
     idx = np.argmin(np.abs(w[None] - descriptor.astype(np.float64).ravel()[:, None]), -1)
     idx = idx.reshape(descriptor.shape)
     if np.abs(w[idx] - descriptor).max() > 1e-2:
@@ -43,13 +42,37 @@ def select_top(top, widx, case_ids):
     return top[ids, widx]
 
 
+def native_labels(run):
+    files = sorted(Path(run).glob("fit_native_*/native.json"))
+    if not files:
+        raise ValueError("No fitted native label binding")
+    labels = np.asarray(read(files[0])["labels"])
+    if labels.shape != (2,) or labels[0] == labels[1]:
+        raise ValueError("Expected distinct A/B label IDs")
+    if any(not np.array_equal(labels, read(path)["labels"]) for path in files[1:]):
+        raise ValueError("Native label mappings disagree across forms")
+    return labels
+
+
+def align_twins(twins, semantics):
+    if twins.shape[-3:] != (2, 2, 4):
+        raise ValueError("Unexpected twin axes")
+    if semantics == "carried_message_bits_v2":
+        return twins
+    if semantics != "legacy_sampled_writer":
+        raise ValueError(f"Unknown rollout semantics: {semantics}")
+    # Invert the old stack(-1).reshape(...,2,2,4), then move worlds last.
+    unpacked = twins.reshape(*twins.shape[:-3], 4, 2, 2)
+    return np.moveaxis(unpacked, -3, -1)
+
+
 def summarize(run):
     run = Path(run)
     keys = read(run / "test_keys.json")["keys"]
     with np.load(run / "join.npz") as f:
         donors = f["donors"]
         eval_masks = f["eval_masks"].tolist()
-    labels = np.array(read(run / "fit_native_soft" / "native.json")["labels"])
+    labels = native_labels(run)
     variants = {}
     for npz in run.glob("test_variants_*_b*/variants.npz"):
         tag = npz.parent.name  # test_variants_{form}_b{beta*100}
@@ -98,7 +121,9 @@ def summarize(run):
                     opposed_correct=[int((hit & opp).sum()), int(hit.size)],
                     erased_intact=[int(erased.sum()), int(erased.size)],
                 )
-            twins = f[name + "twins"]  # (n, reps, masks, history, erased, worlds)
+            semantics_key = name + "written_semantics"
+            semantics = str(f[semantics_key].item()) if semantics_key in f else "legacy_sampled_writer"
+            twins = align_twins(f[name + "twins"], semantics)
             tgot = select_top(top, w_index(w_values, twins), np.arange(len(keys)))
             # expected: (n, masks, worlds, orders) -> expand reps axis.
             base = expected(keys, np.asarray(eval_masks), labels)
@@ -119,9 +144,12 @@ def summarize(run):
                 all_four_by_role_exchanges=by_flips,
                 opposed=opposed,
                 twins_both_histories=twin_out,
-                written_matches_offoff_bit=agree,
+                rollout_semantics=semantics,
+                legacy_twin_axis_repair_applied=semantics == "legacy_sampled_writer",
+                **{("written_matches_offoff_bit" if semantics == "carried_message_bits_v2"
+                    else "legacy_sampled_writer_matches_offoff_bit"): agree},
             )
-    return dict(schema="mixture_boundary_summary_v1", eval_masks=eval_masks,
+    return dict(schema="mixture_boundary_summary_v2", eval_masks=eval_masks,
                 strings=int(len(paths)), sources=len(keys), arms=out)
 
 
