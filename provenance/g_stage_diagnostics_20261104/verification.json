@@ -1,0 +1,30 @@
+{
+  "analysis_code_sha256": {
+    "audit.py": "476ffe3b6f0699289096abd364111fd2dc383d147621c6730a850a658b2df547",
+    "audit_native.py": "27d50ffe5843dc24e3a621a01e4cc0a70760625371e7e11abcdcb9c1fb88de3c",
+    "audit_structured.py": "03812e93f277fb1746722f431f0f2b7605dfdf6df28870798dd52247ea093505"
+  },
+  "base_commit": "ba20b3125ac498ef1f2fa21730eef3557e3dd953",
+  "frozen_archive_files_verified": 70,
+  "frozen_manifest_sha256": "2ed2398e6333ba024564c28b1870445556dbe53014982c5727d269b3e78a2d2e",
+  "human_transition_review": "deferred",
+  "matched_semantic_overlap_rows": 1024,
+  "native_free_readout_rows_present": 128,
+  "new_model_forwards": 0,
+  "new_training_updates": 0,
+  "original_field_reductions_exact": {
+    "readout": true,
+    "structured": true
+  },
+  "original_summary_reductions_exact": {
+    "raw": true,
+    "readout": true,
+    "structured": true
+  },
+  "paper_v1_sha256": "43bc33e679489b7d7069cce987546c40c589d578c05c15aeb20bbc7cfa6508f5",
+  "pinned_input_git_objects_verified": 40,
+  "qualification_commitment_sha256": "b408768d82296c367cc686fdd608b749ce4da911d1dfcdc099f91bf261c19997",
+  "qualification_opened": false,
+  "qualification_status": "NOT_QUALIFIED",
+  "schema": "g_stage_audit_verification_v1"
+}

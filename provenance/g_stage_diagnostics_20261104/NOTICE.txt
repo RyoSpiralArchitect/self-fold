@@ -1,0 +1,7 @@
+Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms
+
+This development audit re-indexes and analyzes previously published SELF-FOLD
+Gemma predictions, scores, state fingerprints and generations. It adds paired
+stage diagnostics and explicit comparison metadata. It does not fit, modify or
+execute a model. Original artifact notices and provenance are retained at
+../supported_g_20261104/.

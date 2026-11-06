@@ -1,0 +1,2129 @@
+{
+  "base_commit": "ba20b3125ac498ef1f2fa21730eef3557e3dd953",
+  "input_sha256": {
+    "data/supported_g_20261104.json": "0e3bc568df2c48551f4bfeb524b7d1036507af21bb9d22498974f6d0d9912914",
+    "data/supported_g_readout_20261104.json": "eb234dda316c98ef85c69fd5ac987282b7d6060d5721e997a085c05267dcc860",
+    "data/within_topic_wording_20261103.json": "aeee777aa4d5cd90db4c30ec52d3320aec38bf10290afcb648fae4cfa869d772",
+    "provenance/role_memory_20261104/run/produce/fits.npz": "438e385dcc6121ab69aa1d47f1f205fc5f6d1baa996e7476741ea09d197042a6",
+    "provenance/supported_g_20261104/readout/binding.json": "5e62ed7a233b6a2dda62fe719caf2c2d4890e12ef1253b69a31f40563f1e3780",
+    "provenance/supported_g_20261104/readout/dispatch.npz": "754c06659481383d5ab138535d8a60a41f015102f778a3f7088a94db90c1a8f3",
+    "provenance/supported_g_20261104/readout/literal.npz": "708ac61f3fae58c3b3fc0a735fd723a5ec3a598419e891dfa1759edb031e90b4",
+    "provenance/supported_g_20261104/readout/literal_parent.npz": "4deaaaa50c4700e9e8bb96b79d35b40802deccfdcee8653f49e7f6de50c9ccbe",
+    "provenance/supported_g_20261104/readout/native.json": "a845ac2cb2dcfc31a915d180273322f9a4b2832cf273365e095e825ccac48527",
+    "provenance/supported_g_20261104/readout/native.npz": "338c594e76b0a2892b522f02be4c152c1bf585e9146d1ea4e25cb3ef4b257c73",
+    "provenance/supported_g_20261104/readout/rendered.jsonl.gz": "db0486427f9b227d61fa07819f8b92276e4f7f1ea6434a73f515e8651182aa01",
+    "provenance/supported_g_20261104/readout/rendered_parent.jsonl.gz": "f59ad260342d8de565c475b14c2a48d9efc55e7ad6979a89949a5a6a1cf2f7f0",
+    "provenance/supported_g_20261104/readout/states.npz": "efaa1b6a09f40a415b795dbe12d506cb2df936eae98b9c3e181b203a9fb08849",
+    "provenance/supported_g_20261104/structured/binding.json": "14c71325c78ce19e14bef1b6cd1dafc2360f694ad2f1fcf12a062bf904f894bb",
+    "provenance/supported_g_20261104/structured/dispatch.npz": "0aebfdec277fd90522c664a7ebb86f9bdcda29f9f5532edd7deea4de5fce242c",
+    "provenance/supported_g_20261104/structured/heads.npz": "62ef6e2f1a7bd15b186c72b0018a574803b3ebb6c461936e36b2daed2477f998",
+    "provenance/supported_g_20261104/structured/literal.npz": "df3285065bd70c2de7e2e87769604e6c976233f26b3b9d7fe451377542e5dd5e",
+    "provenance/supported_g_20261104/structured/native.json": "f653a94065a5b775961ad478541431ac80f02b008ad01d388a56dae4a046e4d0",
+    "provenance/supported_g_20261104/structured/native.npz": "8d7f5f9a55b47223878fd65f374aeea033ea607762fe2fe1ac5842cd140c8837",
+    "provenance/supported_g_20261104/structured/rendered.jsonl.gz": "66bbb518e6a8a8e3118f032ffbc5c0aecf1c18ee3e16117981252ce4b2f03abd",
+    "provenance/supported_g_20261104/structured/states.npz": "5cddc95711c1ca72a4e1d33a939fcd0d8f17d9b8a049c914656f921b9742559c",
+    "scripts/calibrate_boundary_readout.py": "700c229f11abf86d7bf748ad35c30598e7535838959e07126072326062dd6009",
+    "scripts/state_only_native.py": "01eb151b55c40c41bd1ca2a5e975ac87063d44cffc62a6d1cb6ee3062d7ae209",
+    "scripts/structured_supported_boundary.py": "8e85f603187e1e9c10da73e8e7bdb3ac9faff63071de66bd83165970bb0c7960",
+    "src/selffold/role_memory.py": "ae5531aba8af2878525149b408351b4fa2c90e51e1f055f1379757036051043e",
+    "src/selffold/supported_boundary.py": "708aabc9c8c2dbf8cc8bfa64e8f2e27f7f0f611868d679e6bd5a1e1efa9749f7"
+  },
+  "interpretation_limits": [
+    "Literal answers and native row answers share logical questions, not prompts, adapters or world-addressing workload.",
+    "Strict action-table correctness is global argmax equality, not a claim about all information in the soft row.",
+    "For a rendered action outside the offered menu, A/B correctness cannot demonstrate fidelity to the text.",
+    "D and ED are parallel reads of the emitted text; ED does not re-encode the literal reader's A/B answer.",
+    "ED preserves choices and hard action IDs here, not floating states or A/B scores.",
+    "Formal substitutions reuse only exact archived physical rows and do not establish unseen-form transfer."
+  ],
+  "matching": {
+    "common_truth": "complete_original_policy_in_all_four_worlds",
+    "exact_prompt_pair": "fresh_parent_vs_calibrated_literal_reader",
+    "hash_schemes": {
+      "literal_question_sha256": "SHA256(canonical JSON string), matching archived records.digest",
+      "native_prompt_sha256": "archived SHA256(canonical JSON token-ID list), not a text hash",
+      "rendered_sha256": "SHA256(canonical JSON string)",
+      "source_sha256": "SHA256(canonical JSON string), matching archived records.digest",
+      "utf8_sha256": "SHA256(raw UTF-8 text bytes); explicitly suffixed companion fields"
+    },
+    "key_fields": [
+      "panel",
+      "topic",
+      "trigger",
+      "veto",
+      "pole",
+      "style",
+      "source_order",
+      "world",
+      "label_order"
+    ],
+    "literal_physical_interface": "whole_rendered_table_plus_world_question_with_literal_reader",
+    "native_physical_interface": "external_world_address_then_stored_action_question_with_frozen_row_reader",
+    "native_vs_literal_is_identical_prompt": false,
+    "panel_namespace_required": true,
+    "uncertainty": "descriptive_archival_counts; repeated world/order/style rows are not independent samples"
+  },
+  "model_forwards": 0,
+  "panels": {
+    "readout": {
+      "complete_table_despite_wrong_source_fields": {
+        "correct": 34,
+        "n": 328
+      },
+      "examples": [
+        {
+          "category": "successful_update_literal_failure",
+          "hard_rendered_action": "the earliest reports",
+          "intended_action": "the earliest reports",
+          "key": [
+            0,
+            0,
+            3,
+            1,
+            0,
+            0
+          ],
+          "label_order": 1,
+          "literal_question": "At decision time the left signal reads off. The right signal reads on. For these readings, which listed action follows the policy?\nA = the earliest reports. B = the most recent reports. Respond with only A or B.",
+          "outcomes": {
+            "D_updated": {
+              "correct": false,
+              "label": "B",
+              "margin": -0.5
+            },
+            "ED_updated": {
+              "correct": true,
+              "label": "A",
+              "margin": 24.984375
+            },
+            "analytic": {
+              "correct": true,
+              "label": "A",
+              "margin": 25.1640625
+            },
+            "identity": {
+              "correct": false,
+              "label": "B",
+              "margin": -18.5
+            },
+            "updated": {
+              "correct": true,
+              "label": "A",
+              "margin": 25.1640625
+            }
+          },
+          "rendered_text": "When the left signal is off and the right signal is off, I choose the most recent reports.\nWhen the left signal is off and the right signal is on, I choose the earliest reports.\nWhen the left signal is on and the right signal is off, I choose the earliest reports.\nWhen the left signal is on and the right signal is on, I choose the earliest reports.",
+          "soft_mass_at_argmax": 0.9997151494026184,
+          "soft_mass_at_gold": 0.9997151494026184,
+          "source": "My regular choice here is the earliest reports.\nMy alternate choice here is the most recent reports.\nThe alternate choice is triggered when the left signal is off.\nThe regular choice overrides it when the right signal is on.",
+          "source_fields": {
+            "all": true,
+            "first_action": true,
+            "role": true,
+            "second_action": true,
+            "trigger": true,
+            "veto": true
+          },
+          "world": 1
+        },
+        {
+          "category": "correct_table_literal_failure",
+          "hard_rendered_action": "the earliest reports",
+          "intended_action": "the earliest reports",
+          "key": [
+            0,
+            0,
+            -1,
+            1,
+            0,
+            0
+          ],
+          "label_order": 0,
+          "literal_question": "At decision time the left signal reads on. The right signal reads on. For these readings, which listed action follows the policy?\nA = the most recent reports. B = the earliest reports. Respond with only A or B.",
+          "outcomes": {
+            "D_updated": {
+              "correct": false,
+              "label": "A",
+              "margin": 0.75
+            },
+            "ED_updated": {
+              "correct": true,
+              "label": "B",
+              "margin": -17.75
+            },
+            "analytic": {
+              "correct": true,
+              "label": "B",
+              "margin": -17.90625
+            },
+            "identity": {
+              "correct": true,
+              "label": "B",
+              "margin": -17.90625
+            },
+            "updated": {
+              "correct": true,
+              "label": "B",
+              "margin": -17.90625
+            }
+          },
+          "rendered_text": "When the left signal is off and the right signal is off, I choose the most recent reports.\nWhen the left signal is off and the right signal is on, I choose the most recent reports.\nWhen the left signal is on and the right signal is off, I choose the earliest reports.\nWhen the left signal is on and the right signal is on, I choose the earliest reports.",
+          "soft_mass_at_argmax": 0.9997151494026184,
+          "soft_mass_at_gold": 0.9997151494026184,
+          "source": "My regular choice here is the earliest reports.\nMy alternate choice here is the most recent reports.\nThe alternate choice is triggered when the left signal is off.\nThere is no veto on the alternate choice.",
+          "source_fields": {
+            "all": true,
+            "first_action": true,
+            "role": true,
+            "second_action": true,
+            "trigger": true,
+            "veto": true
+          },
+          "world": 3
+        },
+        {
+          "category": "native_correct_rendered_action_outside_menu",
+          "hard_rendered_action": "degrees Celsius",
+          "intended_action": "centimeters",
+          "key": [
+            4,
+            0,
+            -1,
+            0,
+            1,
+            0
+          ],
+          "label_order": 0,
+          "literal_question": "At decision time the left signal reads on. The right signal reads off. For these readings, which listed action follows the policy?\nA = centimeters. B = inches. Respond with only A or B.",
+          "outcomes": {
+            "D_updated": {
+              "correct": false,
+              "label": "B",
+              "margin": -3.875
+            },
+            "ED_updated": {
+              "correct": true,
+              "label": "A",
+              "margin": 17.78125
+            },
+            "analytic": {
+              "correct": true,
+              "label": "A",
+              "margin": 22.3359375
+            },
+            "identity": {
+              "correct": true,
+              "label": "A",
+              "margin": 22.3359375
+            },
+            "updated": {
+              "correct": true,
+              "label": "A",
+              "margin": 22.3359375
+            }
+          },
+          "rendered_text": "When the left signal is off and the right signal is off, I choose inches.\nWhen the left signal is off and the right signal is on, I choose inches.\nWhen the left signal is on and the right signal is off, I choose degrees Celsius.\nWhen the left signal is on and the right signal is on, I choose degrees Celsius.",
+          "soft_mass_at_argmax": 0.6080647706985474,
+          "soft_mass_at_gold": 0.3725438117980957,
+          "source": "I choose centimeters as my default.\nI choose inches as my exception.\nI use the exception if the left signal reads off.\nNothing cancels this exception.",
+          "source_fields": {
+            "all": false,
+            "first_action": false,
+            "role": true,
+            "second_action": true,
+            "trigger": true,
+            "veto": true
+          },
+          "world": 2
+        },
+        {
+          "category": "literal_correct_despite_wrong_rendered_action",
+          "hard_rendered_action": "the earliest reports",
+          "intended_action": "the most recent reports",
+          "key": [
+            0,
+            2,
+            3,
+            1,
+            1,
+            0
+          ],
+          "label_order": 0,
+          "literal_question": "At decision time the left signal reads on. The right signal reads off. For these readings, which listed action follows the policy?\nA = the most recent reports. B = the earliest reports. Respond with only A or B.",
+          "outcomes": {
+            "D_updated": {
+              "correct": true,
+              "label": "A",
+              "margin": 0.5
+            },
+            "ED_updated": {
+              "correct": false,
+              "label": "B",
+              "margin": -18.0625
+            },
+            "analytic": {
+              "correct": false,
+              "label": "B",
+              "margin": -17.90625
+            },
+            "identity": {
+              "correct": true,
+              "label": "A",
+              "margin": 25.953125
+            },
+            "updated": {
+              "correct": false,
+              "label": "B",
+              "margin": -17.90625
+            }
+          },
+          "rendered_text": "When the left signal is off and the right signal is off, I choose the most recent reports.\nWhen the left signal is off and the right signal is on, I choose the earliest reports.\nWhen the left signal is on and the right signal is off, I choose the earliest reports.\nWhen the left signal is on and the right signal is on, I choose the earliest reports.",
+          "soft_mass_at_argmax": 0.9878770112991333,
+          "soft_mass_at_gold": 0.0027704001404345036,
+          "source": "I choose the earliest reports as my default.\nI choose the most recent reports as my exception.\nI use the exception if the right signal reads off.\nI cancel that exception if the right signal reads on.",
+          "source_fields": {
+            "all": false,
+            "first_action": true,
+            "role": true,
+            "second_action": true,
+            "trigger": true,
+            "veto": false
+          },
+          "world": 2
+        }
+      ],
+      "field_confusions": {
+        "actions": [
+          {
+            "inferred": 6,
+            "n": 40,
+            "truth": 7
+          },
+          {
+            "inferred": 6,
+            "n": 40,
+            "truth": 8
+          },
+          {
+            "inferred": 11,
+            "n": 40,
+            "truth": 12
+          }
+        ],
+        "trigger": [
+          {
+            "inferred": 1,
+            "n": 160,
+            "truth": 3
+          }
+        ],
+        "veto": [
+          {
+            "inferred": 2,
+            "n": 128,
+            "truth": 4
+          }
+        ]
+      },
+      "field_error_partition": [
+        {
+          "literal": {
+            "correct": 6292,
+            "n": 7616
+          },
+          "native": {
+            "correct": 7616,
+            "n": 7616
+          },
+          "native_complete_policies": {
+            "correct": 952,
+            "n": 952
+          },
+          "sources": 952,
+          "strict_complete_tables": {
+            "correct": 952,
+            "n": 952
+          },
+          "wrong_fields": []
+        },
+        {
+          "literal": {
+            "correct": 156,
+            "n": 288
+          },
+          "native": {
+            "correct": 192,
+            "n": 288
+          },
+          "native_complete_policies": {
+            "correct": 15,
+            "n": 36
+          },
+          "sources": 36,
+          "strict_complete_tables": {
+            "correct": 3,
+            "n": 36
+          },
+          "wrong_fields": [
+            "second_action"
+          ]
+        },
+        {
+          "literal": {
+            "correct": 156,
+            "n": 288
+          },
+          "native": {
+            "correct": 192,
+            "n": 288
+          },
+          "native_complete_policies": {
+            "correct": 15,
+            "n": 36
+          },
+          "sources": 36,
+          "strict_complete_tables": {
+            "correct": 3,
+            "n": 36
+          },
+          "wrong_fields": [
+            "first_action"
+          ]
+        },
+        {
+          "literal": {
+            "correct": 472,
+            "n": 624
+          },
+          "native": {
+            "correct": 468,
+            "n": 624
+          },
+          "native_complete_policies": {
+            "correct": 0,
+            "n": 78
+          },
+          "sources": 78,
+          "strict_complete_tables": {
+            "correct": 0,
+            "n": 78
+          },
+          "wrong_fields": [
+            "veto"
+          ]
+        },
+        {
+          "literal": {
+            "correct": 37,
+            "n": 72
+          },
+          "native": {
+            "correct": 42,
+            "n": 72
+          },
+          "native_complete_policies": {
+            "correct": 0,
+            "n": 9
+          },
+          "sources": 9,
+          "strict_complete_tables": {
+            "correct": 0,
+            "n": 9
+          },
+          "wrong_fields": [
+            "veto",
+            "second_action"
+          ]
+        },
+        {
+          "literal": {
+            "correct": 37,
+            "n": 72
+          },
+          "native": {
+            "correct": 42,
+            "n": 72
+          },
+          "native_complete_policies": {
+            "correct": 0,
+            "n": 9
+          },
+          "sources": 9,
+          "strict_complete_tables": {
+            "correct": 0,
+            "n": 9
+          },
+          "wrong_fields": [
+            "veto",
+            "first_action"
+          ]
+        },
+        {
+          "literal": {
+            "correct": 562,
+            "n": 832
+          },
+          "native": {
+            "correct": 572,
+            "n": 832
+          },
+          "native_complete_policies": {
+            "correct": 0,
+            "n": 104
+          },
+          "sources": 104,
+          "strict_complete_tables": {
+            "correct": 0,
+            "n": 104
+          },
+          "wrong_fields": [
+            "trigger"
+          ]
+        },
+        {
+          "literal": {
+            "correct": 49,
+            "n": 96
+          },
+          "native": {
+            "correct": 54,
+            "n": 96
+          },
+          "native_complete_policies": {
+            "correct": 0,
+            "n": 12
+          },
+          "sources": 12,
+          "strict_complete_tables": {
+            "correct": 0,
+            "n": 12
+          },
+          "wrong_fields": [
+            "trigger",
+            "second_action"
+          ]
+        },
+        {
+          "literal": {
+            "correct": 49,
+            "n": 96
+          },
+          "native": {
+            "correct": 54,
+            "n": 96
+          },
+          "native_complete_policies": {
+            "correct": 0,
+            "n": 12
+          },
+          "sources": 12,
+          "strict_complete_tables": {
+            "correct": 0,
+            "n": 12
+          },
+          "wrong_fields": [
+            "trigger",
+            "first_action"
+          ]
+        },
+        {
+          "literal": {
+            "correct": 208,
+            "n": 208
+          },
+          "native": {
+            "correct": 208,
+            "n": 208
+          },
+          "native_complete_policies": {
+            "correct": 26,
+            "n": 26
+          },
+          "sources": 26,
+          "strict_complete_tables": {
+            "correct": 26,
+            "n": 26
+          },
+          "wrong_fields": [
+            "trigger",
+            "veto"
+          ]
+        },
+        {
+          "literal": {
+            "correct": 16,
+            "n": 24
+          },
+          "native": {
+            "correct": 16,
+            "n": 24
+          },
+          "native_complete_policies": {
+            "correct": 2,
+            "n": 3
+          },
+          "sources": 3,
+          "strict_complete_tables": {
+            "correct": 1,
+            "n": 3
+          },
+          "wrong_fields": [
+            "trigger",
+            "veto",
+            "second_action"
+          ]
+        },
+        {
+          "literal": {
+            "correct": 16,
+            "n": 24
+          },
+          "native": {
+            "correct": 16,
+            "n": 24
+          },
+          "native_complete_policies": {
+            "correct": 2,
+            "n": 3
+          },
+          "sources": 3,
+          "strict_complete_tables": {
+            "correct": 1,
+            "n": 3
+          },
+          "wrong_fields": [
+            "trigger",
+            "veto",
+            "first_action"
+          ]
+        }
+      ],
+      "field_substitutions": {
+        "both": {
+          "by_label_order": [
+            {
+              "correct": 4960,
+              "n": 5120
+            },
+            {
+              "correct": 4960,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1208,
+            "n": 1280
+          },
+          "correct": 9920,
+          "correct_both_orders": {
+            "correct": 4960,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "paired_vs_observed": {
+            "both_correct": 9472,
+            "both_wrong": 320,
+            "gained": 448,
+            "lost": 0,
+            "n": 10240
+          },
+          "strict_argmax_rows": {
+            "correct": 4848,
+            "n": 5120
+          },
+          "ties": 0
+        },
+        "method": "post_result_formal_field_substitution_exact_row_bank_reuse_no_new_forward",
+        "observed": {
+          "by_label_order": [
+            {
+              "correct": 4736,
+              "n": 5120
+            },
+            {
+              "correct": 4736,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1012,
+            "n": 1280
+          },
+          "correct": 9472,
+          "correct_both_orders": {
+            "correct": 4736,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "paired_vs_observed": {
+            "both_correct": 9472,
+            "both_wrong": 768,
+            "gained": 0,
+            "lost": 0,
+            "n": 10240
+          },
+          "strict_argmax_rows": {
+            "correct": 4624,
+            "n": 5120
+          },
+          "ties": 0
+        },
+        "true_trigger": {
+          "by_label_order": [
+            {
+              "correct": 4848,
+              "n": 5120
+            },
+            {
+              "correct": 4848,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1096,
+            "n": 1280
+          },
+          "correct": 9696,
+          "correct_both_orders": {
+            "correct": 4848,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "paired_vs_observed": {
+            "both_correct": 9416,
+            "both_wrong": 488,
+            "gained": 280,
+            "lost": 56,
+            "n": 10240
+          },
+          "strict_argmax_rows": {
+            "correct": 4736,
+            "n": 5120
+          },
+          "ties": 0
+        },
+        "true_veto": {
+          "by_label_order": [
+            {
+              "correct": 4792,
+              "n": 5120
+            },
+            {
+              "correct": 4792,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1068,
+            "n": 1280
+          },
+          "correct": 9584,
+          "correct_both_orders": {
+            "correct": 4792,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "paired_vs_observed": {
+            "both_correct": 9416,
+            "both_wrong": 600,
+            "gained": 168,
+            "lost": 56,
+            "n": 10240
+          },
+          "strict_argmax_rows": {
+            "correct": 4680,
+            "n": 5120
+          },
+          "ties": 0
+        }
+      },
+      "fields": {
+        "all": {
+          "correct": 952,
+          "n": 1280
+        },
+        "first_action": {
+          "correct": 1220,
+          "n": 1280
+        },
+        "role": {
+          "correct": 1280,
+          "n": 1280
+        },
+        "second_action": {
+          "correct": 1220,
+          "n": 1280
+        },
+        "trigger": {
+          "correct": 1120,
+          "n": 1280
+        },
+        "veto": {
+          "correct": 1152,
+          "n": 1280
+        }
+      },
+      "known_menu_clusters": 8,
+      "literal_on_correct_rendered_rows": {
+        "correct": 7812,
+        "n": 9248
+      },
+      "literal_on_native_correct_hard_wrong": {
+        "correct": 120,
+        "n": 224
+      },
+      "literal_on_wholly_correct_tables": {
+        "correct": 6564,
+        "n": 7888
+      },
+      "literal_valid_fidelity_within_menu": {
+        "correct": 8374,
+        "n": 9920
+      },
+      "logical_decisions": 10240,
+      "native_complete_despite_incorrect_global_table": {
+        "correct": 26,
+        "n": 1280
+      },
+      "native_correct_hard_wrong": {
+        "correct": 224,
+        "n": 992
+      },
+      "native_wrong_hard_correct": {
+        "correct": 0,
+        "n": 9248
+      },
+      "paired_transitions": {
+        "D_updated__ED_updated": {
+          "both_correct": 7932,
+          "both_wrong": 650,
+          "gained": 1540,
+          "lost": 118,
+          "n": 10240
+        },
+        "D_updated_parent__D_updated": {
+          "both_correct": 7188,
+          "both_wrong": 1818,
+          "gained": 862,
+          "lost": 372,
+          "n": 10240
+        },
+        "analytic__updated": {
+          "both_correct": 9472,
+          "both_wrong": 768,
+          "gained": 0,
+          "lost": 0,
+          "n": 10240
+        },
+        "identity__updated": {
+          "both_correct": 7552,
+          "both_wrong": 656,
+          "gained": 1920,
+          "lost": 112,
+          "n": 10240
+        },
+        "oracle_parent__oracle": {
+          "both_correct": 7440,
+          "both_wrong": 1400,
+          "gained": 1000,
+          "lost": 400,
+          "n": 10240
+        },
+        "updated__D_updated": {
+          "both_correct": 7932,
+          "both_wrong": 650,
+          "gained": 118,
+          "lost": 1540,
+          "n": 10240
+        },
+        "updated__ED_updated": {
+          "both_correct": 9472,
+          "both_wrong": 768,
+          "gained": 0,
+          "lost": 0,
+          "n": 10240
+        }
+      },
+      "panel": "readout",
+      "physical_literal_queries": {
+        "_parent": 1016,
+        "current": 1016
+      },
+      "physical_native_queries": 608,
+      "relations": {
+        "ED_AB_max_abs_difference": 13.464061737060547,
+        "ED_AB_scores_exact": false,
+        "ED_argmax_rows_preserved": {
+          "correct": 5120,
+          "n": 5120
+        },
+        "ED_bit_identical_float_rows": {
+          "correct": 0,
+          "n": 5120
+        },
+        "ED_top_tokens_identical": {
+          "correct": 10240,
+          "n": 10240
+        },
+        "formal_archived_AB_equal_G": true,
+        "formal_archived_dispatch_equal_G": true,
+        "formal_archived_top_equal_G": true,
+        "formal_inferred_interpreter_rows_equal_G": true,
+        "incoming_argmax_assembled_from_inferred_fields": true,
+        "incoming_bit_equals_inferred_trigger_at_reference_world": true,
+        "renderer_matches_global_argmax_tables": {
+          "D_initial": 1280,
+          "D_initial_parent": 1280,
+          "D_updated": 1280,
+          "D_updated_parent": 1280
+        },
+        "updated_guard_consumed": true
+      },
+      "rendered_action_partition": {
+        "correct_rendered_action": {
+          "ED": {
+            "correct": 9248,
+            "n": 9248
+          },
+          "literal": {
+            "correct": 7812,
+            "n": 9248
+          },
+          "literal_faithful_to_rendered_action": {
+            "correct": 7812,
+            "n": 9248
+          },
+          "native": {
+            "correct": 9248,
+            "n": 9248
+          },
+          "rows": 4624
+        },
+        "rendered_action_outside_menu": {
+          "ED": {
+            "correct": 224,
+            "n": 320
+          },
+          "literal": {
+            "correct": 132,
+            "n": 320
+          },
+          "literal_faithful_to_rendered_action": null,
+          "native": {
+            "correct": 224,
+            "n": 320
+          },
+          "rows": 160
+        },
+        "wrong_rendered_action_in_menu": {
+          "ED": {
+            "correct": 0,
+            "n": 672
+          },
+          "literal": {
+            "correct": 106,
+            "n": 672
+          },
+          "literal_faithful_to_rendered_action": {
+            "correct": 562,
+            "n": 672
+          },
+          "native": {
+            "correct": 0,
+            "n": 672
+          },
+          "rows": 336
+        }
+      },
+      "routes": {
+        "D_initial": {
+          "by_label_order": [
+            {
+              "correct": 3206,
+              "n": 5120
+            },
+            {
+              "correct": 3220,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 72,
+            "n": 1280
+          },
+          "correct": 6426,
+          "correct_both_orders": {
+            "correct": 2472,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 80
+        },
+        "D_updated": {
+          "by_label_order": [
+            {
+              "correct": 4054,
+              "n": 5120
+            },
+            {
+              "correct": 3996,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 362,
+            "n": 1280
+          },
+          "correct": 8050,
+          "correct_both_orders": {
+            "correct": 3526,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 72
+        },
+        "D_updated_parent": {
+          "by_label_order": [
+            {
+              "correct": 3744,
+              "n": 5120
+            },
+            {
+              "correct": 3816,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 226,
+            "n": 1280
+          },
+          "correct": 7560,
+          "correct_both_orders": {
+            "correct": 2994,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 50
+        },
+        "ED_initial": {
+          "by_label_order": [
+            {
+              "correct": 3832,
+              "n": 5120
+            },
+            {
+              "correct": 3832,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 432,
+            "n": 1280
+          },
+          "correct": 7664,
+          "correct_both_orders": {
+            "correct": 3832,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 0
+        },
+        "ED_updated": {
+          "by_label_order": [
+            {
+              "correct": 4736,
+              "n": 5120
+            },
+            {
+              "correct": 4736,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1012,
+            "n": 1280
+          },
+          "correct": 9472,
+          "correct_both_orders": {
+            "correct": 4736,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 0
+        },
+        "analytic": {
+          "by_label_order": [
+            {
+              "correct": 4736,
+              "n": 5120
+            },
+            {
+              "correct": 4736,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1012,
+            "n": 1280
+          },
+          "correct": 9472,
+          "correct_both_orders": {
+            "correct": 4736,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 0
+        },
+        "identity": {
+          "by_label_order": [
+            {
+              "correct": 3832,
+              "n": 5120
+            },
+            {
+              "correct": 3832,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 432,
+            "n": 1280
+          },
+          "correct": 7664,
+          "correct_both_orders": {
+            "correct": 3832,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 0
+        },
+        "oracle": {
+          "by_label_order": [
+            {
+              "correct": 4248,
+              "n": 5120
+            },
+            {
+              "correct": 4192,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 400,
+            "n": 1280
+          },
+          "correct": 8440,
+          "correct_both_orders": {
+            "correct": 3640,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 104
+        },
+        "oracle_parent": {
+          "by_label_order": [
+            {
+              "correct": 3872,
+              "n": 5120
+            },
+            {
+              "correct": 3968,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 264,
+            "n": 1280
+          },
+          "correct": 7840,
+          "correct_both_orders": {
+            "correct": 3096,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 56
+        },
+        "source_prefix": {
+          "by_label_order": [
+            {
+              "correct": 5120,
+              "n": 5120
+            },
+            {
+              "correct": 5120,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1280,
+            "n": 1280
+          },
+          "correct": 10240,
+          "correct_both_orders": {
+            "correct": 5120,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 0
+        },
+        "updated": {
+          "by_label_order": [
+            {
+              "correct": 4736,
+              "n": 5120
+            },
+            {
+              "correct": 4736,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1012,
+            "n": 1280
+          },
+          "correct": 9472,
+          "correct_both_orders": {
+            "correct": 4736,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 0
+        }
+      },
+      "sources": 1280,
+      "stability": {
+        "change_required": {
+          "G_complete": {
+            "correct": 616,
+            "n": 768
+          },
+          "G_newly_complete": {
+            "correct": 608,
+            "n": 768
+          },
+          "initial_complete": {
+            "correct": 8,
+            "n": 768
+          },
+          "paired": {
+            "both_correct": 3864,
+            "both_wrong": 360,
+            "gained": 1864,
+            "lost": 56,
+            "n": 6144
+          },
+          "sources": 768,
+          "strict_G_complete": {
+            "correct": 600,
+            "n": 768
+          },
+          "unchanged_float_tables": {
+            "correct": 64,
+            "n": 768
+          }
+        },
+        "stable": {
+          "G_complete": {
+            "correct": 396,
+            "n": 512
+          },
+          "G_newly_complete": {
+            "correct": 0,
+            "n": 512
+          },
+          "initial_complete": {
+            "correct": 424,
+            "n": 512
+          },
+          "paired": {
+            "both_correct": 3688,
+            "both_wrong": 296,
+            "gained": 56,
+            "lost": 56,
+            "n": 4096
+          },
+          "sources": 512,
+          "strict_G_complete": {
+            "correct": 386,
+            "n": 512
+          },
+          "unchanged_float_tables": {
+            "correct": 448,
+            "n": 512
+          }
+        }
+      },
+      "strict_argmax_rows": {
+        "correct": 4624,
+        "n": 5120
+      },
+      "strict_complete_tables": {
+        "correct": 986,
+        "n": 1280
+      }
+    },
+    "structured": {
+      "complete_table_despite_wrong_source_fields": {
+        "correct": 0,
+        "n": 128
+      },
+      "examples": [
+        {
+          "category": "successful_update_literal_failure",
+          "hard_rendered_action": "the most recent reports",
+          "intended_action": "the most recent reports",
+          "key": [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "label_order": 1,
+          "literal_question": "Today the left signal is on and the right signal is off. Which action follows my policy?\nA = the earliest reports. B = the most recent reports. Respond with only A or B.",
+          "outcomes": {
+            "D_updated": {
+              "correct": false,
+              "label": "A",
+              "margin": 1.25
+            },
+            "ED_updated": {
+              "correct": true,
+              "label": "B",
+              "margin": -18.4375
+            },
+            "analytic": {
+              "correct": true,
+              "label": "B",
+              "margin": -18.40625
+            },
+            "identity": {
+              "correct": false,
+              "label": "A",
+              "margin": 25.109375
+            },
+            "updated": {
+              "correct": true,
+              "label": "B",
+              "margin": -18.40625
+            }
+          },
+          "rendered_text": "When the left signal is off and the right signal is off, I choose the most recent reports.\nWhen the left signal is off and the right signal is on, I choose the most recent reports.\nWhen the left signal is on and the right signal is off, I choose the most recent reports.\nWhen the left signal is on and the right signal is on, I choose the most recent reports.",
+          "soft_mass_at_argmax": 0.9999752044677734,
+          "soft_mass_at_gold": 0.9999752044677734,
+          "source": "For my regular action, I choose the most recent reports.\nFor my alternate action, I choose the earliest reports.\nMy alternate action applies if the left signal shows on.\nEven then, the regular action takes priority if the left signal shows on.",
+          "source_fields": {
+            "all": true,
+            "first_action": true,
+            "role": true,
+            "second_action": true,
+            "trigger": true,
+            "veto": true
+          },
+          "world": 2
+        },
+        {
+          "category": "correct_table_literal_failure",
+          "hard_rendered_action": "the earliest reports",
+          "intended_action": "the earliest reports",
+          "key": [
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0
+          ],
+          "label_order": 0,
+          "literal_question": "Today the left signal is off and the right signal is on. Which action follows my policy?\nA = the most recent reports. B = the earliest reports. Respond with only A or B.",
+          "outcomes": {
+            "D_updated": {
+              "correct": false,
+              "label": "A",
+              "margin": 5.1875
+            },
+            "ED_updated": {
+              "correct": true,
+              "label": "B",
+              "margin": -17.8125
+            },
+            "analytic": {
+              "correct": true,
+              "label": "B",
+              "margin": -17.8125
+            },
+            "identity": {
+              "correct": true,
+              "label": "B",
+              "margin": -17.8125
+            },
+            "updated": {
+              "correct": true,
+              "label": "B",
+              "margin": -17.8125
+            }
+          },
+          "rendered_text": "When the left signal is off and the right signal is off, I choose the earliest reports.\nWhen the left signal is off and the right signal is on, I choose the earliest reports.\nWhen the left signal is on and the right signal is off, I choose the most recent reports.\nWhen the left signal is on and the right signal is on, I choose the most recent reports.",
+          "soft_mass_at_argmax": 0.9998466968536377,
+          "soft_mass_at_gold": 0.9998466968536377,
+          "source": "For my regular action, I choose the most recent reports.\nFor my alternate action, I choose the earliest reports.\nMy alternate action applies if the left signal shows off.\nThere is no override to this policy.",
+          "source_fields": {
+            "all": true,
+            "first_action": true,
+            "role": true,
+            "second_action": true,
+            "trigger": true,
+            "veto": true
+          },
+          "world": 1
+        },
+        {
+          "category": "literal_correct_despite_wrong_rendered_action",
+          "hard_rendered_action": "the most recent reports",
+          "intended_action": "the earliest reports",
+          "key": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "label_order": 1,
+          "literal_question": "Today the left signal is off and the right signal is on. Which action follows my policy?\nA = the earliest reports. B = the most recent reports. Respond with only A or B.",
+          "outcomes": {
+            "D_updated": {
+              "correct": true,
+              "label": "A",
+              "margin": 1.625
+            },
+            "ED_updated": {
+              "correct": false,
+              "label": "B",
+              "margin": -18.40625
+            },
+            "analytic": {
+              "correct": false,
+              "label": "B",
+              "margin": -18.40625
+            },
+            "identity": {
+              "correct": false,
+              "label": "B",
+              "margin": -18.40625
+            },
+            "updated": {
+              "correct": false,
+              "label": "B",
+              "margin": -18.40625
+            }
+          },
+          "rendered_text": "When the left signal is off and the right signal is off, I choose the earliest reports.\nWhen the left signal is off and the right signal is on, I choose the most recent reports.\nWhen the left signal is on and the right signal is off, I choose the earliest reports.\nWhen the left signal is on and the right signal is on, I choose the earliest reports.",
+          "soft_mass_at_argmax": 0.999976634979248,
+          "soft_mass_at_gold": 5.567830498875992e-07,
+          "source": "For my regular action, I choose the earliest reports.\nFor my alternate action, I choose the most recent reports.\nMy alternate action applies if the left signal shows off.\nEven then, the regular action takes priority if the left signal shows off.",
+          "source_fields": {
+            "all": false,
+            "first_action": true,
+            "role": true,
+            "second_action": true,
+            "trigger": true,
+            "veto": false
+          },
+          "world": 1
+        }
+      ],
+      "field_confusions": {
+        "actions": [],
+        "trigger": [],
+        "veto": [
+          {
+            "inferred": 3,
+            "n": 128,
+            "truth": 1
+          }
+        ]
+      },
+      "field_error_partition": [
+        {
+          "literal": {
+            "correct": 7412,
+            "n": 9216
+          },
+          "native": {
+            "correct": 9216,
+            "n": 9216
+          },
+          "native_complete_policies": {
+            "correct": 1152,
+            "n": 1152
+          },
+          "sources": 1152,
+          "strict_complete_tables": {
+            "correct": 1152,
+            "n": 1152
+          },
+          "wrong_fields": []
+        },
+        {
+          "literal": {
+            "correct": 746,
+            "n": 1024
+          },
+          "native": {
+            "correct": 768,
+            "n": 1024
+          },
+          "native_complete_policies": {
+            "correct": 0,
+            "n": 128
+          },
+          "sources": 128,
+          "strict_complete_tables": {
+            "correct": 0,
+            "n": 128
+          },
+          "wrong_fields": [
+            "veto"
+          ]
+        }
+      ],
+      "field_substitutions": {
+        "both": {
+          "by_label_order": [
+            {
+              "correct": 5120,
+              "n": 5120
+            },
+            {
+              "correct": 5120,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1280,
+            "n": 1280
+          },
+          "correct": 10240,
+          "correct_both_orders": {
+            "correct": 5120,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "paired_vs_observed": {
+            "both_correct": 9984,
+            "both_wrong": 0,
+            "gained": 256,
+            "lost": 0,
+            "n": 10240
+          },
+          "strict_argmax_rows": {
+            "correct": 5120,
+            "n": 5120
+          },
+          "ties": 0
+        },
+        "method": "post_result_formal_field_substitution_exact_row_bank_reuse_no_new_forward",
+        "observed": {
+          "by_label_order": [
+            {
+              "correct": 4992,
+              "n": 5120
+            },
+            {
+              "correct": 4992,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1152,
+            "n": 1280
+          },
+          "correct": 9984,
+          "correct_both_orders": {
+            "correct": 4992,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "paired_vs_observed": {
+            "both_correct": 9984,
+            "both_wrong": 256,
+            "gained": 0,
+            "lost": 0,
+            "n": 10240
+          },
+          "strict_argmax_rows": {
+            "correct": 4992,
+            "n": 5120
+          },
+          "ties": 0
+        },
+        "true_trigger": {
+          "by_label_order": [
+            {
+              "correct": 4992,
+              "n": 5120
+            },
+            {
+              "correct": 4992,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1152,
+            "n": 1280
+          },
+          "correct": 9984,
+          "correct_both_orders": {
+            "correct": 4992,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "paired_vs_observed": {
+            "both_correct": 9984,
+            "both_wrong": 256,
+            "gained": 0,
+            "lost": 0,
+            "n": 10240
+          },
+          "strict_argmax_rows": {
+            "correct": 4992,
+            "n": 5120
+          },
+          "ties": 0
+        },
+        "true_veto": {
+          "by_label_order": [
+            {
+              "correct": 5120,
+              "n": 5120
+            },
+            {
+              "correct": 5120,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1280,
+            "n": 1280
+          },
+          "correct": 10240,
+          "correct_both_orders": {
+            "correct": 5120,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "paired_vs_observed": {
+            "both_correct": 9984,
+            "both_wrong": 0,
+            "gained": 256,
+            "lost": 0,
+            "n": 10240
+          },
+          "strict_argmax_rows": {
+            "correct": 5120,
+            "n": 5120
+          },
+          "ties": 0
+        }
+      },
+      "fields": {
+        "all": {
+          "correct": 1152,
+          "n": 1280
+        },
+        "first_action": {
+          "correct": 1280,
+          "n": 1280
+        },
+        "role": {
+          "correct": 1280,
+          "n": 1280
+        },
+        "second_action": {
+          "correct": 1280,
+          "n": 1280
+        },
+        "trigger": {
+          "correct": 1280,
+          "n": 1280
+        },
+        "veto": {
+          "correct": 1152,
+          "n": 1280
+        }
+      },
+      "known_menu_clusters": 8,
+      "literal_on_correct_rendered_rows": {
+        "correct": 8098,
+        "n": 9984
+      },
+      "literal_on_native_correct_hard_wrong": {
+        "correct": 0,
+        "n": 0
+      },
+      "literal_on_wholly_correct_tables": {
+        "correct": 7412,
+        "n": 9216
+      },
+      "literal_valid_fidelity_within_menu": {
+        "correct": 8290,
+        "n": 10240
+      },
+      "logical_decisions": 10240,
+      "native_complete_despite_incorrect_global_table": {
+        "correct": 0,
+        "n": 1280
+      },
+      "native_correct_hard_wrong": {
+        "correct": 0,
+        "n": 256
+      },
+      "native_wrong_hard_correct": {
+        "correct": 0,
+        "n": 9984
+      },
+      "paired_transitions": {
+        "D_updated__ED_updated": {
+          "both_correct": 8098,
+          "both_wrong": 196,
+          "gained": 1886,
+          "lost": 60,
+          "n": 10240
+        },
+        "analytic__updated": {
+          "both_correct": 9984,
+          "both_wrong": 256,
+          "gained": 0,
+          "lost": 0,
+          "n": 10240
+        },
+        "identity__updated": {
+          "both_correct": 8064,
+          "both_wrong": 128,
+          "gained": 1920,
+          "lost": 128,
+          "n": 10240
+        },
+        "updated__D_updated": {
+          "both_correct": 8098,
+          "both_wrong": 196,
+          "gained": 60,
+          "lost": 1886,
+          "n": 10240
+        },
+        "updated__ED_updated": {
+          "both_correct": 9984,
+          "both_wrong": 256,
+          "gained": 0,
+          "lost": 0,
+          "n": 10240
+        }
+      },
+      "panel": "structured",
+      "physical_literal_queries": {
+        "current": 896
+      },
+      "physical_native_queries": 592,
+      "relations": {
+        "ED_AB_max_abs_difference": 1.259765625,
+        "ED_AB_scores_exact": false,
+        "ED_argmax_rows_preserved": {
+          "correct": 5120,
+          "n": 5120
+        },
+        "ED_bit_identical_float_rows": {
+          "correct": 0,
+          "n": 5120
+        },
+        "ED_top_tokens_identical": {
+          "correct": 10240,
+          "n": 10240
+        },
+        "formal_archived_AB_equal_G": true,
+        "formal_archived_dispatch_equal_G": true,
+        "formal_archived_top_equal_G": true,
+        "formal_inferred_interpreter_rows_equal_G": true,
+        "incoming_argmax_assembled_from_inferred_fields": true,
+        "incoming_bit_equals_inferred_trigger_at_reference_world": true,
+        "renderer_matches_global_argmax_tables": {
+          "D_initial": 1280,
+          "D_updated": 1280
+        },
+        "updated_guard_consumed": true
+      },
+      "rendered_action_partition": {
+        "correct_rendered_action": {
+          "ED": {
+            "correct": 9984,
+            "n": 9984
+          },
+          "literal": {
+            "correct": 8098,
+            "n": 9984
+          },
+          "literal_faithful_to_rendered_action": {
+            "correct": 8098,
+            "n": 9984
+          },
+          "native": {
+            "correct": 9984,
+            "n": 9984
+          },
+          "rows": 4992
+        },
+        "rendered_action_outside_menu": {
+          "ED": {
+            "correct": 0,
+            "n": 0
+          },
+          "literal": {
+            "correct": 0,
+            "n": 0
+          },
+          "literal_faithful_to_rendered_action": null,
+          "native": {
+            "correct": 0,
+            "n": 0
+          },
+          "rows": 0
+        },
+        "wrong_rendered_action_in_menu": {
+          "ED": {
+            "correct": 0,
+            "n": 256
+          },
+          "literal": {
+            "correct": 60,
+            "n": 256
+          },
+          "literal_faithful_to_rendered_action": {
+            "correct": 192,
+            "n": 256
+          },
+          "native": {
+            "correct": 0,
+            "n": 256
+          },
+          "rows": 128
+        }
+      },
+      "routes": {
+        "D_initial": {
+          "by_label_order": [
+            {
+              "correct": 3248,
+              "n": 5120
+            },
+            {
+              "correct": 3336,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 96,
+            "n": 1280
+          },
+          "correct": 6584,
+          "correct_both_orders": {
+            "correct": 2344,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 120
+        },
+        "D_updated": {
+          "by_label_order": [
+            {
+              "correct": 4022,
+              "n": 5120
+            },
+            {
+              "correct": 4136,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 290,
+            "n": 1280
+          },
+          "correct": 8158,
+          "correct_both_orders": {
+            "correct": 3336,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 74
+        },
+        "ED_initial": {
+          "by_label_order": [
+            {
+              "correct": 4096,
+              "n": 5120
+            },
+            {
+              "correct": 4096,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 512,
+            "n": 1280
+          },
+          "correct": 8192,
+          "correct_both_orders": {
+            "correct": 4096,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 0
+        },
+        "ED_updated": {
+          "by_label_order": [
+            {
+              "correct": 4992,
+              "n": 5120
+            },
+            {
+              "correct": 4992,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1152,
+            "n": 1280
+          },
+          "correct": 9984,
+          "correct_both_orders": {
+            "correct": 4992,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 0
+        },
+        "analytic": {
+          "by_label_order": [
+            {
+              "correct": 4992,
+              "n": 5120
+            },
+            {
+              "correct": 4992,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1152,
+            "n": 1280
+          },
+          "correct": 9984,
+          "correct_both_orders": {
+            "correct": 4992,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 0
+        },
+        "identity": {
+          "by_label_order": [
+            {
+              "correct": 4096,
+              "n": 5120
+            },
+            {
+              "correct": 4096,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 512,
+            "n": 1280
+          },
+          "correct": 8192,
+          "correct_both_orders": {
+            "correct": 4096,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 0
+        },
+        "source_prefix": {
+          "by_label_order": [
+            {
+              "correct": 4992,
+              "n": 5120
+            },
+            {
+              "correct": 4992,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1152,
+            "n": 1280
+          },
+          "correct": 9984,
+          "correct_both_orders": {
+            "correct": 4992,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 0
+        },
+        "updated": {
+          "by_label_order": [
+            {
+              "correct": 4992,
+              "n": 5120
+            },
+            {
+              "correct": 4992,
+              "n": 5120
+            }
+          ],
+          "complete_policies": {
+            "correct": 1152,
+            "n": 1280
+          },
+          "correct": 9984,
+          "correct_both_orders": {
+            "correct": 4992,
+            "n": 5120
+          },
+          "n": 10240,
+          "nonfinite": 0,
+          "outside_AB": 0,
+          "ties": 0
+        }
+      },
+      "sources": 1280,
+      "stability": {
+        "change_required": {
+          "G_complete": {
+            "correct": 672,
+            "n": 768
+          },
+          "G_newly_complete": {
+            "correct": 672,
+            "n": 768
+          },
+          "initial_complete": {
+            "correct": 0,
+            "n": 768
+          },
+          "paired": {
+            "both_correct": 4032,
+            "both_wrong": 128,
+            "gained": 1920,
+            "lost": 64,
+            "n": 6144
+          },
+          "sources": 768,
+          "strict_G_complete": {
+            "correct": 672,
+            "n": 768
+          },
+          "unchanged_float_tables": {
+            "correct": 32,
+            "n": 768
+          }
+        },
+        "stable": {
+          "G_complete": {
+            "correct": 480,
+            "n": 512
+          },
+          "G_newly_complete": {
+            "correct": 0,
+            "n": 512
+          },
+          "initial_complete": {
+            "correct": 512,
+            "n": 512
+          },
+          "paired": {
+            "both_correct": 4032,
+            "both_wrong": 0,
+            "gained": 0,
+            "lost": 64,
+            "n": 4096
+          },
+          "sources": 512,
+          "strict_G_complete": {
+            "correct": 480,
+            "n": 512
+          },
+          "unchanged_float_tables": {
+            "correct": 480,
+            "n": 512
+          }
+        }
+      },
+      "strict_argmax_rows": {
+        "correct": 4992,
+        "n": 5120
+      },
+      "strict_complete_tables": {
+        "correct": 1152,
+        "n": 1280
+      }
+    }
+  },
+  "qualification_opened": false,
+  "schema": "supported_g_stage_structured_audit_v1",
+  "status": "POST_RESULT_DEVELOPMENT_DIAGNOSTIC_NOT_QUALIFIED",
+  "training_updates": 0
+}

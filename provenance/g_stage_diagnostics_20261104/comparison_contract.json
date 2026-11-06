@@ -1,0 +1,172 @@
+{
+  "base_commit": "ba20b3125ac498ef1f2fa21730eef3557e3dd953",
+  "comparisons_requiring_care": [
+    "Structured and raw share 128 authored primary sources and 1024 semantic query cells, not one physical evaluation.",
+    "Structured native vs literal differs in prompt, adapter and external world addressing.",
+    "The fresh panel reuses integer style IDs but changes both source wording and literal question.",
+    "D(G) is the emitted description. Literal answers and E(D(G)) are parallel readout branches, not a serial A/B chain."
+  ],
+  "exact_within_interface_comparisons": [
+    "structured identity / formal interpreter / learned G with fixed native row reader",
+    "native identity / four native G operations / independently encoded target with fixed native recipient",
+    "fresh parent vs calibrated literal reader: identical emitted text and question; reader is the intervention"
+  ],
+  "hash_schemes": {
+    "digest_json_sha256": "SHA256(canonical UTF-8 JSON value), matching selffold.records.digest",
+    "native_prompt_token_digest": "archived digest of token IDs, not a text hash",
+    "text_utf8_sha256": "SHA256(UTF-8 text bytes); not interchangeable with digest_json_sha256"
+  },
+  "interfaces": {
+    "raw_literal": {
+      "host": {
+        "cache_policy": "none",
+        "chat_template_sha256": "a4722367e313c94c5637c041b6e6139a3a5acaeeb3eeb2e5066c27084b927ce9",
+        "checkpoint_sha256": "f3503907cc4d2ace62abccf30393a05919827c1c8969b2f2755f15627b9756ad",
+        "cut": 13,
+        "depth": 26,
+        "dtype": "torch.bfloat16",
+        "eos_ids": [
+          1,
+          107
+        ],
+        "generation_policy": "until_eos_or_context",
+        "max_context": 1024,
+        "max_new_tokens": null,
+        "model_type": "gemma2",
+        "placeholder_id": 235265,
+        "profile": "gemma2b",
+        "route": "pre_cut_slots_to_post_writer_v0",
+        "slots": 8,
+        "torch_version": "2.13.0+cu132",
+        "transformers_version": "4.57.1",
+        "transport_sha256": "identity_unqualified",
+        "width": 2304,
+        "writer": 25
+      },
+      "input": "free generated D(E) or D(G) text",
+      "question": "world-dependent policy question",
+      "reader": "c3b57dd3b5370c34eb2c880c7943b0b8ce57e4a72aea93d3c00bd9769bc3bef2"
+    },
+    "raw_native": {
+      "encoder": "joint description into eight question-free cut-13 workspace rows",
+      "host": {
+        "cache_policy": "none",
+        "chat_template_sha256": "a4722367e313c94c5637c041b6e6139a3a5acaeeb3eeb2e5066c27084b927ce9",
+        "checkpoint_sha256": "f3503907cc4d2ace62abccf30393a05919827c1c8969b2f2755f15627b9756ad",
+        "cut": 13,
+        "depth": 26,
+        "dtype": "torch.bfloat16",
+        "eos_ids": [
+          1,
+          107
+        ],
+        "generation_policy": "until_eos_or_context",
+        "max_context": 1024,
+        "max_new_tokens": null,
+        "model_type": "gemma2",
+        "placeholder_id": 235265,
+        "profile": "gemma2b",
+        "route": "pre_cut_slots_to_post_writer_v0",
+        "slots": 8,
+        "torch_version": "2.13.0+cu132",
+        "transformers_version": "4.57.1",
+        "transport_sha256": "identity_unqualified",
+        "width": 2304,
+        "writer": 25
+      },
+      "input": "entire eight-slot state at cut 13",
+      "question": "world-dependent policy question",
+      "reader": "c3b57dd3b5370c34eb2c880c7943b0b8ce57e4a72aea93d3c00bd9769bc3bef2"
+    },
+    "structured_literal": {
+      "host": {
+        "cache_policy": "none",
+        "chat_template_sha256": "a4722367e313c94c5637c041b6e6139a3a5acaeeb3eeb2e5066c27084b927ce9",
+        "checkpoint_sha256": "f3503907cc4d2ace62abccf30393a05919827c1c8969b2f2755f15627b9756ad",
+        "cut": 13,
+        "depth": 26,
+        "dtype": "torch.bfloat16",
+        "eos_ids": [
+          1,
+          107
+        ],
+        "generation_policy": "until_eos_or_context",
+        "max_context": 1024,
+        "max_new_tokens": null,
+        "model_type": "gemma2",
+        "placeholder_id": 235265,
+        "profile": "gemma2b",
+        "route": "pre_cut_slots_to_post_writer_v0",
+        "slots": 8,
+        "torch_version": "2.13.0+cu132",
+        "transformers_version": "4.57.1",
+        "transport_sha256": "identity_unqualified",
+        "width": 2304,
+        "writer": 25
+      },
+      "input": "entire fixed-vocabulary four-row rendered text",
+      "question": "world-dependent policy question",
+      "reader": "fa1258b01b165959c346e9f409d0cad43543e1d48bd0c48a9b8917cb08c0ec59"
+    },
+    "structured_native": {
+      "encoder": "four separately encoded source fields",
+      "host": {
+        "cache_policy": "none",
+        "chat_template_sha256": "a4722367e313c94c5637c041b6e6139a3a5acaeeb3eeb2e5066c27084b927ce9",
+        "checkpoint_sha256": "f3503907cc4d2ace62abccf30393a05919827c1c8969b2f2755f15627b9756ad",
+        "cut": 13,
+        "depth": 26,
+        "dtype": "torch.bfloat16",
+        "eos_ids": [
+          1,
+          107
+        ],
+        "generation_policy": "until_eos_or_context",
+        "max_context": 1024,
+        "max_new_tokens": null,
+        "model_type": "gemma2",
+        "placeholder_id": 235265,
+        "profile": "gemma2b",
+        "route": "pre_cut_slots_to_post_writer_v0",
+        "slots": 8,
+        "torch_version": "2.13.0+cu132",
+        "transformers_version": "4.57.1",
+        "transport_sha256": "identity_unqualified",
+        "width": 2304,
+        "writer": 25
+      },
+      "input": "world selected externally; continuous 16-action row through embedding bank",
+      "question": "Which option names my stored action?",
+      "reader": "427e138c8693e60ebf28074836a8452dc6c7da93e9bab1c876c03b33dc0b8909"
+    }
+  },
+  "missing_policy": "Use explicit unavailable status; never assign absent measurements zero correctness.",
+  "qualification_status": "NOT_QUALIFIED",
+  "schema": "g_stage_comparison_contract_v1",
+  "scoring": "full-vocabulary winner must equal gold A/B; finite nonzero A-B margin required",
+  "semantic_key": [
+    "source_wording_panel",
+    "topic",
+    "trigger",
+    "veto",
+    "pole",
+    "style",
+    "source_order",
+    "world",
+    "answer_order"
+  ],
+  "status": "POST_RESULT_DEVELOPMENT_REANALYSIS",
+  "targets": {
+    "outside_menu": "TARGET_OUTSIDE_OPTIONS: binary task accuracy cannot measure literal fidelity",
+    "rendered_text_fidelity": "the action actually named in the emitted world row",
+    "task_correctness": "the original policy's independent four-world Boolean ledger"
+  },
+  "unavailable": [
+    "formal interpreter from native inferred premises (no such premise decoder was archived)",
+    "native free D and ED for 112 policies outside the prespecified 16-policy subset",
+    "native E/post-writer/pre-transport/post-transport/injected activation arrays",
+    "identical physical question/reader six-route comparison",
+    "structured same-reader soft-row vs one-hot global-argmax intervention"
+  ],
+  "uncertainty": "Descriptive finite-archive counts; styles, worlds and orders are repeated observations within eight known menus (four in raw)."
+}
