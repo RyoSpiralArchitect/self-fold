@@ -14,7 +14,11 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from .lm_writer import DECODER_VERSION, STYLES, decode_bit, mentions_offoff, prompt_for
+from .lm_writer import DECODER_VERSION, STYLES, decode_bit, decode_state, mentions_offoff, prompt_for
+
+
+def _decode(style, text, options, pole):
+    return decode_state(text, options, pole) if style.startswith("state_") else decode_bit(text, options, pole)
 
 
 def fingerprint(value):
@@ -125,7 +129,7 @@ def build_report_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, b
             for row in records:
                 i, m = row['source'], row['mask']
                 options = groups[keys[i][0]]['options']
-                bit, miss = decode_bit(row['text'], options, int(poles[i]))
+                bit, miss = _decode(style, row['text'], options, int(poles[i]))
                 bits[style][i, m] = bit
                 missing[style][i, m] = miss
                 offoff[style][i, m] = mentions_offoff(row['text'])

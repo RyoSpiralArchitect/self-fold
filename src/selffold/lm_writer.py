@@ -13,7 +13,8 @@ from __future__ import annotations
 from numbers import Integral
 import re
 
-STYLES = ("directed", "natural", "guided")
+STYLES = ("directed", "natural", "guided",
+          "state_directed", "state_natural", "state_guided", "state_prior_natural")
 DECODER_VERSION = "distinctive_tokens_v3"
 
 
@@ -53,8 +54,33 @@ def prompt_for(style, options, pole, mask):
             "assignment changed and its new action, in the form "
             "'world -> action'. If nothing changed for a world, omit it."
         )
-    return text + (
-        "Task: write one short log sentence describing what this instruction "
+    if style == "natural":
+        return text + (
+            "Task: write one short log sentence describing what this instruction "
+            "changed."
+        )
+    # S-WRITE: the writer also sees the realized post-update table, and for the
+    # prior arm the pre-change table (referent for "what changed").
+    table = f"The table now reads: {assignments}."
+    prior = "The table previously read: " + "; ".join(
+        f"{w} -> {a}" for w, a in zip(world, assignment_words(options, pole, 0))) + "."
+    if style == "state_directed":
+        return text + table + (
+            "\nQuestion: which action did this instruction assign to the "
+            "off/off row? Answer with the action name only."
+        )
+    if style == "state_guided":
+        return text + table + (
+            "\nTask: write one short log entry naming each world whose "
+            "assignment changed and its new action, in the form "
+            "'world -> action'. If nothing changed for a world, omit it."
+        )
+    if style == "state_prior_natural":
+        return text + prior + "\n" + table + (
+            "\nTask: write one short log sentence describing what changed."
+        )
+    return text + table + (
+        "\nTask: write one short log sentence describing what this instruction "
         "changed."
     )
 
@@ -93,6 +119,24 @@ def decode_bit(text, options, pole):
     if s0 == 0 and s1 == 0:
         return 0, 1
     return (1 if (s1, -i1) > (s0, -i0) else 0), 0
+
+
+def decode_state(text, options, pole, window=120):
+    """Off/off-anchored decode for S-WRITE reports.
+
+    When the report names the off/off coordinate, only member mentions inside
+    `window` characters of that mention decide the bit. Otherwise falls back to
+    the global first-scoring mention (row-unanchored, flagged by offoff_rate).
+    """
+    _validate_options(options, pole)
+    hit = re.search(r"\boff\s*[/\-]\s*off\b", text, re.IGNORECASE)
+    if hit is not None:
+        lo, hi = max(0, hit.start() - window), hit.end() + window
+        scoped = text[lo:hi]
+        bit, missing = decode_bit(scoped, options, pole)
+        if not missing:
+            return bit, missing
+    return decode_bit(text, options, pole)
 
 
 def mentions_offoff(text):

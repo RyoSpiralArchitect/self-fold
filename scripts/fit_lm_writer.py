@@ -7,6 +7,7 @@ use bound complete caches and decoder v3; archived write/write2 remain unchanged
 """
 
 import hashlib
+import os
 import json
 from pathlib import Path
 
@@ -28,7 +29,7 @@ from selffold.role_trials import donor_indices
 from selffold.state_only import ClauseReader
 
 DIR = ROOT / "provenance/message_boundary_20261106"
-DATA = ROOT / "data/lm_writer_20261106.json"
+DATA = ROOT / os.environ.get("LM_WRITER_CFG", "data/lm_writer_20261106.json")
 OLD = ROOT / "data/state_only_20261104.json"
 ACTIONS = ROOT / "data/within_topic_wording_20261103.json"
 
