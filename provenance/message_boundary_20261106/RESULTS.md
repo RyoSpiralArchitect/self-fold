@@ -94,6 +94,34 @@ The archived `offoff_rate` averaged all 16 allocated mask columns although only 
 
 **Evidence boundary.** Historical raw reports and summaries remain intact. `trajectories.npz` is not published with these runs, and the old cache had no prompt/checkpoint binding. Full numerical replay of the historical reports has not been completed in this review. In particular, their twin counts and nonlearned `written_matches_offoff_bit` values must be regenerated or reinterpreted with the repaired reducer before citation. [Detailed review and commands](PR32_REVIEW.md).
 
+## S-WRITE (`write3/`): realized-table prompts, row-anchored decode
+
+Executed on furnace after PR #33's design. The writer sees the same ideal
+assignments **plus** the rendered post-update table; the prior arm also sees
+the pre-change (all-default) table. Decode is `distinctive_tokens_v3` anchored
+to the off/off mention when present. Controllers still fit per channel; the
+table shown is the ideal post-update render, not the controller's own output.
+
+| channel | all-four (3 seeds) | twins intact (repaired axes) |
+| --- | ---: | ---: |
+| supplied convention / learned bit | 100% | 1.000 |
+| state_directed | 100% | 1.000 |
+| state_guided | 87.3% | 0.866 |
+| state_natural | 33.8% | 0.438 |
+| state_prior_natural | 12.5% | 0.000 |
+| no message | 12.5% | 0.000 |
+
+Report statistics: missing 0.0% / 3.3% / 5.4% / 33.7% and off/off mention
+rate 0.0% / 78.8% / 7.7% / 12.5% for directed/guided/natural/prior_natural.
+
+Preregistered verdicts (`docs/STATE_WRITER_PLAN.md`): **P1 supported** —
+directed text over the realized-table prompt supports the ceiling in this
+bank. **P2 rejected** — showing the table lowered natural from 53.8% to 33.8%.
+**P3 rejected** — the prior referent collapsed the channel to the no-message
+floor. Within this prompt family, more shown state did not help the
+spontaneous writer; it shifted reports toward unanchored description. These
+are end-to-end rates at this interface, not bounds on the writer's capacity.
+
 ## Reproduce
 
 ```bash
