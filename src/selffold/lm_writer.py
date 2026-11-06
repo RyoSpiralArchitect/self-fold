@@ -9,7 +9,7 @@ model spontaneously writes the self-referential coordinate.
 
 from __future__ import annotations
 
-STYLES = ("directed", "natural")
+STYLES = ("directed", "natural", "guided")
 
 
 def assignment_words(options, pole, mask):
@@ -30,6 +30,12 @@ def prompt_for(style, options, pole, mask):
             "Question: which action did this instruction assign to the "
             "off/off row? Answer with the action name only."
         )
+    if style == "guided":
+        return text + (
+            "Task: write one short log entry naming each world whose "
+            "assignment changed and its new action, in the form "
+            "'world -> action'. If nothing changed for a world, omit it."
+        )
     return text + (
         "Task: write one short log sentence describing what this instruction "
         "changed."
@@ -43,26 +49,31 @@ def _distinctive(option, other):
     return mine - theirs
 
 
+def _score(text, option, other):
+    """Distinctive-token hits for `option` (exact phrase counts fully)."""
+    if option in text:
+        return 1 << 20, text.find(option)
+    low = text.lower()
+    hits = [t for t in _distinctive(option, other) if t in low]
+    if not hits:
+        return 0, 1 << 30
+    return len(hits), min(low.find(t) for t in hits)
+
+
 def decode_bit(text, options, pole):
     """Extract the role bit from a self-report.
 
-    bit=1 iff the report names member1's action. A member counts as named when
-    the text contains all of its words that distinguish it from its partner
-    (exact phrase or close paraphrase), so semantic restatements count.
-    Returns (bit, missing): missing=1 when neither member is identifiable.
+    Each member is scored by distinctive-keyword hits; the higher score wins,
+    first-position breaking ties. Single-word answers ("summarize") count via
+    their distinctive verb. Returns (bit, missing); missing only when neither
+    member scores at all.
     """
     w0, w1 = options[pole], options[1 - pole]
-    d0, d1 = _distinctive(w0, w1), _distinctive(w1, w0)
-    low = text.lower()
-    h0 = w0 in text or (d0 and all(t in low for t in d0))
-    h1 = w1 in text or (d1 and all(t in low for t in d1))
-    if not (h0 or h1):
+    s0, i0 = _score(text, w0, w1)
+    s1, i1 = _score(text, w1, w0)
+    if s0 == 0 and s1 == 0:
         return 0, 1
-    if h0 and h1:
-        i0 = low.find(next(t for t in d0 if t in low))
-        i1 = low.find(next(t for t in d1 if t in low))
-        return (1 if i1 < i0 else 0), 0
-    return (1 if h1 else 0), 0
+    return (1 if (s1, -i1) > (s0, -i0) else 0), 0
 
 
 def mentions_offoff(text):

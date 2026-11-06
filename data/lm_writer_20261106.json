@@ -4,6 +4,7 @@
   "arms": [
     {"form": "hard", "channel": "lm_directed", "width": 1, "beta": 1.0},
     {"form": "hard", "channel": "lm_natural", "width": 1, "beta": 1.0},
+    {"form": "hard", "channel": "lm_guided", "width": 1, "beta": 1.0},
     {"form": "hard", "channel": "supplied", "width": 1, "beta": 1.0},
     {"form": "hard", "channel": "reward", "width": 1, "beta": 1.0},
     {"form": "hard", "channel": "none", "width": 1, "beta": 1.0}

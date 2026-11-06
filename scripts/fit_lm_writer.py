@@ -18,7 +18,7 @@ from fit_conditional_curriculum import main
 from fit_role_memory import bank
 from role_memory_native import PARENT, READER, score_rows
 from selffold.cli import ROOT, make_host
-from selffold.lm_writer import decode_bit, mentions_offoff, prompt_for
+from selffold.lm_writer import STYLES, decode_bit, mentions_offoff, prompt_for
 from fit_mixture_boundary import members_for
 from selffold.mixture_boundary import (
     BoundaryMemory, rollout_w, train_batch, twins_w,
@@ -60,7 +60,7 @@ def build_lm_matrix(host, cfg, all_keys, all_poles, groups, store):
     """
     masks = cfg["fit_masks"] + cfg["test_masks"]
     n = len(all_keys)
-    bits = {s: torch.zeros(n, 16, dtype=torch.long) for s in ("directed", "natural")}
+    bits = {s: torch.zeros(n, 16, dtype=torch.long) for s in STYLES}
     miss = {s: np.zeros((n, 16)) for s in bits}
     offoff = {s: np.zeros((n, 16)) for s in bits}
     for style in bits:
