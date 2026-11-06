@@ -1,9 +1,9 @@
-"""W-RITE experiment: does the model's own verbalization write the role bit?
+"""W-RITE supplied-assignment report channel, not autonomous state verbalization.
 
-See docs/SELF_REFERENCE_READING.md. A frozen Gemma writer emits self-reports
-per (source, mask, style); a fixed decoder extracts the off/off bit; the bit
-enters the channel as `lm`. Arms test directed (ceiling-ish) vs natural
-(spontaneous self-reference) reports against supplied/none/reward controls.
+The LM sees ideal assignments rendered from source options/polarity and a mask.
+A source-aware lexical decoder maps its report to a bit. Each channel trains its
+own controller; differences are not a fixed-G L/B causal comparison. New runs
+use bound complete caches and decoder v3; archived write/write2 remain unchanged.
 """
 
 import hashlib
@@ -18,17 +18,16 @@ from fit_conditional_curriculum import main
 from fit_role_memory import bank
 from role_memory_native import PARENT, READER, score_rows
 from selffold.cli import ROOT, make_host
-from selffold.lm_writer import STYLES, decode_bit, mentions_offoff, prompt_for
+from selffold.lm_writer_reports import build_report_matrix, save_report_matrices
 from fit_mixture_boundary import members_for
 from selffold.mixture_boundary import (
     BoundaryMemory, rollout_w, train_batch, twins_w,
 )
-from selffold.records import RunStore, code_manifest, digest, file_sha
+from selffold.records import RunStore, code_manifest, file_sha
 from selffold.role_trials import donor_indices
 from selffold.state_only import ClauseReader
 
 DIR = ROOT / "provenance/message_boundary_20261106"
-OUT_TAG = "write"
 DATA = ROOT / "data/lm_writer_20261106.json"
 OLD = ROOT / "data/state_only_20261104.json"
 ACTIONS = ROOT / "data/within_topic_wording_20261103.json"
@@ -49,54 +48,19 @@ def make_reward(case_ix, keys, labels, top):
     return reward
 
 
-CACHE = Path.home() / "work/self-fold/local/lm_reports_v2"
+CACHE = ROOT / "local/lm_reports_v3"
 
 
-def build_lm_matrix(host, cfg, all_keys, all_poles, groups, store):
-    """Generate and decode self-reports; returns (bits, missing, offoff).
-
-    Raw texts are cached outside the evidence tree under local/ (ignored);
-    reruns with the same writer checkpoint reuse them.
-    """
-    masks = cfg["fit_masks"] + cfg["test_masks"]
-    n = len(all_keys)
-    bits = {s: torch.zeros(n, 16, dtype=torch.long) for s in STYLES}
-    miss = {s: np.zeros((n, 16)) for s in bits}
-    offoff = {s: np.zeros((n, 16)) for s in bits}
-    for style in bits:
-        cache = CACHE / f"{style}.jsonl"
-        if cache.exists():
-            rows_ = [json.loads(x) for x in cache.read_text().splitlines()]
-            for r in rows_:
-                options = groups[all_keys[r["source"]][0]]["options"]
-                b, missing = decode_bit(r["text"], options, all_poles[r["source"]])
-                bits[style][r["source"], r["mask"]] = b
-                miss[style][r["source"], r["mask"]] = missing
-                offoff[style][r["source"], r["mask"]] = mentions_offoff(r["text"])
-            (store.path / f"reports_{style}.jsonl").write_text(cache.read_text())
-            continue
-        cache.parent.mkdir(parents=True, exist_ok=True)
-        log = store.path / f"reports_{style}.jsonl"
-        with log.open("w") as fh, cache.open("w") as cf:
-            for i in range(n):
-                topic, pole = all_keys[i][0], all_poles[i]
-                options = groups[topic]["options"]
-                for m in masks:
-                    out = host.generate(prompt_for(style, options, pole, m))
-                    b, missing = decode_bit(out.text, options, pole)
-                    bits[style][i, m] = b
-                    miss[style][i, m] = missing
-                    offoff[style][i, m] = mentions_offoff(out.text)
-                    line = json.dumps(dict(
-                        source=i, mask=m, style=style, text=out.text,
-                        bit=b, missing=missing)) + "\n"
-                    fh.write(line)
-                    cf.write(line)
-    return bits, miss, offoff
+def build_lm_matrix(host, cfg, all_keys, all_poles, groups, store, binding):
+    return build_report_matrix(host, cfg, all_keys, all_poles, groups,
+                               store.path, CACHE, binding)
 
 
 def run(args, store):
     cfg, design, actions = [json.loads(p.read_text()) for p in (DATA, OLD, ACTIONS)]
+    for arm in cfg["arms"]:
+        if arm["form"] != "hard" or arm["width"] != 1 or arm["beta"] != 1.0:
+            raise ValueError("W-RITE currently requires hard, width=1, beta=1 arms")
     seal = code_manifest(ROOT)
     if (seal["git_status"] or not seal["git_commit"]
             or file_sha(PARENT / "compiler.npz") != cfg["source_compiler_sha256"]
@@ -115,7 +79,13 @@ def run(args, store):
     host.wall_seconds = 21_600
     host.max_new_tokens = 48
     before = parameter_sha(host.model)
-    store.write("host.json", host.identity)
+    # make_host captured its identity before the local 48-token cap was set.
+    writer_identity = dict(host.identity, max_new_tokens=host.max_new_tokens,
+                           max_context=host.max_context, generation_policy="capped")
+    store.write("host.json", writer_identity)
+    writer_binding = dict(host=writer_identity, backbone_sha256=before,
+                          source_sha256=seal["source_sha256"],
+                          source_commit=seal["git_commit"])
     menus = [g["options"] for g in actions["groups"]]
     compiler = ClauseReader(host.width * 2, 16).requires_grad_(False)
     with np.load(PARENT / "compiler.npz", allow_pickle=False) as f:
@@ -124,24 +94,22 @@ def run(args, store):
     keys, hashes, rows = bank(host, compiler, design, actions["groups"], cfg, "primary")
     all_keys = fit_keys + keys
     all_poles = np.array([k[3] for k in all_keys])
-    n_all = len(all_keys)
+    n_all, n_fit = len(all_keys), len(fit_keys)
+    if n_fit != len(fitrows) or not n_fit or not keys:
+        raise ValueError("Source-bank keys and rows disagree")
     members_all = torch.cat([members_for("hard", fitrows, 1.0),
                              members_for("hard", rows, 1.0)])
     bits, miss, offoff = build_lm_matrix(
-        host, cfg, all_keys, all_poles, actions["groups"], store)
-    np.savez_compressed(store.path / "lm_matrix.npz",
-                        directed=bits["directed"], natural=bits["natural"])
-    store.write("lm_matrix.json", dict(
-        missing={s: {m: float(miss[s][:, m].mean()) for m in cfg["fit_masks"] + cfg["test_masks"]} for s in miss},
-        offoff_rate={s: float(offoff[s].mean()) for s in offoff}))
+        host, cfg, all_keys, all_poles, actions["groups"], store, writer_binding)
+    save_report_matrices(store.path, cfg["fit_masks"] + cfg["test_masks"],
+                         bits, miss, offoff)
     store.write("fit_keys.json", dict(keys=fit_keys, source_sha256=fit_hashes))
     store.write("test_keys.json", dict(keys=keys, source_sha256=hashes))
     # Hard members only: realized rows are the pure member actions.
     native = RunStore(store.path / "fit_native_hard")
-    fit_top, labels = score_rows(host, menus, members_all[:144], [k[0] for k in fit_keys], native)
+    fit_top, labels = score_rows(host, menus, members_all[:n_fit], [k[0] for k in fit_keys], native)
     nv = RunStore(store.path / "test_native_hard")
-    test_top, _ = score_rows(host, menus, members_all[144:], [k[0] for k in keys], nv)
-    w_values = [0.0, 1.0]
+    test_top, _ = score_rows(host, menus, members_all[n_fit:], [k[0] for k in keys], nv)
     eval_masks = cfg["fit_masks"] + cfg["test_masks"]
     donors = donor_indices(keys)
     np.savez_compressed(store.path / "join.npz", donors=donors,
@@ -158,7 +126,7 @@ def run(args, store):
             style = arm["channel"][3:] if channel == "lm" else None
             sched = hashlib.sha256()
             for step_i in range(cfg["updates"]):
-                ix = torch.randint(144, (cfg["batch"],), generator=rng)
+                ix = torch.randint(n_fit, (cfg["batch"],), generator=rng)
                 pattern = masks_t[torch.randint(len(masks_t), (len(ix), 2), generator=rng)]
                 noise = torch.rand(len(ix), 2, 2 + arm["width"], generator=rng)
                 for v in (ix, pattern, noise):
@@ -184,7 +152,7 @@ def run(args, store):
     np.savez_compressed(store.path / "fits.npz", **params)
     store.write("fit_closed.json", dict(fits=fits, weights=file_sha(store.path / "fits.npz")))
     output = {}
-    test_idx = torch.arange(144, n_all)
+    test_idx = torch.arange(n_fit, n_all)
     with np.load(store.path / "fits.npz", allow_pickle=False) as f:
         for fit in fits:
             seed, name = fit["seed"], fit["arm"]
@@ -195,11 +163,11 @@ def run(args, store):
             prefix = f"{name}_{seed}_"
             actor.load_state_dict({k: torch.from_numpy(f[prefix + k]) for k in actor.state_dict()})
             lm_matrix = bits[style][test_idx] if channel == "lm" else None
-            rolled = rollout_w(actor, arm["form"], channel, members_all[144:],
+            rolled = rollout_w(actor, arm["form"], channel, members_all[n_fit:],
                                keys, eval_masks, 1.0, lm_matrix=lm_matrix)
             output.setdefault("eval_paths", rolled.pop("paths"))
             rolled["twins"] = twins_w(actor, arm["form"], channel,
-                                      members_all[144:], eval_masks, 1.0,
+                                      members_all[n_fit:], eval_masks, 1.0,
                                       lm_matrix=lm_matrix)
             output.update({prefix + k: v for k, v in rolled.items()})
     np.savez_compressed(store.path / "trajectories.npz", **output)
@@ -207,11 +175,14 @@ def run(args, store):
     (store.path / "test_variants_hard_b100").mkdir(exist_ok=True)
     np.savez_compressed(store.path / "test_variants_hard_b100" / "variants.npz",
                         w=np.asarray([0.0, 1.0], np.float32), top=test_top)
-    store.write("rollout_closed.json", dict(paths=file_sha(store.path / "trajectories.npz")))
+    store.write("rollout_closed.json", dict(
+        schema="lm_writer_rollout_v2", paths=file_sha(store.path / "trajectories.npz"),
+        written_semantics="carried_message_bits_v2",
+        twins_axes=["source", "prior", "current", "history", "erasure", "world"]))
     if parameter_sha(host.model) != before or any(
             p.grad is not None for p in host.model.parameters()):
         raise ValueError("Backbone mutated")
-    return dict(status="LM_WRITER_CLOSED", fit_sources=144, eval_sources=len(rows),
+    return dict(status="LM_WRITER_CLOSED", fit_sources=n_fit, eval_sources=len(rows),
                 arms=[arm_name(a) for a in cfg["arms"]], backbone=before,
                 qualification_loaded=False, compute=host.meter.snapshot())
 
