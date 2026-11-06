@@ -49,7 +49,7 @@ def summarize(run):
     with np.load(run / "join.npz") as f:
         donors = f["donors"]
         eval_masks = f["eval_masks"].tolist()
-    labels = np.array(read(run / "fit_native_soft" / "native.json")["labels"])
+    labels = np.array(read(next(run.glob("fit_native_*/native.json")))["labels"])
     variants = {}
     for npz in run.glob("test_variants_*_b*/variants.npz"):
         tag = npz.parent.name  # test_variants_{form}_b{beta*100}

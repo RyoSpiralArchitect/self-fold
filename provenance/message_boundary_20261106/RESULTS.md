@@ -60,6 +60,29 @@ The mixture sweep ran on furnace (`mixture/`): member rows blended β·own + (1�
 
 Updated conclusion: there is no regime at this interface where the soft state beats its verbalization. Either the needed residue is symbolic (carried by a learned bit), or the residual written into weights is unreadable by the fitted readers. Self-verbalization loss, if it exists, lives upstream in what generates the state — not in this memory channel.
 
+## W-RITE: the frozen LM writer carries the bit, imperfectly (`write/`)
+
+Replacing the learned writer with frozen Gemma self-reports (directed vs natural styles, decoded by member-distinguishing keywords): **the model's own verbalization does write the role bit — lossily.**
+
+| channel | all-four (3 seeds) |
+|---|---|
+| learned bit (ceiling) | 100% |
+| supplied convention | 100% |
+| **directed self-report** | **92.2%** |
+| **natural self-report** | **53.4%** |
+| no message (floor) | 12.5% |
+
+Decode audit: 13.6% of directed and 15.4% of natural reports name no member (decoder misses paraphrases like "updated to the most recent ones" were partially recovered by keyword matching); only 4.9% of natural reports spontaneously mention "off/off" — self-reference *to the violating coordinate* is rare even when the role content is conveyed. So: D writes the bit often enough to beat the floor by ~4-8x, but not reliably enough to match a one-bit symbol. This is the first quantified self-verbalization loss at this interface: **natural text ~53%, directed text ~92%, symbol 100%.**
+
+### Missing-bit structure (offline decode audit over all 5,824 reports)
+
+The two failure modes are different in kind:
+
+- **directed — pure silence, zero confusion.** Reports either name exactly one member (86.4%, always the correct one) or answer with a bare action verb ("summarize", "preserve") that names no member (13.6%). No wrong bits exist. Loss = the model sometimes answers a different question.
+- **natural — row ambiguity, not silence.** Only ~4% of reports mention any row coordinate; 42% name *both* members ("changed from X to Y", where the from-member is also literal in text). First-mention decode is 77.3% accurate overall — but even singleton-member reports are only ~78% right, meaning the model reports *what* changed while omitting *which row* changed. The residual is genuinely under-specified text: no decoder can recover a row the sentence never mentions.
+
+Ceiling estimate: directed decode is already ~lossless (fixing the bare-verb answers needs a different writer, not a better decoder); natural is bounded near its current value by intrinsic ambiguity, so the honest statement is **the model's spontaneous D carries the bit ≈53–77% of the time depending on decode generosity, vs 100% for a one-bit symbol.**
+
 ## Reproduce
 
 ```bash
