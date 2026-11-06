@@ -83,6 +83,25 @@ The two failure modes are different in kind:
 
 Ceiling estimate: directed decode is already ~lossless (fixing the bare-verb answers needs a different writer, not a better decoder); natural is bounded near its current value by intrinsic ambiguity, so the honest statement is **the model's spontaneous D carries the bit ≈53–77% of the time depending on decode generosity, vs 100% for a one-bit symbol.**
 
+## W-RITE round 2 (`write2/`): decoder fix + guided writer
+
+Re-running with a scored keyword decoder (distinctive-token counts, not all-or-nothing) and a third writer style that asks for explicit row-coordinate logs:
+
+| channel | all-four (3 seeds) |
+|---|---|
+| learned bit / supplied | 100% / 100% |
+| **directed self-report** | **100%** |
+| **guided self-report** | **81.0%** |
+| **natural self-report** | **53.8%** |
+| no message | 12.5% |
+
+Two structural findings:
+
+1. **The earlier directed "silence" was a decoder artifact.** Bare-verb answers ("summarize", "preserve") correctly encoded the member — concentrated entirely on topic 2 (~64–71% of that topic's reports, ~0% elsewhere; all other topics ≈0% missing). With the scored decoder, directed reports carry the bit at **100%**: when explicitly asked, the frozen writer's D is a lossless 1-bit channel for this task.
+2. **Writer induction works but plateaus.** The guided style ("name each changed world -> action") lifted self-reference to the coordinate (off/off mention rate 0→12.6%) and reached 81% — still short of directed's 100%, because row-targeted prose still produces ambiguous text ~20% of the time.
+
+Updated ladder: **symbol 100% = directed text 100% > guided text 81% > natural text ~54% (ceiling ~77%) > weight trace ~floor.** The self-reference deficit is now precisely located: it is not that the model can't write the coordinate — asked directly it writes it perfectly — but that spontaneous report formats leave the *row* unspecified, and induction only partially repairs that.
+
 ## Reproduce
 
 ```bash
