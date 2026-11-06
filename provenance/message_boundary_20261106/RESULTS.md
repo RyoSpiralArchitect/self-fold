@@ -60,6 +60,20 @@ The mixture sweep ran on furnace (`mixture/`): member rows blended β·own + (1�
 
 Updated conclusion: there is no regime at this interface where the soft state beats its verbalization. Either the needed residue is symbolic (carried by a learned bit), or the residual written into weights is unreadable by the fitted readers. Self-verbalization loss, if it exists, lives upstream in what generates the state — not in this memory channel.
 
+## W-RITE: the frozen LM writer carries the bit, imperfectly (`write/`)
+
+Replacing the learned writer with frozen Gemma self-reports (directed vs natural styles, decoded by member-distinguishing keywords): **the model's own verbalization does write the role bit — lossily.**
+
+| channel | all-four (3 seeds) |
+|---|---|
+| learned bit (ceiling) | 100% |
+| supplied convention | 100% |
+| **directed self-report** | **92.2%** |
+| **natural self-report** | **53.4%** |
+| no message (floor) | 12.5% |
+
+Decode audit: 13.6% of directed and 15.4% of natural reports name no member (decoder misses paraphrases like "updated to the most recent ones" were partially recovered by keyword matching); only 4.9% of natural reports spontaneously mention "off/off" — self-reference *to the violating coordinate* is rare even when the role content is conveyed. So: D writes the bit often enough to beat the floor by ~4-8x, but not reliably enough to match a one-bit symbol. This is the first quantified self-verbalization loss at this interface: **natural text ~53%, directed text ~92%, symbol 100%.**
+
 ## Reproduce
 
 ```bash
