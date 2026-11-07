@@ -94,6 +94,148 @@ The archived `offoff_rate` averaged all 16 allocated mask columns although only 
 
 **Evidence boundary.** Historical raw reports and summaries remain intact. `trajectories.npz` is not published with these runs, and the old cache had no prompt/checkpoint binding. Full numerical replay of the historical reports has not been completed in this review. In particular, their twin counts and nonlearned `written_matches_offoff_bit` values must be regenerated or reinterpreted with the repaired reducer before citation. [Detailed review and commands](PR32_REVIEW.md).
 
+## S-WRITE (`write3/`): supplied-table prompt study (registered realized-state test NOT executed)
+
+Executed on furnace after PR #33's design, but **deviating from the registered
+protocol** (`docs/STATE_WRITER_PLAN.md`) in ways the PR #34 review correctly
+flagged — the P1–P3 registrations do not apply:
+
+- Reports are still generated from `(source, pole, mask)` ideal assignments;
+  `The table now reads:` repeats those same assignments — no realized W ever
+  reaches the writer.
+- The prior arm used `assignment_words(..., 0)` = `[m0,m0,m0,m0]`, but the
+  actual initial member layout is `[m0,m0,m0,m1]`, and later priors depend on
+  earlier edits — so it is not a referent-restoration test.
+- `decode_state` still receives the source pole; controllers are refit per
+  channel.
+- The shipped decoder was a ±120-char window, not a row-binding parser: it
+  misread correct "changed from X to Y" reports (review-verified synthetic
+  failures). Fixed post-review as `rowbound_v1` with regression tests.
+
+Recorded all-four outcomes **under the shipped window decoder** (descriptive
+only, not plan verdicts):
+
+| channel | all-four (3 seeds) | twins intact (repaired axes) |
+| --- | ---: | ---: |
+| supplied convention / learned bit | 100% | 1.000 |
+| state_directed | 100% | 1.000 |
+| state_guided | 87.3% | 0.866 |
+| state_natural | 33.8% | 0.438 |
+| state_prior_natural | 12.5% | 0.000 |
+| no message | 12.5% | 0.000 |
+
+### Additive parser audit (`rowbound_v1` re-decode of all 11,648 saved reports)
+
+Per-report bit correctness vs the true mask bit0 — decoder cross on the same
+corpus, no regeneration:
+
+| style | window decoder correct/wrong/missing | rowbound_v1 correct/wrong/missing |
+| --- | --- | --- |
+| state_directed | 2912 / 0 / 0 | 2912 / 0 / 0 |
+| state_guided | 2508 / 308 / 96 | **2816 / 0 / 96** |
+| state_natural | 1796 / 960 / 156 | 1796 / 960 / 156 |
+| state_prior_natural | 1024 / 906 / 982 | 1054 / 876 / 982 |
+| write2 directed / guided / natural | (unchanged — unanchored styles fall back to the global decoder) | 2912·0·0 / 2148·132·632 / 2120·572·220 |
+
+Readings the audit supports:
+
+- The window decoder invented every state_guided wrong bit; under
+  `rowbound_v1` its per-report bit accuracy is 96.7% (the recorded 87.3%
+  all-four was fitted/evaluated on the *old* bits — recomputing it needs a
+  rerun, and is left unclaimed here).
+- state_natural's 61.7% per-report accuracy is decoder-invariant — genuine
+  unanchored-report ambiguity.
+- state_prior_natural stays bad under any decoder (~36% correct, 30% wrong,
+  34% missing) — real writer failure, consistent with its floor-level
+  all-four.
+- The W-RITE-vs-S-WRITE all-four contrast remains confounded (prompt +
+  decoder + per-channel refit all changed at once); these tables separate
+  only the decoder factor.
+
+What remains open: a genuine realized-state run (actual post-update W in the
+prompt, actual preceding table, pole-free decoder, shared downstream pointer)
+needs new sealed evidence; the planned P-tests are hereby marked **not
+executed under their registered conditions**.
+
+## S-WRITE sealed run (`write4/`): true priors, slot decode, shared pointer
+
+Sealed execution addressing `write3` deviations, **with remaining limits the
+re-review correctly kept open**:
+
+- `state_prior_true` reports key on `(source, prior, current)` with the
+  actual prior table — initial layout `[m0,m0,m0,m1]` (mask 8) at step 0, the
+  *requested previous mask* afterwards. **Not the realized table**: after a
+  pointer error the requested mask does not reconstruct what was actually
+  carried. The registered realized-state test of the controller's own tensor
+  remains **not executed**; this is a rendered-history prompt study.
+- `decode_state_slot` binds the off/off value to an *option slot*; the
+  slot→role-bit mapping via source pole is **declared carried side
+  information** (same role metadata the supplied convention encodes), not
+  information recovered from the report alone. `rowbound_v3` adds multi-row
+  clauses, temporal precedence (`now` > plain > `previously`),
+  negation-complement votes and pronoun-anchor reset — all re-review
+  counterexamples covered by regression tests.
+- The **shared-pointer** block is a *convention-trained fixed-reader*
+  comparison: the supplied-fitted controller evaluates every LM matrix.
+  Directed, prior_true and supplied actors converge to identical hashes, so
+  it is not an independent refitting result.
+- `state_prior_true` generation is eval-time-only: 14,336 reports over 64
+  test sources × 16 priors × 14 masks; the 144 fit rows are convention-filled
+  and are now excluded from report statistics.
+
+| channel | all-four (3 seeds) | twins intact/erased | shared-pointer all-four |
+| --- | ---: | --- | ---: |
+| supplied / reward | 100% | 1.000 / 0.000 | — |
+| state_directed | 100% | 1.000 / 0.000 | 100% |
+| **state_prior_true** | **14.0%** | 0.179 / 0.000 | 14.0% |
+| no message | 12.5% | 0.000 / 0.000 | — |
+
+**Corrected report statistics** (generated reports only — the earlier 13.8%
+missing / 2.8% mention rates wrongly averaged in 144×16×14 synthetic fit
+cells): state_prior_true **44.9% missing, 9.0% off/off mention** over 14,336
+reports; per-report bit correctness 28.4% / wrong 26.7% (`rowbound_v3`
+re-decode, additive audit). state_directed: 0% missing, 100% correct.
+
+Readings (descriptive):
+
+- Directed text over the rendered post-update table reaches the ceiling, in
+  both per-channel and shared-reader evaluations — at this interface and
+  decoder.
+- With the true prior shown, spontaneous "what changed" reports carry the
+  bit barely above the floor (14% vs 12.5%) — the predicted referent benefit
+  is again not observed. Whether this is writer failure or residual parser
+  failure is **not decided**: parser agreement is not semantic annotation,
+  and a unique-form audit of the saved corpus remains open.
+- Shared = per-channel equality is expected here (converged identical
+  actors) and is labeled as such; it does not isolate channel quality from
+  reader fitting.
+
+Limits kept: rendered (not controller-emitted) tables; requested-mask priors,
+not realized-error-corrected priors; decoded bits, not raw text, cross the
+channel; the registered pole-free/actual-tensor test stays unexecuted.
+
+## S-WRITE sealed rerun (`write5/`): realized-pattern prior lookup
+
+Addressing the "requested-mask prior is not the realized table" point directly:
+`state_prior_true` reports are now indexed by the **realized carried weight
+pattern** — `argmax` member per row, packed as a mask — computed from the
+actual `weights` arriving at each step, including after pointer errors.
+A deliberate-error fixture (`tests/test_realized_prior.py`) verifies a wrong
+carried bit *does* diverge the realized prior from the requested mask, so the
+lookup path is exercised and distinct.
+
+| channel | all-four (3 seeds) | twins intact/erased | shared-pointer all-four |
+| --- | ---: | --- | ---: |
+| supplied / reward | 100% | 1.000 / 0.000 | — |
+| state_directed | 100% | 1.000 / 0.000 | 100% |
+| state_prior_true | 14.0% | 0.179 / 0.000 | 14.0% |
+| no message | 12.5% | 0.000 / 0.000 | — |
+
+Identical to `write4`: at this channel quality the realized and requested
+priors coincide on all measured trajectories — the divergence mechanism is
+verified real but never triggers at the measured accuracy. This bounds the
+review's concern numerically rather than by construction.
+
 ## Reproduce
 
 ```bash

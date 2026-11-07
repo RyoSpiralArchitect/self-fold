@@ -13,8 +13,11 @@ from __future__ import annotations
 from numbers import Integral
 import re
 
-STYLES = ("directed", "natural", "guided")
+STYLES = ("directed", "natural", "guided",
+          "state_directed", "state_natural", "state_guided", "state_prior_natural",
+          "state_prior_true")
 DECODER_VERSION = "distinctive_tokens_v3"
+STATE_DECODER_VERSION = "rowbound_v3"
 
 
 def _validate_options(options, pole):
@@ -32,7 +35,7 @@ def assignment_words(options, pole, mask):
     return [options[pole ^ b] for b in ((mask >> i) & 1 for i in range(4))]
 
 
-def prompt_for(style, options, pole, mask):
+def prompt_for(style, options, pole, mask, prior_mask=None):
     if style not in STYLES:
         raise ValueError(f"Unknown report style: {style}")
     world = ["off/off", "off/on", "on/off", "on/on"]
@@ -53,8 +56,40 @@ def prompt_for(style, options, pole, mask):
             "assignment changed and its new action, in the form "
             "'world -> action'. If nothing changed for a world, omit it."
         )
-    return text + (
-        "Task: write one short log sentence describing what this instruction "
+    if style == "natural":
+        return text + (
+            "Task: write one short log sentence describing what this instruction "
+            "changed."
+        )
+    # S-WRITE: the writer also sees the realized post-update table, and for the
+    # prior arm the pre-change table (referent for "what changed").
+    table = f"The table now reads: {assignments}."
+    prior = "The table previously read: " + "; ".join(
+        f"{w} -> {a}" for w, a in zip(world, assignment_words(options, pole, 0))) + "."
+    if style == "state_directed":
+        return text + table + (
+            "\nQuestion: which action did this instruction assign to the "
+            "off/off row? Answer with the action name only."
+        )
+    if style == "state_guided":
+        return text + table + (
+            "\nTask: write one short log entry naming each world whose "
+            "assignment changed and its new action, in the form "
+            "'world -> action'. If nothing changed for a world, omit it."
+        )
+    if style == "state_prior_natural":
+        return text + prior + "\n" + table + (
+            "\nTask: write one short log sentence describing what changed."
+        )
+    if style == "state_prior_true":
+        assert prior_mask is not None
+        prev = "The table previously read: " + "; ".join(
+            f"{w} -> {a}" for w, a in zip(world, assignment_words(options, pole, prior_mask))) + "."
+        return text + prev + "\n" + table + (
+            "\nTask: write one short log sentence describing what changed."
+        )
+    return text + table + (
+        "\nTask: write one short log sentence describing what this instruction "
         "changed."
     )
 
@@ -93,6 +128,120 @@ def decode_bit(text, options, pole):
     if s0 == 0 and s1 == 0:
         return 0, 1
     return (1 if (s1, -i1) > (s0, -i0) else 0), 0
+
+
+_ROW = r"\boff\s*[/\-]\s*off\b"
+_OTHER_ROW = re.compile(r"\b(?:on\s*[/\-]\s*off|off\s*[/\-]\s*on|on\s*[/\-]\s*on)\b", re.IGNORECASE)
+_ARROW = re.compile(
+    r"(off\s*[/\-]\s*off|off\s*[/\-]\s*on|on\s*[/\-]\s*off|on\s*[/\-]\s*on)\s*->",
+    re.IGNORECASE)
+_NEG = re.compile(r"\bno longer\b|\bnot\b|\binstead of\b|\breplaced\b", re.IGNORECASE)
+_PAST = re.compile(r"\bprevious(?:ly)?\b|\bearlier\b|\bwas\b|\bbefore\b|\bold\b", re.IGNORECASE)
+_NOW = re.compile(r"\bnow\b|\bcurrent(?:ly)?\b|\bnew\b", re.IGNORECASE)
+
+
+def _clauses(text):
+    return [c for c in re.split(r"[.;!\n]+", text) if c.strip()]
+
+
+def _row_binding(clause):
+    """If the clause binds rows via 'row -> action' arrows, return the segment
+    bound to off/off (or None when off/off has no arrow). Handles multiple
+    'a -> x, b -> y' entries inside one clause."""
+    matches = list(_ARROW.finditer(clause))
+    if not matches:
+        return None, False
+    for i, m in enumerate(matches):
+        row = re.sub(r"[\s\-]", "/", m.group(1).lower())
+        if row == "off/off":
+            end = matches[i + 1].start() if i + 1 < len(matches) else len(clause)
+            return clause[m.end():end], True
+    return None, True
+
+
+def _bound_segment(clause):
+    """The span describing off/off's CURRENT value inside an anchored clause.
+
+    Handles 'X -> Y', 'changed from X to Y', 'no longer selects X' and
+    'X for/was assigned to off/off' orderings; returns (segment, excluded).
+    """
+    seg, has_arrows = _row_binding(clause)
+    if has_arrows:
+        return (seg or ""), None
+    m = re.search(r"\bfrom\b.*?\bto\b", clause, re.IGNORECASE)
+    if m:
+        return clause[re.search(r"\bto\b", clause[m.start():], re.IGNORECASE).end() + m.start():], None
+    if _NEG.search(clause):
+        # The named value after a negator is the OLD value; exclude it.
+        tail = clause[_NEG.search(clause).end():]
+        seg = clause[: _NEG.search(clause).start()]
+        return seg or tail, tail
+    # Action-before-coordinate ("ridge path for off/off") needs the whole clause.
+    return clause, None
+
+
+def decode_state_slot(text, options):
+    """Pole-free row-binding decode: returns which OPTION (0/1) the report
+    binds to off/off — the decoder never sees the role mapping. Options must
+    be given in their natural pair order; the caller maps slot -> role bit.
+
+    Clause-level binding ('X -> Y', 'from X to Y', negated old values,
+    action-before-coordinate, 'it'-continuations), majority vote across bound
+    clauses, then unanchored global fallback. Returns (slot, missing).
+    """
+    if len(options) != 2 or any(not isinstance(x, str) or not x.strip() for x in options):
+        raise ValueError("Two distinct nonempty actions required")
+    votes = []          # (slot, weight): 'now' outranks plain, plain outranks 'past'
+    anchored = False
+    for clause in _clauses(text):
+        is_row = re.search(_ROW, clause, re.IGNORECASE) is not None
+        is_it = anchored and re.search(r"^\s*it\b", clause, re.IGNORECASE) is not None
+        if is_row:
+            anchored = True
+        elif _OTHER_ROW.search(clause):
+            anchored = False  # a different row became the subject
+        if not (is_row or is_it):
+            continue
+        seg, excluded = _bound_segment(clause)
+        s0, _ = _score(seg, options[0], options[1])
+        s1, _ = _score(seg, options[1], options[0])
+        if s0 == 0 and s1 == 0 and is_row:
+            s0, _ = _score(clause, options[0], options[1])
+            s1, _ = _score(clause, options[1], options[0])
+        if s0 == 0 and s1 == 0:
+            continue
+        b = 1 if s1 > s0 else 0
+        if excluded is not None:
+            e0, _ = _score(excluded, options[0], options[1])
+            e1, _ = _score(excluded, options[1], options[0])
+            if (e0 or e1) and (e1 > e0) == bool(b):
+                # Binary state: a negated old value asserts the complement.
+                b = 1 - b
+        weight = 2 if _NOW.search(clause) else (0 if _PAST.search(clause) else 1)
+        votes.append((b, weight))
+    if votes:
+        best = max(w for _, w in votes)
+        top = [b for b, w in votes if w == best]
+        return (1 if sum(top) * 2 >= len(top) else 0), 0
+    # Unanchored fallback: global distinctive-token scores.
+    s0, i0 = _score(text, options[0], options[1])
+    s1, i1 = _score(text, options[1], options[0])
+    if s0 == 0 and s1 == 0:
+        return 0, 1
+    return (1 if (s1, -i1) > (s0, -i0) else 0), 0
+
+
+def decode_state(text, options, pole):
+    """Row-binding off/off decode for S-WRITE reports.
+
+    Collects clauses that mention the off/off coordinate (plus pronoun 'it'
+    continuations), decodes the value bound to it per clause with a majority
+    vote, then falls back to the unanchored global decode. Returns (bit,
+    missing); missing only when no member can be bound at all.
+    """
+    _validate_options(options, pole)
+    slot, miss = decode_state_slot(text, [options[pole], options[1 - pole]])
+    return slot, miss
 
 
 def mentions_offoff(text):
