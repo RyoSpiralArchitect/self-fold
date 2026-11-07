@@ -33,28 +33,34 @@ def fingerprint(value):
                                     allow_nan=False, separators=(',', ':')).encode()).hexdigest()
 
 
-def report_requests(style, masks, keys, poles, groups):
+def report_requests(style, masks, keys, poles, groups, priors=None):
     if style not in STYLES or len(keys) != len(poles) or not keys:
         raise ValueError('Invalid style or source bank')
     if not masks or len(set(masks)) != len(masks) or any(type(m) is not int or not 0 <= m < 16 for m in masks):
         raise ValueError('Expected unique four-world masks')
     requests = []
+    prior_list = priors if priors is not None else [None]
     for source, (key, pole) in enumerate(zip(keys, poles)):
         options = groups[key[0]]['options']
-        for mask in masks:
-            requests.append(dict(source=source, source_key=list(key), mask=mask,
-                                 style=style, options=options, pole=int(pole),
-                                 prompt=prompt_for(style, options, int(pole), mask)))
+        for prior in prior_list:
+            for mask in masks:
+                req = dict(source=source, source_key=list(key), mask=mask,
+                           style=style, options=options, pole=int(pole),
+                           prompt=prompt_for(style, options, int(pole), mask,
+                                             prior_mask=prior))
+                if prior is not None:
+                    req['prior'] = int(prior)
+                requests.append(req)
     return requests
 
 
 def validate_records(records, requests):
-    expected = {(r['source'], r['mask']): r for r in requests}
+    expected = {(r['source'], r['mask'], r.get('prior')): r for r in requests}
     if len(expected) != len(requests) or len(records) != len(requests):
         raise ValueError('Report cache is incomplete or has extra records')
     seen = set()
     for row in records:
-        key = (row.get('source'), row.get('mask'))
+        key = (row.get('source'), row.get('mask'), row.get('prior'))
         if key not in expected or key in seen:
             raise ValueError('Duplicate or foreign report key')
         req = expected[key]
@@ -101,6 +107,8 @@ def cached_reports(host, requests, binding, cache_dir, output_dir):
                 receipt.pop('text', None)
                 row = dict(source=req['source'], mask=req['mask'], style=style,
                            request_sha256=fingerprint(req), text=out.text, generation=receipt)
+                if 'prior' in req:
+                    row['prior'] = req['prior']
                 records.append(row)
                 fh.write(json.dumps(row, ensure_ascii=False, allow_nan=False) + '\n')
                 fh.flush()
@@ -119,7 +127,7 @@ def cached_reports(host, requests, binding, cache_dir, output_dir):
                          mode=mode, count=len(records), writer=binding)
 
 
-def build_report_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, binding):
+def build_report_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, binding, n_fit=0):
     masks = cfg['fit_masks'] + cfg['test_masks']
     styles = tuple(dict.fromkeys(a['channel'][3:] for a in cfg['arms']
                                  if a['channel'].startswith('lm_')))
@@ -127,19 +135,30 @@ def build_report_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, b
     bits, missing, offoff = {}, {}, {}
     output_dir = Path(output_dir)
     for style in styles:
-        requests = report_requests(style, masks, keys, poles, groups)
+        priors = list(range(16)) if style == 'state_prior_true' else None
+        # Prior-conditioned reports are eval-time-only: fit rows use the
+        # perfect convention bit (mask&1) so generation stays bounded.
+        if priors:
+            requests = report_requests(style, masks, keys[n_fit:], poles[n_fit:],
+                                       groups, priors=priors)
+            for r in requests:
+                r['source'] += n_fit
+        else:
+            requests = report_requests(style, masks, keys, poles, groups)
         records, receipt = cached_reports(host, requests, binding, cache_dir, output_dir)
-        bits[style] = torch.full((n, 16), -1, dtype=torch.long)
-        missing[style] = np.full((n, 16), np.nan)
-        offoff[style] = np.full((n, 16), np.nan)
+        dims = (n, 16, 16) if priors else (n, 16)
+        bits[style] = torch.full(dims, -1, dtype=torch.long)
+        missing[style] = np.full(dims, np.nan)
+        offoff[style] = np.full(dims, np.nan)
         with (output_dir / f'reports_{style}.jsonl').open('x', encoding='utf-8') as fh:
             for row in records:
                 i, m = row['source'], row['mask']
                 options = groups[keys[i][0]]['options']
                 bit, miss = _decode(style, row['text'], options, int(poles[i]))
-                bits[style][i, m] = bit
-                missing[style][i, m] = miss
-                offoff[style][i, m] = mentions_offoff(row['text'])
+                idx = (i, row['prior'], m) if priors else (i, m)
+                bits[style][idx] = bit
+                missing[style][idx] = miss
+                offoff[style][idx] = mentions_offoff(row['text'])
                 # Redecode the text; never copy stale stored bit/missing annotations.
                 fh.write(json.dumps(dict(row, bit=bit, missing=miss,
                                          decoder_version=_decoder_for(style)[1]),
@@ -147,6 +166,13 @@ def build_report_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, b
         with (output_dir / f'reports_{style}.binding.json').open('x', encoding='utf-8') as fh:
             json.dump(dict(receipt, decoder_version=DECODER_VERSION, requests=requests), fh,
                       sort_keys=True, ensure_ascii=False, allow_nan=False)
+        if priors and n_fit:
+            # Eval-time-only style: fit rows never generated -> perfect
+            # convention fill (bit = current mask bit0), marked synthetic.
+            conv = (torch.arange(16) & 1)
+            bits[style][:n_fit] = conv.view(1, 1, 16)
+            missing[style][:n_fit] = 0.0
+            offoff[style][:n_fit] = 0.0
     return bits, missing, offoff
 
 
@@ -158,12 +184,14 @@ def save_report_matrices(output_dir, masks, bits, missing, offoff):
     if not bits or set(bits) != set(missing) or set(bits) != set(offoff):
         raise ValueError('Report matrix styles disagree')
     for style, matrix in bits.items():
-        if matrix.ndim != 2 or matrix.shape[1] != 16 or matrix.shape[0] == 0:
-            raise ValueError('Expected a nonempty [sources,16] report matrix')
-        if not torch.all((matrix[:, masks] == 0) | (matrix[:, masks] == 1)):
+        if matrix.ndim not in (2, 3) or matrix.shape[-1] != 16 or matrix.shape[0] == 0:
+            raise ValueError('Expected a nonempty [sources,16] or [sources,priors,16] report matrix')
+        view = matrix[..., masks] if matrix.ndim == 2 else matrix[:, :, masks]
+        if not torch.all((view == 0) | (view == 1)):
             raise ValueError('Unobserved report bit in sampled masks')
         for observation in (missing[style], offoff[style]):
-            if observation.shape != tuple(matrix.shape) or not np.isin(observation[:, masks], [0, 1]).all():
+            obs_view = observation[..., masks] if matrix.ndim == 2 else observation[:, :, masks]
+            if observation.shape != tuple(matrix.shape) or not np.isin(obs_view, [0, 1]).all():
                 raise ValueError('Incomplete report statistics')
     path = output_dir / 'lm_matrix.npz'
     with path.open('xb') as fh:

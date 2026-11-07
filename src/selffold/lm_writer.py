@@ -14,9 +14,10 @@ from numbers import Integral
 import re
 
 STYLES = ("directed", "natural", "guided",
-          "state_directed", "state_natural", "state_guided", "state_prior_natural")
+          "state_directed", "state_natural", "state_guided", "state_prior_natural",
+          "state_prior_true")
 DECODER_VERSION = "distinctive_tokens_v3"
-STATE_DECODER_VERSION = "rowbound_v1"
+STATE_DECODER_VERSION = "rowbound_v2"
 
 
 def _validate_options(options, pole):
@@ -34,7 +35,7 @@ def assignment_words(options, pole, mask):
     return [options[pole ^ b] for b in ((mask >> i) & 1 for i in range(4))]
 
 
-def prompt_for(style, options, pole, mask):
+def prompt_for(style, options, pole, mask, prior_mask=None):
     if style not in STYLES:
         raise ValueError(f"Unknown report style: {style}")
     world = ["off/off", "off/on", "on/off", "on/on"]
@@ -78,6 +79,13 @@ def prompt_for(style, options, pole, mask):
         )
     if style == "state_prior_natural":
         return text + prior + "\n" + table + (
+            "\nTask: write one short log sentence describing what changed."
+        )
+    if style == "state_prior_true":
+        assert prior_mask is not None
+        prev = "The table previously read: " + "; ".join(
+            f"{w} -> {a}" for w, a in zip(world, assignment_words(options, pole, prior_mask))) + "."
+        return text + prev + "\n" + table + (
             "\nTask: write one short log sentence describing what changed."
         )
     return text + table + (
@@ -152,15 +160,17 @@ def _bound_segment(clause):
     return clause, None
 
 
-def decode_state(text, options, pole):
-    """Row-binding off/off decode for S-WRITE reports.
+def decode_state_slot(text, options):
+    """Pole-free row-binding decode: returns which OPTION (0/1) the report
+    binds to off/off — the decoder never sees the role mapping. Options must
+    be given in their natural pair order; the caller maps slot -> role bit.
 
-    Collects clauses that mention the off/off coordinate (plus pronoun 'it'
-    continuations), decodes the value bound to it per clause with a majority
-    vote, then falls back to the unanchored global decode. Returns (bit,
-    missing); missing only when no member can be bound at all.
+    Clause-level binding ('X -> Y', 'from X to Y', negated old values,
+    action-before-coordinate, 'it'-continuations), majority vote across bound
+    clauses, then unanchored global fallback. Returns (slot, missing).
     """
-    _validate_options(options, pole)
+    if len(options) != 2 or any(not isinstance(x, str) or not x.strip() for x in options):
+        raise ValueError("Two distinct nonempty actions required")
     votes = []
     anchored = False
     for clause in _clauses(text):
@@ -170,19 +180,41 @@ def decode_state(text, options, pole):
             continue
         anchored = anchored or is_row
         seg, excluded = _bound_segment(clause)
-        b, miss = decode_bit(seg, options, pole)
-        if miss and is_row:
-            b, miss = decode_bit(clause, options, pole)
-        if miss:
+        s0, _ = _score(seg, options[0], options[1])
+        s1, _ = _score(seg, options[1], options[0])
+        if s0 == 0 and s1 == 0 and is_row:
+            s0, _ = _score(clause, options[0], options[1])
+            s1, _ = _score(clause, options[1], options[0])
+        if s0 == 0 and s1 == 0:
             continue
+        b = 1 if s1 > s0 else 0
         if excluded is not None:
-            eb, emiss = decode_bit(excluded, options, pole)
-            if not emiss and eb == b:
+            e0, _ = _score(excluded, options[0], options[1])
+            e1, _ = _score(excluded, options[1], options[0])
+            if (e0 or e1) and (e1 > e0) == bool(b):
                 continue  # only the negated old value was found
         votes.append(b)
     if votes:
         return (1 if sum(votes) * 2 >= len(votes) else 0), 0
-    return decode_bit(text, options, pole)
+    # Unanchored fallback: global distinctive-token scores.
+    s0, i0 = _score(text, options[0], options[1])
+    s1, i1 = _score(text, options[1], options[0])
+    if s0 == 0 and s1 == 0:
+        return 0, 1
+    return (1 if (s1, -i1) > (s0, -i0) else 0), 0
+
+
+def decode_state(text, options, pole):
+    """Row-binding off/off decode for S-WRITE reports.
+
+    Collects clauses that mention the off/off coordinate (plus pronoun 'it'
+    continuations), decodes the value bound to it per clause with a majority
+    vote, then falls back to the unanchored global decode. Returns (bit,
+    missing); missing only when no member can be bound at all.
+    """
+    _validate_options(options, pole)
+    slot, miss = decode_state_slot(text, [options[pole], options[1 - pole]])
+    return slot, miss
 
 
 def mentions_offoff(text):
