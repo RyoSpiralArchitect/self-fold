@@ -157,6 +157,51 @@ prompt, actual preceding table, pole-free decoder, shared downstream pointer)
 needs new sealed evidence; the planned P-tests are hereby marked **not
 executed under their registered conditions**.
 
+## S-WRITE sealed run (`write4/`): true priors, pole-free decode, shared pointer
+
+New sealed execution addressing the `write3` protocol deviations:
+
+- `state_prior_true` reports are keyed on `(source, prior, current)` with the
+  **actual** prior table — initial layout `[m0,m0,m0,m1]` (mask 8) at step 0,
+  the previously applied mask afterwards; looked up per trajectory step.
+- Decode is `rowbound_v2`/`decode_state_slot` — binds the off/off value to an
+  *option slot* without seeing the source pole; the matrix builder maps the
+  slot to the role bit.
+- A **shared-pointer** block rolls every LM channel through one
+  supplied-fitted controller per seed, alongside the per-channel fits.
+- Prior-true generation is eval-time-only (fit rows use the convention bit).
+
+| channel | all-four (3 seeds) | twins intact/erased | shared-pointer all-four |
+| --- | ---: | --- | ---: |
+| supplied / reward | 100% | 1.000 / 0.000 | — |
+| state_directed | 100% | 1.000 / 0.000 | 100% |
+| **state_prior_true** | **14.0%** | 0.179 / 0.000 | 14.0% |
+| no message | 12.5% | 0.000 / 0.000 | — |
+
+Report statistics: state_directed missing 0.0%; state_prior_true missing
+13.8%, off/off mention 2.8%.
+
+Readings:
+
+- **P1 (registered) now supported under the realized-state protocol**: the
+  directed writer over the rendered realized table reaches the ceiling, and
+  the same holds through a single shared downstream pointer — the channel is
+  intrinsically lossless for this bank, not a per-channel fit artifact.
+- **P3 (registered) rejected more sharply than the fake-prior run**: with the
+  *true* preceding table, spontaneous "what changed" reports sit at 14% —
+  barely above the 12.5% no-message floor and *worse* than the fake-prior
+  arm's collapse. The referent the design predicted would help actually
+  removes the report's informational grip on the current assignment: reports
+  shift to describing the diff, and the off/off coordinate vanishes (2.8%
+  mention rate) with missing at 13.8%.
+- The shared-vs-per-channel identity (14.0% = 14.0%, 100% = 100%) confirms
+  the residual lives in the channel content, not in reader fitting.
+
+Limits kept: the rendered table is still the ideal post-update render (the
+boundary carries it exactly under hard form), not a tensor dump of the
+controller's own output; LM channels still consume decoded bits rather than
+running the realized text through the reader.
+
 ## Reproduce
 
 ```bash
