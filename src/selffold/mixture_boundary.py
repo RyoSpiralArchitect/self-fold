@@ -231,10 +231,14 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0, lm_matrix=No
             return lm_matrix[cases, prior_vec, mask_vec].unsqueeze(-1)
         return lm_matrix[cases, mask_vec].unsqueeze(-1)
 
-    zeros8 = torch.full((n * num,), INITIAL_PRIOR, dtype=torch.long)
+    def pattern_of(w):
+        # Realized table pattern: argmax member per row packed as a 4-bit mask.
+        return (w.argmax(-1) * torch.tensor([1, 2, 4, 8], device=w.device)).sum(-1)
+
     table, weights, message, w0 = eval_step(
         model, table, weights, message, instructions[:, 0], form, channel,
-        carried_members, lm_bits=bits_for(instructions[:, 0], zeros8, case_of),
+        carried_members,
+        lm_bits=bits_for(instructions[:, 0], pattern_of(weights), case_of),
     )
     depths = [weights[..., 1].reshape(n, num, 4)]
     second, fourth, written = [], [], [w0.reshape(n, num, -1)]
@@ -253,7 +257,7 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0, lm_matrix=No
             table, w2, msg2, wt = eval_step(
                 model, start_table, w2, msg2, instructions[:, t], form, channel,
                 start_members,
-                lm_bits=bits_for(instructions[:, t], instructions[:, t - 1], route_cases),
+                lm_bits=bits_for(instructions[:, t], pattern_of(w2), route_cases),
             )
             start_table = table
             ws.append(w2)
@@ -317,7 +321,9 @@ def twins_w(model, form, channel, members, masks, beta=1.0, lm_matrix=None):
                 table = torch.nn.functional.one_hot(table.argmax(-1), 16).to(table)
             revised, w2, _, _ = eval_step(
                 model, table, hist_w, msg, current, form, channel, base,
-                lm_bits=(lm_matrix[ix, history, current] if lm_matrix.dim() == 3
+                lm_bits=(lm_matrix[ix, (hist_w.argmax(-1) * torch.tensor(
+                             [1, 2, 4, 8], device=hist_w.device)).sum(-1), current]
+                         if lm_matrix.dim() == 3
                          else lm_matrix[ix, current]).unsqueeze(-1) if channel == "lm" else None,
             )
             results.append(w2[..., 1].reshape(len(members), len(representatives), len(masks), 4))
