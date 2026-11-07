@@ -17,7 +17,7 @@ STYLES = ("directed", "natural", "guided",
           "state_directed", "state_natural", "state_guided", "state_prior_natural",
           "state_prior_true")
 DECODER_VERSION = "distinctive_tokens_v3"
-STATE_DECODER_VERSION = "rowbound_v2"
+STATE_DECODER_VERSION = "rowbound_v3"
 
 
 def _validate_options(options, pole):
@@ -131,12 +131,32 @@ def decode_bit(text, options, pole):
 
 
 _ROW = r"\boff\s*[/\-]\s*off\b"
-_TO = re.compile(r"\bto\b", re.IGNORECASE)
+_OTHER_ROW = re.compile(r"\b(?:on\s*[/\-]\s*off|off\s*[/\-]\s*on|on\s*[/\-]\s*on)\b", re.IGNORECASE)
+_ARROW = re.compile(
+    r"(off\s*[/\-]\s*off|off\s*[/\-]\s*on|on\s*[/\-]\s*off|on\s*[/\-]\s*on)\s*->",
+    re.IGNORECASE)
 _NEG = re.compile(r"\bno longer\b|\bnot\b|\binstead of\b|\breplaced\b", re.IGNORECASE)
+_PAST = re.compile(r"\bprevious(?:ly)?\b|\bearlier\b|\bwas\b|\bbefore\b|\bold\b", re.IGNORECASE)
+_NOW = re.compile(r"\bnow\b|\bcurrent(?:ly)?\b|\bnew\b", re.IGNORECASE)
 
 
 def _clauses(text):
     return [c for c in re.split(r"[.;!\n]+", text) if c.strip()]
+
+
+def _row_binding(clause):
+    """If the clause binds rows via 'row -> action' arrows, return the segment
+    bound to off/off (or None when off/off has no arrow). Handles multiple
+    'a -> x, b -> y' entries inside one clause."""
+    matches = list(_ARROW.finditer(clause))
+    if not matches:
+        return None, False
+    for i, m in enumerate(matches):
+        row = re.sub(r"[\s\-]", "/", m.group(1).lower())
+        if row == "off/off":
+            end = matches[i + 1].start() if i + 1 < len(matches) else len(clause)
+            return clause[m.end():end], True
+    return None, True
 
 
 def _bound_segment(clause):
@@ -145,9 +165,9 @@ def _bound_segment(clause):
     Handles 'X -> Y', 'changed from X to Y', 'no longer selects X' and
     'X for/was assigned to off/off' orderings; returns (segment, excluded).
     """
-    if "->" in clause:
-        tail = clause.split("->", 1)[1]
-        return tail, None
+    seg, has_arrows = _row_binding(clause)
+    if has_arrows:
+        return (seg or ""), None
     m = re.search(r"\bfrom\b.*?\bto\b", clause, re.IGNORECASE)
     if m:
         return clause[re.search(r"\bto\b", clause[m.start():], re.IGNORECASE).end() + m.start():], None
@@ -171,14 +191,17 @@ def decode_state_slot(text, options):
     """
     if len(options) != 2 or any(not isinstance(x, str) or not x.strip() for x in options):
         raise ValueError("Two distinct nonempty actions required")
-    votes = []
+    votes = []          # (slot, weight): 'now' outranks plain, plain outranks 'past'
     anchored = False
     for clause in _clauses(text):
         is_row = re.search(_ROW, clause, re.IGNORECASE) is not None
         is_it = anchored and re.search(r"^\s*it\b", clause, re.IGNORECASE) is not None
+        if is_row:
+            anchored = True
+        elif _OTHER_ROW.search(clause):
+            anchored = False  # a different row became the subject
         if not (is_row or is_it):
             continue
-        anchored = anchored or is_row
         seg, excluded = _bound_segment(clause)
         s0, _ = _score(seg, options[0], options[1])
         s1, _ = _score(seg, options[1], options[0])
@@ -192,10 +215,14 @@ def decode_state_slot(text, options):
             e0, _ = _score(excluded, options[0], options[1])
             e1, _ = _score(excluded, options[1], options[0])
             if (e0 or e1) and (e1 > e0) == bool(b):
-                continue  # only the negated old value was found
-        votes.append(b)
+                # Binary state: a negated old value asserts the complement.
+                b = 1 - b
+        weight = 2 if _NOW.search(clause) else (0 if _PAST.search(clause) else 1)
+        votes.append((b, weight))
     if votes:
-        return (1 if sum(votes) * 2 >= len(votes) else 0), 0
+        best = max(w for _, w in votes)
+        top = [b for b, w in votes if w == best]
+        return (1 if sum(top) * 2 >= len(top) else 0), 0
     # Unanchored fallback: global distinctive-token scores.
     s0, i0 = _score(text, options[0], options[1])
     s1, i1 = _score(text, options[1], options[0])

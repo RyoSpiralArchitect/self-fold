@@ -47,3 +47,24 @@ def test_no_member_missing():
 def test_wrong_binding_stays_wrong():
     # Report binds the WRONG member to off/off — parser must not rescue it.
     assert dec("off/on -> ridge path; off/off -> river path.") == (0, 0)
+
+
+def test_multi_row_single_clause():
+    assert dec("off/off -> ridge path, off/on -> river path.") == (1, 0)
+
+
+def test_temporal_precedence():
+    assert dec("off/off previously selected ridge path. "
+               "off/off now selects river path.") == (0, 0)
+
+
+def test_negation_resolves_complement():
+    # Binary state: 'no longer selects X' asserts the other member.
+    assert dec("off/off no longer selects river path.") == (1, 0)
+
+
+def test_pronoun_does_not_steal_other_row():
+    # 'it' refers to off/on (its subject): no bound vote for off/off. The
+    # unanchored fallback still decodes — unanchored use is tracked via
+    # offoff_rate, not the missing flag.
+    assert dec("off/on -> ridge path. it now selects river path.") == (1, 0)

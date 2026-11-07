@@ -132,7 +132,7 @@ def build_report_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, b
     styles = tuple(dict.fromkeys(a['channel'][3:] for a in cfg['arms']
                                  if a['channel'].startswith('lm_')))
     n = len(keys)
-    bits, missing, offoff = {}, {}, {}
+    bits, missing, offoff, generated = {}, {}, {}, {}
     output_dir = Path(output_dir)
     for style in styles:
         priors = list(range(16)) if style == 'state_prior_true' else None
@@ -150,6 +150,7 @@ def build_report_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, b
         bits[style] = torch.full(dims, -1, dtype=torch.long)
         missing[style] = np.full(dims, np.nan)
         offoff[style] = np.full(dims, np.nan)
+        generated[style] = np.ones(dims, bool)
         with (output_dir / f'reports_{style}.jsonl').open('x', encoding='utf-8') as fh:
             for row in records:
                 i, m = row['source'], row['mask']
@@ -173,11 +174,13 @@ def build_report_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, b
             bits[style][:n_fit] = conv.view(1, 1, 16)
             missing[style][:n_fit] = 0.0
             offoff[style][:n_fit] = 0.0
-    return bits, missing, offoff
+            generated[style] = np.zeros(dims, bool)
+            generated[style][n_fit:] = True
+    return bits, missing, offoff, generated
 
 
-def save_report_matrices(output_dir, masks, bits, missing, offoff):
-    """Save every active style; rates exclude the two unsampled mask columns."""
+def save_report_matrices(output_dir, masks, bits, missing, offoff, generated=None):
+    """Save every active style; rates exclude unsampled masks and synthetic rows."""
     output_dir = Path(output_dir)
     if not masks or len(set(masks)) != len(masks) or any(not 0 <= m < 16 for m in masks):
         raise ValueError('Invalid sampled mask set')
@@ -197,23 +200,31 @@ def save_report_matrices(output_dir, masks, bits, missing, offoff):
     with path.open('xb') as fh:
         np.savez_compressed(fh, **{s: b.cpu().numpy() for s, b in bits.items()},
                             evaluated_masks=np.asarray(masks, dtype=np.int32))
-    def _per_mask(a):
-        # 2D [n,16] -> per-mask column means; 3D [n,prior,16] -> same over the
-        # last axis, averaging sources x priors. NaN-safe via nanmean.
-        if a.ndim == 2:
-            return {str(m): float(np.nanmean(a[:, m])) for m in masks}
-        return {str(m): float(np.nanmean(a[:, :, m])) for m in masks}
+    if generated is None:
+        generated = {s: np.ones(tuple(b.shape), bool) for s, b in bits.items()}
 
-    def _rate(a):
-        if a.ndim == 2:
-            return float(np.nanmean(a[:, masks]))
-        return float(np.nanmean(a[:, :, masks]))
+    def _per_mask(a, g):
+        # Generated rows only: 2D masks sources, 3D masks (source,prior) cells.
+        out = {}
+        for m in masks:
+            if a.ndim == 2:
+                sel = g[:, m]
+                vals = a[sel, m]
+            else:
+                sel = g[:, :, m]
+                vals = a[:, :, m][sel]
+            out[str(m)] = float(np.nanmean(vals)) if len(vals) else None
+        return out
+
+    def _rate(a, g):
+        vals = a[..., masks][g[..., masks] if a.ndim == 2 else g[:, :, masks]]
+        return float(np.nanmean(vals)) if len(vals) else None
 
     summary = dict(schema='lm_report_matrix_v3', decoder_version=DECODER_VERSION,
                    evaluated_masks=masks,
-                   report_counts={s: int(len(b) * len(masks)) for s, b in bits.items()},
-                   missing={s: _per_mask(a) for s, a in missing.items()},
-                   offoff_rate={s: _rate(a) for s, a in offoff.items()})
+                   report_counts={s: int(g[..., masks].sum()) for s, g in generated.items()},
+                   missing={s: _per_mask(a, generated[s]) for s, a in missing.items()},
+                   offoff_rate={s: _rate(a, generated[s]) for s, a in offoff.items()})
     with (output_dir / 'lm_matrix.json').open('x', encoding='utf-8') as fh:
         json.dump(summary, fh, sort_keys=True, allow_nan=False)
     return summary

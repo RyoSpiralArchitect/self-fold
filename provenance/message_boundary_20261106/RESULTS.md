@@ -157,19 +157,31 @@ prompt, actual preceding table, pole-free decoder, shared downstream pointer)
 needs new sealed evidence; the planned P-tests are hereby marked **not
 executed under their registered conditions**.
 
-## S-WRITE sealed run (`write4/`): true priors, pole-free decode, shared pointer
+## S-WRITE sealed run (`write4/`): true priors, slot decode, shared pointer
 
-New sealed execution addressing the `write3` protocol deviations:
+Sealed execution addressing `write3` deviations, **with remaining limits the
+re-review correctly kept open**:
 
-- `state_prior_true` reports are keyed on `(source, prior, current)` with the
-  **actual** prior table — initial layout `[m0,m0,m0,m1]` (mask 8) at step 0,
-  the previously applied mask afterwards; looked up per trajectory step.
-- Decode is `rowbound_v2`/`decode_state_slot` — binds the off/off value to an
-  *option slot* without seeing the source pole; the matrix builder maps the
-  slot to the role bit.
-- A **shared-pointer** block rolls every LM channel through one
-  supplied-fitted controller per seed, alongside the per-channel fits.
-- Prior-true generation is eval-time-only (fit rows use the convention bit).
+- `state_prior_true` reports key on `(source, prior, current)` with the
+  actual prior table — initial layout `[m0,m0,m0,m1]` (mask 8) at step 0, the
+  *requested previous mask* afterwards. **Not the realized table**: after a
+  pointer error the requested mask does not reconstruct what was actually
+  carried. The registered realized-state test of the controller's own tensor
+  remains **not executed**; this is a rendered-history prompt study.
+- `decode_state_slot` binds the off/off value to an *option slot*; the
+  slot→role-bit mapping via source pole is **declared carried side
+  information** (same role metadata the supplied convention encodes), not
+  information recovered from the report alone. `rowbound_v3` adds multi-row
+  clauses, temporal precedence (`now` > plain > `previously`),
+  negation-complement votes and pronoun-anchor reset — all re-review
+  counterexamples covered by regression tests.
+- The **shared-pointer** block is a *convention-trained fixed-reader*
+  comparison: the supplied-fitted controller evaluates every LM matrix.
+  Directed, prior_true and supplied actors converge to identical hashes, so
+  it is not an independent refitting result.
+- `state_prior_true` generation is eval-time-only: 14,336 reports over 64
+  test sources × 16 priors × 14 masks; the 144 fit rows are convention-filled
+  and are now excluded from report statistics.
 
 | channel | all-four (3 seeds) | twins intact/erased | shared-pointer all-four |
 | --- | ---: | --- | ---: |
@@ -178,29 +190,29 @@ New sealed execution addressing the `write3` protocol deviations:
 | **state_prior_true** | **14.0%** | 0.179 / 0.000 | 14.0% |
 | no message | 12.5% | 0.000 / 0.000 | — |
 
-Report statistics: state_directed missing 0.0%; state_prior_true missing
-13.8%, off/off mention 2.8%.
+**Corrected report statistics** (generated reports only — the earlier 13.8%
+missing / 2.8% mention rates wrongly averaged in 144×16×14 synthetic fit
+cells): state_prior_true **44.9% missing, 9.0% off/off mention** over 14,336
+reports; per-report bit correctness 28.4% / wrong 26.7% (`rowbound_v3`
+re-decode, additive audit). state_directed: 0% missing, 100% correct.
 
-Readings:
+Readings (descriptive):
 
-- **P1 (registered) now supported under the realized-state protocol**: the
-  directed writer over the rendered realized table reaches the ceiling, and
-  the same holds through a single shared downstream pointer — the channel is
-  intrinsically lossless for this bank, not a per-channel fit artifact.
-- **P3 (registered) rejected more sharply than the fake-prior run**: with the
-  *true* preceding table, spontaneous "what changed" reports sit at 14% —
-  barely above the 12.5% no-message floor and *worse* than the fake-prior
-  arm's collapse. The referent the design predicted would help actually
-  removes the report's informational grip on the current assignment: reports
-  shift to describing the diff, and the off/off coordinate vanishes (2.8%
-  mention rate) with missing at 13.8%.
-- The shared-vs-per-channel identity (14.0% = 14.0%, 100% = 100%) confirms
-  the residual lives in the channel content, not in reader fitting.
+- Directed text over the rendered post-update table reaches the ceiling, in
+  both per-channel and shared-reader evaluations — at this interface and
+  decoder.
+- With the true prior shown, spontaneous "what changed" reports carry the
+  bit barely above the floor (14% vs 12.5%) — the predicted referent benefit
+  is again not observed. Whether this is writer failure or residual parser
+  failure is **not decided**: parser agreement is not semantic annotation,
+  and a unique-form audit of the saved corpus remains open.
+- Shared = per-channel equality is expected here (converged identical
+  actors) and is labeled as such; it does not isolate channel quality from
+  reader fitting.
 
-Limits kept: the rendered table is still the ideal post-update render (the
-boundary carries it exactly under hard form), not a tensor dump of the
-controller's own output; LM channels still consume decoded bits rather than
-running the realized text through the reader.
+Limits kept: rendered (not controller-emitted) tables; requested-mask priors,
+not realized-error-corrected priors; decoded bits, not raw text, cross the
+channel; the registered pole-free/actual-tensor test stays unexecuted.
 
 ## Reproduce
 

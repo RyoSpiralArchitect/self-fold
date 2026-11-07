@@ -100,11 +100,11 @@ def run(args, store):
         raise ValueError("Source-bank keys and rows disagree")
     members_all = torch.cat([members_for("hard", fitrows, 1.0),
                              members_for("hard", rows, 1.0)])
-    bits, miss, offoff = build_lm_matrix(
+    bits, miss, offoff, generated = build_lm_matrix(
         host, cfg, all_keys, all_poles, actions["groups"], store, writer_binding,
         n_fit=n_fit)
     save_report_matrices(store.path, cfg["fit_masks"] + cfg["test_masks"],
-                         bits, miss, offoff)
+                         bits, miss, offoff, generated)
     store.write("fit_keys.json", dict(keys=fit_keys, source_sha256=fit_hashes))
     store.write("test_keys.json", dict(keys=keys, source_sha256=hashes))
     # Hard members only: realized rows are the pure member actions.
