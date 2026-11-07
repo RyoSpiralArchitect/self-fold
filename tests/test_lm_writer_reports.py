@@ -138,7 +138,7 @@ def test_all_styles_saved_and_rates_use_only_generated_masks(tmp_path):
         dict(channel='lm_' + s) for s in ('directed', 'natural', 'guided')])
     result = build_report_matrix(Host(), cfg, [(0,0,0,0,0)], [0],
                                  [{'options': ['go west', 'go east']}], out, cache, {})
-    bits, missing, offoff = result
+    bits, missing, offoff, generated = result
     for array in offoff.values():
         array[:, [6,9]] = 1
     summary = save_report_matrices(out, [6,9], *result)
@@ -159,6 +159,22 @@ def test_unused_masks_cannot_silently_become_bit_zero(tmp_path):
                                  [{'options': ['go west', 'go east']}], out, cache, {})
     with pytest.raises(ValueError):
         save_report_matrices(out, [6,9,0], *result)
+
+
+def test_prior_style_separates_synthetic_fit_from_generated_eval(tmp_path):
+    cache, out = dirs(tmp_path)
+    cfg = dict(fit_masks=[6], test_masks=[9], arms=[dict(channel='lm_state_prior_true')])
+    keys = [(0, 0, 0, 0, 0), (1, 0, 0, 0, 1)]  # one synthetic fit + one generated eval
+    bits, missing, offoff, generated = build_report_matrix(
+        Host(), cfg, keys, [0, 1], [{'options': ['go west', 'go east']},
+                                    {'options': ['go west', 'go east']}],
+        out, cache, {}, n_fit=1)
+    assert bits['state_prior_true'].shape == (2, 16, 16)
+    assert not generated['state_prior_true'][0].any()       # fit row synthetic
+    assert generated['state_prior_true'][1].all()           # eval row generated
+    summary = save_report_matrices(out, [6, 9], bits, missing, offoff, generated)
+    # 1 generated source x 16 priors x 2 masks = 32, not len(matrix)*2
+    assert summary['report_counts'] == dict(state_prior_true=32)
 
 
 def test_duplicate_masks_rejected():

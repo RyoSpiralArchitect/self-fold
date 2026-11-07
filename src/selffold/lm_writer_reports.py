@@ -165,7 +165,7 @@ def build_report_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, b
                                          decoder_version=_decoder_for(style)[1]),
                                     ensure_ascii=False) + '\n')
         with (output_dir / f'reports_{style}.binding.json').open('x', encoding='utf-8') as fh:
-            json.dump(dict(receipt, decoder_version=DECODER_VERSION, requests=requests), fh,
+            json.dump(dict(receipt, decoder_version=_decoder_for(style)[1], requests=requests), fh,
                       sort_keys=True, ensure_ascii=False, allow_nan=False)
         if priors and n_fit:
             # Eval-time-only style: fit rows never generated -> perfect

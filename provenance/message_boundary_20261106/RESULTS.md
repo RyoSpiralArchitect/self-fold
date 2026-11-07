@@ -231,10 +231,14 @@ lookup path is exercised and distinct.
 | state_prior_true | 14.0% | 0.179 / 0.000 | 14.0% |
 | no message | 12.5% | 0.000 / 0.000 | — |
 
-Identical to `write4`: at this channel quality the realized and requested
-priors coincide on all measured trajectories — the divergence mechanism is
-verified real but never triggers at the measured accuracy. This bounds the
-review's concern numerically rather than by construction.
+Identical endpoints to `write4` — but per re-review, equal scores do **not**
+establish zero divergence (post-failure divergence cannot change an already
+failed all-four). `rollout_w` now emits `prior_mismatch` — a per-edit count of
+realized ≠ requested prior on matched routes — so future runs measure the
+state-level divergence directly. Fixtures establish the mechanism is real
+(`tests/test_realized_prior.py`: a message-steered wrong pick flips the
+carried argmax whenever rows disagree); whether it fires at this channel
+quality is recorded, not assumed.
 
 ## Reproduce
 

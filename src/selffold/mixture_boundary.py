@@ -241,7 +241,7 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0, lm_matrix=No
         lm_bits=bits_for(instructions[:, 0], pattern_of(weights), case_of),
     )
     depths = [weights[..., 1].reshape(n, num, 4)]
-    second, fourth, written = [], [], [w0.reshape(n, num, -1)]
+    second, fourth, written, mismatch = [], [], [w0.reshape(n, num, -1)], []
     for route in ("matched", "opposed", "equivalent", "erase"):
         ids = donors[{"opposed": 1, "equivalent": 2}.get(route, 0)]
         start_w = weights.reshape(n, num, 4, 2)[ids].reshape(-1, 4, 2)
@@ -254,10 +254,15 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0, lm_matrix=No
         ws = []
         route_cases = torch.as_tensor(ids).repeat_interleave(num)
         for t in range(1, 4):
+            realized_prior = pattern_of(w2)
+            if route == "matched":
+                # Measured divergence: realized carried pattern vs the mask
+                # that was requested at t-1 (per path, before this edit).
+                mismatch.append((realized_prior != instructions[:, t - 1]).reshape(n, num))
             table, w2, msg2, wt = eval_step(
                 model, start_table, w2, msg2, instructions[:, t], form, channel,
                 start_members,
-                lm_bits=bits_for(instructions[:, t], pattern_of(w2), route_cases),
+                lm_bits=bits_for(instructions[:, t], realized_prior, route_cases),
             )
             start_table = table
             ws.append(w2)
@@ -275,6 +280,9 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0, lm_matrix=No
         routes=np.asarray(["matched", "opposed", "equivalent", "erase"]),
         written=torch.stack(written, 2).numpy().astype(np.uint8),
         written_semantics=np.asarray("carried_message_bits_v2"),
+        # (n, 3, paths): realized prior != requested previous mask, per edit.
+        prior_mismatch=np.stack(
+            [m.numpy() if isinstance(m, torch.Tensor) else m for m in mismatch], 1),
     )
 
 
