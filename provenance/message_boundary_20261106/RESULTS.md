@@ -214,6 +214,28 @@ Limits kept: rendered (not controller-emitted) tables; requested-mask priors,
 not realized-error-corrected priors; decoded bits, not raw text, cross the
 channel; the registered pole-free/actual-tensor test stays unexecuted.
 
+## S-WRITE sealed rerun (`write5/`): realized-pattern prior lookup
+
+Addressing the "requested-mask prior is not the realized table" point directly:
+`state_prior_true` reports are now indexed by the **realized carried weight
+pattern** — `argmax` member per row, packed as a mask — computed from the
+actual `weights` arriving at each step, including after pointer errors.
+A deliberate-error fixture (`tests/test_realized_prior.py`) verifies a wrong
+carried bit *does* diverge the realized prior from the requested mask, so the
+lookup path is exercised and distinct.
+
+| channel | all-four (3 seeds) | twins intact/erased | shared-pointer all-four |
+| --- | ---: | --- | ---: |
+| supplied / reward | 100% | 1.000 / 0.000 | — |
+| state_directed | 100% | 1.000 / 0.000 | 100% |
+| state_prior_true | 14.0% | 0.179 / 0.000 | 14.0% |
+| no message | 12.5% | 0.000 / 0.000 | — |
+
+Identical to `write4`: at this channel quality the realized and requested
+priors coincide on all measured trajectories — the divergence mechanism is
+verified real but never triggers at the measured accuracy. This bounds the
+review's concern numerically rather than by construction.
+
 ## Reproduce
 
 ```bash
