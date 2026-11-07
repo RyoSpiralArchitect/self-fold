@@ -14,11 +14,18 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from .lm_writer import DECODER_VERSION, STYLES, decode_bit, decode_state, mentions_offoff, prompt_for
+from .lm_writer import (DECODER_VERSION, STATE_DECODER_VERSION, STYLES,
+                        decode_bit, decode_state, mentions_offoff, prompt_for)
+
+
+def _decoder_for(style):
+    if style.startswith("state_"):
+        return decode_state, STATE_DECODER_VERSION
+    return decode_bit, DECODER_VERSION
 
 
 def _decode(style, text, options, pole):
-    return decode_state(text, options, pole) if style.startswith("state_") else decode_bit(text, options, pole)
+    return _decoder_for(style)[0](text, options, pole)
 
 
 def fingerprint(value):
@@ -135,7 +142,8 @@ def build_report_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, b
                 offoff[style][i, m] = mentions_offoff(row['text'])
                 # Redecode the text; never copy stale stored bit/missing annotations.
                 fh.write(json.dumps(dict(row, bit=bit, missing=miss,
-                                         decoder_version=DECODER_VERSION), ensure_ascii=False) + '\n')
+                                         decoder_version=_decoder_for(style)[1]),
+                                    ensure_ascii=False) + '\n')
         with (output_dir / f'reports_{style}.binding.json').open('x', encoding='utf-8') as fh:
             json.dump(dict(receipt, decoder_version=DECODER_VERSION, requests=requests), fh,
                       sort_keys=True, ensure_ascii=False, allow_nan=False)

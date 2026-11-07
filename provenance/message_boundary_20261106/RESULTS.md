@@ -94,13 +94,26 @@ The archived `offoff_rate` averaged all 16 allocated mask columns although only 
 
 **Evidence boundary.** Historical raw reports and summaries remain intact. `trajectories.npz` is not published with these runs, and the old cache had no prompt/checkpoint binding. Full numerical replay of the historical reports has not been completed in this review. In particular, their twin counts and nonlearned `written_matches_offoff_bit` values must be regenerated or reinterpreted with the repaired reducer before citation. [Detailed review and commands](PR32_REVIEW.md).
 
-## S-WRITE (`write3/`): realized-table prompts, row-anchored decode
+## S-WRITE (`write3/`): supplied-table prompt study (registered realized-state test NOT executed)
 
-Executed on furnace after PR #33's design. The writer sees the same ideal
-assignments **plus** the rendered post-update table; the prior arm also sees
-the pre-change (all-default) table. Decode is `distinctive_tokens_v3` anchored
-to the off/off mention when present. Controllers still fit per channel; the
-table shown is the ideal post-update render, not the controller's own output.
+Executed on furnace after PR #33's design, but **deviating from the registered
+protocol** (`docs/STATE_WRITER_PLAN.md`) in ways the PR #34 review correctly
+flagged — the P1–P3 registrations do not apply:
+
+- Reports are still generated from `(source, pole, mask)` ideal assignments;
+  `The table now reads:` repeats those same assignments — no realized W ever
+  reaches the writer.
+- The prior arm used `assignment_words(..., 0)` = `[m0,m0,m0,m0]`, but the
+  actual initial member layout is `[m0,m0,m0,m1]`, and later priors depend on
+  earlier edits — so it is not a referent-restoration test.
+- `decode_state` still receives the source pole; controllers are refit per
+  channel.
+- The shipped decoder was a ±120-char window, not a row-binding parser: it
+  misread correct "changed from X to Y" reports (review-verified synthetic
+  failures). Fixed post-review as `rowbound_v1` with regression tests.
+
+Recorded all-four outcomes **under the shipped window decoder** (descriptive
+only, not plan verdicts):
 
 | channel | all-four (3 seeds) | twins intact (repaired axes) |
 | --- | ---: | ---: |
@@ -111,16 +124,38 @@ table shown is the ideal post-update render, not the controller's own output.
 | state_prior_natural | 12.5% | 0.000 |
 | no message | 12.5% | 0.000 |
 
-Report statistics: missing 0.0% / 3.3% / 5.4% / 33.7% and off/off mention
-rate 0.0% / 78.8% / 7.7% / 12.5% for directed/guided/natural/prior_natural.
+### Additive parser audit (`rowbound_v1` re-decode of all 11,648 saved reports)
 
-Preregistered verdicts (`docs/STATE_WRITER_PLAN.md`): **P1 supported** —
-directed text over the realized-table prompt supports the ceiling in this
-bank. **P2 rejected** — showing the table lowered natural from 53.8% to 33.8%.
-**P3 rejected** — the prior referent collapsed the channel to the no-message
-floor. Within this prompt family, more shown state did not help the
-spontaneous writer; it shifted reports toward unanchored description. These
-are end-to-end rates at this interface, not bounds on the writer's capacity.
+Per-report bit correctness vs the true mask bit0 — decoder cross on the same
+corpus, no regeneration:
+
+| style | window decoder correct/wrong/missing | rowbound_v1 correct/wrong/missing |
+| --- | --- | --- |
+| state_directed | 2912 / 0 / 0 | 2912 / 0 / 0 |
+| state_guided | 2508 / 308 / 96 | **2816 / 0 / 96** |
+| state_natural | 1796 / 960 / 156 | 1796 / 960 / 156 |
+| state_prior_natural | 1024 / 906 / 982 | 1054 / 876 / 982 |
+| write2 directed / guided / natural | (unchanged — unanchored styles fall back to the global decoder) | 2912·0·0 / 2148·132·632 / 2120·572·220 |
+
+Readings the audit supports:
+
+- The window decoder invented every state_guided wrong bit; under
+  `rowbound_v1` its per-report bit accuracy is 96.7% (the recorded 87.3%
+  all-four was fitted/evaluated on the *old* bits — recomputing it needs a
+  rerun, and is left unclaimed here).
+- state_natural's 61.7% per-report accuracy is decoder-invariant — genuine
+  unanchored-report ambiguity.
+- state_prior_natural stays bad under any decoder (~36% correct, 30% wrong,
+  34% missing) — real writer failure, consistent with its floor-level
+  all-four.
+- The W-RITE-vs-S-WRITE all-four contrast remains confounded (prompt +
+  decoder + per-channel refit all changed at once); these tables separate
+  only the decoder factor.
+
+What remains open: a genuine realized-state run (actual post-update W in the
+prompt, actual preceding table, pole-free decoder, shared downstream pointer)
+needs new sealed evidence; the planned P-tests are hereby marked **not
+executed under their registered conditions**.
 
 ## Reproduce
 

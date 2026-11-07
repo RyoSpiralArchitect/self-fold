@@ -16,6 +16,7 @@ import re
 STYLES = ("directed", "natural", "guided",
           "state_directed", "state_natural", "state_guided", "state_prior_natural")
 DECODER_VERSION = "distinctive_tokens_v3"
+STATE_DECODER_VERSION = "rowbound_v1"
 
 
 def _validate_options(options, pole):
@@ -121,21 +122,66 @@ def decode_bit(text, options, pole):
     return (1 if (s1, -i1) > (s0, -i0) else 0), 0
 
 
-def decode_state(text, options, pole, window=120):
-    """Off/off-anchored decode for S-WRITE reports.
+_ROW = r"\boff\s*[/\-]\s*off\b"
+_TO = re.compile(r"\bto\b", re.IGNORECASE)
+_NEG = re.compile(r"\bno longer\b|\bnot\b|\binstead of\b|\breplaced\b", re.IGNORECASE)
 
-    When the report names the off/off coordinate, only member mentions inside
-    `window` characters of that mention decide the bit. Otherwise falls back to
-    the global first-scoring mention (row-unanchored, flagged by offoff_rate).
+
+def _clauses(text):
+    return [c for c in re.split(r"[.;!\n]+", text) if c.strip()]
+
+
+def _bound_segment(clause):
+    """The span describing off/off's CURRENT value inside an anchored clause.
+
+    Handles 'X -> Y', 'changed from X to Y', 'no longer selects X' and
+    'X for/was assigned to off/off' orderings; returns (segment, excluded).
+    """
+    if "->" in clause:
+        tail = clause.split("->", 1)[1]
+        return tail, None
+    m = re.search(r"\bfrom\b.*?\bto\b", clause, re.IGNORECASE)
+    if m:
+        return clause[re.search(r"\bto\b", clause[m.start():], re.IGNORECASE).end() + m.start():], None
+    if _NEG.search(clause):
+        # The named value after a negator is the OLD value; exclude it.
+        tail = clause[_NEG.search(clause).end():]
+        seg = clause[: _NEG.search(clause).start()]
+        return seg or tail, tail
+    # Action-before-coordinate ("ridge path for off/off") needs the whole clause.
+    return clause, None
+
+
+def decode_state(text, options, pole):
+    """Row-binding off/off decode for S-WRITE reports.
+
+    Collects clauses that mention the off/off coordinate (plus pronoun 'it'
+    continuations), decodes the value bound to it per clause with a majority
+    vote, then falls back to the unanchored global decode. Returns (bit,
+    missing); missing only when no member can be bound at all.
     """
     _validate_options(options, pole)
-    hit = re.search(r"\boff\s*[/\-]\s*off\b", text, re.IGNORECASE)
-    if hit is not None:
-        lo, hi = max(0, hit.start() - window), hit.end() + window
-        scoped = text[lo:hi]
-        bit, missing = decode_bit(scoped, options, pole)
-        if not missing:
-            return bit, missing
+    votes = []
+    anchored = False
+    for clause in _clauses(text):
+        is_row = re.search(_ROW, clause, re.IGNORECASE) is not None
+        is_it = anchored and re.search(r"^\s*it\b", clause, re.IGNORECASE) is not None
+        if not (is_row or is_it):
+            continue
+        anchored = anchored or is_row
+        seg, excluded = _bound_segment(clause)
+        b, miss = decode_bit(seg, options, pole)
+        if miss and is_row:
+            b, miss = decode_bit(clause, options, pole)
+        if miss:
+            continue
+        if excluded is not None:
+            eb, emiss = decode_bit(excluded, options, pole)
+            if not emiss and eb == b:
+                continue  # only the negated old value was found
+        votes.append(b)
+    if votes:
+        return (1 if sum(votes) * 2 >= len(votes) else 0), 0
     return decode_bit(text, options, pole)
 
 
