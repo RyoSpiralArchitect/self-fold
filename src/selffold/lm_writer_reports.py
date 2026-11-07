@@ -197,12 +197,23 @@ def save_report_matrices(output_dir, masks, bits, missing, offoff):
     with path.open('xb') as fh:
         np.savez_compressed(fh, **{s: b.cpu().numpy() for s, b in bits.items()},
                             evaluated_masks=np.asarray(masks, dtype=np.int32))
+    def _per_mask(a):
+        # 2D [n,16] -> per-mask column means; 3D [n,prior,16] -> same over the
+        # last axis, averaging sources x priors. NaN-safe via nanmean.
+        if a.ndim == 2:
+            return {str(m): float(np.nanmean(a[:, m])) for m in masks}
+        return {str(m): float(np.nanmean(a[:, :, m])) for m in masks}
+
+    def _rate(a):
+        if a.ndim == 2:
+            return float(np.nanmean(a[:, masks]))
+        return float(np.nanmean(a[:, :, masks]))
+
     summary = dict(schema='lm_report_matrix_v3', decoder_version=DECODER_VERSION,
                    evaluated_masks=masks,
                    report_counts={s: int(len(b) * len(masks)) for s, b in bits.items()},
-                   missing={s: {str(m): float(a[:, m].mean()) for m in masks}
-                            for s, a in missing.items()},
-                   offoff_rate={s: float(a[:, masks].mean()) for s, a in offoff.items()})
+                   missing={s: _per_mask(a) for s, a in missing.items()},
+                   offoff_rate={s: _rate(a) for s, a in offoff.items()})
     with (output_dir / 'lm_matrix.json').open('x', encoding='utf-8') as fh:
         json.dump(summary, fh, sort_keys=True, allow_nan=False)
     return summary
