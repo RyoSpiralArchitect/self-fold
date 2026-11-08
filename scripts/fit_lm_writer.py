@@ -76,7 +76,7 @@ def run(args, store):
     host, identity = make_host(args)
     if identity["checkpoint_sha256"] != CHECKPOINT_SHA or not host.native_parity()["exact"]:
         raise ValueError("Pinned native host required")
-    host.max_forwards = 400_000
+    host.max_forwards = 1_500_000
     host.max_processed_tokens = 400_000_000
     host.wall_seconds = 21_600
     host.max_new_tokens = 48
