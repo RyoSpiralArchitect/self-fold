@@ -65,17 +65,21 @@ def boundary_weights(out_bits, mask, channel, width, lm_bits=None):
     return out_bits
 
 
+INITIAL_PRIOR = 8  # actual initial member layout [m0,m0,m0,m1] = mask 0b1000
+
+
 def _validate_lm_matrix(channel, model, members, masks, matrix):
     """Reject missing/partial LM messages instead of silently becoming no-message."""
     if channel != "lm":
         return
     if (model.width != 1 or not isinstance(matrix, torch.Tensor)
-            or matrix.shape != (len(members), 16)
+            or matrix.dim() not in (2, 3) or matrix.shape[0] != len(members)
+            or matrix.shape[-1] != 16
             or matrix.device != members.device):
-        raise ValueError("LM rollout requires width=1 and a [sources,16] bit matrix")
+        raise ValueError("LM rollout requires width=1 and a [sources,16] or [sources,priors,16] bit matrix")
     if not masks or any(m < 0 or m > 15 for m in masks):
         raise ValueError("LM masks must be nonempty four-world masks")
-    selected = matrix[:, masks]
+    selected = matrix[..., masks]
     if not torch.all((selected == 0) | (selected == 1)):
         raise ValueError("LM matrix is missing a required binary message")
 
@@ -220,17 +224,24 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0, lm_matrix=No
     message = torch.zeros(n * num, dtype=torch.long)
     case_of = torch.arange(n * num) // num
 
-    def bits_for(mask_vec, cases):
+    def bits_for(mask_vec, prior_vec, cases):
         if lm_matrix is None:
             return None
+        if lm_matrix.dim() == 3:
+            return lm_matrix[cases, prior_vec, mask_vec].unsqueeze(-1)
         return lm_matrix[cases, mask_vec].unsqueeze(-1)
+
+    def pattern_of(w):
+        # Realized table pattern: argmax member per row packed as a 4-bit mask.
+        return (w.argmax(-1) * torch.tensor([1, 2, 4, 8], device=w.device)).sum(-1)
 
     table, weights, message, w0 = eval_step(
         model, table, weights, message, instructions[:, 0], form, channel,
-        carried_members, lm_bits=bits_for(instructions[:, 0], case_of),
+        carried_members,
+        lm_bits=bits_for(instructions[:, 0], pattern_of(weights), case_of),
     )
     depths = [weights[..., 1].reshape(n, num, 4)]
-    second, fourth, written = [], [], [w0.reshape(n, num, -1)]
+    second, fourth, written, mismatch = [], [], [w0.reshape(n, num, -1)], []
     for route in ("matched", "opposed", "equivalent", "erase"):
         ids = donors[{"opposed": 1, "equivalent": 2}.get(route, 0)]
         start_w = weights.reshape(n, num, 4, 2)[ids].reshape(-1, 4, 2)
@@ -243,9 +254,15 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0, lm_matrix=No
         ws = []
         route_cases = torch.as_tensor(ids).repeat_interleave(num)
         for t in range(1, 4):
+            realized_prior = pattern_of(w2)
+            if route == "matched":
+                # Measured divergence: realized carried pattern vs the mask
+                # that was requested at t-1 (per path, before this edit).
+                mismatch.append((realized_prior != instructions[:, t - 1]).reshape(n, num))
             table, w2, msg2, wt = eval_step(
                 model, start_table, w2, msg2, instructions[:, t], form, channel,
-                start_members, lm_bits=bits_for(instructions[:, t], route_cases),
+                start_members,
+                lm_bits=bits_for(instructions[:, t], realized_prior, route_cases),
             )
             start_table = table
             ws.append(w2)
@@ -263,6 +280,9 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0, lm_matrix=No
         routes=np.asarray(["matched", "opposed", "equivalent", "erase"]),
         written=torch.stack(written, 2).numpy().astype(np.uint8),
         written_semantics=np.asarray("carried_message_bits_v2"),
+        # (n, 3, paths): realized prior != requested previous mask, per edit.
+        prior_mismatch=np.stack(
+            [m.numpy() if isinstance(m, torch.Tensor) else m for m in mismatch], 1),
     )
 
 
@@ -290,7 +310,8 @@ def twins_w(model, form, channel, members, masks, beta=1.0, lm_matrix=None):
         if channel == "supplied":
             written = convention_bits(history, model.width)
         elif channel == "lm":
-            written = lm_matrix[ix, history].unsqueeze(-1)
+            written = (lm_matrix[ix, history.new_full(history.shape, INITIAL_PRIOR), history]
+                       if lm_matrix.dim() == 3 else lm_matrix[ix, history]).unsqueeze(-1)
         else:
             written = (model.write_logits(history) > 0).long()
         incoming = (
@@ -308,7 +329,10 @@ def twins_w(model, form, channel, members, masks, beta=1.0, lm_matrix=None):
                 table = torch.nn.functional.one_hot(table.argmax(-1), 16).to(table)
             revised, w2, _, _ = eval_step(
                 model, table, hist_w, msg, current, form, channel, base,
-                lm_bits=lm_matrix[ix, current].unsqueeze(-1) if channel == "lm" else None,
+                lm_bits=(lm_matrix[ix, (hist_w.argmax(-1) * torch.tensor(
+                             [1, 2, 4, 8], device=hist_w.device)).sum(-1), current]
+                         if lm_matrix.dim() == 3
+                         else lm_matrix[ix, current]).unsqueeze(-1) if channel == "lm" else None,
             )
             results.append(w2[..., 1].reshape(len(members), len(representatives), len(masks), 4))
     # Stack the four (history, erasure) conditions BEFORE the world axis.

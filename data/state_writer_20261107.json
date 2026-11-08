@@ -1,0 +1,22 @@
+{
+  "schema": "lm_writer_v1",
+  "seeds": [17, 41, 73],
+  "arms": [
+    {"form": "hard", "channel": "lm_state_directed", "width": 1, "beta": 1.0},
+    {"form": "hard", "channel": "lm_state_prior_true", "width": 1, "beta": 1.0},
+    {"form": "hard", "channel": "supplied", "width": 1, "beta": 1.0},
+    {"form": "hard", "channel": "reward", "width": 1, "beta": 1.0},
+    {"form": "hard", "channel": "none", "width": 1, "beta": 1.0}
+  ],
+  "fit_topics": [0, 2, 4, 6],
+  "fit_masks": [8, 7, 14, 1, 2, 13, 4, 11],
+  "test_masks": [6, 9, 10, 5, 12, 3],
+  "test_flags": [["Sable", "Fern"], ["Onyx", "Wren"]],
+  "test_styles": ["when"],
+  "updates": 512,
+  "batch": 128,
+  "learning_rate": 0.06,
+  "exploration_floor": 0.12,
+  "source_compiler_sha256": "ab3dd606f01630e202c72b382d51b74fe317b611604b2229d7c6d82d52e3b935",
+  "native_reader_sha256": "427e138c8693e60ebf28074836a8452dc6c7da93e9bab1c876c03b33dc0b8909"
+}
