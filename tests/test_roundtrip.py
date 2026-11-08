@@ -35,3 +35,56 @@ def test_prompt_rejects_unknown_style():
     import pytest
     with pytest.raises(ValueError):
         rt_prompt("rt_other", OPTS, 0, 8, 14, 14)
+
+
+def test_feasible_outs_covers_all_picks():
+    from selffold.roundtrip import feasible_outs
+    # prior 0b1000 = [m0,m0,m0,m1]: off rows share one pick, on rows the other.
+    assert feasible_outs(8, 14) == [0, 1, 14, 15]
+    # A collapsed prior can only produce uniform tables.
+    assert feasible_outs(15, 6) == [15]
+    assert feasible_outs(0, 6) == [0]
+
+
+def test_rt_report_requests_cover_feasible_bound():
+    from selffold.lm_writer_reports import rt_report_requests
+    groups = [{"options": OPTS}]
+    reqs = rt_report_requests("rt_natural", [14], [(0, 0)], groups)
+    # 14 mixed priors x 4 feasible outs + 2 uniform priors x 1
+    assert len(reqs) == 14 * 4 + 2
+    assert all({"source", "prior", "mask", "out", "prompt"} <= set(r) for r in reqs)
+    key = next(r for r in reqs if (r["prior"], r["mask"], r["out"]) == (8, 14, 1))
+    assert "The table now reads" in key["prompt"]
+
+
+def _closed_keys():
+    return [(0, f, 0, p, o) for f in (0, 1) for p in (0, 1) for o in (0, 1)]
+
+
+def test_rollout_rt_uses_decoded_bit_as_next_message():
+    from selffold.message_boundary import BoundaryMemory
+    from selffold.mixture_boundary import rollout_rt
+    torch.manual_seed(0)
+    keys = _closed_keys()
+    members = torch.randn(len(keys), 2, 16)
+    # Perfect writer: the report bit equals the realized out's off/off bit.
+    rt_bits = torch.zeros(len(keys), 16, 16, 16, dtype=torch.long)
+    for out in range(16):
+        rt_bits[:, :, :, out] = out & 1
+    actor = BoundaryMemory(7, 1)
+    rolled = rollout_rt(actor, "hard", members, keys, [6, 9], rt_bits)
+    assert {"second", "fourth", "written", "prior_mismatch", "depths"} <= set(rolled)
+    num = rolled["depths"].shape[1]
+    assert rolled["depths"].shape == (len(keys), num, 4, 4)
+    assert rolled["written"].shape[0] == len(keys)
+
+
+def test_rollout_rt_rejects_uncovered_lookup():
+    import pytest
+    from selffold.message_boundary import BoundaryMemory
+    from selffold.mixture_boundary import rollout_rt
+    keys = _closed_keys()
+    members = torch.randn(len(keys), 2, 16)
+    rt_bits = torch.full((len(keys), 16, 16, 16), -1, dtype=torch.long)
+    with pytest.raises(ValueError):
+        rollout_rt(BoundaryMemory(7, 1), "hard", members, keys, [6, 9], rt_bits)

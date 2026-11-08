@@ -58,6 +58,22 @@ def rt_key(source, prior, mask, out):
     return (int(source), int(prior), int(mask), int(out))
 
 
+def feasible_outs(prior, cur):
+    """Every out pattern a (prior, cur) transition can realize.
+
+    Each world row copies the weights of the row the pointer picked for its
+    order, so an off row lands on the dominant member of pick0 and an on row on
+    pick1. Enumerating both picks covers every out a controller (trained or
+    exploring) can produce from this prior — the report-cache coverage bound.
+    """
+    pb = [(prior >> r) & 1 for r in range(4)]
+    outs = set()
+    for p0 in range(4):
+        for p1 in range(4):
+            outs.add(sum(pb[p1 if (cur >> i) & 1 else p0] << i for i in range(4)))
+    return sorted(outs)
+
+
 def realize_next(weights, mask_bits):
     """The ideal update: each world row takes the member named by its mask bit.
 

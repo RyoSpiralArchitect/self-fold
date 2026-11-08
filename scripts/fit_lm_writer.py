@@ -19,10 +19,11 @@ from fit_conditional_curriculum import main
 from fit_role_memory import bank
 from role_memory_native import PARENT, READER, score_rows
 from selffold.cli import ROOT, make_host
-from selffold.lm_writer_reports import build_report_matrix, save_report_matrices
+from selffold.lm_writer_reports import (build_report_matrix, build_rt_matrix,
+                                        save_report_matrices)
 from fit_mixture_boundary import members_for
 from selffold.mixture_boundary import (
-    BoundaryMemory, rollout_w, train_batch, twins_w,
+    BoundaryMemory, rollout_rt, rollout_w, train_batch, twins_w,
 )
 from selffold.records import RunStore, code_manifest, file_sha
 from selffold.role_trials import donor_indices
@@ -103,6 +104,14 @@ def run(args, store):
     bits, miss, offoff, generated = build_lm_matrix(
         host, cfg, all_keys, all_poles, actions["groups"], store, writer_binding,
         n_fit=n_fit)
+    # RoundTrip reports are keyed by the realized (prior, mask, out) and
+    # generated over the full feasible bound, for fit and test sources alike.
+    rt, rt_miss, rt_offoff, rt_gen = build_rt_matrix(
+        host, cfg, all_keys, all_poles, actions["groups"], store.path, CACHE,
+        writer_binding)
+    for dst, src in ((bits, rt), (miss, rt_miss),
+                     (offoff, rt_offoff), (generated, rt_gen)):
+        dst.update(src)
     save_report_matrices(store.path, cfg["fit_masks"] + cfg["test_masks"],
                          bits, miss, offoff, generated)
     store.write("fit_keys.json", dict(keys=fit_keys, source_sha256=fit_hashes))
@@ -134,7 +143,8 @@ def run(args, store):
                 for v in (ix, pattern, noise):
                     sched.update(v.numpy().tobytes())
                 rw = make_reward(ix.numpy(), fit_keys, labels, fit_top)
-                if channel == "lm":
+                rtb = rt[style] if style in rt else None
+                if channel == "lm" and rtb is None:
                     m = bits[style]
                     if m.dim() == 3:
                         # Prior-aware reports: step0 prior = initial layout (8),
@@ -150,7 +160,8 @@ def run(args, store):
                 loss, observed = train_batch(
                     actor, members_all[ix], rw, pattern, noise,
                     arm["form"], channel, cfg["exploration_floor"], 1.0,
-                    lm_bits=lm_bits)
+                    lm_bits=lm_bits, rt_bits=rtb,
+                    cases=ix if rtb is not None else None)
                 opt.zero_grad(); loss.backward()
                 torch.nn.utils.clip_grad_norm_(actor.parameters(), 1.0, error_if_nonfinite=True)
                 opt.step()
@@ -175,13 +186,18 @@ def run(args, store):
             actor = BoundaryMemory(seed, arm["width"]).requires_grad_(False)
             prefix = f"{name}_{seed}_"
             actor.load_state_dict({k: torch.from_numpy(f[prefix + k]) for k in actor.state_dict()})
-            lm_matrix = bits[style][test_idx] if channel == "lm" else None
-            rolled = rollout_w(actor, arm["form"], channel, members_all[n_fit:],
-                               keys, eval_masks, 1.0, lm_matrix=lm_matrix)
+            rtb = rt[style][test_idx] if style in rt else None
+            lm_matrix = bits[style][test_idx] if channel == "lm" and rtb is None else None
+            if rtb is not None:
+                rolled = rollout_rt(actor, arm["form"], members_all[n_fit:],
+                                    keys, eval_masks, rt_bits=rtb)
+            else:
+                rolled = rollout_w(actor, arm["form"], channel, members_all[n_fit:],
+                                   keys, eval_masks, 1.0, lm_matrix=lm_matrix)
             output.setdefault("eval_paths", rolled.pop("paths"))
             rolled["twins"] = twins_w(actor, arm["form"], channel,
                                       members_all[n_fit:], eval_masks, 1.0,
-                                      lm_matrix=lm_matrix)
+                                      lm_matrix=lm_matrix, rt_bits=rtb)
             output.update({prefix + k: v for k, v in rolled.items()})
         # Shared-pointer block: every LM channel rolled through ONE
         # supplied-fitted controller per seed — isolates channel quality from
@@ -193,11 +209,22 @@ def run(args, store):
             actor.load_state_dict({k: torch.from_numpy(f[sp + k]) for k in actor.state_dict()})
             for style in lm_styles:
                 prefix = f"shared_supplied_lm_{style}_{seed}_"
-                rolled = rollout_w(actor, "hard", "lm", members_all[n_fit:],
-                                   keys, eval_masks, 1.0, lm_matrix=bits[style][test_idx])
-                rolled.pop("paths", None)
-                rolled["twins"] = twins_w(actor, "hard", "lm", members_all[n_fit:],
-                                          eval_masks, 1.0, lm_matrix=bits[style][test_idx])
+                if style in rt:
+                    rolled = rollout_rt(actor, "hard", members_all[n_fit:],
+                                        keys, eval_masks,
+                                        rt_bits=rt[style][test_idx])
+                    rolled.pop("paths", None)
+                    rolled["twins"] = twins_w(actor, "hard", "lm", members_all[n_fit:],
+                                              eval_masks, 1.0,
+                                              rt_bits=rt[style][test_idx])
+                else:
+                    rolled = rollout_w(actor, "hard", "lm", members_all[n_fit:],
+                                       keys, eval_masks, 1.0,
+                                       lm_matrix=bits[style][test_idx])
+                    rolled.pop("paths", None)
+                    rolled["twins"] = twins_w(actor, "hard", "lm", members_all[n_fit:],
+                                              eval_masks, 1.0,
+                                              lm_matrix=bits[style][test_idx])
                 output.update({prefix + k: v for k, v in rolled.items()})
     np.savez_compressed(store.path / "trajectories.npz", **output)
     # Hard-member variant table for the summarizer.
