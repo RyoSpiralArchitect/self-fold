@@ -1,24 +1,26 @@
-"""Writer/parser separation audit over saved report corpora.
+"""Decoder-consensus audit over saved report corpora.
 
 Re-decodes every saved report under several decoders and a normalized
-unique-form view, so "the writer never wrote the bit" separates from "the
-parser could not read a written bit". Ground truth per record:
+unique-form view. These are decoder-consensus measurements, NOT
+writer/parser attribution: the decoders share lexical scoring machinery
+(decode_state_slot underlies two of the three), so shared blind spots are
+possible and all-decoder missingness does not prove the writer omitted
+the bit. Ground truth per record:
 
 - rt_* styles: the realized out pattern's off/off bit (out & 1) — the report
   is about the actual post-update table.
 - other styles: the requested mask's off/off bit (mask & 1).
 
-Attribution per report (writer failure if no decoder finds the bit):
-- all_missing: every decoder reports missing -> nothing written to read.
-- all_wrong: every decoder binds the other option -> a written-but-wrong or
-  systematically ambiguous report; still decoder-independent.
-- split: decoders disagree -> parser-attributable (the bit was readable by
-  at least one reasonable parser).
+Categories per report:
+- unresolved_all_missing: every decoder reports missing. Consistent with
+  the bit being unwritten OR with wording all these parsers miss.
+- consensus_wrong: every decoding decoder binds the same other option.
+- disagreement: decoders disagree on the bound option.
+- consensus_correct: every decoder that binds anything binds correctly.
 
 Unique-form view: normalize each text (option names -> <A>/<B>, coordinates
--> <ROW>, casefold) and count distinct forms among each outcome class. Many
-distinct failing forms = a systematic writer gap; a few repeated failing
-forms = parser blind spots. Writes no files; never overwrites summaries.
+-> <ROW>, casefold) and count distinct forms per class. Writes no files;
+never overwrites summaries.
 
 Usage:
   PYTHONPATH=src python3 provenance/message_boundary_20261106/audit_roundtrip.py [run ...]
@@ -92,32 +94,31 @@ def audit(run):
             results = {name: fn(r["text"]) for name, fn in decoders(opts, pole).items()}
             bits = {n: b for n, (b, m) in results.items() if not m}
             if not bits:
-                cls = "all_missing"
+                cls = "unresolved_all_missing"
             elif len(set(bits.values())) == 1:
-                cls = "correct" if next(iter(bits.values())) == truth else "all_wrong"
-            elif any(b == truth for b in bits.values()):
-                cls = "split_recoverable"
+                cls = ("consensus_correct" if next(iter(bits.values())) == truth
+                       else "consensus_wrong")
             else:
-                cls = "all_wrong"
+                cls = "disagreement"
             counts[cls] += 1
             counts["n"] += 1
             f = form_of(r["text"], opts)
             per = {n: ("missing" if m else ("correct" if b == truth else "wrong"))
                    for n, (b, m) in results.items()}
-            if cls == "all_missing":
+            if cls == "unresolved_all_missing":
                 forms["missing"][f] += 1
-            elif cls == "all_wrong":
+            elif cls == "consensus_wrong":
                 forms["wrong"][f] += 1
             else:
-                for n, p in per.items():
+                for n2, p in per.items():
                     forms[p][f] += 1
                 by_key[cls] += 1
         n = counts["n"]
         print(f"{run} {style:20s} n={n} "
-              f"all_missing={counts['all_missing']} ({counts['all_missing'] / n:.1%}) "
-              f"all_wrong={counts['all_wrong']} ({counts['all_wrong'] / n:.1%}) "
-              f"split_recoverable={counts['split_recoverable']} "
-              f"correct={counts['correct']} ({counts['correct'] / n:.1%})")
+              f"unresolved={counts['unresolved_all_missing']} ({counts['unresolved_all_missing'] / n:.1%}) "
+              f"consensus_wrong={counts['consensus_wrong']} ({counts['consensus_wrong'] / n:.1%}) "
+              f"disagreement={counts['disagreement']} "
+              f"consensus_correct={counts['consensus_correct']} ({counts['consensus_correct'] / n:.1%})")
         for cls in ("missing", "wrong"):
             c = forms[cls]
             top = ", ".join(f"{v}x {k[:60]!r}" for k, v in c.most_common(3))

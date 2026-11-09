@@ -18,15 +18,17 @@ from .lm_writer import (DECODER_VERSION, STATE_DECODER_VERSION, STYLES,
                         decode_bit, decode_state, decode_state_slot,
                         mentions_offoff, prompt_for)
 
-RT_DECODER_VERSION = STATE_DECODER_VERSION
+RT_DECODER_VERSION = "rowbound_v4"
 
 
 def _decoder_for(style):
     if style.startswith("rt_"):
         # Pole-free slot decode; the caller maps slot -> role bit via the pole.
+        # A missing report falls back to bit 0, matching the state_* decoders'
+        # missing policy so cross-channel comparisons see the same convention.
         def rt(text, options, pole):
             slot, miss = decode_state_slot(text, options)
-            return slot ^ int(pole), miss
+            return (0 if miss else slot ^ int(pole)), miss
         return rt, RT_DECODER_VERSION
     if style.startswith("state_"):
         return decode_state, STATE_DECODER_VERSION
@@ -116,6 +118,7 @@ def build_rt_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, bindi
     n = len(keys)
     pairs, index = source_pairs(keys)
     bits, missing, offoff, generated = {}, {}, {}, {}
+    record_counts = {}
     output_dir = Path(output_dir)
     for style in styles:
         requests = rt_report_requests(style, masks, pairs, groups)
@@ -144,7 +147,8 @@ def build_rt_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, bindi
         missing[style] = pm[index]
         offoff[style] = po[index]
         generated[style] = pg[index]
-    return bits, missing, offoff, generated
+        record_counts[style] = len(records)
+    return bits, missing, offoff, generated, record_counts
 
 
 def validate_records(records, requests):
@@ -275,8 +279,17 @@ def build_report_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, b
     return bits, missing, offoff, generated
 
 
-def save_report_matrices(output_dir, masks, bits, missing, offoff, generated=None):
-    """Save every active style; rates exclude unsampled masks and synthetic rows."""
+def save_report_matrices(output_dir, masks, bits, missing, offoff,
+                         generated=None, record_counts=None):
+    """Save every active style; rates exclude unsampled masks and synthetic rows.
+
+    Matrix axis semantics differ per style: 2D is [source, mask], 3D is
+    [source, prior, mask], 4D (rt) is [source, prior, instruction, output].
+    Per-mask panels always select the instruction axis — for 4D that is
+    axis 2, keeping every feasible output cell — so collapsed outputs are
+    never filtered out. `record_counts` reports unique generated records,
+    distinct from broadcast per-source cells.
+    """
     output_dir = Path(output_dir)
     if not masks or len(set(masks)) != len(masks) or any(not 0 <= m < 16 for m in masks):
         raise ValueError('Invalid sampled mask set')
@@ -284,19 +297,27 @@ def save_report_matrices(output_dir, masks, bits, missing, offoff, generated=Non
         raise ValueError('Report matrix styles disagree')
     if generated is None:
         generated = {s: np.ones(tuple(b.shape), bool) for s, b in bits.items()}
+
+    def _mask_sel(a, g):
+        # (view, gen_view): instruction-mask panels for validation/stats.
+        if a.ndim == 4:
+            return a[:, :, masks, :], g[:, :, masks, :]
+        return a[..., masks], g[..., masks]
+
     for style, matrix in bits.items():
         if matrix.ndim not in (2, 3, 4) or matrix.shape[-1] != 16 or matrix.shape[0] == 0:
             raise ValueError('Expected a nonempty [sources,...,16] report matrix')
         gen = generated[style]
         if gen.shape != tuple(matrix.shape):
             raise ValueError('Report matrix and generation mask disagree')
-        view = matrix[..., masks]
-        if not bool(((view == 0) | (view == 1) | ~torch.from_numpy(gen[..., masks])).all()):
+        view, genv = _mask_sel(matrix, gen)
+        if not bool(((view == 0) | (view == 1) | ~torch.from_numpy(genv)).all()):
             raise ValueError('Unobserved report bit in sampled masks')
         for observation in (missing[style], offoff[style]):
             if observation.shape != tuple(matrix.shape):
                 raise ValueError('Incomplete report statistics')
-            if not (np.isin(observation[..., masks], [0, 1]) | ~gen[..., masks]).all():
+            _, genv = _mask_sel(observation, gen)
+            if not (np.isin(_, [0, 1]) | ~genv).all():
                 raise ValueError('Incomplete report statistics')
     path = output_dir / 'lm_matrix.npz'
     with path.open('xb') as fh:
@@ -304,21 +325,28 @@ def save_report_matrices(output_dir, masks, bits, missing, offoff, generated=Non
                             evaluated_masks=np.asarray(masks, dtype=np.int32))
 
     def _per_mask(a, g):
-        # Generated cells only; works for any leading (source, ...) axes.
+        # Generated cells only; panel selects the instruction axis.
         out = {}
         for m in masks:
-            sel = g[..., m]
-            vals = a[..., m][sel]
+            sel = g[:, :, m, :] if a.ndim == 4 else g[..., m]
+            vals = a[:, :, m, :][sel] if a.ndim == 4 else a[..., m][sel]
             out[str(m)] = float(np.nanmean(vals)) if len(vals) else None
         return out
 
     def _rate(a, g):
-        vals = a[..., masks][g[..., masks]]
+        view, genv = _mask_sel(a, g)
+        vals = view[genv]
         return float(np.nanmean(vals)) if len(vals) else None
 
+    cell_counts = {}
+    for s, a in bits.items():
+        _, genv = _mask_sel(a, generated[s])
+        cell_counts[s] = int(genv.sum())
     summary = dict(schema='lm_report_matrix_v3', decoder_version=DECODER_VERSION,
                    evaluated_masks=masks,
-                   report_counts={s: int(g[..., masks].sum()) for s, g in generated.items()},
+                   report_counts={s: int((record_counts or {}).get(s, cell_counts[s]))
+                                  for s in generated},
+                   broadcast_cells=cell_counts,
                    missing={s: _per_mask(a, generated[s]) for s, a in missing.items()},
                    offoff_rate={s: _rate(a, generated[s]) for s, a in offoff.items()})
     with (output_dir / 'lm_matrix.json').open('x', encoding='utf-8') as fh:

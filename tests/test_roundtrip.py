@@ -14,8 +14,9 @@ def test_realized_transition_prompt_shows_actual_output():
     # Requested mask 14 but a collapsed/erroneous realized output pattern 1:
     # the prompt must render the ACTUAL out, not the request.
     p = rt_prompt("rt_directed", OPTS, 0, prior_pattern=8, mask=14, out_pattern=1)
-    assert "The table now reads: off/off -> ridge path; off/on -> river path" in p
-    assert "off/on -> ridge path" in p.split("now reads:")[1].split(";")[1] or True
+    now = p.split("The table now reads: ")[1].split("\n")[0]
+    assert now == ("off/off -> ridge path; off/on -> river path; "
+                   "on/off -> river path; on/on -> river path.")
 
 
 def test_decode_roundtrip():
@@ -88,3 +89,46 @@ def test_rollout_rt_rejects_uncovered_lookup():
     rt_bits = torch.full((len(keys), 16, 16, 16), -1, dtype=torch.long)
     with pytest.raises(ValueError):
         rollout_rt(BoundaryMemory(7, 1), "hard", members, keys, [6, 9], rt_bits)
+
+
+def test_rollout_rt_uses_out_axis_not_requested_mask():
+    """Swapping the realized-out coordinate for the requested mask must
+    change the selected report — catches lookups indexed by instruction."""
+    from selffold.message_boundary import BoundaryMemory
+    from selffold.mixture_boundary import rollout_rt
+    keys = _closed_keys()
+    members = torch.randn(len(keys), 2, 16)
+    base = torch.zeros(len(keys), 16, 16, 16, dtype=torch.long)
+    base[:, :, :, :] = torch.arange(16) & 1          # report = out & 1
+    by_out = rollout_rt(BoundaryMemory(7, 1), "hard", members, keys, [6, 9], base.clone())
+    req = torch.zeros(len(keys), 16, 16, 16, dtype=torch.long)
+    req[:, :, :, :] = (torch.arange(16)[None, :, None, None] & 1)  # report = mask & 1
+    by_req = rollout_rt(BoundaryMemory(7, 1), "hard", members, keys, [6, 9], req)
+    assert not (by_out["written"] == by_req["written"]).all()
+    assert not (by_out["depths"] == by_req["depths"]).all()
+
+
+def test_save_report_matrices_4d_instruction_axis_and_counts(tmp_path):
+    """4D panels select the instruction axis, keep all outs, and report
+    unique generated records separately from broadcast cells."""
+    import numpy as np
+    from selffold.lm_writer_reports import save_report_matrices
+    n = 2
+    bits = {"rt_x": torch.zeros(n, 16, 16, 16, dtype=torch.long)}
+    gen = {"rt_x": np.zeros((n, 16, 16, 16), bool)}
+    miss = {"rt_x": np.zeros((n, 16, 16, 16))}
+    off = {"rt_x": np.zeros((n, 16, 16, 16))}
+    # Only instruction 6, prior 8: all 4 feasible outs generated;
+    # the two uniform outs (0, 15) are missing-reports.
+    for o in (0, 6, 9, 15):
+        gen["rt_x"][:, 8, 6, o] = True
+    miss["rt_x"][:, 8, 6, 0] = miss["rt_x"][:, 8, 6, 15] = 1.0
+    summary = save_report_matrices(tmp_path, [6, 9], bits, miss, off, gen,
+                                   record_counts={"rt_x": 4})
+    assert summary["report_counts"]["rt_x"] == 4          # unique records
+    assert summary["broadcast_cells"]["rt_x"] == 8        # 2 sources x 4 outs
+    assert summary["missing"]["rt_x"]["6"] == 0.5         # 2 of 4 outs missing
+    assert summary["missing"]["rt_x"]["9"] is None        # ungenerated mask
+    import json
+    written = json.loads((tmp_path / "lm_matrix.json").read_text())
+    assert written["missing"]["rt_x"]["6"] == 0.5

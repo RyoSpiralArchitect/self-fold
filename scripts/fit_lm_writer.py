@@ -106,14 +106,15 @@ def run(args, store):
         n_fit=n_fit)
     # RoundTrip reports are keyed by the realized (prior, mask, out) and
     # generated over the full feasible bound, for fit and test sources alike.
-    rt, rt_miss, rt_offoff, rt_gen = build_rt_matrix(
+    rt, rt_miss, rt_offoff, rt_gen, rt_counts = build_rt_matrix(
         host, cfg, all_keys, all_poles, actions["groups"], store.path, CACHE,
         writer_binding)
     for dst, src in ((bits, rt), (miss, rt_miss),
                      (offoff, rt_offoff), (generated, rt_gen)):
         dst.update(src)
     save_report_matrices(store.path, cfg["fit_masks"] + cfg["test_masks"],
-                         bits, miss, offoff, generated)
+                         bits, miss, offoff, generated,
+                         record_counts=rt_counts)
     store.write("fit_keys.json", dict(keys=fit_keys, source_sha256=fit_hashes))
     store.write("test_keys.json", dict(keys=keys, source_sha256=hashes))
     # Hard members only: realized rows are the pure member actions.

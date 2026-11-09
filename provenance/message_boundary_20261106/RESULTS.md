@@ -277,28 +277,50 @@ preserved off-repo; the closed run used budget 1.5M.
 | state_prior_true | 14.0% | 0.179 / 0.000 | 14.0% |
 | no message | 12.5% | 0.000 / 0.000 | — |
 
-### Writer/parser audit (`audit_roundtrip.py`: 3 decoders + unique-form view)
+### Decoder-consensus audit (`audit_roundtrip.py`: 3 decoders + unique-form view)
 
-Per-report bit attribution on the write6 corpus:
+Per-report decoder-consensus categories on the write6 corpus. These are
+NOT writer/parser attribution: the three decoders share lexical scoring
+(two wrap the same `decode_state_slot`), so shared blind spots are
+possible and all-decoder missingness does not prove omission.
 
-- **rt_directed** (12,992): correct 89.0%, all-wrong 11.0%, missing 0%.
-  Split by realized divergence: when out == mask the bit is 100% correct;
-  when out != mask the writer reports the *instruction's* bit (mask&1) in
-  78% — i.e. it answers the question asked. The carried bit thus behaves
-  like the supplied convention on instruction faithfulness, which is
-  consistent with the ceiling all-four.
-- **rt_natural** (12,992): correct 33.7%, all-wrong 11.7%, all-missing
-  53.4%, decoder-split 1.2%. 333 unique missing forms — a broad,
-  systematic writer gap, not a parser blind spot.
-- **state_prior_true** (14,336): missing 44.9%, wrong 23.8%, correct
-  26.2%, split 5.1% — decoder-invariant writer failure, matching the
-  floor-level all-four.
+- **rt_directed** (12,992): consensus-correct 89.0%, consensus-wrong
+  11.0%, unresolved 0%. Split by realized divergence: when out == mask
+  the bit is 100% consensus-correct; when out != mask the report names
+  the *instruction's* bit (mask&1) in 78% — it answers the question
+  asked. The carried bit thus behaves like the supplied convention on
+  instruction faithfulness, consistent with the ceiling all-four. Note
+  the directed prompt asks about the instruction, not the realized out:
+  100% end-to-end is not 100% faithful reporting of erroneous outputs.
+- **rt_natural** (12,992): consensus-correct 33.7%, consensus-wrong
+  11.7%, unresolved-all-missing 53.4%, disagreement 1.2% — over 333
+  unique unresolved forms. Correctness concentrates on uniform outs
+  (52% vs 14.6% on mixed outs); off/off is named in 8.7% of reports.
+- **state_prior_true** (14,336): unresolved 44.9%, consensus-wrong
+  23.8%, consensus-correct 26.2%, disagreement 5.1%.
 
 Readings (descriptive, this interface/decoder only):
 
 - A **directed** question over the realized triple reaches the ceiling —
-  the generic report→decode→next-step loop works end to end.
-- **Spontaneous** natural reports still do not write the row coordinate;
-  the realized-state referent does not rescue them (~7% ≈ below floor).
-- The write5 open question resolves as **writer failure**: ~95% of the
-  prior_true gap is decoder-invariant (unwritten or wrongly bound).
+  a working structured report→decode→next-step loop under its specified
+  question and decoder. An actual-output question is a distinct arm.
+- **Spontaneous** natural reports remain decoder-consensus-poor on the
+  realized state (~7% ≈ below floor); whether the gap is unwritten
+  content or shared parser blind spots needs an independently annotated,
+  stratified sample — not asserted here.
+- The rt-vs-state missing-report fallback was asymmetric at write6
+  (slot^pole on missing vs bit 0); it is declared and unified to 0 in
+  `rowbound_v4` for future runs, so the 14.0% vs 7.3% comparison is a
+  report+decoder+fallback system comparison, not a pure writer effect.
+
+### Post-review metadata correction (`lm_matrix_rt.json`)
+
+The committed `lm_matrix.json` selected the *output* axis of the 4D rt
+matrices with `[..., masks]` — the feasible collapsed outputs (0, 15)
+were excluded, and `report_counts` counted broadcast per-source cells
+rather than unique generated records. The saver now selects the
+instruction axis (axis 2) for 4D and reports `broadcast_cells` and
+`report_counts` (unique records) separately. Recomputed from the sealed
+JSONL corpus into `write6/produce/lm_matrix_rt.json` without touching
+the archived file: 12,992 unique reports per rt style; per-instruction
+bit-correctness including all feasible outs is in that file.
