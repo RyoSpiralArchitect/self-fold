@@ -52,6 +52,24 @@ def form_of(text, options):
     return re.sub(r"\s+", " ", t).strip()
 
 
+ORDINAL = re.compile(
+    r"\boff\s*[/\-]\s*off\b[^.;]*\b(first|second|former|latter)\b"
+    r"|\b(first|second|former|latter)\b[^.;]*\boff\s*[/\-]\s*off\b",
+    re.IGNORECASE)
+
+
+def ordinal_decode(text, options, pole):
+    """Non-lexical cross-check: 'off/off selects the first/former ...'
+    resolves via option ORDER, never the action names. Independent of the
+    lexical scoring machinery, so its misses/hits separate differently."""
+    m = ORDINAL.search(text)
+    if not m:
+        return 0, 1
+    word = next(g for g in m.groups() if g)
+    slot = 0 if word.lower() in ("first", "former") else 1
+    return slot ^ pole, 0
+
+
 def decoders(options, pole):
     def rt(text):
         slot, miss = decode_state_slot(text, options)
@@ -60,6 +78,7 @@ def decoders(options, pole):
         "global": lambda t: decode_bit(t, options, pole),
         "rowbound": lambda t: decode_state(t, options, pole),
         "polefree": rt,
+        "ordinal": lambda t: ordinal_decode(t, options, pole),
     }
 
 
