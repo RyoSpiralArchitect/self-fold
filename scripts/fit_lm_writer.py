@@ -83,7 +83,8 @@ def run(args, store):
     before = parameter_sha(host.model)
     # make_host captured its identity before the local 48-token cap was set.
     writer_identity = dict(host.identity, max_new_tokens=host.max_new_tokens,
-                           max_context=host.max_context, generation_policy="capped")
+                           max_context=host.max_context,
+                           generation_policy="kv_capped_argmax")
     store.write("host.json", writer_identity)
     writer_binding = dict(host=writer_identity, backbone_sha256=before,
                           source_sha256=seal["source_sha256"],
