@@ -34,6 +34,7 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 from selffold.lm_writer import (  # noqa: E402
     decode_bit, decode_state, decode_state_slot)
+from selffold.lm_writer_reports import source_pairs  # noqa: E402
 
 GROUPS = json.loads((ROOT / "data/within_topic_wording_20261103.json").read_text())["groups"]
 
@@ -68,6 +69,7 @@ def audit(run):
     except Exception:
         return
     keys = fit + test
+    pairs, _ = source_pairs(keys)  # rt records are keyed by pair index
     for path in sorted(glob.glob(str(prod / "reports_*.jsonl"))):
         if Path(path).name.count(".") != 1:
             continue  # .generation.partial.jsonl and other auxiliaries
@@ -80,11 +82,11 @@ def audit(run):
         by_key = Counter()
         for line in open(path):
             r = json.loads(line)
-            k = keys[r["source"]] if r["source"] < len(keys) else None
-            if k is None:
-                # rt records are keyed by (group, pole) pair, not source index.
-                opts, pole = GROUPS[r["group"]]["options"], r["pole"]
+            if "out" in r:
+                gi, pole = pairs[r["source"]]
+                opts = GROUPS[gi]["options"]
             else:
+                k = keys[r["source"]]
                 opts, pole = GROUPS[k[0]]["options"], k[3]
             truth = (r["out"] if "out" in r else r["mask"]) & 1
             results = {name: fn(r["text"]) for name, fn in decoders(opts, pole).items()}

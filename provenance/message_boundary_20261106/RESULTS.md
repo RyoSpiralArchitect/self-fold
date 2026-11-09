@@ -256,3 +256,49 @@ python3 provenance/message_boundary_20261106/summarize.py \
 ```
 
 Artifacts: [plan](PLAN.md) · [raw run](run/produce) · [scored packets](run) · [summary](run/summary.json) · [controller](../src/selffold/message_boundary.py) · [fit script](../scripts/fit_message_boundary.py) · [summarizer](summarize.py)
+
+## RoundTrip sealed run (`write6/`): realized (prior, mask, out) reports
+
+The report channel is now keyed by the **realized transition triple**
+`(prior, mask, out)` — the writer sees the actual post-update table,
+including pointer errors, and the decoded bit feeds the next message
+verbatim (`rt_report_bits_v1`). Coverage is the exact `feasible_outs`
+pick bound: every (prior, mask, out) any pick can produce is generated,
+so a lookup outside the cache is a protocol error, never a silent zero.
+Generation dedupes over unique (group, pole) pairs (12,992 prompts/style).
+First attempt stopped at 28,455/40,320 forwards-budget-exhausted and is
+preserved off-repo; the closed run used budget 1.5M.
+
+| channel | all-four (3 seeds) | twins intact/erased | shared-pointer all-four |
+| --- | ---: | --- | ---: |
+| supplied / reward | 100% | 1.000 / 0.000 | — |
+| rt_directed | 100% | 1.000 / 0.000 | 100% |
+| rt_natural | 7.3% | 0.071 / 0.000 | 7.3% |
+| state_prior_true | 14.0% | 0.179 / 0.000 | 14.0% |
+| no message | 12.5% | 0.000 / 0.000 | — |
+
+### Writer/parser audit (`audit_roundtrip.py`: 3 decoders + unique-form view)
+
+Per-report bit attribution on the write6 corpus:
+
+- **rt_directed** (12,992): correct 89.0%, all-wrong 11.0%, missing 0%.
+  Split by realized divergence: when out == mask the bit is 100% correct;
+  when out != mask the writer reports the *instruction's* bit (mask&1) in
+  78% — i.e. it answers the question asked. The carried bit thus behaves
+  like the supplied convention on instruction faithfulness, which is
+  consistent with the ceiling all-four.
+- **rt_natural** (12,992): correct 33.7%, all-wrong 11.7%, all-missing
+  53.4%, decoder-split 1.2%. 333 unique missing forms — a broad,
+  systematic writer gap, not a parser blind spot.
+- **state_prior_true** (14,336): missing 44.9%, wrong 23.8%, correct
+  26.2%, split 5.1% — decoder-invariant writer failure, matching the
+  floor-level all-four.
+
+Readings (descriptive, this interface/decoder only):
+
+- A **directed** question over the realized triple reaches the ceiling —
+  the generic report→decode→next-step loop works end to end.
+- **Spontaneous** natural reports still do not write the row coordinate;
+  the realized-state referent does not rescue them (~7% ≈ below floor).
+- The write5 open question resolves as **writer failure**: ~95% of the
+  prior_true gap is decoder-invariant (unwritten or wrongly bound).
