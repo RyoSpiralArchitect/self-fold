@@ -186,6 +186,56 @@ def validate_records(records, requests):
     return records
 
 
+def generate_kv(host, prompt):
+    """Greedy decode over a retained KV cache — same argmax path as
+    host.generate, but the prompt is forwarded once and each emitted token
+    costs one forward instead of a full prefix re-read. Falls back to
+    host.generate when the model offers no cache. Uses only public host
+    attributes; metering mirrors host.generate's accounting.
+    """
+    import torch
+    if not getattr(getattr(host.model, "config", None), "use_cache", False):
+        return host.generate(prompt)
+    ids, _ = host.render(prompt)
+    budget = host.max_context - len(ids)
+    stop = "context_limit"
+    if host.max_new_tokens is not None and host.max_new_tokens <= budget:
+        budget = host.max_new_tokens
+        stop = "length"
+    emitted, stop_token_id = [], None
+    with torch.inference_mode():
+        host._budget(len(ids))
+        x = torch.tensor([ids], dtype=torch.long, device=host.device)
+        out = host.model(input_ids=x, attention_mask=torch.ones_like(x),
+                         use_cache=True, return_dict=True)
+        host.meter.forwards += 1
+        host.meter.processed_tokens += len(ids)
+        past = out.past_key_values
+        for _ in range(budget):
+            token = int(out.logits[0, -1].argmax().item())
+            host.meter.generated_tokens += 1
+            if token in host.eos_ids:
+                stop, stop_token_id = "eos", token
+                break
+            emitted.append(token)
+            host._budget(1)
+            x = torch.tensor([[token]], dtype=torch.long, device=host.device)
+            out = host.model(input_ids=x, past_key_values=past,
+                             use_cache=True, return_dict=True)
+            host.meter.forwards += 1
+            host.meter.processed_tokens += 1
+    text = host.tokenizer.decode(emitted, skip_special_tokens=True).strip()
+    censored = stop in {"length", "context_limit"}
+
+    class _Out:
+        def receipt(_):
+            return dict(text=text, stop=stop, token_count=len(emitted),
+                        prompt_tokens=len(ids), budget=budget,
+                        stop_token_id=stop_token_id, censored=censored)
+        _Out.text = text
+    return _Out()
+
+
 def cached_reports(host, requests, binding, cache_dir, output_dir):
     """Reuse only an exact binding; leave interrupted generation as .partial."""
     if not requests:
@@ -211,7 +261,7 @@ def cached_reports(host, requests, binding, cache_dir, output_dir):
         partial = output_dir / f'reports_{style}.generation.partial.jsonl'
         with partial.open('x', encoding='utf-8') as fh:
             for req in requests:
-                out = host.generate(req['prompt'])
+                out = generate_kv(host, req['prompt'])
                 receipt = dict(out.receipt())
                 receipt.pop('text', None)
                 row = dict(source=req['source'], mask=req['mask'], style=style,
