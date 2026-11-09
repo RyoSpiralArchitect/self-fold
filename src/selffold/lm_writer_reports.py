@@ -226,14 +226,19 @@ def generate_kv(host, prompt):
             host.meter.processed_tokens += 1
     text = host.tokenizer.decode(emitted, skip_special_tokens=True).strip()
     censored = stop in {"length", "context_limit"}
+    receipt = dict(text=text, stop=stop, token_count=len(emitted),
+                   prompt_tokens=len(ids), budget=budget,
+                   stop_token_id=stop_token_id, censored=censored)
+    return _KVOut(text, receipt)
 
-    class _Out:
-        def receipt(_):
-            return dict(text=text, stop=stop, token_count=len(emitted),
-                        prompt_tokens=len(ids), budget=budget,
-                        stop_token_id=stop_token_id, censored=censored)
-        _Out.text = text
-    return _Out()
+
+class _KVOut:
+    def __init__(self, text, receipt):
+        self.text = text
+        self._receipt = receipt
+
+    def receipt(self):
+        return dict(self._receipt)
 
 
 def cached_reports(host, requests, binding, cache_dir, output_dir):
