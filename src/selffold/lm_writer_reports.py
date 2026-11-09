@@ -113,12 +113,19 @@ def build_rt_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, bindi
     are marked ungenerated; lookups there are protocol errors, not zero bits.
     """
     masks = sorted(set(cfg['fit_masks']) | set(cfg['test_masks']))
-    styles = tuple(dict.fromkeys(a['channel'][3:] for a in cfg['arms']
-                                 if a['channel'].startswith('lm_rt_')))
+    def _rt_style(ch):
+        if ch.startswith('lm_rt_'):
+            return ch[3:]
+        if ch.startswith('lmtext_'):
+            return ch[7:]
+        return None
+    styles = tuple(dict.fromkeys(s for s in (_rt_style(a['channel'])
+                                             for a in cfg['arms']) if s))
     n = len(keys)
     pairs, index = source_pairs(keys)
+    from .roundtrip import TEXT_FEAT_DIM, TEXT_FEAT_VERSION, text_features
     bits, missing, offoff, generated = {}, {}, {}, {}
-    record_counts = {}
+    feats, record_counts = {}, {}
     output_dir = Path(output_dir)
     for style in styles:
         requests = rt_report_requests(style, masks, pairs, groups)
@@ -127,6 +134,7 @@ def build_rt_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, bindi
         pm = np.full((len(pairs), 16, 16, 16), np.nan)
         po = np.full((len(pairs), 16, 16, 16), np.nan)
         pg = np.zeros((len(pairs), 16, 16, 16), bool)
+        pf = torch.full((len(pairs), 16, 16, 16, TEXT_FEAT_DIM), float('nan'))
         with (output_dir / f'reports_{style}.jsonl').open('x', encoding='utf-8') as fh:
             for row in records:
                 p, prior, m, o = row['source'], row['prior'], row['mask'], row['out']
@@ -136,19 +144,22 @@ def build_rt_matrix(host, cfg, keys, poles, groups, output_dir, cache_dir, bindi
                 pm[p, prior, m, o] = miss
                 po[p, prior, m, o] = mentions_offoff(row['text'])
                 pg[p, prior, m, o] = True
+                pf[p, prior, m, o] = text_features(row['text'])
                 fh.write(json.dumps(dict(row, bit=bit, missing=miss,
                                          decoder_version=_decoder_for(style)[1]),
                                     ensure_ascii=False) + '\n')
         with (output_dir / f'reports_{style}.binding.json').open('x', encoding='utf-8') as fh:
             json.dump(dict(receipt, decoder_version=_decoder_for(style)[1],
+                           text_feature_version=TEXT_FEAT_VERSION,
                            pair_dedup=True, requests=requests), fh,
                       sort_keys=True, ensure_ascii=False, allow_nan=False)
         bits[style] = pb[torch.from_numpy(index)]
         missing[style] = pm[index]
         offoff[style] = po[index]
         generated[style] = pg[index]
+        feats[style] = pf[torch.from_numpy(index)]
         record_counts[style] = len(records)
-    return bits, missing, offoff, generated, record_counts
+    return bits, missing, offoff, generated, feats, record_counts
 
 
 def validate_records(records, requests):

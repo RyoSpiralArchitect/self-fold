@@ -106,9 +106,13 @@ def run(args, store):
         n_fit=n_fit)
     # RoundTrip reports are keyed by the realized (prior, mask, out) and
     # generated over the full feasible bound, for fit and test sources alike.
-    rt, rt_miss, rt_offoff, rt_gen, rt_counts = build_rt_matrix(
+    rt, rt_miss, rt_offoff, rt_gen, rt_feats, rt_counts = build_rt_matrix(
         host, cfg, all_keys, all_poles, actions["groups"], store.path, CACHE,
         writer_binding)
+    # Raw-text channels (lmtext_*) read the report's frozen feature vector;
+    # their style names also start with rt_ (e.g. lmtext_rt_natural).
+    text_styles = {a["channel"][7:] for a in cfg["arms"]
+                   if a["channel"].startswith("lmtext_")}
     for dst, src in ((bits, rt), (miss, rt_miss),
                      (offoff, rt_offoff), (generated, rt_gen)):
         dst.update(src)
@@ -129,12 +133,17 @@ def run(args, store):
     fits, params = [], {}
     for seed in cfg["seeds"]:
         for arm in cfg["arms"]:
-            actor = BoundaryMemory(seed, arm["width"])
+            text_arm = arm["channel"].startswith("lmtext_")
+            actor = BoundaryMemory(seed, arm["width"],
+                                   feat_dim=rt_feats[next(iter(text_styles))].shape[-1]
+                                   if text_arm else 0)
             rng = torch.Generator().manual_seed(1000 + seed)
             start = parameter_sha(actor)
             opt = torch.optim.Adam(actor.parameters(), lr=cfg["learning_rate"])
             masks_t = torch.tensor(cfg["fit_masks"])
-            channel = "lm" if arm["channel"].startswith("lm_") else arm["channel"]
+            channel = ("lmtext" if text_arm
+                       else "lm" if arm["channel"].startswith("lm_")
+                       else arm["channel"])
             style = arm["channel"][3:] if channel == "lm" else None
             sched = hashlib.sha256()
             for step_i in range(cfg["updates"]):
@@ -144,6 +153,8 @@ def run(args, store):
                 for v in (ix, pattern, noise):
                     sched.update(v.numpy().tobytes())
                 rw = make_reward(ix.numpy(), fit_keys, labels, fit_top)
+                tstyle = arm["channel"][7:] if text_arm else None
+                rtf = rt_feats[tstyle] if text_arm else None
                 rtb = rt[style] if style in rt else None
                 if channel == "lm" and rtb is None:
                     m = bits[style]
@@ -162,7 +173,8 @@ def run(args, store):
                     actor, members_all[ix], rw, pattern, noise,
                     arm["form"], channel, cfg["exploration_floor"], 1.0,
                     lm_bits=lm_bits, rt_bits=rtb,
-                    cases=ix if rtb is not None else None)
+                    cases=ix if (rtb is not None or rtf is not None) else None,
+                    rt_feats=rtf)
                 opt.zero_grad(); loss.backward()
                 torch.nn.utils.clip_grad_norm_(actor.parameters(), 1.0, error_if_nonfinite=True)
                 opt.step()
@@ -182,14 +194,25 @@ def run(args, store):
         for fit in fits:
             seed, name = fit["seed"], fit["arm"]
             arm = next(a for a in cfg["arms"] if arm_name(a) == name)
-            channel = "lm" if arm["channel"].startswith("lm_") else arm["channel"]
+            text_arm = arm["channel"].startswith("lmtext_")
+            channel = ("lmtext" if text_arm
+                       else "lm" if arm["channel"].startswith("lm_")
+                       else arm["channel"])
             style = arm["channel"][3:] if channel == "lm" else None
-            actor = BoundaryMemory(seed, arm["width"]).requires_grad_(False)
+            tstyle = arm["channel"][7:] if text_arm else None
+            actor = BoundaryMemory(
+                seed, arm["width"],
+                feat_dim=rt_feats[tstyle].shape[-1] if text_arm else 0,
+            ).requires_grad_(False)
             prefix = f"{name}_{seed}_"
             actor.load_state_dict({k: torch.from_numpy(f[prefix + k]) for k in actor.state_dict()})
+            rtf = rt_feats[tstyle][test_idx] if text_arm else None
             rtb = rt[style][test_idx] if style in rt else None
             lm_matrix = bits[style][test_idx] if channel == "lm" and rtb is None else None
-            if rtb is not None:
+            if rtf is not None:
+                rolled = rollout_rt(actor, arm["form"], members_all[n_fit:],
+                                    keys, eval_masks, rt_bits=None, rt_feats=rtf)
+            elif rtb is not None:
                 rolled = rollout_rt(actor, arm["form"], members_all[n_fit:],
                                     keys, eval_masks, rt_bits=rtb)
             else:
@@ -198,7 +221,7 @@ def run(args, store):
             output.setdefault("eval_paths", rolled.pop("paths"))
             rolled["twins"] = twins_w(actor, arm["form"], channel,
                                       members_all[n_fit:], eval_masks, 1.0,
-                                      lm_matrix=lm_matrix, rt_bits=rtb)
+                                      lm_matrix=lm_matrix, rt_bits=rtb, rt_feats=rtf)
             output.update({prefix + k: v for k, v in rolled.items()})
         # Shared-pointer block: every LM channel rolled through ONE
         # supplied-fitted controller per seed — isolates channel quality from

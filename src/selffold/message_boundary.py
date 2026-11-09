@@ -75,18 +75,28 @@ def convention_bits(mask, width):
 
 
 class BoundaryMemory(nn.Module):
-    def __init__(self, seed, width=1):
+    def __init__(self, seed, width=1, feat_dim=0):
         super().__init__()
         rng = torch.Generator().manual_seed(seed)
         self.width = width
+        self.feat_dim = feat_dim
         self.address = nn.Parameter(torch.randn(2**width, 2, generator=rng) * 0.05)
         self.message = nn.Parameter(torch.randn(5 * width, generator=rng) * 0.05)
+        if feat_dim:
+            self.feat_addr = nn.Parameter(torch.randn(feat_dim, 2, generator=rng) * 0.05)
 
     def read(self, table, message):
         # Each pointer sees row contrast and the incoming message, never action IDs or a prior trigger.
         difference = (table - table[:, :1]).abs().sum(-1)
         relative = difference / difference.amax(-1, keepdim=True).clamp_min(1e-12)
-        return self.address[message, :, None] * relative[:, None, :]
+        if message.dim() == 2:
+            # Raw-text channel: the carried payload is the report's frozen
+            # feature vector; the recipient's learned projection replaces
+            # the discrete-message address.
+            addr = message @ self.feat_addr
+        else:
+            addr = self.address[message]
+        return addr[:, :, None] * relative[:, None, :]
 
     def write_logits(self, mask):
         raw = (truth_bits(mask).float() * 2 - 1) @ self.message[: 4 * self.width].view(
