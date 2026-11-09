@@ -57,7 +57,7 @@ def native_labels(run):
 def align_twins(twins, semantics):
     if twins.shape[-3:] != (2, 2, 4):
         raise ValueError("Unexpected twin axes")
-    if semantics == "carried_message_bits_v2":
+    if semantics in ("carried_message_bits_v2", "rt_report_bits_v1"):
         return twins
     if semantics != "legacy_sampled_writer":
         raise ValueError(f"Unknown rollout semantics: {semantics}")
