@@ -1,5 +1,10 @@
 # What the symbolic residue of an intermediate state can and cannot carry
 
+This record follows successive development experiments. The latest result is
+[carried source reference (write9)](write9/RESULTS.md): directed reports support
+four updates on fitted menus; natural reports and vocabulary transfer remain
+limited. Earlier runs and their corrections are retained below.
+
 **Development result, executed on SpiralReality-furnace (RTX 5090, torch 2.13.0+cu132, transformers 4.57.1). Frozen source compiler `ab3dd6…` and frozen native row reader `427e13…` exactly as bound in `role_memory_20261104`; checkpoint `f3503907…`. Not a qualification run.**
 
 **Conclusion: within this structured interface, verbalizing the intermediate table costs nothing and a learned one-bit message restores everything the words alone could not carry. Soft and hard (named-action) boundary forms are indistinguishable on every endpoint; the message channel alone decides success, and reward-trained writers again converge to the convention coordinate — off/off selects the switched row — in all seeds.**
@@ -255,7 +260,7 @@ python3 provenance/message_boundary_20261106/summarize.py \
   provenance/message_boundary_20261106/run/produce
 ```
 
-Artifacts: [plan](PLAN.md) · [raw run](run/produce) · [scored packets](run) · [summary](run/summary.json) · [controller](../src/selffold/message_boundary.py) · [fit script](../scripts/fit_message_boundary.py) · [summarizer](summarize.py)
+Artifacts: [plan](PLAN.md) · [raw run](run/produce) · [scored packets](run) · [summary](run/summary.json) · [controller](../../src/selffold/message_boundary.py) · [fit script](../../scripts/fit_message_boundary.py) · [summarizer](summarize.py)
 
 ## RoundTrip sealed run (`write6/`): realized (prior, mask, out) reports
 
@@ -391,3 +396,31 @@ deterministic role-classification bound is 1,568/3,136 for both styles; this is
 **not** an all-four accuracy bound. The next question is whether a matched,
 explicit role reference resolves that ambiguity. Enlarging this reader alone
 cannot resolve identical inputs. The independent qualification remains open.
+
+## Carried source reference (`write9/`): directed readout restored within fitted menus
+
+The [prospectively scoped reference experiment](write9/RESULTS.md) carries one
+bit from the initial compiled action rows through every later report boundary.
+Its copying and pointer-role exchange are engineered; the report reader keeps
+the same 73 parameters and fitting budget. All six unreferenced fits reproduce
+write8 exactly. The study completed 12 fits and 42 evaluations from the saved
+Gemma reports and native scores, with no new model-generation or scoring calls.
+
+On four fitted menus, the directed reader passes every registered check in all
+three seeds: **1,229,312/1,229,312 complete four-update histories**, including
+41,472/41,472 unfitted-mask histories. Fixing the reference to zero gives 50%;
+complementing it gives 0%. All 6,272 distinct correct two-update units reverse
+their actions under the complemented reference. The routing operation specifies
+that role exchange, so this is a consistency check, not evidence of spontaneous
+reference learning. Constructed twins are complete in 3,136/3,136 units, versus
+zero when the report and reference are erased together.
+
+This positive result does not extend to the full domain: directed accuracy on
+the four unfitted menus is 28.125–31.25%, and the natural-report primary score
+falls to 5.6–10.6%. Even exact natural text retains role ambiguity under this
+reader's restricted observation. The directed prompt asks about the instruction;
+its perfect correct-history score does not prove faithful reporting of output
+errors. A fresh process reproduces all 126 panels, paired checks and gates;
+write6/write7/write8 are unchanged. The next separate questions are actual-output
+reporting and learned reference retention. Independent qualification is still
+open.
