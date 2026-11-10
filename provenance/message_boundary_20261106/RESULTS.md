@@ -362,3 +362,32 @@ Readings (descriptive, this interface only):
   budget fixed: [write8 protocol](write8/PLAN.md).
 - Compute: 631k forwards but 7.1M processed tokens (~15x fewer than
   write6's re-forward path) — the sealed KV path.
+
+## Start-address repair (`write8/`): first update restored, continuation weak
+
+The [fixed-budget saved-report refit](write8/RESULTS.md) uses the existing
+trainable start address before any report exists; later report features and
+erasure semantics are unchanged. All 24 archived fits replayed exactly. All
+24 refits completed with the original 512 updates and three seeds; the 18
+unchanged discrete/control fits reproduced their old parameter hashes.
+No new language generation or native scoring was performed, and write6/write7
+remain byte-identical.
+
+All six text fits recovered **896/896 first-update units**, versus **0/896**
+before the repair. Complete four-update histories remain **9.97–14.17%** for
+directed features and **12.35–14.28%** for natural features, around the
+unchanged no-message score of **12.5%**. Each seed evaluates 2,458,624 repeated
+histories over eight known action menus. These are not independent tasks.
+The full per-seed counts, unfitted-mask panel and donor/twin controls are in
+the linked result and saved summaries; a separate process reproduced every
+summary from the saved trajectories.
+
+A post-result audit also identifies a reference mismatch: decoded reports use
+the source pole to turn action names into roles, whereas the text pointer
+sees only report features and normalized row contrast. Among 3,136 saved
+correct-transition records with nonconstant priors, identical observations
+can require opposite roles even with exact report text. The equal-record
+deterministic role-classification bound is 1,568/3,136 for both styles; this is
+**not** an all-four accuracy bound. The next question is whether a matched,
+explicit role reference resolves that ambiguity. Enlarging this reader alone
+cannot resolve identical inputs. The independent qualification remains open.
