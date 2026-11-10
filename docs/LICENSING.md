@@ -43,3 +43,5 @@ The stage-grammar study's three continued task readers, state-to-state maps, rul
 The version-one preprint PDF uses Apache-2.0. The associated experimental arrays and native scores carry the [study-specific Gemma terms and notice](../provenance/preprint_v1_20261104/ARTIFACT_LICENSE.md).
 
 The post-v1 supported-boundary development study distributes its learned arrays, captures, native scores and generations with [artifact-specific Gemma terms and notice](../provenance/supported_g_20261104/ARTIFACT_LICENSE.md).
+
+The saved-report start-address follow-up retains [Gemma-related artifact conditions and notice](../provenance/message_boundary_20261106/write8/ARTIFACT_LICENSE.md) for its fitted controllers and trajectory records. Its software and research documentation remain Apache-2.0.

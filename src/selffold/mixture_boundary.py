@@ -139,10 +139,7 @@ def train_batch(model, members, reward, masks, randoms, form, channel,
     weights = init_weights(len(members), beta)
     table = realize(weights, members)
     batch = len(members)
-    if rt_feats is not None:
-        message = torch.zeros(batch, rt_feats.shape[-1])
-    else:
-        message = torch.zeros(batch, dtype=torch.long)
+    message = model.initial_message(batch, device=members.device)
     row_log, bit_log, credits, supervised_losses = [], [], [], []
     for t in range(2):
         prior_p = pattern_of(weights) if (rt_bits is not None or rt_feats is not None) else None
@@ -334,8 +331,7 @@ def rollout_rt(model, form, members, keys, masks, rt_bits, beta=1.0, rt_feats=No
     carried_members = members.repeat_interleave(num, 0)
     weights = init_weights(n * num, beta)
     table = realize(weights, carried_members)
-    message = (torch.zeros(n * num, rt_feats.shape[-1]) if rt_feats is not None
-               else torch.zeros(n * num, dtype=torch.long))
+    message = model.initial_message(n * num, device=members.device)
     case_of = torch.arange(n * num) // num
     channel = "lmtext" if rt_feats is not None else "lm"
 

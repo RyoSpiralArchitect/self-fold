@@ -187,14 +187,15 @@ def validate_records(records, requests):
 
 
 def generate_kv(host, prompt):
-    """Greedy decode over a retained KV cache — same argmax path as
-    host.generate, but the prompt is forwarded once and each emitted token
-    costs one forward instead of a full prefix re-read. Falls back to
-    host.generate when the model offers no cache. Uses only public host
-    attributes; metering mirrors host.generate's accounting.
+    """Greedy decode over a retained KV cache, a separately bound policy.
+
+    Floating-point differences can change tokens versus full-prefix decode;
+    this is not a parity claim. Fall back to host.generate when the host
+    has no model or its model does not advertise cache support.
     """
     import torch
-    if not getattr(getattr(host.model, "config", None), "use_cache", False):
+    model = getattr(host, "model", None)
+    if not getattr(getattr(model, "config", None), "use_cache", False):
         return host.generate(prompt)
     ids, _ = host.render(prompt)
     budget = host.max_context - len(ids)

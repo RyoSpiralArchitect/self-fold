@@ -325,13 +325,13 @@ JSONL corpus into `write6/produce/lm_matrix_rt.json` without touching
 the archived file: 12,992 unique reports per rt style; per-instruction
 bit-correctness including all feasible outs is in that file.
 
-## Raw-text channel sealed run (`write7/`): undecoded reports cross the boundary
+## Hashed-text channel sealed run (`write7/`): initial-state defect retained
 
 The carried payload is the report's frozen hashbag feature vector
 (`hashbag_v1`, 32 dims), not a decoded bit; the recipient learns a
-`feat_addr` projection by reward. Answers the writer/parser separation:
-if the learned reader recovers what the decoder missed, the information
-was in the text. Generation policy `kv_capped_argmax` (declared; GPU
+`feat_addr` projection by reward. This arm was intended to test whether a
+learned reader recovers information missed by the lexical decoder. Generation
+policy `kv_capped_argmax` (declared; GPU
 parity vs full-re-forward was 25/30 — a distinct deterministic path).
 
 | channel | all-four (3 seeds) | twins intact |
@@ -346,13 +346,19 @@ parity vs full-re-forward was 25/30 — a distinct deterministic path).
 
 Readings (descriptive, this interface only):
 
-- The learned text reader transmitted real but weak signal (twins
-  0.28-0.33 vs none's 0) while all-four collapsed to 0. Training curves
-  show near-flat second-step reward (0.51-0.56) — `feat_addr` barely
-  learned under 512 updates on hash features.
-- This does NOT resolve writer-vs-parser: outcome is consistent with the
-  information being absent AND with an under-powered feature/learner.
-  Decisive next steps: richer frozen features or longer training, an
-  ordinal/pattern feature ablation, and the independent-form annotation.
+- **Post-review implementation diagnosis (2026-11-10):** the initial text
+  message is zero and `message @ feat_addr` has no bias. Both first-step
+  pointers therefore select row 0 under greedy evaluation, erasing the other
+  action. This forces every complete-history score to zero regardless of
+  report information or fitting duration. The first-step feature-projection
+  gradient is also zero. Saved controllers from all six text fits reproduce
+  this collapse. These archived results remain unchanged.
+- The constructed twins start at a supplied intermediate state and bypass
+  that initial update. Their 0.28-0.33 versus none's 0 remains a restricted
+  measurement; it does not validate a working full trajectory.
+- The all-four zero cannot diagnose feature capacity or learning budget and
+  does not resolve writer-versus-parser. The next bounded test repairs the
+  start address while keeping the report bank, features, seeds and fitting
+  budget fixed: [write8 protocol](write8/PLAN.md).
 - Compute: 631k forwards but 7.1M processed tokens (~15x fewer than
   write6's re-forward path) — the sealed KV path.

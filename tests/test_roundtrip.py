@@ -97,15 +97,58 @@ def test_rollout_rt_uses_out_axis_not_requested_mask():
     from selffold.message_boundary import BoundaryMemory
     from selffold.mixture_boundary import rollout_rt
     keys = _closed_keys()
-    members = torch.randn(len(keys), 2, 16)
+    members = torch.eye(16)[:2].unsqueeze(0).repeat(len(keys), 1, 1)
+    actor = BoundaryMemory(7, 1)
+    with torch.no_grad():
+        # Deliberately exchange the roles at the first update. Otherwise the
+        # realized output can equal the request and the two lookups coincide.
+        actor.address[:] = torch.tensor([[1., -1.], [-1., 1.]])
     base = torch.zeros(len(keys), 16, 16, 16, dtype=torch.long)
     base[:, :, :, :] = torch.arange(16) & 1          # report = out & 1
-    by_out = rollout_rt(BoundaryMemory(7, 1), "hard", members, keys, [6, 9], base.clone())
+    by_out = rollout_rt(actor, "hard", members, keys, [6, 9], base.clone())
     req = torch.zeros(len(keys), 16, 16, 16, dtype=torch.long)
-    req[:, :, :, :] = (torch.arange(16)[None, :, None, None] & 1)  # report = mask & 1
-    by_req = rollout_rt(BoundaryMemory(7, 1), "hard", members, keys, [6, 9], req)
+    req[:, :, :, :] = (torch.arange(16)[None, None, :, None] & 1)  # report = mask & 1
+    assert req[0, 6, 9, 0] == 1 and req[0, 9, 6, 1] == 0
+    by_req = rollout_rt(actor, "hard", members, keys, [6, 9], req)
     assert not (by_out["written"] == by_req["written"]).all()
     assert not (by_out["depths"] == by_req["depths"]).all()
+
+
+def test_text_channel_start_is_learnable_and_report_erasure_is_distinct():
+    from selffold.message_boundary import BoundaryMemory
+    from selffold.mixture_boundary import init_weights, realize
+    actor = BoundaryMemory(17, 1, feat_dim=32)
+    members = torch.eye(16)[:2].unsqueeze(0)
+    table = realize(init_weights(1, 1.0), members)
+    start = actor.initial_message(1)
+    actor.read(table, start).sum().backward()
+    assert actor.address.grad[0].abs().sum() > 0
+    assert actor.feat_addr.grad is None
+    # Erasing a report is not permission to restore the start address.
+    assert (actor.read(table, torch.zeros(1, 32)) == 0).all()
+
+
+def test_perfect_text_feature_channel_completes_all_four_edits():
+    """A complete-path positive control must include the initial update."""
+    import itertools
+    from selffold.message_boundary import BoundaryMemory
+    from selffold.mixture_boundary import rollout_rt
+    keys = _closed_keys()
+    members = torch.eye(16)[:2].unsqueeze(0).repeat(len(keys), 1, 1)
+    actor = BoundaryMemory(17, 1, feat_dim=1)
+    with torch.no_grad():
+        actor.address[0] = torch.tensor([-1., 1.])
+        actor.feat_addr[0] = torch.tensor([-1., 1.])
+    # The perfect report states which role currently occupies off/off.
+    features = torch.zeros(len(keys), 16, 16, 16, 1)
+    features[..., 0] = 1 - 2 * (torch.arange(16) & 1)
+    masks = [6, 9, 14, 1]
+    rolled = rollout_rt(actor, "hard", members, keys, masks, None, rt_feats=features)
+    expected = torch.tensor(list(itertools.product(masks, repeat=4)))
+    got = torch.from_numpy(rolled["depths"]).long()
+    truth = (expected[..., None] >> torch.arange(4)) & 1
+    assert (got == truth[None]).all()
+    assert not rolled["prior_mismatch"].any()
 
 
 def test_save_report_matrices_4d_instruction_axis_and_counts(tmp_path):

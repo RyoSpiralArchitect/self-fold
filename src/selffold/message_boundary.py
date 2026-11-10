@@ -85,6 +85,15 @@ class BoundaryMemory(nn.Module):
         if feat_dim:
             self.feat_addr = nn.Parameter(torch.randn(feat_dim, 2, generator=rng) * 0.05)
 
+    def initial_message(self, batch, device=None):
+        """Use the trainable start address before any report exists.
+
+        The integer zero selects address[0], just as in the discrete arms.
+        A later text report, including an all-zero feature vector, still uses
+        feat_addr. No instruction, action identity or target bit is supplied.
+        """
+        return torch.zeros(batch, dtype=torch.long, device=device)
+
     def read(self, table, message):
         # Each pointer sees row contrast and the incoming message, never action IDs or a prior trigger.
         difference = (table - table[:, :1]).abs().sum(-1)
