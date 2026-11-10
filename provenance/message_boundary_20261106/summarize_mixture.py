@@ -57,7 +57,8 @@ def native_labels(run):
 def align_twins(twins, semantics):
     if twins.shape[-3:] != (2, 2, 4):
         raise ValueError("Unexpected twin axes")
-    if semantics in ("carried_message_bits_v2", "rt_report_bits_v1"):
+    if semantics in ("carried_message_bits_v2", "rt_report_bits_v1",
+                     "rt_report_feats_v1"):
         return twins
     if semantics != "legacy_sampled_writer":
         raise ValueError(f"Unknown rollout semantics: {semantics}")
@@ -133,11 +134,14 @@ def summarize(run):
                 hit0 = tgot[:, :, :, 0, ci] == truth0
                 hit1 = tgot[:, :, :, 1, ci] == truth0[..., ::-1]
                 twin_out[cond] = [int((hit0 & hit1).sum()), int(hit0.size)]
-            written = f[name + "written"].astype(int)
-            convention = pbits[:, :3, 0]
             agree = {}
-            for w in range(written.shape[-1]):
-                agree[f"bit{w}"] = float((written[..., w] == convention[None]).mean())
+            if semantics == "rt_report_feats_v1":
+                agree = {"note": "feature-vector reports carry no scalar bit to compare"}
+            else:
+                written = f[name + "written"].astype(int)
+                convention = pbits[:, :3, 0]
+                for w in range(written.shape[-1]):
+                    agree[f"bit{w}"] = float((written[..., w] == convention[None]).mean())
             out.setdefault(fit["arm"], {})[str(fit["seed"])] = dict(
                 native_per_depth=per_depth,
                 all_four_correct=[int(complete.sum()), int(complete.size)],
