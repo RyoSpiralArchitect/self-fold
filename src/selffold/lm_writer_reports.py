@@ -205,6 +205,12 @@ def generate_kv(host, prompt):
         stop = "length"
     emitted, stop_token_id = [], None
     with torch.inference_mode():
+        # No logits are needed when the prompt already fills the context or
+        # the caller permits zero new tokens. Return the censored receipt.
+        if budget <= 0:
+            return _KVOut("", dict(text="", stop=stop, token_count=0,
+                prompt_tokens=len(ids), budget=budget, stop_token_id=None,
+                censored=True))
         host._budget(len(ids))
         x = torch.tensor([ids], dtype=torch.long, device=host.device)
         out = host.model(input_ids=x, attention_mask=torch.ones_like(x),
@@ -212,19 +218,22 @@ def generate_kv(host, prompt):
         host.meter.forwards += 1
         host.meter.processed_tokens += len(ids)
         past = out.past_key_values
-        for _ in range(budget):
+        for step in range(budget):
             token = int(out.logits[0, -1].argmax().item())
             host.meter.generated_tokens += 1
             if token in host.eos_ids:
                 stop, stop_token_id = "eos", token
                 break
             emitted.append(token)
+            if step + 1 == budget:
+                break
             host._budget(1)
             x = torch.tensor([[token]], dtype=torch.long, device=host.device)
             out = host.model(input_ids=x, past_key_values=past,
                              use_cache=True, return_dict=True)
             host.meter.forwards += 1
             host.meter.processed_tokens += 1
+            past = out.past_key_values
     text = host.tokenizer.decode(emitted, skip_special_tokens=True).strip()
     censored = stop in {"length", "context_limit"}
     receipt = dict(text=text, stop=stop, token_count=len(emitted),
