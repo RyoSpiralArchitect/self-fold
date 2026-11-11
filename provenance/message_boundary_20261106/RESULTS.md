@@ -460,3 +460,41 @@ reports, probes and evaluation summaries, including an exact rerun of every
 composition trajectory. The 176 pinned inputs and write6–write9 artifacts are
 unchanged. Question-sensitive reporting is the next bounded anchor; independent
 qualification remains unopened.
+
+## Explicit record cue (`write11/`): canonical form does not ensure correct reporting
+
+The [sealed cue experiment](write11/RESULTS.md) keeps Gemma, the report readers
+and both learned memory cells fixed. Both arms receive labeled records and a
+canonical action-name list; only one additionally names the record requested
+by the question. It generates **1,792 fresh reports** over 224 transitions,
+two active-record orders, both questions and both arms. Its instruction masks
+differ from write10, but the menus and task family remain known.
+
+Joint correctness across both questions and both orders is **50/112** without
+the extra cue and **57/112** with it. The **6.25-point** gain misses the fixed
+20-point benefit requirement; both reporting admissions fail. Instruction
+accuracy is **362/448** versus **373/448**, and actual-output accuracy is
+**419/448** in both arms. Every response is a canonical action name, so the
+remaining wrong choices cannot be dismissed as naming-format failures.
+
+The frozen actual-report route retains **512/512** four-update histories,
+**256/512** with fixed-zero reference and **0/512** with complemented reference
+for every order, memory choice and seed. Conditional action inversion remains
+**128/128**, and the learned cells copy both possible incoming bits on all
+fresh reports. This narrow success does not override the reporting failure.
+Actual-report one-step continuation passes 90% on noncollapsed tables; the
+collapsed-table oracle still gives zero complete continuations.
+
+A separately labeled post-result audit finds that even when all three
+displayed off/off entries agree, the cue arm answers the instruction question
+correctly on only **112/128**, and the actual question on **124/128**. This
+rules out an explanation consisting solely of selecting the wrong record's
+off/off entry, without identifying a unique internal cause. The next bounded
+control should separate record selection from row/action lookup before more
+reporter learning. No additional prompt was tried after these results.
+
+The independent computational reduction reproduces all 21,504 continuation
+judgments, 216 composition trajectories, 648 panels and 72 paired comparisons.
+All generations end at EOS. No fitting or new native scoring is performed;
+all 311 pinned inputs and write6–write10 artifacts remain unchanged. Independent
+qualification and the released paper remain unchanged.
