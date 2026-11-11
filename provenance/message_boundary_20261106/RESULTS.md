@@ -424,3 +424,39 @@ errors. A fresh process reproduces all 126 panels, paired checks and gates;
 write6/write7/write8 are unchanged. The next separate questions are actual-output
 reporting and learned reference retention. Independent qualification is still
 open.
+
+## Actual-output reporting and learned retention (`write10/`)
+
+The [next sealed study](write10/RESULTS.md) separates two remaining components,
+then composes their final fixed versions. It generates **448 fresh Gemma
+reports**, fits six small memory cells, and completes 27 full-bank retention
+evaluations plus 54 compact composition evaluations. Frozen continuation uses
+the previously bound native row winners, with no additional native scoring.
+
+Actual-output questions recover the realized off/off action in **224/224**
+records, including **176/176** erroneous transitions. A subsequent update is
+complete in **192/192** noncollapsed units per seed, compared with **176/192**
+using the instruction-question reports. In collapsed states even the canonical
+actual-action oracle gives **0/256**: this row-copy updater cannot recover the
+action that disappeared. Accurate reporting and state repair are separate.
+
+Two- and 34-parameter reference cells, trained only from the second update's
+cached native-choice reward, meet every retention criterion in all three
+seeds. Both retain the directed reader's **1,229,312/1,229,312** primary
+four-update histories; fixed zero gives 50% and reference inversion 0%.
+On the fresh report bank their frozen composition passes **512/512** histories
+per seed, with **128/128** conditional next-step action inversions. Initial
+reference extraction and pointer-role routing remain supplied. Unfitted-menu
+performance stays at 28.125–31.25%, and copying a bit does not establish
+natural-report understanding or Gemma hidden-state retention.
+
+The **full conjunction fails** for both learned cells. Only **21/112**
+conflicting question pairs distinguish instruction from actual observation;
+the instruction question usually names the current output instead. Exact
+canonical naming is **198/224**, below the fixed 90% threshold, despite correct
+lexical decoding. These failed criteria remain in the record. All generations
+end at EOS; none is censored. Fresh-process reductions reproduce all saved
+reports, probes and evaluation summaries, including an exact rerun of every
+composition trajectory. The 176 pinned inputs and write6–write9 artifacts are
+unchanged. Question-sensitive reporting is the next bounded anchor; independent
+qualification remains unopened.

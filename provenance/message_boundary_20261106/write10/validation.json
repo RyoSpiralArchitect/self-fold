@@ -1,0 +1,268 @@
+{
+  "composition_evaluations": 54,
+  "composition_gate": {
+    "combined_with_learned_retention": {
+      "minimal": false,
+      "report_conditioned": false
+    },
+    "composition": {
+      "copy": {
+        "passed": true,
+        "seeds": {
+          "17": {
+            "all_four": [
+              512,
+              512
+            ],
+            "checks": {
+              "all_four": true,
+              "conditional_inversion": true,
+              "erasure_drop": true
+            },
+            "inversion": [
+              128,
+              128
+            ],
+            "passed": true
+          },
+          "41": {
+            "all_four": [
+              512,
+              512
+            ],
+            "checks": {
+              "all_four": true,
+              "conditional_inversion": true,
+              "erasure_drop": true
+            },
+            "inversion": [
+              128,
+              128
+            ],
+            "passed": true
+          },
+          "73": {
+            "all_four": [
+              512,
+              512
+            ],
+            "checks": {
+              "all_four": true,
+              "conditional_inversion": true,
+              "erasure_drop": true
+            },
+            "inversion": [
+              128,
+              128
+            ],
+            "passed": true
+          }
+        }
+      },
+      "minimal": {
+        "passed": true,
+        "seeds": {
+          "17": {
+            "all_four": [
+              512,
+              512
+            ],
+            "checks": {
+              "all_four": true,
+              "conditional_inversion": true,
+              "erasure_drop": true
+            },
+            "inversion": [
+              128,
+              128
+            ],
+            "passed": true
+          },
+          "41": {
+            "all_four": [
+              512,
+              512
+            ],
+            "checks": {
+              "all_four": true,
+              "conditional_inversion": true,
+              "erasure_drop": true
+            },
+            "inversion": [
+              128,
+              128
+            ],
+            "passed": true
+          },
+          "73": {
+            "all_four": [
+              512,
+              512
+            ],
+            "checks": {
+              "all_four": true,
+              "conditional_inversion": true,
+              "erasure_drop": true
+            },
+            "inversion": [
+              128,
+              128
+            ],
+            "passed": true
+          }
+        }
+      },
+      "report_conditioned": {
+        "passed": true,
+        "seeds": {
+          "17": {
+            "all_four": [
+              512,
+              512
+            ],
+            "checks": {
+              "all_four": true,
+              "conditional_inversion": true,
+              "erasure_drop": true
+            },
+            "inversion": [
+              128,
+              128
+            ],
+            "passed": true
+          },
+          "41": {
+            "all_four": [
+              512,
+              512
+            ],
+            "checks": {
+              "all_four": true,
+              "conditional_inversion": true,
+              "erasure_drop": true
+            },
+            "inversion": [
+              128,
+              128
+            ],
+            "passed": true
+          },
+          "73": {
+            "all_four": [
+              512,
+              512
+            ],
+            "checks": {
+              "all_four": true,
+              "conditional_inversion": true,
+              "erasure_drop": true
+            },
+            "inversion": [
+              128,
+              128
+            ],
+            "passed": true
+          }
+        }
+      }
+    },
+    "continuation_gate": true,
+    "qualification_loaded": false,
+    "report_gate": false,
+    "scope": "four_known_menus_two_unfitted_instructions_frozen_components"
+  },
+  "continuation_gate": {
+    "checks": {
+      "17": true,
+      "41": true,
+      "73": true
+    },
+    "passed": true,
+    "scope": "one_frozen_continuation_known_menus_noncollapsed_inputs"
+  },
+  "engineering": [
+    {
+      "errors": 0,
+      "failures": 0,
+      "path": "source-ci/engineering-tests.xml",
+      "sha256": "c9cba5429b3b9ea777857dcc2ad2352183e2f36c4399e9eabc5cd90f9f00f6ca",
+      "skipped": 0,
+      "tests": 376
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "path": "source-ci/pull-request/engineering-tests.xml",
+      "sha256": "a06a1f0b058478c0f02d9717691031f9632793b452b782cef49283532cc82f19",
+      "skipped": 0,
+      "tests": 376
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "path": "source-ci/push/engineering-tests.xml",
+      "sha256": "e0655dcdb0dd78c5e2fee15aa3d1a93f21c41e33c653a9f12d5a57e8b184fe94",
+      "skipped": 0,
+      "tests": 376
+    }
+  ],
+  "equal_paired_sampling": true,
+  "fits": 6,
+  "new_native_judgment_scoring_calls": 0,
+  "original_copy_trajectory_replays": 9,
+  "paper_v1_unchanged": true,
+  "pinned_inputs_verified": 176,
+  "qualification_loaded": false,
+  "reductions": {
+    "composition": {
+      "evaluations": 54,
+      "exact": true,
+      "generation_calls": 0,
+      "new_native_calls": 0,
+      "paired_conditions": 18,
+      "panels": 162,
+      "qualification_loaded": false
+    },
+    "report": {
+      "continuation_judgments": 5376,
+      "exact": true,
+      "new_generation_calls": 0,
+      "new_native_scoring_calls": 0,
+      "qualification_loaded": false,
+      "report_records": 448
+    },
+    "retention": {
+      "evaluations": 27,
+      "exact": true,
+      "fits": 6,
+      "generation_calls": 0,
+      "new_native_calls": 0,
+      "paired_conditions": 9,
+      "panels": 81,
+      "qualification_loaded": false
+    }
+  },
+  "report_gate": {
+    "checks": {
+      "actual_all": true,
+      "actual_conflicts": true,
+      "every_menu": true,
+      "question_selectivity": false,
+      "strict_requested": false
+    },
+    "passed": false,
+    "qualification_loaded": false,
+    "scope": "machine_decoded_offoff_reporting_on_declared_transitions"
+  },
+  "retention_evaluations": 27,
+  "retention_gates": {
+    "minimal": true,
+    "report_conditioned": true
+  },
+  "scientific_generations": 448,
+  "source_clean_at_all_runs": true,
+  "source_seal": "0d9f4c103c933615aa9af409dd46f961a3f83660",
+  "unscored_preflight_generations": 2,
+  "updates_per_fit": 512,
+  "write6_through_write9_unchanged": true
+}
