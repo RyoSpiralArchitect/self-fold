@@ -1,0 +1,342 @@
+{
+  "changes_registered_gates": false,
+  "generation_calls": 0,
+  "groups": {
+    "copy_only/actual": {
+      "all": 448,
+      "canonical_name": 448,
+      "conflicting_records": 320,
+      "conflicting_records_correct": 295,
+      "correct": 419,
+      "unanimous": 128,
+      "unanimous_correct": 124
+    },
+    "copy_only/instruction": {
+      "all": 448,
+      "canonical_name": 448,
+      "conflicting_records": 320,
+      "conflicting_records_correct": 246,
+      "correct": 362,
+      "unanimous": 128,
+      "unanimous_correct": 116
+    },
+    "source_cue/actual": {
+      "all": 448,
+      "canonical_name": 448,
+      "conflicting_records": 320,
+      "conflicting_records_correct": 295,
+      "correct": 419,
+      "unanimous": 128,
+      "unanimous_correct": 124
+    },
+    "source_cue/instruction": {
+      "all": 448,
+      "canonical_name": 448,
+      "conflicting_records": 320,
+      "conflicting_records_correct": 261,
+      "correct": 373,
+      "unanimous": 128,
+      "unanimous_correct": 112
+    }
+  },
+  "inputs": {
+    "reports.jsonl": "f8defceb4ed8e3ee510d9af7216418ef921a3c7c2cc7c4748ef978911168943d",
+    "requests.json": "9acd62eca17e1bf996c7191b136ba1ee5ca2cc20f8e004442c4888f198d7484d",
+    "scored_reports.json": "342eff463c4c65f9379534a2f9ba10779245d2b42ced686d72f55a7c424fd940",
+    "terminal.json": "ffd4e6e36eecb059d7e9eb5efb6dbebdf45d2ade6da2701dd3015eb7a3673d6a"
+  },
+  "method": "All three displayed records have the same off/off action when the low bits of prior, mask and out agree. Count requested-action correctness on that subset.",
+  "new_native_scoring_calls": 0,
+  "posthoc": true,
+  "script_sha256": "cacd78aa6fb808087a7d4edfb29369c4b60776b8efac2e42dbf26a2e2ae78c05",
+  "unanimous_errors": [
+    {
+      "arm": "source_cue",
+      "id": "source_cue:instruction_then_observation:2:0:3:3:3:instruction",
+      "layout": "instruction_then_observation",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:observation_then_instruction:2:0:3:3:3:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:observation_then_instruction:2:0:3:3:3:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:instruction_then_observation:2:0:3:3:15:instruction",
+      "layout": "instruction_then_observation",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:observation_then_instruction:2:0:3:3:15:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:observation_then_instruction:2:0:3:3:15:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:instruction_then_observation:2:0:15:3:15:instruction",
+      "layout": "instruction_then_observation",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:instruction_then_observation:2:0:15:3:15:actual",
+      "layout": "instruction_then_observation",
+      "question": "actual",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:instruction_then_observation:2:0:15:3:15:instruction",
+      "layout": "instruction_then_observation",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:instruction_then_observation:2:0:15:3:15:actual",
+      "layout": "instruction_then_observation",
+      "question": "actual",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:observation_then_instruction:2:0:15:3:15:actual",
+      "layout": "observation_then_instruction",
+      "question": "actual",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:observation_then_instruction:2:0:15:3:15:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:observation_then_instruction:2:0:15:3:15:actual",
+      "layout": "observation_then_instruction",
+      "question": "actual",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:observation_then_instruction:2:0:15:3:15:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:instruction_then_observation:2:1:8:12:0:instruction",
+      "layout": "instruction_then_observation",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:instruction_then_observation:2:1:8:12:0:instruction",
+      "layout": "instruction_then_observation",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:observation_then_instruction:2:1:8:12:0:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:observation_then_instruction:2:1:8:12:0:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:instruction_then_observation:2:1:8:12:12:instruction",
+      "layout": "instruction_then_observation",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:instruction_then_observation:2:1:8:12:12:instruction",
+      "layout": "instruction_then_observation",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:observation_then_instruction:2:1:8:12:12:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:observation_then_instruction:2:1:8:12:12:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:instruction_then_observation:2:1:12:12:0:instruction",
+      "layout": "instruction_then_observation",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:observation_then_instruction:2:1:12:12:0:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:observation_then_instruction:2:1:12:12:0:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:instruction_then_observation:2:1:12:12:12:instruction",
+      "layout": "instruction_then_observation",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:observation_then_instruction:2:1:12:12:12:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:observation_then_instruction:2:1:12:12:12:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:instruction_then_observation:2:1:0:12:0:instruction",
+      "layout": "instruction_then_observation",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:instruction_then_observation:2:1:0:12:0:actual",
+      "layout": "instruction_then_observation",
+      "question": "actual",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:instruction_then_observation:2:1:0:12:0:instruction",
+      "layout": "instruction_then_observation",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:instruction_then_observation:2:1:0:12:0:actual",
+      "layout": "instruction_then_observation",
+      "question": "actual",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:observation_then_instruction:2:1:0:12:0:actual",
+      "layout": "observation_then_instruction",
+      "question": "actual",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:observation_then_instruction:2:1:0:12:0:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "copy_only",
+      "id": "copy_only:observation_then_instruction:2:1:0:12:0:actual",
+      "layout": "observation_then_instruction",
+      "question": "actual",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    },
+    {
+      "arm": "source_cue",
+      "id": "source_cue:observation_then_instruction:2:1:0:12:0:instruction",
+      "layout": "observation_then_instruction",
+      "question": "instruction",
+      "response": "preserve the exact words",
+      "shared_offoff_action": "summarize the main ideas"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "purpose": "unscored GPU resource preflight; no policy-bank prompts",
+  "load_seconds": 4.421717816032469,
+  "dtype": "bfloat16",
+  "device": "cuda",
+  "cpu_threads": 1,
+  "checkpoint_sha256": "f3503907cc4d2ace62abccf30393a05919827c1c8969b2f2755f15627b9756ad",
+  "parity": {
+    "exact": true,
+    "max_abs": 0.0,
+    "scope": "unmodified_native_vs_observation_hooks_no_injection"
+  },
+  "generations": [
+    {
+      "seconds": 0.2741710147820413,
+      "text": "Ready.",
+      "stop": "eos",
+      "token_count": 4,
+      "prompt_tokens": 16,
+      "budget": 8,
+      "stop_token_id": 107,
+      "censored": false
+    },
+    {
+      "seconds": 0.23072605906054378,
+      "text": "Ready",
+      "stop": "eos",
+      "token_count": 3,
+      "prompt_tokens": 256,
+      "budget": 8,
+      "stop_token_id": 107,
+      "censored": false
+    }
+  ],
+  "elapsed_seconds": 5.920769291929901
+}

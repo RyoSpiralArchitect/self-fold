@@ -1,0 +1,108 @@
+{
+  "all_scientific_generations_eos": true,
+  "combined_gate": {
+    "attributable_cue_benefit": false,
+    "combined": {
+      "minimal": false,
+      "report_conditioned": false
+    },
+    "continuation": true,
+    "model_and_readers_frozen": true,
+    "qualification_loaded": false,
+    "reference_extraction_and_routing_supplied": true,
+    "report_admission": false,
+    "supplied_source_cue": true
+  },
+  "engineering": [
+    {
+      "errors": 0,
+      "failures": 0,
+      "path": "source-ci/engineering-tests.xml",
+      "sha256": "5dfbe3f19ff52e0d31d578901d76189eec65e171e80543eb8d1b7625f07f604e",
+      "skipped": 0,
+      "tests": 383
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "path": "source-ci/pull-request/engineering-tests.xml",
+      "sha256": "8791036cb5f842c589e31896794050a4f016d2516bcb6015db3c7eaf7388ecca",
+      "skipped": 0,
+      "tests": 383
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "path": "source-ci/push/engineering-tests.xml",
+      "sha256": "40aed233620ee665835749cfd5d0dfe480ad32f79799686d5464cb6b87a50e1c",
+      "skipped": 0,
+      "tests": 383
+    }
+  ],
+  "matched_benefit": {
+    "difference": 0.0625,
+    "minimum_difference": 0.2,
+    "paired": {
+      "both": 47,
+      "copy_only": 3,
+      "cue_only": 10,
+      "neither": 52
+    },
+    "passed": false,
+    "total": 112
+  },
+  "model_or_controller_fits": 0,
+  "new_native_scoring_calls": 0,
+  "old_write6_through_write10_and_paper_unchanged": true,
+  "pinned_inputs_verified": 311,
+  "posthoc_agreement": {
+    "audit_sha256": "fc9632223a6ec80893814de5bf185d1a36407d12664d2d3a4eb4a3f25538264f",
+    "changes_registered_gates": false,
+    "script_sha256": "cacd78aa6fb808087a7d4edfb29369c4b60776b8efac2e42dbf26a2e2ae78c05",
+    "verified": true
+  },
+  "qualification_loaded": false,
+  "reduction": {
+    "composition_evaluations": 216,
+    "composition_panels": 648,
+    "continuation_judgments": 21504,
+    "exact": true,
+    "new_generation_calls": 0,
+    "new_native_scoring_calls": 0,
+    "paired_conditions": 72,
+    "qualification_loaded": false,
+    "report_records": 1792
+  },
+  "report_admission": {
+    "copy_only": {
+      "checks": {
+        "instruction_accuracy_all_orders": false,
+        "instruction_naming_all_orders": false,
+        "joint_order_selectivity": false,
+        "report_criteria_all_orders": false
+      },
+      "joint_order_selectivity": [
+        50,
+        112
+      ],
+      "passed": false
+    },
+    "source_cue": {
+      "checks": {
+        "instruction_accuracy_all_orders": false,
+        "instruction_naming_all_orders": false,
+        "joint_order_selectivity": false,
+        "report_criteria_all_orders": false
+      },
+      "joint_order_selectivity": [
+        57,
+        112
+      ],
+      "passed": false
+    }
+  },
+  "scientific_generations": 1792,
+  "source_implementation_unchanged": true,
+  "source_seal": "2d835bf933db6b9e32c015cada23a9f20d9fb75d",
+  "unscored_preflight_generations": 2
+}
