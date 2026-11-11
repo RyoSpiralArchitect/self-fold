@@ -1,0 +1,52 @@
+{
+  "base_config": "data/state_writer_20261109.json",
+  "batch": 128,
+  "direct_reference_supervision": false,
+  "evaluation_depth": 4,
+  "evaluations": 27,
+  "exploration_floor": 0.12,
+  "fit_topics": [
+    0,
+    2,
+    4,
+    6
+  ],
+  "fits": 6,
+  "inputs_manifest": "provenance/message_boundary_20261106/write10/INPUTS.json",
+  "kinds": [
+    "minimal",
+    "report_conditioned"
+  ],
+  "learning_rate": 0.06,
+  "parameters": {
+    "minimal": 2,
+    "report_conditioned": 34
+  },
+  "plan": "provenance/message_boundary_20261106/write10/PLAN.md",
+  "previous_run": "provenance/message_boundary_20261106/write9/produce",
+  "qualification_loaded": false,
+  "reader_frozen": true,
+  "reference_modes": [
+    "intact",
+    "fixed_zero",
+    "opposed"
+  ],
+  "reference_origin": "initial_compiled_one_hot_member0_option_slot",
+  "routing_frozen": true,
+  "schema": "reward_learned_reference_retention_v1",
+  "seeds": [
+    17,
+    41,
+    73
+  ],
+  "thresholds": {
+    "all_four": 0.9,
+    "conditional_inversion": 0.9,
+    "erasure_drop": 0.2,
+    "novel_masks": 0.9,
+    "retention": 0.99
+  },
+  "training_depth": 2,
+  "updates": 512,
+  "wall_seconds": 3600
+}

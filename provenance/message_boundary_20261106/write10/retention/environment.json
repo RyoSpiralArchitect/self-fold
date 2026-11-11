@@ -1,0 +1,1 @@
+{"device":"cpu","evaluation_workers":2,"numpy":"2.5.4","python":"3.14.4","torch":"2.13.0+cu132","torch_threads":1}
