@@ -1,0 +1,75 @@
+{
+  "archived_inputs_preserved": true,
+  "execution_seal": "1ebb1454e02f0d2e037b2c2a50e5c8c5c42e5173",
+  "execution_seal_ci": [
+    {
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "1ebb1454e02f0d2e037b2c2a50e5c8c5c42e5173",
+      "url": "https://github.com/RyoSpiralArchitect/self-fold/actions/runs/42781008891"
+    },
+    {
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "1ebb1454e02f0d2e037b2c2a50e5c8c5c42e5173",
+      "url": "https://github.com/RyoSpiralArchitect/self-fold/actions/runs/42781002279"
+    }
+  ],
+  "fresh_process_reduction": {
+    "comparisons": {
+      "archived": {
+        "controllers": 24,
+        "exact": true
+      },
+      "refit": {
+        "controllers": 24,
+        "exact": true
+      }
+    },
+    "generation_calls": 0,
+    "new_native_calls": 0,
+    "qualification_loaded": false,
+    "schema": "report_replay_reduction_v1"
+  },
+  "furnace_full_suite": {
+    "failed": 0,
+    "passed": 362,
+    "receipt": "engineering-tests.xml",
+    "seconds": 23.677,
+    "sha256": "8fb2c9e1e0fc388b81d500fe16cabe68f9c88e36b7420e5934f2ddc39890dcbd",
+    "skipped": 0
+  },
+  "generation_calls": 0,
+  "mac_full_suite": {
+    "assertions_weakened": false,
+    "failed": 2,
+    "failures": [
+      {
+        "diagnosis": "Same failure reproduced at the original reviewed head in the local HF/Torch environment.",
+        "test": "tests/test_hf_optional.py::test_real_hf_architecture_without_download[phimoe]"
+      },
+      {
+        "diagnosis": "Historical Git objects missing from local partial-clone test copy; passed in complete Furnace checkout and CI.",
+        "test": "tests/test_separator_plan.py::test_preflight_receipt_is_reproducible_and_never_claims_gpu_readiness"
+      }
+    ],
+    "passed": 360,
+    "skipped": 0
+  },
+  "mutation_probe_source_sha256": "82ef0d46ea3b26b7317d6d7b1bef33af2166fba17ec61475706df79b9d69f0ae",
+  "mutation_probes": {
+    "fixtures_pass_before_mutation": true,
+    "generation_calls": 0,
+    "legacy_zero_feature_start_rejected": true,
+    "new_native_calls": 0,
+    "requested_output_lookup_rejected": true,
+    "schema": "pr35_regression_mutations_v1",
+    "source_files_modified": false
+  },
+  "new_native_calls": 0,
+  "original_reviewed_head": "57b4a24848893f8bf60a4b10c42b41c963cc9877",
+  "qualification_loaded": false,
+  "recorded_at": "2026-11-10T08:53:23.522488+00:00",
+  "schema": "pr35_start_repair_validation_v1",
+  "write6_write7_git_differences": false
+}

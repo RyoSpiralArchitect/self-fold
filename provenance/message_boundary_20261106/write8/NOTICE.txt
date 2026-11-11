@@ -1,0 +1,7 @@
+Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms
+
+SELF-FOLD refits small state-update controllers using archived Gemma reports
+and native row scores. The initial text-channel readout uses an existing
+trainable start address. The original report corpora, model outputs and first
+failed controller results are preserved; this follow-up adds new controller
+weights, exact archived replays and separately versioned trajectory evidence.

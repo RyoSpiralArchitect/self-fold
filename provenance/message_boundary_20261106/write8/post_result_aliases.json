@@ -1,0 +1,382 @@
+{
+  "assumption": "equal record weights; deterministic role classifier using normalized row contrast and the stated report representation",
+  "input_contract": {
+    "decoded_bit_comparator": "uses action options and source pole outside this pointer reader",
+    "implemented_reader": "BoundaryMemory.read: normalized row contrast and hashbag_v1",
+    "text_view": "counterfactual exact report text with the same normalized row contrast",
+    "unavailable_to_pointer": [
+      "source pole",
+      "absolute action identity",
+      "prior instruction"
+    ]
+  },
+  "not_an_all_four_bound": true,
+  "results": {
+    "rt_directed": {
+      "all_nonconstant_priors": {
+        "hashbag": {
+          "best_deterministic_role_correct": 1568,
+          "contradictory_inputs": 105,
+          "contradictory_witness": [
+            {
+              "group": 0,
+              "mask": 1,
+              "out": 1,
+              "pole": 0,
+              "prior": 1,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "ce61a1f2fa937dd5f98a6cb01638a8eb355a7ec08f5c42f034d1a3ed97229532",
+              "required_role": 1,
+              "source": 0,
+              "text": "earliest reports"
+            },
+            {
+              "group": 0,
+              "mask": 14,
+              "out": 14,
+              "pole": 1,
+              "prior": 1,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "2ad12191045b80ab5d2a0166d35427d3c513f254af78c0ec1e9c3be5cf5592e8",
+              "required_role": 0,
+              "source": 1,
+              "text": "earliest reports"
+            }
+          ],
+          "distinct_inputs": 105,
+          "records": 3136,
+          "records_in_contradictory_inputs": 3136,
+          "unavoidable_role_errors": 1568
+        },
+        "text": {
+          "best_deterministic_role_correct": 1568,
+          "contradictory_inputs": 119,
+          "contradictory_witness": [
+            {
+              "group": 0,
+              "mask": 1,
+              "out": 1,
+              "pole": 0,
+              "prior": 1,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "ce61a1f2fa937dd5f98a6cb01638a8eb355a7ec08f5c42f034d1a3ed97229532",
+              "required_role": 1,
+              "source": 0,
+              "text": "earliest reports"
+            },
+            {
+              "group": 0,
+              "mask": 14,
+              "out": 14,
+              "pole": 1,
+              "prior": 1,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "2ad12191045b80ab5d2a0166d35427d3c513f254af78c0ec1e9c3be5cf5592e8",
+              "required_role": 0,
+              "source": 1,
+              "text": "earliest reports"
+            }
+          ],
+          "distinct_inputs": 119,
+          "records": 3136,
+          "records_in_contradictory_inputs": 3136,
+          "unavoidable_role_errors": 1568
+        }
+      },
+      "initial_prior_8": {
+        "hashbag": {
+          "best_deterministic_role_correct": 115,
+          "contradictory_inputs": 98,
+          "contradictory_witness": [
+            {
+              "group": 0,
+              "mask": 1,
+              "out": 1,
+              "pole": 0,
+              "prior": 8,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "fccc17043fb638632bd6f85123af90e85fb6f9d3dff0029f522f5b77a9a408da",
+              "required_role": 1,
+              "source": 0,
+              "text": "earliest reports"
+            },
+            {
+              "group": 0,
+              "mask": 14,
+              "out": 14,
+              "pole": 1,
+              "prior": 8,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "45df96c1691ecb58d9aefd4642d31afc3e07e801bf8e0845613be64dea528778",
+              "required_role": 0,
+              "source": 1,
+              "text": "earliest reports"
+            }
+          ],
+          "distinct_inputs": 101,
+          "records": 224,
+          "records_in_contradictory_inputs": 221,
+          "unavoidable_role_errors": 109
+        },
+        "text": {
+          "best_deterministic_role_correct": 115,
+          "contradictory_inputs": 109,
+          "contradictory_witness": [
+            {
+              "group": 0,
+              "mask": 1,
+              "out": 1,
+              "pole": 0,
+              "prior": 8,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "fccc17043fb638632bd6f85123af90e85fb6f9d3dff0029f522f5b77a9a408da",
+              "required_role": 1,
+              "source": 0,
+              "text": "earliest reports"
+            },
+            {
+              "group": 0,
+              "mask": 14,
+              "out": 14,
+              "pole": 1,
+              "prior": 8,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "45df96c1691ecb58d9aefd4642d31afc3e07e801bf8e0845613be64dea528778",
+              "required_role": 0,
+              "source": 1,
+              "text": "earliest reports"
+            }
+          ],
+          "distinct_inputs": 115,
+          "records": 224,
+          "records_in_contradictory_inputs": 218,
+          "unavoidable_role_errors": 109
+        }
+      }
+    },
+    "rt_natural": {
+      "all_nonconstant_priors": {
+        "hashbag": {
+          "best_deterministic_role_correct": 1568,
+          "contradictory_inputs": 506,
+          "contradictory_witness": [
+            {
+              "group": 0,
+              "mask": 1,
+              "out": 1,
+              "pole": 0,
+              "prior": 1,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "2552fba1c3a7029b87f7b0cf5946aca8092f7ef7ebadf50e8c552d020c9e8580",
+              "required_role": 1,
+              "source": 0,
+              "text": "The state machine's report assignment table was updated."
+            },
+            {
+              "group": 0,
+              "mask": 14,
+              "out": 14,
+              "pole": 0,
+              "prior": 3,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "9340b05dc9d78ceef23f27091f74fa2fccc64684844f308cf7172fba1141fed1",
+              "required_role": 0,
+              "source": 0,
+              "text": "The state machine's report assignment table was updated."
+            }
+          ],
+          "distinct_inputs": 506,
+          "records": 3136,
+          "records_in_contradictory_inputs": 3136,
+          "unavoidable_role_errors": 1568
+        },
+        "text": {
+          "best_deterministic_role_correct": 1568,
+          "contradictory_inputs": 519,
+          "contradictory_witness": [
+            {
+              "group": 0,
+              "mask": 1,
+              "out": 1,
+              "pole": 0,
+              "prior": 1,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "2552fba1c3a7029b87f7b0cf5946aca8092f7ef7ebadf50e8c552d020c9e8580",
+              "required_role": 1,
+              "source": 0,
+              "text": "The state machine's report assignment table was updated."
+            },
+            {
+              "group": 0,
+              "mask": 14,
+              "out": 14,
+              "pole": 0,
+              "prior": 3,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "9340b05dc9d78ceef23f27091f74fa2fccc64684844f308cf7172fba1141fed1",
+              "required_role": 0,
+              "source": 0,
+              "text": "The state machine's report assignment table was updated."
+            }
+          ],
+          "distinct_inputs": 519,
+          "records": 3136,
+          "records_in_contradictory_inputs": 3136,
+          "unavoidable_role_errors": 1568
+        }
+      },
+      "initial_prior_8": {
+        "hashbag": {
+          "best_deterministic_role_correct": 190,
+          "contradictory_inputs": 29,
+          "contradictory_witness": [
+            {
+              "group": 0,
+              "mask": 1,
+              "out": 1,
+              "pole": 0,
+              "prior": 8,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "b45a0b4a6b3f2b10aea940c0b44855a291181fc686b003e1acd7b6e998e58886",
+              "required_role": 1,
+              "source": 0,
+              "text": "The state machine's report assignment table was updated to reflect the most recent reports for all input combinations."
+            },
+            {
+              "group": 0,
+              "mask": 14,
+              "out": 14,
+              "pole": 1,
+              "prior": 8,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "c16866082a4ed2bfcfee5df2e87ce765fa191e27715f05b59487d7aa5c93595f",
+              "required_role": 0,
+              "source": 1,
+              "text": "The state machine's report assignment table was updated to reflect the most recent reports for all input combinations."
+            }
+          ],
+          "distinct_inputs": 156,
+          "records": 224,
+          "records_in_contradictory_inputs": 79,
+          "unavoidable_role_errors": 34
+        },
+        "text": {
+          "best_deterministic_role_correct": 191,
+          "contradictory_inputs": 28,
+          "contradictory_witness": [
+            {
+              "group": 0,
+              "mask": 1,
+              "out": 1,
+              "pole": 0,
+              "prior": 8,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "b45a0b4a6b3f2b10aea940c0b44855a291181fc686b003e1acd7b6e998e58886",
+              "required_role": 1,
+              "source": 0,
+              "text": "The state machine's report assignment table was updated to reflect the most recent reports for all input combinations."
+            },
+            {
+              "group": 0,
+              "mask": 14,
+              "out": 14,
+              "pole": 1,
+              "prior": 8,
+              "relative": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "request_sha256": "c16866082a4ed2bfcfee5df2e87ce765fa191e27715f05b59487d7aa5c93595f",
+              "required_role": 0,
+              "source": 1,
+              "text": "The state machine's report assignment table was updated to reflect the most recent reports for all input combinations."
+            }
+          ],
+          "distinct_inputs": 157,
+          "records": 224,
+          "records_in_contradictory_inputs": 76,
+          "unavoidable_role_errors": 33
+        }
+      }
+    }
+  },
+  "scope": "post_result_saved_correct_transition_input_aliases",
+  "unit": "unique_pair_prior_instruction_output_report_record"
+}

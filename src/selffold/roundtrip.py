@@ -58,6 +58,53 @@ def rt_key(source, prior, mask, out):
     return (int(source), int(prior), int(mask), int(out))
 
 
+def feasible_outs(prior, cur):
+    """Every out pattern a (prior, cur) transition can realize.
+
+    Each world row copies the weights of the row the pointer picked for its
+    order, so an off row lands on the dominant member of pick0 and an on row on
+    pick1. Enumerating both picks covers every out a controller (trained or
+    exploring) can produce from this prior — the report-cache coverage bound.
+    """
+    pb = [(prior >> r) & 1 for r in range(4)]
+    outs = set()
+    for p0 in range(4):
+        for p1 in range(4):
+            outs.add(sum(pb[p1 if (cur >> i) & 1 else p0] << i for i in range(4)))
+    return sorted(outs)
+
+
+TEXT_FEAT_DIM = 32
+TEXT_FEAT_VERSION = "hashbag_v1"
+
+
+def text_features(text):
+    """Frozen, deterministic report featurizer (no learned semantics).
+
+    24 hashed-token features (md5-signed word counts) plus 8 structural
+    flags: row-mention density, arrow presence, negation, past/now markers,
+    and a length bucket. Declared, pole-free side information — the
+    recipient learns whatever these features predict.
+    """
+    import hashlib
+    import re
+    feats = torch.zeros(TEXT_FEAT_DIM)
+    toks = re.findall(r"[^\W_]+", text.casefold())
+    for t in toks:
+        h = hashlib.md5(t.encode()).digest()
+        feats[h[0] % 24] += 1.0 if h[1] & 1 else -1.0
+    row = len(re.findall(r"(?:off|on)\s*[/\-]\s*(?:off|on)", text, re.I))
+    feats[24] = min(row, 3) / 3
+    feats[25] = 1.0 if re.search(r"->", text) else 0.0
+    feats[26] = 1.0 if re.search(r"\bno longer\b|\bnot\b|\binstead of\b", text, re.I) else 0.0
+    feats[27] = 1.0 if re.search(r"\bprevious|\bwas\b|\bbefore\b|\bold\b", text, re.I) else 0.0
+    feats[28] = 1.0 if re.search(r"\bnow\b|\bcurrent|\bnew\b", text, re.I) else 0.0
+    feats[29] = min(len(toks), 64) / 64
+    feats[30] = 1.0 if re.search(r"\boff\s*[/\-]\s*off\b", text, re.I) else 0.0
+    feats[31] = 1.0 if re.search(r"\bfirst\b|\bsecond\b|\blatter\b|\bformer\b", text, re.I) else 0.0
+    return feats
+
+
 def realize_next(weights, mask_bits):
     """The ideal update: each world row takes the member named by its mask bit.
 

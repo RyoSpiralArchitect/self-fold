@@ -17,6 +17,7 @@ import torch
 
 from .message_boundary import BoundaryMemory, TRACE_EPS, bits_to_int, convention_bits
 from .role_memory import advantage, truth_bits
+from .roundtrip import pattern_of
 
 
 def mix_members(rows, beta):
@@ -49,7 +50,9 @@ def mark(weights, on, eps=TRACE_EPS):
 
 
 def boundary_weights(out_bits, mask, channel, width, lm_bits=None):
-    if channel in ("none", "traced"):
+    if channel in ("none", "traced", "lmtext"):
+        # lmtext's carried payload is a feature vector, installed by the
+        # caller — the integer slot here is never read.
         return torch.zeros_like(out_bits)
     if channel == "supplied":
         return convention_bits(mask, width)
@@ -123,28 +126,44 @@ def step(model, table, weights, message, mask, form, channel, members,
 
 
 def train_batch(model, members, reward, masks, randoms, form, channel,
-                floor, beta=1.0, lm_bits=None):
+                floor, beta=1.0, lm_bits=None, rt_bits=None, cases=None,
+                rt_feats=None):
     """Two on-policy edits scored by realized-row native correctness.
 
     reward: callable (realized_descriptor, mask_at_t) -> (batch, 4 worlds, 2 orders)
-    correctness indicator.
+    correctness indicator. When rt_bits is given, the carried message is the
+    decoded report of THIS transition, keyed by its realized
+    (source, prior, mask, out) — computed post-step, so coverage must hold
+    under the exploration floor's arbitrary picks.
     """
     weights = init_weights(len(members), beta)
     table = realize(weights, members)
     batch = len(members)
-    message = torch.zeros(batch, dtype=torch.long)
+    message = model.initial_message(batch, device=members.device)
     row_log, bit_log, credits, supervised_losses = [], [], [], []
     for t in range(2):
+        prior_p = pattern_of(weights) if (rt_bits is not None or rt_feats is not None) else None
         table, weights, out_bits, carried, logrow, logbit, ptr, wl = step(
             model, table, weights, message, masks[:, t], form, channel, members,
             uniform=randoms[:, t], floor=floor,
-            lm_bits=lm_bits[:, t : t + 1] if lm_bits is not None else None,
+            lm_bits=(lm_bits[:, t : t + 1] if lm_bits is not None
+                     else (torch.zeros(batch, 1, dtype=torch.long)
+                           if rt_bits is not None else None)),
         )
+        if rt_feats is not None:
+            message = rt_feats[cases, prior_p, masks[:, t], pattern_of(weights)]
+            if torch.isnan(message).any():
+                raise ValueError("RoundTrip text lookup outside generated coverage")
+        elif rt_bits is not None:
+            carried = rt_bits[cases, prior_p, masks[:, t], pattern_of(weights)]
+            if (carried < 0).any():
+                raise ValueError("RoundTrip lookup outside generated coverage")
         descriptor = weights[..., 1] if form == "soft" else weights.argmax(-1).float()
         credits.append(reward(descriptor, masks[:, t]).mean((-1, -2)))
         row_log.append(logrow)
         bit_log.append(logbit)
-        message = carried
+        if rt_feats is None:
+            message = carried
         if channel == "supervised":
             supervised_losses.append(
                 torch.nn.functional.binary_cross_entropy_with_logits(
@@ -231,10 +250,6 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0, lm_matrix=No
             return lm_matrix[cases, prior_vec, mask_vec].unsqueeze(-1)
         return lm_matrix[cases, mask_vec].unsqueeze(-1)
 
-    def pattern_of(w):
-        # Realized table pattern: argmax member per row packed as a 4-bit mask.
-        return (w.argmax(-1) * torch.tensor([1, 2, 4, 8], device=w.device)).sum(-1)
-
     table, weights, message, w0 = eval_step(
         model, table, weights, message, instructions[:, 0], form, channel,
         carried_members,
@@ -287,15 +302,119 @@ def rollout_w(model, form, channel, members, keys, masks, beta=1.0, lm_matrix=No
 
 
 @torch.no_grad()
-def twins_w(model, form, channel, members, masks, beta=1.0, lm_matrix=None):
+def rollout_rt(model, form, members, keys, masks, rt_bits, beta=1.0, rt_feats=None):
+    """Four-edit strings where each decoded report feeds the next edit.
+
+    Unlike rollout_w's (prior, mask) lookup, the report crossing the boundary
+    is keyed by the transition's REALIZED triple (prior, mask, out): the
+    writer saw the actual post-edit table, including pointer errors. The
+    decoded bit becomes the next message verbatim.
+    """
+    from .role_trials import donor_indices
+
+    if rt_feats is not None:
+        if (not isinstance(rt_feats, torch.Tensor) or rt_feats.dim() != 5
+                or rt_feats.shape[0] != len(members)
+                or tuple(rt_feats.shape[1:4]) != (16, 16, 16)):
+            raise ValueError("RT text rollout requires a [sources,16,16,16,K] feature matrix")
+    elif (not isinstance(rt_bits, torch.Tensor) or rt_bits.dim() != 4
+            or rt_bits.shape[0] != len(members)
+            or tuple(rt_bits.shape[1:]) != (16, 16, 16)):
+        raise ValueError("RT rollout requires a [sources,16,16,16] bit matrix")
+    if model.width != 1 or not masks:
+        raise ValueError("RT rollout requires width=1 and nonempty masks")
+    n = len(members)
+    paths = torch.tensor(list(itertools.product(range(len(masks)), repeat=4)))
+    num = len(paths)
+    instructions = torch.tensor(masks)[paths].repeat(n, 1)
+    donors = donor_indices(keys)
+    carried_members = members.repeat_interleave(num, 0)
+    weights = init_weights(n * num, beta)
+    table = realize(weights, carried_members)
+    message = model.initial_message(n * num, device=members.device)
+    case_of = torch.arange(n * num) // num
+    channel = "lmtext" if rt_feats is not None else "lm"
+
+    def rt_step(table, weights, message, cur, cases, mem):
+        prior_p = pattern_of(weights)
+        table, w2, _, _ = eval_step(
+            model, table, weights, message, cur, form, channel, mem,
+            lm_bits=None if rt_feats is not None
+            else torch.zeros(len(table), 1, dtype=torch.long),
+        )
+        if rt_feats is not None:
+            written = rt_feats[cases, prior_p, cur, pattern_of(w2)]
+            if torch.isnan(written).any():
+                raise ValueError("RoundTrip text lookup outside generated coverage")
+        else:
+            written = rt_bits[cases, prior_p, cur, pattern_of(w2)]
+            if (written < 0).any():
+                raise ValueError("RoundTrip lookup outside generated coverage")
+        return table, w2, written
+
+    table, weights, w0 = rt_step(table, weights, message, instructions[:, 0],
+                                 case_of, carried_members)
+    depths = [weights[..., 1].reshape(n, num, 4)]
+    second, fourth, written, mismatch = [], [], [w0.reshape(n, num, -1)], []
+    for route in ("matched", "opposed", "equivalent", "erase"):
+        ids = donors[{"opposed": 1, "equivalent": 2}.get(route, 0)]
+        start_w = weights.reshape(n, num, 4, 2)[ids].reshape(-1, 4, 2)
+        start_members = carried_members.reshape(n, num, 2, 16)[ids].reshape(-1, 2, 16)
+        msg = (w0.reshape(n, num, -1)[ids].reshape(-1, w0.shape[-1])
+               if w0.dim() == 2 else w0.reshape(n, num)[ids].reshape(-1))
+        if route == "erase":
+            msg = torch.zeros_like(msg)
+        start_table = realize(start_w, start_members)
+        w2 = start_w
+        ws = []
+        route_cases = torch.as_tensor(ids).repeat_interleave(num)
+        for t in range(1, 4):
+            if route == "matched":
+                mismatch.append((pattern_of(w2) != instructions[:, t - 1]).reshape(n, num))
+            start_table, w2, wt = rt_step(
+                start_table, w2, msg, instructions[:, t], route_cases, start_members)
+            msg = wt
+            ws.append(w2)
+            if route == "matched" and t < 3:
+                written.append(wt.reshape(n, num, -1))
+        if route == "matched":
+            depths += [w[..., 1].reshape(n, num, 4) for w in ws]
+        second.append(ws[0][..., 1].reshape(n, num, 4))
+        fourth.append(ws[2][..., 1].reshape(n, num, 4))
+    w_stack = torch.stack(written, 2)
+    if rt_feats is not None:
+        w_out, w_sem = w_stack.numpy().astype(np.float16), "rt_report_feats_v1"
+    else:
+        w_out, w_sem = w_stack.numpy().astype(np.uint8), "rt_report_bits_v1"
+    return dict(
+        paths=paths.numpy(),
+        depths=np.stack([d.numpy() for d in depths], 2).astype(np.float16),
+        second=np.stack([s.numpy() for s in second], 1).astype(np.float16),
+        fourth=np.stack([s.numpy() for s in fourth], 1).astype(np.float16),
+        routes=np.asarray(["matched", "opposed", "equivalent", "erase"]),
+        written=w_out,
+        written_semantics=np.asarray(w_sem),
+        prior_mismatch=np.stack([m.numpy() for m in mismatch], 1),
+    )
+
+
+@torch.no_grad()
+def twins_w(model, form, channel, members, masks, beta=1.0, lm_matrix=None,
+            rt_bits=None, rt_feats=None):
     """Identical boundary state, opposite required answers; trace may separate them.
 
     For `traced` soft arms the two priors produce *different* boundary states —
     the test measures whether the weight trace alone distinguishes histories.
+    With rt_bits the history message is the report of the constructed-perfect
+    transition (initial layout -> history -> history), matching the supplied
+    convention's perfect-write assumption.
     """
     from itertools import product as iproduct
 
-    _validate_lm_matrix(channel, model, members, masks, lm_matrix)
+    if rt_bits is None:
+        _validate_lm_matrix(channel, model, members, masks, lm_matrix)
+    elif channel == "lm" and (rt_bits.dim() != 4 or rt_bits.shape[0] != len(members)):
+        raise ValueError("RT twins require a [sources,16,16,16] bit matrix")
     representatives = masks[::2]
     if not masks or len(masks) % 2 or any(a ^ b != 15 for a, b in zip(representatives, masks[1::2])):
         raise ValueError("Need complement-paired masks")
@@ -309,16 +428,23 @@ def twins_w(model, form, channel, members, masks, beta=1.0, lm_matrix=None):
     for history in (prior, 15 - prior):
         if channel == "supplied":
             written = convention_bits(history, model.width)
+        elif channel == "lmtext":
+            written = rt_feats[ix, history.new_full(history.shape, INITIAL_PRIOR),
+                               history, history]
+        elif channel == "lm" and rt_bits is not None:
+            written = rt_bits[ix, history.new_full(history.shape, INITIAL_PRIOR),
+                              history, history].unsqueeze(-1)
         elif channel == "lm":
             written = (lm_matrix[ix, history.new_full(history.shape, INITIAL_PRIOR), history]
                        if lm_matrix.dim() == 3 else lm_matrix[ix, history]).unsqueeze(-1)
         else:
             written = (model.write_logits(history) > 0).long()
-        incoming = (
-            torch.zeros(len(shared_w), dtype=torch.long)
-            if channel in ("none", "traced")
-            else bits_to_int(written)
-        )
+        if channel in ("none", "traced"):
+            incoming = torch.zeros(len(shared_w), dtype=torch.long)
+        elif channel == "lmtext":
+            incoming = written
+        else:
+            incoming = bits_to_int(written)
         # Histories differ only through the channel: bit value or, for traced,
         # the mark their own prior leaves in the weights.
         hist_w = mark(shared_w, truth_bits(history)[:, 0]) if channel == "traced" else shared_w
@@ -329,10 +455,14 @@ def twins_w(model, form, channel, members, masks, beta=1.0, lm_matrix=None):
                 table = torch.nn.functional.one_hot(table.argmax(-1), 16).to(table)
             revised, w2, _, _ = eval_step(
                 model, table, hist_w, msg, current, form, channel, base,
-                lm_bits=(lm_matrix[ix, (hist_w.argmax(-1) * torch.tensor(
-                             [1, 2, 4, 8], device=hist_w.device)).sum(-1), current]
-                         if lm_matrix.dim() == 3
-                         else lm_matrix[ix, current]).unsqueeze(-1) if channel == "lm" else None,
+                lm_bits=(torch.zeros(len(ix), 1, dtype=torch.long)
+                         if channel == "lm" and rt_bits is not None
+                         else None if channel == "lmtext"
+                         else (lm_matrix[ix, (hist_w.argmax(-1) * torch.tensor(
+                                    [1, 2, 4, 8], device=hist_w.device)).sum(-1), current]
+                               if lm_matrix.dim() == 3
+                               else lm_matrix[ix, current]).unsqueeze(-1)
+                         if channel == "lm" else None),
             )
             results.append(w2[..., 1].reshape(len(members), len(representatives), len(masks), 4))
     # Stack the four (history, erasure) conditions BEFORE the world axis.

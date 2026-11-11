@@ -256,3 +256,138 @@ python3 provenance/message_boundary_20261106/summarize.py \
 ```
 
 Artifacts: [plan](PLAN.md) · [raw run](run/produce) · [scored packets](run) · [summary](run/summary.json) · [controller](../src/selffold/message_boundary.py) · [fit script](../scripts/fit_message_boundary.py) · [summarizer](summarize.py)
+
+## RoundTrip sealed run (`write6/`): realized (prior, mask, out) reports
+
+The report channel is now keyed by the **realized transition triple**
+`(prior, mask, out)` — the writer sees the actual post-update table,
+including pointer errors, and the decoded bit feeds the next message
+verbatim (`rt_report_bits_v1`). Coverage is the exact `feasible_outs`
+pick bound: every (prior, mask, out) any pick can produce is generated,
+so a lookup outside the cache is a protocol error, never a silent zero.
+Generation dedupes over unique (group, pole) pairs (12,992 prompts/style).
+First attempt stopped at 28,455/40,320 forwards-budget-exhausted and is
+preserved off-repo; the closed run used budget 1.5M.
+
+| channel | all-four (3 seeds) | twins intact/erased | shared-pointer all-four |
+| --- | ---: | --- | ---: |
+| supplied / reward | 100% | 1.000 / 0.000 | — |
+| rt_directed | 100% | 1.000 / 0.000 | 100% |
+| rt_natural | 7.3% | 0.071 / 0.000 | 7.3% |
+| state_prior_true | 14.0% | 0.179 / 0.000 | 14.0% |
+| no message | 12.5% | 0.000 / 0.000 | — |
+
+### Decoder-consensus audit (`audit_roundtrip.py`: 3 decoders + unique-form view)
+
+Per-report decoder-consensus categories on the write6 corpus. These are
+NOT writer/parser attribution: the three decoders share lexical scoring
+(two wrap the same `decode_state_slot`), so shared blind spots are
+possible and all-decoder missingness does not prove omission.
+
+- **rt_directed** (12,992): consensus-correct 89.0%, consensus-wrong
+  11.0%, unresolved 0%. Split by realized divergence: when out == mask
+  the bit is 100% consensus-correct; when out != mask the report names
+  the *instruction's* bit (mask&1) in 78% — it answers the question
+  asked. The carried bit thus behaves like the supplied convention on
+  instruction faithfulness, consistent with the ceiling all-four. Note
+  the directed prompt asks about the instruction, not the realized out:
+  100% end-to-end is not 100% faithful reporting of erroneous outputs.
+- **rt_natural** (12,992): consensus-correct 33.7%, consensus-wrong
+  11.7%, unresolved-all-missing 53.4%, disagreement 1.2% — over 333
+  unique unresolved forms. Correctness concentrates on uniform outs
+  (52% vs 14.6% on mixed outs); off/off is named in 8.7% of reports.
+- **state_prior_true** (14,336): unresolved 44.9%, consensus-wrong
+  23.8%, consensus-correct 26.2%, disagreement 5.1%.
+
+Readings (descriptive, this interface/decoder only):
+
+- A **directed** question over the realized triple reaches the ceiling —
+  a working structured report→decode→next-step loop under its specified
+  question and decoder. An actual-output question is a distinct arm.
+- **Spontaneous** natural reports remain decoder-consensus-poor on the
+  realized state (~7% ≈ below floor); whether the gap is unwritten
+  content or shared parser blind spots needs an independently annotated,
+  stratified sample — not asserted here.
+- The rt-vs-state missing-report fallback was asymmetric at write6
+  (slot^pole on missing vs bit 0); it is declared and unified to 0 in
+  `rowbound_v4` for future runs, so the 14.0% vs 7.3% comparison is a
+  report+decoder+fallback system comparison, not a pure writer effect.
+
+### Post-review metadata correction (`lm_matrix_rt.json`)
+
+The committed `lm_matrix.json` selected the *output* axis of the 4D rt
+matrices with `[..., masks]` — the feasible collapsed outputs (0, 15)
+were excluded, and `report_counts` counted broadcast per-source cells
+rather than unique generated records. The saver now selects the
+instruction axis (axis 2) for 4D and reports `broadcast_cells` and
+`report_counts` (unique records) separately. Recomputed from the sealed
+JSONL corpus into `write6/produce/lm_matrix_rt.json` without touching
+the archived file: 12,992 unique reports per rt style; per-instruction
+bit-correctness including all feasible outs is in that file.
+
+## Hashed-text channel sealed run (`write7/`): initial-state defect retained
+
+The carried payload is the report's frozen hashbag feature vector
+(`hashbag_v1`, 32 dims), not a decoded bit; the recipient learns a
+`feat_addr` projection by reward. This arm was intended to test whether a
+learned reader recovers information missed by the lexical decoder. Generation
+policy `kv_capped_argmax` (declared; GPU
+parity vs full-re-forward was 25/30 — a distinct deterministic path).
+
+| channel | all-four (3 seeds) | twins intact |
+| --- | ---: | ---: |
+| supplied / reward | 100% | 1.000 |
+| rt_directed | 100% | 1.000 |
+| state_prior_true | 13.8% | 0.170 |
+| rt_natural | 13.3% | 0.161 |
+| lmtext_rt_directed | 0.0% | 0.281 |
+| lmtext_rt_natural | 0.0% | 0.335 |
+| no message | 12.5% | 0.000 |
+
+Readings (descriptive, this interface only):
+
+- **Post-review implementation diagnosis (2026-11-10):** the initial text
+  message is zero and `message @ feat_addr` has no bias. Both first-step
+  pointers therefore select row 0 under greedy evaluation, erasing the other
+  action. This forces every complete-history score to zero regardless of
+  report information or fitting duration. The first-step feature-projection
+  gradient is also zero. Saved controllers from all six text fits reproduce
+  this collapse. These archived results remain unchanged.
+- The constructed twins start at a supplied intermediate state and bypass
+  that initial update. Their 0.28-0.33 versus none's 0 remains a restricted
+  measurement; it does not validate a working full trajectory.
+- The all-four zero cannot diagnose feature capacity or learning budget and
+  does not resolve writer-versus-parser. The next bounded test repairs the
+  start address while keeping the report bank, features, seeds and fitting
+  budget fixed: [write8 protocol](write8/PLAN.md).
+- Compute: 631k forwards but 7.1M processed tokens (~15x fewer than
+  write6's re-forward path) — the sealed KV path.
+
+## Start-address repair (`write8/`): first update restored, continuation weak
+
+The [fixed-budget saved-report refit](write8/RESULTS.md) uses the existing
+trainable start address before any report exists; later report features and
+erasure semantics are unchanged. All 24 archived fits replayed exactly. All
+24 refits completed with the original 512 updates and three seeds; the 18
+unchanged discrete/control fits reproduced their old parameter hashes.
+No new language generation or native scoring was performed, and write6/write7
+remain byte-identical.
+
+All six text fits recovered **896/896 first-update units**, versus **0/896**
+before the repair. Complete four-update histories remain **9.97–14.17%** for
+directed features and **12.35–14.28%** for natural features, around the
+unchanged no-message score of **12.5%**. Each seed evaluates 2,458,624 repeated
+histories over eight known action menus. These are not independent tasks.
+The full per-seed counts, unfitted-mask panel and donor/twin controls are in
+the linked result and saved summaries; a separate process reproduced every
+summary from the saved trajectories.
+
+A post-result audit also identifies a reference mismatch: decoded reports use
+the source pole to turn action names into roles, whereas the text pointer
+sees only report features and normalized row contrast. Among 3,136 saved
+correct-transition records with nonconstant priors, identical observations
+can require opposite roles even with exact report text. The equal-record
+deterministic role-classification bound is 1,568/3,136 for both styles; this is
+**not** an all-four accuracy bound. The next question is whether a matched,
+explicit role reference resolves that ambiguity. Enlarging this reader alone
+cannot resolve identical inputs. The independent qualification remains open.

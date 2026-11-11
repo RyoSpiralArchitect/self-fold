@@ -1,0 +1,144 @@
+"""Decoder-consensus audit over saved report corpora.
+
+Re-decodes every saved report under several decoders and a normalized
+unique-form view. These are decoder-consensus measurements, NOT
+writer/parser attribution: the decoders share lexical scoring machinery
+(decode_state_slot underlies two of the three), so shared blind spots are
+possible and all-decoder missingness does not prove the writer omitted
+the bit. Ground truth per record:
+
+- rt_* styles: the realized out pattern's off/off bit (out & 1) — the report
+  is about the actual post-update table.
+- other styles: the requested mask's off/off bit (mask & 1).
+
+Categories per report:
+- unresolved_all_missing: every decoder reports missing. Consistent with
+  the bit being unwritten OR with wording all these parsers miss.
+- consensus_wrong: every decoding decoder binds the same other option.
+- disagreement: decoders disagree on the bound option.
+- consensus_correct: every decoder that binds anything binds correctly.
+
+Unique-form view: normalize each text (option names -> <A>/<B>, coordinates
+-> <ROW>, casefold) and count distinct forms per class. Writes no files;
+never overwrites summaries.
+
+Usage:
+  PYTHONPATH=src python3 provenance/message_boundary_20261106/audit_roundtrip.py [run ...]
+"""
+import json
+import glob
+import re
+import sys
+from collections import Counter
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(ROOT / "src"))
+from selffold.lm_writer import (  # noqa: E402
+    decode_bit, decode_state, decode_state_slot)
+from selffold.lm_writer_reports import source_pairs  # noqa: E402
+
+GROUPS = json.loads((ROOT / "data/within_topic_wording_20261103.json").read_text())["groups"]
+
+COORD = re.compile(r"\b(?:off|on)\s*[/\-]\s*(?:off|on)\b", re.IGNORECASE)
+
+
+def form_of(text, options):
+    """Decoder-blind phrasing template: hides WHICH option/action was named."""
+    t = " " + text.casefold() + " "
+    for i, opt in enumerate(options):
+        t = t.replace(opt.casefold(), f" <{'AB'[i]}> ")
+    t = COORD.sub(" <ROW> ", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+ORDINAL = re.compile(
+    r"\boff\s*[/\-]\s*off\b[^.;]*\b(first|second|former|latter)\b"
+    r"|\b(first|second|former|latter)\b[^.;]*\boff\s*[/\-]\s*off\b",
+    re.IGNORECASE)
+
+
+def ordinal_decode(text, options, pole):
+    """Non-lexical cross-check: 'off/off selects the first/former ...'
+    resolves via option ORDER, never the action names. Independent of the
+    lexical scoring machinery, so its misses/hits separate differently."""
+    m = ORDINAL.search(text)
+    if not m:
+        return 0, 1
+    word = next(g for g in m.groups() if g)
+    slot = 0 if word.lower() in ("first", "former") else 1
+    return slot ^ pole, 0
+
+
+def decoders(options, pole):
+    def rt(text):
+        slot, miss = decode_state_slot(text, options)
+        return slot ^ pole, miss
+    return {
+        "global": lambda t: decode_bit(t, options, pole),
+        "rowbound": lambda t: decode_state(t, options, pole),
+        "polefree": rt,
+        "ordinal": lambda t: ordinal_decode(t, options, pole),
+    }
+
+
+def audit(run):
+    prod = ROOT / f"provenance/message_boundary_20261106/{run}/produce"
+    try:
+        fit = json.loads((prod / "fit_keys.json").read_text())["keys"]
+        test = json.loads((prod / "test_keys.json").read_text())["keys"]
+    except Exception:
+        return
+    keys = fit + test
+    pairs, _ = source_pairs(keys)  # rt records are keyed by pair index
+    for path in sorted(glob.glob(str(prod / "reports_*.jsonl"))):
+        if Path(path).name.count(".") != 1:
+            continue  # .generation.partial.jsonl and other auxiliaries
+        m = re.fullmatch(r"reports_(.+)\.jsonl", Path(path).name)
+        if not m:
+            continue
+        style = m.group(1)
+        counts = Counter()
+        categories = ("unresolved_all_missing", "consensus_wrong",
+                      "disagreement", "consensus_correct")
+        forms = {k: Counter() for k in categories}
+        for line in open(path):
+            r = json.loads(line)
+            if "out" in r:
+                gi, pole = pairs[r["source"]]
+                opts = GROUPS[gi]["options"]
+            else:
+                k = keys[r["source"]]
+                opts, pole = GROUPS[k[0]]["options"], k[3]
+            truth = (r["out"] if "out" in r else r["mask"]) & 1
+            results = {name: fn(r["text"]) for name, fn in decoders(opts, pole).items()}
+            bits = {n: b for n, (b, m) in results.items() if not m}
+            if not bits:
+                cls = "unresolved_all_missing"
+            elif len(set(bits.values())) == 1:
+                cls = ("consensus_correct" if next(iter(bits.values())) == truth
+                       else "consensus_wrong")
+            else:
+                cls = "disagreement"
+            counts[cls] += 1
+            counts["n"] += 1
+            f = form_of(r["text"], opts)
+            # Each saved report contributes once, including when some
+            # decoders miss but the remaining decoders resolve its action.
+            # Decoder-level misses must not become report-level missingness.
+            forms[cls][f] += 1
+        n = counts["n"]
+        print(f"{run} {style:20s} n={n} "
+              f"unresolved={counts['unresolved_all_missing']} ({counts['unresolved_all_missing'] / n:.1%}) "
+              f"consensus_wrong={counts['consensus_wrong']} ({counts['consensus_wrong'] / n:.1%}) "
+              f"disagreement={counts['disagreement']} "
+              f"consensus_correct={counts['consensus_correct']} ({counts['consensus_correct'] / n:.1%})")
+        for cls in categories:
+            c = forms[cls]
+            top = ", ".join(f"{v}x {k[:60]!r}" for k, v in c.most_common(3)) or "(none)"
+            print(f"    {cls}: {len(c)} unique forms / {sum(c.values())} reports; top: {top}")
+
+
+if __name__ == "__main__":
+    for run in sys.argv[1:] or ("write5",):
+        audit(run)

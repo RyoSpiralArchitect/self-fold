@@ -1,0 +1,13 @@
+{
+  "schema": "saved_report_refit_v1",
+  "base_config": "data/state_writer_20261109.json",
+  "inputs_manifest": "provenance/message_boundary_20261106/write8/INPUTS.json",
+  "plan": "provenance/message_boundary_20261106/write8/PLAN.md",
+  "initialization": "learned_start_address_v1",
+  "archive_initialization": "legacy_zero_features",
+  "selection": "final_512_updates_all_three_seeds_no_selection",
+  "new_generation_calls": 0,
+  "new_native_calls": 0,
+  "qualification_loaded": false,
+  "wall_budget_seconds": 3600
+}
