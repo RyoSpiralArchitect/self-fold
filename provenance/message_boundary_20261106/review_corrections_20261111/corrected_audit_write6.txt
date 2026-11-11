@@ -1,0 +1,15 @@
+write6 rt_directed          n=12992 unresolved=0 (0.0%) consensus_wrong=1432 (11.0%) disagreement=0 consensus_correct=11560 (89.0%)
+    unresolved_all_missing: 0 unique forms / 0 reports; top: (none)
+    consensus_wrong: 4 unique forms / 1432 reports; top: 652x '<B>', 608x '<A>', 158x 'earliest reports'
+    disagreement: 0 unique forms / 0 reports; top: (none)
+    consensus_correct: 6 unique forms / 11560 reports; top: 5520x '<A>', 5154x '<B>', 732x 'earliest reports'
+write6 rt_natural           n=12992 unresolved=6936 (53.4%) consensus_wrong=1517 (11.7%) disagreement=157 consensus_correct=4382 (33.7%)
+    unresolved_all_missing: 333 unique forms / 6936 reports; top: 730x "the state machine's rules for music type have been updated.", 658x "the state machine's temperature conversion table was updated", 368x 'the state machine\'s rules for handling " <ROW> " and " <ROW>'
+    consensus_wrong: 294 unique forms / 1517 reports; top: 296x "the state machine's conversion rules for <B> and <A> were up", 140x "the state machine's conversion table for <B> and <A> was upd", 78x "the state machine's report assignment table was updated to r"
+    disagreement: 74 unique forms / 157 reports; top: 8x "the state machine's conversion table was updated to use <B> ", 8x "the state machine's conversion table was updated to use <A> ", 6x 'the table was updated to use <B> for <ROW> and <ROW> transit'
+    consensus_correct: 617 unique forms / 4382 reports; top: 300x "the state machine's conversion rules for <B> and <A> were up", 232x "the state machine's report assignment table was updated to r", 106x "the state machine's rules for <B> were updated."
+write6 state_prior_true     n=14336 unresolved=6440 (44.9%) consensus_wrong=3416 (23.8%) disagreement=724 consensus_correct=3756 (26.2%)
+    unresolved_all_missing: 195 unique forms / 6440 reports; top: 600x 'the sorting criteria for mail has been updated.', 480x "the state machine's music selection rules were updated.", 368x "the state machine's instructions for summarizing and preserv"
+    consensus_wrong: 238 unique forms / 3416 reports; top: 384x "the table's conversion rules for <B> and <A> were updated.", 112x "the state machine's instructions for summarizing and preserv", 96x "the table's conversion rules for celsius and fahrenheit have"
+    disagreement: 58 unique forms / 724 reports; top: 112x 'the temperature conversion table was updated to use fahrenhe', 64x 'the temperature conversion table was updated to use fahrenhe', 36x 'the temperature conversion table was updated to use celsius '
+    consensus_correct: 226 unique forms / 3756 reports; top: 360x "the table's conversion rules for <B> and <A> were updated.", 216x "the state machine's conversion table for <B> and <A> was upd", 200x "the state machine's conversion tables for <B> and <A> were u"
