@@ -1,0 +1,54 @@
+{
+  "furnace": {
+    "errors": 0,
+    "failures": 0,
+    "receipt": "engineering-tests.xml",
+    "skipped": 0,
+    "tests": 369
+  },
+  "generation_calls": 0,
+  "local_targeted": {
+    "device": "cpu",
+    "first_invocation_environment_failure": "Five tests initially hit the local startup default MPS device with a CPU generator; explicit CPU rerun passed. No experiment data or acceptance threshold changed.",
+    "passed": 24
+  },
+  "new_native_calls": 0,
+  "old_results": {
+    "base": "ea25af0bfa5fcf076e61376e6a34d65d850906f2",
+    "git_diff_empty": true,
+    "paths": [
+      "provenance/message_boundary_20261106/write6",
+      "provenance/message_boundary_20261106/write7",
+      "provenance/message_boundary_20261106/write8"
+    ]
+  },
+  "qualification_loaded": false,
+  "reduction": {
+    "evaluations": 42,
+    "exact": true,
+    "generation_calls": 0,
+    "logical_array_hashes_verified": true,
+    "new_native_calls": 0,
+    "paired_conditions": 12,
+    "panels": 126,
+    "qualification_loaded": false,
+    "schema": "carried_reference_reduction_v1"
+  },
+  "schema": "role_reference_engineering_validation_v1",
+  "source_ci": {
+    "runs": [
+      "https://github.com/RyoSpiralArchitect/self-fold/actions/runs/42831058708",
+      "https://github.com/RyoSpiralArchitect/self-fold/actions/runs/42830822362"
+    ],
+    "status": "SUCCESS"
+  },
+  "source_commit": "3c8960d5522603cb15e348935291f5634ff7bacd",
+  "transfer_verification": {
+    "fit_weights_hash": true,
+    "pinned_inputs": 109,
+    "training_fits": 12,
+    "trajectory_files": 42,
+    "updates_per_fit": 512
+  },
+  "verified_at": "2026-11-10T14:35:07.548095+00:00"
+}

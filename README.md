@@ -16,6 +16,8 @@ Version 1.0.0 of the preprint is by Ryo Higa, SpiralReality, Enginee, inc. [Cite
 
 ## Experiments
 
+- **Carrying an action reference makes directed reports reusable.** With a supplied reference bit copied between updates, a learned report reader passed all four updates on 1,229,312/1,229,312 histories per seed across three seeds and four fitted menus. Fixing the bit to zero gave 50%; complementing it gave 0%. Unfitted menus reached only 28–31%, and natural reports failed the gate. This saved-Gemma-report study trains the controller, with no new language generation; reference retention is engineered. [Sealed protocol, controls and independent replay](provenance/message_boundary_20261106/write9/RESULTS.md)
+
 - **One step can resolve a veto that the original policy already states.** A learned four-row update using the previous role bit made 672/768 change-required policies newly correct across every world and label order. It kept 480/512 stable policies fully correct. On new wording stable correctness fell to 396/512. In a constructed identical-table exchange, both veto-world answers were correct in 3,840/4,096 directions with the bit and zero after erasure. The actual raw eight-slot boundary update gave 507/1,024, with zero correct opposed reversals. [Post-v1 study and the six mechanical checks](provenance/supported_g_20261104/RESULTS.md)
 
 - **Six role assignments share one action table.** A supplied three-bit code recovered 48/48 complete histories. Controllers trained on native-choice reward recovered 48/48, 48/48 and 40/48 across three seeds. A separately trained raw reader produced zero correct original-and-opposed reversals in all three representation forms. [Results, fixed criteria and replay](provenance/preprint_v1_20261104/RESULTS.md)

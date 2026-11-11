@@ -1,0 +1,5 @@
+This study fits pointer readers using saved Gemma-generated reports and saved
+Gemma native scores. It adds an explicit copied source-reference bit, retains
+all earlier artifacts, and supplies no base-model checkpoint. Source-reference
+retention is engineered, not learned. Gemma-derived artifacts remain subject
+to the accompanying terms. Original implementation uses Apache-2.0.
