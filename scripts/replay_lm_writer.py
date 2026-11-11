@@ -1,4 +1,16 @@
-"""Refit the report-channel controllers using write7's saved evidence only."""
+"""Refit the report-channel controllers using write7's saved evidence only.
+
+Execution contract: this worker does not enforce the design's 3600-second
+wall limit internally. On Furnace/Linux, launch it under GNU timeout so the
+deadline covers this process and its evaluation workers:
+
+  timeout --kill-after=5s 3600s env PYTHONPATH=src OPENBLAS_NUM_THREADS=1 \\
+    OMP_NUM_THREADS=1 python3 scripts/replay_lm_writer.py --out NEW_DIR --workers 2
+
+A timeout is an incomplete technical stop, never permission to resume into
+the same output directory. The extra five seconds are termination grace,
+not an additional scientific computation budget.
+"""
 from __future__ import annotations
 
 import argparse

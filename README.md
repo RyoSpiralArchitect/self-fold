@@ -50,6 +50,8 @@ Version 1.0.0 of the preprint is by Ryo Higa, SpiralReality, Enginee, inc. [Cite
 
 ## Reproduce
 
+For saved-report studies, read the [audit and generation-boundary corrections](docs/REPORT_AUDIT_CORRECTION_20261111.md), including the required external wall-time limit for the write8 refit.
+
 Use Python 3.11 or later in a local checkout.
 
 ~~~bash

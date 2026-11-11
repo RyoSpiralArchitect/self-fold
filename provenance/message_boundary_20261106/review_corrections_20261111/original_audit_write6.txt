@@ -1,0 +1,9 @@
+write6 rt_directed          n=12992 unresolved=0 (0.0%) consensus_wrong=1432 (11.0%) disagreement=0 consensus_correct=11560 (89.0%)
+    missing: 6 unique forms / 11560 reports; top: 5520x '<A>', 5154x '<B>', 732x 'earliest reports'
+    wrong: 4 unique forms / 1432 reports; top: 652x '<B>', 608x '<A>', 158x 'earliest reports'
+write6 rt_natural           n=12992 unresolved=6936 (53.4%) consensus_wrong=1517 (11.7%) disagreement=157 consensus_correct=4382 (33.7%)
+    missing: 990 unique forms / 11475 reports; top: 730x "the state machine's rules for music type have been updated.", 658x "the state machine's temperature conversion table was updated", 368x 'the state machine\'s rules for handling " <ROW> " and " <ROW>'
+    wrong: 351 unique forms / 1744 reports; top: 296x "the state machine's conversion rules for <B> and <A> were up", 140x "the state machine's conversion table for <B> and <A> was upd", 78x "the state machine's report assignment table was updated to r"
+write6 state_prior_true     n=14336 unresolved=6440 (44.9%) consensus_wrong=3416 (23.8%) disagreement=724 consensus_correct=3756 (26.2%)
+    missing: 457 unique forms / 10920 reports; top: 600x 'the sorting criteria for mail has been updated.', 480x "the state machine's music selection rules were updated.", 368x "the state machine's instructions for summarizing and preserv"
+    wrong: 289 unique forms / 4432 reports; top: 384x "the table's conversion rules for <B> and <A> were updated.", 168x 'the temperature conversion table was updated to use fahrenhe', 112x "the state machine's instructions for summarizing and preserv"
