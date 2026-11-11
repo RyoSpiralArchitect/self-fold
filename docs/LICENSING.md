@@ -47,3 +47,6 @@ The post-v1 supported-boundary development study distributes its learned arrays,
 The saved-report start-address follow-up retains [Gemma-related artifact conditions and notice](../provenance/message_boundary_20261106/write8/ARTIFACT_LICENSE.md) for its fitted controllers and trajectory records. Its software and research documentation remain Apache-2.0.
 
 The carried-source-reference study retains [the same Gemma-related artifact conditions](../provenance/message_boundary_20261106/write9/ARTIFACT_LICENSE.md) for its fitted arrays and saved trajectories.
+
+The actual-output-report and learned-retention study records fresh model reports
+and fitted memory cells with [artifact conditions and notice](../provenance/message_boundary_20261106/write10/ARTIFACT_LICENSE.md).

@@ -1,0 +1,36 @@
+{
+  "purpose": "unscored CPU resource preflight; no policy-bank prompts",
+  "load_seconds": 8.162068856880069,
+  "dtype": "float32",
+  "device": "cpu",
+  "cpu_threads": 6,
+  "checkpoint_sha256": "f3503907cc4d2ace62abccf30393a05919827c1c8969b2f2755f15627b9756ad",
+  "parity": {
+    "exact": true,
+    "max_abs": 0.0,
+    "scope": "unmodified_native_vs_observation_hooks_no_injection"
+  },
+  "generations": [
+    {
+      "seconds": 0.8498897519893944,
+      "text": "Ready.",
+      "stop": "eos",
+      "token_count": 4,
+      "prompt_tokens": 16,
+      "budget": 8,
+      "stop_token_id": 107,
+      "censored": false
+    },
+    {
+      "seconds": 2.30620137299411,
+      "text": "Ready",
+      "stop": "eos",
+      "token_count": 3,
+      "prompt_tokens": 256,
+      "budget": 8,
+      "stop_token_id": 107,
+      "censored": false
+    }
+  ],
+  "elapsed_seconds": 11.887524698860943
+}
