@@ -50,3 +50,6 @@ The carried-source-reference study retains [the same Gemma-related artifact cond
 
 The actual-output-report and learned-retention study records fresh model reports
 and fitted memory cells with [artifact conditions and notice](../provenance/message_boundary_20261106/write10/ARTIFACT_LICENSE.md).
+
+The source-selection cue study retains new report text and frozen-consumer
+trajectories under [the same artifact conditions and notice](../provenance/message_boundary_20261106/write11/ARTIFACT_LICENSE.md).
