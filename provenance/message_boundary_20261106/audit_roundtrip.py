@@ -99,8 +99,9 @@ def audit(run):
             continue
         style = m.group(1)
         counts = Counter()
-        forms = {k: Counter() for k in ("correct", "wrong", "missing")}
-        by_key = Counter()
+        categories = ("unresolved_all_missing", "consensus_wrong",
+                      "disagreement", "consensus_correct")
+        forms = {k: Counter() for k in categories}
         for line in open(path):
             r = json.loads(line)
             if "out" in r:
@@ -122,27 +123,22 @@ def audit(run):
             counts[cls] += 1
             counts["n"] += 1
             f = form_of(r["text"], opts)
-            per = {n: ("missing" if m else ("correct" if b == truth else "wrong"))
-                   for n, (b, m) in results.items()}
-            if cls == "unresolved_all_missing":
-                forms["missing"][f] += 1
-            elif cls == "consensus_wrong":
-                forms["wrong"][f] += 1
-            else:
-                for n2, p in per.items():
-                    forms[p][f] += 1
-                by_key[cls] += 1
+            # Each saved report contributes once, including when some
+            # decoders miss but the remaining decoders resolve its action.
+            # Decoder-level misses must not become report-level missingness.
+            forms[cls][f] += 1
         n = counts["n"]
         print(f"{run} {style:20s} n={n} "
               f"unresolved={counts['unresolved_all_missing']} ({counts['unresolved_all_missing'] / n:.1%}) "
               f"consensus_wrong={counts['consensus_wrong']} ({counts['consensus_wrong'] / n:.1%}) "
               f"disagreement={counts['disagreement']} "
               f"consensus_correct={counts['consensus_correct']} ({counts['consensus_correct'] / n:.1%})")
-        for cls in ("missing", "wrong"):
+        for cls in categories:
             c = forms[cls]
-            top = ", ".join(f"{v}x {k[:60]!r}" for k, v in c.most_common(3))
+            top = ", ".join(f"{v}x {k[:60]!r}" for k, v in c.most_common(3)) or "(none)"
             print(f"    {cls}: {len(c)} unique forms / {sum(c.values())} reports; top: {top}")
 
 
-for run in sys.argv[1:] or ("write5",):
-    audit(run)
+if __name__ == "__main__":
+    for run in sys.argv[1:] or ("write5",):
+        audit(run)

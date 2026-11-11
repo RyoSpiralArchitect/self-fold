@@ -1,0 +1,80 @@
+{
+  "scope": "post-review corrected display counts; no training or generation",
+  "original_head": "ea25af0bfa5fcf076e61376e6a34d65d850906f2",
+  "original_script_sha256": "7a668dc138543b8ebe3614d60db5b3c45d50a42569f39bb0ac8c436e76c59057",
+  "corrected_script_sha256": "ed5c3d84e669129eac54fa05742d31904a1e76e56da95c8f9d59863857112e0d",
+  "report_level_category_totals_unchanged": true,
+  "each_report_counted_once": true,
+  "counts": [
+    {
+      "style": "rt_directed",
+      "reports": 12992,
+      "categories": {
+        "unresolved_all_missing": {
+          "forms": 0,
+          "reports": 0
+        },
+        "consensus_wrong": {
+          "forms": 4,
+          "reports": 1432
+        },
+        "disagreement": {
+          "forms": 0,
+          "reports": 0
+        },
+        "consensus_correct": {
+          "forms": 6,
+          "reports": 11560
+        }
+      }
+    },
+    {
+      "style": "rt_natural",
+      "reports": 12992,
+      "categories": {
+        "unresolved_all_missing": {
+          "forms": 333,
+          "reports": 6936
+        },
+        "consensus_wrong": {
+          "forms": 294,
+          "reports": 1517
+        },
+        "disagreement": {
+          "forms": 74,
+          "reports": 157
+        },
+        "consensus_correct": {
+          "forms": 617,
+          "reports": 4382
+        }
+      }
+    },
+    {
+      "style": "state_prior_true",
+      "reports": 14336,
+      "categories": {
+        "unresolved_all_missing": {
+          "forms": 195,
+          "reports": 6440
+        },
+        "consensus_wrong": {
+          "forms": 238,
+          "reports": 3416
+        },
+        "disagreement": {
+          "forms": 58,
+          "reports": 724
+        },
+        "consensus_correct": {
+          "forms": 226,
+          "reports": 3756
+        }
+      }
+    }
+  ],
+  "files": {
+    "corrected_audit_write6.txt": "f5d3ee7f50535dac5ecc762fb3e45c95c6bc0e3f3391cad3d1a1b8e24c9ddb73",
+    "original_audit_write6.txt": "81d35f610e089ec67cc27852dad300f2f9ac555a1e4519244f217b3355c2d547"
+  }
+}
