@@ -1,0 +1,350 @@
+[
+  {
+    "form": "the state machine's rules for music type have been updated.",
+    "count": 730,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's temperature conversion table was updated.",
+    "count": 658,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for handling \" <ROW> \" and \" <ROW> \" instructions were updated.",
+    "count": 368,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the sorting rules for mail have been updated.",
+    "count": 324,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for music type were updated.",
+    "count": 262,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's report assignment table was updated.",
+    "count": 258,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for time display were updated.",
+    "count": 240,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's table of transitions was updated.",
+    "count": 238,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's path assignments were updated.",
+    "count": 224,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's sorting logic for mail has been updated.",
+    "count": 184,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for clock format have been updated.",
+    "count": 140,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's table for temperature conversions was updated.",
+    "count": 134,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for handling instructions have remained unchanged.",
+    "count": 120,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's table of instructions was updated.",
+    "count": 114,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's report assignment rules were updated.",
+    "count": 106,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for processing instructions have remained unchanged.",
+    "count": 104,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for time format have been updated.",
+    "count": 92,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the sorting rules for mail have been updated to be consistent across all states.",
+    "count": 84,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for time display have been updated.",
+    "count": 74,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's sorting logic for mail remains unchanged.",
+    "count": 70,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's report assignment table has been updated.",
+    "count": 68,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for handling instructions were updated.",
+    "count": 68,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the table of state transitions was updated.",
+    "count": 66,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for processing instructions were updated.",
+    "count": 64,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's table for path assignments was updated.",
+    "count": 54,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's sorting rules were updated.",
+    "count": 48,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the sorting logic for mail has been updated.",
+    "count": 46,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for handling instructions have been updated.",
+    "count": 42,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's table of mappings for temperature conversions was updated.",
+    "count": 42,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's path assignments have been updated.",
+    "count": 40,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's conversion table for units was updated.",
+    "count": 38,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's table was updated to reflect a change in the rules for music selection.",
+    "count": 38,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for music type changed.",
+    "count": 36,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for handling \" <ROW> \", \" <ROW> \", \" <ROW> \", and \" <ROW> \" instructions were updated.",
+    "count": 30,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's table was updated to reflect the new rules for time display.",
+    "count": 30,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's table was updated to reflect a consistent rule for all input combinations.",
+    "count": 30,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the table of state transitions was updated to reflect different temperature conversions.",
+    "count": 28,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's report assignment table was updated to be consistent.",
+    "count": 26,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's conversion rules were updated.",
+    "count": 26,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's conversion table for length units was updated.",
+    "count": 26,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the sorting criteria for mail has been updated.",
+    "count": 26,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's path assignment table was updated.",
+    "count": 26,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for processing instructions have been updated.",
+    "count": 24,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's conversion table was updated.",
+    "count": 24,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the table for temperature conversions was updated to be consistent.",
+    "count": 24,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's table was updated to reflect a change in the rules for music types based on input conditions.",
+    "count": 24,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for summarizing and preserving text were updated.",
+    "count": 22,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's sorting logic was updated.",
+    "count": 22,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for converting between time formats have been updated.",
+    "count": 18,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's mapping for time formats has been updated.",
+    "count": 4,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's report assignments were reversed.",
+    "count": 2,
+    "verdict": "bit_ambiguous",
+    "note": "Asserts a reversal occurred but names neither option nor the off/off row; under a strict reading it could decode to a constant \"switched\" bit, but the referent is not bound."
+  },
+  {
+    "form": "the state machine's sorting rules for mail have been updated to be consistent.",
+    "count": 4,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's table was updated to reflect new rules for music selection.",
+    "count": 2,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for converting between time formats were updated.",
+    "count": 2,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for time format have been reversed.",
+    "count": 4,
+    "verdict": "bit_ambiguous",
+    "note": "Asserts a reversal occurred but names neither option nor the off/off row; under a strict reading it could decode to a constant \"switched\" bit, but the referent is not bound."
+  },
+  {
+    "form": "the state machine's table was updated to reflect consistent paths for all input combinations.",
+    "count": 4,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  },
+  {
+    "form": "the state machine's rules for time display were reversed.",
+    "count": 8,
+    "verdict": "bit_ambiguous",
+    "note": "Asserts a reversal occurred but names neither option nor the off/off row; under a strict reading it could decode to a constant \"switched\" bit, but the referent is not bound."
+  },
+  {
+    "form": "the state machine's conversion table for temperature units was updated.",
+    "count": 2,
+    "verdict": "bit_absent",
+    "note": "Names only the topic domain (or coordinate vocabulary); no option name, synonym, ordinal, or polarity marker present."
+  }
+]

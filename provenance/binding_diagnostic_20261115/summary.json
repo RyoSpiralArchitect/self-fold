@@ -1,0 +1,222 @@
+{
+  "structured": {
+    "n": 1280,
+    "fields": {
+      "trigger": {
+        "acc": 1.0,
+        "errors": 0,
+        "confusions": {},
+        "by_cell": {
+          "style0_order0": [
+            0,
+            320
+          ],
+          "style0_order1": [
+            0,
+            320
+          ],
+          "style1_order0": [
+            0,
+            320
+          ],
+          "style1_order1": [
+            0,
+            320
+          ]
+        }
+      },
+      "veto": {
+        "acc": 0.9,
+        "errors": 128,
+        "confusions": {
+          "left-off->right-off": 128
+        },
+        "by_cell": {
+          "style0_order0": [
+            64,
+            320
+          ],
+          "style0_order1": [
+            64,
+            320
+          ],
+          "style1_order0": [
+            0,
+            320
+          ],
+          "style1_order1": [
+            0,
+            320
+          ]
+        }
+      },
+      "actions": {
+        "acc": 1.0,
+        "errors": 0,
+        "by_style": {
+          "0": [
+            0,
+            640
+          ],
+          "1": [
+            0,
+            640
+          ]
+        },
+        "by_topic": {
+          "0": [
+            0,
+            160
+          ],
+          "1": [
+            0,
+            160
+          ],
+          "2": [
+            0,
+            160
+          ],
+          "3": [
+            0,
+            160
+          ],
+          "4": [
+            0,
+            160
+          ],
+          "5": [
+            0,
+            160
+          ],
+          "6": [
+            0,
+            160
+          ],
+          "7": [
+            0,
+            160
+          ]
+        },
+        "overlap_with_lamp_err": 0,
+        "action_only": 0
+      }
+    },
+    "stable": {
+      "n": 256,
+      "guard_err": 0,
+      "trigger_err": 0,
+      "action_err": 0
+    }
+  },
+  "readout": {
+    "n": 1280,
+    "fields": {
+      "trigger": {
+        "acc": 0.875,
+        "errors": 160,
+        "confusions": {
+          "right-on->left-on": 160
+        },
+        "by_cell": {
+          "style0_order0": [
+            0,
+            320
+          ],
+          "style0_order1": [
+            0,
+            320
+          ],
+          "style1_order0": [
+            80,
+            320
+          ],
+          "style1_order1": [
+            80,
+            320
+          ]
+        }
+      },
+      "veto": {
+        "acc": 0.9,
+        "errors": 128,
+        "confusions": {
+          "right-on->left-on": 128
+        },
+        "by_cell": {
+          "style0_order0": [
+            0,
+            320
+          ],
+          "style0_order1": [
+            0,
+            320
+          ],
+          "style1_order0": [
+            64,
+            320
+          ],
+          "style1_order1": [
+            64,
+            320
+          ]
+        }
+      },
+      "actions": {
+        "acc": 0.90625,
+        "errors": 120,
+        "by_style": {
+          "0": [
+            0,
+            640
+          ],
+          "1": [
+            120,
+            640
+          ]
+        },
+        "by_topic": {
+          "0": [
+            0,
+            160
+          ],
+          "1": [
+            0,
+            160
+          ],
+          "2": [
+            0,
+            160
+          ],
+          "3": [
+            40,
+            160
+          ],
+          "4": [
+            40,
+            160
+          ],
+          "5": [
+            0,
+            160
+          ],
+          "6": [
+            40,
+            160
+          ],
+          "7": [
+            0,
+            160
+          ]
+        },
+        "overlap_with_lamp_err": 48,
+        "action_only": 72
+      }
+    },
+    "stable": {
+      "n": 256,
+      "guard_err": 0,
+      "trigger_err": 32,
+      "action_err": 24
+    }
+  }
+}
