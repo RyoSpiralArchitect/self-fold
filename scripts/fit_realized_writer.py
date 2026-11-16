@@ -181,6 +181,30 @@ def run(args, store):
                 bank_.bit(p, INITIAL_CELL, m, m)
     output, summary = {}, {"arms": {}}
     test_members = members_all[n_fit:]
+
+    def done_arm(name):
+        rolled_path = store.path / f"rolled_{name}.npz"
+        arm_path = store.path / f"arm_{name}.json"
+        if rolled_path.exists() and arm_path.exists():
+            with np.load(rolled_path) as z:
+                rolled = {k: z[k] for k in z.files}
+            summary["arms"][name] = json.loads(arm_path.read_text())
+            return rolled
+        return None
+
+    def record(name, rolled, twins):
+        np.savez_compressed(
+            store.path / f"rolled_{name}.npz",
+            depths=rolled["depths"], second=rolled["second"],
+            fourth=rolled["fourth"], paths=rolled["paths"],
+            written=rolled["written"], prior_mismatch=rolled["prior_mismatch"])
+        output[name + "depths"] = rolled["depths"]
+        output[name + "written"] = rolled["written"]
+        output[name + "prior_mismatch"] = rolled["prior_mismatch"]
+        summary["arms"][name] = score(rolled, twins, keys, donors,
+                                      eval_masks, test_top, labels)
+        store.write(f"arm_{name}.json", summary["arms"][name])
+
     with np.load(store.path / "fits.npz", allow_pickle=False) as f:
         for seed in cfg["seeds"]:
             supplied = BoundaryMemory(seed, 1).requires_grad_(False)
@@ -189,34 +213,28 @@ def run(args, store):
                 {k: torch.from_numpy(f[sp + k]) for k in supplied.state_dict()})
             for style, bank_ in banks.items():
                 name = f"{style}_shared_{seed}"
-                rolled = rollout_realized(
-                    supplied, "hard", test_members, keys, eval_masks,
-                    bank_.bit, pair_of)
-                matrix = bank_.matrix(len(pairs))[test_pairs]
-                twins = twins_w(supplied, "hard", "lm", test_members,
-                                eval_masks, 1.0, rt_bits=matrix)
-                output[name + "depths"] = rolled["depths"]
-                output[name + "written"] = rolled["written"]
-                output[name + "prior_mismatch"] = rolled["prior_mismatch"]
-                summary["arms"][name] = score(rolled, twins, keys, donors,
-                                              eval_masks, test_top, labels)
-                store.write(f"arm_{name}.json", summary["arms"][name])
+                rolled = done_arm(name)
+                if rolled is None:
+                    rolled = rollout_realized(
+                        supplied, "hard", test_members, keys, eval_masks,
+                        bank_.bit, pair_of)
+                    matrix = bank_.matrix(len(pairs))[test_pairs]
+                    twins = twins_w(supplied, "hard", "lm", test_members,
+                                    eval_masks, 1.0, rt_bits=matrix)
+                    record(name, rolled, twins)
             for channel in CEILINGS:
                 actor = BoundaryMemory(seed, 1).requires_grad_(False)
                 prefix = f"hard_{channel}_w1_{seed}_"
                 actor.load_state_dict(
                     {k: torch.from_numpy(f[prefix + k]) for k in actor.state_dict()})
-                rolled = rollout_w(actor, "hard", channel, test_members,
-                                   keys, eval_masks, 1.0)
-                twins = twins_w(actor, "hard", channel, test_members,
-                                eval_masks, 1.0)
                 name = f"{channel}_{seed}"
-                output[name + "depths"] = rolled["depths"]
-                output[name + "written"] = rolled["written"]
-                output[name + "prior_mismatch"] = rolled["prior_mismatch"]
-                summary["arms"][name] = score(rolled, twins, keys, donors,
-                                              eval_masks, test_top, labels)
-                store.write(f"arm_{name}.json", summary["arms"][name])
+                rolled = done_arm(name)
+                if rolled is None:
+                    rolled = rollout_w(actor, "hard", channel, test_members,
+                                       keys, eval_masks, 1.0)
+                    twins = twins_w(actor, "hard", channel, test_members,
+                                    eval_masks, 1.0)
+                    record(name, rolled, twins)
     store.write("summary.json", summary)
     output["eval_paths"] = rolled["paths"]
     np.savez_compressed(store.path / "trajectories.npz", **output)
