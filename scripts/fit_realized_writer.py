@@ -168,7 +168,8 @@ def run(args, store):
     np.savez_compressed(store.path / "fits.npz", **params)
     store.write("fit_closed.json", dict(fits=fits, weights=file_sha(store.path / "fits.npz")))
     # On-policy rollouts: the writer generates inside the loop, memoized.
-    banks = {s: ReportBank(host, s, pairs, actions["groups"], store.path,
+    report_dir = Path(os.environ.get("RW_REPORTS_DIR", store.path))
+    banks = {s: ReportBank(host, s, pairs, actions["groups"], report_dir,
                            generate=lambda p: generate_kv(host, p))
              for s in STYLES}
     test_pairs = index[n_fit:]
@@ -199,7 +200,7 @@ def run(args, store):
                 output[name + "prior_mismatch"] = rolled["prior_mismatch"]
                 summary["arms"][name] = score(rolled, twins, keys, donors,
                                               eval_masks, test_top, labels)
-                store.write("summary.json", summary)
+                store.write(f"arm_{name}.json", summary["arms"][name])
             for channel in CEILINGS:
                 actor = BoundaryMemory(seed, 1).requires_grad_(False)
                 prefix = f"hard_{channel}_w1_{seed}_"
@@ -215,7 +216,8 @@ def run(args, store):
                 output[name + "prior_mismatch"] = rolled["prior_mismatch"]
                 summary["arms"][name] = score(rolled, twins, keys, donors,
                                               eval_masks, test_top, labels)
-                store.write("summary.json", summary)
+                store.write(f"arm_{name}.json", summary["arms"][name])
+    store.write("summary.json", summary)
     output["eval_paths"] = rolled["paths"]
     np.savez_compressed(store.path / "trajectories.npz", **output)
     store.write("rollout_closed.json", dict(
