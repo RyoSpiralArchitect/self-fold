@@ -1,10 +1,8 @@
 # Realized-state writer test — the registered P-tests under their registered conditions (Experiment C)
 
-**Status: DESIGN_ONLY_NOT_EXECUTED — blocked on the pinned checkpoint.
-`f3503907…` (gemma-2-2b-it) lives on SpiralReality-furnace, unreachable at
-design time (`spiral status`: host timeout). This document fixes the deltas
-vs `write3`–`write7` so the run is executable as-written when the node
-returns. No artifacts generated.**
+**Status: EXECUTED — see `RESULTS.md` and `produce/` (sealed,
+REALIZED_WRITER_CLOSED, 20261116). This document is the frozen pre-run
+design; results supersede the "blocked" framing below.**
 
 ## What is still unexecuted
 
