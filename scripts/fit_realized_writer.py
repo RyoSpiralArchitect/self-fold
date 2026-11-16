@@ -172,7 +172,7 @@ def run(args, store):
                            generate=lambda p: generate_kv(host, p))
              for s in STYLES}
     test_pairs = index[n_fit:]
-    pair_of = {i - n_fit: int(test_pairs[i]) for i in range(n_fit, n_all)}
+    pair_of = {i - n_fit: int(test_pairs[i - n_fit]) for i in range(n_fit, n_all)}
     # Prefill the twin-history cells twins_w will read: (prior=8, mask=m, out=m).
     for bank_ in banks.values():
         for p in set(int(x) for x in test_pairs):
