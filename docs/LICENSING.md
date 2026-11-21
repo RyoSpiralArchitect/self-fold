@@ -53,3 +53,6 @@ and fitted memory cells with [artifact conditions and notice](../provenance/mess
 
 The source-selection cue study retains new report text and frozen-consumer
 trajectories under [the same artifact conditions and notice](../provenance/message_boundary_20261106/write11/ARTIFACT_LICENSE.md).
+
+The [single-record row readout study](../provenance/message_boundary_20261106/write12/ARTIFACT_LICENSE.md)
+includes fresh Gemma-generated action reports.

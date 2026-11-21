@@ -1,0 +1,30 @@
+{
+  "schema": "oracle_row_readout_v1",
+  "base_commit": "6cfa48a58b9dcb9693f10dfba7f14d6a9c248433",
+  "topics": [0, 2, 4, 6],
+  "previous_patterns": [1, 14, 1, 14],
+  "patterns": [3, 5, 6, 9, 10, 12],
+  "rotations": [0, 1, 2, 3],
+  "order_seed": "self-fold-oracle-row-20261122",
+  "generation_calls": 3840,
+  "model_profile": "configs/models/gemma2b.yaml",
+  "checkpoint_sha256": "f3503907cc4d2ace62abccf30393a05919827c1c8969b2f2755f15627b9756ad",
+  "device": "cuda",
+  "dtype": "bfloat16",
+  "cpu_threads": 1,
+  "max_context": 1024,
+  "max_new_tokens": 48,
+  "max_forwards": 200000,
+  "max_processed_tokens": 6000000,
+  "wall_seconds": 2400,
+  "external_timeout_seconds": 2700,
+  "threshold_percent": {
+    "each_question": 95,
+    "each_question_row": 90,
+    "each_menu": 90,
+    "each_position": 90,
+    "all_four_rows": 90,
+    "both_sides_of_swap": 90,
+    "paired_gain_points": 10
+  }
+}
