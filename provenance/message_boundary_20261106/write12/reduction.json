@@ -1,0 +1,9 @@
+{
+  "decision": "row_readout_first",
+  "distinct_reports": 3840,
+  "exact": true,
+  "exact_scores": 3840,
+  "generation_calls": 0,
+  "profiles": 5,
+  "source_seal": "c5b2d3e79f927b191b445574fe153b54a0f7da4e"
+}

@@ -1,0 +1,30 @@
+{
+  "exact": true,
+  "inputs": {
+    "reports.jsonl": "6551969baa55d655b02bedb88239eea73636e2c64e57824b4421274d167b47cb",
+    "requests.jsonl.gz": "2ceee555b2ed5cc258fe61c631ba1fc68b3f0deaf4c2c6c87cac01bc24035b8a",
+    "scores.json": "11958940ea88c46bc5bd973b0e7d20362a22529f938fb8597b6f193f39cfa137",
+    "summary.json": "c0ee94dbeaba79d46a8a217eb747c5afe8cd28bdcbfc096805df1329d5d1c965"
+  },
+  "oracle_baselines": {
+    "first_named_option": [
+      384,
+      768
+    ],
+    "first_printed_row": [
+      384,
+      768
+    ],
+    "last_printed_row": [
+      384,
+      768
+    ]
+  },
+  "oracle_swaps": [
+    482,
+    768
+  ],
+  "profiles": 5,
+  "prompt_derived_scores": 3840,
+  "script_sha256": "340e1b95ed6a9aff4fc556103687219683fffe42471ff0400e04656d43413d19"
+}

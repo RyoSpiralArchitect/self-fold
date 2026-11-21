@@ -498,3 +498,19 @@ judgments, 216 composition trajectories, 648 panels and 72 paired comparisons.
 All generations end at EOS. No fitting or new native scoring is performed;
 all 311 pinned inputs and write6–write10 artifacts remain unchanged. Independent
 qualification and the released paper remain unchanged.
+
+## Reading a named row in one supplied record (`write12/`)
+
+Gemma received the correct four-row record and the name of the row to read.
+It returned the correct action on **602/768** prompts and answered separate
+questions about all four rows correctly on **59/192** table presentations.
+The coordinate `on/off` yielded 56/96 on instructions and 55/96 on
+observations. The same questions about `on/on` yielded 94/96 and 91/96.
+The positions and correct actions were balanced at every coordinate.
+
+When the two active records conflicted, both questions were correct on
+**261/384** paired units with each record presented alone, against **128/384**
+with instruction first and **175/384** with observation first in full context.
+The registered decision prioritizes single-record row readout. All 3,840 fresh
+generations ended at EOS, and a parser of the visible tables verified every
+answer's score. [Study, response examples and replay](write12/RESULTS.md)
