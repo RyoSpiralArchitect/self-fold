@@ -16,12 +16,23 @@ ROOT = Path(__file__).resolve().parents[1]
 def reduce(run):
     design = read(ROOT / "data/role_reference_20261110.json")
     cfg = read(ROOT / design["base_config"])
+    entries = read(run / "trajectory_files.json")
+    expected_paths = {
+        f"trajectories/{reader}_{style}_{seed}_{mode}.npz"
+        for reader in [*design["text_fits"], "decoded"]
+        for style in design["styles"]
+        for seed in cfg["seeds"]
+        for mode in (["intact"] if reader == "unreferenced" else design["reference_modes"])
+    }
+    if set(entries) != expected_paths:
+        missing = sorted(expected_paths - entries.keys())
+        unexpected = sorted(entries.keys() - expected_paths)
+        raise ValueError(f"Trajectory manifest differs from design: missing={missing}, unexpected={unexpected}")
     manifest = read(ROOT / design["inputs_manifest"])
     verify_files(ROOT, manifest["files"])
     old = ROOT / manifest["archive"]
     keys = read(old / "test_keys.json")["keys"]
     _, top, labels = restore_native_rows(old / "test_native_hard", keys, cfg["native_reader_sha256"])
-    entries = read(run / "trajectory_files.json")
     verify_files(run, {p: d["sha256"] for p, d in entries.items()})
     summaries = {}
     for path, record in entries.items():

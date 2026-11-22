@@ -1,5 +1,7 @@
 """Reference interventions must operate on the carried state, not target labels."""
 import itertools
+import json
+from pathlib import Path
 
 import numpy as np
 import pytest
@@ -9,6 +11,26 @@ from selffold.message_boundary import BoundaryMemory
 from selffold.mixture_boundary import rollout_rt, train_batch
 from selffold.role_reference import (ReferenceReader, SlotReader, attach,
     rollout_reference, source_reference, train_reference_batch)
+
+
+@pytest.mark.parametrize("substitute", [False, True])
+def test_replay_rejects_missing_registered_control(tmp_path, monkeypatch, substitute):
+    root = Path(__file__).resolve().parents[1]
+    monkeypatch.syspath_prepend(str(root / "scripts"))
+    from reduce_role_reference import reduce
+
+    archive = root / "provenance/message_boundary_20261106/write9/produce"
+    missing_run = "decoded_rt_directed_17_fixed_zero"
+    for name in ("trajectory_files.json", "summary.json"):
+        records = json.loads((archive / name).read_text())
+        key = f"trajectories/{missing_run}.npz" if name == "trajectory_files.json" else missing_run
+        entry = records.pop(key)
+        if substitute:
+            records[key.replace("fixed_zero", "unregistered")] = entry
+        (tmp_path / name).write_text(json.dumps(records))
+
+    with pytest.raises(ValueError, match=f"missing=.*{missing_run}"):
+        reduce(tmp_path)
 
 
 def fixture():
