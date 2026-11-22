@@ -47,3 +47,14 @@ def test_frozen_second_edit_uses_the_reported_role_on_identical_tables():
     for default, state in enumerate(twins):
         assert final_choices(actor, state, 2, default, [3, 10], native)["correct"] == 16
         assert final_choices(actor, twins[1-default], 2, default, [3, 10], native)["correct"] == 0
+
+
+def test_saved_donor_outcomes_match_an_independent_reading():
+    import json
+    from pathlib import Path
+    import runpy
+
+    root = Path(__file__).resolve().parents[1]
+    study = root/"provenance/structured_report_20261122"
+    verify = runpy.run_path(str(study/"verify.py"))["verify"]
+    assert verify(root, study/"produce") == json.loads((study/"verification.json").read_text())
