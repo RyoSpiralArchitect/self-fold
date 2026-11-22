@@ -1,0 +1,228 @@
+# Self Without a Transcript
+
+## Reading, changing and reusing a conditional policy
+
+**Ryo Higa** · SpiralReality, Enginee, inc. · kishkavsesvit@icloud.com
+
+Working manuscript · November 22, 2026 · [Archived preprint v1.0.0 (November 4, 2026)](https://doi.org/10.5281/zenodo.23930929)
+
+### Abstract
+
+What must a model remember to edit a policy after its original words are gone? A four-row action memory drove 3,072/3,072 correct native Gemma choices after one edit under familiar wording. Further edits exposed an ambiguity. Identical action tables can require opposite choices next. Given each edit's trigger mask, a nine-parameter controller learned from choice reward to carry the role of the first row in one bit. It resolved 9,216/9,216 paired tests per seed on 16 policies. Its registered fourth-edit advantage over a no-bit control failed on the selected strings. Across all 1,296 four-edit strings, 100% of histories were correct throughout with the bit and 12.5% without it. We then tested whether a report in words could guide the next edit. On four fitted menus, a learned reader used directed reports across three boundaries when supplied with an initial action reference and a fixed rule for using it. Small memory cells trained on reward retained that reference. Yet even when shown just the correct record, frozen Gemma returned the requested row's action on only 602/768 queries. Two updates in raw Gemma slots gave 252/512 correct choices. A direct comparison with verbalizing the same intermediate slot state remains open.
+
+## 1. A rule for choosing a route
+
+A walker says, “I take the river path when signals Alder and Birch are both on. Otherwise I take the ridge path.” Tomorrow Alder is on and Birch is off. The walker should take the ridge path. Now suppose the original sentence is gone. Could a model work from its current representation, expand the rule into cases, turn those cases back into a rule, and still choose the ridge path when asked tomorrow? What would change if it had to put its intermediate state into words?
+
+| Form of the same policy | What the model would need to preserve |
+| --- | --- |
+| Original description | Take the river path when both signals are on. In every other situation take the ridge path. |
+| Exhaustive cases | Off/off, ridge. Off/on, ridge. On/off, ridge. On/on, river. |
+| Reintegrated rule | Take the ridge path by default. Switch to the river path exactly when both signals are on. |
+
+Consider two walkers who both take the river whenever the right lamp is on. The first treats the river as the exception when that lamp is on. The second treats the ridge as the exception when it is off. If both walkers are told that the left lamp now triggers their exception, they must make opposite choices. Their identical action tables omit a distinction the next edit needs.
+
+Writing out four cases preserves the route in every world. Changing the trigger from both lamps to either lamp switches the route only on days with one lamp on. For a change of form we test against the independently encoded target. For a change of policy we check the worlds that should switch and those that should keep their route.
+
+We trace that distinction from a question-free description to a native answer, then ask what one edit needs to pass to the next. We first let a controller write a bit. We then let Gemma report an action in words and test both the reader that uses the report and the model that produced it. The first-person frame supplies the policy. Matched third-person and impersonal descriptions would test an effect specific to self-attribution. The report experiments use visible action tables. Comparing direct continuation in raw slots with a language detour from the same intermediate state remains open.
+
+## 2. What is read, and by whom?
+
+**Reading a state.** An encoder reads a description before any evaluation question appears. We retain eight vectors at a specified layer and call this state $E(s)$. A source probe learns a score from these vectors to predict a feature of the description. A high probe score establishes that the fitted reader can recover that feature from one state. In a separate test, we inject a state into a task prompt and read the language model's own next token. We call this the *native answer*. An *opposed donor* supplies the state of the other policy while the question and its displayed options stay fixed.
+
+**Reading a choice.** Each native binary-choice question is presented twice, with the options exchanged. Native correctness requires the most likely token over the full vocabulary to be the requested letter. Other tokens count as errors. A strict unit in the conditional experiments fixes topic, flag-name pair, wording and representation stage. It passes only when both policies are correct in all four worlds, in every genuine source order and in both label orders. For example, a reader that always follows the last clause can score many individual decisions and still fail the entire unit. The original description and the table each have two orders. The reintegrated rule has one realization per wording family.
+
+**Reading a report.** In Sections 7.2 and 7.3 the reporter generates words from visible records. A later edit can use a saved report on many trajectories. We give the units for both the reporting tests and the decisions that reuse them. [Report panels and shared inputs](REPORT_PANEL_COUNTS.md)
+
+Earlier Mistral-7B-Instruct-v0.3 and Gemma-2-2B-IT probes explain the ordering of our tests. Both models answered 24/24 preference questions from literal descriptions. Twenty-four distinct updated slot tensors nevertheless produced one verbalization per checkpoint, and all 12 re-encoded donor contrasts tied. Replaying states from positions that had already processed both options could reproduce native lexical choices. A recurrence needs a state formed *before* the question. The original tests of uncalibrated transport, output positions and stopping conditions are indexed in the supplement. [Development experiments 1–8](DEVELOPMENT_RECORD.md#study-1)
+
+## Related work
+
+The Quine Test studies whether descriptions reproduce preference profiles in fresh instances [Babu et al. (2026)](https://arxiv.org/abs/2610.38726v1). Propositional probes distinguish facts and their relational bindings in context [Feng et al. (2024)](https://arxiv.org/abs/2406.19501v2). Our verdict probe asks which of two familiar judgment roles survives a change in the action words. The donor and branch exchanges address the separate question of causal use. Coconut trains reasoning through continuous hidden-state feedback [Hao et al. (2024)](https://arxiv.org/abs/2412.06769), and recurrent-depth models allocate repeated computation within a network [Geiping et al. (2025)](https://arxiv.org/abs/2502.05171). Natural Language Autoencoders provide a learned activation-to-language-to-activation interface [Fraser-Taliente et al. (2026)](https://transformer-circuits.pub/2026/nla/index.html). The planned language insertion compares later use on the two paths from the very same intermediate state.
+
+## 3. A frozen state preserves the order of familiar verdicts
+
+Consider a two-record description that accepts the river route and rejects the ridge route. Hold the two actions and their mention order fixed, then exchange the verdicts. The two descriptions contain the same tokens and the same slot positions, yet which action is accepted changes. A reader using only one question-free state can be tested on each member independently.
+
+We froze Gemma-2-2B-IT and trained a linear score with a fitted offset on 4,608 such records. The readout predicted whether the first record accepted its action. A second readout predicted which action was mentioned first within an inferred topic. Combining the two predictions selected the preferred action. Evaluation used 64 unfamiliar action expressions across eight known topics, two familiar verdict vocabularies, both field placements, both action orders and both policies. The 2,048 states are repeated realizations of 16 policies within those topics.
+
+| Question asked of one held-out state | Correct | Comparison or consequence |
+| --- | ---: | --- |
+| Is the first action accepted? | 2,043/2,048 | Shuffling the training role supervision gave 1,022/2,048. |
+| Are both members of an opposed pair read correctly? | 1,019/1,024 pairs | Each member was read separately. |
+| Which specific action is preferred? | 1,311/2,048 | Topic routing and action identity also have to be correct. |
+
+The role result passed its registered criterion in all four combinations of verdict vocabulary and field placement. A fit without extra weight on opposed pairs was equally accurate on the role. Each description contains one acceptance and one rejection, so a cue in either record can reveal their order. The result establishes a recoverable *order of familiar verdicts* under action rephrasing. The complete-policy errors locate the next difficulty. In 527 of the 737 errors, topic and verdict order were correct but the reader identified the wrong first action. Another 206 involved an incorrect topic and four identified the right action but assigned it the wrong verdict within the correct topic. [Probe, shuffled control and error partition](../provenance/role_exchange_20261103/RESULTS.md)
+
+## 4. When a source state changes a model answer
+
+A separate intervention asks whether a source can drive a native choice. We first established that eight vectors derived from explicit option words could influence a frozen Gemma reader. We then fitted a map from a question-free source encoding into this working input space. At test time the map received one source state. The downstream question contained the displayed alternatives, and the model produced its ordinary next-token scores. Source and recipient were frozen during fitting of the map. [Word-derived input control](../provenance/slot_readout_20261103/RESULTS.md)
+
+On the 32 fitting states the mapped sources gave 64/64 native choices. Opposed donors reduced the score against the original gold to 0/64 and reversed the A/B margin on all 64 judgments. The fitting mean and zero inputs each gave 32/64. Wording of the question transferred better than wording of the source. The same states gave 62/64 under a withheld question wording, whereas changed source wording yielded 57/128 and two new topics yielded 30/64. This establishes causal use of the supplied preference on its fitting bank. General conditional reading requires a further operation. The same stored policy now has to yield *different* actions depending on the later world. [Source exchange and transfer panels](../provenance/source_lexical_20261103/RESULTS.md)
+
+We tested that operation on the eight known action topics by supplying each original description, case table and reintegrated rule independently. These were experimenter-authored teachers. None was generated by a learned update. Native choices from ordinary slots were 127/256, 128/256 and 64/128, respectively, against balanced zero-state counts of 128/256, 128/256 and 64/128. Literal text gave 219/256, 215/256 and 88/128. Because even the original text left errors, the next experiment trained a reader on text before admitting slot learning. [Independent teacher controls](../provenance/action_operation_20261103/RESULTS.md)
+
+Literal training and one fixed continuation raised fitting accuracy to 3,751/3,840 (97.7%). The corresponding strict counts were 23/48 for the original description, 28/48 for the table and 47/48 for the rule. Only the rule cleared the fitting requirement of 95% native and 90% strict. New names, source wording and questions gave 923/1,280 native choices. Of 89 fitting errors, 85 returned B when A was correct. This discrepancy motivates the curriculum comparison. It keeps both label orders, separates changes in names, grammar and questions, and asks where the decision fails when its parts can be tested independently. [Literal curriculum](../provenance/conditional_curriculum_20261103/RESULTS.md) · [Margin continuation and label-order diagnostic](../provenance/conditional_margin_20261103/RESULTS.md)
+
+## 5. From two flags to an action
+
+We compared two curricula from the same saved literal Gemma reader. *Practise the final choice* (`direct`) trained on actions given the policy and two flag values. *Learn the parts of the choice* (`parts`) divided its targets equally among reading a flag, deciding whether both flags were on, choosing from a supplied condition bit and answering the full action question. Both trained rank-16 query/value adapters for 384 updates in the final four layers, with 12,288 labels and 1,747,152 padded tokens. We froze the endpoints before crossing familiar and new signal names, source grammars and question wordings. The primary comparison used the cell in which all three changed.
+
+For the two-call route, the first call saw just the two readings and answered whether both were on. A fixed rendering of that Boolean and the original policy text went to the second call. The two calls had independently swapped A/B labels. We also complemented the bit at fixed policy, exchanged the policy at fixed bit and supplied the true bit. For each path, the bit-exchange column counts one success only if the action from the reported bit is correct and complementing that bit gives the opposite action, with the policy and answer order fixed.
+
+| Training | Direct action | Two calls, predicted bit | Bit exchange correct | Strict two-call units |
+| --- | ---: | ---: | ---: | ---: |
+| Final choice | 1,165/1,280 | 1,932/2,560 | 1,718/2,560 | 0/48 |
+| Learn parts | 1,159/1,280 | 2,234/2,560 | 2,049/2,560 | 11/48 |
+
+Compared with final-choice training, component practice lost 6 of 1,280 direct answers on net and gained 302 of 2,560 composed paths. Those paths reuse 16 distinct conjunction judgments and 640 distinct second-call responses per arm. Supplying the true bit gave 2,370/2,560 for component practice and 2,328/2,560 for final-choice practice. The registered five-point direct-transfer advantage and the full absolute intervention criterion both failed. Most importantly for the next experiment, even a correct conjunction says nothing about which action the walker takes. The second call still had the original policy in front of it. [Crossed panels, label controls and criteria](../provenance/two_flags_20261104/RESULTS.md)
+
+### 5.1. When a familiar rule frame stops working
+
+On its fitting material the earlier margin-trained reader passed 23/48 strict description units, 28/48 case units and 47/48 rule units. The component reader then reached 41/48, 38/48 and 48/48 on those same stages. With new names, grammar and questions, direct answers from that reader passed 4/48 units (1/16 descriptions, 0/16 cases and 3/16 rules). Evaluating the conjunction first and then choosing an action gave the 11/48 units in the preceding table. A direct unit requires 32 correct choices for a description or case table, covering both presentation orders, and 16 for the single-order rule. All 44 direct case errors occurred in forward table order.
+
+We compared three continuations from the same component reader, each with 400 updates and 12,800 labels. At equal task proportions, adding two grammars raised direct answers on a fresh panel from 1,169 to 1,187 of 1,280. Keeping the added grammars and giving more practice to conjunctions and to choosing from a supplied bit yielded 1,182. We used this last reader for the planned intervention. It passed all 48 rule units on the two original training grammars, although the expanded fitting bank still failed its criterion.
+
+On the fresh panel the unchanged parent and all three continuations read every conjunction correctly in both label orders. For descriptions, cases and rules, the selected reader answered 958/1,024, 986/1,024 and 238/512 two-call paths correctly. Only 4/16, 6/16 and 0/16 whole units passed. The target was at least 12/16 whole units per stage and 90% correct paths, including jointly correct answers before and after each bit or policy exchange. Each world probe also needed 90% in each label order. A follow-up held the new lamp names and a familiar question fixed, supplied the true Boolean and varied only the rule text and the bit report.
+
+| Compact rule, same question and names | Familiar bit report | New bit report |
+| --- | ---: | ---: |
+| Familiar if/else wording | 127/128 | 126/128 |
+| New notebook wording | 88/128 | 60/128 |
+
+The familiar rule gives the switched action first, and the notebook rule starts with the default. For a true bit, “The joint test says that both indicators are on.” became “Each of the two current settings is on.” Across both bit values, changing the bit sentence cost one choice on the familiar rule and 28 on the notebook rule. In the new-rule/new-bit cell, false-bit choices stayed correct on 60/64 and true-bit choices fell to 0/64. The table weights both bit values equally and the composed counts above weight the four worlds equally. These are effects of the specific wordings and this frozen reader. [Training comparison, wording cross and scoring audit](../provenance/stage_grammar_20261104/RESULTS.md#a-frozen-cross-of-grammar-bit-wording-and-question)
+
+## 6. Changing the policy after its words are gone
+
+In Section 5 the second call could still read the original policy. We now remove both clauses before the first edit. To read the resulting action table, we start from the component-trained Gemma reader of Section 5, calibrate its adapters on individual action rows for 96 updates, and freeze it before testing. This is the final decision path used for the structured memories in Sections 6 and 7. Section 6.1 tests the separate eight-slot path.
+
+The walker takes the ridge by default and the river when both lamps are on. Now change the trigger to either lamp. With just one on, the walker should switch from ridge to river. With both on, the route should stay the same. We use these changed and unchanged worlds to test whether a later computation actually revises a remembered policy.
+
+A frozen Gemma encoded the two clauses separately, before any later world or choices appeared. Two supervised heads, trained on 288 labelled clauses, identified each clause's role and action among 16 familiar actions. The two resulting soft action distributions populated the ordinary case table. Off/off, off/on and on/off received the default distribution, and on/on received the switched distribution. This initial layout was prescribed. For each requested trigger, a four-by-four map learned to revise the whole table from 288 fitting policy realizations. Its targets were the correct action identities in all four worlds under that trigger. A world address entered only after the revised table was complete. The native Gemma reader received that row as a continuous mixture of action embeddings, together with the two displayed alternatives. It received no original words or source attention.
+
+```mermaid
+flowchart LR
+    A["Learned · Bind two clauses to two actions"] --> B["Given · Place the actions in four world rows"]
+    B --> C["Learned · Revise all rows with the requested map"]
+    C --> D["Given · Address one row with the later world"]
+    D --> E["Learned · Read row and answer A/B"]
+```
+
+*Figure 1. Only the current table and the requested operation enter the revision. The world and displayed alternatives arrive later.*
+
+Both panels used new lamp names, both clause orders and both A/B orders. The primary panel used two familiar clause patterns. The challenge used a new contrast between reaching full illumination and falling short of it. A correct opposed exchange required the original and donor choices to be correct with a reversed A/B margin.
+
+| Outcome | Familiar wording | New wording |
+| --- | ---: | ---: |
+| Correct complete midpoint | 128/128 | 32/64 |
+| Native action after one edit | 3,072/3,072 | 1,140/1,536 |
+| Correct original and opposed reversal | 3,072/3,072 | 744/1,536 |
+| All 96 judgments in a strict unit | 32/32 | 3/16 |
+
+*Both panels repeat 16 policy bindings. The primary total consists of 32 topic/name/wording units of 96 judgments each. Each unit crosses both policies, both clause orders, four worlds, three operations and both label mappings. The new-wording panel has 16 such units.*
+
+On familiar wording, exchanging only the switched-action row changed the correct choice on all 1,536 affected judgments and preserved it on all 1,536 unaffected judgments. Replacing only the default rows gave the same counts. Updating solved all 1,280 judgments whose correct choice changed, while skipping the update solved zero. On the other 1,792, both paths were completely correct. Uniform memory gave 1,536/3,072. All registered primary criteria passed.
+
+On new wording only 32 of 64 midpoints recovered both branch actions. In 20 incomplete memories both branches named the same action on the correct menu. In another 12 at least one branch pointed outside the menu. The correct one-hot policy drove all 1,536 answers through the same update and reader. The wording challenge missed its gate. Across both panels and eight interventions, 36,864 requests shared 1,740 distinct native inputs. [Native outputs and intervention scores](../provenance/state_only_20261104/RESULTS.md)
+
+We then froze a follow-up test on the already scored primary panel. A second edit replaced the first trigger while preserving the two branch actions. The updater received its own complete output and the new operation, without the first operation's name. When the first trigger was both-on, the second edit was correct on 3,072/3,072 judgments across the three requested triggers. After either-on the count was 1,536/3,072. After exactly-one-on it was 0/3,072. Opposed donors still flipped all 3,072 answers in that last condition, but both answers in each pair contradicted their policies. Only three of nine sequences met the reuse criterion. All first edits on these policies had been correct. [Nine sequences and frozen follow-up design](../provenance/state_only_20261104/COMPOSITION_PLAN.md)
+
+The fitted map gave the first three input rows equal weights when reading the default. All three had held the default during fitting. After an exactly-one edit, two held the switched action, and the fourth row held the default. We tested whether those roles remained recoverable in the same intermediate tables.
+
+In a separately sealed diagnostic, a fixed rule took the off/off row as the default and selected the most different of the other three soft rows as the switched action. It restored the original layout and passed it to the same learned update and native reader. Only the incoming table was consulted. Across the nine sequences, accuracy rose from 4,608/9,216 to 9,216/9,216. Deliberately exchanging the two recovered roles gave 0/9,216. The two actions survived the first edit and were accessible under the known convention that off/off always selects the default. The trained updater required external help to recover them after its input layout changed. [Role-restoration test and controls](../provenance/state_only_20261104/RESULTS.md#can-the-two-actions-be-recovered-from-the-same-table)
+
+### 6.1. An attempted expansion and reintegration in raw slots
+
+The structured memory above assigns its own action meanings to case rows. We also tried the original meaning-preserving operations directly on eight raw Gemma workspace vectors, using the frozen focus reader from Section 5.1. From a description alone, a learned map predicted an independently encoded forward case table. A second map took the first prediction and targeted the compact rule. The first fit used 384 paired encodings. The second used 384 actual first-map outputs and 384 genuine case teachers. Two rank-32 feature maps were fitted by ridge regression. A separately fixed continuation trained rank-eight residuals at both stages for 192 steps, backpropagating native action losses through the frozen reader and both maps. Only the intermediate tensor passed between the maps.
+
+On 64 held-out descriptions, four worlds and two label orders, the independently encoded description, case and rule teachers each gave 256/512 native choices. The complete feature-matched chain gave 255/512, and the native-gradient chain gave 252/512. Both had zero correctly reversed opposed-midpoint pairs and 0/16 strict units. Zero and mean states each gave 256/512. A nonzero downstream gradient reached the first updated state at every training step. Only 31/64 guided final states were closer to the correct rule teacher than to the opposed teacher.
+
+To localize the loss, a separate classifier read a state's topic and policy and rendered one of 16 canonical rule texts. The guided final states gave 251/512 native choices through this explicit decoder, whereas supplying the correct class to the same renderer gave 508/512. Knowing the canonical rule is enough for most decisions at that interface. Neither the separately encoded raw rule nor the learned two-step states supported the required native use on the new panel. The positive experiments in this paper use the explicitly structured action memory. [Native, decoded and midpoint controls](../provenance/stage_grammar_20261104/RESULTS.md#expansion-and-reintegration-on-a-frozen-native-reader)
+
+We next trained the Section 5.1 reader directly on independently encoded teachers for 192 updates and froze it. The test held the question wording familiar and changed the source grammar and lamp names. With matched slots, the native reader scored 254/512 on descriptions, 263/512 on cases and 123/256 on rules. Zero slots gave 256/512, 256/512 and 128/256. Across the three stages, zero of 1,280 original-and-opposed comparisons produced two correct choices with reversed margins. All three stages failed the registered requirement. The comparison that puts an intermediate state into words remains gated on a reader that can first use the independently encoded states. [New grammar and opposed teachers](../provenance/preprint_v1_20261104/RESULTS.md#independently-encoded-teachers)
+
+## 7. Learning what the next edit will need
+
+Return to the two walkers in Section 1. With both lamps off after the edit, the first should take the ridge and the second the river. Their pre-edit action tables are identical. The earlier recovery rule assumed the off/off row was always the default. Here that row can hold either role.
+
+The source compiler and native Gemma reader stayed fixed. We trained just nine controller parameters. Four gains point to existing action rows using their distance from the first row and an incoming bit. A five-parameter writer takes the current trigger's four-bit truth mask and emits one bit to accompany the updated table. The new mask determines where to copy the two pointed-to rows. This interface supplies the row-comparison feature, the truth mask and the copying operation. It gives the next edit the actual four-row table and one bit, with no original text, previous instruction or question. Every selected soft row is scored through the same frozen native reader.
+
+Each seed trained three controllers on two-edit trajectories sampled from their own decisions. Teach the roles used the two correct action identities and an explicit target for the bit. For Learn from choices, an external scorer compared Gemma's native letters with formal gold actions after each edit and averaged correctness across the two branches and label orders. Only that scalar reward reached the active policy-gradient objective. Its first written bit received credit from the second reward through a sampled policy gradient. A no-bit control used supervised training but discarded the message at every boundary. Each arm had 512 updates of 128 two-edit episodes and the same initialization and random draws within seed. This matches rollout counts and controller work while allowing the forms of supervision to differ. [Williams (1992)](https://doi.org/10.1007/BF00992696)
+
+Training used four of the eight known menus and eight nonconstant masks that switched in one or three worlds. Testing crossed all eight menus, two new lamp-name pairs, one familiar syntax, two source orders and both policies. Six new masks each switched in two worlds. The 64 source realizations represented 16 policy bindings, and the frozen source compiler and recipient had seen all eight menus. We fixed all nine endpoints before encoding the new sources. [Prospective design and thresholds](../provenance/role_memory_20261104/PLAN.md)
+
+After two edits, reward training and role supervision each gave 18,432/18,432 correct answers, against 9,216/18,432 without the bit. Both learned-bit controllers were correct throughout every four-edit string. The table crosses the choice of strings with the scoring rule for the no-bit control.
+
+| Four-edit strings, no-bit control | Fourth answer correct | All four answers correct |
+| --- | ---: | ---: |
+| 36 selected before training | 18,432/18,432 (100%) | 4,608/18,432 (25%) |
+| All 1,296 in the follow-up | 331,776/663,552 (50%) | 82,944/663,552 (12.5%) |
+
+*Each count is per seed and crosses 64 descriptions of 16 policies, four worlds and two label mappings with the stated strings. These trajectories reuse 196 distinct native Gemma inputs. An all-four success requires the correct choice at each edit for the same world and label mapping. Only the fourth answer on the 36 selected strings was the registered depth-four endpoint.*
+
+For the paired intervention we placed two soft action rows from the source compiler under one trigger. We gave this identical table to a second history with the roles exchanged and the first trigger complemented. Each writer saw its own trigger. Both readers received the same next instruction. Erasing the bit leaves identical inputs with opposite targets, so a deterministic reader cannot get both right. With the learned messages, both choices were correct and their A/B margins reversed on all 9,216 pairs per seed. Erasure gave 9,216/18,432 individual answers and zero correct pairs. Across all 14 nonconstant masks, the reward-trained writers coded whether the off/off world selected the switched action, the convention given to the supervised writers. That answer is one coordinate of the supplied instruction. The reward learner had to discover which coordinate to carry and how to read it on the next edit. An opposed donor from a separately encoded source also reversed all 18,432 judgments at each scored depth for both bit arms.
+
+The preregistered comparison required a 25-point gain over the no-bit control at depths two and four. It failed at depth four in all seeds. The difference between reward and supervision was zero. Inspection showed why the selected strings were easy at the endpoint. In every one of the 36 strings the first three edits switched at off/off an even number of times. The control kept treating off/off as default, so two role exchanges could cancel.
+
+We then fixed a follow-up covering all 1,296 strings with unchanged weights and sources. The no-bit control ended correctly on all 331,776 judgments after even prefix parity and none after odd parity. This accounts for its behavior on the finite instruction set. The registered criterion remains unmet. [Native outputs, parity strata and complete outcomes](../provenance/role_memory_20261104/RESULTS.md)
+
+### 7.1. Six histories through two or three bits
+
+Six histories can share the same three action rows. Each history assigns the roles to those rows in a different order. A later instruction names a role and asks for its action. Taken together, the three instructions distinguish every pair of histories. If the only additional state is a discrete message, two bits can distinguish at most four complete histories. Three bits have enough codes for six.
+
+We built each physical table from three familiar action phrases using the frozen clause encoder and value head. The writer received the previous role assignment as one of six categories. Its message crossed the boundary with the unchanged table. Given a later role, the learned reader picked a row. Frozen Gemma compared that row with each of the two rival actions in both A/B orders. A complete history required all twelve choices correct. Each controller fitted the expected native-choice reward over all available messages and row selections for 512 updates. Fitting used four action triplets. Testing used four different combinations of familiar actions and two new lamp-name pairs. All six role assignments occurred in both splits.
+
+| Code and seed | Complete histories | Individual choices |
+| --- | ---: | ---: |
+| Supplied three bits | 48/48 | 576/576 |
+| Learned two bits, each seed | 16/48 | 472/576 |
+| Learned three bits, seeds 17 and 41 | 48/48 | 576/576 |
+| Learned three bits, seed 73 | 40/48 | 526/576 |
+
+The supplied three-bit code made every native choice correctly. The same six assignments and eight physical test tables underlie all 48 histories. The three-bit learner that missed one assignment used five distinct symbols and wrote the same symbol for two histories. The all-seed learning criterion therefore failed. Enumerating every partition of the six histories to maximize fitting reward gave 48/48 complete test histories with three bits and 16/48 with two. A separate, supplied two-bit code preserved four chosen assignments per table, or 32/48 histories. Maximizing the number of individual answers and preserving a complete history reward different solutions in this task. [Capacity, missing codes and native controls](../provenance/preprint_v1_20261104/RESULTS.md#six-histories-through-a-discrete-message)
+
+### 7.2. Using an action report at the next edit
+
+Suppose the walker reports that the off/off row says to take the river path. To use that name on the next edit, the reader needs to connect it to the appropriate source role. The bit in the identical-table experiment tells which role currently occupies off/off and can change at each edit. Here a different bit stays fixed. It identifies which of the two listed actions belongs to the first source member. Each menu has two named actions, for example sorting mail by sender or by date. The program extracts the reference once from the initial pair of one-hot action rows and exchanges the reader's two role pointers when the bit equals one.
+
+We first copied this reference in code. Given the previous table, the instruction assignments and the resulting table, frozen Gemma had either named the action assigned to off/off by the instruction or written one short sentence describing what changed. We trained a reader of 32 fixed text features and row contrasts on those saved reports. The first update used a fixed start address. At the next three updates the reader used a report selected from the bank for the realized transition. The action judgments reused stored native Gemma scores.
+
+On the four fitted menus the directed reports gave 1,229,312/1,229,312 complete histories in each of three seeds. Each history required correct choices at all four edits, four worlds and both answer orders. The count crosses 32 source realizations with all $14^4$ instruction strings. Those sources repeat eight menu-and-role assignments and reuse just 16 distinct native inputs. Fixing the reference to zero after the first update gave 50% complete histories and complementing it gave 0%. With the reference intact, open-ended reports gave 5.6–10.6% on the same menus. Directed reports gave 28.125–31.25% on four menus withheld from reader fitting. [Carried-reference experiment and controls](../provenance/message_boundary_20261106/write9/RESULTS.md)
+
+Could the reader keep the initial reference when the program stopped copying it? We froze the reader and trained two small memory cells on reward from saved later choices. The two-parameter cell saw only the incoming bit. The 34-parameter cell also saw the report features. Both retained the supplied bit after training in all three seeds. One minimal cell already copied it at initialization. With newly generated observation reports, both cells supported 512/512 complete histories per seed (32 source realizations and 16 four-edit strings). On these successful histories, the instruction and observed action agreed. They left open whether the reporter could tell the two apart. [Reference learning and reporting on enumerated transitions](../provenance/message_boundary_20261106/write10/RESULTS.md)
+
+### 7.3. Can the reporter read the requested row?
+
+We enumerated reachable output tables, including ones that differed from their instruction, and asked about the same off/off row twice. What did the instruction assign? What does the table actually contain? A frozen lexical scorer recovered the observed action in 224/224 observation answers, with the full canonical name in 198/224. Where the two correct answers differed, only 21/112 transition keys yielded both. These were 448 new generations from 288 distinct prompt strings. The instruction prompts also appeared in the earlier report bank. In a separate next-edit test, the observation report supported 192/192 complete units when both actions remained in the table. Each unit covered all four worlds and both answer orders. When one action had been lost, even supplying the correct name gave 0/256 complete units under the row-copy rule. [Reference learning and reporting on enumerated transitions](../provenance/message_boundary_20261106/write10/RESULTS.md)
+
+In a matched test we added a cue explicitly naming the requested record. Every answer used one of the two canonical names. Requiring correct answers to both questions in both record orders gave 50/112 without the cue and 57/112 with it. The 6.25-point improvement missed the registered 20-point threshold. The 1,792 generation calls used 1,152 distinct prompt strings. [Matched record-cue experiment](../provenance/message_boundary_20261106/write11/RESULTS.md)
+
+Finally, the program selected the correct record and showed its entire four-row table. The model had only to return the action at the coordinate named in the question. Four familiar menus supplied two actions apiece. Each of the six balanced tables placed each action in two rows, and cyclic rotation put each coordinate in every printed position equally often. Each coordinate was queried 96 times per question type.
+
+| Requested row | Instruction question | Observation question |
+| --- | ---: | ---: |
+| off/off | 79/96 | 87/96 |
+| off/on | 69/96 | 71/96 |
+| on/off | 56/96 | 55/96 |
+| on/on | 94/96 | 91/96 |
+| Individual answers, pooled | 298/384 | 304/384 |
+
+Overall, 602/768 answers named the correct action. Neither question reached its registered 95% criterion. Just 59/192 presentations yielded four correct answers when the rows were queried separately. After two rows traded actions, both answers were correct in 482/768 paired comparisons. Of 166 errors, 133 returned the other listed action verbatim. For instance, when the mail-sorting action at on/off changed from date to sender, Gemma answered sender both times.
+
+On 384 matched units with conflicting instruction and observation entries, both questions were correct on 261 units when each target record was shown alone. Showing all records gave 128 with instruction first and 175 with observation first. Agreeing active records yielded 660/768 and 678/768 correct individual answers in those orders. Adding records changes prompt length and target placement as well as the available evidence. Gemma reached EOS on all 3,840 distinct prompts. The single-record errors locate a failure that persists even after the relevant record has been selected. [Single-record prompts, responses and paired comparisons](../provenance/message_boundary_20261106/write12/RESULTS.md)
+
+## 8. From a role bit to richer updates
+
+An action table specifies what the policy does in each world. An edit can also require the role an action played, and producing a report requires the action at the named row. The controllers learned to retain a role or an action reference under specified routing rules. The record experiment located a further difficulty within a single table. A next test can show only the requested row and compare it with the intact table on fresh assignments, keeping the action names, questions and swaps paired. That would measure how much readout improves when the experimenter also locates the row.
+
+A separate one-step experiment shows why the distinction matters for richer updates. A structured updater applied a veto already stated in the source and made 672/768 policies needing a change newly correct in every world and both answer orders. It preserved 480/512 policies that should stay stable, falling to 396/512 under fresh wording. On a separate panel the raw eight-slot boundary update gave 507/1,024 choices and zero correctly reversed opposed pairs. The independent six-check qualification remains open. Confirmation requires the reserved evaluation and independent human judgments of the transitions. [Structured veto update and raw-slot controls](../provenance/supported_g_20261104/RESULTS.md)
+
+The three-role test separates capacity from learning at a supplied interface. A wider test can withhold whole role assignments and replace the six-category writer input with the preceding observations or a textual edit. A supplied code establishes whether the reader can use enough bits. A learned writer on the same tasks then tests whether it can discover what each bit should carry.
+
+To extend the test beyond fixed masks, introduce textual edits with exceptions and balance histories at every prefix. Measure both changes of a previously wrong answer and damage to a previously correct one. Compare reward learning and supervised update training at matched training and inference budgets, including world verifiers and readouts. Unseen planning or language tasks and retention measures would be needed for a broader capability claim. [Kumar et al.](https://arxiv.org/abs/2409.12917v2) · [Gao et al.](https://arxiv.org/abs/2210.10760)
+
+For the original eight-slot hypothesis, first test whether the reader can use independently encoded descriptions, case tables and rules under fresh wording. Substituting the opposed policy should reverse a correct answer in each form. Once this interface works, compare rewriting in words (`T`), continuing in slots (`L`), and verbalizing and re-encoding the same intermediate before continuing (`B`). The last two routes share their first updated state and their next updater. Record native end of sequence or censoring for each verbalization.
+
+## Supporting material
+
+The [development record and experiment key](DEVELOPMENT_RECORD.md) names each earlier experiment and preserves its run identifiers, results tables and links to the raw records. The [reproduction instructions](../docs/REPRODUCING.md) give the execution seals. The [reference audit](REFERENCE_AUDIT.md) records source and version information.

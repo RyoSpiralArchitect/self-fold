@@ -10,9 +10,9 @@
 | L・潜在状態 | 内部で1回更新した8個のスロット `G(Z)`。 |
 | B・言語化往復 | Lと同じ更新を行い、その結果を文章にしてもう一度符号化したスロット `E(D(G(Z)))`。 |
 
-LとBは同じ初期状態、更新演算、層の境界、生成の停止規則を使います。この特定の言語化往復で何が変わり、その変化が後の課題にどう響くかを調べています。[論文PDF](paper/self-fold.pdf) · [ブラウザで読む](paper/main.md) · [実験プロトコル](docs/PROTOCOL.md)
+LとBは同じ初期状態、更新演算、層の境界、生成の停止規則を使います。この特定の言語化往復で何が変わり、その変化が後の課題にどう響くかを調べています。[改稿版PDF](paper/working.pdf) · [ブラウザで読む](paper/working.md) · [実験プロトコル](docs/PROTOCOL.md)
 
-プレプリント初版（v1.0.0）の著者は Ryo Higa（SpiralReality, Enginee, inc.）です。[Zenodoの論文DOI](https://doi.org/10.5281/zenodo.23930929) · [論文PDF](paper/self-fold.pdf)
+11月22日付の改稿で、行動の報告を次の更新に使う実験と、指定した行を読む実験を本文に加えました。11月4日公開の初版の著者は Ryo Higa（SpiralReality, Enginee, inc.）です。[初版 v1.0.0 のDOIとPDF](https://doi.org/10.5281/zenodo.23930929)
 
 ## 実験
 
