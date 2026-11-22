@@ -1,0 +1,20 @@
+{
+  "source": "f4b151a6d95dc4398b182d32adf69e39e77c1485",
+  "files": {
+    "binding.json": "8b8b1ffa18440ffff13236b1870cb45e4ac4785918f90d010305e440a9f8effb",
+    "fit_closed.json": "2046e43fe379c49ba5b4fe9fe832eff53d825b535224702faa72809183010189",
+    "host.json": "b55d31894b892f412ad0425bcb48ae332a6db12b4cf0488ac95524019e269e56",
+    "reports.jsonl": "a2d1ee04e2c53af8cb898e4ef2fde546afd4b84191ebeb289225b2abb8fd5b22",
+    "source.json": "3e8b7f10421183b3d23ac3340db28b00503cacadbe37c0caf7cfe4ffb56d7236",
+    "terminal.json": "ddd170d8712f0d60a17898655024b4d5ba04b7471901bb4cc9a93f7e741b4489",
+    "test_states.json": "8ce7abf4fc2ac356a927dc6ab641ec2ba68ff944974d20e6a93925d0d90bb460",
+    "train_states.json": "d28ecb1c29ba8db13b889855f2d04ab3d84d9149a73bdf68ab0cabd5f5508815",
+    "training.jsonl": "ead5390e17dbe2c64116d4c0ccf55519c402e0c6f8882970c0b60890907c6d4b",
+    "writer.npz": "0bccb6c6238a4aabf4b8bd3e4f66c17de2928e95e84970d58f15fdc4d37d5d0b"
+  },
+  "first_stop": {
+    "elapsed_s": 63.103454384952784,
+    "error": "Recipient artifact belongs to another host",
+    "status": "TECHNICAL_STOP"
+  }
+}
