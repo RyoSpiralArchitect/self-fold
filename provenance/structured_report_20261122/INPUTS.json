@@ -1,0 +1,12 @@
+{
+  "files": {
+    "data/within_topic_wording_20261103.json": "aeee777aa4d5cd90db4c30ec52d3320aec38bf10290afcb648fae4cfa869d772",
+    "configs/models/gemma2b.yaml": "c5a649282d69997668bec04799ba6e0c8083f8538f27b61fa791429905cc456b",
+    "provenance/role_memory_20261104/run/produce/fits.npz": "438e385dcc6121ab69aa1d47f1f205fc5f6d1baa996e7476741ea09d197042a6",
+    "provenance/state_only_20261104/run/produce/packet/reader.npz": "427e138c8693e60ebf28074836a8452dc6c7da93e9bab1c876c03b33dc0b8909",
+    "src/selffold/role_memory.py": "ae5531aba8af2878525149b408351b4fa2c90e51e1f055f1379757036051043e",
+    "scripts/role_memory_native.py": "7d1346287ab22383d6d434873d79c5b0236cd503b3889cb4b14b35ca9900a9f5",
+    "scripts/state_only_native.py": "01eb151b55c40c41bd1ca2a5e975ac87063d44cffc62a6d1cb6ee3062d7ae209",
+    "src/selffold/recipient_learning.py": "6156dce24ffb0f7f46e547f925fe5c042c334d590222456279852de0c1e2b3ba"
+  }
+}
