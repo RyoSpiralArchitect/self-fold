@@ -1,0 +1,5 @@
+This directory records a lookup study using frozen Gemma-2-2B-IT. The
+program supplies one full target table or three complete records. Gemma
+generates the reported action names. Gemma-derived reports are distributed
+under the accompanying Gemma terms. The original implementation uses
+Apache-2.0.

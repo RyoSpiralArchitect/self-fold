@@ -1,0 +1,60 @@
+{
+  "branch_base": "6cfa48a58b9dcb9693f10dfba7f14d6a9c248433",
+  "censored": 0,
+  "clean_source": true,
+  "distinct_full_transition_keys": 48,
+  "distinct_prompts": 3840,
+  "finished_generations": 3840,
+  "fresh_process_reduction": {
+    "decision": "row_readout_first",
+    "distinct_reports": 3840,
+    "exact": true,
+    "exact_scores": 3840,
+    "generation_calls": 0,
+    "profiles": 5,
+    "source_seal": "c5b2d3e79f927b191b445574fe153b54a0f7da4e"
+  },
+  "generation_source": "c5b2d3e79f927b191b445574fe153b54a0f7da4e",
+  "generation_stops": {
+    "eos": 3840
+  },
+  "historical_input_files_matched_by_sha256": 6,
+  "output_tokens_before_eos_range": [
+    3,
+    10
+  ],
+  "overlap_with_write10_or_write11": {
+    "prompts": 0,
+    "transition_keys": 0
+  },
+  "registered_decision": "row_readout_first",
+  "single_errors_classified_after_replay": {
+    "coordinate_instead_of_action": 19,
+    "other_listed_action_verbatim": 133,
+    "shortened_earliest_reports": 14,
+    "total": 166
+  },
+  "source_ci": {
+    "archive_sha256": "014ebe5ae09baf5d181336435374298dfbda58e3f760661bc75efcd61f4641e3",
+    "errors": 0,
+    "failures": 0,
+    "head": "c5b2d3e79f927b191b445574fe153b54a0f7da4e",
+    "run": 44928800526,
+    "skipped": 0,
+    "tests": 396,
+    "url": "https://github.com/RyoSpiralArchitect/self-fold/actions/runs/44928800526",
+    "xml_sha256": "e1202308a52fe30e70875ba55921c87985ae79202a602dbe0636acbcac47c67c"
+  },
+  "study": "write12",
+  "tracked_source_files_matched_to_generation_commit": 251,
+  "visible_table_verification": {
+    "answers": 3840,
+    "exact": true,
+    "panels": 5,
+    "script_sha256": "340e1b95ed6a9aff4fc556103687219683fffe42471ff0400e04656d43413d19",
+    "single_swaps_both_correct": [
+      482,
+      768
+    ]
+  }
+}
