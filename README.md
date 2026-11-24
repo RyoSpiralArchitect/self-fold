@@ -16,6 +16,7 @@ The November 22 working manuscript includes the report-reader and row-lookup exp
 
 ## Experiments
 
+- **Can the writer switch roles while preserving the rows?** On fresh assignments, emphasizing the weaker donor produced correct downstream reversals on 81/96 pairs and exact rows, defaults and decisions together on 50/96. Averaging the two losses reached 64/96 joint pairs. The registered row-preservation criterion was missed. [Paired-writer results](provenance/paired_writer_20261123/RESULTS.md)
 - **Can training a report writer recover the next edit?** On identical four-row tables with opposite roles, complete next-edit reversals rose from 3/96 to 31/96 after training only the Gemma writer. Direct continuation scored 96/96. Supplying just the correct default action restored 96/96 with the trained rows. [Structured report experiment](provenance/structured_report_20261122/RESULTS.md)
 - **Can Gemma read a named row if we give it the correct record?** On four familiar menus, Gemma returned the requested action on 602/768 single-record prompts (78.4%). It read all four entries correctly in only 59/192 table presentations. Errors depended on the requested row even when each row appeared equally often in each printed position. Two conflicting records made the paired instruction and observation questions harder still. [Row counts, action swaps and saved answers](provenance/message_boundary_20261106/write12/RESULTS.md)
 

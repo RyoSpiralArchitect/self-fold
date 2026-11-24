@@ -1,0 +1,1 @@
+The Gemma writer adapters and model-derived records carry the [Gemma terms, notice and use policy](../structured_report_20261122/ARTIFACT_LICENSE.md). The original software and study design use [Apache-2.0](../../LICENSE).
