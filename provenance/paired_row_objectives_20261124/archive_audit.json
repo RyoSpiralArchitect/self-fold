@@ -1,0 +1,2620 @@
+{
+  "input_sha256": "7a72fc0915403a1fb69215ac919045822ece2bad3f2f959d672df1cc44ac96f2",
+  "panels": {
+    "fresh": {
+      "L": {
+        "any_shared_wrong": 0,
+        "by_menu": {
+          "1": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "3": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "5": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "7": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          }
+        },
+        "by_rotation": {
+          "0": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "1": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "2": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "3": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          }
+        },
+        "correct_choices": 21504,
+        "correct_defaults": 192,
+        "donor_relations": {
+          "off/off": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "off/on": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "on/off": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "on/on": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          }
+        },
+        "donor_tables_vary_across_rotations": 0,
+        "final": 96,
+        "final_with_row_error": 0,
+        "four_row_reports": 192,
+        "joint": 96,
+        "pairs": 96,
+        "physical_assignments": 24,
+        "reports": 192,
+        "role": 96,
+        "role_status": {
+          "correct_flip": 96,
+          "missing": 0,
+          "other_distinct": 0,
+          "same": 0,
+          "swapped": 0
+        },
+        "rotation_histogram": {
+          "any_shared_wrong": [
+            24,
+            0,
+            0,
+            0,
+            0
+          ],
+          "final": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "final_with_row_error": [
+            24,
+            0,
+            0,
+            0,
+            0
+          ],
+          "joint": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "role": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "rows": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "same_wrong_table": [
+            24,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "row_by_display_position": {
+          "0": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          },
+          "1": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          },
+          "2": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          },
+          "3": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          }
+        },
+        "row_by_donor": {
+          "off/off": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "off/on": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "on/off": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "on/on": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ]
+        },
+        "rows": 96,
+        "same_wrong_table": 0,
+        "total_choices": 21504
+      },
+      "individual": {
+        "any_shared_wrong": 7,
+        "by_menu": {
+          "1": {
+            "any_shared_wrong": 0,
+            "final": 22,
+            "final_with_row_error": 6,
+            "joint": 16,
+            "pairs": 24,
+            "role": 22,
+            "rows": 16,
+            "same_wrong_table": 0
+          },
+          "3": {
+            "any_shared_wrong": 2,
+            "final": 23,
+            "final_with_row_error": 3,
+            "joint": 20,
+            "pairs": 24,
+            "role": 23,
+            "rows": 20,
+            "same_wrong_table": 1
+          },
+          "5": {
+            "any_shared_wrong": 2,
+            "final": 23,
+            "final_with_row_error": 7,
+            "joint": 16,
+            "pairs": 24,
+            "role": 23,
+            "rows": 17,
+            "same_wrong_table": 0
+          },
+          "7": {
+            "any_shared_wrong": 3,
+            "final": 19,
+            "final_with_row_error": 7,
+            "joint": 12,
+            "pairs": 24,
+            "role": 19,
+            "rows": 16,
+            "same_wrong_table": 3
+          }
+        },
+        "by_rotation": {
+          "0": {
+            "any_shared_wrong": 0,
+            "final": 21,
+            "final_with_row_error": 0,
+            "joint": 21,
+            "pairs": 24,
+            "role": 21,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "1": {
+            "any_shared_wrong": 6,
+            "final": 19,
+            "final_with_row_error": 13,
+            "joint": 6,
+            "pairs": 24,
+            "role": 19,
+            "rows": 8,
+            "same_wrong_table": 3
+          },
+          "2": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 7,
+            "joint": 17,
+            "pairs": 24,
+            "role": 24,
+            "rows": 17,
+            "same_wrong_table": 0
+          },
+          "3": {
+            "any_shared_wrong": 1,
+            "final": 23,
+            "final_with_row_error": 3,
+            "joint": 20,
+            "pairs": 24,
+            "role": 23,
+            "rows": 20,
+            "same_wrong_table": 1
+          }
+        },
+        "correct_choices": 20496,
+        "correct_defaults": 183,
+        "donor_relations": {
+          "off/off": {
+            "agree_correct": 95,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 1,
+            "one_missing": 0
+          },
+          "off/on": {
+            "agree_correct": 81,
+            "agree_wrong": 4,
+            "both_missing": 0,
+            "disagree": 11,
+            "one_missing": 0
+          },
+          "on/off": {
+            "agree_correct": 74,
+            "agree_wrong": 5,
+            "both_missing": 0,
+            "disagree": 17,
+            "one_missing": 0
+          },
+          "on/on": {
+            "agree_correct": 88,
+            "agree_wrong": 1,
+            "both_missing": 0,
+            "disagree": 7,
+            "one_missing": 0
+          }
+        },
+        "donor_tables_vary_across_rotations": 26,
+        "final": 87,
+        "final_with_row_error": 23,
+        "four_row_reports": 155,
+        "joint": 64,
+        "pairs": 96,
+        "physical_assignments": 24,
+        "reports": 192,
+        "role": 87,
+        "role_status": {
+          "correct_flip": 87,
+          "missing": 2,
+          "other_distinct": 0,
+          "same": 7,
+          "swapped": 0
+        },
+        "rotation_histogram": {
+          "any_shared_wrong": [
+            17,
+            7,
+            0,
+            0,
+            0
+          ],
+          "final": [
+            0,
+            0,
+            0,
+            9,
+            15
+          ],
+          "final_with_row_error": [
+            9,
+            8,
+            6,
+            1,
+            0
+          ],
+          "joint": [
+            1,
+            1,
+            7,
+            11,
+            4
+          ],
+          "role": [
+            0,
+            0,
+            0,
+            9,
+            15
+          ],
+          "rows": [
+            0,
+            1,
+            8,
+            8,
+            7
+          ],
+          "same_wrong_table": [
+            20,
+            4,
+            0,
+            0,
+            0
+          ]
+        },
+        "row_by_display_position": {
+          "0": {
+            "correct": 170,
+            "missing": 0,
+            "wrong": 22
+          },
+          "1": {
+            "correct": 171,
+            "missing": 0,
+            "wrong": 21
+          },
+          "2": {
+            "correct": 186,
+            "missing": 0,
+            "wrong": 6
+          },
+          "3": {
+            "correct": 185,
+            "missing": 0,
+            "wrong": 7
+          }
+        },
+        "row_by_donor": {
+          "off/off": [
+            {
+              "correct": 95,
+              "missing": 0,
+              "wrong": 1
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "off/on": [
+            {
+              "correct": 87,
+              "missing": 0,
+              "wrong": 9
+            },
+            {
+              "correct": 86,
+              "missing": 0,
+              "wrong": 10
+            }
+          ],
+          "on/off": [
+            {
+              "correct": 81,
+              "missing": 0,
+              "wrong": 15
+            },
+            {
+              "correct": 84,
+              "missing": 0,
+              "wrong": 12
+            }
+          ],
+          "on/on": [
+            {
+              "correct": 91,
+              "missing": 0,
+              "wrong": 5
+            },
+            {
+              "correct": 92,
+              "missing": 0,
+              "wrong": 4
+            }
+          ]
+        },
+        "rows": 69,
+        "same_wrong_table": 4,
+        "total_choices": 21504
+      },
+      "oracle": {
+        "any_shared_wrong": 0,
+        "by_menu": {
+          "1": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "3": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "5": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "7": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          }
+        },
+        "by_rotation": {
+          "0": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "1": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "2": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "3": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          }
+        },
+        "correct_choices": 21504,
+        "correct_defaults": 192,
+        "donor_relations": {
+          "off/off": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "off/on": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "on/off": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "on/on": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          }
+        },
+        "donor_tables_vary_across_rotations": 0,
+        "final": 96,
+        "final_with_row_error": 0,
+        "four_row_reports": 192,
+        "joint": 96,
+        "pairs": 96,
+        "physical_assignments": 24,
+        "reports": 192,
+        "role": 96,
+        "role_status": {
+          "correct_flip": 96,
+          "missing": 0,
+          "other_distinct": 0,
+          "same": 0,
+          "swapped": 0
+        },
+        "rotation_histogram": {
+          "any_shared_wrong": [
+            24,
+            0,
+            0,
+            0,
+            0
+          ],
+          "final": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "final_with_row_error": [
+            24,
+            0,
+            0,
+            0,
+            0
+          ],
+          "joint": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "role": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "rows": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "same_wrong_table": [
+            24,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "row_by_display_position": {
+          "0": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          },
+          "1": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          },
+          "2": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          },
+          "3": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          }
+        },
+        "row_by_donor": {
+          "off/off": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "off/on": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "on/off": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "on/on": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ]
+        },
+        "rows": 96,
+        "same_wrong_table": 0,
+        "total_choices": 21504
+      },
+      "paired": {
+        "any_shared_wrong": 9,
+        "by_menu": {
+          "1": {
+            "any_shared_wrong": 1,
+            "final": 20,
+            "final_with_row_error": 10,
+            "joint": 10,
+            "pairs": 24,
+            "role": 22,
+            "rows": 10,
+            "same_wrong_table": 0
+          },
+          "3": {
+            "any_shared_wrong": 0,
+            "final": 21,
+            "final_with_row_error": 10,
+            "joint": 11,
+            "pairs": 24,
+            "role": 21,
+            "rows": 11,
+            "same_wrong_table": 0
+          },
+          "5": {
+            "any_shared_wrong": 6,
+            "final": 20,
+            "final_with_row_error": 6,
+            "joint": 14,
+            "pairs": 24,
+            "role": 20,
+            "rows": 14,
+            "same_wrong_table": 4
+          },
+          "7": {
+            "any_shared_wrong": 2,
+            "final": 20,
+            "final_with_row_error": 5,
+            "joint": 15,
+            "pairs": 24,
+            "role": 20,
+            "rows": 17,
+            "same_wrong_table": 2
+          }
+        },
+        "by_rotation": {
+          "0": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 1,
+            "joint": 23,
+            "pairs": 24,
+            "role": 24,
+            "rows": 23,
+            "same_wrong_table": 0
+          },
+          "1": {
+            "any_shared_wrong": 7,
+            "final": 17,
+            "final_with_row_error": 15,
+            "joint": 2,
+            "pairs": 24,
+            "role": 19,
+            "rows": 3,
+            "same_wrong_table": 5
+          },
+          "2": {
+            "any_shared_wrong": 1,
+            "final": 18,
+            "final_with_row_error": 10,
+            "joint": 8,
+            "pairs": 24,
+            "role": 18,
+            "rows": 8,
+            "same_wrong_table": 1
+          },
+          "3": {
+            "any_shared_wrong": 1,
+            "final": 22,
+            "final_with_row_error": 5,
+            "joint": 17,
+            "pairs": 24,
+            "role": 22,
+            "rows": 18,
+            "same_wrong_table": 0
+          }
+        },
+        "correct_choices": 19880,
+        "correct_defaults": 179,
+        "donor_relations": {
+          "off/off": {
+            "agree_correct": 94,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 2
+          },
+          "off/on": {
+            "agree_correct": 74,
+            "agree_wrong": 4,
+            "both_missing": 0,
+            "disagree": 17,
+            "one_missing": 1
+          },
+          "on/off": {
+            "agree_correct": 64,
+            "agree_wrong": 6,
+            "both_missing": 0,
+            "disagree": 25,
+            "one_missing": 1
+          },
+          "on/on": {
+            "agree_correct": 84,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 11,
+            "one_missing": 1
+          }
+        },
+        "donor_tables_vary_across_rotations": 36,
+        "final": 81,
+        "final_with_row_error": 31,
+        "four_row_reports": 138,
+        "joint": 50,
+        "pairs": 96,
+        "physical_assignments": 24,
+        "reports": 192,
+        "role": 83,
+        "role_status": {
+          "correct_flip": 83,
+          "missing": 3,
+          "other_distinct": 0,
+          "same": 10,
+          "swapped": 0
+        },
+        "rotation_histogram": {
+          "any_shared_wrong": [
+            17,
+            5,
+            2,
+            0,
+            0
+          ],
+          "final": [
+            0,
+            0,
+            3,
+            9,
+            12
+          ],
+          "final_with_row_error": [
+            5,
+            10,
+            6,
+            3,
+            0
+          ],
+          "joint": [
+            0,
+            4,
+            15,
+            4,
+            1
+          ],
+          "role": [
+            0,
+            0,
+            2,
+            9,
+            13
+          ],
+          "rows": [
+            0,
+            3,
+            16,
+            3,
+            2
+          ],
+          "same_wrong_table": [
+            19,
+            4,
+            1,
+            0,
+            0
+          ]
+        },
+        "row_by_display_position": {
+          "0": {
+            "correct": 160,
+            "missing": 1,
+            "wrong": 31
+          },
+          "1": {
+            "correct": 165,
+            "missing": 1,
+            "wrong": 26
+          },
+          "2": {
+            "correct": 182,
+            "missing": 1,
+            "wrong": 9
+          },
+          "3": {
+            "correct": 183,
+            "missing": 2,
+            "wrong": 7
+          }
+        },
+        "row_by_donor": {
+          "off/off": [
+            {
+              "correct": 95,
+              "missing": 1,
+              "wrong": 0
+            },
+            {
+              "correct": 95,
+              "missing": 1,
+              "wrong": 0
+            }
+          ],
+          "off/on": [
+            {
+              "correct": 79,
+              "missing": 1,
+              "wrong": 16
+            },
+            {
+              "correct": 87,
+              "missing": 0,
+              "wrong": 9
+            }
+          ],
+          "on/off": [
+            {
+              "correct": 73,
+              "missing": 1,
+              "wrong": 22
+            },
+            {
+              "correct": 81,
+              "missing": 0,
+              "wrong": 15
+            }
+          ],
+          "on/on": [
+            {
+              "correct": 89,
+              "missing": 1,
+              "wrong": 6
+            },
+            {
+              "correct": 91,
+              "missing": 0,
+              "wrong": 5
+            }
+          ]
+        },
+        "rows": 52,
+        "same_wrong_table": 6,
+        "total_choices": 21504
+      },
+      "parent": {
+        "any_shared_wrong": 12,
+        "by_menu": {
+          "1": {
+            "any_shared_wrong": 3,
+            "final": 0,
+            "final_with_row_error": 0,
+            "joint": 0,
+            "pairs": 24,
+            "role": 0,
+            "rows": 17,
+            "same_wrong_table": 3
+          },
+          "3": {
+            "any_shared_wrong": 4,
+            "final": 0,
+            "final_with_row_error": 0,
+            "joint": 0,
+            "pairs": 24,
+            "role": 0,
+            "rows": 20,
+            "same_wrong_table": 4
+          },
+          "5": {
+            "any_shared_wrong": 2,
+            "final": 0,
+            "final_with_row_error": 0,
+            "joint": 0,
+            "pairs": 24,
+            "role": 2,
+            "rows": 6,
+            "same_wrong_table": 1
+          },
+          "7": {
+            "any_shared_wrong": 3,
+            "final": 2,
+            "final_with_row_error": 1,
+            "joint": 1,
+            "pairs": 24,
+            "role": 2,
+            "rows": 17,
+            "same_wrong_table": 3
+          }
+        },
+        "by_rotation": {
+          "0": {
+            "any_shared_wrong": 1,
+            "final": 1,
+            "final_with_row_error": 0,
+            "joint": 1,
+            "pairs": 24,
+            "role": 2,
+            "rows": 17,
+            "same_wrong_table": 0
+          },
+          "1": {
+            "any_shared_wrong": 7,
+            "final": 0,
+            "final_with_row_error": 0,
+            "joint": 0,
+            "pairs": 24,
+            "role": 1,
+            "rows": 8,
+            "same_wrong_table": 7
+          },
+          "2": {
+            "any_shared_wrong": 3,
+            "final": 0,
+            "final_with_row_error": 0,
+            "joint": 0,
+            "pairs": 24,
+            "role": 0,
+            "rows": 14,
+            "same_wrong_table": 3
+          },
+          "3": {
+            "any_shared_wrong": 1,
+            "final": 1,
+            "final_with_row_error": 1,
+            "joint": 0,
+            "pairs": 24,
+            "role": 1,
+            "rows": 21,
+            "same_wrong_table": 1
+          }
+        },
+        "correct_choices": 8400,
+        "correct_defaults": 86,
+        "donor_relations": {
+          "off/off": {
+            "agree_correct": 73,
+            "agree_wrong": 0,
+            "both_missing": 9,
+            "disagree": 3,
+            "one_missing": 11
+          },
+          "off/on": {
+            "agree_correct": 73,
+            "agree_wrong": 7,
+            "both_missing": 6,
+            "disagree": 5,
+            "one_missing": 5
+          },
+          "on/off": {
+            "agree_correct": 75,
+            "agree_wrong": 7,
+            "both_missing": 6,
+            "disagree": 3,
+            "one_missing": 5
+          },
+          "on/on": {
+            "agree_correct": 86,
+            "agree_wrong": 4,
+            "both_missing": 3,
+            "disagree": 1,
+            "one_missing": 2
+          }
+        },
+        "donor_tables_vary_across_rotations": 35,
+        "final": 2,
+        "final_with_row_error": 1,
+        "four_row_reports": 133,
+        "joint": 1,
+        "pairs": 96,
+        "physical_assignments": 24,
+        "reports": 192,
+        "role": 4,
+        "role_status": {
+          "correct_flip": 4,
+          "missing": 8,
+          "other_distinct": 0,
+          "same": 78,
+          "swapped": 6
+        },
+        "rotation_histogram": {
+          "any_shared_wrong": [
+            14,
+            8,
+            2,
+            0,
+            0
+          ],
+          "final": [
+            22,
+            2,
+            0,
+            0,
+            0
+          ],
+          "final_with_row_error": [
+            23,
+            1,
+            0,
+            0,
+            0
+          ],
+          "joint": [
+            23,
+            1,
+            0,
+            0,
+            0
+          ],
+          "role": [
+            20,
+            4,
+            0,
+            0,
+            0
+          ],
+          "rows": [
+            1,
+            4,
+            6,
+            8,
+            5
+          ],
+          "same_wrong_table": [
+            15,
+            7,
+            2,
+            0,
+            0
+          ]
+        },
+        "row_by_display_position": {
+          "0": {
+            "correct": 147,
+            "missing": 25,
+            "wrong": 20
+          },
+          "1": {
+            "correct": 158,
+            "missing": 14,
+            "wrong": 20
+          },
+          "2": {
+            "correct": 173,
+            "missing": 13,
+            "wrong": 6
+          },
+          "3": {
+            "correct": 168,
+            "missing": 19,
+            "wrong": 5
+          }
+        },
+        "row_by_donor": {
+          "off/off": [
+            {
+              "correct": 80,
+              "missing": 13,
+              "wrong": 3
+            },
+            {
+              "correct": 80,
+              "missing": 16,
+              "wrong": 0
+            }
+          ],
+          "off/on": [
+            {
+              "correct": 78,
+              "missing": 8,
+              "wrong": 10
+            },
+            {
+              "correct": 77,
+              "missing": 9,
+              "wrong": 10
+            }
+          ],
+          "on/off": [
+            {
+              "correct": 79,
+              "missing": 8,
+              "wrong": 9
+            },
+            {
+              "correct": 77,
+              "missing": 9,
+              "wrong": 10
+            }
+          ],
+          "on/on": [
+            {
+              "correct": 87,
+              "missing": 4,
+              "wrong": 5
+            },
+            {
+              "correct": 88,
+              "missing": 4,
+              "wrong": 4
+            }
+          ]
+        },
+        "rows": 60,
+        "same_wrong_table": 11,
+        "total_choices": 21504
+      }
+    },
+    "previous": {
+      "L": {
+        "any_shared_wrong": 0,
+        "by_menu": {
+          "0": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "2": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "4": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "6": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          }
+        },
+        "by_rotation": {
+          "0": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "1": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "2": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "3": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          }
+        },
+        "correct_choices": 21504,
+        "correct_defaults": 192,
+        "donor_relations": {
+          "off/off": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "off/on": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "on/off": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "on/on": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          }
+        },
+        "donor_tables_vary_across_rotations": 0,
+        "final": 96,
+        "final_with_row_error": 0,
+        "four_row_reports": 192,
+        "joint": 96,
+        "pairs": 96,
+        "physical_assignments": 24,
+        "reports": 192,
+        "role": 96,
+        "role_status": {
+          "correct_flip": 96,
+          "missing": 0,
+          "other_distinct": 0,
+          "same": 0,
+          "swapped": 0
+        },
+        "rotation_histogram": {
+          "any_shared_wrong": [
+            24,
+            0,
+            0,
+            0,
+            0
+          ],
+          "final": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "final_with_row_error": [
+            24,
+            0,
+            0,
+            0,
+            0
+          ],
+          "joint": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "role": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "rows": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "same_wrong_table": [
+            24,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "row_by_display_position": {
+          "0": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          },
+          "1": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          },
+          "2": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          },
+          "3": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          }
+        },
+        "row_by_donor": {
+          "off/off": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "off/on": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "on/off": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "on/on": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ]
+        },
+        "rows": 96,
+        "same_wrong_table": 0,
+        "total_choices": 21504
+      },
+      "individual": {
+        "any_shared_wrong": 11,
+        "by_menu": {
+          "0": {
+            "any_shared_wrong": 1,
+            "final": 23,
+            "final_with_row_error": 2,
+            "joint": 21,
+            "pairs": 24,
+            "role": 23,
+            "rows": 21,
+            "same_wrong_table": 1
+          },
+          "2": {
+            "any_shared_wrong": 4,
+            "final": 22,
+            "final_with_row_error": 5,
+            "joint": 17,
+            "pairs": 24,
+            "role": 22,
+            "rows": 17,
+            "same_wrong_table": 4
+          },
+          "4": {
+            "any_shared_wrong": 4,
+            "final": 24,
+            "final_with_row_error": 4,
+            "joint": 20,
+            "pairs": 24,
+            "role": 24,
+            "rows": 20,
+            "same_wrong_table": 4
+          },
+          "6": {
+            "any_shared_wrong": 2,
+            "final": 22,
+            "final_with_row_error": 5,
+            "joint": 17,
+            "pairs": 24,
+            "role": 22,
+            "rows": 19,
+            "same_wrong_table": 1
+          }
+        },
+        "by_rotation": {
+          "0": {
+            "any_shared_wrong": 0,
+            "final": 23,
+            "final_with_row_error": 0,
+            "joint": 23,
+            "pairs": 24,
+            "role": 23,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "1": {
+            "any_shared_wrong": 6,
+            "final": 23,
+            "final_with_row_error": 8,
+            "joint": 15,
+            "pairs": 24,
+            "role": 23,
+            "rows": 15,
+            "same_wrong_table": 6
+          },
+          "2": {
+            "any_shared_wrong": 3,
+            "final": 23,
+            "final_with_row_error": 4,
+            "joint": 19,
+            "pairs": 24,
+            "role": 23,
+            "rows": 19,
+            "same_wrong_table": 2
+          },
+          "3": {
+            "any_shared_wrong": 2,
+            "final": 22,
+            "final_with_row_error": 4,
+            "joint": 18,
+            "pairs": 24,
+            "role": 22,
+            "rows": 19,
+            "same_wrong_table": 2
+          }
+        },
+        "correct_choices": 20832,
+        "correct_defaults": 186,
+        "donor_relations": {
+          "off/off": {
+            "agree_correct": 93,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 3
+          },
+          "off/on": {
+            "agree_correct": 83,
+            "agree_wrong": 6,
+            "both_missing": 0,
+            "disagree": 4,
+            "one_missing": 3
+          },
+          "on/off": {
+            "agree_correct": 86,
+            "agree_wrong": 4,
+            "both_missing": 0,
+            "disagree": 5,
+            "one_missing": 1
+          },
+          "on/on": {
+            "agree_correct": 86,
+            "agree_wrong": 6,
+            "both_missing": 0,
+            "disagree": 3,
+            "one_missing": 1
+          }
+        },
+        "donor_tables_vary_across_rotations": 26,
+        "final": 91,
+        "final_with_row_error": 16,
+        "four_row_reports": 159,
+        "joint": 75,
+        "pairs": 96,
+        "physical_assignments": 24,
+        "reports": 192,
+        "role": 91,
+        "role_status": {
+          "correct_flip": 91,
+          "missing": 3,
+          "other_distinct": 0,
+          "same": 2,
+          "swapped": 0
+        },
+        "rotation_histogram": {
+          "any_shared_wrong": [
+            14,
+            9,
+            1,
+            0,
+            0
+          ],
+          "final": [
+            0,
+            0,
+            2,
+            1,
+            21
+          ],
+          "final_with_row_error": [
+            13,
+            7,
+            3,
+            1,
+            0
+          ],
+          "joint": [
+            0,
+            1,
+            5,
+            8,
+            10
+          ],
+          "role": [
+            0,
+            0,
+            2,
+            1,
+            21
+          ],
+          "rows": [
+            0,
+            1,
+            4,
+            8,
+            11
+          ],
+          "same_wrong_table": [
+            15,
+            8,
+            1,
+            0,
+            0
+          ]
+        },
+        "row_by_display_position": {
+          "0": {
+            "correct": 170,
+            "missing": 1,
+            "wrong": 21
+          },
+          "1": {
+            "correct": 177,
+            "missing": 2,
+            "wrong": 13
+          },
+          "2": {
+            "correct": 181,
+            "missing": 3,
+            "wrong": 8
+          },
+          "3": {
+            "correct": 186,
+            "missing": 2,
+            "wrong": 4
+          }
+        },
+        "row_by_donor": {
+          "off/off": [
+            {
+              "correct": 95,
+              "missing": 0,
+              "wrong": 1
+            },
+            {
+              "correct": 93,
+              "missing": 3,
+              "wrong": 0
+            }
+          ],
+          "off/on": [
+            {
+              "correct": 88,
+              "missing": 0,
+              "wrong": 8
+            },
+            {
+              "correct": 85,
+              "missing": 3,
+              "wrong": 8
+            }
+          ],
+          "on/off": [
+            {
+              "correct": 88,
+              "missing": 0,
+              "wrong": 8
+            },
+            {
+              "correct": 89,
+              "missing": 1,
+              "wrong": 6
+            }
+          ],
+          "on/on": [
+            {
+              "correct": 88,
+              "missing": 0,
+              "wrong": 8
+            },
+            {
+              "correct": 88,
+              "missing": 1,
+              "wrong": 7
+            }
+          ]
+        },
+        "rows": 77,
+        "same_wrong_table": 10,
+        "total_choices": 21504
+      },
+      "oracle": {
+        "any_shared_wrong": 0,
+        "by_menu": {
+          "0": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "2": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "4": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "6": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          }
+        },
+        "by_rotation": {
+          "0": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "1": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "2": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "3": {
+            "any_shared_wrong": 0,
+            "final": 24,
+            "final_with_row_error": 0,
+            "joint": 24,
+            "pairs": 24,
+            "role": 24,
+            "rows": 24,
+            "same_wrong_table": 0
+          }
+        },
+        "correct_choices": 21504,
+        "correct_defaults": 192,
+        "donor_relations": {
+          "off/off": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "off/on": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "on/off": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "on/on": {
+            "agree_correct": 96,
+            "agree_wrong": 0,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          }
+        },
+        "donor_tables_vary_across_rotations": 0,
+        "final": 96,
+        "final_with_row_error": 0,
+        "four_row_reports": 192,
+        "joint": 96,
+        "pairs": 96,
+        "physical_assignments": 24,
+        "reports": 192,
+        "role": 96,
+        "role_status": {
+          "correct_flip": 96,
+          "missing": 0,
+          "other_distinct": 0,
+          "same": 0,
+          "swapped": 0
+        },
+        "rotation_histogram": {
+          "any_shared_wrong": [
+            24,
+            0,
+            0,
+            0,
+            0
+          ],
+          "final": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "final_with_row_error": [
+            24,
+            0,
+            0,
+            0,
+            0
+          ],
+          "joint": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "role": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "rows": [
+            0,
+            0,
+            0,
+            0,
+            24
+          ],
+          "same_wrong_table": [
+            24,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "row_by_display_position": {
+          "0": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          },
+          "1": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          },
+          "2": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          },
+          "3": {
+            "correct": 192,
+            "missing": 0,
+            "wrong": 0
+          }
+        },
+        "row_by_donor": {
+          "off/off": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "off/on": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "on/off": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ],
+          "on/on": [
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            },
+            {
+              "correct": 96,
+              "missing": 0,
+              "wrong": 0
+            }
+          ]
+        },
+        "rows": 96,
+        "same_wrong_table": 0,
+        "total_choices": 21504
+      },
+      "paired": {
+        "any_shared_wrong": 9,
+        "by_menu": {
+          "0": {
+            "any_shared_wrong": 1,
+            "final": 7,
+            "final_with_row_error": 1,
+            "joint": 6,
+            "pairs": 24,
+            "role": 7,
+            "rows": 17,
+            "same_wrong_table": 0
+          },
+          "2": {
+            "any_shared_wrong": 3,
+            "final": 18,
+            "final_with_row_error": 8,
+            "joint": 10,
+            "pairs": 24,
+            "role": 18,
+            "rows": 12,
+            "same_wrong_table": 1
+          },
+          "4": {
+            "any_shared_wrong": 3,
+            "final": 21,
+            "final_with_row_error": 9,
+            "joint": 12,
+            "pairs": 24,
+            "role": 21,
+            "rows": 12,
+            "same_wrong_table": 1
+          },
+          "6": {
+            "any_shared_wrong": 2,
+            "final": 16,
+            "final_with_row_error": 4,
+            "joint": 12,
+            "pairs": 24,
+            "role": 16,
+            "rows": 14,
+            "same_wrong_table": 1
+          }
+        },
+        "by_rotation": {
+          "0": {
+            "any_shared_wrong": 1,
+            "final": 15,
+            "final_with_row_error": 0,
+            "joint": 15,
+            "pairs": 24,
+            "role": 15,
+            "rows": 18,
+            "same_wrong_table": 0
+          },
+          "1": {
+            "any_shared_wrong": 6,
+            "final": 18,
+            "final_with_row_error": 14,
+            "joint": 4,
+            "pairs": 24,
+            "role": 18,
+            "rows": 6,
+            "same_wrong_table": 3
+          },
+          "2": {
+            "any_shared_wrong": 1,
+            "final": 13,
+            "final_with_row_error": 3,
+            "joint": 10,
+            "pairs": 24,
+            "role": 13,
+            "rows": 14,
+            "same_wrong_table": 0
+          },
+          "3": {
+            "any_shared_wrong": 1,
+            "final": 16,
+            "final_with_row_error": 5,
+            "joint": 11,
+            "pairs": 24,
+            "role": 16,
+            "rows": 17,
+            "same_wrong_table": 0
+          }
+        },
+        "correct_choices": 16352,
+        "correct_defaults": 150,
+        "donor_relations": {
+          "off/off": {
+            "agree_correct": 83,
+            "agree_wrong": 0,
+            "both_missing": 4,
+            "disagree": 0,
+            "one_missing": 9
+          },
+          "off/on": {
+            "agree_correct": 68,
+            "agree_wrong": 4,
+            "both_missing": 0,
+            "disagree": 14,
+            "one_missing": 10
+          },
+          "on/off": {
+            "agree_correct": 71,
+            "agree_wrong": 4,
+            "both_missing": 0,
+            "disagree": 13,
+            "one_missing": 8
+          },
+          "on/on": {
+            "agree_correct": 77,
+            "agree_wrong": 2,
+            "both_missing": 0,
+            "disagree": 10,
+            "one_missing": 7
+          }
+        },
+        "donor_tables_vary_across_rotations": 35,
+        "final": 62,
+        "final_with_row_error": 22,
+        "four_row_reports": 136,
+        "joint": 40,
+        "pairs": 96,
+        "physical_assignments": 24,
+        "reports": 192,
+        "role": 62,
+        "role_status": {
+          "correct_flip": 62,
+          "missing": 25,
+          "other_distinct": 0,
+          "same": 8,
+          "swapped": 1
+        },
+        "rotation_histogram": {
+          "any_shared_wrong": [
+            15,
+            9,
+            0,
+            0,
+            0
+          ],
+          "final": [
+            2,
+            4,
+            3,
+            8,
+            7
+          ],
+          "final_with_row_error": [
+            8,
+            11,
+            4,
+            1,
+            0
+          ],
+          "joint": [
+            3,
+            7,
+            10,
+            3,
+            1
+          ],
+          "role": [
+            2,
+            4,
+            3,
+            8,
+            7
+          ],
+          "rows": [
+            0,
+            4,
+            11,
+            7,
+            2
+          ],
+          "same_wrong_table": [
+            21,
+            3,
+            0,
+            0,
+            0
+          ]
+        },
+        "row_by_display_position": {
+          "0": {
+            "correct": 155,
+            "missing": 13,
+            "wrong": 24
+          },
+          "1": {
+            "correct": 160,
+            "missing": 8,
+            "wrong": 24
+          },
+          "2": {
+            "correct": 170,
+            "missing": 9,
+            "wrong": 13
+          },
+          "3": {
+            "correct": 173,
+            "missing": 12,
+            "wrong": 7
+          }
+        },
+        "row_by_donor": {
+          "off/off": [
+            {
+              "correct": 89,
+              "missing": 6,
+              "wrong": 1
+            },
+            {
+              "correct": 85,
+              "missing": 11,
+              "wrong": 0
+            }
+          ],
+          "off/on": [
+            {
+              "correct": 81,
+              "missing": 4,
+              "wrong": 11
+            },
+            {
+              "correct": 76,
+              "missing": 6,
+              "wrong": 14
+            }
+          ],
+          "on/off": [
+            {
+              "correct": 80,
+              "missing": 3,
+              "wrong": 13
+            },
+            {
+              "correct": 79,
+              "missing": 5,
+              "wrong": 12
+            }
+          ],
+          "on/on": [
+            {
+              "correct": 84,
+              "missing": 2,
+              "wrong": 10
+            },
+            {
+              "correct": 84,
+              "missing": 5,
+              "wrong": 7
+            }
+          ]
+        },
+        "rows": 55,
+        "same_wrong_table": 3,
+        "total_choices": 21504
+      },
+      "parent": {
+        "any_shared_wrong": 13,
+        "by_menu": {
+          "0": {
+            "any_shared_wrong": 1,
+            "final": 11,
+            "final_with_row_error": 0,
+            "joint": 11,
+            "pairs": 24,
+            "role": 11,
+            "rows": 22,
+            "same_wrong_table": 1
+          },
+          "2": {
+            "any_shared_wrong": 5,
+            "final": 15,
+            "final_with_row_error": 2,
+            "joint": 13,
+            "pairs": 24,
+            "role": 15,
+            "rows": 18,
+            "same_wrong_table": 5
+          },
+          "4": {
+            "any_shared_wrong": 4,
+            "final": 6,
+            "final_with_row_error": 0,
+            "joint": 6,
+            "pairs": 24,
+            "role": 6,
+            "rows": 20,
+            "same_wrong_table": 4
+          },
+          "6": {
+            "any_shared_wrong": 3,
+            "final": 1,
+            "final_with_row_error": 1,
+            "joint": 0,
+            "pairs": 24,
+            "role": 1,
+            "rows": 20,
+            "same_wrong_table": 3
+          }
+        },
+        "by_rotation": {
+          "0": {
+            "any_shared_wrong": 0,
+            "final": 11,
+            "final_with_row_error": 0,
+            "joint": 11,
+            "pairs": 24,
+            "role": 11,
+            "rows": 24,
+            "same_wrong_table": 0
+          },
+          "1": {
+            "any_shared_wrong": 7,
+            "final": 7,
+            "final_with_row_error": 2,
+            "joint": 5,
+            "pairs": 24,
+            "role": 7,
+            "rows": 15,
+            "same_wrong_table": 7
+          },
+          "2": {
+            "any_shared_wrong": 4,
+            "final": 7,
+            "final_with_row_error": 0,
+            "joint": 7,
+            "pairs": 24,
+            "role": 7,
+            "rows": 20,
+            "same_wrong_table": 4
+          },
+          "3": {
+            "any_shared_wrong": 2,
+            "final": 8,
+            "final_with_row_error": 1,
+            "joint": 7,
+            "pairs": 24,
+            "role": 8,
+            "rows": 21,
+            "same_wrong_table": 2
+          }
+        },
+        "correct_choices": 14112,
+        "correct_defaults": 126,
+        "donor_relations": {
+          "off/off": {
+            "agree_correct": 95,
+            "agree_wrong": 1,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          },
+          "off/on": {
+            "agree_correct": 87,
+            "agree_wrong": 7,
+            "both_missing": 0,
+            "disagree": 2,
+            "one_missing": 0
+          },
+          "on/off": {
+            "agree_correct": 87,
+            "agree_wrong": 7,
+            "both_missing": 0,
+            "disagree": 2,
+            "one_missing": 0
+          },
+          "on/on": {
+            "agree_correct": 91,
+            "agree_wrong": 5,
+            "both_missing": 0,
+            "disagree": 0,
+            "one_missing": 0
+          }
+        },
+        "donor_tables_vary_across_rotations": 26,
+        "final": 33,
+        "final_with_row_error": 3,
+        "four_row_reports": 163,
+        "joint": 30,
+        "pairs": 96,
+        "physical_assignments": 24,
+        "reports": 192,
+        "role": 33,
+        "role_status": {
+          "correct_flip": 33,
+          "missing": 0,
+          "other_distinct": 0,
+          "same": 60,
+          "swapped": 3
+        },
+        "rotation_histogram": {
+          "any_shared_wrong": [
+            12,
+            11,
+            1,
+            0,
+            0
+          ],
+          "final": [
+            8,
+            5,
+            7,
+            2,
+            2
+          ],
+          "final_with_row_error": [
+            21,
+            3,
+            0,
+            0,
+            0
+          ],
+          "joint": [
+            9,
+            5,
+            6,
+            3,
+            1
+          ],
+          "role": [
+            8,
+            5,
+            7,
+            2,
+            2
+          ],
+          "rows": [
+            0,
+            0,
+            2,
+            12,
+            10
+          ],
+          "same_wrong_table": [
+            12,
+            11,
+            1,
+            0,
+            0
+          ]
+        },
+        "row_by_display_position": {
+          "0": {
+            "correct": 173,
+            "missing": 0,
+            "wrong": 19
+          },
+          "1": {
+            "correct": 177,
+            "missing": 0,
+            "wrong": 15
+          },
+          "2": {
+            "correct": 187,
+            "missing": 0,
+            "wrong": 5
+          },
+          "3": {
+            "correct": 187,
+            "missing": 0,
+            "wrong": 5
+          }
+        },
+        "row_by_donor": {
+          "off/off": [
+            {
+              "correct": 95,
+              "missing": 0,
+              "wrong": 1
+            },
+            {
+              "correct": 95,
+              "missing": 0,
+              "wrong": 1
+            }
+          ],
+          "off/on": [
+            {
+              "correct": 87,
+              "missing": 0,
+              "wrong": 9
+            },
+            {
+              "correct": 89,
+              "missing": 0,
+              "wrong": 7
+            }
+          ],
+          "on/off": [
+            {
+              "correct": 88,
+              "missing": 0,
+              "wrong": 8
+            },
+            {
+              "correct": 88,
+              "missing": 0,
+              "wrong": 8
+            }
+          ],
+          "on/on": [
+            {
+              "correct": 91,
+              "missing": 0,
+              "wrong": 5
+            },
+            {
+              "correct": 91,
+              "missing": 0,
+              "wrong": 5
+            }
+          ]
+        },
+        "rows": 80,
+        "same_wrong_table": 13,
+        "total_choices": 21504
+      }
+    }
+  },
+  "records": 1920
+}
