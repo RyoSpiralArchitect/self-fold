@@ -1,0 +1,1 @@
+{"decisions": {"anchors": true, "beats_L": false, "training_gain": true, "within_five_points_of_L": false}, "evaluations": 1920, "exact": true, "new_gemma_calls": 0, "refits": 0, "reports": 768, "source_commit": "f4b151a6d95dc4398b182d32adf69e39e77c1485"}
