@@ -13,7 +13,9 @@ from audit_paired_writer_rows import NEXT_ARMS, PAIR_METRICS, audit
 
 from selffold.paired_row_objectives import ARMS, batch_objective
 from selffold.records import RunStore, digest, file_sha
+from selffold.report_replay import verify_files
 from selffold.structured_report import (
+    FITS,
     Midpoint,
     final_choices,
     read_fields,
@@ -33,6 +35,8 @@ ARCHIVE = prior.STUDY / "produce"
 SEEDS = (257, 258, 259)
 CLOSED_SHA = "cef4f90b17eb4799742e1d69ef9d256d9e296ce1a2d7ed8d601a13d8048cf747"
 PARENT = prior.PARENT / "writer.npz"
+CONTROLLER_INPUTS = prior.PARENT.parent / "INPUTS.json"
+CONTROLLER_INPUTS_SHA = "7d1c99555010bea4e53fc898e72f0e2c1d0b910d13dc5650dffa4a4d29e58533"
 
 
 def schedule(twins, cfg, seed):
@@ -52,10 +56,25 @@ def checked_inputs():
         "binding.json",
         "host.json",
         "individual_training.jsonl",
+        "source.json",
         *(k for k in files if k.startswith("native_")),
     ):
         if file_sha(ARCHIVE / name) != files[name]:
             raise ValueError(f"Frozen input differs: {name}")
+    if file_sha(CONTROLLER_INPUTS) != CONTROLLER_INPUTS_SHA:
+        raise ValueError("Structured writer input manifest changed")
+    controller_files = prior.read(CONTROLLER_INPUTS)["files"]
+    source_files = prior.read(ARCHIVE / "source.json")["files"]
+    boundary = "src/selffold/structured_report.py"
+    # Reconstructed G1 prompts do not exercise G2's incoming-role branch.
+    verify_files(
+        prior.ROOT,
+        {
+            FITS: controller_files[FITS],
+            "src/selffold/role_memory.py": controller_files["src/selffold/role_memory.py"],
+            boundary: source_files[boundary],
+        },
+    )
     cfg, actor, _, names, train, test = prior.prepare()
     binding = prior.read(ARCHIVE / "binding.json")
     if (file_sha(prior.CFG), digest(train), digest(test), file_sha(PARENT)) != (
@@ -219,6 +238,7 @@ def run(folder, checkpoint, seal):
             "source": seal,
             "plan": file_sha(STUDY / "PLAN.md"),
             "archive": CLOSED_SHA,
+            "controller_inputs": CONTROLLER_INPUTS_SHA,
             "parent": file_sha(PARENT),
             "train": digest(train),
             "test": digest(test),

@@ -1,8 +1,10 @@
 """Deterministic CPU checks. No checkpoint, model generation or optimizer step."""
 
 import json
+import re
 from pathlib import Path
 
+import numpy as np
 import pytest
 import torch
 import torch.nn.functional as F
@@ -156,6 +158,34 @@ def test_archive_keys_and_joint_counts(scripts):
         a.audit([*records[:-1], records[0]])
     with pytest.raises(ValueError, match="scoring flags"):
         a.audit([{**records[0], "role": not records[0]["role"]}, *records[1:]])
+
+
+@pytest.mark.parametrize(
+    "changed",
+    ["weights", "src/selffold/role_memory.py", "src/selffold/structured_report.py"],
+)
+def test_preflight_rejects_changes_to_frozen_controller(scripts, tmp_path, monkeypatch, changed):
+    _, exp = scripts
+    paths = (exp.FITS, "src/selffold/role_memory.py", "src/selffold/structured_report.py")
+    for name in paths:
+        copy = tmp_path / name
+        copy.parent.mkdir(parents=True, exist_ok=True)
+        copy.write_bytes((exp.prior.ROOT / name).read_bytes())
+
+    changed_path = exp.FITS if changed == "weights" else changed
+    target = tmp_path / changed_path
+    if changed == "weights":
+        with np.load(target, allow_pickle=False) as original:
+            arrays = {name: original[name] for name in original.files}
+        # The role-1 address is unused by G1 and affects G2.
+        arrays["reward_17_address"][1] *= -1
+        np.savez_compressed(target, **arrays)
+    else:
+        target.write_bytes(target.read_bytes() + b"\n# changed\n")
+    monkeypatch.setattr(exp.prior, "ROOT", tmp_path)
+    monkeypatch.setattr(exp.prior, "prepare", lambda: pytest.fail("Loaded unverified controller"))
+    with pytest.raises(ValueError, match=f"Archived input changed: {re.escape(changed_path)}"):
+        exp.checked_inputs()
 
 
 def test_future_scorer_replays_saved_outputs_and_schedule(scripts):
