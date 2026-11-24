@@ -25,3 +25,4 @@ paper/*.blg
 paper/*.out
 paper/*.pdf
 !paper/self-fold.pdf
+!paper/working.pdf

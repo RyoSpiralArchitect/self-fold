@@ -10,9 +10,9 @@ English · [日本語](README.ja.md)
 | L · latent | Eight slots after one hidden-state update, `G(Z)`. |
 | B · roundtrip | The same update, decoded to text and encoded again, `E(D(G(Z)))`. |
 
-L and B start with identical slots and share the update, layer boundaries and decoding policy. Their difference measures what this particular language roundtrip changes. The open research question is whether any change matters for a later task. [Paper (PDF)](paper/self-fold.pdf) · [Read online](paper/main.md) · [Protocol](docs/PROTOCOL.md)
+L and B start with identical slots and share the update, layer boundaries and decoding policy. Their difference measures what this particular language roundtrip changes. The open research question is whether any change matters for a later task. [Working paper (PDF)](paper/working.pdf) · [Read online](paper/working.md) · [Protocol](docs/PROTOCOL.md)
 
-Version 1.0.0 of the preprint is by Ryo Higa, SpiralReality, Enginee, inc. [Cite the Zenodo preprint](https://doi.org/10.5281/zenodo.23930929) · [Manuscript PDF](paper/self-fold.pdf)
+The November 22 working manuscript includes the report-reader and row-lookup experiments. The archived November 4 preprint is by Ryo Higa, SpiralReality, Enginee, inc. [Cite version 1.0.0 on Zenodo](https://doi.org/10.5281/zenodo.23930929)
 
 ## Experiments
 

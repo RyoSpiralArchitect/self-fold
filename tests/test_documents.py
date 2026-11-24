@@ -9,9 +9,10 @@ def test_bibliography_resolves_and_has_audit():
     assert len(keys)==18
     assert {"babu2026quine", "feng2024propositional", "frasertaliente2026nla",
             "kumar2024score", "gao2022overoptimization", "williams1992reinforce"} <= keys
-    tex=(ROOT/'paper/main.tex').read_text()
-    citations={k.strip() for group in re.findall(r'\\cite\w*\{([^}]+)\}',tex) for k in group.split(',')}
-    assert citations <= keys
+    for name in ("main.tex", "working.tex"):
+        tex = (ROOT / "paper" / name).read_text()
+        citations = {k.strip() for group in re.findall(r'\\cite\w*\{([^}]+)\}', tex) for k in group.split(',')}
+        assert citations <= keys
     audit=json.loads((ROOT/'paper/sources.json').read_text())
     assert {x['key'] for x in audit}==keys
     assert all(x['source'].startswith('https://') for x in audit)
@@ -32,7 +33,7 @@ def test_other_frame_not_an_utterance_report():
             assert 'I ' not in row['text'] and 'stated' not in row['text'] and 'focuss' not in row['text']
 
 def test_paper_distinguishes_development_from_confirmation():
-    for name in ("main.md", "main.tex"):
+    for name in ("main.md", "main.tex", "working.md", "working.tex"):
         paper = (ROOT / "paper" / name).read_text().lower()
         assert "mistral" in paper and "confirmation" in paper and "uncalibrated" in paper
         assert "no pretrained-model or furnace result is reported" not in paper
